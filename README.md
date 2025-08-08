@@ -12,6 +12,10 @@ Diagrams include:
 * [uml_appn_sosa_ro.png](/uml/uml_appn_sosa_ro.png) - Class inheritance and relationships within APPN, SOSA and RO-Crate (schema.org)
 * [uml_appn.png](/uml/uml_appn.png) - Class inheritance and relationships within APPN
 * [uml_appn_sosa_observation.png](/uml/uml_appn_observation.png) - APPN model for representing an `Assay` that represents an `Observation` that collects data on an `ObservationUnit` 
+* [uml_appn_sosa_observation_core.png](/uml/uml_appn_observation_core.png) - Simplified model for representing an `Observation` showing only classes that will normally appear in an RO-Crate
 * [uml_appn_sosa_transformation.png](/uml/uml_appn_transformation.png) - APPN model for representing an `Assay` that represents a `Transformation` of data collected on an `ObservationUnit` 
+* [uml_appn_sosa_transformation_core.png](/uml/uml_appn_transformation_core.png) - Simplified model for representing a `Transformation` showing only classes that will normally appear in an RO-Crate
 * [uml_appn_sosa_control.png](/uml/uml_appn_control.png) - APPN model for representing an `Assay` that represents a `Control` of a variable associated with an `ObservationUnit` 
+* [uml_appn_sosa_control_core.png](/uml/uml_appn_control_core.png) - Simplified model for representing a `Control` showing only classes that will normally appear in an RO-Crate
 * [uml_appn_sosa_sampling.png](/uml/uml_appn_sampling.png) - APPN model for representing an `Assay` that represents a `Sampling` that derives a new `Sample` from an `ObservationUnit` 
+* [uml_appn_sosa_sampling_core.png](/uml/uml_appn_sampling_core.png) - Simplified model for representing a `Sampling` showing only classes that will normally appear in an RO-Crate
