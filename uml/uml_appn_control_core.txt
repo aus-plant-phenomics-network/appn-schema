@@ -1,0 +1,32 @@
+@startuml
+
+package Controllers {
+    class Person
+    class Software
+    class Actuator
+    class ExternalEvent
+}
+
+class Control {
+    startTime : Timestamp
+    endTime : Timestamp
+    hasSimpleResult: Any
+}
+
+class Trait {
+    iri : IRI
+}
+
+ControlledVariable --> Trait : representsTrait
+ControlledVariable --> Scale : usesScale
+
+Study -> Investigation : isPartOf
+Control -> Study : isPartOf
+Control --> ObservationUnit : isForObservationUnit
+Control --> Method : usedMethod
+Control --> ControlledVariable : controls
+Control --> Controllers : madeByController
+
+ObservationUnit --> ObservationUnit : inContextOf
+
+@enduml

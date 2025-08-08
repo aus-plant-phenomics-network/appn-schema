@@ -1,0 +1,22 @@
+@startuml
+
+package Samplers {
+    class Person
+    class Sampler
+}
+
+class Sampling {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+Study -> Investigation : isPartOf
+Sampling -> Study : isPartOf
+Sampling --> ObservationUnit : isForObservationUnit
+Sampling --> Method : usedMethod
+Sampling --> Samplers : madeBySampler
+Sampling --> Sample : hasResult
+
+ObservationUnit --> ObservationUnit : inContextOf
+
+@enduml

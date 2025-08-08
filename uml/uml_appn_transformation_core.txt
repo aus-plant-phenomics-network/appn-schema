@@ -1,0 +1,33 @@
+@startuml
+
+package Transformers {
+    class Person
+    class Software
+}
+
+class Transformation {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class Trait {
+    iri : IRI
+}
+
+Study -> Investigation : isPartOf
+Transformation -> Study : isPartOf
+Transformation --> ObservationUnit : isForObservationUnit
+Transformation --> Method : usedMethod
+Transformation --> ObservedVariable : producesOutput
+Transformation --> Transformers : madeByTransformer
+Transformation ..> File : hasResult
+Transformation ..> Dataset : hasResult
+Transformation ..> File : usesInput
+Transformation ..> Dataset : usesInput
+ObservedVariable --> Trait : representsTrait
+ObservedVariable --> Scale : usesScale
+
+ObservationUnit --> ObservationUnit : inContextOf
+Dataset --> File : hasPart
+
+@enduml

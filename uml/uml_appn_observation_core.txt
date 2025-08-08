@@ -1,0 +1,32 @@
+@startuml
+
+package Observers {
+    class Person
+    class Sensor
+}
+
+class Observation {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class Trait {
+    iri : IRI
+}
+
+Study -> Investigation : isPartOf
+Observation -> Study : isPartOf
+Observation --> ObservationUnit : isForObservationUnit
+Observation --> Method : usedMethod
+Observation --> ObservedVariable : observes
+Observation --> Observers : madeByObserver
+Observation ..> File : hasResult
+Observation .> Dataset : hasResult
+ObservedVariable --> Trait : representsTrait
+ObservedVariable --> Scale : usesScale
+
+ObservationUnit --> BiologicalMaterial : hasBiologicalMaterial
+ObservationUnit --> ObservationUnit : inContextOf
+Dataset --> File : hasPart
+
+@enduml
