@@ -1,0 +1,51 @@
+@startuml
+
+class Person {
+    orcid : IRI
+}
+
+class Assay {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class ResearchActivity {
+    raid: IRI
+}
+
+package "SOSA" #DDDDFF {
+    class sosa_Sample
+    class sosa_Sampling
+    class sosa_Procedure
+    class sosa_Execution
+    class sosa_Sampler
+    class sosa_FeatureOfInterest
+    sosa_Sampling --|> sosa_Execution
+    sosa_Sampler --|> sosa_System
+}
+
+Assay --|> sosa_Execution
+Sampling --|> sosa_Sampling
+Method --|> sosa_Procedure
+Sampler --|> sosa_Sampler
+Sample --|> sosa_Sample
+ObservationUnit --|> sosa_FeatureOfInterest
+
+Person --|> Sampler
+Sampling -|> Assay
+
+Investigation --|> ResearchActivity
+Study --|> ResearchActivity
+Assay --|> ResearchActivity
+Sample --|> ObservationUnit
+
+Study -> Investigation : isPartOf
+Assay -> Study : isPartOf
+Assay --> ObservationUnit : isForObservationUnit
+Assay --> Method : usedMethod
+Sampling --> Sampler : madeBySampler
+Sampling --> Sample : hasResult
+
+ObservationUnit --> ObservationUnit : inContextOf
+
+@enduml

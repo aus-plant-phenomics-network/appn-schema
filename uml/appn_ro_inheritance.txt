@@ -1,0 +1,12 @@
+@startuml
+
+package "RO-Crate" #FFDDDD {
+    !include ro.txt
+}
+
+Person --|> ro_Person
+Organization --|> ro_Organization
+File --|> ro_File
+Dataset --|> ro_Dataset
+
+@enduml

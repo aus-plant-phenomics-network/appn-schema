@@ -1,0 +1,68 @@
+@startuml
+
+class Person {
+    orcid : IRI
+}
+
+class Assay {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class ResearchActivity {
+    raid: IRI
+}
+
+class Trait {
+    iri : IRI
+}
+
+package "SOSA" #DDDDFF {
+    class sosa_Procedure
+    class sosa_Observation
+    class sosa_Execution
+    class sosa_Sensor
+    class sosa_System
+    class sosa_FeatureOfInterest
+    class sosa_Property
+    sosa_Observation --|> sosa_Execution
+    sosa_Sensor --|> sosa_System
+}
+
+Assay --|> sosa_Execution
+Method --|> sosa_Procedure
+Observer --|> sosa_Sensor
+System --|> sosa_System
+Observation --|> sosa_Observation
+ObservationUnit --|> sosa_FeatureOfInterest
+Variable --|> sosa_Property
+
+Person --|> Observer
+Sensor --|> Observer
+Observation -|> Assay
+Sensor --|> System
+ObservedVariable --|> Variable
+
+Investigation --|> ResearchActivity
+Study --|> ResearchActivity
+Assay --|> ResearchActivity
+GrowthFacility --|> ObservationUnit
+GrowthFacility --|> Platform
+Sample --|> ObservationUnit
+
+Study -> Investigation : isPartOf
+Assay -> Study : isPartOf
+Assay --> ObservationUnit : isForObservationUnit
+Assay --> Method : usedMethod
+Observation --> ObservedVariable : observes
+Observation --> Observer : madeByObserver
+Observation ..> File : hasResult
+Observation .> Dataset : hasResult
+Variable --> Trait : representsTrait
+Variable --> Scale : usesScale
+
+ObservationUnit --> BiologicalMaterial : hasBiologicalMaterial
+ObservationUnit --> ObservationUnit : inContextOf
+Dataset --> File : hasPart
+
+@enduml

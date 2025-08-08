@@ -1,0 +1,25 @@
+@startuml
+
+sosa_Execution ---> sosa_FeatureOfInterest : hasFeatureOfInterest
+sosa_Sensor --|> ssn_System
+sosa_Sampler --|> ssn_System
+sosa_Actuator --|> ssn_System
+sosa_Observation -> sosa_Sensor : madeBySensor
+sosa_Actuation -> sosa_Actuator : madeByActuator
+sosa_Sampling -> sosa_Sampler : madeBySampler
+sosa_Execution -left-> sosa_Procedure : usedProcedure
+sosa_Execution -right-> owl_Thing : hasResult
+sosa_Sample -up-> sosa_FeatureOfInterest : isSampleOf
+sosa_Sampling -left-|> sosa_Sample : hasResult
+sosa_Actuator -up-> sosa_Property : actsOn
+sosa_Actuation -right-> sosa_Property : actsOnProperty
+sosa_Sensor -left-> sosa_Property : observes
+sosa_Observation --> sosa_Property : observedProperty
+sosa_Observation ---|> sosa_Execution
+sosa_Sampling -down-|> sosa_Execution
+sosa_Actuation -up-|> sosa_Execution
+sosa_Platform --> sosa_Sensor : isHostedBy
+ssn_Deployment --> sosa_Platform : deployedOnPlatform
+ssn_Deployment --> sosa_Sensor : deployedSensor
+
+@enduml

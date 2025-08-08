@@ -1,0 +1,24 @@
+@startuml
+
+class Person {
+    orcid : IRI
+}
+
+class Organization {
+    rorid : IRI
+}
+
+class Assay {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class ResearchActivity {
+    raid: IRI
+}
+
+class Trait {
+    iri : IRI
+}
+
+@enduml

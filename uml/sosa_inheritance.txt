@@ -1,0 +1,14 @@
+@startuml
+
+package "SOSA" #DDDDFF {
+    !include sosa_assay_classes.txt
+}
+
+sosa_Sensor --|> sosa_System
+sosa_Sampler --|> sosa_System
+sosa_Actuator --|> sosa_System
+sosa_Observation ---|> sosa_Execution
+sosa_Sampling --|> sosa_Execution
+sosa_Actuation --|> sosa_Execution
+
+@enduml

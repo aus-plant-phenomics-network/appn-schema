@@ -1,0 +1,63 @@
+@startuml
+
+class Person {
+    orcid : IRI
+}
+
+class Assay {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class ResearchActivity {
+    raid: IRI
+}
+
+class Trait {
+    iri : IRI
+}
+
+package "SOSA" #DDDDFF {
+    class sosa_Procedure
+    class sosa_Actuation
+    class sosa_Execution
+    class sosa_Actuator
+    class sosa_System
+    class sosa_FeatureOfInterest
+    class sosa_Property
+    sosa_Actuation --|> sosa_Execution
+    sosa_Actuator --|> sosa_System
+}
+
+Assay --|> sosa_Execution
+Control --|> sosa_Actuation
+Method --|> sosa_Procedure
+Controller --|> sosa_Actuator
+System --|> sosa_System
+ObservationUnit --|> sosa_FeatureOfInterest
+Variable --|> sosa_Property
+
+Software --|> Controller
+Person --|> Controller
+Actuator --|> Controller
+ExternalEvent --|> Controller
+Control -|> Assay
+Actuator --|> System
+ControlledVariable --|> Variable
+Variable --> Trait : representsTrait
+Variable --> Scale : usesScale
+
+Investigation --|> ResearchActivity
+Study --|> ResearchActivity
+Assay --|> ResearchActivity
+
+Study -> Investigation : isPartOf
+Assay -> Study : isPartOf
+Assay --> ObservationUnit : isForObservationUnit
+Assay --> Method : usedMethod
+Control --> ControlledVariable : controls
+Control --> Controller : madeByController
+
+ObservationUnit --> ObservationUnit : inContextOf
+
+@enduml

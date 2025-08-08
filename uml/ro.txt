@@ -1,0 +1,8 @@
+@startuml
+
+class ro_Organization
+class ro_Person
+class ro_File
+class ro_Dataset
+
+@enduml

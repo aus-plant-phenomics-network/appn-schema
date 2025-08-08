@@ -1,0 +1,9 @@
+@startuml
+
+left to right direction
+
+!include appn_assay_inheritance.txt
+
+!include appn_assay_relationships.txt
+
+@enduml

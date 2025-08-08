@@ -1,0 +1,64 @@
+@startuml
+
+class Person {
+    orcid : IRI
+}
+
+class Assay {
+    startTime : Timestamp
+    endTime : Timestamp
+}
+
+class ResearchActivity {
+    raid: IRI
+}
+
+class Trait {
+    iri : IRI
+}
+
+package "SOSA" #DDDDFF {
+    class sosa_Procedure
+    class sosa_Observation
+    class sosa_Execution
+    class sosa_Sensor
+    class sosa_System
+    class sosa_FeatureOfInterest
+    class sosa_Property
+    sosa_Observation --|> sosa_Execution
+    sosa_Sensor --|> sosa_System
+}
+
+Assay --|> sosa_Execution
+Method --|> sosa_Procedure
+Transformer --|> sosa_Sensor
+Transformation --|> sosa_Observation
+ObservationUnit --|> sosa_FeatureOfInterest
+Variable --|> sosa_Property
+
+Transformation -|> Assay
+Person --|> Transformer
+Software --|> Transformer
+ObservedVariable --|> Variable
+
+Investigation --|> ResearchActivity
+Study --|> ResearchActivity
+Assay --|> ResearchActivity
+
+Study -> Investigation : isPartOf
+Assay -> Study : isPartOf
+Assay --> ObservationUnit : isForObservationUnit
+Assay --> Method : usedMethod
+Transformation --> ObservedVariable : producesOutput
+Transformation --> Transformer : madeByTransformer
+Transformation ..> File : hasResult
+Transformation ..> Dataset : hasResult
+Transformation ..> File : usesInput
+Transformation ..> Dataset : usesInput
+Variable --> Trait : representsTrait
+Variable --> Scale : usesScale
+
+ObservationUnit --> ObservationUnit : inContextOf
+Dataset --> File : hasPart
+
+@enduml

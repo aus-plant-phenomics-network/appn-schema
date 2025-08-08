@@ -1,0 +1,22 @@
+@startuml
+
+package "SOSA" #DDDDFF {
+    !include sosa_assay_classes.txt
+}
+
+Assay --|> sosa_Execution
+Sampling --|> sosa_Sampling
+Control --|> sosa_Actuation
+Method --|> sosa_Procedure
+Observer --|> sosa_Sensor
+Transformer --|> sosa_Sensor
+Controller --|> sosa_Actuator
+Sampler --|> sosa_Sampler
+System --|> sosa_System
+Observation --|> sosa_Observation
+Transformation --|> sosa_Observation
+Sample --|> sosa_Sample
+
+!include appn_assay_inheritance.txt
+
+@enduml

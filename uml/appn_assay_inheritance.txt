@@ -1,0 +1,21 @@
+@startuml
+
+Person --|> Observer
+Sensor --|> Observer
+Software --|> Controller
+Person --|> Controller
+Actuator --|> Controller
+ExternalEvent --|> Controller
+Person --|> Sampler
+Observation -|> Assay
+Transformation -up|> Assay
+Sampling -|> Assay
+Control -|> Assay
+Sensor --|> System
+Actuator --|> System
+Person --|> Transformer
+Software --|> Transformer
+ObservedVariable --|> Variable
+ControlledVariable --|> Variable
+
+@enduml

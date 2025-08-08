@@ -1,0 +1,9 @@
+@startuml
+
+left to right direction
+
+!include appn_sosa_inheritance.txt
+
+!include appn_inheritance.txt
+
+@enduml

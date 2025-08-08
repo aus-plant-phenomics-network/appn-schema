@@ -1,0 +1,22 @@
+@startuml
+
+Study -> Investigation : isPartOf
+Assay -> Study : isPartOf
+Assay --> ObservationUnit : isForObservationUnit
+Assay --> Method : usedMethod
+Control --> ControlledVariable : controls
+Control --> Controller : madeByController
+Observation --> ObservedVariable : observes
+Observation --> Observer : madeByObserver
+Observation ..> File : hasResult
+Observation ..> Dataset : hasResult
+Transformation --> ObservedVariable : producesOutput
+Transformation --> Transformer : madeByTransformer
+Transformation ..> File : hasResult
+Transformation ..> Dataset : hasResult
+Transformation ..> File : usesInput
+Transformation ..> Dataset : usesInput
+Sampling --> Sampler : madeBySampler
+Sampling --> Sample : hasResult
+
+@enduml

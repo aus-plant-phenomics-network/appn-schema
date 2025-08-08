@@ -1,0 +1,10 @@
+@startuml
+
+!include sosa_assay_classes.txt
+
+class sosa_FeatureOfInterest
+class ssn_Deployment
+class sosa_Platform
+class sosa_Property
+
+@enduml

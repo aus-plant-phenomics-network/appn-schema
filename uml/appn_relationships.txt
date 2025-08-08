@@ -1,0 +1,15 @@
+@startuml
+
+!include appn_assay_relationships.txt
+
+Person --> Organization : affiliation
+ObservationUnit --> BiologicalMaterial : hasBiologicalMaterial
+ObservationUnit --> ObservationUnit : inContextOf
+Dataset --> File : hasPart
+Variable --> Trait : representsTrait
+Variable --> Scale : usesScale
+Deployment --> Platform : deployedOnPlatform
+Deployment --> System : deployedSystem
+System -> Platform : isHostedOn
+
+@enduml

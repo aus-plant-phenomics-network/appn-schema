@@ -1,0 +1,62 @@
+@startuml
+class ObservationUnit {
+    id: IRI
+    label: string
+}
+
+class Plot {
+    latitude: decimal
+    longitude: decimal
+    variety: string
+    sowingDate: date
+}
+
+Plot --|> ObservationUnit
+
+class Sensor {
+    id: IRI
+    label: string
+    modelNumber: string
+    serialNumber: string
+}
+
+class ObservationResult {
+    id: IRI
+    label: string
+    date: date
+}
+
+class Variable {
+    id: IRI
+    label: string
+}
+
+object meanHeight {
+}
+meanHeight --|> Variable
+
+object ndvi {
+}
+ndvi --|> Variable
+
+object lai {
+}
+lai --|> Variable
+
+object plot001 {
+}
+plot001 --|> Plot
+
+object plot002 {
+}
+plot002 --|> Plot
+
+object gobi001 {
+}
+gobi001 --|> Sensor
+
+
+ObservationResult --> Variable : observes
+ObservationResult --> ObservationUnit : isForObservationUnit
+ObservationResult --> Sensor : madeBySensor
+@enduml

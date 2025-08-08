@@ -1,0 +1,14 @@
+@startuml
+
+package "SOSA" #DDDDFF {
+    !include sosa_classes.txt
+}
+
+!include appn_sosa_assay_inheritance.txt
+
+ObservationUnit --|> sosa_FeatureOfInterest
+Platform --|> sosa_Platform
+Deployment --|> ssn_Deployment
+Variable --|> sosa_Property
+
+@enduml

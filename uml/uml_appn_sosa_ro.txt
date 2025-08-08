@@ -1,0 +1,15 @@
+@startuml
+
+left to right direction
+
+!include appn_properties.txt
+
+!include appn_ro_inheritance.txt
+
+!include appn_sosa_inheritance.txt
+
+!include appn_inheritance.txt
+
+!include appn_relationships.txt
+
+@enduml

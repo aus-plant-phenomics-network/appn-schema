@@ -1,0 +1,12 @@
+@startuml
+
+!include appn_assay_inheritance.txt
+
+Investigation --|> ResearchActivity
+Study --|> ResearchActivity
+Assay --|> ResearchActivity
+GrowthFacility --|> ObservationUnit
+GrowthFacility --|> Platform
+Sample --|> ObservationUnit
+
+@enduml

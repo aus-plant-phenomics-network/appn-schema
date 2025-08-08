@@ -1,0 +1,14 @@
+@startuml
+
+class sosa_Sample
+class sosa_Sampling
+class sosa_Procedure
+class sosa_Observation
+class sosa_Actuation
+class sosa_Execution
+class sosa_Sampler
+class sosa_Sensor
+class sosa_Actuator
+class sosa_System
+
+@enduml
