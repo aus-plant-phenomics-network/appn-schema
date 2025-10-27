@@ -1,0 +1,38 @@
+@startuml
+class Organization {
+    @id: https://schema.org/Organization
+}
+
+class GrowthFacility {
+    @id: https://schema.plantphenomics.org.au/GrowthFacility
+}
+
+class GrowthFacilityType {
+    @id: https://schema.plantphenomics.org.au/GrowthFacilityType
+}
+
+object anu {
+    @id: https://ror.org/019wvm592
+    type: Organization
+    name: Australian National University
+    alternateName: ANU
+}
+anu --|> Organization
+
+object growthCabinet {
+    @id: https://id.plantphenomics.org.au/appn/GrowthFacilityType/GrowthCabinet
+    type: GrowthFacilityType
+    name: Growth Cabinet
+    alternateName: Reach-in Chamber
+}
+growthCabinet --|> GrowthFacilityType
+
+object growthCabinet23 {
+    @id: https://id.plantphenomics.org.au/anu/GrowthFacility/growthCabinet23
+    type: GrowthFacility
+    name: Growth Cabinet 23
+}
+growthCabinet23 --|> GrowthFacility
+growthCabinet23 --> growthCabinet: growthFacilityType    
+growthCabinet23 --> anu: provider
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+class Sample  #line.bold
+class sosa_Sample #EEFFCC 
+Sample --|> sosa_Sample
+class ObservationUnit  
+class schema_Thing #DDFFDD 
+ObservationUnit --|> schema_Thing
+class ppeo_ObservationUnit #DDDDFF 
+ObservationUnit --|> ppeo_ObservationUnit
+class sosa_FeatureOfInterest #EEFFCC 
+ObservationUnit --|> sosa_FeatureOfInterest
+class Assay 
+Assay --> ObservationUnit : isForObservationUnit
+class ObservationUnit 
+ObservationUnit --> ObservationUnit : inheritsContext
+Sample --|> ObservationUnit
+class Assay 
+Assay --> Sample : hasResult
+@enduml

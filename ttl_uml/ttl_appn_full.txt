@@ -1,0 +1,127 @@
+@startuml
+class ResearchActivity
+class Investigation
+class Study
+class Assay
+class Method
+class Observation
+class Control
+class Sampling
+class Transformation
+class Input
+class ObservationUnit
+class BiologicalMaterial
+class Trait
+class Scale
+class Variable
+class ObservedVariable
+class ControlledVariable
+class InputVariable
+class Observer
+class Transformer
+class Controller
+class Sampler
+class Actuator
+class ExternalEvent
+class Sensor
+class Person
+class Software
+class Sample
+class Platform
+class Deployment
+class GrowthFacility
+package "schema" {
+    class schema_Action #DDFFDD
+    class schema_HowTo #DDFFDD
+    class schema_Thing #DDFFDD
+    class schema_DefinedTerm #DDFFDD
+    class schema_InstanceValue #DDFFDD
+    class schema_IndividualProduct #DDFFDD
+    class schema_Person #DDFFDD
+}
+package "ppeo" {
+    class ppeo_Investigation #DDDDFF
+    class ppeo_Study #DDDDFF
+    class ppeo_Assay #DDDDFF
+    class ppeo_Observation #DDDDFF
+    class ppeo_ObservationUnit #DDDDFF
+    class ppeo_BiologicalMaterial #DDDDFF
+}
+package "sosa" {
+    class sosa_Execution #EEFFCC
+    class sosa_Procedure #EEFFCC
+    class sosa_FeatureOfInterest #EEFFCC
+    class sosa_Property #EEFFCC
+    class sosa_Sensor #EEFFCC
+    class sosa_Actuator #EEFFCC
+    class sosa_Sampler #EEFFCC
+    class sosa_Event #EEFFCC
+    class sosa_Sample #EEFFCC
+    class sosa_Platform #EEFFCC
+}
+package "bio" {
+    class bio_BioSample #FFCCEE
+    class bio_ComputationalWorkflow #FFCCEE
+}
+package "cdi" {
+    class cdi_Concept #CCEEFF
+    class cdi_RepresentedVariable #CCEEFF
+}
+package "ssn" {
+    class ssn_Deployment #EECCFF
+}
+ResearchActivity --|> schema_Action
+Investigation --|> ResearchActivity
+Investigation --|> ppeo_Investigation
+Study --|> ResearchActivity
+Study --|> ppeo_Study
+Assay --|> ResearchActivity
+Assay --|> sosa_Execution
+Assay --|> ppeo_Assay
+Method --|> sosa_Procedure
+Method --|> schema_HowTo
+Observation --|> Assay
+Observation --|> ppeo_Observation
+Control --|> Assay
+Sampling --|> Assay
+Transformation --|> Assay
+Input --|> Assay
+ObservationUnit --|> schema_Thing
+ObservationUnit --|> ppeo_ObservationUnit
+ObservationUnit --|> sosa_FeatureOfInterest
+BiologicalMaterial --|> ppeo_BiologicalMaterial
+BiologicalMaterial --|> bio_BioSample
+Trait --|> cdi_Concept
+Trait --|> schema_DefinedTerm
+Scale --|> schema_DefinedTerm
+Variable --|> sosa_Property
+Variable --|> cdi_RepresentedVariable
+Variable --|> schema_InstanceValue
+ObservedVariable --|> Variable
+ControlledVariable --|> Variable
+InputVariable --|> Variable
+Observer --|> sosa_Sensor
+Transformer --|> sosa_Sensor
+Controller --|> sosa_Actuator
+Sampler --|> sosa_Sampler
+Actuator --|> Controller
+Actuator --|> schema_IndividualProduct
+ExternalEvent --|> Controller
+ExternalEvent --|> sosa_Event
+Sensor --|> Observer
+Sensor --|> schema_IndividualProduct
+Person --|> Observer
+Person --|> Controller
+Person --|> Sampler
+Person --|> Transformer
+Person --|> schema_Person
+Software --|> bio_ComputationalWorkflow
+Sample --|> sosa_Sample
+Sample --|> ObservationUnit
+Platform --|> sosa_Platform
+Platform --|> schema_IndividualProduct
+Deployment --|> ssn_Deployment
+Deployment --|> schema_Thing
+GrowthFacility --|> Platform
+GrowthFacility --|> ObservationUnit
+@enduml

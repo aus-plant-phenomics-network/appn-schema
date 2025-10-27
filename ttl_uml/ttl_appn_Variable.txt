@@ -1,0 +1,15 @@
+@startuml
+class Variable  #line.bold
+class sosa_Property #EEFFCC 
+Variable --|> sosa_Property
+class cdi_RepresentedVariable #CCEEFF 
+Variable --|> cdi_RepresentedVariable
+class schema_InstanceValue #DDFFDD 
+Variable --|> schema_InstanceValue
+class ObservedVariable 
+ObservedVariable --|> Variable
+class ControlledVariable 
+ControlledVariable --|> Variable
+class InputVariable 
+InputVariable --|> Variable
+@enduml

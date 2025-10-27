@@ -10,7 +10,7 @@ sosa_Sampling -> sosa_Sampler : madeBySampler
 sosa_Execution -left-> sosa_Procedure : usedProcedure
 sosa_Execution -right-> owl_Thing : hasResult
 sosa_Sample -up-> sosa_FeatureOfInterest : isSampleOf
-sosa_Sampling -left-|> sosa_Sample : hasResult
+sosa_Sampling -left-> sosa_Sample : hasResult
 sosa_Actuator -up-> sosa_Property : actsOn
 sosa_Actuation -right-> sosa_Property : actsOnProperty
 sosa_Sensor -left-> sosa_Property : observes

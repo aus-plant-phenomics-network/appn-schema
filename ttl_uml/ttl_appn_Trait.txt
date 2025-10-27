@@ -1,0 +1,7 @@
+@startuml
+class Trait  #line.bold
+class cdi_Concept #CCEEFF 
+Trait --|> cdi_Concept
+class schema_DefinedTerm #DDFFDD 
+Trait --|> schema_DefinedTerm
+@enduml

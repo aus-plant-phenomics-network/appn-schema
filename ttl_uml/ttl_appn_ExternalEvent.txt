@@ -1,0 +1,13 @@
+@startuml
+class ExternalEvent  #line.bold
+class Controller  
+class sosa_Actuator #EEFFCC 
+Controller --|> sosa_Actuator
+class Control 
+Control --> Controller : madeByController
+class Input 
+Input --> Controller : madeByController
+ExternalEvent --|> Controller
+class sosa_Event #EEFFCC 
+ExternalEvent --|> sosa_Event
+@enduml

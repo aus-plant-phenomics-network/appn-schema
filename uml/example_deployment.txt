@@ -1,0 +1,57 @@
+@startuml
+class Organization {
+    @id: https://schema.org/Organization
+}
+
+class Platform {
+    @id: https://schema.plantphenomics.org.au/Platform
+}
+
+class Sensor {
+    @id: https://schema.plantphenomics.org.au/Sensor
+}
+
+class Deployment {
+    @id: https://schema.plantphenomics.org.au/Deployment
+}
+
+object uq {
+    @id: https://ror.org/00rqy9422
+    type: Organization
+    name: University of Queensland
+    alternateName: UQ
+}
+uq --|> Organization
+
+object m350_1 {
+    @id: https://id.plantphenomics.org.au/uq/Platform/m350_1
+    type: Platform
+    name: M3M_1
+    model: M350 RTK
+    serialNumber: 1581F6GKB244100403CP
+    description: DJI Matrice 350 RTK
+}
+m350_1 --|> Platform
+m350_1 --> uq: provider
+
+object gobi_1 {
+    @id: https://id.plantphenomics.org.au/uq/Sensor/gobi_1
+    type: Sensor
+    name: GOBI_1
+    model: GOBI
+    serialNumber: GOBI-2406
+    description: Gryfn GOBI (RGB: Sony ILX-LR1 61MP; Hyperspectral: Headwall Nano HP (400-1000nm); LiDAR: Ouster OS1VLP16)
+}
+gobi_1 --|> Sensor
+gobi_1 --> uq: provider
+
+object m350_1_gobi_1 {
+    @id: https://id.plantphenomics.org.au/uq/Deployment/m350_1_gobi_1
+    type: Deployment
+    name: m350_1_gobi_1
+    description: Gryfn GOBI sensor mounted on DJI Matrice 350 RTK UAV
+}
+m350_1_gobi_1 --|> Deployment
+m350_1_gobi_1 --> m350_1: deployedSystem
+m350_1_gobi_1 --> gobi_1: deployedOnPlatform
+@enduml

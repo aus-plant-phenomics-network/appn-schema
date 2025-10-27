@@ -1,0 +1,9 @@
+@startuml
+class Transformer  #line.bold
+class sosa_Sensor #EEFFCC 
+Transformer --|> sosa_Sensor
+class Transformation 
+Transformation --> Transformer : madeByTransformer
+class Person 
+Person --|> Transformer
+@enduml

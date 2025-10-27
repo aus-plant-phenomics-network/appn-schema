@@ -1,0 +1,15 @@
+@startuml
+class Controller  #line.bold
+class sosa_Actuator #EEFFCC 
+Controller --|> sosa_Actuator
+class Control 
+Control --> Controller : madeByController
+class Input 
+Input --> Controller : madeByController
+class Actuator 
+Actuator --|> Controller
+class ExternalEvent 
+ExternalEvent --|> Controller
+class Person 
+Person --|> Controller
+@enduml

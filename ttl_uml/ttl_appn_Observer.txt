@@ -1,0 +1,11 @@
+@startuml
+class Observer  #line.bold
+class sosa_Sensor #EEFFCC 
+Observer --|> sosa_Sensor
+class Observation 
+Observation --> Observer : madeByObserver
+class Sensor 
+Sensor --|> Observer
+class Person 
+Person --|> Observer
+@enduml

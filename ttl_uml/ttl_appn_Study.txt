@@ -1,0 +1,11 @@
+@startuml
+class Study  #line.bold
+class ResearchActivity  
+class schema_Action #DDFFDD 
+ResearchActivity --|> schema_Action
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
+Study --|> ResearchActivity
+class ppeo_Study #DDDDFF 
+Study --|> ppeo_Study
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class Method  #line.bold
+class sosa_Procedure #EEFFCC 
+Method --|> sosa_Procedure
+class schema_HowTo #DDFFDD 
+Method --|> schema_HowTo
+@enduml

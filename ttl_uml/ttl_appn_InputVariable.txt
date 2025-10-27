@@ -1,0 +1,13 @@
+@startuml
+class InputVariable  #line.bold
+class Variable  
+class sosa_Property #EEFFCC 
+Variable --|> sosa_Property
+class cdi_RepresentedVariable #CCEEFF 
+Variable --|> cdi_RepresentedVariable
+class schema_InstanceValue #DDFFDD 
+Variable --|> schema_InstanceValue
+InputVariable --|> Variable
+class Input 
+Input --> InputVariable : inputs
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class Sensor  #line.bold
+class Observer  
+class sosa_Sensor #EEFFCC 
+Observer --|> sosa_Sensor
+class Observation 
+Observation --> Observer : madeByObserver
+Sensor --|> Observer
+class schema_IndividualProduct #DDFFDD 
+Sensor --|> schema_IndividualProduct
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class Deployment  #line.bold
+class ssn_Deployment #EECCFF 
+Deployment --|> ssn_Deployment
+class schema_Thing #DDFFDD 
+Deployment --|> schema_Thing
+@enduml

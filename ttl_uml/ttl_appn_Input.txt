@@ -1,0 +1,27 @@
+@startuml
+class Input  #line.bold
+class Assay  
+class ResearchActivity  
+class schema_Action #DDFFDD 
+ResearchActivity --|> schema_Action
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
+Assay --|> ResearchActivity
+class sosa_Execution #EEFFCC 
+Assay --|> sosa_Execution
+class ppeo_Assay #DDDDFF 
+Assay --|> ppeo_Assay
+class ObservationUnit 
+Assay --> ObservationUnit : isForObservationUnit
+class schema_Dataset #DDFFDD
+Assay --> schema_Dataset : hasResult
+class schema_File #DDFFDD
+Assay --> schema_File : hasResult
+class Sample 
+Assay --> Sample : hasResult
+Input --|> Assay
+class Controller 
+Input --> Controller : madeByController
+class InputVariable 
+Input --> InputVariable : inputs
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class BiologicalMaterial  #line.bold
+class ppeo_BiologicalMaterial #DDDDFF 
+BiologicalMaterial --|> ppeo_BiologicalMaterial
+class bio_BioSample #FFCCEE 
+BiologicalMaterial --|> bio_BioSample
+@enduml

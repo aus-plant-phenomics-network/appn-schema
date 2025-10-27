@@ -1,0 +1,5 @@
+@startuml
+class Software  #line.bold
+class bio_ComputationalWorkflow #FFCCEE 
+Software --|> bio_ComputationalWorkflow
+@enduml

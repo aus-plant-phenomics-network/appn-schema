@@ -1,0 +1,9 @@
+@startuml
+class Sampler  #line.bold
+class sosa_Sampler #EEFFCC 
+Sampler --|> sosa_Sampler
+class Sampling 
+Sampling --> Sampler : madeBySampler
+class Person 
+Person --|> Sampler
+@enduml

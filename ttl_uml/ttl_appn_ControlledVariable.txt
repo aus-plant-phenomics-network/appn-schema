@@ -1,0 +1,13 @@
+@startuml
+class ControlledVariable  #line.bold
+class Variable  
+class sosa_Property #EEFFCC 
+Variable --|> sosa_Property
+class cdi_RepresentedVariable #CCEEFF 
+Variable --|> cdi_RepresentedVariable
+class schema_InstanceValue #DDFFDD 
+Variable --|> schema_InstanceValue
+ControlledVariable --|> Variable
+class Control 
+Control --> ControlledVariable : controls
+@enduml

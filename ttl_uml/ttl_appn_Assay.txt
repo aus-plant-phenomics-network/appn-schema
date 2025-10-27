@@ -1,0 +1,31 @@
+@startuml
+class Assay  #line.bold
+class ResearchActivity  
+class schema_Action #DDFFDD 
+ResearchActivity --|> schema_Action
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
+Assay --|> ResearchActivity
+class sosa_Execution #EEFFCC 
+Assay --|> sosa_Execution
+class ppeo_Assay #DDDDFF 
+Assay --|> ppeo_Assay
+class ObservationUnit 
+Assay --> ObservationUnit : isForObservationUnit
+class schema_Dataset #DDFFDD
+Assay --> schema_Dataset : hasResult
+class schema_File #DDFFDD
+Assay --> schema_File : hasResult
+class Sample 
+Assay --> Sample : hasResult
+class Observation 
+Observation --|> Assay
+class Control 
+Control --|> Assay
+class Sampling 
+Sampling --|> Assay
+class Transformation 
+Transformation --|> Assay
+class Input 
+Input --|> Assay
+@enduml

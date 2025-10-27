@@ -1,0 +1,13 @@
+@startuml
+class Actuator  #line.bold
+class Controller  
+class sosa_Actuator #EEFFCC 
+Controller --|> sosa_Actuator
+class Control 
+Control --> Controller : madeByController
+class Input 
+Input --> Controller : madeByController
+Actuator --|> Controller
+class schema_IndividualProduct #DDFFDD 
+Actuator --|> schema_IndividualProduct
+@enduml

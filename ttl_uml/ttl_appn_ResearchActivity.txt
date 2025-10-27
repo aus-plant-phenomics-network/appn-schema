@@ -1,0 +1,23 @@
+@startuml
+class ResearchActivity  #line.bold
+class schema_Action #DDFFDD 
+ResearchActivity --|> schema_Action
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
+class Investigation 
+Investigation --|> ResearchActivity
+class Study 
+Study --|> ResearchActivity
+class Assay 
+class Observation 
+Observation --|> Assay
+class Control 
+Control --|> Assay
+class Sampling 
+Sampling --|> Assay
+class Transformation 
+Transformation --|> Assay
+class Input 
+Input --|> Assay
+Assay --|> ResearchActivity
+@enduml
