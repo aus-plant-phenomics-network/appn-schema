@@ -9,5 +9,5 @@ class "schema:InstanceValue" #DDFFDD
 Variable --|> "schema:InstanceValue"
 ControlledVariable --|> Variable
 class Control 
-Control --> ControlledVariable : controls
+Control ----> ControlledVariable : controls
 @enduml

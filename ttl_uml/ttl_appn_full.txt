@@ -37,6 +37,7 @@ package "schema" {
     class "schema:DefinedTerm" #DDFFDD
     class "schema:InstanceValue" #DDFFDD
     class "schema:IndividualProduct" #DDFFDD
+    class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
 }
 package "ppeo" {
@@ -55,7 +56,6 @@ package "sosa" {
     class "sosa:Sensor" #EEFFCC
     class "sosa:Actuator" #EEFFCC
     class "sosa:Sampler" #EEFFCC
-    class "sosa:Event" #EEFFCC
     class "sosa:Sample" #EEFFCC
     class "sosa:Platform" #EEFFCC
 }
@@ -107,7 +107,7 @@ Sampler --|> "sosa:Sampler"
 Actuator --|> Controller
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
-ExternalEvent --|> "sosa:Event"
+ExternalEvent --|> "schema:Event"
 Sensor --|> Observer
 Sensor --|> "schema:IndividualProduct"
 Person --|> Observer

@@ -4,10 +4,10 @@ class Controller
 class "sosa:Actuator" #EEFFCC 
 Controller --|> "sosa:Actuator"
 class Control 
-Control --> Controller : madeByController
+Control ----> Controller : madeByController
 class Input 
-Input --> Controller : madeByController
+Input ----> Controller : madeByController
 ExternalEvent --|> Controller
-class "sosa:Event" #EEFFCC 
-ExternalEvent --|> "sosa:Event"
+class "schema:Event" #DDFFDD 
+ExternalEvent --|> "schema:Event"
 @enduml

@@ -155,7 +155,7 @@ appn:ExternalEvent a rdfs:Class ;
     rdfs:label "ExternalEvent" ;
     rdfs:comment "ExternalEvent" ;
     rdfs:subClassOf appn:Controller ;
-    rdfs:subClassOf sosa:Event .
+    rdfs:subClassOf schema:Event .
 
 appn:Sensor a rdfs:Class ;
     rdfs:label "Sensor" ;

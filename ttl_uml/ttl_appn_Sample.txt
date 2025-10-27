@@ -10,10 +10,10 @@ ObservationUnit --|> "ppeo:ObservationUnit"
 class "sosa:FeatureOfInterest" #EEFFCC 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
-Assay --> ObservationUnit : isForObservationUnit
+Assay ----> ObservationUnit : isForObservationUnit
 class ObservationUnit 
-ObservationUnit --> ObservationUnit : inheritsContext
+ObservationUnit ----> ObservationUnit : inheritsContext
 Sample --|> ObservationUnit
 class Assay 
-Assay --> Sample : hasResult
+Assay ----> Sample : hasResult
 @enduml

@@ -7,9 +7,9 @@ ObservationUnit --|> "ppeo:ObservationUnit"
 class "sosa:FeatureOfInterest" #EEFFCC 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
-Assay --> ObservationUnit : isForObservationUnit
+Assay ----> ObservationUnit : isForObservationUnit
 class ObservationUnit 
-ObservationUnit --> ObservationUnit : inheritsContext
+ObservationUnit ----> ObservationUnit : inheritsContext
 class Sample 
 Sample --|> ObservationUnit
 class GrowthFacility 

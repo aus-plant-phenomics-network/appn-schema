@@ -3,7 +3,7 @@ class ResearchActivity  #line.bold
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
 class ResearchActivity 
-ResearchActivity --> ResearchActivity : isPartOf
+ResearchActivity ----> ResearchActivity : isPartOf
 class Investigation 
 Investigation --|> ResearchActivity
 class Study 

@@ -3,7 +3,7 @@ class Sampler  #line.bold
 class "sosa:Sampler" #EEFFCC 
 Sampler --|> "sosa:Sampler"
 class Sampling 
-Sampling --> Sampler : madeBySampler
+Sampling ----> Sampler : madeBySampler
 class Person 
 Person --|> Sampler
 @enduml

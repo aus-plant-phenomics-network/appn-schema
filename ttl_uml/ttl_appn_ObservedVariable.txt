@@ -9,5 +9,5 @@ class "schema:InstanceValue" #DDFFDD
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 class Observation 
-Observation --> ObservedVariable : observes
+Observation ----> ObservedVariable : observes
 @enduml

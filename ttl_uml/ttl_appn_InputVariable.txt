@@ -9,5 +9,5 @@ class "schema:InstanceValue" #DDFFDD
 Variable --|> "schema:InstanceValue"
 InputVariable --|> Variable
 class Input 
-Input --> InputVariable : inputs
+Input ----> InputVariable : inputs
 @enduml

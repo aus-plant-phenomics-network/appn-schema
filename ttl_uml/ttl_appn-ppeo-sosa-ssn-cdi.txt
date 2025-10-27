@@ -37,6 +37,7 @@ package "schema" {
     class "schema:DefinedTerm" #DDFFDD
     class "schema:InstanceValue" #DDFFDD
     class "schema:IndividualProduct" #DDFFDD
+    class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
 }
 package "bio" {
@@ -64,6 +65,7 @@ InputVariable --|> Variable
 Actuator --|> Controller
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
+ExternalEvent --|> "schema:Event"
 Sensor --|> Observer
 Sensor --|> "schema:IndividualProduct"
 Person --|> Observer
