@@ -1,11 +1,11 @@
 @startuml
 class Variable  #line.bold
-class sosa_Property #EEFFCC 
-Variable --|> sosa_Property
-class cdi_RepresentedVariable #CCEEFF 
-Variable --|> cdi_RepresentedVariable
-class schema_InstanceValue #DDFFDD 
-Variable --|> schema_InstanceValue
+class "sosa:Property" #EEFFCC 
+Variable --|> "sosa:Property"
+class "cdi:RepresentedVariable" #CCEEFF 
+Variable --|> "cdi:RepresentedVariable"
+class "schema:InstanceValue" #DDFFDD 
+Variable --|> "schema:InstanceValue"
 class ObservedVariable 
 ObservedVariable --|> Variable
 class ControlledVariable 

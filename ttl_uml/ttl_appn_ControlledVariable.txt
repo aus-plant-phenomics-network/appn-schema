@@ -1,12 +1,12 @@
 @startuml
 class ControlledVariable  #line.bold
 class Variable  
-class sosa_Property #EEFFCC 
-Variable --|> sosa_Property
-class cdi_RepresentedVariable #CCEEFF 
-Variable --|> cdi_RepresentedVariable
-class schema_InstanceValue #DDFFDD 
-Variable --|> schema_InstanceValue
+class "sosa:Property" #EEFFCC 
+Variable --|> "sosa:Property"
+class "cdi:RepresentedVariable" #CCEEFF 
+Variable --|> "cdi:RepresentedVariable"
+class "schema:InstanceValue" #DDFFDD 
+Variable --|> "schema:InstanceValue"
 ControlledVariable --|> Variable
 class Control 
 Control --> ControlledVariable : controls

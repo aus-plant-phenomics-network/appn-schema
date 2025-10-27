@@ -1,18 +1,18 @@
 @startuml
 class GrowthFacility  #line.bold
 class Platform  
-class sosa_Platform #EEFFCC 
-Platform --|> sosa_Platform
-class schema_IndividualProduct #DDFFDD 
-Platform --|> schema_IndividualProduct
+class "sosa:Platform" #EEFFCC 
+Platform --|> "sosa:Platform"
+class "schema:IndividualProduct" #DDFFDD 
+Platform --|> "schema:IndividualProduct"
 GrowthFacility --|> Platform
 class ObservationUnit  
-class schema_Thing #DDFFDD 
-ObservationUnit --|> schema_Thing
-class ppeo_ObservationUnit #DDDDFF 
-ObservationUnit --|> ppeo_ObservationUnit
-class sosa_FeatureOfInterest #EEFFCC 
-ObservationUnit --|> sosa_FeatureOfInterest
+class "schema:Thing" #DDFFDD 
+ObservationUnit --|> "schema:Thing"
+class "ppeo:ObservationUnit" #DDDDFF 
+ObservationUnit --|> "ppeo:ObservationUnit"
+class "sosa:FeatureOfInterest" #EEFFCC 
+ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

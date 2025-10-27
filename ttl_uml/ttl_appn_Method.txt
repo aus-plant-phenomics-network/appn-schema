@@ -1,7 +1,7 @@
 @startuml
 class Method  #line.bold
-class sosa_Procedure #EEFFCC 
-Method --|> sosa_Procedure
-class schema_HowTo #DDFFDD 
-Method --|> schema_HowTo
+class "sosa:Procedure" #EEFFCC 
+Method --|> "sosa:Procedure"
+class "schema:HowTo" #DDFFDD 
+Method --|> "schema:HowTo"
 @enduml

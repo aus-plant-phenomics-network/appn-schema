@@ -1,9 +1,9 @@
 @startuml
 class Platform  #line.bold
-class sosa_Platform #EEFFCC 
-Platform --|> sosa_Platform
-class schema_IndividualProduct #DDFFDD 
-Platform --|> schema_IndividualProduct
+class "sosa:Platform" #EEFFCC 
+Platform --|> "sosa:Platform"
+class "schema:IndividualProduct" #DDFFDD 
+Platform --|> "schema:IndividualProduct"
 class GrowthFacility 
 GrowthFacility --|> Platform
 @enduml

@@ -1,5 +1,5 @@
 @startuml
 class Software  #line.bold
-class bio_ComputationalWorkflow #FFCCEE 
-Software --|> bio_ComputationalWorkflow
+class "bio:ComputationalWorkflow" #FFCCEE 
+Software --|> "bio:ComputationalWorkflow"
 @enduml

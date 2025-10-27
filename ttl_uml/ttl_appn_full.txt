@@ -31,97 +31,97 @@ class Platform
 class Deployment
 class GrowthFacility
 package "schema" {
-    class schema_Action #DDFFDD
-    class schema_HowTo #DDFFDD
-    class schema_Thing #DDFFDD
-    class schema_DefinedTerm #DDFFDD
-    class schema_InstanceValue #DDFFDD
-    class schema_IndividualProduct #DDFFDD
-    class schema_Person #DDFFDD
+    class "schema:Action" #DDFFDD
+    class "schema:HowTo" #DDFFDD
+    class "schema:Thing" #DDFFDD
+    class "schema:DefinedTerm" #DDFFDD
+    class "schema:InstanceValue" #DDFFDD
+    class "schema:IndividualProduct" #DDFFDD
+    class "schema:Person" #DDFFDD
 }
 package "ppeo" {
-    class ppeo_Investigation #DDDDFF
-    class ppeo_Study #DDDDFF
-    class ppeo_Assay #DDDDFF
-    class ppeo_Observation #DDDDFF
-    class ppeo_ObservationUnit #DDDDFF
-    class ppeo_BiologicalMaterial #DDDDFF
+    class "ppeo:Investigation" #DDDDFF
+    class "ppeo:Study" #DDDDFF
+    class "ppeo:Assay" #DDDDFF
+    class "ppeo:Observation" #DDDDFF
+    class "ppeo:ObservationUnit" #DDDDFF
+    class "ppeo:BiologicalMaterial" #DDDDFF
 }
 package "sosa" {
-    class sosa_Execution #EEFFCC
-    class sosa_Procedure #EEFFCC
-    class sosa_FeatureOfInterest #EEFFCC
-    class sosa_Property #EEFFCC
-    class sosa_Sensor #EEFFCC
-    class sosa_Actuator #EEFFCC
-    class sosa_Sampler #EEFFCC
-    class sosa_Event #EEFFCC
-    class sosa_Sample #EEFFCC
-    class sosa_Platform #EEFFCC
+    class "sosa:Execution" #EEFFCC
+    class "sosa:Procedure" #EEFFCC
+    class "sosa:FeatureOfInterest" #EEFFCC
+    class "sosa:Property" #EEFFCC
+    class "sosa:Sensor" #EEFFCC
+    class "sosa:Actuator" #EEFFCC
+    class "sosa:Sampler" #EEFFCC
+    class "sosa:Event" #EEFFCC
+    class "sosa:Sample" #EEFFCC
+    class "sosa:Platform" #EEFFCC
 }
 package "bio" {
-    class bio_BioSample #FFCCEE
-    class bio_ComputationalWorkflow #FFCCEE
+    class "bio:BioSample" #FFCCEE
+    class "bio:ComputationalWorkflow" #FFCCEE
 }
 package "cdi" {
-    class cdi_Concept #CCEEFF
-    class cdi_RepresentedVariable #CCEEFF
+    class "cdi:Concept" #CCEEFF
+    class "cdi:RepresentedVariable" #CCEEFF
 }
 package "ssn" {
-    class ssn_Deployment #EECCFF
+    class "ssn:Deployment" #EECCFF
 }
-ResearchActivity --|> schema_Action
+ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
-Investigation --|> ppeo_Investigation
+Investigation --|> "ppeo:Investigation"
 Study --|> ResearchActivity
-Study --|> ppeo_Study
+Study --|> "ppeo:Study"
 Assay --|> ResearchActivity
-Assay --|> sosa_Execution
-Assay --|> ppeo_Assay
-Method --|> sosa_Procedure
-Method --|> schema_HowTo
+Assay --|> "sosa:Execution"
+Assay --|> "ppeo:Assay"
+Method --|> "sosa:Procedure"
+Method --|> "schema:HowTo"
 Observation --|> Assay
-Observation --|> ppeo_Observation
+Observation --|> "ppeo:Observation"
 Control --|> Assay
 Sampling --|> Assay
 Transformation --|> Assay
 Input --|> Assay
-ObservationUnit --|> schema_Thing
-ObservationUnit --|> ppeo_ObservationUnit
-ObservationUnit --|> sosa_FeatureOfInterest
-BiologicalMaterial --|> ppeo_BiologicalMaterial
-BiologicalMaterial --|> bio_BioSample
-Trait --|> cdi_Concept
-Trait --|> schema_DefinedTerm
-Scale --|> schema_DefinedTerm
-Variable --|> sosa_Property
-Variable --|> cdi_RepresentedVariable
-Variable --|> schema_InstanceValue
+ObservationUnit --|> "schema:Thing"
+ObservationUnit --|> "ppeo:ObservationUnit"
+ObservationUnit --|> "sosa:FeatureOfInterest"
+BiologicalMaterial --|> "ppeo:BiologicalMaterial"
+BiologicalMaterial --|> "bio:BioSample"
+Trait --|> "cdi:Concept"
+Trait --|> "schema:DefinedTerm"
+Scale --|> "schema:DefinedTerm"
+Variable --|> "sosa:Property"
+Variable --|> "cdi:RepresentedVariable"
+Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
 InputVariable --|> Variable
-Observer --|> sosa_Sensor
-Transformer --|> sosa_Sensor
-Controller --|> sosa_Actuator
-Sampler --|> sosa_Sampler
+Observer --|> "sosa:Sensor"
+Transformer --|> "sosa:Sensor"
+Controller --|> "sosa:Actuator"
+Sampler --|> "sosa:Sampler"
 Actuator --|> Controller
-Actuator --|> schema_IndividualProduct
+Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
-ExternalEvent --|> sosa_Event
+ExternalEvent --|> "sosa:Event"
 Sensor --|> Observer
-Sensor --|> schema_IndividualProduct
+Sensor --|> "schema:IndividualProduct"
 Person --|> Observer
 Person --|> Controller
 Person --|> Sampler
 Person --|> Transformer
-Person --|> schema_Person
-Software --|> bio_ComputationalWorkflow
-Sample --|> sosa_Sample
+Person --|> "schema:Person"
+Software --|> "bio:ComputationalWorkflow"
+Sample --|> "sosa:Sample"
 Sample --|> ObservationUnit
-Platform --|> sosa_Platform
-Platform --|> schema_IndividualProduct
-Deployment --|> ssn_Deployment
-Deployment --|> schema_Thing
+Platform --|> "sosa:Platform"
+Platform --|> "schema:IndividualProduct"
+Deployment --|> "ssn:Deployment"
+Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform
 GrowthFacility --|> ObservationUnit
 @enduml

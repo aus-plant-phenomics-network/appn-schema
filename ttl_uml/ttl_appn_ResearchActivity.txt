@@ -1,7 +1,7 @@
 @startuml
 class ResearchActivity  #line.bold
-class schema_Action #DDFFDD 
-ResearchActivity --|> schema_Action
+class "schema:Action" #DDFFDD 
+ResearchActivity --|> "schema:Action"
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 class Investigation 

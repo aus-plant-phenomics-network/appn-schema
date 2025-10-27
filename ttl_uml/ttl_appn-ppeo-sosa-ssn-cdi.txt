@@ -31,50 +31,50 @@ class Platform
 class Deployment
 class GrowthFacility
 package "schema" {
-    class schema_Action #DDFFDD
-    class schema_HowTo #DDFFDD
-    class schema_Thing #DDFFDD
-    class schema_DefinedTerm #DDFFDD
-    class schema_InstanceValue #DDFFDD
-    class schema_IndividualProduct #DDFFDD
-    class schema_Person #DDFFDD
+    class "schema:Action" #DDFFDD
+    class "schema:HowTo" #DDFFDD
+    class "schema:Thing" #DDFFDD
+    class "schema:DefinedTerm" #DDFFDD
+    class "schema:InstanceValue" #DDFFDD
+    class "schema:IndividualProduct" #DDFFDD
+    class "schema:Person" #DDFFDD
 }
 package "bio" {
-    class bio_BioSample #FFCCEE
-    class bio_ComputationalWorkflow #FFCCEE
+    class "bio:BioSample" #FFCCEE
+    class "bio:ComputationalWorkflow" #FFCCEE
 }
-ResearchActivity --|> schema_Action
+ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
 Study --|> ResearchActivity
 Assay --|> ResearchActivity
-Method --|> schema_HowTo
+Method --|> "schema:HowTo"
 Observation --|> Assay
 Control --|> Assay
 Sampling --|> Assay
 Transformation --|> Assay
 Input --|> Assay
-ObservationUnit --|> schema_Thing
-BiologicalMaterial --|> bio_BioSample
-Trait --|> schema_DefinedTerm
-Scale --|> schema_DefinedTerm
-Variable --|> schema_InstanceValue
+ObservationUnit --|> "schema:Thing"
+BiologicalMaterial --|> "bio:BioSample"
+Trait --|> "schema:DefinedTerm"
+Scale --|> "schema:DefinedTerm"
+Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
 InputVariable --|> Variable
 Actuator --|> Controller
-Actuator --|> schema_IndividualProduct
+Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
 Sensor --|> Observer
-Sensor --|> schema_IndividualProduct
+Sensor --|> "schema:IndividualProduct"
 Person --|> Observer
 Person --|> Controller
 Person --|> Sampler
 Person --|> Transformer
-Person --|> schema_Person
-Software --|> bio_ComputationalWorkflow
+Person --|> "schema:Person"
+Software --|> "bio:ComputationalWorkflow"
 Sample --|> ObservationUnit
-Platform --|> schema_IndividualProduct
-Deployment --|> schema_Thing
+Platform --|> "schema:IndividualProduct"
+Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform
 GrowthFacility --|> ObservationUnit
 @enduml

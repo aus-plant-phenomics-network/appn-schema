@@ -1,14 +1,14 @@
 @startuml
 class Sample  #line.bold
-class sosa_Sample #EEFFCC 
-Sample --|> sosa_Sample
+class "sosa:Sample" #EEFFCC 
+Sample --|> "sosa:Sample"
 class ObservationUnit  
-class schema_Thing #DDFFDD 
-ObservationUnit --|> schema_Thing
-class ppeo_ObservationUnit #DDDDFF 
-ObservationUnit --|> ppeo_ObservationUnit
-class sosa_FeatureOfInterest #EEFFCC 
-ObservationUnit --|> sosa_FeatureOfInterest
+class "schema:Thing" #DDFFDD 
+ObservationUnit --|> "schema:Thing"
+class "ppeo:ObservationUnit" #DDDDFF 
+ObservationUnit --|> "ppeo:ObservationUnit"
+class "sosa:FeatureOfInterest" #EEFFCC 
+ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

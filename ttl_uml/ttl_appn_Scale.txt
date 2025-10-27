@@ -1,5 +1,5 @@
 @startuml
 class Scale  #line.bold
-class schema_DefinedTerm #DDFFDD 
-Scale --|> schema_DefinedTerm
+class "schema:DefinedTerm" #DDFFDD 
+Scale --|> "schema:DefinedTerm"
 @enduml

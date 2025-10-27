@@ -1,11 +1,11 @@
 @startuml
 class ObservationUnit  #line.bold
-class schema_Thing #DDFFDD 
-ObservationUnit --|> schema_Thing
-class ppeo_ObservationUnit #DDDDFF 
-ObservationUnit --|> ppeo_ObservationUnit
-class sosa_FeatureOfInterest #EEFFCC 
-ObservationUnit --|> sosa_FeatureOfInterest
+class "schema:Thing" #DDFFDD 
+ObservationUnit --|> "schema:Thing"
+class "ppeo:ObservationUnit" #DDDDFF 
+ObservationUnit --|> "ppeo:ObservationUnit"
+class "sosa:FeatureOfInterest" #EEFFCC 
+ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

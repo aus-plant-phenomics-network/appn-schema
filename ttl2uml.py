@@ -122,12 +122,16 @@ def add_range(pty: tuple[str,str], range_classes: str) -> None:
         if range not in property[1]:
             property[1].append(range)
 
+# Get formatted name for a class/property tuple.
+def get_name(parts: tuple[str:str]) -> str:
+    return parts[1] if parts[0] == "appn" else f'"{parts[0]}:{parts[1]}"'
+
 # Generate UML property definitions for a specified class
 def write_properties(file: io.TextIOWrapper, cls: tuple[str, str]) -> str:
-    class_name = cls[1] if cls[0] == "appn" else f"{cls[0]}_{cls[1]}"
+    class_name = get_name(cls)
     reflexive = False
     for ppty in properties:
-        ppty_name = ppty[1] if ppty[0] == "appn" else f"{ppty[0]}_{ppty[1]}"
+        ppty_name = get_name(ppty)
         property = properties[ppty]
         if cls in property[0]:
             if len(property[1]) == 0:
@@ -135,21 +139,21 @@ def write_properties(file: io.TextIOWrapper, cls: tuple[str, str]) -> str:
             for r in property[1]:
                 if r == cls:
                     reflexive = True
-                r_name = r[1] if r[0] == "appn" else f"{r[0]}_{r[1]}"
+                r_name = get_name(r)
                 package_colour = "" if r[0] == "appn" else package_colours[r[0]]
                 file.write(f"class {r_name} {package_colour}\n")
                 file.write(f"{class_name} --> {r_name} : {ppty_name}\n")
         if cls in property[1]:
             for r in property[0]:
                 if r != cls or not reflexive:
-                    r_name = r[1] if r[0] == "appn" else f"{r[0]}_{r[1]}"
+                    r_name = get_name(r)
                     package_colour = "" if r[0] == "appn" else package_colours[r[0]]
                     file.write(f"class {r_name} {package_colour}\n")
                     file.write(f"{r_name} --> {class_name} : {ppty_name}\n")
 
 # Generate UML superclass definitions for a specified class - this writes the class too.
 def write_parents(file: io.TextIOWrapper, cls: tuple, focus_class: tuple[str,str]) -> str:
-    class_name = cls[1] if cls[0] == "appn" else f"{cls[0]}_{cls[1]}"
+    class_name = get_name(cls)
     package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
     style = "#line.bold" if cls == focus_class else ""
     file.write(f"class {class_name} {package_colour} {style}\n")
@@ -162,7 +166,7 @@ def write_parents(file: io.TextIOWrapper, cls: tuple, focus_class: tuple[str,str
 
 # Generate UML subclass definitions for a specified class - this writes the class too.
 def write_children(file: io.TextIOWrapper, cls: tuple[str,str], focus_class: tuple[str,str]) -> str:
-    class_name = cls[1] if cls[0] == "appn" else f"{cls[0]}_{cls[1]}"
+    class_name = get_name(cls)
     if cls != focus_class:
         package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
         file.write(f"class {class_name} {package_colour}\n")
@@ -171,6 +175,7 @@ def write_children(file: io.TextIOWrapper, cls: tuple[str,str], focus_class: tup
             child_name = write_children(file, child, focus_class)
             file.write(f"{child_name} --|> {class_name}\n")
     return class_name
+
 
 # Parse the turtle
 with open(ttl_file) as f:
@@ -204,14 +209,14 @@ if len(exclusions) > 0:
                 else:
                     uml_file.write (f'package "{prefix}" {{\n')
                     for cls in packages[prefix]:
-                        uml_file.write(f"    class {prefix}_{cls[1]} {package_colours[prefix]}\n")
+                        uml_file.write(f"    class {get_name(cls)} {package_colours[prefix]}\n")
                     uml_file.write('}\n')
         for child in inheritance:
             if child[0] not in exclusions:
                 for parent in inheritance[child]:
                     if parent[0] not in exclusions:
-                        child_name = child[1] if child[0] == "appn" else f"{child[0]}_{child[1]}"
-                        parent_name = parent[1] if parent[0] == "appn" else f"{parent[0]}_{parent[1]}"
+                        child_name = get_name(child)
+                        parent_name = get_name(parent)
                         uml_file.write(f"{child_name} --|> {parent_name}\n")
         uml_file.write("@enduml\n")
 
@@ -227,13 +232,13 @@ else:
             else:
                 uml_file.write (f'package "{prefix}" {{\n')
                 for cls in packages[prefix]:
-                    uml_file.write(f"    class {prefix}_{cls[1]} {package_colours[prefix]}\n")
+                    uml_file.write(f"    class {get_name(cls)} {package_colours[prefix]}\n")
                 uml_file.write('}\n')
         for child in inheritance:
             for parent in inheritance[child]:
                 if parent[0] not in exclusions:
-                    child_name = child[1] if child[0] == "appn" else f"{child[0]}_{child[1]}"
-                    parent_name = parent[1] if parent[0] == "appn" else f"{parent[0]}_{parent[1]}"
+                    child_name = get_name(child)
+                    parent_name = get_name(parent)
                     uml_file.write(f"{child_name} --|> {parent_name}\n")
         uml_file.write("@enduml\n")
 

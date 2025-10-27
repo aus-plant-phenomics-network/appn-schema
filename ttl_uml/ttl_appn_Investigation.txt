@@ -1,11 +1,11 @@
 @startuml
 class Investigation  #line.bold
 class ResearchActivity  
-class schema_Action #DDFFDD 
-ResearchActivity --|> schema_Action
+class "schema:Action" #DDFFDD 
+ResearchActivity --|> "schema:Action"
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 Investigation --|> ResearchActivity
-class ppeo_Investigation #DDDDFF 
-Investigation --|> ppeo_Investigation
+class "ppeo:Investigation" #DDDDFF 
+Investigation --|> "ppeo:Investigation"
 @enduml
