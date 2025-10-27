@@ -148,13 +148,13 @@ appn:Sampler a rdfs:Class ;
 appn:Actuator a rdfs:Class ;
     rdfs:label "Actuator" ;
     rdfs:comment "Actuator" ;
-    rdfs:subClassOf appn:Actuator ;
+    rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf schema:IndividualProduct .
 
 appn:ExternalEvent a rdfs:Class ;
     rdfs:label "ExternalEvent" ;
     rdfs:comment "ExternalEvent" ;
-    rdfs:subClassOf appn:Actuator ;
+    rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf sosa:Event .
 
 appn:Sensor a rdfs:Class ;
@@ -204,33 +204,33 @@ appn:GrowthFacility a rdfs:Class ;
     rdfs:subClassOf appn:ObservationUnit .
 
 # TODO: Needs tighter constraints.
-appn:isPartOf a rdf:Property ;
+appn:isPartOf a rdfs:Property ;
     rdfs:label "isPartOf" ;
     rdfs:comment "Relates an Assay to the Study that includes it or a Study to an Investigation." ;
     schema:domainIncludes appn:ResearchActivity ;
     schema:rangeIncludes appn:ResearchActivity .
 
-appn:isForObservationUnit a rdf:Property ;
+appn:isForObservationUnit a rdfs:Property ;
     rdfs:label "isForObservationUnit" ;
     rdfs:comment "Relates an Assay to an ObservationUnit for which it is carried out." ;
     schema:domainIncludes appn:Assay ;
     schema:rangeIncludes appn:ObservationUnit .
 
-appn:madeByObserver a rdf:Property ;
+appn:madeByObserver a rdfs:Property ;
     rdfs:label "madeByObserver" ;
     rdfs:comment "Identifies the entity used to carry out an Observation." ;
     rdfs:subPropertyOf sosa:madeByObserver ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes appn:Observer .
 
-appn:madeByTransformer a rdf:Property ;
+appn:madeByTransformer a rdfs:Property ;
     rdfs:label "madeByTransformer" ;
     rdfs:comment "Identifies the entity used to carry out a Transformation." ;
     rdfs:subPropertyOf sosa:madeByObserver ;
     schema:domainIncludes appn:Transformation ;
     schema:rangeIncludes appn:Transformer .
 
-appn:madeByController a rdf:Property ;
+appn:madeByController a rdfs:Property ;
     rdfs:label "madeByController" ;
     rdfs:comment "Identifies the entity used to carry out a Control or Input." ;
     rdfs:subPropertyOf sosa:madeByActuator ;
@@ -238,46 +238,47 @@ appn:madeByController a rdf:Property ;
     schema:domainIncludes appn:Input ;
     schema:rangeIncludes appn:Controller .
 
-appn:madeBySampler a rdf:Property ;
+appn:madeBySampler a rdfs:Property ;
     rdfs:label "madeBySampler" ;
     rdfs:comment "Identifies the entity used to carry out an Sampling." ;
     rdfs:subPropertyOf sosa:madeBySampler ;
     schema:domainIncludes appn:Sampling ;
     schema:rangeIncludes appn:Sampler .
 
-appn:hasResult a rdf:Property ;
+appn:hasResult a rdfs:Property ;
     rdfs:label "hasResult" ; 
     rdfs:description "hasResult" ;
     schema:domainIncludes appn:Assay ;
     schema:rangeIncludes schema:Dataset,schema:File,appn:Sample .
 
-appn:usesData a rdf:Property ;
+appn:usesData a rdfs:Property ;
     rdfs:label "usesData" ; 
     rdfs:description "usesData" ;
     schema:domainIncludes appn:Transformation ;
     schema:rangeIncludes schema:Dataset,schema:File .
 
-appn:controls a rdf:Property ;
+appn:controls a rdfs:Property ;
     rdfs:label "controls" ; 
     rdfs:description "controls" ;
     schema:domainIncludes appn:Control ;
     schema:rangeIncludes appn:ControlledVariable .
 
-appn:inputs a rdf:Property ;
+appn:inputs a rdfs:Property ;
     rdfs:label "inputs" ; 
     rdfs:description "inputs" ;
     schema:domainIncludes appn:Input ;
     schema:rangeIncludes appn:InputVariable .
 
-appn:observes a rdf:Property ;
+appn:observes a rdfs:Property ;
     rdfs:label "observes" ; 
     rdfs:description "observes" ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes appn:ObservedVariable .
 
-appn:isForObservationUnit a rdf:Property ;
-    rdfs:label "isForObservationUnit" ; 
-    rdfs:description "isForObservationUnit" ;
-    schema:domainIncludes appn:Assay ;
+appn:inheritsContext a rdfs:Property ;
+    rdfs:label "inheritsContext" ; 
+    rdfs:description "inheritsContext" ;
+    schema:domainIncludes appn:ObservationUnit ;
     schema:rangeIncludes appn:ObservationUnit .
+
 
