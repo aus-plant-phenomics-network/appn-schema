@@ -320,4 +320,10 @@ appn:hasBiologicalMaterial a rdfs:Property ;
     schema:domainIncludes appn:BiologicalUnit ;
     schema:rangeIncludes appn:BiologicalMaterial .
 
+# COMMENT: Needs a range.
+appn:hasDefaultValue a rdfs:Property ;
+    rdfs:label "hasDefaultValue" ; 
+    rdfs:description "Specifies the default value for a variable" ;
+    schema:domainIncludes appn:Variable .
+
 

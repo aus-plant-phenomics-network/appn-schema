@@ -7,6 +7,9 @@ class "cdi:RepresentedVariable" #FFCCEE
 Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"
+class Variable {
+    hasDefaultValue
+}
 ControlledVariable --|> Variable
 class Control 
 Control --> ControlledVariable : controls
