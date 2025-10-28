@@ -26,11 +26,11 @@ class Sensor
 class Person
 class Software
 class Sample
+class BiologicalUnit
 class Platform
 class Deployment
 class GrowthFacility
 class GrowthFacilityType
-class BiologicalUnit
 class BiologicalUnitType
 class BiologicalMaterial
 package "schema" {
@@ -123,7 +123,7 @@ Software --|> Observer
 Software --|> Controller
 Software --|> Transformer
 Sample --|> "sosa:Sample"
-Sample --|> ObservationUnit
+Sample --|> BiologicalUnit
 Platform --|> "sosa:Platform"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "ssn:Deployment"

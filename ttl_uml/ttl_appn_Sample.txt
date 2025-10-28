@@ -2,6 +2,7 @@
 class Sample  #line.bold
 class "sosa:Sample" #EEFFCC 
 Sample --|> "sosa:Sample"
+class BiologicalUnit  
 class ObservationUnit  
 class "schema:Thing" #DDFFDD 
 ObservationUnit --|> "schema:Thing"
@@ -13,7 +14,14 @@ class Assay
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
 ObservationUnit --> ObservationUnit : inheritsContext
-Sample --|> ObservationUnit
+BiologicalUnit --|> ObservationUnit
+class "bio:BioChemEntity" #CCEEFF 
+BiologicalUnit --|> "bio:BioChemEntity"
+class BiologicalUnitType 
+BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
+class BiologicalMaterial 
+BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
+Sample --|> BiologicalUnit
 class Assay 
 Assay --> Sample : hasResult
 @enduml

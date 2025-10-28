@@ -10,10 +10,10 @@ class Assay
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
 ObservationUnit --> ObservationUnit : inheritsContext
-class Sample 
-Sample --|> ObservationUnit
 class GrowthFacility 
 GrowthFacility --|> ObservationUnit
 class BiologicalUnit 
+class Sample 
+Sample --|> BiologicalUnit
 BiologicalUnit --|> ObservationUnit
 @enduml

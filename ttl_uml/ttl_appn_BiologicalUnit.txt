@@ -18,4 +18,6 @@ class BiologicalUnitType
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
 class BiologicalMaterial 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
+class Sample 
+Sample --|> BiologicalUnit
 @enduml

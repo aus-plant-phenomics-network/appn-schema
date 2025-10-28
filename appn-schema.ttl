@@ -49,7 +49,7 @@ appn:Method a rdfs:Class ;
     rdfs:subClassOf sosa:Procedure ;
     rdfs:subClassOf schema:HowTo .
 
-# COMMENT: Assumes images are modeled as (complex) property values reather than Samples (from a Sampling) or something else, e.g. Images? (from an Imaging?)
+# COMMENT: Assumes images are modeled as (complex) property values rather than Samples (from a Sampling) or something else, e.g. Images? (from an Imaging?)
 appn:Observation a rdfs:Class ;
     rdfs:label "Observation" ;
     rdfs:comment "An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images." ;
@@ -182,7 +182,7 @@ appn:Sample a rdfs:Class ;
     rdfs:label "Sample" ;
     rdfs:comment "Sample" ;
     rdfs:subClassOf sosa:Sample ;
-    rdfs:subClassOf appn:ObservationUnit .
+    rdfs:subClassOf appn:BiologicalUnit .
 
 appn:Platform a rdfs:Class ;
     rdfs:label "Platform" ;

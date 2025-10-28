@@ -26,11 +26,11 @@ class Sensor
 class Person
 class Software
 class Sample
+class BiologicalUnit
 class Platform
 class Deployment
 class GrowthFacility
 class GrowthFacilityType
-class BiologicalUnit
 class BiologicalUnitType
 class BiologicalMaterial
 package "schema" {
@@ -81,7 +81,7 @@ Software --|> "bio:ComputationalWorkflow"
 Software --|> Observer
 Software --|> Controller
 Software --|> Transformer
-Sample --|> ObservationUnit
+Sample --|> BiologicalUnit
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform
