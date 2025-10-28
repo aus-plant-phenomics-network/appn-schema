@@ -1,7 +1,17 @@
 # APPN Schema
 This repository is to develop schema artefacts for APPN data management.
 
-## UML diagrams
+## Turtle representation (Active)
+The schema is represented in Turtle: [appn-schema.ttl](/appn-schema.ttl)
+
+The [ttl2uml.py](/ttl2uml.py) script generates a set of UML diagrams from the Turtle representation (using PlantUML). The UML outputs include:
+* [ttl_appn_full.png](/ttl_uml/ttl_appn_full.png) - Inheritance of all APPN schema classes, including classes from external packages (very wide diagram)
+* [ttl_appn-ppeo-sosa-ssn-cdi.png](/ttl_uml/ttl_appn-ppeo-sosa-ssn-cdi.png) - Inheritiance of APPN schema classes, including inheritance only from schema.org and bioschemas.org
+* [UML diagrams for each APPN schema class](/ttl_uml/)
+
+## Older UML diagrams (Deprecated)
+The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
+
 The `uml` subfolder contains PlantUML specifications for class diagrams as .TXT files and .PNG renderings of these. Files with names starting `uml_` present views developed for documentation purposes. Files with names starting `appn_`, `sosa_` and `ro_` are modules defining parts of the model for reuse in one or more `uml_` diagrams. Files with names starting `example_` are to illustrate particular application scenarios. 
 
 Diagrams include:
