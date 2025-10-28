@@ -3,7 +3,9 @@ class Transformer  #line.bold
 class "sosa:Sensor" #EEFFCC 
 Transformer --|> "sosa:Sensor"
 class Transformation 
-Transformation ----> Transformer : madeByTransformer
+Transformation --> Transformer : madeByTransformer
 class Person 
 Person --|> Transformer
+class Software 
+Software --|> Transformer
 @enduml

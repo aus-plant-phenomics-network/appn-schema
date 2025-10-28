@@ -1,0 +1,7 @@
+@startuml
+class BiologicalUnitType  #line.bold
+class "schema:Enumeration" #DDFFDD 
+BiologicalUnitType --|> "schema:Enumeration"
+class BiologicalUnit 
+BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
+@enduml

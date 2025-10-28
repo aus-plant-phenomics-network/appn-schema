@@ -10,7 +10,6 @@ class Sampling
 class Transformation
 class Input
 class ObservationUnit
-class BiologicalMaterial
 class Trait
 class Scale
 class Variable
@@ -30,6 +29,10 @@ class Sample
 class Platform
 class Deployment
 class GrowthFacility
+class GrowthFacilityType
+class BiologicalUnit
+class BiologicalUnitType
+class BiologicalMaterial
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
@@ -39,10 +42,12 @@ package "schema" {
     class "schema:IndividualProduct" #DDFFDD
     class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
+    class "schema:Enumeration" #DDFFDD
 }
 package "bio" {
-    class "bio:BioSample" #FFCCEE
-    class "bio:ComputationalWorkflow" #FFCCEE
+    class "bio:ComputationalWorkflow" #CCEEFF
+    class "bio:BioChemEntity" #CCEEFF
+    class "bio:BioSample" #CCEEFF
 }
 ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
@@ -55,7 +60,6 @@ Sampling --|> Assay
 Transformation --|> Assay
 Input --|> Assay
 ObservationUnit --|> "schema:Thing"
-BiologicalMaterial --|> "bio:BioSample"
 Trait --|> "schema:DefinedTerm"
 Scale --|> "schema:DefinedTerm"
 Variable --|> "schema:InstanceValue"
@@ -74,9 +78,17 @@ Person --|> Sampler
 Person --|> Transformer
 Person --|> "schema:Person"
 Software --|> "bio:ComputationalWorkflow"
+Software --|> Observer
+Software --|> Controller
+Software --|> Transformer
 Sample --|> ObservationUnit
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform
 GrowthFacility --|> ObservationUnit
+GrowthFacilityType --|> "schema:Enumeration"
+BiologicalUnit --|> ObservationUnit
+BiologicalUnit --|> "bio:BioChemEntity"
+BiologicalUnitType --|> "schema:Enumeration"
+BiologicalMaterial --|> "bio:BioSample"
 @enduml

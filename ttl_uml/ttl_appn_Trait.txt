@@ -1,6 +1,6 @@
 @startuml
 class Trait  #line.bold
-class "cdi:Concept" #CCEEFF 
+class "cdi:Concept" #FFCCEE 
 Trait --|> "cdi:Concept"
 class "schema:DefinedTerm" #DDFFDD 
 Trait --|> "schema:DefinedTerm"

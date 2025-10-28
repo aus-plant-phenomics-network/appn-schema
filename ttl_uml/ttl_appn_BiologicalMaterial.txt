@@ -2,6 +2,8 @@
 class BiologicalMaterial  #line.bold
 class "ppeo:BiologicalMaterial" #DDDDFF 
 BiologicalMaterial --|> "ppeo:BiologicalMaterial"
-class "bio:BioSample" #FFCCEE 
+class "bio:BioSample" #CCEEFF 
 BiologicalMaterial --|> "bio:BioSample"
+class BiologicalUnit 
+BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 @enduml

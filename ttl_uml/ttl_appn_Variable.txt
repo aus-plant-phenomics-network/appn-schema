@@ -2,7 +2,7 @@
 class Variable  #line.bold
 class "sosa:Property" #EEFFCC 
 Variable --|> "sosa:Property"
-class "cdi:RepresentedVariable" #CCEEFF 
+class "cdi:RepresentedVariable" #FFCCEE 
 Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"

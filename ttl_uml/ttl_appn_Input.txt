@@ -5,23 +5,23 @@ class ResearchActivity
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
 class ResearchActivity 
-ResearchActivity ----> ResearchActivity : isPartOf
+ResearchActivity --> ResearchActivity : isPartOf
 Assay --|> ResearchActivity
 class "sosa:Execution" #EEFFCC 
 Assay --|> "sosa:Execution"
 class "ppeo:Assay" #DDDDFF 
 Assay --|> "ppeo:Assay"
 class ObservationUnit 
-Assay ----> ObservationUnit : isForObservationUnit
+Assay --> ObservationUnit : isForObservationUnit
 class "schema:Dataset" #DDFFDD
-Assay ----> "schema:Dataset" : hasResult
+Assay --> "schema:Dataset" : hasResult
 class "schema:File" #DDFFDD
-Assay ----> "schema:File" : hasResult
+Assay --> "schema:File" : hasResult
 class Sample 
-Assay ----> Sample : hasResult
+Assay --> Sample : hasResult
 Input --|> Assay
 class Controller 
-Input ----> Controller : madeByController
+Input --> Controller : madeByController
 class InputVariable 
-Input ----> InputVariable : inputs
+Input --> InputVariable : inputs
 @enduml

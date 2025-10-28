@@ -86,10 +86,6 @@ appn:ObservationUnit a rdfs:Class ;
     rdfs:subClassOf ppeo:ObservationUnit ;
     rdfs:subClassOf sosa:FeatureOfInterest .
 
-appn:BiologicalMaterial a rdfs:Class ;
-    rdfs:subClassOf ppeo:BiologicalMaterial ;
-    rdfs:subClassOf bio:BioSample .
-
 appn:Trait a rdfs:Class ;
     rdfs:label "Trait" ;
     rdfs:comment "Trait" ;
@@ -177,7 +173,10 @@ appn:Person a rdfs:Class ;
 appn:Software a rdfs:Class ;
     rdfs:label "Software" ;
     rdfs:comment "Software" ;
-    rdfs:subClassOf bio:ComputationalWorkflow .
+    rdfs:subClassOf bio:ComputationalWorkflow ;
+    rdfs:subClassOf appn:Observer ;
+    rdfs:subClassOf appn:Controller ;
+    rdfs:subClassOf appn:Transformer .
 
 appn:Sample a rdfs:Class ;
     rdfs:label "Sample" ;
@@ -197,11 +196,33 @@ appn:Deployment a rdfs:Class ;
     rdfs:subClassOf ssn:Deployment ;
     rdfs:subClassOf schema:Thing .
 
+# COMMENT: GrowthFacility type hierarchy could be as subclasses of GrowthFacility or as GrowthFacilityTypes.
 appn:GrowthFacility a rdfs:Class ;
     rdfs:label "GrowthFacility" ;
     rdfs:comment "GrowthFacility" ;
     rdfs:subClassOf appn:Platform ;
     rdfs:subClassOf appn:ObservationUnit .
+
+appn:GrowthFacilityType a rdfs:Class ;
+    rdfs:label "GrowthFacilityType" ;
+    rdfs:comment "An enumeration of types of GrowthFacility" ;
+    rdfs:subClassOf schema:Enumeration .
+
+# COMMENT: BiologicalUnit type hierarchy could be as subclasses of BiologicalUnit or as BiologicalUnitTypes.
+appn:BiologicalUnit a rdfs:Class ;
+    rdfs:label "BiologicalUnit" ;
+    rdfs:comment "BiologicalUnit" ;
+    rdfs:subClassOf appn:ObservationUnit ;
+    rdfs:subClassOf bio:BioChemEntity .
+
+appn:BiologicalUnitType a rdfs:Class ;
+    rdfs:label "BiologicalUnitType" ;
+    rdfs:comment "An enumeration of types of BiologicalUnit" ;
+    rdfs:subClassOf schema:Enumeration .
+
+appn:BiologicalMaterial a rdfs:Class ;
+    rdfs:subClassOf ppeo:BiologicalMaterial ;
+    rdfs:subClassOf bio:BioSample .
 
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdfs:Property ;
@@ -280,5 +301,23 @@ appn:inheritsContext a rdfs:Property ;
     rdfs:description "inheritsContext" ;
     schema:domainIncludes appn:ObservationUnit ;
     schema:rangeIncludes appn:ObservationUnit .
+
+appn:hasGrowthFacilityType a rdfs:Property ;
+    rdfs:label "hasGrowthFacilityType" ; 
+    rdfs:description "Links a GrowthFacility to its type" ;
+    schema:domainIncludes appn:GrowthFacility ;
+    schema:rangeIncludes appn:GrowthFacilityType .
+
+appn:hasBiologicalUnitType a rdfs:Property ;
+    rdfs:label "hasBiologicalUnitType" ; 
+    rdfs:description "Links a BiologicalUnit to its type" ;
+    schema:domainIncludes appn:BiologicalUnit ;
+    schema:rangeIncludes appn:BiologicalUnitType .
+
+appn:hasBiologicalMaterial a rdfs:Property ;
+    rdfs:label "hasBiologicalMaterial" ; 
+    rdfs:description "Links a BiologicalUnit to its genetic material" ;
+    schema:domainIncludes appn:BiologicalUnit ;
+    schema:rangeIncludes appn:BiologicalMaterial .
 
 

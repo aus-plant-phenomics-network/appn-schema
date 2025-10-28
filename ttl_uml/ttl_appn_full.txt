@@ -10,7 +10,6 @@ class Sampling
 class Transformation
 class Input
 class ObservationUnit
-class BiologicalMaterial
 class Trait
 class Scale
 class Variable
@@ -30,6 +29,10 @@ class Sample
 class Platform
 class Deployment
 class GrowthFacility
+class GrowthFacilityType
+class BiologicalUnit
+class BiologicalUnitType
+class BiologicalMaterial
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
@@ -39,6 +42,7 @@ package "schema" {
     class "schema:IndividualProduct" #DDFFDD
     class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
+    class "schema:Enumeration" #DDFFDD
 }
 package "ppeo" {
     class "ppeo:Investigation" #DDDDFF
@@ -59,13 +63,14 @@ package "sosa" {
     class "sosa:Sample" #EEFFCC
     class "sosa:Platform" #EEFFCC
 }
-package "bio" {
-    class "bio:BioSample" #FFCCEE
-    class "bio:ComputationalWorkflow" #FFCCEE
-}
 package "cdi" {
-    class "cdi:Concept" #CCEEFF
-    class "cdi:RepresentedVariable" #CCEEFF
+    class "cdi:Concept" #FFCCEE
+    class "cdi:RepresentedVariable" #FFCCEE
+}
+package "bio" {
+    class "bio:ComputationalWorkflow" #CCEEFF
+    class "bio:BioChemEntity" #CCEEFF
+    class "bio:BioSample" #CCEEFF
 }
 package "ssn" {
     class "ssn:Deployment" #EECCFF
@@ -89,8 +94,6 @@ Input --|> Assay
 ObservationUnit --|> "schema:Thing"
 ObservationUnit --|> "ppeo:ObservationUnit"
 ObservationUnit --|> "sosa:FeatureOfInterest"
-BiologicalMaterial --|> "ppeo:BiologicalMaterial"
-BiologicalMaterial --|> "bio:BioSample"
 Trait --|> "cdi:Concept"
 Trait --|> "schema:DefinedTerm"
 Scale --|> "schema:DefinedTerm"
@@ -116,6 +119,9 @@ Person --|> Sampler
 Person --|> Transformer
 Person --|> "schema:Person"
 Software --|> "bio:ComputationalWorkflow"
+Software --|> Observer
+Software --|> Controller
+Software --|> Transformer
 Sample --|> "sosa:Sample"
 Sample --|> ObservationUnit
 Platform --|> "sosa:Platform"
@@ -124,4 +130,10 @@ Deployment --|> "ssn:Deployment"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform
 GrowthFacility --|> ObservationUnit
+GrowthFacilityType --|> "schema:Enumeration"
+BiologicalUnit --|> ObservationUnit
+BiologicalUnit --|> "bio:BioChemEntity"
+BiologicalUnitType --|> "schema:Enumeration"
+BiologicalMaterial --|> "ppeo:BiologicalMaterial"
+BiologicalMaterial --|> "bio:BioSample"
 @enduml

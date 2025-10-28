@@ -1,0 +1,7 @@
+@startuml
+class GrowthFacilityType  #line.bold
+class "schema:Enumeration" #DDFFDD 
+GrowthFacilityType --|> "schema:Enumeration"
+class GrowthFacility 
+GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
+@enduml

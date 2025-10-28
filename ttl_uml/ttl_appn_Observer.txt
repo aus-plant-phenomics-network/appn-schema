@@ -3,9 +3,11 @@ class Observer  #line.bold
 class "sosa:Sensor" #EEFFCC 
 Observer --|> "sosa:Sensor"
 class Observation 
-Observation ----> Observer : madeByObserver
+Observation --> Observer : madeByObserver
 class Sensor 
 Sensor --|> Observer
 class Person 
 Person --|> Observer
+class Software 
+Software --|> Observer
 @enduml

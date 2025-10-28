@@ -1,11 +1,5 @@
 @startuml
-class GrowthFacility  #line.bold
-class Platform  
-class "sosa:Platform" #EEFFCC 
-Platform --|> "sosa:Platform"
-class "schema:IndividualProduct" #DDFFDD 
-Platform --|> "schema:IndividualProduct"
-GrowthFacility --|> Platform
+class BiologicalUnit  #line.bold
 class ObservationUnit  
 class "schema:Thing" #DDFFDD 
 ObservationUnit --|> "schema:Thing"
@@ -17,7 +11,11 @@ class Assay
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
 ObservationUnit --> ObservationUnit : inheritsContext
-GrowthFacility --|> ObservationUnit
-class GrowthFacilityType 
-GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
+BiologicalUnit --|> ObservationUnit
+class "bio:BioChemEntity" #CCEEFF 
+BiologicalUnit --|> "bio:BioChemEntity"
+class BiologicalUnitType 
+BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
+class BiologicalMaterial 
+BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 @enduml

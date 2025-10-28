@@ -4,9 +4,9 @@ class Controller
 class "sosa:Actuator" #EEFFCC 
 Controller --|> "sosa:Actuator"
 class Control 
-Control ----> Controller : madeByController
+Control --> Controller : madeByController
 class Input 
-Input ----> Controller : madeByController
+Input --> Controller : madeByController
 Actuator --|> Controller
 class "schema:IndividualProduct" #DDFFDD 
 Actuator --|> "schema:IndividualProduct"
