@@ -33,6 +33,7 @@ class GrowthFacility
 class GrowthFacilityType
 class BiologicalUnitType
 class BiologicalMaterial
+class SpatialLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
@@ -91,4 +92,5 @@ BiologicalUnit --|> ObservationUnit
 BiologicalUnit --|> "bio:BioChemEntity"
 BiologicalUnitType --|> "schema:Enumeration"
 BiologicalMaterial --|> "bio:BioSample"
+SpatialLocation --|> "schema:Thing"
 @enduml

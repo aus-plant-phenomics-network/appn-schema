@@ -33,6 +33,7 @@ class GrowthFacility
 class GrowthFacilityType
 class BiologicalUnitType
 class BiologicalMaterial
+class SpatialLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
@@ -51,6 +52,7 @@ package "ppeo" {
     class "ppeo:Observation" #DDDDFF
     class "ppeo:ObservationUnit" #DDDDFF
     class "ppeo:BiologicalMaterial" #DDDDFF
+    class "ppeo:SpatialDistribution" #DDDDFF
 }
 package "sosa" {
     class "sosa:Execution" #EEFFCC
@@ -136,4 +138,6 @@ BiologicalUnit --|> "bio:BioChemEntity"
 BiologicalUnitType --|> "schema:Enumeration"
 BiologicalMaterial --|> "ppeo:BiologicalMaterial"
 BiologicalMaterial --|> "bio:BioSample"
+SpatialLocation --|> "ppeo:SpatialDistribution"
+SpatialLocation --|> "schema:Thing"
 @enduml

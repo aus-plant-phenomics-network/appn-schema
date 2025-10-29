@@ -17,6 +17,10 @@ class Assay
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
 ObservationUnit --> ObservationUnit : inheritsContext
+class SpatialLocation 
+ObservationUnit --> SpatialLocation : hasLocation
+class SpatialLocation 
+SpatialLocation --> ObservationUnit : isLocationWithin
 GrowthFacility --|> ObservationUnit
 class GrowthFacilityType 
 GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType

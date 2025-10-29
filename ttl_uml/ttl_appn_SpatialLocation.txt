@@ -1,0 +1,17 @@
+@startuml
+class SpatialLocation  #line.bold
+class "ppeo:SpatialDistribution" #DDDDFF 
+SpatialLocation --|> "ppeo:SpatialDistribution"
+class "schema:Thing" #DDFFDD 
+SpatialLocation --|> "schema:Thing"
+class ObservationUnit 
+ObservationUnit --> SpatialLocation : hasLocation
+class ObservationUnit 
+SpatialLocation --> ObservationUnit : isLocationWithin
+class SpatialLocation {
+    row
+}
+class SpatialLocation {
+    column
+}
+@enduml

@@ -224,6 +224,11 @@ appn:BiologicalMaterial a rdfs:Class ;
     rdfs:subClassOf ppeo:BiologicalMaterial ;
     rdfs:subClassOf bio:BioSample .
 
+# COMMENT: There is no obvious place to locate this in schema.org other than Thing.
+appn:SpatialLocation a rdfs:Class ;
+    rdfs:subClassOf ppeo:SpatialDistribution ;
+    rdfs:subClassOf schema:Thing .
+
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdfs:Property ;
     rdfs:label "isPartOf" ;
@@ -325,5 +330,29 @@ appn:hasDefaultValue a rdfs:Property ;
     rdfs:label "hasDefaultValue" ; 
     rdfs:description "Specifies the default value for a variable" ;
     schema:domainIncludes appn:Variable .
+
+appn:hasLocation a rdfs:Property ;
+    rdfs:label "hasLocation" ; 
+    rdfs:description "Specifies the location for an ObservationUnit" ;
+    schema:domainIncludes appn:ObservationUnit ;
+    schema:rangeIncludes appn:SpatialLocation.
+
+appn:isLocationWithin a rdfs:Property ;
+    rdfs:label "isLocationWithin" ; 
+    rdfs:description "Specifies that a location is a position within an ObservationUnit" ;
+    schema:domainIncludes appn:SpatialLocation ;
+    schema:rangeIncludes appn:ObservationUnit.
+
+# COMMENT: Needs a range.
+appn:row a rdfs:Property ;
+    rdfs:label "row" ; 
+    rdfs:description "Specifies the row for a SpatialLocation" ;
+    schema:domainIncludes appn:SpatialLocation .
+
+# COMMENT: Needs a range.
+appn:column a rdfs:Property ;
+    rdfs:label "column" ; 
+    rdfs:description "Specifies the column for a SpatialLocation" ;
+    schema:domainIncludes appn:SpatialLocation .
 
 
