@@ -5,7 +5,7 @@
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
-[appn:Transformation]([appn:Transformation](/doc/appn_Transformation.md)) appn:madeByTransformer appn:Transformer
+* [appn:Transformation]([appn:Transformation](/doc/appn_Transformation.md)) appn:madeByTransformer appn:Transformer
 ## Subclasses
 * https://schema.plantphenomics.org.au/Person
 * https://schema.plantphenomics.org.au/Software

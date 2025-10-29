@@ -5,7 +5,7 @@
 ## Superclasses
 * https://schema.org/Action
 ## Properties
-appn:ResearchActivity appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
+* appn:ResearchActivity appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 ## Subclasses
 * https://schema.plantphenomics.org.au/Investigation
 * https://schema.plantphenomics.org.au/Study

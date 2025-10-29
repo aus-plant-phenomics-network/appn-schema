@@ -7,4 +7,4 @@
 * https://schema.org/Action
 * http://purl.org/ppeo/PPEO.owl#Investigation
 ## Properties
-[appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
+* [appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

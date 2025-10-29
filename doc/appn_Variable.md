@@ -7,7 +7,7 @@
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-Variable https://schema.plantphenomics.org.au/hasDefaultValue## Subclasses
+* Variable https://schema.plantphenomics.org.au/hasDefaultValue## Subclasses
 * https://schema.plantphenomics.org.au/ObservedVariable
 * https://schema.plantphenomics.org.au/ControlledVariable
 * https://schema.plantphenomics.org.au/InputVariable

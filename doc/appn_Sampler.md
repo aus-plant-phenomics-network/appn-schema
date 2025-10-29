@@ -5,6 +5,6 @@
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sampler
 ## Properties
-[appn:Sampling]([appn:Sampling](/doc/appn_Sampling.md)) appn:madeBySampler appn:Sampler
+* [appn:Sampling]([appn:Sampling](/doc/appn_Sampling.md)) appn:madeBySampler appn:Sampler
 ## Subclasses
 * https://schema.plantphenomics.org.au/Person
