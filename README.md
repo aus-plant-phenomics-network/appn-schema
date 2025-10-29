@@ -9,6 +9,8 @@ The [ttl2uml.py](/ttl2uml.py) script generates a set of UML diagrams from the Tu
 * [ttl_appn-ppeo-sosa-ssn-cdi.png](/ttl_uml/ttl_appn-ppeo-sosa-ssn-cdi.png) - Inheritiance of APPN schema classes, including inheritance only from schema.org and bioschemas.org
 * [UML diagrams for each APPN schema class](/ttl_uml/)
 
+Markdown pages for all classes can be found here: [doc/appn_schema.md](/doc/appn_schema.md)
+
 ## Older UML diagrams (Deprecated)
 The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
 
