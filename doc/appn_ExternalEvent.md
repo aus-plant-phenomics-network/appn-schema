@@ -3,7 +3,7 @@
 
 ![UML diagram for ExternalEvent](/ttl_uml/ttl_appn_ExternalEvent.png)
 ## Superclasses
-* [appn]:Controller](/doc/appn_Controller.md)
+* [appn:Controller](/doc/appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/Event
 ## Properties

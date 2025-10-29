@@ -3,7 +3,7 @@
 
 ![UML diagram for ControlledVariable](/ttl_uml/ttl_appn_ControlledVariable.png)
 ## Superclasses
-* [appn]:Variable](/doc/appn_Variable.md)
+* [appn:Variable](/doc/appn_Variable.md)
 * https://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue

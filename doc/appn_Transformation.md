@@ -3,8 +3,8 @@
 
 ![UML diagram for Transformation](/ttl_uml/ttl_appn_Transformation.png)
 ## Superclasses
-* [appn]:Assay](/doc/appn_Assay.md)
-* [appn]:ResearchActivity](/doc/appn_ResearchActivity.md)
+* [appn:Assay](/doc/appn_Assay.md)
+* [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay

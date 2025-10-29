@@ -3,7 +3,7 @@
 
 ![UML diagram for Investigation](/ttl_uml/ttl_appn_Investigation.png)
 ## Superclasses
-* [appn]:ResearchActivity](/doc/appn_ResearchActivity.md)
+* [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://purl.org/ppeo/PPEO.owl#Investigation
 ## Properties

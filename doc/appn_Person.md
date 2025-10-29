@@ -3,13 +3,13 @@
 
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 ## Superclasses
-* [appn]:Observer](/doc/appn_Observer.md)
+* [appn:Observer](/doc/appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor
-* [appn]:Controller](/doc/appn_Controller.md)
+* [appn:Controller](/doc/appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
-* [appn]:Sampler](/doc/appn_Sampler.md)
+* [appn:Sampler](/doc/appn_Sampler.md)
 * https://www.w3.org/ns/sosa/Sampler
-* [appn]:Transformer](/doc/appn_Transformer.md)
+* [appn:Transformer](/doc/appn_Transformer.md)
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/Person
 ## Properties

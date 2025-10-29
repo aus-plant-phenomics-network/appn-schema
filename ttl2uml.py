@@ -197,7 +197,7 @@ def write_parents(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple, focus
     if cls in inheritance:
         for parent in inheritance[cls]:
             if parent[0] == "appn":
-                md.write(f"* [{parent[0]}]:{parent[1]}](/doc/appn_{parent[1]}.md)\n")
+                md.write(f"* [{parent[0]}:{parent[1]}](/doc/appn_{parent[1]}.md)\n")
             else:
                 md.write(f"* {prefixes[parent[0]]}{parent[1]}\n")
             parent_name = write_parents(uml, md, parent, focus_class)
@@ -211,7 +211,7 @@ def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,s
         package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
         uml.write(f"class {class_name} {package_colour}\n")
         if parent[0] == "appn":
-            md.write(f"* [{cls[0]}]:{cls[1]}](/doc/appn_{cls[1]}.md)\n")
+            md.write(f"* [{cls[0]}:{cls[1]}](/doc/appn_{cls[1]}.md)\n")
         else:
             md.write(f"* {prefixes[cls[0]]}{cls[1]}\n")
     heading_written = False
