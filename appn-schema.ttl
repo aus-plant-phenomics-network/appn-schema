@@ -355,4 +355,15 @@ appn:column a rdfs:Property ;
     rdfs:description "Specifies the column for a SpatialLocation" ;
     schema:domainIncludes appn:SpatialLocation .
 
+appn:deployedSystem a rdfs:Property ;
+    rdfs:label "deployedSystem" ; 
+    rdfs:description "Identifies a Sensor or Actuator deployed on a Platform" ;
+    schema:domainIncludes appn:Deployment ;
+    range:domainIncludes appn:Sensor,appn:Actuator .
+
+appn:deployedOnPlatform a rdfs:Property ;
+    rdfs:label "deployedOnPlatform" ; 
+    rdfs:description "Identifies a Platform on which Sensors or Actuators are deployed" ;
+    schema:domainIncludes appn:Deployment ;
+    range:domainIncludes appn:Platform .
 

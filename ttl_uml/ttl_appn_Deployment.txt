@@ -4,4 +4,10 @@ class "ssn:Deployment" #EECCFF
 Deployment --|> "ssn:Deployment"
 class "schema:Thing" #DDFFDD 
 Deployment --|> "schema:Thing"
+class Deployment {
+    deployedSystem
+}
+class Deployment {
+    deployedOnPlatform
+}
 @enduml
