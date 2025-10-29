@@ -151,12 +151,12 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                 uml.write(f"class {r_name} {package_colour}\n")
                 uml.write(f"{class_name} --> {r_name} : {ppty_name}\n")
                 if cls == focus_class:
-                    this_class = focus_class[1]
+                    this_class = f"{focus_class[0]}:{focus_class[1]}"
                 else:
-                    expanded_r = f"{prefixes[r[0]]}{r[1]}"
-                    this_class = f"[{expanded_r}]({expanded_r})"
+                    expanded_r = f"{prefixes[cls[0]]}{cls[1]}"
+                    this_class = f"[{cls[0]}:{cls[1]}]({expanded_r})"
                 other_class = f"{prefixes[r[0]]}{r[1]}"
-                md.write(f"{this_class} {prefixes[ppty[0]]}{ppty[1]} [{other_class}]({other_class})\n")
+                md.write(f"{this_class} {ppty[0]}:{ppty[1]} [{r[0]}:{r[1]}]({other_class})\n")
         if cls in property[1]:
             for r in property[0]:
                 if not heading_written:
@@ -168,12 +168,12 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     uml.write(f"class {r_name} {package_colour}\n")
                     uml.write(f"{r_name} --> {class_name} : {ppty_name}\n")
                     if cls == focus_class:
-                        this_class = focus_class[1]
+                        this_class = f"{focus_class[0]}:{focus_class[1]}"
                     else:
-                        expanded_r = f"{prefixes[r[0]]}{r[1]}"
-                        this_class = f"[{expanded_r}]({expanded_r})"
+                        expanded_r = f"{prefixes[cls[0]]}{cls[1]}"
+                        this_class = f"[{cls[0]}:{cls[1]}]({expanded_r})"
                     other_class = f"{prefixes[r[0]]}{r[1]}"
-                    md.write(f"[{other_class}]({other_class}) {prefixes[ppty[0]]}{ppty[1]} {this_class}\n")
+                    md.write(f"[{r[0]}:{r[1]}]({other_class}) {ppty[0]}:{ppty[1]} {this_class}\n")
     if cls in inheritance:
         for parent in inheritance[cls]:
             write_properties(uml, md, parent, focus_class, heading_written)
@@ -184,9 +184,9 @@ def write_parents(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple, focus
     package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
     style = "#line.bold" if cls == focus_class else ""
     uml.write(f"class {class_name} {package_colour} {style}\n")
-    md.write(f"* {prefixes[cls[0]]}{cls[1]}\n")
     if cls in inheritance:
         for parent in inheritance[cls]:
+            md.write(f"* {prefixes[parent[0]]}{parent[1]}\n")
             parent_name = write_parents(uml, md, parent, focus_class)
             uml.write(f"{class_name} --|> {parent_name}\n")
     return class_name

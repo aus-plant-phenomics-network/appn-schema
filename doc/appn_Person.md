@@ -3,7 +3,6 @@
 
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/Person
 * https://schema.plantphenomics.org.au/Observer
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.plantphenomics.org.au/Controller
@@ -14,11 +13,11 @@
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/Person
 ## Properties
-[https://schema.plantphenomics.org.au/Observation](https://schema.plantphenomics.org.au/Observation) https://schema.plantphenomics.org.au/madeByObserver [https://schema.plantphenomics.org.au/Observation](https://schema.plantphenomics.org.au/Observation)
+[appn:Observation](https://schema.plantphenomics.org.au/Observation) appn:madeByObserver [appn:Observer](https://schema.plantphenomics.org.au/Observer)
 ## Properties
-[https://schema.plantphenomics.org.au/Control](https://schema.plantphenomics.org.au/Control) https://schema.plantphenomics.org.au/madeByController [https://schema.plantphenomics.org.au/Control](https://schema.plantphenomics.org.au/Control)
-[https://schema.plantphenomics.org.au/Input](https://schema.plantphenomics.org.au/Input) https://schema.plantphenomics.org.au/madeByController [https://schema.plantphenomics.org.au/Input](https://schema.plantphenomics.org.au/Input)
+[appn:Control](https://schema.plantphenomics.org.au/Control) appn:madeByController [appn:Controller](https://schema.plantphenomics.org.au/Controller)
+[appn:Input](https://schema.plantphenomics.org.au/Input) appn:madeByController [appn:Controller](https://schema.plantphenomics.org.au/Controller)
 ## Properties
-[https://schema.plantphenomics.org.au/Sampling](https://schema.plantphenomics.org.au/Sampling) https://schema.plantphenomics.org.au/madeBySampler [https://schema.plantphenomics.org.au/Sampling](https://schema.plantphenomics.org.au/Sampling)
+[appn:Sampling](https://schema.plantphenomics.org.au/Sampling) appn:madeBySampler [appn:Sampler](https://schema.plantphenomics.org.au/Sampler)
 ## Properties
-[https://schema.plantphenomics.org.au/Transformation](https://schema.plantphenomics.org.au/Transformation) https://schema.plantphenomics.org.au/madeByTransformer [https://schema.plantphenomics.org.au/Transformation](https://schema.plantphenomics.org.au/Transformation)
+[appn:Transformation](https://schema.plantphenomics.org.au/Transformation) appn:madeByTransformer [appn:Transformer](https://schema.plantphenomics.org.au/Transformer)

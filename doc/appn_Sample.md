@@ -3,7 +3,6 @@
 
 ![UML diagram for Sample](/ttl_uml/ttl_appn_Sample.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/Sample
 * https://www.w3.org/ns/sosa/Sample
 * https://schema.plantphenomics.org.au/BiologicalUnit
 * https://schema.plantphenomics.org.au/ObservationUnit
@@ -12,10 +11,10 @@
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 * https://bioschemas.org/BioChemEntity
 ## Properties
-[https://schema.plantphenomics.org.au/Assay](https://schema.plantphenomics.org.au/Assay) https://schema.plantphenomics.org.au/hasResult Sample
-[https://schema.plantphenomics.org.au/BiologicalUnitType](https://schema.plantphenomics.org.au/BiologicalUnitType) https://schema.plantphenomics.org.au/hasBiologicalUnitType [https://schema.plantphenomics.org.au/BiologicalUnitType](https://schema.plantphenomics.org.au/BiologicalUnitType)
-[https://schema.plantphenomics.org.au/BiologicalMaterial](https://schema.plantphenomics.org.au/BiologicalMaterial) https://schema.plantphenomics.org.au/hasBiologicalMaterial [https://schema.plantphenomics.org.au/BiologicalMaterial](https://schema.plantphenomics.org.au/BiologicalMaterial)
-[https://schema.plantphenomics.org.au/Assay](https://schema.plantphenomics.org.au/Assay) https://schema.plantphenomics.org.au/isForObservationUnit [https://schema.plantphenomics.org.au/Assay](https://schema.plantphenomics.org.au/Assay)
-[https://schema.plantphenomics.org.au/ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) https://schema.plantphenomics.org.au/inheritsContext [https://schema.plantphenomics.org.au/ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
-[https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation) https://schema.plantphenomics.org.au/hasLocation [https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
-[https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation) https://schema.plantphenomics.org.au/isLocationWithin [https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
+[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:hasResult appn:Sample
+[appn:BiologicalUnit](https://schema.plantphenomics.org.au/BiologicalUnit) appn:hasBiologicalUnitType [appn:BiologicalUnitType](https://schema.plantphenomics.org.au/BiologicalUnitType)
+[appn:BiologicalUnit](https://schema.plantphenomics.org.au/BiologicalUnit) appn:hasBiologicalMaterial [appn:BiologicalMaterial](https://schema.plantphenomics.org.au/BiologicalMaterial)
+[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:isForObservationUnit [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
+[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:inheritsContext [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
+[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:hasLocation [appn:SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
+[appn:SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation) appn:isLocationWithin [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)

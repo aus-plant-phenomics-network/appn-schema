@@ -3,10 +3,9 @@
 
 ![UML diagram for ResearchActivity](/ttl_uml/ttl_appn_ResearchActivity.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/ResearchActivity
 * https://schema.org/Action
 ## Properties
-ResearchActivity https://schema.plantphenomics.org.au/isPartOf [https://schema.plantphenomics.org.au/ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)
+appn:ResearchActivity appn:isPartOf [appn:ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)
 ## Subclasses
 * https://schema.plantphenomics.org.au/Investigation
 * https://schema.plantphenomics.org.au/Study
