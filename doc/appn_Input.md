@@ -3,8 +3,8 @@
 
 ![UML diagram for Input](/ttl_uml/ttl_appn_Input.png)
 ## Superclasses
-* [appn:Assay](/doc/appn_Assay.md)
-* [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
+* [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
+* [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay

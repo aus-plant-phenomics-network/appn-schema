@@ -4,11 +4,11 @@
 ![UML diagram for Software](/ttl_uml/ttl_appn_Software.png)
 ## Superclasses
 * https://bioschemas.org/ComputationalWorkflow
-* [appn:Observer](/doc/appn_Observer.md)
+* [https://schema.plantphenomics.org.au/Observer](/doc/appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor
-* [appn:Controller](/doc/appn_Controller.md)
+* [https://schema.plantphenomics.org.au/Controller](/doc/appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
-* [appn:Transformer](/doc/appn_Transformer.md)
+* [https://schema.plantphenomics.org.au/Transformer](/doc/appn_Transformer.md)
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)

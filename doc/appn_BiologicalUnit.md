@@ -3,7 +3,7 @@
 
 ![UML diagram for BiologicalUnit](/ttl_uml/ttl_appn_BiologicalUnit.png)
 ## Superclasses
-* [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+* [https://schema.plantphenomics.org.au/ObservationUnit](/doc/appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest

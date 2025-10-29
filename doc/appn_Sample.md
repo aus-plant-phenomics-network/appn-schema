@@ -4,8 +4,8 @@
 ![UML diagram for Sample](/ttl_uml/ttl_appn_Sample.png)
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sample
-* [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md)
-* [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+* [https://schema.plantphenomics.org.au/BiologicalUnit](/doc/appn_BiologicalUnit.md)
+* [https://schema.plantphenomics.org.au/ObservationUnit](/doc/appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest

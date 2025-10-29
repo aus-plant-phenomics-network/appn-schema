@@ -3,10 +3,10 @@
 
 ![UML diagram for GrowthFacility](/ttl_uml/ttl_appn_GrowthFacility.png)
 ## Superclasses
-* [appn:Platform](/doc/appn_Platform.md)
+* [https://schema.plantphenomics.org.au/Platform](/doc/appn_Platform.md)
 * https://www.w3.org/ns/sosa/Platform
 * https://schema.org/IndividualProduct
-* [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+* [https://schema.plantphenomics.org.au/ObservationUnit](/doc/appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
