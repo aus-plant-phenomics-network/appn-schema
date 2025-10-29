@@ -5,5 +5,7 @@
 ## Superclasses
 * https://www.w3.org/ns/sosa/Platform
 * https://schema.org/IndividualProduct
+## Properties
+* Platform https://schema.plantphenomics.org.au/deployedOnPlatform
 ## Subclasses
 * [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)

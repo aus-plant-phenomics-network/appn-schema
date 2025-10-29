@@ -6,6 +6,9 @@ Observer --|> "sosa:Sensor"
 Sensor --|> Observer
 class "schema:IndividualProduct" #DDFFDD 
 Sensor --|> "schema:IndividualProduct"
+class Sensor {
+    deployedSystem
+}
 class Observation 
 Observation --> Observer : madeByObserver
 @enduml

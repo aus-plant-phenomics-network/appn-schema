@@ -142,7 +142,7 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                 heading_written = True
             if len(property[1]) == 0:
                 uml.write(f"class {class_name} {{\n    {ppty_name}\n}}\n")
-                md.write(f"* {focus_class[1]} {prefixes[ppty[0]]}{ppty[1]}")
+                md.write(f"* {focus_class[1]} {prefixes[ppty[0]]}{ppty[1]}\n")
             for r in property[1]:
                 if r == cls:
                     reflexive = True

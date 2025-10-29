@@ -12,6 +12,7 @@
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
 * appn:GrowthFacility appn:hasGrowthFacilityType [appn:GrowthFacilityType](/doc/appn_GrowthFacilityType.md)
+* GrowthFacility https://schema.plantphenomics.org.au/deployedOnPlatform
 * [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:inheritsContext [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:hasLocation [appn:SpatialLocation](/doc/appn_SpatialLocation.md)

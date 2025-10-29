@@ -16,6 +16,9 @@ ObservationUnit --|> "sosa:FeatureOfInterest"
 GrowthFacility --|> ObservationUnit
 class GrowthFacilityType 
 GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
+class Platform {
+    deployedOnPlatform
+}
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
