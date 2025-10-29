@@ -3,29 +3,29 @@ class Person  #line.bold
 class Observer  
 class "sosa:Sensor" #EEFFCC 
 Observer --|> "sosa:Sensor"
-class Observation 
-Observation --> Observer : madeByObserver
 Person --|> Observer
 class Controller  
 class "sosa:Actuator" #EEFFCC 
 Controller --|> "sosa:Actuator"
-class Control 
-Control --> Controller : madeByController
-class Input 
-Input --> Controller : madeByController
 Person --|> Controller
 class Sampler  
 class "sosa:Sampler" #EEFFCC 
 Sampler --|> "sosa:Sampler"
-class Sampling 
-Sampling --> Sampler : madeBySampler
 Person --|> Sampler
 class Transformer  
 class "sosa:Sensor" #EEFFCC 
 Transformer --|> "sosa:Sensor"
-class Transformation 
-Transformation --> Transformer : madeByTransformer
 Person --|> Transformer
 class "schema:Person" #DDFFDD 
 Person --|> "schema:Person"
+class Observation 
+Observation --> Observer : madeByObserver
+class Control 
+Control --> Controller : madeByController
+class Input 
+Input --> Controller : madeByController
+class Sampling 
+Sampling --> Sampler : madeBySampler
+class Transformation 
+Transformation --> Transformer : madeByTransformer
 @enduml

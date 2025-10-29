@@ -7,6 +7,13 @@ class "ppeo:ObservationUnit" #DDDDFF
 ObservationUnit --|> "ppeo:ObservationUnit"
 class "sosa:FeatureOfInterest" #EEFFCC 
 ObservationUnit --|> "sosa:FeatureOfInterest"
+BiologicalUnit --|> ObservationUnit
+class "bio:BioChemEntity" #CCEEFF 
+BiologicalUnit --|> "bio:BioChemEntity"
+class BiologicalUnitType 
+BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
+class BiologicalMaterial 
+BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
@@ -15,13 +22,6 @@ class SpatialLocation
 ObservationUnit --> SpatialLocation : hasLocation
 class SpatialLocation 
 SpatialLocation --> ObservationUnit : isLocationWithin
-BiologicalUnit --|> ObservationUnit
-class "bio:BioChemEntity" #CCEEFF 
-BiologicalUnit --|> "bio:BioChemEntity"
-class BiologicalUnitType 
-BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
-class BiologicalMaterial 
-BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 class Sample 
 Sample --|> BiologicalUnit
 @enduml

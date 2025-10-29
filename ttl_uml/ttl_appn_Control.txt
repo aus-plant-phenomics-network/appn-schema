@@ -4,13 +4,16 @@ class Assay
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
-class ResearchActivity 
-ResearchActivity --> ResearchActivity : isPartOf
 Assay --|> ResearchActivity
 class "sosa:Execution" #EEFFCC 
 Assay --|> "sosa:Execution"
 class "ppeo:Assay" #DDDDFF 
 Assay --|> "ppeo:Assay"
+Control --|> Assay
+class Controller 
+Control --> Controller : madeByController
+class ControlledVariable 
+Control --> ControlledVariable : controls
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class "schema:Dataset" #DDFFDD
@@ -19,9 +22,6 @@ class "schema:File" #DDFFDD
 Assay --> "schema:File" : hasResult
 class Sample 
 Assay --> Sample : hasResult
-Control --|> Assay
-class Controller 
-Control --> Controller : madeByController
-class ControlledVariable 
-Control --> ControlledVariable : controls
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
 @enduml

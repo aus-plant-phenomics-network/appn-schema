@@ -3,8 +3,6 @@ class Assay  #line.bold
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
-class ResearchActivity 
-ResearchActivity --> ResearchActivity : isPartOf
 Assay --|> ResearchActivity
 class "sosa:Execution" #EEFFCC 
 Assay --|> "sosa:Execution"
@@ -18,6 +16,8 @@ class "schema:File" #DDFFDD
 Assay --> "schema:File" : hasResult
 class Sample 
 Assay --> Sample : hasResult
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
 class Observation 
 Observation --|> Assay
 class Control 

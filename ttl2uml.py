@@ -18,10 +18,13 @@ logging.getLogger().addHandler(logging.StreamHandler())
 # Name of turtle input file
 ttl_file = "appn-schema.ttl"
 
-# Output folder
+# Output folders
 uml_folder = "ttl_uml"
 if not os.path.exists(uml_folder):
     os.mkdir(uml_folder)
+markdown_folder = "doc"
+if not os.path.exists(markdown_folder):
+    os.mkdir(markdown_folder)
 
 # Colours for random selection to colour classes from different packages (keyed on prefix)
 colours = [
@@ -127,53 +130,82 @@ def get_name(parts: tuple[str:str]) -> str:
     return parts[1] if parts[0] == "appn" else f'"{parts[0]}:{parts[1]}"'
 
 # Generate UML property definitions for a specified class
-def write_properties(file: io.TextIOWrapper, cls: tuple[str, str]) -> str:
+def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str, str], focus_class: tuple[str,str], heading_written: bool) -> str:
     class_name = get_name(cls)
     reflexive = False
     for ppty in properties:
         ppty_name = get_name(ppty)
         property = properties[ppty]
         if cls in property[0]:
+            if not heading_written:
+                md.write(f"## Properties\n")
+                heading_written = True
             if len(property[1]) == 0:
-                file.write(f"class {class_name} {{\n    {ppty_name}\n}}\n")
+                uml.write(f"class {class_name} {{\n    {ppty_name}\n}}\n")
+                md.write(f"{focus_class[1]} {prefixes[ppty[0]]}{ppty[1]}")
             for r in property[1]:
                 if r == cls:
                     reflexive = True
                 r_name = get_name(r)
                 package_colour = "" if r[0] == "appn" else package_colours[r[0]]
-                file.write(f"class {r_name} {package_colour}\n")
-                file.write(f"{class_name} --> {r_name} : {ppty_name}\n")
+                uml.write(f"class {r_name} {package_colour}\n")
+                uml.write(f"{class_name} --> {r_name} : {ppty_name}\n")
+                if cls == focus_class:
+                    this_class = focus_class[1]
+                else:
+                    expanded_r = f"{prefixes[r[0]]}{r[1]}"
+                    this_class = f"[{expanded_r}]({expanded_r})"
+                other_class = f"{prefixes[r[0]]}{r[1]}"
+                md.write(f"{this_class} {prefixes[ppty[0]]}{ppty[1]} [{other_class}]({other_class})\n")
         if cls in property[1]:
             for r in property[0]:
+                if not heading_written:
+                    md.write(f"## Properties\n")
+                    heading_written = True
                 if r != cls or not reflexive:
                     r_name = get_name(r)
                     package_colour = "" if r[0] == "appn" else package_colours[r[0]]
-                    file.write(f"class {r_name} {package_colour}\n")
-                    file.write(f"{r_name} --> {class_name} : {ppty_name}\n")
+                    uml.write(f"class {r_name} {package_colour}\n")
+                    uml.write(f"{r_name} --> {class_name} : {ppty_name}\n")
+                    if cls == focus_class:
+                        this_class = focus_class[1]
+                    else:
+                        expanded_r = f"{prefixes[r[0]]}{r[1]}"
+                        this_class = f"[{expanded_r}]({expanded_r})"
+                    other_class = f"{prefixes[r[0]]}{r[1]}"
+                    md.write(f"[{other_class}]({other_class}) {prefixes[ppty[0]]}{ppty[1]} {this_class}\n")
+    if cls in inheritance:
+        for parent in inheritance[cls]:
+            write_properties(uml, md, parent, focus_class, heading_written)
 
 # Generate UML superclass definitions for a specified class - this writes the class too.
-def write_parents(file: io.TextIOWrapper, cls: tuple, focus_class: tuple[str,str]) -> str:
+def write_parents(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple, focus_class: tuple[str,str]) -> str:
     class_name = get_name(cls)
     package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
     style = "#line.bold" if cls == focus_class else ""
-    file.write(f"class {class_name} {package_colour} {style}\n")
+    uml.write(f"class {class_name} {package_colour} {style}\n")
+    md.write(f"* {prefixes[cls[0]]}{cls[1]}\n")
     if cls in inheritance:
         for parent in inheritance[cls]:
-            parent_name = write_parents(file, parent, focus_class)
-            file.write(f"{class_name} --|> {parent_name}\n")
-    write_properties(file, cls)
+            parent_name = write_parents(uml, md, parent, focus_class)
+            uml.write(f"{class_name} --|> {parent_name}\n")
     return class_name
 
 # Generate UML subclass definitions for a specified class - this writes the class too.
-def write_children(file: io.TextIOWrapper, cls: tuple[str,str], focus_class: tuple[str,str]) -> str:
+def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,str], focus_class: tuple[str,str]) -> str:
     class_name = get_name(cls)
     if cls != focus_class:
         package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
-        file.write(f"class {class_name} {package_colour}\n")
+        uml.write(f"class {class_name} {package_colour}\n")
+        md_file.write(f"* {prefixes[cls[0]]}{cls[1]}\n")
+    heading_written = False
     for child in inheritance:
         if cls in inheritance[child]:
-            child_name = write_children(file, child, focus_class)
-            file.write(f"{child_name} --|> {class_name}\n")
+            if cls == focus_class and not heading_written:
+                md_file.write(f"## Subclasses\n")
+                heading_written = True
+            child_name = write_children(uml, md, child, focus_class)
+            uml.write(f"{child_name} --|> {class_name}\n")
     return class_name
 
 
@@ -220,7 +252,7 @@ if len(exclusions) > 0:
                         uml_file.write(f"{child_name} --|> {parent_name}\n")
         uml_file.write("@enduml\n")
 
-# Otherwise generate the standard diagrams
+# Otherwise generate the standard diagrams and markdown
 else:
     # Main diagram with all classes and inheritance.
     with open(os.path.join(uml_folder, f"ttl_appn_full.txt"), "w") as uml_file:
@@ -244,9 +276,17 @@ else:
 
     # Class diagrams with inheritance, properties and subclasses
     for appn_class in packages["appn"]:
-        with open(os.path.join(uml_folder, f"ttl_appn_{appn_class[1]}.txt"), "w") as uml_file:
+        cls = appn_class[1]
+        with open(os.path.join(uml_folder, f"ttl_appn_{cls}.txt"), "w") as uml_file, \
+                open(os.path.join(markdown_folder, f"appn_{cls}.md"), "w") as md_file:
+            uri = f"{prefixes['appn']}{cls}"
+            md_file.write(f"# {cls}\n")
+            md_file.write(f"[uri](uri)\n")
+            md_file.write(f"![UML diagram for {cls}](/{uml_folder}/ttl_appn_{cls}.png)\n")
             uml_file.write("@startuml\n")
-            write_parents(uml_file, appn_class, appn_class)
-            write_children(uml_file, appn_class, appn_class)
-            # write_properties(uml_file, appn_class)
+            if appn_class in inheritance:
+                md_file.write(f"## Superclasses\n")
+            write_parents(uml_file, md_file, appn_class, appn_class)
+            write_properties(uml_file, md_file, appn_class, appn_class, False)
+            write_children(uml_file, md_file, appn_class, appn_class)
             uml_file.write("@enduml\n")

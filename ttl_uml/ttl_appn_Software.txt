@@ -5,21 +5,21 @@ Software --|> "bio:ComputationalWorkflow"
 class Observer  
 class "sosa:Sensor" #EEFFCC 
 Observer --|> "sosa:Sensor"
-class Observation 
-Observation --> Observer : madeByObserver
 Software --|> Observer
 class Controller  
 class "sosa:Actuator" #EEFFCC 
 Controller --|> "sosa:Actuator"
-class Control 
-Control --> Controller : madeByController
-class Input 
-Input --> Controller : madeByController
 Software --|> Controller
 class Transformer  
 class "sosa:Sensor" #EEFFCC 
 Transformer --|> "sosa:Sensor"
+Software --|> Transformer
+class Observation 
+Observation --> Observer : madeByObserver
+class Control 
+Control --> Controller : madeByController
+class Input 
+Input --> Controller : madeByController
 class Transformation 
 Transformation --> Transformer : madeByTransformer
-Software --|> Transformer
 @enduml

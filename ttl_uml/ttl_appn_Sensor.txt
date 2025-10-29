@@ -3,9 +3,9 @@ class Sensor  #line.bold
 class Observer  
 class "sosa:Sensor" #EEFFCC 
 Observer --|> "sosa:Sensor"
-class Observation 
-Observation --> Observer : madeByObserver
 Sensor --|> Observer
 class "schema:IndividualProduct" #DDFFDD 
 Sensor --|> "schema:IndividualProduct"
+class Observation 
+Observation --> Observer : madeByObserver
 @enduml

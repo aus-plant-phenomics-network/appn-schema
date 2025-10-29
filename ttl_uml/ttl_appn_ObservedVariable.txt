@@ -7,10 +7,10 @@ class "cdi:RepresentedVariable" #FFCCEE
 Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"
-class Variable {
-    hasDefaultValue
-}
 ObservedVariable --|> Variable
 class Observation 
 Observation --> ObservedVariable : observes
+class Variable {
+    hasDefaultValue
+}
 @enduml

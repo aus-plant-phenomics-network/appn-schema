@@ -13,6 +13,9 @@ class "ppeo:ObservationUnit" #DDDDFF
 ObservationUnit --|> "ppeo:ObservationUnit"
 class "sosa:FeatureOfInterest" #EEFFCC 
 ObservationUnit --|> "sosa:FeatureOfInterest"
+GrowthFacility --|> ObservationUnit
+class GrowthFacilityType 
+GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
@@ -21,7 +24,4 @@ class SpatialLocation
 ObservationUnit --> SpatialLocation : hasLocation
 class SpatialLocation 
 SpatialLocation --> ObservationUnit : isLocationWithin
-GrowthFacility --|> ObservationUnit
-class GrowthFacilityType 
-GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
 @enduml

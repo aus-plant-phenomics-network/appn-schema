@@ -1,0 +1,10 @@
+# Investigation
+[uri](uri)
+![UML diagram for Investigation](/ttl_uml/ttl_appn_Investigation.png)
+## Superclasses
+* https://schema.plantphenomics.org.au/Investigation
+* https://schema.plantphenomics.org.au/ResearchActivity
+* https://schema.org/Action
+* http://purl.org/ppeo/PPEO.owl#Investigation
+## Properties
+[https://schema.plantphenomics.org.au/ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity) https://schema.plantphenomics.org.au/isPartOf [https://schema.plantphenomics.org.au/ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)

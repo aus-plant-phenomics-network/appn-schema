@@ -3,9 +3,9 @@ class Study  #line.bold
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
-class ResearchActivity 
-ResearchActivity --> ResearchActivity : isPartOf
 Study --|> ResearchActivity
 class "ppeo:Study" #DDDDFF 
 Study --|> "ppeo:Study"
+class ResearchActivity 
+ResearchActivity --> ResearchActivity : isPartOf
 @enduml
