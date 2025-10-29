@@ -3,13 +3,13 @@
 
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/Observer
+* [appn]:Observer](/doc/appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor
-* https://schema.plantphenomics.org.au/Controller
+* [appn]:Controller](/doc/appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
-* https://schema.plantphenomics.org.au/Sampler
+* [appn]:Sampler](/doc/appn_Sampler.md)
 * https://www.w3.org/ns/sosa/Sampler
-* https://schema.plantphenomics.org.au/Transformer
+* [appn]:Transformer](/doc/appn_Transformer.md)
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/Person
 ## Properties

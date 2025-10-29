@@ -3,7 +3,7 @@
 
 ![UML diagram for Actuator](/ttl_uml/ttl_appn_Actuator.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/Controller
+* [appn]:Controller](/doc/appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/IndividualProduct
 ## Properties

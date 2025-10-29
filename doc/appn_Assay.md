@@ -3,7 +3,7 @@
 
 ![UML diagram for Assay](/ttl_uml/ttl_appn_Assay.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/ResearchActivity
+* [appn]:ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay

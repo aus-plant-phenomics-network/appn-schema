@@ -3,8 +3,8 @@
 
 ![UML diagram for Observation](/ttl_uml/ttl_appn_Observation.png)
 ## Superclasses
-* https://schema.plantphenomics.org.au/Assay
-* https://schema.plantphenomics.org.au/ResearchActivity
+* [appn]:Assay](/doc/appn_Assay.md)
+* [appn]:ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay
