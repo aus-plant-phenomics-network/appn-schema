@@ -11,8 +11,8 @@
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
-appn:GrowthFacility appn:hasGrowthFacilityType [appn:GrowthFacilityType](https://schema.plantphenomics.org.au/GrowthFacilityType)
-[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:isForObservationUnit [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
-[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:inheritsContext [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
-[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:hasLocation [appn:SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
-[appn:SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation) appn:isLocationWithin [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
+appn:GrowthFacility appn:hasGrowthFacilityType [appn:GrowthFacilityType](/doc/appn_GrowthFacilityType.md)
+[appn:Assay]([appn:Assay](/doc/appn_Assay.md)) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+[appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:inheritsContext [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+[appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:hasLocation [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
+[appn:SpatialLocation]([appn:SpatialLocation](/doc/appn_SpatialLocation.md)) appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md)

@@ -5,4 +5,4 @@
 ## Superclasses
 * https://schema.org/Enumeration
 ## Properties
-[appn:BiologicalUnit](/ttl_uml/appn_BiologicalUnit) appn:hasBiologicalUnitType appn:BiologicalUnitType
+[appn:BiologicalUnit]([appn:BiologicalUnit](/doc/appn_BiologicalUnit.md)) appn:hasBiologicalUnitType appn:BiologicalUnitType

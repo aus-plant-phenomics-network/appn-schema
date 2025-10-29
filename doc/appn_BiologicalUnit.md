@@ -9,11 +9,11 @@
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 * https://bioschemas.org/BioChemEntity
 ## Properties
-appn:BiologicalUnit appn:hasBiologicalUnitType [appn:BiologicalUnitType](https://schema.plantphenomics.org.au/BiologicalUnitType)
-appn:BiologicalUnit appn:hasBiologicalMaterial [appn:BiologicalMaterial](https://schema.plantphenomics.org.au/BiologicalMaterial)
-[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:isForObservationUnit [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
-[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:inheritsContext [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
-[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:hasLocation [appn:SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
-[appn:SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation) appn:isLocationWithin [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
+appn:BiologicalUnit appn:hasBiologicalUnitType [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+appn:BiologicalUnit appn:hasBiologicalMaterial [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
+[appn:Assay]([appn:Assay](/doc/appn_Assay.md)) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+[appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:inheritsContext [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+[appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:hasLocation [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
+[appn:SpatialLocation]([appn:SpatialLocation](/doc/appn_SpatialLocation.md)) appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
 ## Subclasses
 * https://schema.plantphenomics.org.au/Sample

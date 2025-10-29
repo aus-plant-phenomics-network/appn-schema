@@ -6,6 +6,6 @@
 * http://purl.org/ppeo/PPEO.owl#SpatialDistribution
 * https://schema.org/Thing
 ## Properties
-[appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit) appn:hasLocation appn:SpatialLocation
-appn:SpatialLocation appn:isLocationWithin [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
+[appn:ObservationUnit]([appn:ObservationUnit](/doc/appn_ObservationUnit.md)) appn:hasLocation appn:SpatialLocation
+appn:SpatialLocation appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
 SpatialLocation https://schema.plantphenomics.org.au/rowSpatialLocation https://schema.plantphenomics.org.au/column

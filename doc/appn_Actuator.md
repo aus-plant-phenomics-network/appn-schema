@@ -7,5 +7,5 @@
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/IndividualProduct
 ## Properties
-[appn:Control](https://schema.plantphenomics.org.au/Control) appn:madeByController [appn:Controller](https://schema.plantphenomics.org.au/Controller)
-[appn:Input](https://schema.plantphenomics.org.au/Input) appn:madeByController [appn:Controller](https://schema.plantphenomics.org.au/Controller)
+[appn:Control]([appn:Control](/doc/appn_Control.md)) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
+[appn:Input]([appn:Input](/doc/appn_Input.md)) appn:madeByController [appn:Controller](/doc/appn_Controller.md)

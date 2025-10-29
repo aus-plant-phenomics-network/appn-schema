@@ -152,11 +152,16 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                 uml.write(f"{class_name} --> {r_name} : {ppty_name}\n")
                 if cls == focus_class:
                     this_class = f"{focus_class[0]}:{focus_class[1]}"
+                elif cls[0] == "appn":
+                    this_class = f"[appn:{cls[1]}](/doc/appn_{cls[1]}.md)"
                 else:
                     expanded_r = f"{prefixes[cls[0]]}{cls[1]}"
                     this_class = f"[{cls[0]}:{cls[1]}]({expanded_r})"
-                other_class = f"{prefixes[r[0]]}{r[1]}"
-                md.write(f"{this_class} {ppty[0]}:{ppty[1]} [{r[0]}:{r[1]}]({other_class})\n")
+                if r[0] == "appn":
+                    other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
+                else:
+                    other_class = f"[{r[0]}:{r[1]}]({prefixes[r[0]]}{r[1]})"
+                md.write(f"{this_class} {ppty[0]}:{ppty[1]} {other_class}\n")
         if cls in property[1]:
             for r in property[0]:
                 if not heading_written:
@@ -169,10 +174,15 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     uml.write(f"{r_name} --> {class_name} : {ppty_name}\n")
                     if cls == focus_class:
                         this_class = f"{focus_class[0]}:{focus_class[1]}"
+                    elif cls[0] == "appn":
+                        this_class = f"[{cls[0]}:{cls[1]}](/doc/appn_{cls[1]}.md)"
                     else:
                         expanded_r = f"{prefixes[cls[0]]}{cls[1]}"
                         this_class = f"[{cls[0]}:{cls[1]}]({expanded_r})"
-                    other_class = f"{prefixes[r[0]]}{r[1]}"
+                    if r[0] == "appn":
+                        other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
+                    else:
+                        other_class = f"{prefixes[r[0]]}{r[1]}"
                     md.write(f"[{r[0]}:{r[1]}]({other_class}) {ppty[0]}:{ppty[1]} {this_class}\n")
     if cls in inheritance:
         for parent in inheritance[cls]:

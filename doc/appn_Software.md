@@ -11,9 +11,9 @@
 * https://schema.plantphenomics.org.au/Transformer
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
-[appn:Observation](https://schema.plantphenomics.org.au/Observation) appn:madeByObserver [appn:Observer](https://schema.plantphenomics.org.au/Observer)
+[appn:Observation]([appn:Observation](/doc/appn_Observation.md)) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
 ## Properties
-[appn:Control](https://schema.plantphenomics.org.au/Control) appn:madeByController [appn:Controller](https://schema.plantphenomics.org.au/Controller)
-[appn:Input](https://schema.plantphenomics.org.au/Input) appn:madeByController [appn:Controller](https://schema.plantphenomics.org.au/Controller)
+[appn:Control]([appn:Control](/doc/appn_Control.md)) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
+[appn:Input]([appn:Input](/doc/appn_Input.md)) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
 ## Properties
-[appn:Transformation](https://schema.plantphenomics.org.au/Transformation) appn:madeByTransformer [appn:Transformer](https://schema.plantphenomics.org.au/Transformer)
+[appn:Transformation]([appn:Transformation](/doc/appn_Transformation.md)) appn:madeByTransformer [appn:Transformer](/doc/appn_Transformer.md)

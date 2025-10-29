@@ -10,10 +10,10 @@
 * http://purl.org/ppeo/PPEO.owl#Assay
 * http://purl.org/ppeo/PPEO.owl#Observation
 ## Properties
-appn:Observation appn:madeByObserver [appn:Observer](https://schema.plantphenomics.org.au/Observer)
-appn:Observation appn:observes [appn:ObservedVariable](https://schema.plantphenomics.org.au/ObservedVariable)
-[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:isForObservationUnit [appn:ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
-[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:hasResult [schema:Dataset](https://schema.org/Dataset)
-[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:hasResult [schema:File](https://schema.org/File)
-[appn:Assay](https://schema.plantphenomics.org.au/Assay) appn:hasResult [appn:Sample](https://schema.plantphenomics.org.au/Sample)
-[appn:ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity) appn:isPartOf [appn:ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)
+appn:Observation appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
+appn:Observation appn:observes [appn:ObservedVariable](/doc/appn_ObservedVariable.md)
+[appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+[appn:Assay](/doc/appn_Assay.md) appn:hasResult [schema:Dataset](https://schema.org/Dataset)
+[appn:Assay](/doc/appn_Assay.md) appn:hasResult [schema:File](https://schema.org/File)
+[appn:Assay](/doc/appn_Assay.md) appn:hasResult [appn:Sample](/doc/appn_Sample.md)
+[appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

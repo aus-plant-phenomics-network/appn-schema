@@ -5,7 +5,7 @@
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
-[appn:Observation](https://schema.plantphenomics.org.au/Observation) appn:madeByObserver appn:Observer
+[appn:Observation]([appn:Observation](/doc/appn_Observation.md)) appn:madeByObserver appn:Observer
 ## Subclasses
 * https://schema.plantphenomics.org.au/Sensor
 * https://schema.plantphenomics.org.au/Person

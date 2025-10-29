@@ -7,4 +7,4 @@
 * https://schema.org/Action
 * http://purl.org/ppeo/PPEO.owl#Study
 ## Properties
-[appn:ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity) appn:isPartOf [appn:ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)
+[appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

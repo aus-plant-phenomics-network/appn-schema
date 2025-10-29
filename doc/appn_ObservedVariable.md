@@ -8,5 +8,5 @@
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-[appn:Observation](https://schema.plantphenomics.org.au/Observation) appn:observes appn:ObservedVariable
+[appn:Observation]([appn:Observation](/doc/appn_Observation.md)) appn:observes appn:ObservedVariable
 ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue

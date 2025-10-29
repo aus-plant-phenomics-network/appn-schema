@@ -7,4 +7,4 @@
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/IndividualProduct
 ## Properties
-[appn:Observation](https://schema.plantphenomics.org.au/Observation) appn:madeByObserver [appn:Observer](https://schema.plantphenomics.org.au/Observer)
+[appn:Observation]([appn:Observation](/doc/appn_Observation.md)) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
