@@ -311,3 +311,8 @@ else:
             write_properties(uml_file, md_file, appn_class, appn_class, False)
             write_children(uml_file, md_file, appn_class, appn_class)
             uml_file.write("@enduml\n")
+
+    with open(os.path.join(markdown_folder, "appn_schema.md"), "w") as md_file:
+        md_file.write("# APPN Schema Overview\n## APPN Classes\n")
+        for appn_class in sorted(packages["appn"]):
+            md_file.write(f"* [appn:{appn_class[1]}](/doc/appn_{appn_class[1]}.md)\n")
