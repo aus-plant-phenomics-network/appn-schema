@@ -6,6 +6,6 @@
 * https://www.w3.org/ns/sosa/Platform
 * https://schema.org/IndividualProduct
 ## Properties
-* Platform https://schema.plantphenomics.org.au/deployedOnPlatform
+* [appn:Deployment](/doc/appn_Deployment.md) appn:deployedOnPlatform appn:Platform
 ## Subclasses
 * [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)

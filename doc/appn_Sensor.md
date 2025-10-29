@@ -7,5 +7,5 @@
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/IndividualProduct
 ## Properties
-* Sensor https://schema.plantphenomics.org.au/deployedSystem
+* [appn:Deployment](/doc/appn_Deployment.md) appn:deployedSystem appn:Sensor
 * [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)

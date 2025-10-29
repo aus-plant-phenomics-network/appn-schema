@@ -359,11 +359,11 @@ appn:deployedSystem a rdfs:Property ;
     rdfs:label "deployedSystem" ; 
     rdfs:description "Identifies a Sensor or Actuator deployed on a Platform" ;
     schema:domainIncludes appn:Deployment ;
-    schema:domainIncludes appn:Sensor,appn:Actuator .
+    schema:rangeIncludes appn:Sensor,appn:Actuator .
 
 appn:deployedOnPlatform a rdfs:Property ;
     rdfs:label "deployedOnPlatform" ; 
     rdfs:description "Identifies a Platform on which Sensors or Actuators are deployed" ;
     schema:domainIncludes appn:Deployment ;
-    schema:domainIncludes appn:Platform .
+    schema:rangeIncludes appn:Platform .
 

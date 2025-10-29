@@ -6,9 +6,8 @@ Controller --|> "sosa:Actuator"
 Actuator --|> Controller
 class "schema:IndividualProduct" #DDFFDD 
 Actuator --|> "schema:IndividualProduct"
-class Actuator {
-    deployedSystem
-}
+class Deployment 
+Deployment --> Actuator : deployedSystem
 class Control 
 Control --> Controller : madeByController
 class Input 

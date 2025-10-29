@@ -4,9 +4,8 @@ class "sosa:Platform" #EEFFCC
 Platform --|> "sosa:Platform"
 class "schema:IndividualProduct" #DDFFDD 
 Platform --|> "schema:IndividualProduct"
-class Platform {
-    deployedOnPlatform
-}
+class Deployment 
+Deployment --> Platform : deployedOnPlatform
 class GrowthFacility 
 GrowthFacility --|> Platform
 @enduml
