@@ -6,4 +6,4 @@
 * http://purl.org/ppeo/PPEO.owl#BiologicalMaterial
 * https://bioschemas.org/BioSample
 ## Properties
-* [appn:BiologicalUnit]([appn:BiologicalUnit](/doc/appn_BiologicalUnit.md)) appn:hasBiologicalMaterial appn:BiologicalMaterial
+* [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) appn:hasBiologicalMaterial appn:BiologicalMaterial

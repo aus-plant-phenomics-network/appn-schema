@@ -8,5 +8,5 @@
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Control]([appn:Control](/doc/appn_Control.md)) appn:controls appn:ControlledVariable
+* [appn:Control](/doc/appn_Control.md) appn:controls appn:ControlledVariable
 * ControlledVariable https://schema.plantphenomics.org.au/hasDefaultValue

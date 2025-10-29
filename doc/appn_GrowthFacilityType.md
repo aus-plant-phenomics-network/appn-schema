@@ -5,4 +5,4 @@
 ## Superclasses
 * https://schema.org/Enumeration
 ## Properties
-* [appn:GrowthFacility]([appn:GrowthFacility](/doc/appn_GrowthFacility.md)) appn:hasGrowthFacilityType appn:GrowthFacilityType
+* [appn:GrowthFacility](/doc/appn_GrowthFacility.md) appn:hasGrowthFacilityType appn:GrowthFacilityType

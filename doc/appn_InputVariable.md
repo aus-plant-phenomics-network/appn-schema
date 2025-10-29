@@ -8,5 +8,5 @@
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Input]([appn:Input](/doc/appn_Input.md)) appn:inputs appn:InputVariable
+* [appn:Input](/doc/appn_Input.md) appn:inputs appn:InputVariable
 * InputVariable https://schema.plantphenomics.org.au/hasDefaultValue

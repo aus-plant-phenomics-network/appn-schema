@@ -183,7 +183,7 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                         other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
                     else:
                         other_class = f"{prefixes[r[0]]}{r[1]}"
-                    md.write(f"* [{r[0]}:{r[1]}]({other_class}) {ppty[0]}:{ppty[1]} {this_class}\n")
+                    md.write(f"* {other_class} {ppty[0]}:{ppty[1]} {this_class}\n")
     if cls in inheritance:
         for parent in inheritance[cls]:
             write_properties(uml, md, parent, focus_class, heading_written)
