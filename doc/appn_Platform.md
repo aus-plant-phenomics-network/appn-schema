@@ -6,4 +6,4 @@
 * https://www.w3.org/ns/sosa/Platform
 * https://schema.org/IndividualProduct
 ## Subclasses
-* https://schema.plantphenomics.org.au/GrowthFacility
+* [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)

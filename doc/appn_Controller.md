@@ -8,7 +8,7 @@
 * [appn:Control](/doc/appn_Control.md) appn:madeByController appn:Controller
 * [appn:Input](/doc/appn_Input.md) appn:madeByController appn:Controller
 ## Subclasses
-* https://schema.plantphenomics.org.au/Actuator
-* https://schema.plantphenomics.org.au/ExternalEvent
-* https://schema.plantphenomics.org.au/Person
-* https://schema.plantphenomics.org.au/Software
+* [https://schema.plantphenomics.org.au/Actuator](/doc/appn_Actuator.md)
+* [https://schema.plantphenomics.org.au/ExternalEvent](/doc/appn_ExternalEvent.md)
+* [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)
+* [https://schema.plantphenomics.org.au/Software](/doc/appn_Software.md)

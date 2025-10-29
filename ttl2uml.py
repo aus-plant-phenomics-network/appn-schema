@@ -210,7 +210,7 @@ def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,s
     if cls != focus_class:
         package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
         uml.write(f"class {class_name} {package_colour}\n")
-        if parent[0] == "appn":
+        if cls[0] == "appn":
             md.write(f"* [{prefixes[cls[0]]}{cls[1]}](/doc/appn_{cls[1]}.md)\n")
         else:
             md.write(f"* {prefixes[cls[0]]}{cls[1]}\n")

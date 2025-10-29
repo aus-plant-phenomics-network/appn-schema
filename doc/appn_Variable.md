@@ -8,6 +8,6 @@
 * https://schema.org/InstanceValue
 ## Properties
 * Variable https://schema.plantphenomics.org.au/hasDefaultValue## Subclasses
-* https://schema.plantphenomics.org.au/ObservedVariable
-* https://schema.plantphenomics.org.au/ControlledVariable
-* https://schema.plantphenomics.org.au/InputVariable
+* [https://schema.plantphenomics.org.au/ObservedVariable](/doc/appn_ObservedVariable.md)
+* [https://schema.plantphenomics.org.au/ControlledVariable](/doc/appn_ControlledVariable.md)
+* [https://schema.plantphenomics.org.au/InputVariable](/doc/appn_InputVariable.md)

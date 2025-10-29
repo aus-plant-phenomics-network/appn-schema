@@ -16,4 +16,4 @@
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:hasLocation [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md) appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
 ## Subclasses
-* https://schema.plantphenomics.org.au/Sample
+* [https://schema.plantphenomics.org.au/Sample](/doc/appn_Sample.md)

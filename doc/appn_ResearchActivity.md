@@ -7,11 +7,11 @@
 ## Properties
 * appn:ResearchActivity appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 ## Subclasses
-* https://schema.plantphenomics.org.au/Investigation
-* https://schema.plantphenomics.org.au/Study
-* https://schema.plantphenomics.org.au/Assay
-* https://schema.plantphenomics.org.au/Observation
-* https://schema.plantphenomics.org.au/Control
-* https://schema.plantphenomics.org.au/Sampling
-* https://schema.plantphenomics.org.au/Transformation
-* https://schema.plantphenomics.org.au/Input
+* [https://schema.plantphenomics.org.au/Investigation](/doc/appn_Investigation.md)
+* [https://schema.plantphenomics.org.au/Study](/doc/appn_Study.md)
+* [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
+* [https://schema.plantphenomics.org.au/Observation](/doc/appn_Observation.md)
+* [https://schema.plantphenomics.org.au/Control](/doc/appn_Control.md)
+* [https://schema.plantphenomics.org.au/Sampling](/doc/appn_Sampling.md)
+* [https://schema.plantphenomics.org.au/Transformation](/doc/appn_Transformation.md)
+* [https://schema.plantphenomics.org.au/Input](/doc/appn_Input.md)

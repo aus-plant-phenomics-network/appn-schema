@@ -7,5 +7,5 @@
 ## Properties
 * [appn:Transformation](/doc/appn_Transformation.md) appn:madeByTransformer appn:Transformer
 ## Subclasses
-* https://schema.plantphenomics.org.au/Person
-* https://schema.plantphenomics.org.au/Software
+* [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)
+* [https://schema.plantphenomics.org.au/Software](/doc/appn_Software.md)

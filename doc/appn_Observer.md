@@ -7,6 +7,6 @@
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver appn:Observer
 ## Subclasses
-* https://schema.plantphenomics.org.au/Sensor
-* https://schema.plantphenomics.org.au/Person
-* https://schema.plantphenomics.org.au/Software
+* [https://schema.plantphenomics.org.au/Sensor](/doc/appn_Sensor.md)
+* [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)
+* [https://schema.plantphenomics.org.au/Software](/doc/appn_Software.md)

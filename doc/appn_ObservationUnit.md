@@ -12,6 +12,6 @@
 * appn:ObservationUnit appn:hasLocation [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md) appn:isLocationWithin appn:ObservationUnit
 ## Subclasses
-* https://schema.plantphenomics.org.au/GrowthFacility
-* https://schema.plantphenomics.org.au/BiologicalUnit
-* https://schema.plantphenomics.org.au/Sample
+* [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)
+* [https://schema.plantphenomics.org.au/BiologicalUnit](/doc/appn_BiologicalUnit.md)
+* [https://schema.plantphenomics.org.au/Sample](/doc/appn_Sample.md)

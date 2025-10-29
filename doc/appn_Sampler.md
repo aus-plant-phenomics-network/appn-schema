@@ -7,4 +7,4 @@
 ## Properties
 * [appn:Sampling](/doc/appn_Sampling.md) appn:madeBySampler appn:Sampler
 ## Subclasses
-* https://schema.plantphenomics.org.au/Person
+* [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)
