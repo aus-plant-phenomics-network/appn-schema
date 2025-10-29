@@ -5,4 +5,4 @@
 ## Superclasses
 * https://schema.org/Enumeration
 ## Properties
-[appn:BiologicalUnit](https://schema.plantphenomics.org.au/BiologicalUnit) appn:hasBiologicalUnitType appn:BiologicalUnitType
+[appn:BiologicalUnit](/ttl_uml/appn_BiologicalUnit) appn:hasBiologicalUnitType appn:BiologicalUnitType
