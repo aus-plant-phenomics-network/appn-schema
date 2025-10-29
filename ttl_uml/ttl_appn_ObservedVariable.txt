@@ -10,7 +10,7 @@ Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 class Observation 
 Observation --> ObservedVariable : observes
-class Variable {
+class Variable #line.bold {
     hasDefaultValue
 }
 @enduml

@@ -141,14 +141,18 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                 md.write(f"## Properties\n")
                 heading_written = True
             if len(property[1]) == 0:
-                uml.write(f"class {class_name} {{\n    {ppty_name}\n}}\n")
+                if cls == focus_class:
+                    uml.write(f"class {class_name} #line.bold {{\n    {ppty_name}\n}}\n")
+                else:
+                    uml.write(f"class {class_name} #line.bold {{\n    {ppty_name}\n}}\n")
                 md.write(f"* {focus_class[1]} {prefixes[ppty[0]]}{ppty[1]}\n")
             for r in property[1]:
                 if r == cls:
                     reflexive = True
                 r_name = get_name(r)
-                package_colour = "" if r[0] == "appn" else package_colours[r[0]]
-                uml.write(f"class {r_name} {package_colour}\n")
+                if r != focus_class:
+                    package_colour = "" if r[0] == "appn" else package_colours[r[0]]
+                    uml.write(f"class {r_name} {package_colour}\n")
                 uml.write(f"{class_name} --> {r_name} : {ppty_name}\n")
                 if cls == focus_class:
                     this_class = f"{focus_class[0]}:{focus_class[1]}"
@@ -169,8 +173,9 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     heading_written = True
                 if r != cls or not reflexive:
                     r_name = get_name(r)
-                    package_colour = "" if r[0] == "appn" else package_colours[r[0]]
-                    uml.write(f"class {r_name} {package_colour}\n")
+                    if r != focus_class:
+                        package_colour = "" if r[0] == "appn" else package_colours[r[0]]
+                        uml.write(f"class {r_name} {package_colour}\n")
                     uml.write(f"{r_name} --> {class_name} : {ppty_name}\n")
                     if cls == focus_class:
                         this_class = f"{focus_class[0]}:{focus_class[1]}"

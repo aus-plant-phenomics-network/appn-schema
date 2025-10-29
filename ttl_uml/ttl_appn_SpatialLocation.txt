@@ -8,10 +8,10 @@ class ObservationUnit
 ObservationUnit --> SpatialLocation : hasLocation
 class ObservationUnit 
 SpatialLocation --> ObservationUnit : isLocationWithin
-class SpatialLocation {
+class SpatialLocation #line.bold {
     row
 }
-class SpatialLocation {
+class SpatialLocation #line.bold {
     column
 }
 @enduml

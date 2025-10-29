@@ -10,7 +10,7 @@ Variable --|> "schema:InstanceValue"
 InputVariable --|> Variable
 class Input 
 Input --> InputVariable : inputs
-class Variable {
+class Variable #line.bold {
     hasDefaultValue
 }
 @enduml

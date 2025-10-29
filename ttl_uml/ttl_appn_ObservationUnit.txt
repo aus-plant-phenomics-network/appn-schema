@@ -8,7 +8,6 @@ class "sosa:FeatureOfInterest" #EEFFCC
 ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
-class ObservationUnit 
 ObservationUnit --> ObservationUnit : inheritsContext
 class SpatialLocation 
 ObservationUnit --> SpatialLocation : hasLocation

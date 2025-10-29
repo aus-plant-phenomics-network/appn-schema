@@ -10,7 +10,7 @@ Variable --|> "schema:InstanceValue"
 ControlledVariable --|> Variable
 class Control 
 Control --> ControlledVariable : controls
-class Variable {
+class Variable #line.bold {
     hasDefaultValue
 }
 @enduml
