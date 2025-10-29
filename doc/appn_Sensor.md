@@ -1,5 +1,6 @@
 # Sensor
-[uri](uri)
+[https://schema.plantphenomics.org.au/Sensor](https://schema.plantphenomics.org.au/Sensor)
+
 ![UML diagram for Sensor](/ttl_uml/ttl_appn_Sensor.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Sensor

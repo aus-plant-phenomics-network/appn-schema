@@ -1,5 +1,6 @@
 # Input
-[uri](uri)
+[https://schema.plantphenomics.org.au/Input](https://schema.plantphenomics.org.au/Input)
+
 ![UML diagram for Input](/ttl_uml/ttl_appn_Input.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Input

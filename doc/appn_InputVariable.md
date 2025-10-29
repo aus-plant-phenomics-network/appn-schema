@@ -1,5 +1,6 @@
 # InputVariable
-[uri](uri)
+[https://schema.plantphenomics.org.au/InputVariable](https://schema.plantphenomics.org.au/InputVariable)
+
 ![UML diagram for InputVariable](/ttl_uml/ttl_appn_InputVariable.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/InputVariable

@@ -1,5 +1,6 @@
 # Platform
-[uri](uri)
+[https://schema.plantphenomics.org.au/Platform](https://schema.plantphenomics.org.au/Platform)
+
 ![UML diagram for Platform](/ttl_uml/ttl_appn_Platform.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Platform

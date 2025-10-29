@@ -1,5 +1,6 @@
 # Actuator
-[uri](uri)
+[https://schema.plantphenomics.org.au/Actuator](https://schema.plantphenomics.org.au/Actuator)
+
 ![UML diagram for Actuator](/ttl_uml/ttl_appn_Actuator.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Actuator

@@ -1,5 +1,6 @@
 # Trait
-[uri](uri)
+[https://schema.plantphenomics.org.au/Trait](https://schema.plantphenomics.org.au/Trait)
+
 ![UML diagram for Trait](/ttl_uml/ttl_appn_Trait.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Trait

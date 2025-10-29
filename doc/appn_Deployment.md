@@ -1,5 +1,6 @@
 # Deployment
-[uri](uri)
+[https://schema.plantphenomics.org.au/Deployment](https://schema.plantphenomics.org.au/Deployment)
+
 ![UML diagram for Deployment](/ttl_uml/ttl_appn_Deployment.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Deployment

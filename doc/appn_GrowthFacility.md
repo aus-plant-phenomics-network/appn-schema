@@ -1,5 +1,6 @@
 # GrowthFacility
-[uri](uri)
+[https://schema.plantphenomics.org.au/GrowthFacility](https://schema.plantphenomics.org.au/GrowthFacility)
+
 ![UML diagram for GrowthFacility](/ttl_uml/ttl_appn_GrowthFacility.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/GrowthFacility

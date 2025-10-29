@@ -1,5 +1,6 @@
 # Sampling
-[uri](uri)
+[https://schema.plantphenomics.org.au/Sampling](https://schema.plantphenomics.org.au/Sampling)
+
 ![UML diagram for Sampling](/ttl_uml/ttl_appn_Sampling.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Sampling

@@ -1,5 +1,6 @@
 # ExternalEvent
-[uri](uri)
+[https://schema.plantphenomics.org.au/ExternalEvent](https://schema.plantphenomics.org.au/ExternalEvent)
+
 ![UML diagram for ExternalEvent](/ttl_uml/ttl_appn_ExternalEvent.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/ExternalEvent

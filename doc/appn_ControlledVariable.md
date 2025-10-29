@@ -1,5 +1,6 @@
 # ControlledVariable
-[uri](uri)
+[https://schema.plantphenomics.org.au/ControlledVariable](https://schema.plantphenomics.org.au/ControlledVariable)
+
 ![UML diagram for ControlledVariable](/ttl_uml/ttl_appn_ControlledVariable.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/ControlledVariable

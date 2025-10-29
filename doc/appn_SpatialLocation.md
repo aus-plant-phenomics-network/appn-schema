@@ -1,5 +1,6 @@
 # SpatialLocation
-[uri](uri)
+[https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
+
 ![UML diagram for SpatialLocation](/ttl_uml/ttl_appn_SpatialLocation.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/SpatialLocation

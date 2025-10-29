@@ -1,5 +1,6 @@
 # Transformation
-[uri](uri)
+[https://schema.plantphenomics.org.au/Transformation](https://schema.plantphenomics.org.au/Transformation)
+
 ![UML diagram for Transformation](/ttl_uml/ttl_appn_Transformation.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Transformation

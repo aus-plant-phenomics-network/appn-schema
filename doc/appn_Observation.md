@@ -1,5 +1,6 @@
 # Observation
-[uri](uri)
+[https://schema.plantphenomics.org.au/Observation](https://schema.plantphenomics.org.au/Observation)
+
 ![UML diagram for Observation](/ttl_uml/ttl_appn_Observation.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Observation

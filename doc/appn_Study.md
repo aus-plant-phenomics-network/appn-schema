@@ -1,5 +1,6 @@
 # Study
-[uri](uri)
+[https://schema.plantphenomics.org.au/Study](https://schema.plantphenomics.org.au/Study)
+
 ![UML diagram for Study](/ttl_uml/ttl_appn_Study.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Study

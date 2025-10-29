@@ -1,5 +1,6 @@
 # Assay
-[uri](uri)
+[https://schema.plantphenomics.org.au/Assay](https://schema.plantphenomics.org.au/Assay)
+
 ![UML diagram for Assay](/ttl_uml/ttl_appn_Assay.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Assay

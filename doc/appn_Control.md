@@ -1,5 +1,6 @@
 # Control
-[uri](uri)
+[https://schema.plantphenomics.org.au/Control](https://schema.plantphenomics.org.au/Control)
+
 ![UML diagram for Control](/ttl_uml/ttl_appn_Control.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Control

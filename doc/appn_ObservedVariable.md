@@ -1,5 +1,6 @@
 # ObservedVariable
-[uri](uri)
+[https://schema.plantphenomics.org.au/ObservedVariable](https://schema.plantphenomics.org.au/ObservedVariable)
+
 ![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/ObservedVariable

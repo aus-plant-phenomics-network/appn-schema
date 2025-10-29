@@ -1,5 +1,6 @@
 # Person
-[uri](uri)
+[https://schema.plantphenomics.org.au/Person](https://schema.plantphenomics.org.au/Person)
+
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Person

@@ -1,5 +1,6 @@
 # ResearchActivity
-[uri](uri)
+[https://schema.plantphenomics.org.au/ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)
+
 ![UML diagram for ResearchActivity](/ttl_uml/ttl_appn_ResearchActivity.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/ResearchActivity

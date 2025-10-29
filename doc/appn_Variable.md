@@ -1,5 +1,6 @@
 # Variable
-[uri](uri)
+[https://schema.plantphenomics.org.au/Variable](https://schema.plantphenomics.org.au/Variable)
+
 ![UML diagram for Variable](/ttl_uml/ttl_appn_Variable.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Variable

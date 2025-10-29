@@ -1,5 +1,6 @@
 # Transformer
-[uri](uri)
+[https://schema.plantphenomics.org.au/Transformer](https://schema.plantphenomics.org.au/Transformer)
+
 ![UML diagram for Transformer](/ttl_uml/ttl_appn_Transformer.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Transformer

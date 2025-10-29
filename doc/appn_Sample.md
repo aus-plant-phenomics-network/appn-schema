@@ -1,5 +1,6 @@
 # Sample
-[uri](uri)
+[https://schema.plantphenomics.org.au/Sample](https://schema.plantphenomics.org.au/Sample)
+
 ![UML diagram for Sample](/ttl_uml/ttl_appn_Sample.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Sample

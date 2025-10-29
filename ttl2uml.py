@@ -281,7 +281,7 @@ else:
                 open(os.path.join(markdown_folder, f"appn_{cls}.md"), "w") as md_file:
             uri = f"{prefixes['appn']}{cls}"
             md_file.write(f"# {cls}\n")
-            md_file.write(f"[uri](uri)\n")
+            md_file.write(f"[{uri}]({uri})\n\n")
             md_file.write(f"![UML diagram for {cls}](/{uml_folder}/ttl_appn_{cls}.png)\n")
             uml_file.write("@startuml\n")
             if appn_class in inheritance:

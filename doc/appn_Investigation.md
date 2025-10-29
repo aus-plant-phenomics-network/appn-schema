@@ -1,5 +1,6 @@
 # Investigation
-[uri](uri)
+[https://schema.plantphenomics.org.au/Investigation](https://schema.plantphenomics.org.au/Investigation)
+
 ![UML diagram for Investigation](/ttl_uml/ttl_appn_Investigation.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Investigation

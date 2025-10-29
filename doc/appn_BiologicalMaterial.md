@@ -1,5 +1,6 @@
 # BiologicalMaterial
-[uri](uri)
+[https://schema.plantphenomics.org.au/BiologicalMaterial](https://schema.plantphenomics.org.au/BiologicalMaterial)
+
 ![UML diagram for BiologicalMaterial](/ttl_uml/ttl_appn_BiologicalMaterial.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/BiologicalMaterial

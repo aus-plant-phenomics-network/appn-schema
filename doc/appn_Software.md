@@ -1,5 +1,6 @@
 # Software
-[uri](uri)
+[https://schema.plantphenomics.org.au/Software](https://schema.plantphenomics.org.au/Software)
+
 ![UML diagram for Software](/ttl_uml/ttl_appn_Software.png)
 ## Superclasses
 * https://schema.plantphenomics.org.au/Software
