@@ -130,7 +130,7 @@ def get_name(parts: tuple[str:str]) -> str:
     return parts[1] if parts[0] == "appn" else f'"{parts[0]}:{parts[1]}"'
 
 # Generate UML property definitions for a specified class
-def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str, str], focus_class: tuple[str,str], heading_written: bool) -> str:
+def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str, str], focus_class: tuple[str,str], heading_written: bool) -> bool:
     class_name = get_name(cls)
     reflexive = False
     for ppty in properties:
@@ -189,9 +189,12 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     else:
                         other_class = f"{prefixes[r[0]]}{r[1]}"
                     md.write(f"* {other_class} {ppty[0]}:{ppty[1]} {this_class}\n")
+    
     if cls in inheritance:
         for parent in inheritance[cls]:
-            write_properties(uml, md, parent, focus_class, heading_written)
+            heading_written = write_properties(uml, md, parent, focus_class, heading_written)
+    
+    return heading_written
 
 # Generate UML superclass definitions for a specified class - this writes the class too.
 def write_parents(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple, focus_class: tuple[str,str]) -> str:
