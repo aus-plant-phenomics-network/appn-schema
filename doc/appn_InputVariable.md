@@ -1,7 +1,10 @@
 # InputVariable
 [https://schema.plantphenomics.org.au/InputVariable](https://schema.plantphenomics.org.au/InputVariable)
 
+A Variable representing a quantity added to or removed from a set of ObservationUnits.
+
 ![UML diagram for InputVariable](/ttl_uml/ttl_appn_InputVariable.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](/doc/appn_Variable.md)
 * https://www.w3.org/ns/sosa/Property

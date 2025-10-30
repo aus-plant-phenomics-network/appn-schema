@@ -1,7 +1,10 @@
 # Assay
 [https://schema.plantphenomics.org.au/Assay](https://schema.plantphenomics.org.au/Assay)
 
+A research action that observes or modifies a set of ObservationUnits.
+
 ![UML diagram for Assay](/ttl_uml/ttl_appn_Assay.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action

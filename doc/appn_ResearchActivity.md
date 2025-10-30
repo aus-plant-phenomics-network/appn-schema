@@ -1,7 +1,10 @@
 # ResearchActivity
 [https://schema.plantphenomics.org.au/ResearchActivity](https://schema.plantphenomics.org.au/ResearchActivity)
 
+A time-delimited activity contributing to a research goal
+
 ![UML diagram for ResearchActivity](/ttl_uml/ttl_appn_ResearchActivity.png)
+
 ## Superclasses
 * https://schema.org/Action
 ## Properties

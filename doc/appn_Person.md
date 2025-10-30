@@ -1,7 +1,10 @@
 # Person
 [https://schema.plantphenomics.org.au/Person](https://schema.plantphenomics.org.au/Person)
 
+Person
+
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Observer](/doc/appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor

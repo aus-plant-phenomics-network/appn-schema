@@ -1,7 +1,10 @@
 # ObservationUnit
 [https://schema.plantphenomics.org.au/ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
 
+An entity for which a Study collects data.
+
 ![UML diagram for ObservationUnit](/ttl_uml/ttl_appn_ObservationUnit.png)
+
 ## Superclasses
 * https://schema.org/Thing
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit

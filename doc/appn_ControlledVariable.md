@@ -1,7 +1,10 @@
 # ControlledVariable
 [https://schema.plantphenomics.org.au/ControlledVariable](https://schema.plantphenomics.org.au/ControlledVariable)
 
+ControlledVariable
+
 ![UML diagram for ControlledVariable](/ttl_uml/ttl_appn_ControlledVariable.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](/doc/appn_Variable.md)
 * https://www.w3.org/ns/sosa/Property

@@ -1,7 +1,10 @@
 # Observation
 [https://schema.plantphenomics.org.au/Observation](https://schema.plantphenomics.org.au/Observation)
 
+An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.
+
 ![UML diagram for Observation](/ttl_uml/ttl_appn_Observation.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)

@@ -1,7 +1,10 @@
 # GrowthFacility
 [https://schema.plantphenomics.org.au/GrowthFacility](https://schema.plantphenomics.org.au/GrowthFacility)
 
+GrowthFacility
+
 ![UML diagram for GrowthFacility](/ttl_uml/ttl_appn_GrowthFacility.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Platform](/doc/appn_Platform.md)
 * https://www.w3.org/ns/sosa/Platform

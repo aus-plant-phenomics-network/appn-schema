@@ -1,7 +1,10 @@
 # Controller
 [https://schema.plantphenomics.org.au/Controller](https://schema.plantphenomics.org.au/Controller)
 
+Controller
+
 ![UML diagram for Controller](/ttl_uml/ttl_appn_Controller.png)
+
 ## Superclasses
 * https://www.w3.org/ns/sosa/Actuator
 ## Properties

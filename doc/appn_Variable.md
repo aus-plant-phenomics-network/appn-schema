@@ -1,7 +1,10 @@
 # Variable
 [https://schema.plantphenomics.org.au/Variable](https://schema.plantphenomics.org.au/Variable)
 
+Variable
+
 ![UML diagram for Variable](/ttl_uml/ttl_appn_Variable.png)
+
 ## Superclasses
 * https://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable

@@ -1,7 +1,10 @@
 # ObservedVariable
 [https://schema.plantphenomics.org.au/ObservedVariable](https://schema.plantphenomics.org.au/ObservedVariable)
 
+ObservedVariable
+
 ![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](/doc/appn_Variable.md)
 * https://www.w3.org/ns/sosa/Property

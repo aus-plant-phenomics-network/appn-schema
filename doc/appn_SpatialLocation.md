@@ -2,6 +2,7 @@
 [https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
 
 ![UML diagram for SpatialLocation](/ttl_uml/ttl_appn_SpatialLocation.png)
+
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#SpatialDistribution
 * https://schema.org/Thing

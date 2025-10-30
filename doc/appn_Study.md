@@ -1,7 +1,10 @@
 # Study
 [https://schema.plantphenomics.org.au/Study](https://schema.plantphenomics.org.au/Study)
 
+A research activity including one or more Assays that record data on a set of ObservationUnits.
+
 ![UML diagram for Study](/ttl_uml/ttl_appn_Study.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action

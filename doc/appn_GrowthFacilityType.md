@@ -1,7 +1,10 @@
 # GrowthFacilityType
 [https://schema.plantphenomics.org.au/GrowthFacilityType](https://schema.plantphenomics.org.au/GrowthFacilityType)
 
+An enumeration of types of GrowthFacility
+
 ![UML diagram for GrowthFacilityType](/ttl_uml/ttl_appn_GrowthFacilityType.png)
+
 ## Superclasses
 * https://schema.org/Enumeration
 ## Properties

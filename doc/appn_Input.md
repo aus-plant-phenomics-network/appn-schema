@@ -1,7 +1,10 @@
 # Input
 [https://schema.plantphenomics.org.au/Input](https://schema.plantphenomics.org.au/Input)
 
+An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.
+
 ![UML diagram for Input](/ttl_uml/ttl_appn_Input.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)

@@ -55,6 +55,7 @@ pattern_property = re.compile(r"^(\w+):(\w+) a rdfs:Property[ \.;]*$")
 pattern_subproperty = re.compile(r"^\s*rdfs:subPropertyOf (\w+):(\w+)[ \.;]*$")
 pattern_domain = re.compile(r"^\s*schema:domainIncludes ([\w,:]+)[ \.;]*$")
 pattern_range = re.compile(r"^\s*schema:rangeIncludes ([\w,:]+)[ \.;]*$")
+pattern_comment = re.compile(r'^\s*rdfs:comment "([^"]*)"[ \.;]*$')
 
 # State objects to store data needed for diagrams
 prefixes = {}
@@ -63,8 +64,8 @@ inheritance = {}
 properties = {}
 property_inheritance = {}
 package_colours = {}
-context_class = None
-context_property = None
+context_item = None
+comments = {}
 
 # Establish container for classes from an identified package and associate the package with a colour.
 def get_package(p: str) -> dict[str, list[tuple[str,str]]]:
@@ -124,6 +125,14 @@ def add_range(pty: tuple[str,str], range_classes: str) -> None:
         property = properties[ppty]
         if range not in property[1]:
             property[1].append(range)
+
+# Add comments to an item
+def add_comment(item: tuple[str,str], comment: str) -> None:
+    if item in comments:
+        c = comments.get(item)
+        comments[item] = f"{c}\n\n{comment}"
+    else:
+        comments[item] = comment
 
 # Get formatted name for a class/property tuple.
 def get_name(parts: tuple[str:str]) -> str:
@@ -239,19 +248,21 @@ with open(ttl_file) as f:
         if (match := pattern_prefix.match(line)) is not None:
             prefixes[match.group(1)] = match.group(2)
         elif (match := pattern_class.match(line)) is not None:
-            context_class = get_class(match.group(1), match.group(2))
+            context_item = get_class(match.group(1), match.group(2))
         elif (match := pattern_subclass.match(line)) is not None:
             parent_class = get_class(match.group(1), match.group(2))
-            add_inheritance(context_class, parent_class)
+            add_inheritance(context_item, parent_class)
         elif (match := pattern_property.match(line)) is not None:
-            context_property = get_property(match.group(1), match.group(2))
+            context_item = get_property(match.group(1), match.group(2))
         elif (match := pattern_subproperty.match(line)) is not None:
             parent_property = get_property(match.group(1), match.group(2))
-            add_property_inheritance(context_property, parent_property)
+            add_property_inheritance(context_item, parent_property)
         elif (match := pattern_domain.match(line)) is not None:
-            add_domain(context_property, match.group(1))
+            add_domain(context_item, match.group(1))
         elif (match := pattern_range.match(line)) is not None:
-            add_range(context_property, match.group(1))
+            add_range(context_item, match.group(1))
+        elif (match := pattern_comment.match(line)) is not None:
+            add_comment(context_item, match.group(1))
 
 # If there are exclusions, generate the main diagram without the excluded packages.
 if len(exclusions) > 0:
@@ -306,7 +317,9 @@ else:
             uri = f"{prefixes['appn']}{cls}"
             md_file.write(f"# {cls}\n")
             md_file.write(f"[{uri}]({uri})\n\n")
-            md_file.write(f"![UML diagram for {cls}](/{uml_folder}/ttl_appn_{cls}.png)\n")
+            if appn_class in comments:
+                md_file.write(f"{comments[appn_class]}\n\n")
+            md_file.write(f"![UML diagram for {cls}](/{uml_folder}/ttl_appn_{cls}.png)\n\n")
             uml_file.write("@startuml\n")
             if appn_class in inheritance:
                 md_file.write(f"## Superclasses\n")

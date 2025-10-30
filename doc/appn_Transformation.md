@@ -1,7 +1,10 @@
 # Transformation
 [https://schema.plantphenomics.org.au/Transformation](https://schema.plantphenomics.org.au/Transformation)
 
+An Assay that derives new property values or images from existing property values or images.
+
 ![UML diagram for Transformation](/ttl_uml/ttl_appn_Transformation.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)

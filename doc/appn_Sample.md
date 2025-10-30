@@ -1,7 +1,10 @@
 # Sample
 [https://schema.plantphenomics.org.au/Sample](https://schema.plantphenomics.org.au/Sample)
 
+Sample
+
 ![UML diagram for Sample](/ttl_uml/ttl_appn_Sample.png)
+
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sample
 * [https://schema.plantphenomics.org.au/BiologicalUnit](/doc/appn_BiologicalUnit.md)

@@ -1,7 +1,10 @@
 # BiologicalUnit
 [https://schema.plantphenomics.org.au/BiologicalUnit](https://schema.plantphenomics.org.au/BiologicalUnit)
 
+BiologicalUnit
+
 ![UML diagram for BiologicalUnit](/ttl_uml/ttl_appn_BiologicalUnit.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ObservationUnit](/doc/appn_ObservationUnit.md)
 * https://schema.org/Thing

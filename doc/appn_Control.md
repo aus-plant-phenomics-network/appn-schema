@@ -1,7 +1,10 @@
 # Control
 [https://schema.plantphenomics.org.au/Control](https://schema.plantphenomics.org.au/Control)
 
+An Assay that modifies a property of one or more ObservationUnits.
+
 ![UML diagram for Control](/ttl_uml/ttl_appn_Control.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)

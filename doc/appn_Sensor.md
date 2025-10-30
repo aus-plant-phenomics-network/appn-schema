@@ -1,7 +1,10 @@
 # Sensor
 [https://schema.plantphenomics.org.au/Sensor](https://schema.plantphenomics.org.au/Sensor)
 
+Sensor
+
 ![UML diagram for Sensor](/ttl_uml/ttl_appn_Sensor.png)
+
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Observer](/doc/appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor
