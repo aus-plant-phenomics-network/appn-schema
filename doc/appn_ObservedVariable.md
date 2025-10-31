@@ -1,7 +1,7 @@
 # ObservedVariable
 [https://schema.plantphenomics.org.au/ObservedVariable](https://schema.plantphenomics.org.au/ObservedVariable)
 
-ObservedVariable
+ObservedVariable.
 
 ![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
 

@@ -1,7 +1,7 @@
 # ControlledVariable
 [https://schema.plantphenomics.org.au/ControlledVariable](https://schema.plantphenomics.org.au/ControlledVariable)
 
-ControlledVariable
+A Variable (representation of a Trait using a defined Scale) controlled or modified for one or more ObservationUnits.
 
 ![UML diagram for ControlledVariable](/ttl_uml/ttl_appn_ControlledVariable.png)
 

@@ -8,3 +8,5 @@ A method or process for performing an Assay.
 ## Superclasses
 * https://www.w3.org/ns/sosa/Procedure
 * https://schema.org/HowTo
+## Properties
+* [appn:Assay](/doc/appn_Assay.md) appn:usedMethod appn:Method

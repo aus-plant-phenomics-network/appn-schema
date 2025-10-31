@@ -22,6 +22,8 @@ class "schema:File" #DDFFDD
 Assay --> "schema:File" : hasResult
 class Sample 
 Assay --> Sample : hasResult
+class Method 
+Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 @enduml

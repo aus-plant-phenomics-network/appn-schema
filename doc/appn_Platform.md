@@ -1,7 +1,7 @@
 # Platform
 [https://schema.plantphenomics.org.au/Platform](https://schema.plantphenomics.org.au/Platform)
 
-Platform
+Platform.
 
 ![UML diagram for Platform](/ttl_uml/ttl_appn_Platform.png)
 

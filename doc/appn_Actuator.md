@@ -1,7 +1,7 @@
 # Actuator
 [https://schema.plantphenomics.org.au/Actuator](https://schema.plantphenomics.org.au/Actuator)
 
-Actuator
+Actuator.
 
 ![UML diagram for Actuator](/ttl_uml/ttl_appn_Actuator.png)
 

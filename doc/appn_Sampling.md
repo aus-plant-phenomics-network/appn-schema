@@ -17,4 +17,5 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 * [appn:Assay](/doc/appn_Assay.md) appn:hasResult [schema:Dataset](https://schema.org/Dataset)
 * [appn:Assay](/doc/appn_Assay.md) appn:hasResult [schema:File](https://schema.org/File)
 * [appn:Assay](/doc/appn_Assay.md) appn:hasResult [appn:Sample](/doc/appn_Sample.md)
+* [appn:Assay](/doc/appn_Assay.md) appn:usedMethod [appn:Method](/doc/appn_Method.md)
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

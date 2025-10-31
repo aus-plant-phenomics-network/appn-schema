@@ -1,7 +1,7 @@
 # Trait
 [https://schema.plantphenomics.org.au/Trait](https://schema.plantphenomics.org.au/Trait)
 
-Trait
+A concept represented by a Variable.
 
 ![UML diagram for Trait](/ttl_uml/ttl_appn_Trait.png)
 

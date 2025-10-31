@@ -1,7 +1,7 @@
 # Person
 [https://schema.plantphenomics.org.au/Person](https://schema.plantphenomics.org.au/Person)
 
-Person
+Person.
 
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 

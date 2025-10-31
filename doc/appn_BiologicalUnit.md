@@ -1,7 +1,7 @@
 # BiologicalUnit
 [https://schema.plantphenomics.org.au/BiologicalUnit](https://schema.plantphenomics.org.au/BiologicalUnit)
 
-BiologicalUnit
+BiologicalUnit.
 
 ![UML diagram for BiologicalUnit](/ttl_uml/ttl_appn_BiologicalUnit.png)
 

@@ -1,7 +1,7 @@
 # Sample
 [https://schema.plantphenomics.org.au/Sample](https://schema.plantphenomics.org.au/Sample)
 
-Sample
+Sample.
 
 ![UML diagram for Sample](/ttl_uml/ttl_appn_Sample.png)
 

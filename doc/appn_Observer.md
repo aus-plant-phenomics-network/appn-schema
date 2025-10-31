@@ -1,7 +1,7 @@
 # Observer
 [https://schema.plantphenomics.org.au/Observer](https://schema.plantphenomics.org.au/Observer)
 
-Observer
+Observer.
 
 ![UML diagram for Observer](/ttl_uml/ttl_appn_Observer.png)
 

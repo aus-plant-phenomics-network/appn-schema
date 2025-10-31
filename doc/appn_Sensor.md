@@ -1,7 +1,7 @@
 # Sensor
 [https://schema.plantphenomics.org.au/Sensor](https://schema.plantphenomics.org.au/Sensor)
 
-Sensor
+Sensor.
 
 ![UML diagram for Sensor](/ttl_uml/ttl_appn_Sensor.png)
 

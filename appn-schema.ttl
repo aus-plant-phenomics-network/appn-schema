@@ -21,7 +21,7 @@
 # COMMENT: schema:Action seems the obvious place to anchor ResearchActivity in schema.org. It inherits schema:startTime and schema:endTime.
 appn:ResearchActivity a rdfs:Class ;
     rdfs:label "ResearchActivity" ;
-    rdfs:comment "A time-delimited activity contributing to a research goal" ;
+    rdfs:comment "A time-delimited activity contributing to a research goal." ;
     rdfs:subClassOf schema:Action .
 
 appn:Investigation a rdfs:Class ;
@@ -88,81 +88,81 @@ appn:ObservationUnit a rdfs:Class ;
 
 appn:Trait a rdfs:Class ;
     rdfs:label "Trait" ;
-    rdfs:comment "Trait" ;
+    rdfs:comment "A concept represented by a Variable." ;
     rdfs:subClassOf cdi:Concept ;
     rdfs:subClassOf schema:DefinedTerm .
 
 # TODO: Need to align with QUDT or UOM (check CDIF recommendations).
 appn:Scale a rdfs:Class ;
     rdfs:label "Scale" ;
-    rdfs:comment "Scale" ;
+    rdfs:comment "A system of units or representation format for values associated with a Variable." ;
     rdfs:subClassOf schema:DefinedTerm .
 
 # COMMENT: ObservedVariable and ControlledVariable are modeled as separate (in contrast to sosa:Property) in order to align naming with ppeo:ObservedVariable.
 appn:Variable a rdfs:Class ;
     rdfs:label "Variable" ;
-    rdfs:comment "Variable" ;
+    rdfs:comment "Representation of a Trait using a defined Scale." ;
     rdfs:subClassOf sosa:Property ;
     rdfs:subClassOf cdi:RepresentedVariable ;
     rdfs:subClassOf schema:InstanceValue .
 
 appn:ObservedVariable a rdfs:Class ;
-    rdfs:label "ObservedVariable" ;
-    rdfs:comment "ObservedVariable" ;
+    rdfs:label "A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits." ;
+    rdfs:comment "ObservedVariable." ;
     rdfs:subClassOf appn:Variable .
 
 appn:ControlledVariable a rdfs:Class ;
     rdfs:label "ControlledVariable" ;
-    rdfs:comment "ControlledVariable" ;
+    rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for one or more ObservationUnits." ;
     rdfs:subClassOf appn:Variable .
 
 appn:InputVariable a rdfs:Class ;
     rdfs:label "InputVariable" ;
-    rdfs:comment "A Variable representing a quantity added to or removed from a set of ObservationUnits." ;
+    rdfs:comment "A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state." ;
     rdfs:subClassOf appn:Variable .
 
 appn:Observer a rdfs:Class ;
     rdfs:label "Observer" ;
-    rdfs:comment "Observer" ;
+    rdfs:comment "Observer." ;
     rdfs:subClassOf sosa:Sensor .
 
 appn:Transformer a rdfs:Class ;
     rdfs:label "Transformer" ;
-    rdfs:comment "Transformer" ;
+    rdfs:comment "Transformer." ;
     rdfs:subClassOf sosa:Sensor .
 
 appn:Controller a rdfs:Class ;
     rdfs:label "Controller" ;
-    rdfs:comment "Controller" ;
+    rdfs:comment "Controller." ;
     rdfs:subClassOf sosa:Actuator .
 
 appn:Sampler a rdfs:Class ;
     rdfs:label "Sampler" ;
-    rdfs:comment "Sampler" ;
+    rdfs:comment "Sampler." ;
     rdfs:subClassOf sosa:Sampler .
 
 appn:Actuator a rdfs:Class ;
     rdfs:label "Actuator" ;
-    rdfs:comment "Actuator" ;
+    rdfs:comment "Actuator." ;
     rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf schema:IndividualProduct .
 
 appn:ExternalEvent a rdfs:Class ;
     rdfs:label "ExternalEvent" ;
-    rdfs:comment "ExternalEvent" ;
+    rdfs:comment "ExternalEvent." ;
     rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf schema:Event .
 
 appn:Sensor a rdfs:Class ;
     rdfs:label "Sensor" ;
-    rdfs:comment "Sensor" ;
+    rdfs:comment "Sensor." ;
     rdfs:subClassOf appn:Observer ;
     rdfs:subClassOf schema:IndividualProduct .
 
 # COMMENT: Specialise schema:Person to accommodate roles in Assays.
 appn:Person a rdfs:Class ;
     rdfs:label "Person" ;
-    rdfs:comment "Person" ;
+    rdfs:comment "Person." ;
     rdfs:subClassOf appn:Observer ;
     rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf appn:Sampler ;
@@ -172,7 +172,7 @@ appn:Person a rdfs:Class ;
 # TODO: align with Software Ontology or another alternative.
 appn:Software a rdfs:Class ;
     rdfs:label "Software" ;
-    rdfs:comment "Software" ;
+    rdfs:comment "Software." ;
     rdfs:subClassOf bio:ComputationalWorkflow ;
     rdfs:subClassOf appn:Observer ;
     rdfs:subClassOf appn:Controller ;
@@ -180,44 +180,44 @@ appn:Software a rdfs:Class ;
 
 appn:Sample a rdfs:Class ;
     rdfs:label "Sample" ;
-    rdfs:comment "Sample" ;
+    rdfs:comment "Sample." ;
     rdfs:subClassOf sosa:Sample ;
     rdfs:subClassOf appn:BiologicalUnit .
 
 appn:Platform a rdfs:Class ;
     rdfs:label "Platform" ;
-    rdfs:comment "Platform" ;
+    rdfs:comment "Platform." ;
     rdfs:subClassOf sosa:Platform ;
     rdfs:subClassOf schema:IndividualProduct .
 
 appn:Deployment a rdfs:Class ;
     rdfs:label "Deployment" ;
-    rdfs:comment "Deployment" ;
+    rdfs:comment "Deployment." ;
     rdfs:subClassOf ssn:Deployment ;
     rdfs:subClassOf schema:Thing .
 
 # COMMENT: GrowthFacility type hierarchy could be as subclasses of GrowthFacility or as GrowthFacilityTypes.
 appn:GrowthFacility a rdfs:Class ;
     rdfs:label "GrowthFacility" ;
-    rdfs:comment "GrowthFacility" ;
+    rdfs:comment "GrowthFacility." ;
     rdfs:subClassOf appn:Platform ;
     rdfs:subClassOf appn:ObservationUnit .
 
 appn:GrowthFacilityType a rdfs:Class ;
     rdfs:label "GrowthFacilityType" ;
-    rdfs:comment "An enumeration of types of GrowthFacility" ;
+    rdfs:comment "An enumeration of types of GrowthFacility." ;
     rdfs:subClassOf schema:Enumeration .
 
 # COMMENT: BiologicalUnit type hierarchy could be as subclasses of BiologicalUnit or as BiologicalUnitTypes.
 appn:BiologicalUnit a rdfs:Class ;
     rdfs:label "BiologicalUnit" ;
-    rdfs:comment "BiologicalUnit" ;
+    rdfs:comment "BiologicalUnit." ;
     rdfs:subClassOf appn:ObservationUnit ;
     rdfs:subClassOf bio:BioChemEntity .
 
 appn:BiologicalUnitType a rdfs:Class ;
     rdfs:label "BiologicalUnitType" ;
-    rdfs:comment "An enumeration of types of BiologicalUnit" ;
+    rdfs:comment "An enumeration of types of BiologicalUnit." ;
     rdfs:subClassOf schema:Enumeration .
 
 appn:BiologicalMaterial a rdfs:Class ;
@@ -367,3 +367,8 @@ appn:deployedOnPlatform a rdfs:Property ;
     schema:domainIncludes appn:Deployment ;
     schema:rangeIncludes appn:Platform .
 
+appn:usedMethod a rdfs:Property ;
+    rdfs:label "usedMethod" ;
+    rdfs:description "Identifies a Method used to conduct an Assay." ;
+    schema:domainIncludes appn:Assay ;
+    schema:rangeIncludes appn:Method .

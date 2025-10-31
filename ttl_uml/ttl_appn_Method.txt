@@ -4,4 +4,6 @@ class "sosa:Procedure" #EEFFCC
 Method --|> "sosa:Procedure"
 class "schema:HowTo" #DDFFDD 
 Method --|> "schema:HowTo"
+class Assay 
+Assay --> Method : usedMethod
 @enduml

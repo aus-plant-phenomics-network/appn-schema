@@ -1,7 +1,7 @@
 # Variable
 [https://schema.plantphenomics.org.au/Variable](https://schema.plantphenomics.org.au/Variable)
 
-Variable
+Representation of a Trait using a defined Scale.
 
 ![UML diagram for Variable](/ttl_uml/ttl_appn_Variable.png)
 

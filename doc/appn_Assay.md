@@ -15,6 +15,7 @@ A research action that observes or modifies a set of ObservationUnits.
 * appn:Assay appn:hasResult [schema:Dataset](https://schema.org/Dataset)
 * appn:Assay appn:hasResult [schema:File](https://schema.org/File)
 * appn:Assay appn:hasResult [appn:Sample](/doc/appn_Sample.md)
+* appn:Assay appn:usedMethod [appn:Method](/doc/appn_Method.md)
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Observation](/doc/appn_Observation.md)

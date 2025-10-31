@@ -1,7 +1,7 @@
 # InputVariable
 [https://schema.plantphenomics.org.au/InputVariable](https://schema.plantphenomics.org.au/InputVariable)
 
-A Variable representing a quantity added to or removed from a set of ObservationUnits.
+A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state.
 
 ![UML diagram for InputVariable](/ttl_uml/ttl_appn_InputVariable.png)
 
