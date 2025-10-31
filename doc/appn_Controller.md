@@ -10,6 +10,7 @@ Controller.
 ## Properties
 * [appn:Control](/doc/appn_Control.md) appn:madeByController appn:Controller
 * [appn:Input](/doc/appn_Input.md) appn:madeByController appn:Controller
+* [appn:Control](/doc/appn_Control.md) appn:isMadeByController appn:Controller
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Actuator](/doc/appn_Actuator.md)
 * [https://schema.plantphenomics.org.au/ExternalEvent](/doc/appn_ExternalEvent.md)

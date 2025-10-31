@@ -14,16 +14,16 @@ class "ppeo:Observation" #DDDDFF
 Observation --|> "ppeo:Observation"
 class Observer 
 Observation --> Observer : madeByObserver
+class "schema:Dataset" #DDFFDD
+Observation --> "schema:Dataset" : hasResult
+class "schema:File" #DDFFDD
+Observation --> "schema:File" : hasResult
+class Sample 
+Observation --> Sample : hasResult
 class ObservedVariable 
 Observation --> ObservedVariable : observes
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
-class "schema:Dataset" #DDFFDD
-Assay --> "schema:Dataset" : hasResult
-class "schema:File" #DDFFDD
-Assay --> "schema:File" : hasResult
-class Sample 
-Assay --> Sample : hasResult
 class Method 
 Assay --> Method : usedMethod
 class ResearchActivity 

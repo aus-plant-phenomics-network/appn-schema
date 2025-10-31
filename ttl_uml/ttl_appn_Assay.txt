@@ -10,12 +10,6 @@ class "ppeo:Assay" #DDDDFF
 Assay --|> "ppeo:Assay"
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
-class "schema:Dataset" #DDFFDD
-Assay --> "schema:Dataset" : hasResult
-class "schema:File" #DDFFDD
-Assay --> "schema:File" : hasResult
-class Sample 
-Assay --> Sample : hasResult
 class Method 
 Assay --> Method : usedMethod
 class ResearchActivity 

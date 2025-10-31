@@ -274,8 +274,14 @@ appn:madeBySampler a rdfs:Property ;
 appn:hasResult a rdfs:Property ;
     rdfs:label "hasResult" ; 
     rdfs:description "hasResult" ;
-    schema:domainIncludes appn:Assay ;
+    schema:domainIncludes appn:Observation,appn:Control,appn:Transformation ;
     schema:rangeIncludes schema:Dataset,schema:File,appn:Sample .
+
+appn:hasResult a rdfs:Property ;
+    rdfs:label "producesSample" ; 
+    rdfs:description "Identifies the Sample produced by a Sampling Assay." ;
+    schema:domainIncludes appn:Sampling ;
+    schema:rangeIncludes appn:Sample .
 
 appn:usesData a rdfs:Property ;
     rdfs:label "usesData" ; 

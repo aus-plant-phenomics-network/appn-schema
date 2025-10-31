@@ -12,14 +12,16 @@ Assay --|> "ppeo:Assay"
 Sampling --|> Assay
 class Sampler 
 Sampling --> Sampler : madeBySampler
+class "schema:Dataset" #DDFFDD
+Sampling --> "schema:Dataset" : hasResult
+class "schema:File" #DDFFDD
+Sampling --> "schema:File" : hasResult
+class Sample 
+Sampling --> Sample : hasResult
+class Sampler 
+Sampling --> Sampler : isMadeBySampler
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
-class "schema:Dataset" #DDFFDD
-Assay --> "schema:Dataset" : hasResult
-class "schema:File" #DDFFDD
-Assay --> "schema:File" : hasResult
-class Sample 
-Assay --> Sample : hasResult
 class Method 
 Assay --> Method : usedMethod
 class ResearchActivity 

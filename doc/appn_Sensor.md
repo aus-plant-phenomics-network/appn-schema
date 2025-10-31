@@ -12,3 +12,4 @@ Sensor.
 ## Properties
 * [appn:Deployment](/doc/appn_Deployment.md) appn:deployedSystem appn:Sensor
 * [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
+* [appn:Obervation](/doc/appn_Obervation.md) appn:isMadeByObserver [appn:Observer](/doc/appn_Observer.md)

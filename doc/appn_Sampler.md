@@ -9,5 +9,6 @@ Sampler.
 * https://www.w3.org/ns/sosa/Sampler
 ## Properties
 * [appn:Sampling](/doc/appn_Sampling.md) appn:madeBySampler appn:Sampler
+* [appn:Sampling](/doc/appn_Sampling.md) appn:isMadeBySampler appn:Sampler
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)

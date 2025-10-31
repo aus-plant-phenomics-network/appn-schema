@@ -14,8 +14,14 @@ BiologicalUnit --|> ObservationUnit
 class "bio:BioChemEntity" #CCEEFF 
 BiologicalUnit --|> "bio:BioChemEntity"
 Sample --|> BiologicalUnit
-class Assay 
-Assay --> Sample : hasResult
+class Observation 
+Observation --> Sample : hasResult
+class Control 
+Control --> Sample : hasResult
+class Transformation 
+Transformation --> Sample : hasResult
+class Sampling 
+Sampling --> Sample : hasResult
 class BiologicalUnitType 
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
 class BiologicalMaterial 

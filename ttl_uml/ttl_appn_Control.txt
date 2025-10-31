@@ -12,16 +12,18 @@ Assay --|> "ppeo:Assay"
 Control --|> Assay
 class Controller 
 Control --> Controller : madeByController
+class "schema:Dataset" #DDFFDD
+Control --> "schema:Dataset" : hasResult
+class "schema:File" #DDFFDD
+Control --> "schema:File" : hasResult
+class Sample 
+Control --> Sample : hasResult
 class ControlledVariable 
 Control --> ControlledVariable : controls
+class Controller 
+Control --> Controller : isMadeByController
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
-class "schema:Dataset" #DDFFDD
-Assay --> "schema:Dataset" : hasResult
-class "schema:File" #DDFFDD
-Assay --> "schema:File" : hasResult
-class Sample 
-Assay --> Sample : hasResult
 class Method 
 Assay --> Method : usedMethod
 class ResearchActivity 

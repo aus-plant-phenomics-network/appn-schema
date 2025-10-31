@@ -16,10 +16,16 @@ Transformer --|> "sosa:Sensor"
 Software --|> Transformer
 class Observation 
 Observation --> Observer : madeByObserver
+class Obervation 
+Obervation --> Observer : isMadeByObserver
 class Control 
 Control --> Controller : madeByController
 class Input 
 Input --> Controller : madeByController
+class Control 
+Control --> Controller : isMadeByController
 class Transformation 
 Transformation --> Transformer : madeByTransformer
+class Transformation 
+Transformation --> Transformer : isMadeByTransformer
 @enduml

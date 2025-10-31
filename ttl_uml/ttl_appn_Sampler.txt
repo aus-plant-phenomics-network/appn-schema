@@ -4,6 +4,8 @@ class "sosa:Sampler" #EEFFCC
 Sampler --|> "sosa:Sampler"
 class Sampling 
 Sampling --> Sampler : madeBySampler
+class Sampling 
+Sampling --> Sampler : isMadeBySampler
 class Person 
 Person --|> Sampler
 @enduml

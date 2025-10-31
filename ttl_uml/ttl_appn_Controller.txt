@@ -6,6 +6,8 @@ class Control
 Control --> Controller : madeByController
 class Input 
 Input --> Controller : madeByController
+class Control 
+Control --> Controller : isMadeByController
 class Actuator 
 Actuator --|> Controller
 class ExternalEvent 

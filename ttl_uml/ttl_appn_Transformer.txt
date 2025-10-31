@@ -4,6 +4,8 @@ class "sosa:Sensor" #EEFFCC
 Transformer --|> "sosa:Sensor"
 class Transformation 
 Transformation --> Transformer : madeByTransformer
+class Transformation 
+Transformation --> Transformer : isMadeByTransformer
 class Person 
 Person --|> Transformer
 class Software 
