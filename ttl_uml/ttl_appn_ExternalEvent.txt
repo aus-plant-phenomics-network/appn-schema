@@ -10,6 +10,4 @@ class Control
 Control --> Controller : madeByController
 class Input 
 Input --> Controller : madeByController
-class Control 
-Control --> Controller : isMadeByController
 @enduml

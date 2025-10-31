@@ -12,4 +12,3 @@ ExternalEvent.
 ## Properties
 * [appn:Control](/doc/appn_Control.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
 * [appn:Input](/doc/appn_Input.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
-* [appn:Control](/doc/appn_Control.md) appn:isMadeByController [appn:Controller](/doc/appn_Controller.md)

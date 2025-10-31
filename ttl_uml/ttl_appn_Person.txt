@@ -20,20 +20,12 @@ class "schema:Person" #DDFFDD
 Person --|> "schema:Person"
 class Observation 
 Observation --> Observer : madeByObserver
-class Obervation 
-Obervation --> Observer : isMadeByObserver
 class Control 
 Control --> Controller : madeByController
 class Input 
 Input --> Controller : madeByController
-class Control 
-Control --> Controller : isMadeByController
 class Sampling 
 Sampling --> Sampler : madeBySampler
-class Sampling 
-Sampling --> Sampler : isMadeBySampler
 class Transformation 
 Transformation --> Transformer : madeByTransformer
-class Transformation 
-Transformation --> Transformer : isMadeByTransformer
 @enduml

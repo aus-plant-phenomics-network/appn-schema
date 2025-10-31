@@ -17,11 +17,7 @@ Person.
 * https://schema.org/Person
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
-* [appn:Obervation](/doc/appn_Obervation.md) appn:isMadeByObserver [appn:Observer](/doc/appn_Observer.md)
 * [appn:Control](/doc/appn_Control.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
 * [appn:Input](/doc/appn_Input.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
-* [appn:Control](/doc/appn_Control.md) appn:isMadeByController [appn:Controller](/doc/appn_Controller.md)
 * [appn:Sampling](/doc/appn_Sampling.md) appn:madeBySampler [appn:Sampler](/doc/appn_Sampler.md)
-* [appn:Sampling](/doc/appn_Sampling.md) appn:isMadeBySampler [appn:Sampler](/doc/appn_Sampler.md)
 * [appn:Transformation](/doc/appn_Transformation.md) appn:madeByTransformer [appn:Transformer](/doc/appn_Transformer.md)
-* [appn:Transformation](/doc/appn_Transformation.md) appn:isMadeByTransformer [appn:Transformer](/doc/appn_Transformer.md)

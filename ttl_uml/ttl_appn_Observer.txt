@@ -4,8 +4,6 @@ class "sosa:Sensor" #EEFFCC
 Observer --|> "sosa:Sensor"
 class Observation 
 Observation --> Observer : madeByObserver
-class Obervation 
-Obervation --> Observer : isMadeByObserver
 class Sensor 
 Sensor --|> Observer
 class Person 

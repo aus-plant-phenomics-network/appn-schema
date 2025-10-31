@@ -10,6 +10,4 @@ class Deployment
 Deployment --> Sensor : deployedSystem
 class Observation 
 Observation --> Observer : madeByObserver
-class Obervation 
-Obervation --> Observer : isMadeByObserver
 @enduml

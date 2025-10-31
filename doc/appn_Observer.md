@@ -9,7 +9,6 @@ Observer.
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver appn:Observer
-* [appn:Obervation](/doc/appn_Obervation.md) appn:isMadeByObserver appn:Observer
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Sensor](/doc/appn_Sensor.md)
 * [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)

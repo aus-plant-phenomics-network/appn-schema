@@ -379,27 +379,4 @@ appn:usedMethod a rdfs:Property ;
     schema:domainIncludes appn:Assay ;
     schema:rangeIncludes appn:Method .
 
-appn:isMadeByObserver a rdfs:Property ;
-    rdfs:label "isMadeByObserver" ;
-    rdfs:description "Identifies the Observer used to conduct an Observation." ;
-    schema:domainIncludes appn:Obervation ;
-    schema:rangeIncludes appn:Observer .
-
-appn:isMadeByController a rdfs:Property ;
-    rdfs:label "isMadeByController" ;
-    rdfs:description "Identifies the Controller used to conduct a Control." ;
-    schema:domainIncludes appn:Control ;
-    schema:rangeIncludes appn:Controller .
-
-appn:isMadeByTransformer a rdfs:Property ;
-    rdfs:label "isMadeByTransformer" ;
-    rdfs:description "Identifies the Transformer used to conduct a Transformation." ;
-    schema:domainIncludes appn:Transformation ;
-    schema:rangeIncludes appn:Transformer .
-
-appn:isMadeBySampler a rdfs:Property ;
-    rdfs:label "isMadeBySampler" ;
-    rdfs:description "Identifies the Sampler used to conduct a Sampling." ;
-    schema:domainIncludes appn:Sampling ;
-    schema:rangeIncludes appn:Sampler .
 

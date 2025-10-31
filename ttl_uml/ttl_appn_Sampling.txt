@@ -14,8 +14,6 @@ class Sampler
 Sampling --> Sampler : madeBySampler
 class Sample 
 Sampling --> Sample : producesSample
-class Sampler 
-Sampling --> Sampler : isMadeBySampler
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 

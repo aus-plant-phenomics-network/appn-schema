@@ -20,8 +20,6 @@ class "schema:Dataset" #DDFFDD
 Transformation --> "schema:Dataset" : usesData
 class "schema:File" #DDFFDD
 Transformation --> "schema:File" : usesData
-class Transformer 
-Transformation --> Transformer : isMadeByTransformer
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 
