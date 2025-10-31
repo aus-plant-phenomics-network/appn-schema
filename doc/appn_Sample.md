@@ -14,10 +14,7 @@ Sample.
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 * https://bioschemas.org/BioChemEntity
 ## Properties
-* [appn:Observation](/doc/appn_Observation.md) appn:hasResult appn:Sample
-* [appn:Control](/doc/appn_Control.md) appn:hasResult appn:Sample
-* [appn:Transformation](/doc/appn_Transformation.md) appn:hasResult appn:Sample
-* [appn:Sampling](/doc/appn_Sampling.md) appn:hasResult appn:Sample
+* [appn:Sampling](/doc/appn_Sampling.md) appn:producesSample appn:Sample
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) appn:hasBiologicalUnitType [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) appn:hasBiologicalMaterial [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
 * [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)

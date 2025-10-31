@@ -16,8 +16,6 @@ class "schema:Dataset" #DDFFDD
 Control --> "schema:Dataset" : hasResult
 class "schema:File" #DDFFDD
 Control --> "schema:File" : hasResult
-class Sample 
-Control --> Sample : hasResult
 class ControlledVariable 
 Control --> ControlledVariable : controls
 class Controller 

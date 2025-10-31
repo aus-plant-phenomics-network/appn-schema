@@ -18,8 +18,6 @@ class "schema:Dataset" #DDFFDD
 Observation --> "schema:Dataset" : hasResult
 class "schema:File" #DDFFDD
 Observation --> "schema:File" : hasResult
-class Sample 
-Observation --> Sample : hasResult
 class ObservedVariable 
 Observation --> ObservedVariable : observes
 class ObservationUnit 

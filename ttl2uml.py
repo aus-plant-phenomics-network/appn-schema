@@ -241,7 +241,6 @@ def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,s
             uml.write(f"{child_name} --|> {class_name}\n")
     return class_name
 
-
 # Parse the turtle
 with open(ttl_file) as f:
     for line in f:

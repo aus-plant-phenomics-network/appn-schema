@@ -12,12 +12,8 @@ Assay --|> "ppeo:Assay"
 Sampling --|> Assay
 class Sampler 
 Sampling --> Sampler : madeBySampler
-class "schema:Dataset" #DDFFDD
-Sampling --> "schema:Dataset" : hasResult
-class "schema:File" #DDFFDD
-Sampling --> "schema:File" : hasResult
 class Sample 
-Sampling --> Sample : hasResult
+Sampling --> Sample : producesSample
 class Sampler 
 Sampling --> Sampler : isMadeBySampler
 class ObservationUnit 

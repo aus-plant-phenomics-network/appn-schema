@@ -275,9 +275,9 @@ appn:hasResult a rdfs:Property ;
     rdfs:label "hasResult" ; 
     rdfs:description "hasResult" ;
     schema:domainIncludes appn:Observation,appn:Control,appn:Transformation ;
-    schema:rangeIncludes schema:Dataset,schema:File,appn:Sample .
+    schema:rangeIncludes schema:Dataset,schema:File .
 
-appn:hasResult a rdfs:Property ;
+appn:producesSample a rdfs:Property ;
     rdfs:label "producesSample" ; 
     rdfs:description "Identifies the Sample produced by a Sampling Assay." ;
     schema:domainIncludes appn:Sampling ;

@@ -15,7 +15,6 @@ An Assay that modifies a property of one or more ObservationUnits.
 * appn:Control appn:madeByController [appn:Controller](/doc/appn_Controller.md)
 * appn:Control appn:hasResult [schema:Dataset](https://schema.org/Dataset)
 * appn:Control appn:hasResult [schema:File](https://schema.org/File)
-* appn:Control appn:hasResult [appn:Sample](/doc/appn_Sample.md)
 * appn:Control appn:controls [appn:ControlledVariable](/doc/appn_ControlledVariable.md)
 * appn:Control appn:isMadeByController [appn:Controller](/doc/appn_Controller.md)
 * [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)

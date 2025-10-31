@@ -15,7 +15,6 @@ An Assay that derives new property values or images from existing property value
 * appn:Transformation appn:madeByTransformer [appn:Transformer](/doc/appn_Transformer.md)
 * appn:Transformation appn:hasResult [schema:Dataset](https://schema.org/Dataset)
 * appn:Transformation appn:hasResult [schema:File](https://schema.org/File)
-* appn:Transformation appn:hasResult [appn:Sample](/doc/appn_Sample.md)
 * appn:Transformation appn:usesData [schema:Dataset](https://schema.org/Dataset)
 * appn:Transformation appn:usesData [schema:File](https://schema.org/File)
 * appn:Transformation appn:isMadeByTransformer [appn:Transformer](/doc/appn_Transformer.md)

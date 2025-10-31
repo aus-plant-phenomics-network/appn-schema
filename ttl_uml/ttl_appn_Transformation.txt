@@ -16,8 +16,6 @@ class "schema:Dataset" #DDFFDD
 Transformation --> "schema:Dataset" : hasResult
 class "schema:File" #DDFFDD
 Transformation --> "schema:File" : hasResult
-class Sample 
-Transformation --> Sample : hasResult
 class "schema:Dataset" #DDFFDD
 Transformation --> "schema:Dataset" : usesData
 class "schema:File" #DDFFDD
