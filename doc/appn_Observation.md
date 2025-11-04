@@ -16,6 +16,8 @@ An Assay that observes or measures properties of one or more ObservationUnits re
 * appn:Observation appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
 * appn:Observation appn:hasResult [schema:Dataset](https://schema.org/Dataset)
 * appn:Observation appn:hasResult [schema:File](https://schema.org/File)
+* appn:Observation appn:usesData [schema:Dataset](https://schema.org/Dataset)
+* appn:Observation appn:usesData [schema:File](https://schema.org/File)
 * appn:Observation appn:observes [appn:ObservedVariable](/doc/appn_ObservedVariable.md)
 * [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
 * [appn:Assay](/doc/appn_Assay.md) appn:usedMethod [appn:Method](/doc/appn_Method.md)

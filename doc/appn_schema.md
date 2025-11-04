@@ -32,6 +32,4 @@
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
 * [appn:Study](/doc/appn_Study.md)
 * [appn:Trait](/doc/appn_Trait.md)
-* [appn:Transformation](/doc/appn_Transformation.md)
-* [appn:Transformer](/doc/appn_Transformer.md)
 * [appn:Variable](/doc/appn_Variable.md)

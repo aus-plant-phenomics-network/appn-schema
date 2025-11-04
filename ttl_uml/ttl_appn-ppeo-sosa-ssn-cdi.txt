@@ -7,7 +7,6 @@ class Method
 class Observation
 class Control
 class Sampling
-class Transformation
 class Input
 class ObservationUnit
 class Trait
@@ -17,7 +16,6 @@ class ObservedVariable
 class ControlledVariable
 class InputVariable
 class Observer
-class Transformer
 class Controller
 class Sampler
 class Actuator
@@ -58,7 +56,6 @@ Method --|> "schema:HowTo"
 Observation --|> Assay
 Control --|> Assay
 Sampling --|> Assay
-Transformation --|> Assay
 Input --|> Assay
 ObservationUnit --|> "schema:Thing"
 Trait --|> "schema:DefinedTerm"
@@ -76,12 +73,10 @@ Sensor --|> "schema:IndividualProduct"
 Person --|> Observer
 Person --|> Controller
 Person --|> Sampler
-Person --|> Transformer
 Person --|> "schema:Person"
 Software --|> "bio:ComputationalWorkflow"
 Software --|> Observer
 Software --|> Controller
-Software --|> Transformer
 Sample --|> BiologicalUnit
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"

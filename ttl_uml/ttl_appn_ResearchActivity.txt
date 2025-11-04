@@ -14,8 +14,6 @@ class Control
 Control --|> Assay
 class Sampling 
 Sampling --|> Assay
-class Transformation 
-Transformation --|> Assay
 class Input 
 Input --|> Assay
 Assay --|> ResearchActivity

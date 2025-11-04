@@ -12,10 +12,6 @@ class Sampler
 class "sosa:Sampler" #EEFFCC 
 Sampler --|> "sosa:Sampler"
 Person --|> Sampler
-class Transformer  
-class "sosa:Sensor" #EEFFCC 
-Transformer --|> "sosa:Sensor"
-Person --|> Transformer
 class "schema:Person" #DDFFDD 
 Person --|> "schema:Person"
 class Observation 
@@ -26,6 +22,4 @@ class Input
 Input --> Controller : madeByController
 class Sampling 
 Sampling --> Sampler : madeBySampler
-class Transformation 
-Transformation --> Transformer : madeByTransformer
 @enduml
