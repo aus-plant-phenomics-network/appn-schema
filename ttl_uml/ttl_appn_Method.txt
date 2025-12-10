@@ -1,7 +1,9 @@
 @startuml
 class Method  #line.bold
-class "sosa:Procedure" #EEFFCC 
+class "sosa:Procedure" #FFCCEE 
 Method --|> "sosa:Procedure"
+class "prov:Plan" #DDDDFF 
+Method --|> "prov:Plan"
 class "schema:HowTo" #DDFFDD 
 Method --|> "schema:HowTo"
 class Assay 

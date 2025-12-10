@@ -1,9 +1,9 @@
-# InputVariable
-[https://schema.plantphenomics.org.au/InputVariable](https://schema.plantphenomics.org.au/InputVariable)
+# TreatmentVariable
+[https://schema.plantphenomics.org.au/TreatmentVariable](https://schema.plantphenomics.org.au/TreatmentVariable)
 
 A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state.
 
-![UML diagram for InputVariable](/ttl_uml/ttl_appn_InputVariable.png)
+![UML diagram for TreatmentVariable](/ttl_uml/ttl_appn_TreatmentVariable.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](/doc/appn_Variable.md)
@@ -11,7 +11,7 @@ A Variable (representation of a Trait using a defined Scale) modified for one or
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Input](/doc/appn_Input.md) appn:inputs appn:InputVariable
-* InputVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Treatment](/doc/appn_Treatment.md) appn:treats appn:TreatmentVariable
+* TreatmentVariable https://schema.plantphenomics.org.au/hasDefaultValue
 * [appn:Variable](/doc/appn_Variable.md) appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
 * [appn:Variable](/doc/appn_Variable.md) appn:hasScale [appn:Scale](/doc/appn_Scale.md)

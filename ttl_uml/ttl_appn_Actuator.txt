@@ -1,7 +1,7 @@
 @startuml
 class Actuator  #line.bold
 class Controller  
-class "sosa:Actuator" #EEFFCC 
+class "sosa:Actuator" #FFCCEE 
 Controller --|> "sosa:Actuator"
 Actuator --|> Controller
 class "schema:IndividualProduct" #DDFFDD 
@@ -10,6 +10,6 @@ class Deployment
 Deployment --> Actuator : deployedSystem
 class Control 
 Control --> Controller : madeByController
-class Input 
-Input --> Controller : madeByController
+class Treatment 
+Treatment --> Controller : madeByController
 @enduml

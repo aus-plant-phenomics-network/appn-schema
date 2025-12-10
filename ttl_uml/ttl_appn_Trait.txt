@@ -1,7 +1,9 @@
 @startuml
 class Trait  #line.bold
-class "cdi:Concept" #FFCCEE 
+class "cdi:Concept" #CCEEFF 
 Trait --|> "cdi:Concept"
 class "schema:DefinedTerm" #DDFFDD 
 Trait --|> "schema:DefinedTerm"
+class Variable 
+Variable --> Trait : hasTrait
 @enduml

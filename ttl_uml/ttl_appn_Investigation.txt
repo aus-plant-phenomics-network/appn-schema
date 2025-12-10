@@ -3,8 +3,10 @@ class Investigation  #line.bold
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
+class "prov:Activity" #DDDDFF 
+ResearchActivity --|> "prov:Activity"
 Investigation --|> ResearchActivity
-class "ppeo:Investigation" #DDDDFF 
+class "ppeo:Investigation" #EEFFCC 
 Investigation --|> "ppeo:Investigation"
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf

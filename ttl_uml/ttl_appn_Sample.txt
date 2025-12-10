@@ -1,17 +1,19 @@
 @startuml
 class Sample  #line.bold
-class "sosa:Sample" #EEFFCC 
+class "sosa:Sample" #FFCCEE 
 Sample --|> "sosa:Sample"
 class BiologicalUnit  
 class ObservationUnit  
 class "schema:Thing" #DDFFDD 
 ObservationUnit --|> "schema:Thing"
-class "ppeo:ObservationUnit" #DDDDFF 
+class "prov:Entity" #DDDDFF 
+ObservationUnit --|> "prov:Entity"
+class "ppeo:ObservationUnit" #EEFFCC 
 ObservationUnit --|> "ppeo:ObservationUnit"
-class "sosa:FeatureOfInterest" #EEFFCC 
+class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 BiologicalUnit --|> ObservationUnit
-class "bio:BioChemEntity" #CCEEFF 
+class "bio:BioChemEntity" #EECCFF 
 BiologicalUnit --|> "bio:BioChemEntity"
 Sample --|> BiologicalUnit
 class Sampling 

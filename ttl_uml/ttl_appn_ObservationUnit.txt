@@ -2,9 +2,11 @@
 class ObservationUnit  #line.bold
 class "schema:Thing" #DDFFDD 
 ObservationUnit --|> "schema:Thing"
-class "ppeo:ObservationUnit" #DDDDFF 
+class "prov:Entity" #DDDDFF 
+ObservationUnit --|> "prov:Entity"
+class "ppeo:ObservationUnit" #EEFFCC 
 ObservationUnit --|> "ppeo:ObservationUnit"
-class "sosa:FeatureOfInterest" #EEFFCC 
+class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit

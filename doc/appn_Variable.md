@@ -11,7 +11,9 @@ Representation of a Trait using a defined Scale.
 * https://schema.org/InstanceValue
 ## Properties
 * Variable https://schema.plantphenomics.org.au/hasDefaultValue
+* appn:Variable appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
+* appn:Variable appn:hasScale [appn:Scale](/doc/appn_Scale.md)
 ## Subclasses
 * [https://schema.plantphenomics.org.au/ObservedVariable](/doc/appn_ObservedVariable.md)
 * [https://schema.plantphenomics.org.au/ControlledVariable](/doc/appn_ControlledVariable.md)
-* [https://schema.plantphenomics.org.au/InputVariable](/doc/appn_InputVariable.md)
+* [https://schema.plantphenomics.org.au/TreatmentVariable](/doc/appn_TreatmentVariable.md)

@@ -8,6 +8,7 @@ A research action that observes or modifies a set of ObservationUnits.
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
+* http://www.w3.org/ns/prov#Activity
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay
 ## Properties
@@ -18,4 +19,4 @@ A research action that observes or modifies a set of ObservationUnits.
 * [https://schema.plantphenomics.org.au/Observation](/doc/appn_Observation.md)
 * [https://schema.plantphenomics.org.au/Control](/doc/appn_Control.md)
 * [https://schema.plantphenomics.org.au/Sampling](/doc/appn_Sampling.md)
-* [https://schema.plantphenomics.org.au/Input](/doc/appn_Input.md)
+* [https://schema.plantphenomics.org.au/Treatment](/doc/appn_Treatment.md)

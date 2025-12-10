@@ -8,3 +8,5 @@ A concept represented by a Variable.
 ## Superclasses
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
 * https://schema.org/DefinedTerm
+## Properties
+* [appn:Variable](/doc/appn_Variable.md) appn:hasTrait appn:Trait

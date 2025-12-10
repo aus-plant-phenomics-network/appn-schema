@@ -13,3 +13,5 @@ ObservedVariable.
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) appn:observes appn:ObservedVariable
 * ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](/doc/appn_Variable.md) appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
+* [appn:Variable](/doc/appn_Variable.md) appn:hasScale [appn:Scale](/doc/appn_Scale.md)

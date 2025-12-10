@@ -1,6 +1,6 @@
 @startuml
 class Observer  #line.bold
-class "sosa:Sensor" #EEFFCC 
+class "sosa:Sensor" #FFCCEE 
 Observer --|> "sosa:Sensor"
 class Observation 
 Observation --> Observer : madeByObserver

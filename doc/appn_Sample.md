@@ -10,6 +10,7 @@ Sample.
 * [https://schema.plantphenomics.org.au/BiologicalUnit](/doc/appn_BiologicalUnit.md)
 * [https://schema.plantphenomics.org.au/ObservationUnit](/doc/appn_ObservationUnit.md)
 * https://schema.org/Thing
+* http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 * https://bioschemas.org/BioChemEntity

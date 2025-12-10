@@ -9,6 +9,7 @@ An Assay that observes or measures properties of one or more ObservationUnits re
 * [https://schema.plantphenomics.org.au/Assay](/doc/appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](/doc/appn_ResearchActivity.md)
 * https://schema.org/Action
+* http://www.w3.org/ns/prov#Activity
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay
 * http://purl.org/ppeo/PPEO.owl#Observation

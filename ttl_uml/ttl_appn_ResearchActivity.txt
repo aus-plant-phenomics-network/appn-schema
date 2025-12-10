@@ -2,6 +2,8 @@
 class ResearchActivity  #line.bold
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
+class "prov:Activity" #DDDDFF 
+ResearchActivity --|> "prov:Activity"
 ResearchActivity --> ResearchActivity : isPartOf
 class Investigation 
 Investigation --|> ResearchActivity
@@ -14,7 +16,7 @@ class Control
 Control --|> Assay
 class Sampling 
 Sampling --|> Assay
-class Input 
-Input --|> Assay
+class Treatment 
+Treatment --|> Assay
 Assay --|> ResearchActivity
 @enduml

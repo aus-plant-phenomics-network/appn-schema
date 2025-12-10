@@ -9,7 +9,7 @@ Controller.
 * https://www.w3.org/ns/sosa/Actuator
 ## Properties
 * [appn:Control](/doc/appn_Control.md) appn:madeByController appn:Controller
-* [appn:Input](/doc/appn_Input.md) appn:madeByController appn:Controller
+* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController appn:Controller
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Actuator](/doc/appn_Actuator.md)
 * [https://schema.plantphenomics.org.au/ExternalEvent](/doc/appn_ExternalEvent.md)

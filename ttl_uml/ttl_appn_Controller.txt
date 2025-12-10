@@ -1,11 +1,11 @@
 @startuml
 class Controller  #line.bold
-class "sosa:Actuator" #EEFFCC 
+class "sosa:Actuator" #FFCCEE 
 Controller --|> "sosa:Actuator"
 class Control 
 Control --> Controller : madeByController
-class Input 
-Input --> Controller : madeByController
+class Treatment 
+Treatment --> Controller : madeByController
 class Actuator 
 Actuator --|> Controller
 class ExternalEvent 

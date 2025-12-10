@@ -1,7 +1,7 @@
 @startuml
 class GrowthFacility  #line.bold
 class Platform  
-class "sosa:Platform" #EEFFCC 
+class "sosa:Platform" #FFCCEE 
 Platform --|> "sosa:Platform"
 class "schema:IndividualProduct" #DDFFDD 
 Platform --|> "schema:IndividualProduct"
@@ -9,9 +9,11 @@ GrowthFacility --|> Platform
 class ObservationUnit  
 class "schema:Thing" #DDFFDD 
 ObservationUnit --|> "schema:Thing"
-class "ppeo:ObservationUnit" #DDDDFF 
+class "prov:Entity" #DDDDFF 
+ObservationUnit --|> "prov:Entity"
+class "ppeo:ObservationUnit" #EEFFCC 
 ObservationUnit --|> "ppeo:ObservationUnit"
-class "sosa:FeatureOfInterest" #EEFFCC 
+class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 GrowthFacility --|> ObservationUnit
 class GrowthFacilityType 

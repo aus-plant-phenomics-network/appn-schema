@@ -1,11 +1,15 @@
 @startuml
-class Variable  #line.bold
+class TreatmentVariable  #line.bold
+class Variable  
 class "sosa:Property" #FFCCEE 
 Variable --|> "sosa:Property"
 class "cdi:RepresentedVariable" #CCEEFF 
 Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"
+TreatmentVariable --|> Variable
+class Treatment 
+Treatment --> TreatmentVariable : treats
 class Variable #line.bold {
     hasDefaultValue
 }
@@ -13,10 +17,4 @@ class Trait
 Variable --> Trait : hasTrait
 class Scale 
 Variable --> Scale : hasScale
-class ObservedVariable 
-ObservedVariable --|> Variable
-class ControlledVariable 
-ControlledVariable --|> Variable
-class TreatmentVariable 
-TreatmentVariable --|> Variable
 @enduml

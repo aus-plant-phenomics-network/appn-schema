@@ -4,13 +4,15 @@ class Assay
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
+class "prov:Activity" #DDDDFF 
+ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
-class "sosa:Execution" #EEFFCC 
+class "sosa:Execution" #FFCCEE 
 Assay --|> "sosa:Execution"
-class "ppeo:Assay" #DDDDFF 
+class "ppeo:Assay" #EEFFCC 
 Assay --|> "ppeo:Assay"
 Observation --|> Assay
-class "ppeo:Observation" #DDDDFF 
+class "ppeo:Observation" #EEFFCC 
 Observation --|> "ppeo:Observation"
 class Observer 
 Observation --> Observer : madeByObserver

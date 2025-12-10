@@ -13,3 +13,5 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 ## Properties
 * [appn:Control](/doc/appn_Control.md) appn:controls appn:ControlledVariable
 * ControlledVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](/doc/appn_Variable.md) appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
+* [appn:Variable](/doc/appn_Variable.md) appn:hasScale [appn:Scale](/doc/appn_Scale.md)

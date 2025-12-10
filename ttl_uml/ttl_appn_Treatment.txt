@@ -1,5 +1,6 @@
 @startuml
-class Assay  #line.bold
+class Treatment  #line.bold
+class Assay  
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
 ResearchActivity --|> "schema:Action"
@@ -10,18 +11,15 @@ class "sosa:Execution" #FFCCEE
 Assay --|> "sosa:Execution"
 class "ppeo:Assay" #EEFFCC 
 Assay --|> "ppeo:Assay"
+Treatment --|> Assay
+class Controller 
+Treatment --> Controller : madeByController
+class TreatmentVariable 
+Treatment --> TreatmentVariable : treats
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 
 Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
-class Observation 
-Observation --|> Assay
-class Control 
-Control --|> Assay
-class Sampling 
-Sampling --|> Assay
-class Treatment 
-Treatment --|> Assay
 @enduml

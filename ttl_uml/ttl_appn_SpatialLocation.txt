@@ -1,6 +1,6 @@
 @startuml
 class SpatialLocation  #line.bold
-class "ppeo:SpatialDistribution" #DDDDFF 
+class "ppeo:SpatialDistribution" #EEFFCC 
 SpatialLocation --|> "ppeo:SpatialDistribution"
 class "schema:Thing" #DDFFDD 
 SpatialLocation --|> "schema:Thing"

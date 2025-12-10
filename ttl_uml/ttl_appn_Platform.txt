@@ -1,6 +1,6 @@
 @startuml
 class Platform  #line.bold
-class "sosa:Platform" #EEFFCC 
+class "sosa:Platform" #FFCCEE 
 Platform --|> "sosa:Platform"
 class "schema:IndividualProduct" #DDFFDD 
 Platform --|> "schema:IndividualProduct"

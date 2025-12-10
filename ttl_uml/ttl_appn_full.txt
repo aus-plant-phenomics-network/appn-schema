@@ -7,14 +7,14 @@ class Method
 class Observation
 class Control
 class Sampling
-class Input
+class Treatment
 class ObservationUnit
 class Trait
 class Scale
 class Variable
 class ObservedVariable
 class ControlledVariable
-class InputVariable
+class TreatmentVariable
 class Observer
 class Controller
 class Sampler
@@ -43,39 +43,45 @@ package "schema" {
     class "schema:Person" #DDFFDD
     class "schema:Enumeration" #DDFFDD
 }
+package "prov" {
+    class "prov:Activity" #DDDDFF
+    class "prov:Plan" #DDDDFF
+    class "prov:Entity" #DDDDFF
+}
 package "ppeo" {
-    class "ppeo:Investigation" #DDDDFF
-    class "ppeo:Study" #DDDDFF
-    class "ppeo:Assay" #DDDDFF
-    class "ppeo:Observation" #DDDDFF
-    class "ppeo:ObservationUnit" #DDDDFF
-    class "ppeo:BiologicalMaterial" #DDDDFF
-    class "ppeo:SpatialDistribution" #DDDDFF
+    class "ppeo:Investigation" #EEFFCC
+    class "ppeo:Study" #EEFFCC
+    class "ppeo:Assay" #EEFFCC
+    class "ppeo:Observation" #EEFFCC
+    class "ppeo:ObservationUnit" #EEFFCC
+    class "ppeo:BiologicalMaterial" #EEFFCC
+    class "ppeo:SpatialDistribution" #EEFFCC
 }
 package "sosa" {
-    class "sosa:Execution" #EEFFCC
-    class "sosa:Procedure" #EEFFCC
-    class "sosa:FeatureOfInterest" #EEFFCC
-    class "sosa:Property" #EEFFCC
-    class "sosa:Sensor" #EEFFCC
-    class "sosa:Actuator" #EEFFCC
-    class "sosa:Sampler" #EEFFCC
-    class "sosa:Sample" #EEFFCC
-    class "sosa:Platform" #EEFFCC
+    class "sosa:Execution" #FFCCEE
+    class "sosa:Procedure" #FFCCEE
+    class "sosa:FeatureOfInterest" #FFCCEE
+    class "sosa:Property" #FFCCEE
+    class "sosa:Sensor" #FFCCEE
+    class "sosa:Actuator" #FFCCEE
+    class "sosa:Sampler" #FFCCEE
+    class "sosa:Sample" #FFCCEE
+    class "sosa:Platform" #FFCCEE
 }
 package "cdi" {
-    class "cdi:Concept" #FFCCEE
-    class "cdi:RepresentedVariable" #FFCCEE
+    class "cdi:Concept" #CCEEFF
+    class "cdi:RepresentedVariable" #CCEEFF
 }
 package "bio" {
-    class "bio:ComputationalWorkflow" #CCEEFF
-    class "bio:BioChemEntity" #CCEEFF
-    class "bio:BioSample" #CCEEFF
+    class "bio:ComputationalWorkflow" #EECCFF
+    class "bio:BioChemEntity" #EECCFF
+    class "bio:BioSample" #EECCFF
 }
 package "ssn" {
-    class "ssn:Deployment" #EECCFF
+    class "ssn:Deployment" #FFEECC
 }
 ResearchActivity --|> "schema:Action"
+ResearchActivity --|> "prov:Activity"
 Investigation --|> ResearchActivity
 Investigation --|> "ppeo:Investigation"
 Study --|> ResearchActivity
@@ -84,13 +90,15 @@ Assay --|> ResearchActivity
 Assay --|> "sosa:Execution"
 Assay --|> "ppeo:Assay"
 Method --|> "sosa:Procedure"
+Method --|> "prov:Plan"
 Method --|> "schema:HowTo"
 Observation --|> Assay
 Observation --|> "ppeo:Observation"
 Control --|> Assay
 Sampling --|> Assay
-Input --|> Assay
+Treatment --|> Assay
 ObservationUnit --|> "schema:Thing"
+ObservationUnit --|> "prov:Entity"
 ObservationUnit --|> "ppeo:ObservationUnit"
 ObservationUnit --|> "sosa:FeatureOfInterest"
 Trait --|> "cdi:Concept"
@@ -101,7 +109,7 @@ Variable --|> "cdi:RepresentedVariable"
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
-InputVariable --|> Variable
+TreatmentVariable --|> Variable
 Observer --|> "sosa:Sensor"
 Controller --|> "sosa:Actuator"
 Sampler --|> "sosa:Sampler"

@@ -1,9 +1,9 @@
 @startuml
 class ControlledVariable  #line.bold
 class Variable  
-class "sosa:Property" #EEFFCC 
+class "sosa:Property" #FFCCEE 
 Variable --|> "sosa:Property"
-class "cdi:RepresentedVariable" #FFCCEE 
+class "cdi:RepresentedVariable" #CCEEFF 
 Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"
@@ -13,4 +13,8 @@ Control --> ControlledVariable : controls
 class Variable #line.bold {
     hasDefaultValue
 }
+class Trait 
+Variable --> Trait : hasTrait
+class Scale 
+Variable --> Scale : hasScale
 @enduml

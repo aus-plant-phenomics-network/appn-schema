@@ -13,4 +13,8 @@ Input --> InputVariable : inputs
 class Variable #line.bold {
     hasDefaultValue
 }
+class Trait 
+Variable --> Trait : hasTrait
+class Scale 
+Variable --> Scale : hasScale
 @enduml

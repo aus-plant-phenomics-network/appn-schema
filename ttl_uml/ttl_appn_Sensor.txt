@@ -1,7 +1,7 @@
 @startuml
 class Sensor  #line.bold
 class Observer  
-class "sosa:Sensor" #EEFFCC 
+class "sosa:Sensor" #FFCCEE 
 Observer --|> "sosa:Sensor"
 Sensor --|> Observer
 class "schema:IndividualProduct" #DDFFDD 

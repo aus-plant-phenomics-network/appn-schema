@@ -1,6 +1,6 @@
 @startuml
 class Deployment  #line.bold
-class "ssn:Deployment" #EECCFF 
+class "ssn:Deployment" #FFEECC 
 Deployment --|> "ssn:Deployment"
 class "schema:Thing" #DDFFDD 
 Deployment --|> "schema:Thing"

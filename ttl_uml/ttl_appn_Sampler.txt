@@ -1,6 +1,6 @@
 @startuml
 class Sampler  #line.bold
-class "sosa:Sampler" #EEFFCC 
+class "sosa:Sampler" #FFCCEE 
 Sampler --|> "sosa:Sampler"
 class Sampling 
 Sampling --> Sampler : madeBySampler

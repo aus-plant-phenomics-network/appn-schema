@@ -7,14 +7,14 @@ class Method
 class Observation
 class Control
 class Sampling
-class Input
+class Treatment
 class ObservationUnit
 class Trait
 class Scale
 class Variable
 class ObservedVariable
 class ControlledVariable
-class InputVariable
+class TreatmentVariable
 class Observer
 class Controller
 class Sampler
@@ -44,9 +44,9 @@ package "schema" {
     class "schema:Enumeration" #DDFFDD
 }
 package "bio" {
-    class "bio:ComputationalWorkflow" #CCEEFF
-    class "bio:BioChemEntity" #CCEEFF
-    class "bio:BioSample" #CCEEFF
+    class "bio:ComputationalWorkflow" #EECCFF
+    class "bio:BioChemEntity" #EECCFF
+    class "bio:BioSample" #EECCFF
 }
 ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
@@ -56,14 +56,14 @@ Method --|> "schema:HowTo"
 Observation --|> Assay
 Control --|> Assay
 Sampling --|> Assay
-Input --|> Assay
+Treatment --|> Assay
 ObservationUnit --|> "schema:Thing"
 Trait --|> "schema:DefinedTerm"
 Scale --|> "schema:DefinedTerm"
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
-InputVariable --|> Variable
+TreatmentVariable --|> Variable
 Actuator --|> Controller
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller

@@ -7,6 +7,7 @@ A time-delimited activity contributing to a research goal.
 
 ## Superclasses
 * https://schema.org/Action
+* http://www.w3.org/ns/prov#Activity
 ## Properties
 * appn:ResearchActivity appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 ## Subclasses
@@ -16,4 +17,4 @@ A time-delimited activity contributing to a research goal.
 * [https://schema.plantphenomics.org.au/Observation](/doc/appn_Observation.md)
 * [https://schema.plantphenomics.org.au/Control](/doc/appn_Control.md)
 * [https://schema.plantphenomics.org.au/Sampling](/doc/appn_Sampling.md)
-* [https://schema.plantphenomics.org.au/Input](/doc/appn_Input.md)
+* [https://schema.plantphenomics.org.au/Treatment](/doc/appn_Treatment.md)

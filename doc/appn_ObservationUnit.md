@@ -7,6 +7,7 @@ An entity for which a Study collects data.
 
 ## Superclasses
 * https://schema.org/Thing
+* http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties

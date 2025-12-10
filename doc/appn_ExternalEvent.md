@@ -11,4 +11,4 @@ ExternalEvent.
 * https://schema.org/Event
 ## Properties
 * [appn:Control](/doc/appn_Control.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
-* [appn:Input](/doc/appn_Input.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
+* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)

@@ -7,3 +7,5 @@ A system of units or representation format for values associated with a Variable
 
 ## Superclasses
 * https://schema.org/DefinedTerm
+## Properties
+* [appn:Variable](/doc/appn_Variable.md) appn:hasScale appn:Scale
