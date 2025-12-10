@@ -1,0 +1,80 @@
+@startuml
+class biological_material
+class country
+class data_file
+class environment
+class environment_parameter
+class event
+class experimental_design
+class factor
+class factor_value
+class growth_facility
+class institution
+class investigation
+class location
+class material_source
+class method
+class observation
+class observation_level
+class observation_level_hierarchy
+class observation_unit
+class observed_variable
+class person
+class role
+class sample
+class scale
+class spatial_distribution
+class spatial_distribution_type
+class study
+class trait
+biological_material --> country : hasCountryOfOrigin
+biological_material --> material_source : hasMaterialSource
+data_file --> observation : hasObservation
+environment --> environment_parameter : hasEnvironmentParameter
+factor_value --> factor : isModalityOf
+observation --> observed_variable : hasVariable
+observation_unit --> factor_value : hasFactorValue
+observation_unit --> observation_level : hasObservationLevel
+observation_unit --> spatial_distribution : hasSpatialDistribution
+observed_variable --> method : hasMethod
+observed_variable --> scale : hasScale
+observed_variable --> trait : hasTrait
+person --> institution : hasAffiliation
+role --> person : isRoleOf
+sample --> observation_unit : derivesFrom
+spatial_distribution --> spatial_distribution_type : hasSpatialDistributionType
+study --> data_file : hasDataFile
+study --> environment : hasEnvironment
+study --> experimental_design : hasExperimentalDesign
+study --> factor : hasFactor
+study --> growth_facility : hasGrowthFacility
+study --> institution : hasContactInstitution
+study --> observation_level_hierarchy : hasObservationLevelHierarchy
+factor --> factor_value : hasModality
+location --> country : hasCountry
+person --> role : hasRole
+study --> institution : hasParticipatingInstitution
+sample --> observation : isSubjectOfObservation
+study --> biological_material : hasBiologicalMaterial
+study --> event : hasEvent
+investigation --> institution : hasParticipatingInstitution
+observation_unit --> observation : isSubjectOfObservation
+observation_unit --> biological_material : hasBiologicalMaterial
+observation_unit --> event : hasEvent
+observation --> observation_unit : hasObservedSubject
+observation --> sample : hasObservedSubject
+investigation --> role : hasPersonWithRole
+study --> role : hasPersonWithRole
+role --> investigation : isRoleOfPersonIn
+role --> study : isRoleOfPersonIn
+observation_level --> observation_level : hasSuperlevel
+observation_level --> observation_level : hasSublevel
+biological_material --> location : hasLocation
+material_source --> location : hasLocation
+study --> location : hasLocation
+institution --> location : hasLocation
+observation_level --> observation_level_hierarchy : partOf
+observation_unit --> study : partOf
+observed_variable --> study : partOf
+study --> investigation : partOf
+@enduml

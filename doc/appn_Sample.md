@@ -1,7 +1,7 @@
 # Sample
 [https://schema.plantphenomics.org.au/Sample](https://schema.plantphenomics.org.au/Sample)
 
-Sample.
+A BiologicalUnit that has been created from an existing BiologicalUnit through a Sampling assay.
 
 ![UML diagram for Sample](/ttl_uml/ttl_appn_Sample.png)
 

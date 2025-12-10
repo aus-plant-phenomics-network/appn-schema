@@ -17,7 +17,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix void: <http://rdfs.org/ns/void#> .
 
-# TODO: All class relationships are rdfs:subClassOf rather than rdfs:subClassOf to minimise risk of breaking semantics elsewhere, but some should be replaceable with owl:equivalentClass as things become clearer.
+# TODO: All class relationships are rdfs:subClassOf rather than rdfs:sameAs to minimise risk of breaking semantics elsewhere, but some should be replaceable with owl:equivalentClass as things become clearer.
 
 # COMMENT: schema:Action seems the obvious place to anchor ResearchActivity in schema.org. It inherits schema:startTime and schema:endTime.
 appn:ResearchActivity a rdfs:Class ;
@@ -52,7 +52,6 @@ appn:Method a rdfs:Class ;
     rdfs:subClassOf prov:Plan ;
     rdfs:subClassOf schema:HowTo .
 
-# COMMENT: Images are modeled as (complex) property values rather than e.g. Samples (from a Sampling).
 appn:Observation a rdfs:Class ;
     rdfs:label "Observation" ;
     rdfs:comment "An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images." ;
@@ -69,13 +68,11 @@ appn:Sampling a rdfs:Class ;
     rdfs:comment "An Assay that derives a new representative ObservationUnit from an existing ObservationUnit." ;
     rdfs:subClassOf appn:Assay .
 
-# COMMENT: Treatment is sufficiently different from Control that it is modeled here, but it still uses the madeByController property.
 appn:Treatment a rdfs:Class ;
     rdfs:label "Treatment" ;
     rdfs:comment "An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded." ;
     rdfs:subClassOf appn:Assay .
 
-# COMMENT: There is no obvious place to locate this in schema.org other than Thing.
 appn:ObservationUnit a rdfs:Class ;
     rdfs:label "ObservationUnit" ;
     rdfs:comment "An entity for which a Study collects data." ;
@@ -96,7 +93,6 @@ appn:Scale a rdfs:Class ;
     rdfs:comment "A system of units or representation format for values associated with a Variable." ;
     rdfs:subClassOf schema:DefinedTerm .
 
-# COMMENT: ObservedVariable and ControlledVariable are modeled as separate (in contrast to sosa:Property) in order to align naming with ppeo:ObservedVariable.
 appn:Variable a rdfs:Class ;
     rdfs:label "Variable" ;
     rdfs:comment "Representation of a Trait using a defined Scale." ;
@@ -121,102 +117,101 @@ appn:TreatmentVariable a rdfs:Class ;
 
 appn:Observer a rdfs:Class ;
     rdfs:label "Observer" ;
-    rdfs:comment "Observer." ;
+    rdfs:comment "The entity responsible for performing an Observation and delivering a value for an ObservedVariable. The Observer may be a Person, a Sensor or a SoftwareApplication. Note that SOSA maps sosa:Sensor to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
     rdfs:subClassOf sosa:Sensor .
 
 appn:Controller a rdfs:Class ;
     rdfs:label "Controller" ;
-    rdfs:comment "Controller." ;
+    rdfs:comment "The entity responsible for performing an Control action and delivering a value for a ControlledVariable. The Controller may be a Person, an Actuator, a SoftwareApplication or an ExternalEvent. Note that SOSA maps sosa:Actuator to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
     rdfs:subClassOf sosa:Actuator .
 
 appn:Sampler a rdfs:Class ;
     rdfs:label "Sampler" ;
-    rdfs:comment "Sampler." ;
+    rdfs:comment "The entity responsible for performing a Sampling and delivering a Sample. The Observer will normally be a Person, although in some contexts some kind of device could be involved. Note that SOSA maps sosa:Sampler to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
     rdfs:subClassOf sosa:Sampler .
+
+appn:Sensor a rdfs:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
+    rdfs:subClassOf appn:Observer ;
+    rdfs:subClassOf schema:IndividualProduct .
 
 appn:Actuator a rdfs:Class ;
     rdfs:label "Actuator" ;
-    rdfs:comment "Actuator." ;
+    rdfs:comment "An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
     rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf schema:IndividualProduct .
 
 appn:ExternalEvent a rdfs:Class ;
     rdfs:label "ExternalEvent" ;
-    rdfs:comment "ExternalEvent." ;
+    rdfs:comment "A default entity to represent any trigger outside the control of the experimenters that may affect the state of the experiment and alter a Variable of interest, e.g. severe weather events or equipment failures. Where possible, the resulting state of the experiment should be quantified and the ExternalEvent modeled as the Controller for a Control event. Where quantification is impossible, the ExternalEvent should be modeled as the Controller for a Treatment event." ;
     rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf schema:Event .
 
-appn:Sensor a rdfs:Class ;
-    rdfs:label "Sensor" ;
-    rdfs:comment "Sensor." ;
-    rdfs:subClassOf appn:Observer ;
-    rdfs:subClassOf schema:IndividualProduct .
-
-# COMMENT: Specialise schema:Person to accommodate roles in Assays.
 appn:Person a rdfs:Class ;
     rdfs:label "Person" ;
-    rdfs:comment "Person." ;
+    rdfs:comment "A Person, preferably identified using an ORCID, that may perform an Assay." ;
     rdfs:subClassOf appn:Observer ;
     rdfs:subClassOf appn:Controller ;
     rdfs:subClassOf appn:Sampler ;
     rdfs:subClassOf schema:Person .
 
-# TODO: align with Software Ontology or another alternative.
 appn:Software a rdfs:Class ;
-    rdfs:label "Software" ;
-    rdfs:comment "Software." ;
+    rdfs:label "SoftwareApplication" ;
+    rdfs:comment "A piece of software that may be perform an Assay. Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
     rdfs:subClassOf bio:ComputationalWorkflow ;
     rdfs:subClassOf appn:Observer ;
     rdfs:subClassOf appn:Controller .
 
 appn:Sample a rdfs:Class ;
     rdfs:label "Sample" ;
-    rdfs:comment "Sample." ;
+    rdfs:comment "A BiologicalUnit that has been created from an existing BiologicalUnit through a Sampling assay." ;
     rdfs:subClassOf sosa:Sample ;
     rdfs:subClassOf appn:BiologicalUnit .
 
 appn:Platform a rdfs:Class ;
     rdfs:label "Platform" ;
-    rdfs:comment "Platform." ;
+    rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators." ;
     rdfs:subClassOf sosa:Platform ;
     rdfs:subClassOf schema:IndividualProduct .
 
 appn:Deployment a rdfs:Class ;
     rdfs:label "Deployment" ;
-    rdfs:comment "Deployment." ;
+    rdfs:comment "A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted." ;
     rdfs:subClassOf ssn:Deployment ;
     rdfs:subClassOf schema:Thing .
 
-# COMMENT: GrowthFacility type hierarchy could be as subclasses of GrowthFacility or as GrowthFacilityTypes.
 appn:GrowthFacility a rdfs:Class ;
     rdfs:label "GrowthFacility" ;
-    rdfs:comment "GrowthFacility." ;
+    rdfs:comment "A building, enclosed space, field unit, container or other entity in which plants are grown. GrowthFacilities may be nested inside other GrowthFacilities, e.g. rhizoboxes inside a growth chamber, to any depth. GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits. Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a SpatialLocation. GrowthFacilities may be Platforms for Sensors and Actuators." ;
     rdfs:subClassOf appn:Platform ;
     rdfs:subClassOf appn:ObservationUnit .
 
 appn:GrowthFacilityType a rdfs:Class ;
     rdfs:label "GrowthFacilityType" ;
-    rdfs:comment "An enumeration of types of GrowthFacility." ;
+    rdfs:comment "A term from an enumeration of types of GrowthFacility." ;
     rdfs:subClassOf schema:Enumeration .
 
-# COMMENT: BiologicalUnit type hierarchy could be as subclasses of BiologicalUnit or as BiologicalUnitTypes.
 appn:BiologicalUnit a rdfs:Class ;
     rdfs:label "BiologicalUnit" ;
-    rdfs:comment "BiologicalUnit." ;
+    rdfs:comment "A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or crop in a field) or any Sample of a plant (e.g. an individual organ or leaf clipping) or set of plants (e.g. a cut from a plot) that is treated as an ObservationUnit for collecting or reporting data. BiologicalUnits may be part of larger BiologicalUnits. For example a plant (BiologicalUnit) may be part of a cohort (BiologicalUnit) sharing the same BiologicalMaterial and Treatments. Where relevant, the position of a BiologicalUnit within a larger BiologicalUnit or within a GrowthFacility can be specified using a SpatialLocation." ;
     rdfs:subClassOf appn:ObservationUnit ;
     rdfs:subClassOf bio:BioChemEntity .
 
 appn:BiologicalUnitType a rdfs:Class ;
     rdfs:label "BiologicalUnitType" ;
-    rdfs:comment "An enumeration of types of BiologicalUnit." ;
+    rdfs:comment "A term from an enumeration of types of BiologicalUnit." ;
     rdfs:subClassOf schema:Enumeration .
 
 appn:BiologicalMaterial a rdfs:Class ;
+    rdfs:label "BiologicalMaterial" ;
+    rdfs:comment "A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possible, this should include the material source for the BiologicalMaterial." ;
     rdfs:subClassOf ppeo:BiologicalMaterial ;
     rdfs:subClassOf bio:BioSample .
 
-# COMMENT: There is no obvious place to locate this in schema.org other than Thing.
 appn:SpatialLocation a rdfs:Class ;
+    rdfs:label "SpatialLocation" ;
+    rdfs:comment "A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels)." ;
     rdfs:subClassOf ppeo:SpatialDistribution ;
     rdfs:subClassOf schema:Thing .
 

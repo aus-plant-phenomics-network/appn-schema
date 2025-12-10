@@ -18,9 +18,9 @@ class TreatmentVariable
 class Observer
 class Controller
 class Sampler
+class Sensor
 class Actuator
 class ExternalEvent
-class Sensor
 class Person
 class Software
 class Sample
@@ -64,12 +64,12 @@ Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
 TreatmentVariable --|> Variable
+Sensor --|> Observer
+Sensor --|> "schema:IndividualProduct"
 Actuator --|> Controller
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
 ExternalEvent --|> "schema:Event"
-Sensor --|> Observer
-Sensor --|> "schema:IndividualProduct"
 Person --|> Observer
 Person --|> Controller
 Person --|> Sampler

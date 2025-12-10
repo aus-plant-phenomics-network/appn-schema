@@ -1,7 +1,7 @@
 # Software
 [https://schema.plantphenomics.org.au/Software](https://schema.plantphenomics.org.au/Software)
 
-Software.
+A piece of software that may be perform an Assay. Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
 ![UML diagram for Software](/ttl_uml/ttl_appn_Software.png)
 

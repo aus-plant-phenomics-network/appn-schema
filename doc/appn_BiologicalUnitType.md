@@ -1,7 +1,7 @@
 # BiologicalUnitType
 [https://schema.plantphenomics.org.au/BiologicalUnitType](https://schema.plantphenomics.org.au/BiologicalUnitType)
 
-An enumeration of types of BiologicalUnit.
+A term from an enumeration of types of BiologicalUnit.
 
 ![UML diagram for BiologicalUnitType](/ttl_uml/ttl_appn_BiologicalUnitType.png)
 

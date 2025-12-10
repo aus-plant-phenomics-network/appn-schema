@@ -1,7 +1,7 @@
 # Deployment
 [https://schema.plantphenomics.org.au/Deployment](https://schema.plantphenomics.org.au/Deployment)
 
-Deployment.
+A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
 
 ![UML diagram for Deployment](/ttl_uml/ttl_appn_Deployment.png)
 

@@ -1,7 +1,7 @@
 # Platform
 [https://schema.plantphenomics.org.au/Platform](https://schema.plantphenomics.org.au/Platform)
 
-Platform.
+A vehicle, building, person or other entity that may carry or include Sensors or Actuators.
 
 ![UML diagram for Platform](/ttl_uml/ttl_appn_Platform.png)
 

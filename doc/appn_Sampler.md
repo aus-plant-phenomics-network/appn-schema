@@ -1,7 +1,7 @@
 # Sampler
 [https://schema.plantphenomics.org.au/Sampler](https://schema.plantphenomics.org.au/Sampler)
 
-Sampler.
+The entity responsible for performing a Sampling and delivering a Sample. The Observer will normally be a Person, although in some contexts some kind of device could be involved. Note that SOSA maps sosa:Sampler to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
 ![UML diagram for Sampler](/ttl_uml/ttl_appn_Sampler.png)
 

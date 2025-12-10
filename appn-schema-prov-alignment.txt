@@ -1,0 +1,110 @@
+@startuml 
+
+class bio_ComputationalWorkflow #FFCCCC
+class cdi_Concept #CCFFCC
+class cdi_RepresentedVariable #CCFFCC
+class ppeo_Assay #CCCCFF
+class ppeo_Observation #CCCCFF
+class ppeo_ObservationUnit #CCCCFF
+class prov_Activity #AAFFFF
+class prov_Entity #AAFFFF
+class prov_Plan #AAFFFF
+class schema_Action #FFAAFF
+class schema_DefinedTerm #FFAAFF
+class schema_HowTo #FFAAFF
+class schema_IndividualProduct #FFAAFF
+class schema_InstanceValue #FFAAFF
+class schema_Person #FFAAFF
+class schema_Thing #FFAAFF
+class schema_Dataset #FFAAFF
+class schema_File #FFAAFF
+class sosa_Execution #FFFFAA
+class sosa_FeatureOfInterest #FFFFAA
+class sosa_Procedure #FFFFAA
+class sosa_Property #FFFFAA
+class sosa_Sensor #FFFFAA
+
+class ResearchActivity
+ResearchActivity --|> schema_Action
+ResearchActivity --|> prov_Activity
+
+class Assay
+Assay --|> ResearchActivity
+Assay --|> sosa_Execution
+Assay --|> ppeo_Assay
+
+class Method
+Method --|> sosa_Procedure
+Method --|> prov_Plan
+Method --|> schema_HowTo
+
+prov_Plan --|> prov_Entity
+
+class Observation
+Observation --|> Assay
+Observation --|> ppeo_Observation
+
+class ObservationUnit
+ObservationUnit --|> schema_Thing
+ObservationUnit --|> prov_Entity
+ObservationUnit --|> ppeo_ObservationUnit
+ObservationUnit --|> sosa_FeatureOfInterest
+
+class Trait
+Trait --|> cdi_Concept
+Trait --|> schema_DefinedTerm
+
+class Scale
+Scale --|> schema_DefinedTerm
+
+class Variable
+Variable --|> sosa_Property
+Variable --|> cdi_RepresentedVariable
+Variable --|> schema_InstanceValue
+
+class ObservedVariable
+ObservedVariable --|> Variable
+
+class Observer
+Observer --|> prov_Entity
+Observer --|> sosa_Sensor
+
+class Sensor
+Sensor --|> Observer
+Sensor --|> schema_IndividualProduct
+
+class Person
+Person --|> Observer
+Person --|> Controller
+Person --|> Sampler
+Person --|> schema_Person
+
+class Software
+Software --|> bio_ComputationalWorkflow
+Software --|> Observer
+Software --|> Controller
+
+class Dataset
+Dataset --|> schema_Dataset
+Dataset --|> prov_Entity
+
+class File
+File --|> schema_Dataset
+File --|> prov_Entity
+
+Assay --> ObservationUnit : isForObservationUnit
+Observation --> Observer : madeByObserver
+Observation --> Dataset : hasResult
+Observation --> File : hasResult
+Observation --> ObservedVariable : observed
+Assay --> Method : usedMethod
+Variable --> Trait : hasTrait
+Variable --> Scale : hasScale
+
+prov_Activity --> prov_Entity : prov_used
+prov_Activity --> prov_Plan : prov_used
+prov_Activity --> Person : prov_wasAssociatedWith
+prov_Activity --> prov_Entity : prov_generated
+
+@enduml
+

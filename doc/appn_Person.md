@@ -1,7 +1,7 @@
 # Person
 [https://schema.plantphenomics.org.au/Person](https://schema.plantphenomics.org.au/Person)
 
-Person.
+A Person, preferably identified using an ORCID, that may perform an Assay.
 
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 

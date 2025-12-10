@@ -1,7 +1,7 @@
 # Actuator
 [https://schema.plantphenomics.org.au/Actuator](https://schema.plantphenomics.org.au/Actuator)
 
-Actuator.
+An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
 ![UML diagram for Actuator](/ttl_uml/ttl_appn_Actuator.png)
 

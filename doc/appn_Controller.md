@@ -1,7 +1,7 @@
 # Controller
 [https://schema.plantphenomics.org.au/Controller](https://schema.plantphenomics.org.au/Controller)
 
-Controller.
+The entity responsible for performing an Control action and delivering a value for a ControlledVariable. The Controller may be a Person, an Actuator, a SoftwareApplication or an ExternalEvent. Note that SOSA maps sosa:Actuator to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
 ![UML diagram for Controller](/ttl_uml/ttl_appn_Controller.png)
 

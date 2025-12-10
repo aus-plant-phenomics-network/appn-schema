@@ -1,7 +1,7 @@
 # Sensor
 [https://schema.plantphenomics.org.au/Sensor](https://schema.plantphenomics.org.au/Sensor)
 
-Sensor.
+An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
 ![UML diagram for Sensor](/ttl_uml/ttl_appn_Sensor.png)
 
