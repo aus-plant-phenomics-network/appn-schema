@@ -11,5 +11,6 @@ A Variable (representation of a Trait using a defined Scale) modified for one or
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Treatment](/doc/appn_Treatment.md) appn:treats appn:TreatmentVariable - An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.
+* [appn:Treatment](/doc/appn_Treatment.md) **appn:treats** appn:TreatmentVariable
+    * An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.
 * TreatmentVariable https://schema.plantphenomics.org.au/hasDefaultValue

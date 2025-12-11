@@ -10,6 +10,9 @@ An electromechanical device that can control the value for a ControlledVariable 
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/IndividualProduct
 ## Properties
-* [appn:Deployment](/doc/appn_Deployment.md) appn:deployedSystem appn:Actuator - A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
-* [appn:Control](/doc/appn_Control.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md) - An Assay that modifies a property of one or more ObservationUnits.
-* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md) - An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.
+* [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedSystem** appn:Actuator
+    * A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
+* [appn:Control](/doc/appn_Control.md) **appn:madeByController** [appn:Controller](/doc/appn_Controller.md)
+    * An Assay that modifies a property of one or more ObservationUnits.
+* [appn:Treatment](/doc/appn_Treatment.md) **appn:madeByController** [appn:Controller](/doc/appn_Controller.md)
+    * An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.

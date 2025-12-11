@@ -15,6 +15,9 @@ A building, enclosed space, field unit, container or other entity in which plant
 * http://purl.org/ppeo/PPEO.owl#ObservationUnit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
-* [appn:Deployment](/doc/appn_Deployment.md) appn:deployedOnPlatform [appn:Platform](/doc/appn_Platform.md) - A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
-* [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md) - A research action that observes or modifies a set of ObservationUnits.
-* [appn:SpatialLocation](/doc/appn_SpatialLocation.md) appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md) - A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels).
+* [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](/doc/appn_Platform.md)
+    * A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
+* [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+    * A research action that observes or modifies a set of ObservationUnits.
+* [appn:SpatialLocation](/doc/appn_SpatialLocation.md) **appn:isLocationWithin** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+    * A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels).

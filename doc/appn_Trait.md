@@ -9,4 +9,5 @@ A concept represented by a Variable associated with an ObservationUnit. In the D
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
 * https://schema.org/DefinedTerm
 ## Properties
-* [appn:Variable](/doc/appn_Variable.md) appn:hasTrait appn:Trait - Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable.
+* [appn:Variable](/doc/appn_Variable.md) **appn:hasTrait** appn:Trait
+    * Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable.

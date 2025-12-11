@@ -14,7 +14,7 @@ An Assay that observes or measures properties of one or more ObservationUnits re
 * http://purl.org/ppeo/PPEO.owl#Assay
 * http://purl.org/ppeo/PPEO.owl#Observation
 ## Properties
-* appn:Observation appn:hasResult [schema:Dataset](https://schema.org/Dataset)
-* appn:Observation appn:hasResult [schema:File](https://schema.org/File)
-* appn:Observation appn:usesData [schema:Dataset](https://schema.org/Dataset)
-* appn:Observation appn:usesData [schema:File](https://schema.org/File)
+* appn:Observation **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
+* appn:Observation **appn:hasResult** [schema:File](https://schema.org/File)
+* appn:Observation **appn:usesData** [schema:Dataset](https://schema.org/Dataset)
+* appn:Observation **appn:usesData** [schema:File](https://schema.org/File)

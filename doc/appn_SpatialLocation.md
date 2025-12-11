@@ -9,6 +9,7 @@ A position associated with the placement of a GrowthFacility within another Grow
 * http://purl.org/ppeo/PPEO.owl#SpatialDistribution
 * https://schema.org/Thing
 ## Properties
-* [appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:hasLocation appn:SpatialLocation - An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities.
+* [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:hasLocation** appn:SpatialLocation
+    * An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities.
 * SpatialLocation https://schema.plantphenomics.org.au/row
 * SpatialLocation https://schema.plantphenomics.org.au/column

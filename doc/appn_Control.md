@@ -13,5 +13,5 @@ An Assay that modifies a property of one or more ObservationUnits.
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay
 ## Properties
-* appn:Control appn:hasResult [schema:Dataset](https://schema.org/Dataset)
-* appn:Control appn:hasResult [schema:File](https://schema.org/File)
+* appn:Control **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
+* appn:Control **appn:hasResult** [schema:File](https://schema.org/File)

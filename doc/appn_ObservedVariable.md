@@ -11,5 +11,6 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Observation](/doc/appn_Observation.md) appn:observes appn:ObservedVariable - An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.
+* [appn:Observation](/doc/appn_Observation.md) **appn:observes** appn:ObservedVariable
+    * An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.
 * ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue
