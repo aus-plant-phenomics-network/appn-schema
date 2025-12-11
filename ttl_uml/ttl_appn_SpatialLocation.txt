@@ -14,4 +14,7 @@ class SpatialLocation #line.bold {
 class SpatialLocation #line.bold {
     column
 }
+class SpatialLocation #line.bold {
+    level
+}
 @enduml

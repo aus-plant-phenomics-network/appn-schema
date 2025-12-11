@@ -1,7 +1,7 @@
 # ResearchActivity
 [https://schema .plantphenomics .org .au/ResearchActivity](https://schema .plantphenomics .org .au/ResearchActivity)
 
-A time-delimited activity contributing to a research goal .
+A time-delimited activity contributing to a research goal.
 
 ![UML diagram for ResearchActivity](/ttl_uml/ttl_appn_ResearchActivity.png)
 
@@ -10,7 +10,7 @@ A time-delimited activity contributing to a research goal .
 * http://www .w3 .org/ns/prov#Activity
 ## Properties
 * appn:ResearchActivity **appn:isPartOf** [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
-    * Relates an Assay to the Study that includes it or a Study to an Investigation .
+    * Relates an Assay to the Study that includes it or a Study to an Investigation.
 ## Subclasses
 * [https://schema .plantphenomics .org .au/Investigation](/doc/appn_Investigation.md)
 * [https://schema .plantphenomics .org .au/Study](/doc/appn_Study.md)

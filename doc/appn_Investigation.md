@@ -1,7 +1,7 @@
 # Investigation
 [https://schema .plantphenomics .org .au/Investigation](https://schema .plantphenomics .org .au/Investigation)
 
-A research programme including one or more Studies .
+A research programme including one or more Studies.
 
 ![UML diagram for Investigation](/ttl_uml/ttl_appn_Investigation.png)
 
@@ -12,4 +12,4 @@ A research programme including one or more Studies .
 * http://purl .org/ppeo/PPEO .owl#Investigation
 ## Properties
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
-    * Relates an Assay to the Study that includes it or a Study to an Investigation .
+    * Relates an Assay to the Study that includes it or a Study to an Investigation.

@@ -1,7 +1,7 @@
 # Sampling
 [https://schema .plantphenomics .org .au/Sampling](https://schema .plantphenomics .org .au/Sampling)
 
-An Assay that derives a new representative ObservationUnit from an existing ObservationUnit .
+An Assay that derives a new representative ObservationUnit from an existing ObservationUnit.
 
 ![UML diagram for Sampling](/ttl_uml/ttl_appn_Sampling.png)
 
@@ -14,12 +14,12 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 * http://purl .org/ppeo/PPEO .owl#Assay
 ## Properties
 * appn:Sampling **appn:madeBySampler** [appn:Sampler](/doc/appn_Sampler.md)
-    * Identifies the entity (Sampler, i .e . a Person - no other subclasses defined yet) responsible for carrying out an Sampling .
+    * Identifies the entity (Sampler, i .e . a Person - no other subclasses defined yet) responsible for carrying out an Sampling.
 * appn:Sampling **appn:producesSample** [appn:Sample](/doc/appn_Sample.md)
-    * Identifies the Sample produced by a Sampling assay .
+    * Identifies the Sample produced by a Sampling assay.
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-    * Relates an Assay to an ObservationUnit for which it is carried out .
+    * Relates an Assay to an ObservationUnit for which it is carried out.
 * [appn:Assay](/doc/appn_Assay.md) **appn:usedMethod** [appn:Method](/doc/appn_Method.md)
-    * Identifies a Method used to conduct an Assay .
+    * Identifies a Method used to conduct an Assay.
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
-    * Relates an Assay to the Study that includes it or a Study to an Investigation .
+    * Relates an Assay to the Study that includes it or a Study to an Investigation.
