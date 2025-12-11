@@ -16,6 +16,8 @@ A building, enclosed space, field unit, container or other entity in which plant
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
 * [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](/doc/appn_Platform.md)
+    * Identifies a Platform on which Sensors or Actuators are deployed
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out.
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md) **appn:isLocationWithin** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+    * Specifies that a location is a position within an ObservationUnit

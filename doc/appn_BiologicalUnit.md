@@ -16,5 +16,6 @@ A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or cro
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out.
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md) **appn:isLocationWithin** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+    * Specifies that a location is a position within an ObservationUnit
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Sample](/doc/appn_Sample.md)

@@ -15,6 +15,10 @@ An Assay that observes or measures properties of one or more ObservationUnits re
 * http://purl.org/ppeo/PPEO.owl#Observation
 ## Properties
 * appn:Observation **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
+    * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
 * appn:Observation **appn:hasResult** [schema:File](https://schema.org/File)
+    * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
 * appn:Observation **appn:usesData** [schema:Dataset](https://schema.org/Dataset)
+    * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
 * appn:Observation **appn:usesData** [schema:File](https://schema.org/File)
+    * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.

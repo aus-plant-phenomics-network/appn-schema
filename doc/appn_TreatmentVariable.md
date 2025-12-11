@@ -12,4 +12,5 @@ A Variable (representation of a Trait using a defined Scale) modified for one or
 * https://schema.org/InstanceValue
 ## Properties
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:treats** appn:TreatmentVariable
+    * Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
 * TreatmentVariable https://schema.plantphenomics.org.au/hasDefaultValue

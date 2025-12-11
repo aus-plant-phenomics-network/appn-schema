@@ -9,3 +9,4 @@ A term from an enumeration of types of GrowthFacility.
 * https://schema.org/Enumeration
 ## Properties
 * [appn:GrowthFacility](/doc/appn_GrowthFacility.md) **appn:hasGrowthFacilityType** appn:GrowthFacilityType
+    * Links a GrowthFacility to its type

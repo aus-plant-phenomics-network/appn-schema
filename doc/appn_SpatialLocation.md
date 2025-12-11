@@ -10,5 +10,6 @@ A position associated with the placement of a GrowthFacility within another Grow
 * https://schema.org/Thing
 ## Properties
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:hasLocation** appn:SpatialLocation
+    * Specifies the location for an ObservationUnit
 * SpatialLocation https://schema.plantphenomics.org.au/row
 * SpatialLocation https://schema.plantphenomics.org.au/column

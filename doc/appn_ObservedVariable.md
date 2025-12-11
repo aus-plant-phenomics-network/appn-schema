@@ -12,4 +12,5 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
 * https://schema.org/InstanceValue
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) **appn:observes** appn:ObservedVariable
+    * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
 * ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue

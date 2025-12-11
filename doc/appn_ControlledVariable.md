@@ -12,4 +12,5 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 * https://schema.org/InstanceValue
 ## Properties
 * [appn:Control](/doc/appn_Control.md) **appn:controls** appn:ControlledVariable
+    * Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.
 * ControlledVariable https://schema.plantphenomics.org.au/hasDefaultValue

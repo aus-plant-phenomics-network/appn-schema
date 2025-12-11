@@ -14,6 +14,7 @@ An entity for which a Study collects data or controls the environment and other 
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** appn:ObservationUnit
     * Relates an Assay to an ObservationUnit for which it is carried out.
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md) **appn:isLocationWithin** appn:ObservationUnit
+    * Specifies that a location is a position within an ObservationUnit
 ## Subclasses
 * [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)
 * [https://schema.plantphenomics.org.au/BiologicalUnit](/doc/appn_BiologicalUnit.md)

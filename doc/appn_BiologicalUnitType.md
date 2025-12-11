@@ -9,3 +9,4 @@ A term from an enumeration of types of BiologicalUnit.
 * https://schema.org/Enumeration
 ## Properties
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalUnitType** appn:BiologicalUnitType
+    * Links a BiologicalUnit to its type

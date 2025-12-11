@@ -11,6 +11,7 @@ An electromechanical device that can control the value for a ControlledVariable 
 * https://schema.org/IndividualProduct
 ## Properties
 * [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedSystem** appn:Actuator
+    * Identifies a Sensor or Actuator deployed on a Platform
 * [appn:Control](/doc/appn_Control.md) **appn:madeByController** [appn:Controller](/doc/appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:madeByController** [appn:Controller](/doc/appn_Controller.md)

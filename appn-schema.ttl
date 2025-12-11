@@ -252,120 +252,120 @@ appn:madeBySampler a rdfs:Property ;
 
 appn:hasResult a rdfs:Property ;
     rdfs:label "hasResult" ; 
-    rdfs:description "Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult." ;
+    rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult." ;
     schema:domainIncludes appn:Observation,appn:Control ;
     schema:rangeIncludes schema:Dataset,schema:File .
 
 appn:producesSample a rdfs:Property ;
     rdfs:label "producesSample" ; 
-    rdfs:description "Identifies the Sample produced by a Sampling assay." ;
+    rdfs:comment "Identifies the Sample produced by a Sampling assay." ;
     schema:domainIncludes appn:Sampling ;
     schema:rangeIncludes appn:Sample .
 
 appn:usesData a rdfs:Property ;
     rdfs:label "usesData" ; 
-    rdfs:description "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
+    rdfs:comment "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes schema:Dataset,schema:File .
 
 appn:controls a rdfs:Property ;
     rdfs:label "controls" ; 
-    rdfs:description "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
+    rdfs:comment "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
     schema:domainIncludes appn:Control ;
     schema:rangeIncludes appn:ControlledVariable .
 
 appn:treats a rdfs:Property ;
     rdfs:label "treats" ; 
-    rdfs:description "Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
+    rdfs:comment "Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
     schema:domainIncludes appn:Treatment ;
     schema:rangeIncludes appn:TreatmentVariable .
 
 appn:observes a rdfs:Property ;
     rdfs:label "observes" ; 
-    rdfs:description "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
+    rdfs:comment "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes appn:ObservedVariable .
 
 appn:inheritsContext a rdfs:Property ;
     rdfs:label "inheritsContext" ; 
-    rdfs:description "inheritsContext" ;
+    rdfs:comment "inheritsContext" ;
     schema:domainIncludes appn:ObservationUnit ;
     schema:rangeIncludes appn:ObservationUnit .
 
 appn:hasGrowthFacilityType a rdfs:Property ;
     rdfs:label "hasGrowthFacilityType" ; 
-    rdfs:description "Links a GrowthFacility to its type" ;
+    rdfs:comment "Links a GrowthFacility to its type" ;
     schema:domainIncludes appn:GrowthFacility ;
     schema:rangeIncludes appn:GrowthFacilityType .
 
 appn:hasBiologicalUnitType a rdfs:Property ;
     rdfs:label "hasBiologicalUnitType" ; 
-    rdfs:description "Links a BiologicalUnit to its type" ;
+    rdfs:comment "Links a BiologicalUnit to its type" ;
     schema:domainIncludes appn:BiologicalUnit ;
     schema:rangeIncludes appn:BiologicalUnitType .
 
 appn:hasBiologicalMaterial a rdfs:Property ;
     rdfs:label "hasBiologicalMaterial" ; 
-    rdfs:description "Links a BiologicalUnit to its genetic material" ;
+    rdfs:comment "Links a BiologicalUnit to its genetic material" ;
     schema:domainIncludes appn:BiologicalUnit ;
     schema:rangeIncludes appn:BiologicalMaterial .
 
 # COMMENT: Needs a range.
 appn:hasDefaultValue a rdfs:Property ;
     rdfs:label "hasDefaultValue" ; 
-    rdfs:description "Specifies the default value for a variable" ;
+    rdfs:comment "Specifies the default value for a variable" ;
     schema:domainIncludes appn:Variable .
 
 appn:hasLocation a rdfs:Property ;
     rdfs:label "hasLocation" ; 
-    rdfs:description "Specifies the location for an ObservationUnit" ;
+    rdfs:comment "Specifies the location for an ObservationUnit" ;
     schema:domainIncludes appn:ObservationUnit ;
     schema:rangeIncludes appn:SpatialLocation.
 
 appn:isLocationWithin a rdfs:Property ;
     rdfs:label "isLocationWithin" ; 
-    rdfs:description "Specifies that a location is a position within an ObservationUnit" ;
+    rdfs:comment "Specifies that a location is a position within an ObservationUnit" ;
     schema:domainIncludes appn:SpatialLocation ;
     schema:rangeIncludes appn:ObservationUnit.
 
 # COMMENT: Needs a range.
 appn:row a rdfs:Property ;
     rdfs:label "row" ; 
-    rdfs:description "Specifies the row for a SpatialLocation" ;
+    rdfs:comment "Specifies the row for a SpatialLocation" ;
     schema:domainIncludes appn:SpatialLocation .
 
 # COMMENT: Needs a range.
 appn:column a rdfs:Property ;
     rdfs:label "column" ; 
-    rdfs:description "Specifies the column for a SpatialLocation" ;
+    rdfs:comment "Specifies the column for a SpatialLocation" ;
     schema:domainIncludes appn:SpatialLocation .
 
 appn:deployedSystem a rdfs:Property ;
     rdfs:label "deployedSystem" ; 
-    rdfs:description "Identifies a Sensor or Actuator deployed on a Platform" ;
+    rdfs:comment "Identifies a Sensor or Actuator deployed on a Platform" ;
     schema:domainIncludes appn:Deployment ;
     schema:rangeIncludes appn:Sensor,appn:Actuator .
 
 appn:deployedOnPlatform a rdfs:Property ;
     rdfs:label "deployedOnPlatform" ; 
-    rdfs:description "Identifies a Platform on which Sensors or Actuators are deployed" ;
+    rdfs:comment "Identifies a Platform on which Sensors or Actuators are deployed" ;
     schema:domainIncludes appn:Deployment ;
     schema:rangeIncludes appn:Platform .
 
 appn:usedMethod a rdfs:Property ;
     rdfs:label "usedMethod" ;
-    rdfs:description "Identifies a Method used to conduct an Assay." ;
+    rdfs:comment "Identifies a Method used to conduct an Assay." ;
     schema:domainIncludes appn:Assay ;
     schema:rangeIncludes appn:Method .
 
 appn:hasTrait a rdfs:Property ;
     rdfs:label "hasTrait" ;
-    rdfs:description "Identified the Trait associated with a Variable." ;
+    rdfs:comment "Identified the Trait associated with a Variable." ;
     schema:domainIncludes appn:Variable ;
     schema:rangeIncludes appn:Trait .
 
 appn:hasScale a rdfs:Property ;
     rdfs:label "hasScale" ;
-    rdfs:description "Identified the Scale associated with a Variable." ;
+    rdfs:comment "Identified the Scale associated with a Variable." ;
     schema:domainIncludes appn:Variable ;
     schema:rangeIncludes appn:Scale .

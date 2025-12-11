@@ -10,5 +10,6 @@ A vehicle, building, person or other entity that may carry or include Sensors or
 * https://schema.org/IndividualProduct
 ## Properties
 * [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedOnPlatform** appn:Platform
+    * Identifies a Platform on which Sensors or Actuators are deployed
 ## Subclasses
 * [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)

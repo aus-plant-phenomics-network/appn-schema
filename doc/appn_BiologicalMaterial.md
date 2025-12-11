@@ -10,3 +10,4 @@ A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possib
 * https://bioschemas.org/BioSample
 ## Properties
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** appn:BiologicalMaterial
+    * Links a BiologicalUnit to its genetic material

@@ -14,4 +14,6 @@ An Assay that modifies a property of one or more ObservationUnits.
 * http://purl.org/ppeo/PPEO.owl#Assay
 ## Properties
 * appn:Control **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
+    * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
 * appn:Control **appn:hasResult** [schema:File](https://schema.org/File)
+    * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
