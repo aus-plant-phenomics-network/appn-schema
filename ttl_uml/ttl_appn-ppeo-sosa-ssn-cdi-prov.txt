@@ -22,7 +22,7 @@ class Sensor
 class Actuator
 class ExternalEvent
 class Person
-class Software
+class SoftwareApplication
 class Sample
 class BiologicalUnit
 class Platform
@@ -74,9 +74,9 @@ Person --|> Observer
 Person --|> Controller
 Person --|> Sampler
 Person --|> "schema:Person"
-Software --|> "bio:ComputationalWorkflow"
-Software --|> Observer
-Software --|> Controller
+SoftwareApplication --|> "bio:ComputationalWorkflow"
+SoftwareApplication --|> Observer
+SoftwareApplication --|> Controller
 Sample --|> BiologicalUnit
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"

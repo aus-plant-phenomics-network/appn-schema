@@ -26,7 +26,7 @@
 * [appn:Sampling](/doc/appn_Sampling.md)
 * [appn:Scale](/doc/appn_Scale.md)
 * [appn:Sensor](/doc/appn_Sensor.md)
-* [appn:Software](/doc/appn_Software.md)
+* [appn:SoftwareApplication](/doc/appn_SoftwareApplication.md)
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
 * [appn:Study](/doc/appn_Study.md)
 * [appn:Trait](/doc/appn_Trait.md)

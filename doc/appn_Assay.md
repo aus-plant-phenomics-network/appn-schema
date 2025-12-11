@@ -12,9 +12,6 @@ A research action that observes or modifies a set of ObservationUnits.
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay
 ## Properties
-* appn:Assay appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-* appn:Assay appn:usedMethod [appn:Method](/doc/appn_Method.md)
-* [appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Observation](/doc/appn_Observation.md)
 * [https://schema.plantphenomics.org.au/Control](/doc/appn_Control.md)

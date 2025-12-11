@@ -11,7 +11,5 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Control](/doc/appn_Control.md) appn:controls appn:ControlledVariable
+* [appn:Control](/doc/appn_Control.md) appn:controls appn:ControlledVariable - An Assay that modifies a property of one or more ObservationUnits.
 * ControlledVariable https://schema.plantphenomics.org.au/hasDefaultValue
-* [appn:Variable](/doc/appn_Variable.md) appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
-* [appn:Variable](/doc/appn_Variable.md) appn:hasScale [appn:Scale](/doc/appn_Scale.md)

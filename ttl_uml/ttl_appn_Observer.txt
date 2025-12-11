@@ -8,6 +8,6 @@ class Sensor
 Sensor --|> Observer
 class Person 
 Person --|> Observer
-class Software 
-Software --|> Observer
+class SoftwareApplication 
+SoftwareApplication --|> Observer
 @enduml

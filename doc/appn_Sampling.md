@@ -13,8 +13,3 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#Assay
 ## Properties
-* appn:Sampling appn:madeBySampler [appn:Sampler](/doc/appn_Sampler.md)
-* appn:Sampling appn:producesSample [appn:Sample](/doc/appn_Sample.md)
-* [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-* [appn:Assay](/doc/appn_Assay.md) appn:usedMethod [appn:Method](/doc/appn_Method.md)
-* [appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

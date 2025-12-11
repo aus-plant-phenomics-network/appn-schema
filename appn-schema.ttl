@@ -75,7 +75,7 @@ appn:Treatment a rdfs:Class ;
 
 appn:ObservationUnit a rdfs:Class ;
     rdfs:label "ObservationUnit" ;
-    rdfs:comment "An entity for which a Study collects data." ;
+    rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities." ;
     rdfs:subClassOf schema:Thing ;
     rdfs:subClassOf prov:Entity ;
     rdfs:subClassOf ppeo:ObservationUnit ;
@@ -83,7 +83,7 @@ appn:ObservationUnit a rdfs:Class ;
 
 appn:Trait a rdfs:Class ;
     rdfs:label "Trait" ;
-    rdfs:comment "A concept represented by a Variable." ;
+    rdfs:comment "A concept represented by a Variable associated with an ObservationUnit. In the DDI-CDI Variable Cascade, a Trait is a Concept or ConceptualVariable." ;
     rdfs:subClassOf cdi:Concept ;
     rdfs:subClassOf schema:DefinedTerm .
 
@@ -95,14 +95,14 @@ appn:Scale a rdfs:Class ;
 
 appn:Variable a rdfs:Class ;
     rdfs:label "Variable" ;
-    rdfs:comment "Representation of a Trait using a defined Scale." ;
+    rdfs:comment "Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable." ;
     rdfs:subClassOf sosa:Property ;
     rdfs:subClassOf cdi:RepresentedVariable ;
     rdfs:subClassOf schema:InstanceValue .
 
 appn:ObservedVariable a rdfs:Class ;
-    rdfs:label "A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits." ;
-    rdfs:comment "ObservedVariable." ;
+    rdfs:label "ObservedVariable" ;
+    rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits." ;
     rdfs:subClassOf appn:Variable .
 
 appn:ControlledVariable a rdfs:Class ;
@@ -156,7 +156,7 @@ appn:Person a rdfs:Class ;
     rdfs:subClassOf appn:Sampler ;
     rdfs:subClassOf schema:Person .
 
-appn:Software a rdfs:Class ;
+appn:SoftwareApplication a rdfs:Class ;
     rdfs:label "SoftwareApplication" ;
     rdfs:comment "A piece of software that may be perform an Assay. Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
     rdfs:subClassOf bio:ComputationalWorkflow ;
@@ -230,14 +230,14 @@ appn:isForObservationUnit a rdfs:Property ;
 
 appn:madeByObserver a rdfs:Property ;
     rdfs:label "madeByObserver" ;
-    rdfs:comment "Identifies the entity used to carry out an Observation." ;
+    rdfs:comment "Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation." ;
     rdfs:subPropertyOf sosa:madeByObserver ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes appn:Observer .
 
 appn:madeByController a rdfs:Property ;
     rdfs:label "madeByController" ;
-    rdfs:comment "Identifies the entity used to carry out a Control or Treatment." ;
+    rdfs:comment "Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment." ;
     rdfs:subPropertyOf sosa:madeByActuator ;
     schema:domainIncludes appn:Control ;
     schema:domainIncludes appn:Treatment ;
@@ -245,44 +245,44 @@ appn:madeByController a rdfs:Property ;
 
 appn:madeBySampler a rdfs:Property ;
     rdfs:label "madeBySampler" ;
-    rdfs:comment "Identifies the entity used to carry out an Sampling." ;
+    rdfs:comment "Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling." ;
     rdfs:subPropertyOf sosa:madeBySampler ;
     schema:domainIncludes appn:Sampling ;
     schema:rangeIncludes appn:Sampler .
 
 appn:hasResult a rdfs:Property ;
     rdfs:label "hasResult" ; 
-    rdfs:description "hasResult" ;
+    rdfs:description "Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult." ;
     schema:domainIncludes appn:Observation,appn:Control ;
     schema:rangeIncludes schema:Dataset,schema:File .
 
 appn:producesSample a rdfs:Property ;
     rdfs:label "producesSample" ; 
-    rdfs:description "Identifies the Sample produced by a Sampling Assay." ;
+    rdfs:description "Identifies the Sample produced by a Sampling assay." ;
     schema:domainIncludes appn:Sampling ;
     schema:rangeIncludes appn:Sample .
 
 appn:usesData a rdfs:Property ;
     rdfs:label "usesData" ; 
-    rdfs:description "usesData" ;
+    rdfs:description "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes schema:Dataset,schema:File .
 
 appn:controls a rdfs:Property ;
     rdfs:label "controls" ; 
-    rdfs:description "controls" ;
+    rdfs:description "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
     schema:domainIncludes appn:Control ;
     schema:rangeIncludes appn:ControlledVariable .
 
 appn:treats a rdfs:Property ;
     rdfs:label "treats" ; 
-    rdfs:description "treats" ;
+    rdfs:description "Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
     schema:domainIncludes appn:Treatment ;
     schema:rangeIncludes appn:TreatmentVariable .
 
 appn:observes a rdfs:Property ;
     rdfs:label "observes" ; 
-    rdfs:description "observes" ;
+    rdfs:description "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
     schema:domainIncludes appn:Observation ;
     schema:rangeIncludes appn:ObservedVariable .
 

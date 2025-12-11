@@ -10,5 +10,5 @@ A default entity to represent any trigger outside the control of the experimente
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/Event
 ## Properties
-* [appn:Control](/doc/appn_Control.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
-* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md)
+* [appn:Control](/doc/appn_Control.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md) - An Assay that modifies a property of one or more ObservationUnits.
+* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController [appn:Controller](/doc/appn_Controller.md) - An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.

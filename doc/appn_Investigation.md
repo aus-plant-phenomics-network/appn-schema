@@ -11,4 +11,3 @@ A research programme including one or more Studies.
 * http://www.w3.org/ns/prov#Activity
 * http://purl.org/ppeo/PPEO.owl#Investigation
 ## Properties
-* [appn:ResearchActivity](/doc/appn_ResearchActivity.md) appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

@@ -8,4 +8,4 @@ A system of units or representation format for values associated with a Variable
 ## Superclasses
 * https://schema.org/DefinedTerm
 ## Properties
-* [appn:Variable](/doc/appn_Variable.md) appn:hasScale appn:Scale
+* [appn:Variable](/doc/appn_Variable.md) appn:hasScale appn:Scale - Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable.

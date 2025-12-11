@@ -1,7 +1,7 @@
 # ObservedVariable
 [https://schema.plantphenomics.org.au/ObservedVariable](https://schema.plantphenomics.org.au/ObservedVariable)
 
-ObservedVariable.
+A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits.
 
 ![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
 
@@ -11,7 +11,5 @@ ObservedVariable.
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
-* [appn:Observation](/doc/appn_Observation.md) appn:observes appn:ObservedVariable
+* [appn:Observation](/doc/appn_Observation.md) appn:observes appn:ObservedVariable - An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.
 * ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue
-* [appn:Variable](/doc/appn_Variable.md) appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
-* [appn:Variable](/doc/appn_Variable.md) appn:hasScale [appn:Scale](/doc/appn_Scale.md)

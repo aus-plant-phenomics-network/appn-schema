@@ -1,0 +1,19 @@
+@startuml
+class SoftwareApplication  #line.bold
+class "bio:ComputationalWorkflow" #EECCFF 
+SoftwareApplication --|> "bio:ComputationalWorkflow"
+class Observer  
+class "sosa:Sensor" #FFCCEE 
+Observer --|> "sosa:Sensor"
+SoftwareApplication --|> Observer
+class Controller  
+class "sosa:Actuator" #FFCCEE 
+Controller --|> "sosa:Actuator"
+SoftwareApplication --|> Controller
+class Observation 
+Observation --> Observer : madeByObserver
+class Control 
+Control --> Controller : madeByController
+class Treatment 
+Treatment --> Controller : madeByController
+@enduml

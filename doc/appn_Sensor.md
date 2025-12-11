@@ -10,5 +10,5 @@ An electromechanical device that can return the value for an ObservedVariable an
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/IndividualProduct
 ## Properties
-* [appn:Deployment](/doc/appn_Deployment.md) appn:deployedSystem appn:Sensor
-* [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md)
+* [appn:Deployment](/doc/appn_Deployment.md) appn:deployedSystem appn:Sensor - A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
+* [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver [appn:Observer](/doc/appn_Observer.md) - An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.

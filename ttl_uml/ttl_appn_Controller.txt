@@ -12,6 +12,6 @@ class ExternalEvent
 ExternalEvent --|> Controller
 class Person 
 Person --|> Controller
-class Software 
-Software --|> Controller
+class SoftwareApplication 
+SoftwareApplication --|> Controller
 @enduml

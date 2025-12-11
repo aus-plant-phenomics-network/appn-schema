@@ -1,7 +1,7 @@
 # Variable
 [https://schema.plantphenomics.org.au/Variable](https://schema.plantphenomics.org.au/Variable)
 
-Representation of a Trait using a defined Scale.
+Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable.
 
 ![UML diagram for Variable](/ttl_uml/ttl_appn_Variable.png)
 
@@ -11,8 +11,6 @@ Representation of a Trait using a defined Scale.
 * https://schema.org/InstanceValue
 ## Properties
 * Variable https://schema.plantphenomics.org.au/hasDefaultValue
-* appn:Variable appn:hasTrait [appn:Trait](/doc/appn_Trait.md)
-* appn:Variable appn:hasScale [appn:Scale](/doc/appn_Scale.md)
 ## Subclasses
 * [https://schema.plantphenomics.org.au/ObservedVariable](/doc/appn_ObservedVariable.md)
 * [https://schema.plantphenomics.org.au/ControlledVariable](/doc/appn_ControlledVariable.md)

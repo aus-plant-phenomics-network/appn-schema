@@ -8,8 +8,8 @@ The entity responsible for performing an Observation and delivering a value for 
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
-* [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver appn:Observer
+* [appn:Observation](/doc/appn_Observation.md) appn:madeByObserver appn:Observer - An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Sensor](/doc/appn_Sensor.md)
 * [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)
-* [https://schema.plantphenomics.org.au/Software](/doc/appn_Software.md)
+* [https://schema.plantphenomics.org.au/SoftwareApplication](/doc/appn_SoftwareApplication.md)

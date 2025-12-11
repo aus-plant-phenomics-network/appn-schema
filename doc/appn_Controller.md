@@ -8,10 +8,10 @@ The entity responsible for performing an Control action and delivering a value f
 ## Superclasses
 * https://www.w3.org/ns/sosa/Actuator
 ## Properties
-* [appn:Control](/doc/appn_Control.md) appn:madeByController appn:Controller
-* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController appn:Controller
+* [appn:Control](/doc/appn_Control.md) appn:madeByController appn:Controller - An Assay that modifies a property of one or more ObservationUnits.
+* [appn:Treatment](/doc/appn_Treatment.md) appn:madeByController appn:Controller - An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Actuator](/doc/appn_Actuator.md)
 * [https://schema.plantphenomics.org.au/ExternalEvent](/doc/appn_ExternalEvent.md)
 * [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)
-* [https://schema.plantphenomics.org.au/Software](/doc/appn_Software.md)
+* [https://schema.plantphenomics.org.au/SoftwareApplication](/doc/appn_SoftwareApplication.md)

@@ -9,7 +9,6 @@ A time-delimited activity contributing to a research goal.
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 ## Properties
-* appn:ResearchActivity appn:isPartOf [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Investigation](/doc/appn_Investigation.md)
 * [https://schema.plantphenomics.org.au/Study](/doc/appn_Study.md)

@@ -13,11 +13,7 @@ A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or cro
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 * https://bioschemas.org/BioChemEntity
 ## Properties
-* appn:BiologicalUnit appn:hasBiologicalUnitType [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
-* appn:BiologicalUnit appn:hasBiologicalMaterial [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
-* [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-* [appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:inheritsContext [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-* [appn:ObservationUnit](/doc/appn_ObservationUnit.md) appn:hasLocation [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
-* [appn:SpatialLocation](/doc/appn_SpatialLocation.md) appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
+* [appn:Assay](/doc/appn_Assay.md) appn:isForObservationUnit [appn:ObservationUnit](/doc/appn_ObservationUnit.md) - A research action that observes or modifies a set of ObservationUnits.
+* [appn:SpatialLocation](/doc/appn_SpatialLocation.md) appn:isLocationWithin [appn:ObservationUnit](/doc/appn_ObservationUnit.md) - A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels).
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Sample](/doc/appn_Sample.md)
