@@ -1,371 +1,371 @@
 # TODO: Prune unnecessary prefixes
-@prefix appn: <https://schema.plantphenomics.org.au/> .
-@prefix bio: <https://bioschemas.org/> .
-@prefix cdi: <http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix sosa: <https://www.w3.org/ns/sosa/> .
-@prefix ssn: <https://www.w3.org/ns/ssn/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix void: <http://rdfs.org/ns/void#> .
+@prefix appn: <https://schema .plantphenomics .org .au/> .
+@prefix bio: <https://bioschemas .org/> .
+@prefix cdi: <http://ddialliance .org/Specification/DDI-CDI/1 .0/RDF/> .
+@prefix dcat: <http://www .w3 .org/ns/dcat#> .
+@prefix dcmitype: <http://purl .org/dc/dcmitype/> .
+@prefix dcterms: <http://purl .org/dc/terms/> .
+@prefix foaf: <http://xmlns .com/foaf/0 .1/> .
+@prefix owl: <http://www .w3 .org/2002/07/owl#> .
+@prefix ppeo: <http://purl .org/ppeo/PPEO .owl#> .
+@prefix rdf: <http://www .w3 .org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www .w3 .org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema .org/> .
+@prefix skos: <http://www .w3 .org/2004/02/skos/core#> .
+@prefix sosa: <https://www .w3 .org/ns/sosa/> .
+@prefix ssn: <https://www .w3 .org/ns/ssn/> .
+@prefix prov: <http://www .w3 .org/ns/prov#> .
+@prefix void: <http://rdfs .org/ns/void#> .
 
 # TODO: All class relationships are rdfs:subClassOf rather than rdfs:sameAs to minimise risk of breaking semantics elsewhere, but some should be replaceable with owl:equivalentClass as things become clearer.
 
 # COMMENT: schema:Action seems the obvious place to anchor ResearchActivity in schema.org. It inherits schema:startTime and schema:endTime.
 appn:ResearchActivity a rdfs:Class ;
-    rdfs:label "ResearchActivity" ;
-    rdfs:comment "A time-delimited activity contributing to a research goal." ;
-    rdfs:subClassOf schema:Action ;
-    rdfs:subClassOf prov:Activity .
+  rdfs:label "ResearchActivity" ;
+  rdfs:comment "A time-delimited activity contributing to a research goal ." ;
+  rdfs:subClassOf schema:Action ;
+  rdfs:subClassOf prov:Activity .
 
 appn:Investigation a rdfs:Class ;
-    rdfs:label "Investigation" ;
-    rdfs:comment "A research programme including one or more Studies." ;
-    rdfs:subClassOf appn:ResearchActivity ;
-    rdfs:subClassOf ppeo:Investigation .
+  rdfs:label "Investigation" ;
+  rdfs:comment "A research programme including one or more Studies ." ;
+  rdfs:subClassOf appn:ResearchActivity ;
+  rdfs:subClassOf ppeo:Investigation .
 
 appn:Study a rdfs:Class ;
-    rdfs:label "Study" ;
-    rdfs:comment "A research activity including one or more Assays that record data on a set of ObservationUnits." ;
-    rdfs:subClassOf appn:ResearchActivity ;
-    rdfs:subClassOf ppeo:Study .
+  rdfs:label "Study" ;
+  rdfs:comment "A research activity including one or more Assays that record data on a set of ObservationUnits ." ;
+  rdfs:subClassOf appn:ResearchActivity ;
+  rdfs:subClassOf ppeo:Study .
 
 appn:Assay a rdfs:Class ;
-    rdfs:label "Assay" ;
-    rdfs:comment "A research action that observes or modifies a set of ObservationUnits." ;
-    rdfs:subClassOf appn:ResearchActivity ;
-    rdfs:subClassOf sosa:Execution ;
-    rdfs:subClassOf ppeo:Assay .
+  rdfs:label "Assay" ;
+  rdfs:comment "A research action that observes or modifies a set of ObservationUnits ." ;
+  rdfs:subClassOf appn:ResearchActivity ;
+  rdfs:subClassOf sosa:Execution ;
+  rdfs:subClassOf ppeo:Assay .
 
 appn:Method a rdfs:Class ;
-    rdfs:label "Method" ;
-    rdfs:comment "A method or process for performing an Assay." ;
-    rdfs:subClassOf sosa:Procedure ;
-    rdfs:subClassOf prov:Plan ;
-    rdfs:subClassOf schema:HowTo .
+  rdfs:label "Method" ;
+  rdfs:comment "A method or process for performing an Assay ." ;
+  rdfs:subClassOf sosa:Procedure ;
+  rdfs:subClassOf prov:Plan ;
+  rdfs:subClassOf schema:HowTo .
 
 appn:Observation a rdfs:Class ;
-    rdfs:label "Observation" ;
-    rdfs:comment "An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images." ;
-    rdfs:subClassOf appn:Assay ;
-    rdfs:subClassOf ppeo:Observation .
+  rdfs:label "Observation" ;
+  rdfs:comment "An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images ." ;
+  rdfs:subClassOf appn:Assay ;
+  rdfs:subClassOf ppeo:Observation .
 
 appn:Control a rdfs:Class ;
-    rdfs:label "Control" ;
-    rdfs:comment "An Assay that modifies a property of one or more ObservationUnits." ;
-    rdfs:subClassOf appn:Assay .
+  rdfs:label "Control" ;
+  rdfs:comment "An Assay that modifies a property of one or more ObservationUnits ." ;
+  rdfs:subClassOf appn:Assay .
 
 appn:Sampling a rdfs:Class ;
-    rdfs:label "Sampling" ;
-    rdfs:comment "An Assay that derives a new representative ObservationUnit from an existing ObservationUnit." ;
-    rdfs:subClassOf appn:Assay .
+  rdfs:label "Sampling" ;
+  rdfs:comment "An Assay that derives a new representative ObservationUnit from an existing ObservationUnit ." ;
+  rdfs:subClassOf appn:Assay .
 
 appn:Treatment a rdfs:Class ;
-    rdfs:label "Treatment" ;
-    rdfs:comment "An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded." ;
-    rdfs:subClassOf appn:Assay .
+  rdfs:label "Treatment" ;
+  rdfs:comment "An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded ." ;
+  rdfs:subClassOf appn:Assay .
 
 appn:ObservationUnit a rdfs:Class ;
-    rdfs:label "ObservationUnit" ;
-    rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities." ;
-    rdfs:subClassOf schema:Thing ;
-    rdfs:subClassOf prov:Entity ;
-    rdfs:subClassOf ppeo:ObservationUnit ;
-    rdfs:subClassOf sosa:FeatureOfInterest .
+  rdfs:label "ObservationUnit" ;
+  rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters . ObservationUnits may be BiologicalUnits or GrowthFacilities ." ;
+  rdfs:subClassOf schema:Thing ;
+  rdfs:subClassOf prov:Entity ;
+  rdfs:subClassOf ppeo:ObservationUnit ;
+  rdfs:subClassOf sosa:FeatureOfInterest .
 
 appn:Trait a rdfs:Class ;
-    rdfs:label "Trait" ;
-    rdfs:comment "A concept represented by a Variable associated with an ObservationUnit. In the DDI-CDI Variable Cascade, a Trait is a Concept or ConceptualVariable." ;
-    rdfs:subClassOf cdi:Concept ;
-    rdfs:subClassOf schema:DefinedTerm .
+  rdfs:label "Trait" ;
+  rdfs:comment "A concept represented by a Variable associated with an ObservationUnit . In the DDI-CDI Variable Cascade, a Trait is a Concept or ConceptualVariable ." ;
+  rdfs:subClassOf cdi:Concept ;
+  rdfs:subClassOf schema:DefinedTerm .
 
 # TODO: Need to align with QUDT or UOM (check CDIF recommendations).
 appn:Scale a rdfs:Class ;
-    rdfs:label "Scale" ;
-    rdfs:comment "A system of units or representation format for values associated with a Variable." ;
-    rdfs:subClassOf schema:DefinedTerm .
+  rdfs:label "Scale" ;
+  rdfs:comment "A system of units or representation format for values associated with a Variable ." ;
+  rdfs:subClassOf schema:DefinedTerm .
 
 appn:Variable a rdfs:Class ;
-    rdfs:label "Variable" ;
-    rdfs:comment "Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable." ;
-    rdfs:subClassOf sosa:Property ;
-    rdfs:subClassOf cdi:RepresentedVariable ;
-    rdfs:subClassOf schema:InstanceValue .
+  rdfs:label "Variable" ;
+  rdfs:comment "Representation of a Trait using a defined Scale . In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable ." ;
+  rdfs:subClassOf sosa:Property ;
+  rdfs:subClassOf cdi:RepresentedVariable ;
+  rdfs:subClassOf schema:InstanceValue .
 
 appn:ObservedVariable a rdfs:Class ;
-    rdfs:label "ObservedVariable" ;
-    rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits." ;
-    rdfs:subClassOf appn:Variable .
+  rdfs:label "ObservedVariable" ;
+  rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits ." ;
+  rdfs:subClassOf appn:Variable .
 
 appn:ControlledVariable a rdfs:Class ;
-    rdfs:label "ControlledVariable" ;
-    rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for one or more ObservationUnits." ;
-    rdfs:subClassOf appn:Variable .
+  rdfs:label "ControlledVariable" ;
+  rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for one or more ObservationUnits ." ;
+  rdfs:subClassOf appn:Variable .
 
 appn:TreatmentVariable a rdfs:Class ;
-    rdfs:label "TreatmentVariable" ;
-    rdfs:comment "A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state." ;
-    rdfs:subClassOf appn:Variable .
+  rdfs:label "TreatmentVariable" ;
+  rdfs:comment "A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state ." ;
+  rdfs:subClassOf appn:Variable .
 
 appn:Observer a rdfs:Class ;
-    rdfs:label "Observer" ;
-    rdfs:comment "The entity responsible for performing an Observation and delivering a value for an ObservedVariable. The Observer may be a Person, a Sensor or a SoftwareApplication. Note that SOSA maps sosa:Sensor to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
-    rdfs:subClassOf sosa:Sensor .
+  rdfs:label "Observer" ;
+  rdfs:comment "The entity responsible for performing an Observation and delivering a value for an ObservedVariable . The Observer may be a Person, a Sensor or a SoftwareApplication . Note that SOSA maps sosa:Sensor to prov:Agent, but CDIF recommendation is that Agent should be an intentional role ." ;
+  rdfs:subClassOf sosa:Sensor .
 
 appn:Controller a rdfs:Class ;
-    rdfs:label "Controller" ;
-    rdfs:comment "The entity responsible for performing an Control action and delivering a value for a ControlledVariable. The Controller may be a Person, an Actuator, a SoftwareApplication or an ExternalEvent. Note that SOSA maps sosa:Actuator to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
-    rdfs:subClassOf sosa:Actuator .
+  rdfs:label "Controller" ;
+  rdfs:comment "The entity responsible for performing an Control action and delivering a value for a ControlledVariable . The Controller may be a Person, an Actuator, a SoftwareApplication or an ExternalEvent . Note that SOSA maps sosa:Actuator to prov:Agent, but CDIF recommendation is that Agent should be an intentional role ." ;
+  rdfs:subClassOf sosa:Actuator .
 
 appn:Sampler a rdfs:Class ;
-    rdfs:label "Sampler" ;
-    rdfs:comment "The entity responsible for performing a Sampling and delivering a Sample. The Observer will normally be a Person, although in some contexts some kind of device could be involved. Note that SOSA maps sosa:Sampler to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
-    rdfs:subClassOf sosa:Sampler .
+  rdfs:label "Sampler" ;
+  rdfs:comment "The entity responsible for performing a Sampling and delivering a Sample . The Observer will normally be a Person, although in some contexts some kind of device could be involved . Note that SOSA maps sosa:Sampler to prov:Agent, but CDIF recommendation is that Agent should be an intentional role ." ;
+  rdfs:subClassOf sosa:Sampler .
 
 appn:Sensor a rdfs:Class ;
-    rdfs:label "Sensor" ;
-    rdfs:comment "An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
-    rdfs:subClassOf appn:Observer ;
-    rdfs:subClassOf schema:IndividualProduct .
+  rdfs:label "Sensor" ;
+  rdfs:comment "An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform . Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role ." ;
+  rdfs:subClassOf appn:Observer ;
+  rdfs:subClassOf schema:IndividualProduct .
 
 appn:Actuator a rdfs:Class ;
-    rdfs:label "Actuator" ;
-    rdfs:comment "An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
-    rdfs:subClassOf appn:Controller ;
-    rdfs:subClassOf schema:IndividualProduct .
+  rdfs:label "Actuator" ;
+  rdfs:comment "An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform . Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role ." ;
+  rdfs:subClassOf appn:Controller ;
+  rdfs:subClassOf schema:IndividualProduct .
 
 appn:ExternalEvent a rdfs:Class ;
-    rdfs:label "ExternalEvent" ;
-    rdfs:comment "A default entity to represent any trigger outside the control of the experimenters that may affect the state of the experiment and alter a Variable of interest, e.g. severe weather events or equipment failures. Where possible, the resulting state of the experiment should be quantified and the ExternalEvent modeled as the Controller for a Control event. Where quantification is impossible, the ExternalEvent should be modeled as the Controller for a Treatment event." ;
-    rdfs:subClassOf appn:Controller ;
-    rdfs:subClassOf schema:Event .
+  rdfs:label "ExternalEvent" ;
+  rdfs:comment "A default entity to represent any trigger outside the control of the experimenters that may affect the state of the experiment and alter a Variable of interest, e .g . severe weather events or equipment failures . Where possible, the resulting state of the experiment should be quantified and the ExternalEvent modeled as the Controller for a Control event . Where quantification is impossible, the ExternalEvent should be modeled as the Controller for a Treatment event ." ;
+  rdfs:subClassOf appn:Controller ;
+  rdfs:subClassOf schema:Event .
 
 appn:Person a rdfs:Class ;
-    rdfs:label "Person" ;
-    rdfs:comment "A Person, preferably identified using an ORCID, that may perform an Assay." ;
-    rdfs:subClassOf appn:Observer ;
-    rdfs:subClassOf appn:Controller ;
-    rdfs:subClassOf appn:Sampler ;
-    rdfs:subClassOf schema:Person .
+  rdfs:label "Person" ;
+  rdfs:comment "A Person, preferably identified using an ORCID, that may perform an Assay ." ;
+  rdfs:subClassOf appn:Observer ;
+  rdfs:subClassOf appn:Controller ;
+  rdfs:subClassOf appn:Sampler ;
+  rdfs:subClassOf schema:Person .
 
 appn:SoftwareApplication a rdfs:Class ;
-    rdfs:label "SoftwareApplication" ;
-    rdfs:comment "A piece of software that may be perform an Assay. Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
-    rdfs:subClassOf bio:ComputationalWorkflow ;
-    rdfs:subClassOf appn:Observer ;
-    rdfs:subClassOf appn:Controller .
+  rdfs:label "SoftwareApplication" ;
+  rdfs:comment "A piece of software that may be perform an Assay . Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role ." ;
+  rdfs:subClassOf bio:ComputationalWorkflow ;
+  rdfs:subClassOf appn:Observer ;
+  rdfs:subClassOf appn:Controller .
 
 appn:Sample a rdfs:Class ;
-    rdfs:label "Sample" ;
-    rdfs:comment "A BiologicalUnit that has been created from an existing BiologicalUnit through a Sampling assay." ;
-    rdfs:subClassOf sosa:Sample ;
-    rdfs:subClassOf appn:BiologicalUnit .
+  rdfs:label "Sample" ;
+  rdfs:comment "A BiologicalUnit that has been created from an existing BiologicalUnit through a Sampling assay ." ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf appn:BiologicalUnit .
 
 appn:Platform a rdfs:Class ;
-    rdfs:label "Platform" ;
-    rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators." ;
-    rdfs:subClassOf sosa:Platform ;
-    rdfs:subClassOf schema:IndividualProduct .
+  rdfs:label "Platform" ;
+  rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators ." ;
+  rdfs:subClassOf sosa:Platform ;
+  rdfs:subClassOf schema:IndividualProduct .
 
 appn:Deployment a rdfs:Class ;
-    rdfs:label "Deployment" ;
-    rdfs:comment "A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted." ;
-    rdfs:subClassOf ssn:Deployment ;
-    rdfs:subClassOf schema:Thing .
+  rdfs:label "Deployment" ;
+  rdfs:comment "A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted ." ;
+  rdfs:subClassOf ssn:Deployment ;
+  rdfs:subClassOf schema:Thing .
 
 appn:GrowthFacility a rdfs:Class ;
-    rdfs:label "GrowthFacility" ;
-    rdfs:comment "A building, enclosed space, field unit, container or other entity in which plants are grown. GrowthFacilities may be nested inside other GrowthFacilities, e.g. rhizoboxes inside a growth chamber, to any depth. GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits. Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a SpatialLocation. GrowthFacilities may be Platforms for Sensors and Actuators." ;
-    rdfs:subClassOf appn:Platform ;
-    rdfs:subClassOf appn:ObservationUnit .
+  rdfs:label "GrowthFacility" ;
+  rdfs:comment "A building, enclosed space, field unit, container or other entity in which plants are grown . GrowthFacilities may be nested inside other GrowthFacilities, e .g . rhizoboxes inside a growth chamber, to any depth . GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits . Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a SpatialLocation . GrowthFacilities may be Platforms for Sensors and Actuators ." ;
+  rdfs:subClassOf appn:Platform ;
+  rdfs:subClassOf appn:ObservationUnit .
 
 appn:GrowthFacilityType a rdfs:Class ;
-    rdfs:label "GrowthFacilityType" ;
-    rdfs:comment "A term from an enumeration of types of GrowthFacility." ;
-    rdfs:subClassOf schema:Enumeration .
+  rdfs:label "GrowthFacilityType" ;
+  rdfs:comment "A term from an enumeration of types of GrowthFacility ." ;
+  rdfs:subClassOf schema:Enumeration .
 
 appn:BiologicalUnit a rdfs:Class ;
-    rdfs:label "BiologicalUnit" ;
-    rdfs:comment "A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or crop in a field) or any Sample of a plant (e.g. an individual organ or leaf clipping) or set of plants (e.g. a cut from a plot) that is treated as an ObservationUnit for collecting or reporting data. BiologicalUnits may be part of larger BiologicalUnits. For example a plant (BiologicalUnit) may be part of a cohort (BiologicalUnit) sharing the same BiologicalMaterial and Treatments. Where relevant, the position of a BiologicalUnit within a larger BiologicalUnit or within a GrowthFacility can be specified using a SpatialLocation." ;
-    rdfs:subClassOf appn:ObservationUnit ;
-    rdfs:subClassOf bio:BioChemEntity .
+  rdfs:label "BiologicalUnit" ;
+  rdfs:comment "A plant or set of plants sharing the same BiologicalMaterial (e .g . a plot or crop in a field) or any Sample of a plant (e .g . an individual organ or leaf clipping) or set of plants (e .g . a cut from a plot) that is treated as an ObservationUnit for collecting or reporting data . BiologicalUnits may be part of larger BiologicalUnits . For example a plant (BiologicalUnit) may be part of a cohort (BiologicalUnit) sharing the same BiologicalMaterial and Treatments . Where relevant, the position of a BiologicalUnit within a larger BiologicalUnit or within a GrowthFacility can be specified using a SpatialLocation ." ;
+  rdfs:subClassOf appn:ObservationUnit ;
+  rdfs:subClassOf bio:BioChemEntity .
 
 appn:BiologicalUnitType a rdfs:Class ;
-    rdfs:label "BiologicalUnitType" ;
-    rdfs:comment "A term from an enumeration of types of BiologicalUnit." ;
-    rdfs:subClassOf schema:Enumeration .
+  rdfs:label "BiologicalUnitType" ;
+  rdfs:comment "A term from an enumeration of types of BiologicalUnit ." ;
+  rdfs:subClassOf schema:Enumeration .
 
 appn:BiologicalMaterial a rdfs:Class ;
-    rdfs:label "BiologicalMaterial" ;
-    rdfs:comment "A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possible, this should include the material source for the BiologicalMaterial." ;
-    rdfs:subClassOf ppeo:BiologicalMaterial ;
-    rdfs:subClassOf bio:BioSample .
+  rdfs:label "BiologicalMaterial" ;
+  rdfs:comment "A taxonomic and/or genetic profile for one or more BiologicalUnits . Where possible, this should include the material source for the BiologicalMaterial ." ;
+  rdfs:subClassOf ppeo:BiologicalMaterial ;
+  rdfs:subClassOf bio:BioSample .
 
 appn:SpatialLocation a rdfs:Class ;
-    rdfs:label "SpatialLocation" ;
-    rdfs:comment "A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels)." ;
-    rdfs:subClassOf ppeo:SpatialDistribution ;
-    rdfs:subClassOf schema:Thing .
+  rdfs:label "SpatialLocation" ;
+  rdfs:comment "A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility . Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels) ." ;
+  rdfs:subClassOf ppeo:SpatialDistribution ;
+  rdfs:subClassOf schema:Thing .
 
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdfs:Property ;
-    rdfs:label "isPartOf" ;
-    rdfs:comment "Relates an Assay to the Study that includes it or a Study to an Investigation." ;
-    schema:domainIncludes appn:ResearchActivity ;
-    schema:rangeIncludes appn:ResearchActivity .
+  rdfs:label "isPartOf" ;
+  rdfs:comment "Relates an Assay to the Study that includes it or a Study to an Investigation ." ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:rangeIncludes appn:ResearchActivity .
 
 appn:isForObservationUnit a rdfs:Property ;
-    rdfs:label "isForObservationUnit" ;
-    rdfs:comment "Relates an Assay to an ObservationUnit for which it is carried out." ;
-    schema:domainIncludes appn:Assay ;
-    schema:rangeIncludes appn:ObservationUnit .
+  rdfs:label "isForObservationUnit" ;
+  rdfs:comment "Relates an Assay to an ObservationUnit for which it is carried out ." ;
+  schema:domainIncludes appn:Assay ;
+  schema:rangeIncludes appn:ObservationUnit .
 
 appn:madeByObserver a rdfs:Property ;
-    rdfs:label "madeByObserver" ;
-    rdfs:comment "Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation." ;
-    rdfs:subPropertyOf sosa:madeByObserver ;
-    schema:domainIncludes appn:Observation ;
-    schema:rangeIncludes appn:Observer .
+  rdfs:label "madeByObserver" ;
+  rdfs:comment "Identifies the entity (Observer, i .e . one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation ." ;
+  rdfs:subPropertyOf sosa:madeByObserver ;
+  schema:domainIncludes appn:Observation ;
+  schema:rangeIncludes appn:Observer .
 
 appn:madeByController a rdfs:Property ;
-    rdfs:label "madeByController" ;
-    rdfs:comment "Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment." ;
-    rdfs:subPropertyOf sosa:madeByActuator ;
-    schema:domainIncludes appn:Control ;
-    schema:domainIncludes appn:Treatment ;
-    schema:rangeIncludes appn:Controller .
+  rdfs:label "madeByController" ;
+  rdfs:comment "Identifies the entity (Controller, i .e . one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment ." ;
+  rdfs:subPropertyOf sosa:madeByActuator ;
+  schema:domainIncludes appn:Control ;
+  schema:domainIncludes appn:Treatment ;
+  schema:rangeIncludes appn:Controller .
 
 appn:madeBySampler a rdfs:Property ;
-    rdfs:label "madeBySampler" ;
-    rdfs:comment "Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling." ;
-    rdfs:subPropertyOf sosa:madeBySampler ;
-    schema:domainIncludes appn:Sampling ;
-    schema:rangeIncludes appn:Sampler .
+  rdfs:label "madeBySampler" ;
+  rdfs:comment "Identifies the entity (Sampler, i .e . a Person - no other subclasses defined yet) responsible for carrying out an Sampling ." ;
+  rdfs:subPropertyOf sosa:madeBySampler ;
+  schema:domainIncludes appn:Sampling ;
+  schema:rangeIncludes appn:Sampler .
 
 appn:hasResult a rdfs:Property ;
-    rdfs:label "hasResult" ; 
-    rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult." ;
-    schema:domainIncludes appn:Observation,appn:Control ;
-    schema:rangeIncludes schema:Dataset,schema:File .
+  rdfs:label "hasResult" ; 
+  rdfs:comment "Identifies a data output from an Observation or Control assay . Individual values are represented by sosa:hasSimpleResult ." ;
+  schema:domainIncludes appn:Observation,appn:Control ;
+  schema:rangeIncludes schema:Dataset,schema:File .
 
 appn:producesSample a rdfs:Property ;
-    rdfs:label "producesSample" ; 
-    rdfs:comment "Identifies the Sample produced by a Sampling assay." ;
-    schema:domainIncludes appn:Sampling ;
-    schema:rangeIncludes appn:Sample .
+  rdfs:label "producesSample" ; 
+  rdfs:comment "Identifies the Sample produced by a Sampling assay ." ;
+  schema:domainIncludes appn:Sampling ;
+  schema:rangeIncludes appn:Sample .
 
 appn:usesData a rdfs:Property ;
-    rdfs:label "usesData" ; 
-    rdfs:comment "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
-    schema:domainIncludes appn:Observation ;
-    schema:rangeIncludes schema:Dataset,schema:File .
+  rdfs:label "usesData" ; 
+  rdfs:comment "Identifies a data input to an Observation assay . This is intended for use in relation to Observations delivered using a SoftwareApplication ." ;
+  schema:domainIncludes appn:Observation ;
+  schema:rangeIncludes schema:Dataset,schema:File .
 
 appn:controls a rdfs:Property ;
-    rdfs:label "controls" ; 
-    rdfs:comment "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
-    schema:domainIncludes appn:Control ;
-    schema:rangeIncludes appn:ControlledVariable .
+  rdfs:label "controls" ; 
+  rdfs:comment "Identifies a ControlledVariable controlled by a Control assay . The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property ." ;
+  schema:domainIncludes appn:Control ;
+  schema:rangeIncludes appn:ControlledVariable .
 
 appn:treats a rdfs:Property ;
-    rdfs:label "treats" ; 
-    rdfs:comment "Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
-    schema:domainIncludes appn:Treatment ;
-    schema:rangeIncludes appn:TreatmentVariable .
+  rdfs:label "treats" ; 
+  rdfs:comment "Identifies a TreatmentVariable controlled by a Treatment assay . The Treatment makes an input of some quantity associated with the TreatmentVariable . If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable . Treatments are for cases where no definite resulting value is recorded ." ;
+  schema:domainIncludes appn:Treatment ;
+  schema:rangeIncludes appn:TreatmentVariable .
 
 appn:observes a rdfs:Property ;
-    rdfs:label "observes" ; 
-    rdfs:comment "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
-    schema:domainIncludes appn:Observation ;
-    schema:rangeIncludes appn:ObservedVariable .
+  rdfs:label "observes" ; 
+  rdfs:comment "Identifies an ObservedVariable controlled by an Observation assay . The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property ." ;
+  schema:domainIncludes appn:Observation ;
+  schema:rangeIncludes appn:ObservedVariable .
 
 appn:inheritsContext a rdfs:Property ;
-    rdfs:label "inheritsContext" ; 
-    rdfs:comment "inheritsContext" ;
-    schema:domainIncludes appn:ObservationUnit ;
-    schema:rangeIncludes appn:ObservationUnit .
+  rdfs:label "inheritsContext" ; 
+  rdfs:comment "inheritsContext" ;
+  schema:domainIncludes appn:ObservationUnit ;
+  schema:rangeIncludes appn:ObservationUnit .
 
 appn:hasGrowthFacilityType a rdfs:Property ;
-    rdfs:label "hasGrowthFacilityType" ; 
-    rdfs:comment "Links a GrowthFacility to its type" ;
-    schema:domainIncludes appn:GrowthFacility ;
-    schema:rangeIncludes appn:GrowthFacilityType .
+  rdfs:label "hasGrowthFacilityType" ; 
+  rdfs:comment "Links a GrowthFacility to its type" ;
+  schema:domainIncludes appn:GrowthFacility ;
+  schema:rangeIncludes appn:GrowthFacilityType .
 
 appn:hasBiologicalUnitType a rdfs:Property ;
-    rdfs:label "hasBiologicalUnitType" ; 
-    rdfs:comment "Links a BiologicalUnit to its type" ;
-    schema:domainIncludes appn:BiologicalUnit ;
-    schema:rangeIncludes appn:BiologicalUnitType .
+  rdfs:label "hasBiologicalUnitType" ; 
+  rdfs:comment "Links a BiologicalUnit to its type" ;
+  schema:domainIncludes appn:BiologicalUnit ;
+  schema:rangeIncludes appn:BiologicalUnitType .
 
 appn:hasBiologicalMaterial a rdfs:Property ;
-    rdfs:label "hasBiologicalMaterial" ; 
-    rdfs:comment "Links a BiologicalUnit to its genetic material" ;
-    schema:domainIncludes appn:BiologicalUnit ;
-    schema:rangeIncludes appn:BiologicalMaterial .
+  rdfs:label "hasBiologicalMaterial" ; 
+  rdfs:comment "Links a BiologicalUnit to its genetic material" ;
+  schema:domainIncludes appn:BiologicalUnit ;
+  schema:rangeIncludes appn:BiologicalMaterial .
 
 # COMMENT: Needs a range.
 appn:hasDefaultValue a rdfs:Property ;
-    rdfs:label "hasDefaultValue" ; 
-    rdfs:comment "Specifies the default value for a variable" ;
-    schema:domainIncludes appn:Variable .
+  rdfs:label "hasDefaultValue" ; 
+  rdfs:comment "Specifies the default value for a variable" ;
+  schema:domainIncludes appn:Variable .
 
 appn:hasLocation a rdfs:Property ;
-    rdfs:label "hasLocation" ; 
-    rdfs:comment "Specifies the location for an ObservationUnit" ;
-    schema:domainIncludes appn:ObservationUnit ;
-    schema:rangeIncludes appn:SpatialLocation.
+  rdfs:label "hasLocation" ; 
+  rdfs:comment "Specifies the location for an ObservationUnit" ;
+  schema:domainIncludes appn:ObservationUnit ;
+  schema:rangeIncludes appn:SpatialLocation .
 
 appn:isLocationWithin a rdfs:Property ;
-    rdfs:label "isLocationWithin" ; 
-    rdfs:comment "Specifies that a location is a position within an ObservationUnit" ;
-    schema:domainIncludes appn:SpatialLocation ;
-    schema:rangeIncludes appn:ObservationUnit.
+  rdfs:label "isLocationWithin" ; 
+  rdfs:comment "Specifies that a location is a position within an ObservationUnit" ;
+  schema:domainIncludes appn:SpatialLocation ;
+  schema:rangeIncludes appn:ObservationUnit .
 
 # COMMENT: Needs a range.
 appn:row a rdfs:Property ;
-    rdfs:label "row" ; 
-    rdfs:comment "Specifies the row for a SpatialLocation" ;
-    schema:domainIncludes appn:SpatialLocation .
+  rdfs:label "row" ; 
+  rdfs:comment "Specifies the row for a SpatialLocation" ;
+  schema:domainIncludes appn:SpatialLocation .
 
 # COMMENT: Needs a range.
 appn:column a rdfs:Property ;
-    rdfs:label "column" ; 
-    rdfs:comment "Specifies the column for a SpatialLocation" ;
-    schema:domainIncludes appn:SpatialLocation .
+  rdfs:label "column" ; 
+  rdfs:comment "Specifies the column for a SpatialLocation" ;
+  schema:domainIncludes appn:SpatialLocation .
 
 appn:deployedSystem a rdfs:Property ;
-    rdfs:label "deployedSystem" ; 
-    rdfs:comment "Identifies a Sensor or Actuator deployed on a Platform" ;
-    schema:domainIncludes appn:Deployment ;
-    schema:rangeIncludes appn:Sensor,appn:Actuator .
+  rdfs:label "deployedSystem" ; 
+  rdfs:comment "Identifies a Sensor or Actuator deployed on a Platform" ;
+  schema:domainIncludes appn:Deployment ;
+  schema:rangeIncludes appn:Sensor,appn:Actuator .
 
 appn:deployedOnPlatform a rdfs:Property ;
-    rdfs:label "deployedOnPlatform" ; 
-    rdfs:comment "Identifies a Platform on which Sensors or Actuators are deployed" ;
-    schema:domainIncludes appn:Deployment ;
-    schema:rangeIncludes appn:Platform .
+  rdfs:label "deployedOnPlatform" ; 
+  rdfs:comment "Identifies a Platform on which Sensors or Actuators are deployed" ;
+  schema:domainIncludes appn:Deployment ;
+  schema:rangeIncludes appn:Platform .
 
 appn:usedMethod a rdfs:Property ;
-    rdfs:label "usedMethod" ;
-    rdfs:comment "Identifies a Method used to conduct an Assay." ;
-    schema:domainIncludes appn:Assay ;
-    schema:rangeIncludes appn:Method .
+  rdfs:label "usedMethod" ;
+  rdfs:comment "Identifies a Method used to conduct an Assay ." ;
+  schema:domainIncludes appn:Assay ;
+  schema:rangeIncludes appn:Method .
 
 appn:hasTrait a rdfs:Property ;
-    rdfs:label "hasTrait" ;
-    rdfs:comment "Identified the Trait associated with a Variable." ;
-    schema:domainIncludes appn:Variable ;
-    schema:rangeIncludes appn:Trait .
+  rdfs:label "hasTrait" ;
+  rdfs:comment "Identified the Trait associated with a Variable ." ;
+  schema:domainIncludes appn:Variable ;
+  schema:rangeIncludes appn:Trait .
 
 appn:hasScale a rdfs:Property ;
-    rdfs:label "hasScale" ;
-    rdfs:comment "Identified the Scale associated with a Variable." ;
-    schema:domainIncludes appn:Variable ;
-    schema:rangeIncludes appn:Scale .
+  rdfs:label "hasScale" ;
+  rdfs:comment "Identified the Scale associated with a Variable ." ;
+  schema:domainIncludes appn:Variable ;
+  schema:rangeIncludes appn:Scale .

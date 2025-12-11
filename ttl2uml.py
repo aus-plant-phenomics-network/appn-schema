@@ -174,10 +174,10 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
                 else:
                     other_class = f"[{r[0]}:{r[1]}]({prefixes[r[0]]}{r[1]})"
-                    if ppty in comments:
-                        md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n    * {comments[ppty]}\n")
-                    else:
-                        md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n")
+                if ppty in comments:
+                    md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n    * {comments[ppty]}\n")
+                else:
+                    md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n")
         if cls in property[1]:
             for r in property[0]:
                 if not heading_written:
