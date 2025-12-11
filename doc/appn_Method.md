@@ -11,4 +11,3 @@ A method or process for performing an Assay.
 * https://schema.org/HowTo
 ## Properties
 * [appn:Assay](/doc/appn_Assay.md) **appn:usedMethod** appn:Method
-    * A research action that observes or modifies a set of ObservationUnits.

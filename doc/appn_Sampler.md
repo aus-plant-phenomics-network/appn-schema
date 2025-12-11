@@ -9,6 +9,6 @@ The entity responsible for performing a Sampling and delivering a Sample. The Ob
 * https://www.w3.org/ns/sosa/Sampler
 ## Properties
 * [appn:Sampling](/doc/appn_Sampling.md) **appn:madeBySampler** appn:Sampler
-    * An Assay that derives a new representative ObservationUnit from an existing ObservationUnit.
+    * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Person](/doc/appn_Person.md)

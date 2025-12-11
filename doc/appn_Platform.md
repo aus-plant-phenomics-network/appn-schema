@@ -10,6 +10,5 @@ A vehicle, building, person or other entity that may carry or include Sensors or
 * https://schema.org/IndividualProduct
 ## Properties
 * [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedOnPlatform** appn:Platform
-    * A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.
 ## Subclasses
 * [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)

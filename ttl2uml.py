@@ -174,8 +174,8 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
                 else:
                     other_class = f"[{r[0]}:{r[1]}]({prefixes[r[0]]}{r[1]})"
-                    if r in comments:
-                        md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n    * {comments[r]}\n")
+                    if ppty in comments:
+                        md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n    * {comments[ppty]}\n")
                     else:
                         md.write(f"* {this_class} **{ppty[0]}:{ppty[1]}** {other_class}\n")
         if cls in property[1]:
@@ -200,8 +200,8 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                         other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
                     else:
                         other_class = f"{prefixes[r[0]]}{r[1]}"
-                    if r in comments:
-                        md.write(f"* {other_class} **{ppty[0]}:{ppty[1]}** {this_class}\n    * {comments[r]}\n")
+                    if ppty in comments:
+                        md.write(f"* {other_class} **{ppty[0]}:{ppty[1]}** {this_class}\n    * {comments[ppty]}\n")
                     else:
                         md.write(f"* {other_class} **{ppty[0]}:{ppty[1]}** {this_class}\n")
     

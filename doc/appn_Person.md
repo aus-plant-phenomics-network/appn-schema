@@ -15,10 +15,10 @@ A Person, preferably identified using an ORCID, that may perform an Assay.
 * https://schema.org/Person
 ## Properties
 * [appn:Observation](/doc/appn_Observation.md) **appn:madeByObserver** [appn:Observer](/doc/appn_Observer.md)
-    * An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images.
+    * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
 * [appn:Control](/doc/appn_Control.md) **appn:madeByController** [appn:Controller](/doc/appn_Controller.md)
-    * An Assay that modifies a property of one or more ObservationUnits.
+    * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:madeByController** [appn:Controller](/doc/appn_Controller.md)
-    * An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded.
+    * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
 * [appn:Sampling](/doc/appn_Sampling.md) **appn:madeBySampler** [appn:Sampler](/doc/appn_Sampler.md)
-    * An Assay that derives a new representative ObservationUnit from an existing ObservationUnit.
+    * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.
