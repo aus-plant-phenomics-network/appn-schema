@@ -9,8 +9,6 @@ ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
 class "sosa:Execution" #FFCCEE 
 Assay --|> "sosa:Execution"
-class "ppeo:Assay" #EEFFCC 
-Assay --|> "ppeo:Assay"
 Sampling --|> Assay
 class Sampler 
 Sampling --> Sampler : madeBySampler

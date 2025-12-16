@@ -6,7 +6,7 @@ A position associated with the placement of a GrowthFacility within another Grow
 ![UML diagram for SpatialLocation](/ttl_uml/ttl_appn_SpatialLocation.png)
 
 ## Superclasses
-* http://purl.org/ppeo/PPEO.owl#SpatialDistribution
+* http://purl.org/ppeo/PPEO.owl#spatial_distribution
 * https://schema.org/Thing
 ## Properties
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:hasLocation** appn:SpatialLocation

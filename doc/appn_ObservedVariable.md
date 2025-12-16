@@ -6,6 +6,7 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
 ![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
 
 ## Superclasses
+* http://purl.org/ppeo/PPEO.owl#observed_variable
 * [https://schema.plantphenomics.org.au/Variable](/doc/appn_Variable.md)
 * https://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
@@ -15,6 +16,6 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
 * ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasTrait** [appn:Trait](/doc/appn_Trait.md)
-    * Identified the Trait associated with a Variable.
+    * Identifies the Trait associated with a Variable.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)
-    * Identified the Scale associated with a Variable.
+    * Identifies the Scale associated with a Variable.

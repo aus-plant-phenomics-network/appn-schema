@@ -1,5 +1,7 @@
 @startuml
 class Observation  #line.bold
+class "schema:Observation" #DDFFDD 
+Observation --|> "schema:Observation"
 class Assay  
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
@@ -9,11 +11,9 @@ ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
 class "sosa:Execution" #FFCCEE 
 Assay --|> "sosa:Execution"
-class "ppeo:Assay" #EEFFCC 
-Assay --|> "ppeo:Assay"
 Observation --|> Assay
-class "ppeo:Observation" #EEFFCC 
-Observation --|> "ppeo:Observation"
+class "ppeo:observation" #EEFFCC 
+Observation --|> "ppeo:observation"
 class Observer 
 Observation --> Observer : madeByObserver
 class "schema:Dataset" #DDFFDD

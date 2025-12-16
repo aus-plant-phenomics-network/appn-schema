@@ -9,8 +9,6 @@ ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
 class "sosa:Execution" #FFCCEE 
 Assay --|> "sosa:Execution"
-class "ppeo:Assay" #EEFFCC 
-Assay --|> "ppeo:Assay"
 Control --|> Assay
 class Controller 
 Control --> Controller : madeByController

@@ -5,8 +5,8 @@ class "schema:Thing" #DDFFDD
 ObservationUnit --|> "schema:Thing"
 class "prov:Entity" #DDDDFF 
 ObservationUnit --|> "prov:Entity"
-class "ppeo:ObservationUnit" #EEFFCC 
-ObservationUnit --|> "ppeo:ObservationUnit"
+class "ppeo:observation_unit" #EEFFCC 
+ObservationUnit --|> "ppeo:observation_unit"
 class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 BiologicalUnit --|> ObservationUnit
@@ -16,6 +16,8 @@ class BiologicalUnitType
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
 class BiologicalMaterial 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
+class Sample 
+Sample --> BiologicalUnit : derivesFrom
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

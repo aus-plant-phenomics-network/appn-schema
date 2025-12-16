@@ -6,6 +6,7 @@ A Person, preferably identified using an ORCID, that may perform an Assay.
 ![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
 
 ## Superclasses
+* http://purl.org/ppeo/PPEO.owl#person
 * [https://schema.plantphenomics.org.au/Observer](/doc/appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor
 * [https://schema.plantphenomics.org.au/Controller](/doc/appn_Controller.md)

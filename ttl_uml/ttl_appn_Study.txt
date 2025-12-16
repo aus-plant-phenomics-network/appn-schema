@@ -6,8 +6,10 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 Study --|> ResearchActivity
-class "ppeo:Study" #EEFFCC 
-Study --|> "ppeo:Study"
+class "ppeo:study" #EEFFCC 
+Study --|> "ppeo:study"
+class GrowthFacility 
+Study --> GrowthFacility : hasGrowthFacility
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 @enduml

@@ -6,8 +6,12 @@ A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possib
 ![UML diagram for BiologicalMaterial](/ttl_uml/ttl_appn_BiologicalMaterial.png)
 
 ## Superclasses
-* http://purl.org/ppeo/PPEO.owl#BiologicalMaterial
-* https://bioschemas.org/BioSample
+* http://purl.org/ppeo/PPEO.owl#biological_material
+* https://bioschemas.org/Taxon
 ## Properties
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** appn:BiologicalMaterial
     * Links a BiologicalUnit to its genetic and taxonomic profile.
+
+Identifies the BiologicalMaterial for a BiologicalUnit.
+* appn:BiologicalMaterial **appn:hasMaterialSource** [appn:MaterialSource](/doc/appn_MaterialSource.md)
+    * Identifies the MaterialSource for BiologicalMaterial.

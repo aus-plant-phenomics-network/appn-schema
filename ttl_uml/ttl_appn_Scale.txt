@@ -1,5 +1,7 @@
 @startuml
 class Scale  #line.bold
+class "ppeo:scale" #EEFFCC 
+Scale --|> "ppeo:scale"
 class "schema:DefinedTerm" #DDFFDD 
 Scale --|> "schema:DefinedTerm"
 class Variable 

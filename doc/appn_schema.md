@@ -13,6 +13,7 @@
 * [appn:GrowthFacility](/doc/appn_GrowthFacility.md)
 * [appn:GrowthFacilityType](/doc/appn_GrowthFacilityType.md)
 * [appn:Investigation](/doc/appn_Investigation.md)
+* [appn:MaterialSource](/doc/appn_MaterialSource.md)
 * [appn:Method](/doc/appn_Method.md)
 * [appn:Observation](/doc/appn_Observation.md)
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md)

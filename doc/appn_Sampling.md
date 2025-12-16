@@ -11,14 +11,13 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * https://www.w3.org/ns/sosa/Execution
-* http://purl.org/ppeo/PPEO.owl#Assay
 ## Properties
 * appn:Sampling **appn:madeBySampler** [appn:Sampler](/doc/appn_Sampler.md)
     * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.
 * appn:Sampling **appn:producesSample** [appn:Sample](/doc/appn_Sample.md)
     * Identifies the Sample produced by a Sampling assay.
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-    * Relates an Assay to an ObservationUnit for which it is carried out.
+    * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
 * [appn:Assay](/doc/appn_Assay.md) **appn:usedMethod** [appn:Method](/doc/appn_Method.md)
     * Identifies a Method used to conduct an Assay.
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/doc/appn_ResearchActivity.md)

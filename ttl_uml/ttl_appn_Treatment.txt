@@ -1,5 +1,7 @@
 @startuml
 class Treatment  #line.bold
+class "ppeo:event" #EEFFCC 
+Treatment --|> "ppeo:event"
 class Assay  
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
@@ -9,8 +11,6 @@ ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
 class "sosa:Execution" #FFCCEE 
 Assay --|> "sosa:Execution"
-class "ppeo:Assay" #EEFFCC 
-Assay --|> "ppeo:Assay"
 Treatment --|> Assay
 class Controller 
 Treatment --> Controller : madeByController

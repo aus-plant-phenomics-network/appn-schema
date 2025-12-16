@@ -1,9 +1,11 @@
 @startuml
 class BiologicalMaterial  #line.bold
-class "ppeo:BiologicalMaterial" #EEFFCC 
-BiologicalMaterial --|> "ppeo:BiologicalMaterial"
-class "bio:BioSample" #EECCFF 
-BiologicalMaterial --|> "bio:BioSample"
+class "ppeo:biological_material" #EEFFCC 
+BiologicalMaterial --|> "ppeo:biological_material"
+class "bio:Taxon" #EECCFF 
+BiologicalMaterial --|> "bio:Taxon"
 class BiologicalUnit 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
+class MaterialSource 
+BiologicalMaterial --> MaterialSource : hasMaterialSource
 @enduml

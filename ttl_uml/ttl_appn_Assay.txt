@@ -8,8 +8,6 @@ ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
 class "sosa:Execution" #FFCCEE 
 Assay --|> "sosa:Execution"
-class "ppeo:Assay" #EEFFCC 
-Assay --|> "ppeo:Assay"
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 

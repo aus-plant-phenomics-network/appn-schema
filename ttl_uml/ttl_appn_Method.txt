@@ -1,5 +1,7 @@
 @startuml
 class Method  #line.bold
+class "ppeo:method" #EEFFCC 
+Method --|> "ppeo:method"
 class "sosa:Procedure" #FFCCEE 
 Method --|> "sosa:Procedure"
 class "prov:Plan" #DDDDFF 

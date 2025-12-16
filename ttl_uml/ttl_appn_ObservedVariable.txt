@@ -1,5 +1,7 @@
 @startuml
 class ObservedVariable  #line.bold
+class "ppeo:observed_variable" #EEFFCC 
+ObservedVariable --|> "ppeo:observed_variable"
 class Variable  
 class "sosa:Property" #FFCCEE 
 Variable --|> "sosa:Property"

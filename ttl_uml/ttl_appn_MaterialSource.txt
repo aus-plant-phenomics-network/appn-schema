@@ -1,0 +1,9 @@
+@startuml
+class MaterialSource  #line.bold
+class "ppeo:material_source" #EEFFCC 
+MaterialSource --|> "ppeo:material_source"
+class "bio:BioSample" #EECCFF 
+MaterialSource --|> "bio:BioSample"
+class BiologicalMaterial 
+BiologicalMaterial --> MaterialSource : hasMaterialSource
+@enduml

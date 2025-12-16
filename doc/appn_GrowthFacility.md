@@ -6,21 +6,24 @@ A building, enclosed space, field unit, container or other entity in which plant
 ![UML diagram for GrowthFacility](/ttl_uml/ttl_appn_GrowthFacility.png)
 
 ## Superclasses
+* http://purl.org/ppeo/PPEO.owl#growth_facility
 * [https://schema.plantphenomics.org.au/Platform](/doc/appn_Platform.md)
 * https://www.w3.org/ns/sosa/Platform
 * https://schema.org/IndividualProduct
 * [https://schema.plantphenomics.org.au/ObservationUnit](/doc/appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
-* http://purl.org/ppeo/PPEO.owl#ObservationUnit
+* http://purl.org/ppeo/PPEO.owl#observation_unit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
 * appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](/doc/appn_GrowthFacilityType.md)
     * Links a GrowthFacility to its type.
+* [appn:Study](/doc/appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
+    * Identifies a GrowthFacility used in a Study.
 * [appn:Deployment](/doc/appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](/doc/appn_Platform.md)
     * Identifies a Platform on which Sensors or Actuators are deployed.
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
-    * Relates an Assay to an ObservationUnit for which it is carried out.
+    * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:inheritsContext** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
     * Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant.
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:hasLocation** [appn:SpatialLocation](/doc/appn_SpatialLocation.md)

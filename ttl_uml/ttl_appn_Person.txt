@@ -1,5 +1,7 @@
 @startuml
 class Person  #line.bold
+class "ppeo:person" #EEFFCC 
+Person --|> "ppeo:person"
 class Observer  
 class "sosa:Sensor" #FFCCEE 
 Observer --|> "sosa:Sensor"

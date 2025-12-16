@@ -6,8 +6,9 @@ A concept represented by a Variable associated with an ObservationUnit. In the D
 ![UML diagram for Trait](/ttl_uml/ttl_appn_Trait.png)
 
 ## Superclasses
+* http://purl.org/ppeo/PPEO.owl#trait
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
 * https://schema.org/DefinedTerm
 ## Properties
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasTrait** appn:Trait
-    * Identified the Trait associated with a Variable.
+    * Identifies the Trait associated with a Variable.

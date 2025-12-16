@@ -31,10 +31,12 @@ class GrowthFacility
 class GrowthFacilityType
 class BiologicalUnitType
 class BiologicalMaterial
+class MaterialSource
 class SpatialLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
+    class "schema:Observation" #DDFFDD
     class "schema:Thing" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
     class "schema:InstanceValue" #DDFFDD
@@ -49,13 +51,21 @@ package "prov" {
     class "prov:Entity" #DDDDFF
 }
 package "ppeo" {
-    class "ppeo:Investigation" #EEFFCC
-    class "ppeo:Study" #EEFFCC
-    class "ppeo:Assay" #EEFFCC
-    class "ppeo:Observation" #EEFFCC
-    class "ppeo:ObservationUnit" #EEFFCC
-    class "ppeo:BiologicalMaterial" #EEFFCC
-    class "ppeo:SpatialDistribution" #EEFFCC
+    class "ppeo:investigation" #EEFFCC
+    class "ppeo:study" #EEFFCC
+    class "ppeo:method" #EEFFCC
+    class "ppeo:observation" #EEFFCC
+    class "ppeo:event" #EEFFCC
+    class "ppeo:observation_unit" #EEFFCC
+    class "ppeo:trait" #EEFFCC
+    class "ppeo:scale" #EEFFCC
+    class "ppeo:observed_variable" #EEFFCC
+    class "ppeo:person" #EEFFCC
+    class "ppeo:sample" #EEFFCC
+    class "ppeo:growth_facility" #EEFFCC
+    class "ppeo:biological_material" #EEFFCC
+    class "ppeo:material_source" #EEFFCC
+    class "ppeo:spatial_distribution" #EEFFCC
 }
 package "sosa" {
     class "sosa:Execution" #FFCCEE
@@ -75,6 +85,7 @@ package "cdi" {
 package "bio" {
     class "bio:ComputationalWorkflow" #EECCFF
     class "bio:BioChemEntity" #EECCFF
+    class "bio:Taxon" #EECCFF
     class "bio:BioSample" #EECCFF
 }
 package "ssn" {
@@ -83,30 +94,35 @@ package "ssn" {
 ResearchActivity --|> "schema:Action"
 ResearchActivity --|> "prov:Activity"
 Investigation --|> ResearchActivity
-Investigation --|> "ppeo:Investigation"
+Investigation --|> "ppeo:investigation"
 Study --|> ResearchActivity
-Study --|> "ppeo:Study"
+Study --|> "ppeo:study"
 Assay --|> ResearchActivity
 Assay --|> "sosa:Execution"
-Assay --|> "ppeo:Assay"
+Method --|> "ppeo:method"
 Method --|> "sosa:Procedure"
 Method --|> "prov:Plan"
 Method --|> "schema:HowTo"
+Observation --|> "schema:Observation"
 Observation --|> Assay
-Observation --|> "ppeo:Observation"
+Observation --|> "ppeo:observation"
 Control --|> Assay
 Sampling --|> Assay
+Treatment --|> "ppeo:event"
 Treatment --|> Assay
 ObservationUnit --|> "schema:Thing"
 ObservationUnit --|> "prov:Entity"
-ObservationUnit --|> "ppeo:ObservationUnit"
+ObservationUnit --|> "ppeo:observation_unit"
 ObservationUnit --|> "sosa:FeatureOfInterest"
+Trait --|> "ppeo:trait"
 Trait --|> "cdi:Concept"
 Trait --|> "schema:DefinedTerm"
+Scale --|> "ppeo:scale"
 Scale --|> "schema:DefinedTerm"
 Variable --|> "sosa:Property"
 Variable --|> "cdi:RepresentedVariable"
 Variable --|> "schema:InstanceValue"
+ObservedVariable --|> "ppeo:observed_variable"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
 TreatmentVariable --|> Variable
@@ -119,6 +135,7 @@ Actuator --|> Controller
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
 ExternalEvent --|> "schema:Event"
+Person --|> "ppeo:person"
 Person --|> Observer
 Person --|> Controller
 Person --|> Sampler
@@ -126,20 +143,24 @@ Person --|> "schema:Person"
 SoftwareApplication --|> "bio:ComputationalWorkflow"
 SoftwareApplication --|> Observer
 SoftwareApplication --|> Controller
+Sample --|> "ppeo:sample"
 Sample --|> "sosa:Sample"
 Sample --|> BiologicalUnit
 Platform --|> "sosa:Platform"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "ssn:Deployment"
 Deployment --|> "schema:Thing"
+GrowthFacility --|> "ppeo:growth_facility"
 GrowthFacility --|> Platform
 GrowthFacility --|> ObservationUnit
 GrowthFacilityType --|> "schema:Enumeration"
 BiologicalUnit --|> ObservationUnit
 BiologicalUnit --|> "bio:BioChemEntity"
 BiologicalUnitType --|> "schema:Enumeration"
-BiologicalMaterial --|> "ppeo:BiologicalMaterial"
-BiologicalMaterial --|> "bio:BioSample"
-SpatialLocation --|> "ppeo:SpatialDistribution"
+BiologicalMaterial --|> "ppeo:biological_material"
+BiologicalMaterial --|> "bio:Taxon"
+MaterialSource --|> "ppeo:material_source"
+MaterialSource --|> "bio:BioSample"
+SpatialLocation --|> "ppeo:spatial_distribution"
 SpatialLocation --|> "schema:Thing"
 @enduml

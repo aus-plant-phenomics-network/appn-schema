@@ -1,5 +1,7 @@
 @startuml
 class Sample  #line.bold
+class "ppeo:sample" #EEFFCC 
+Sample --|> "ppeo:sample"
 class "sosa:Sample" #FFCCEE 
 Sample --|> "sosa:Sample"
 class BiologicalUnit  
@@ -8,8 +10,8 @@ class "schema:Thing" #DDFFDD
 ObservationUnit --|> "schema:Thing"
 class "prov:Entity" #DDDDFF 
 ObservationUnit --|> "prov:Entity"
-class "ppeo:ObservationUnit" #EEFFCC 
-ObservationUnit --|> "ppeo:ObservationUnit"
+class "ppeo:observation_unit" #EEFFCC 
+ObservationUnit --|> "ppeo:observation_unit"
 class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 BiologicalUnit --|> ObservationUnit
@@ -18,10 +20,13 @@ BiologicalUnit --|> "bio:BioChemEntity"
 Sample --|> BiologicalUnit
 class Sampling 
 Sampling --> Sample : producesSample
+class BiologicalUnit 
+Sample --> BiologicalUnit : derivesFrom
 class BiologicalUnitType 
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
 class BiologicalMaterial 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
+Sample --> BiologicalUnit : derivesFrom
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

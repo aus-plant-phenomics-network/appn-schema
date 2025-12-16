@@ -31,10 +31,12 @@ class GrowthFacility
 class GrowthFacilityType
 class BiologicalUnitType
 class BiologicalMaterial
+class MaterialSource
 class SpatialLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
+    class "schema:Observation" #DDFFDD
     class "schema:Thing" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
     class "schema:InstanceValue" #DDFFDD
@@ -46,6 +48,7 @@ package "schema" {
 package "bio" {
     class "bio:ComputationalWorkflow" #EECCFF
     class "bio:BioChemEntity" #EECCFF
+    class "bio:Taxon" #EECCFF
     class "bio:BioSample" #EECCFF
 }
 ResearchActivity --|> "schema:Action"
@@ -53,6 +56,7 @@ Investigation --|> ResearchActivity
 Study --|> ResearchActivity
 Assay --|> ResearchActivity
 Method --|> "schema:HowTo"
+Observation --|> "schema:Observation"
 Observation --|> Assay
 Control --|> Assay
 Sampling --|> Assay
@@ -86,6 +90,7 @@ GrowthFacilityType --|> "schema:Enumeration"
 BiologicalUnit --|> ObservationUnit
 BiologicalUnit --|> "bio:BioChemEntity"
 BiologicalUnitType --|> "schema:Enumeration"
-BiologicalMaterial --|> "bio:BioSample"
+BiologicalMaterial --|> "bio:Taxon"
+MaterialSource --|> "bio:BioSample"
 SpatialLocation --|> "schema:Thing"
 @enduml

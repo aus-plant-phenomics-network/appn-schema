@@ -1,5 +1,7 @@
 @startuml
 class GrowthFacility  #line.bold
+class "ppeo:growth_facility" #EEFFCC 
+GrowthFacility --|> "ppeo:growth_facility"
 class Platform  
 class "sosa:Platform" #FFCCEE 
 Platform --|> "sosa:Platform"
@@ -11,13 +13,15 @@ class "schema:Thing" #DDFFDD
 ObservationUnit --|> "schema:Thing"
 class "prov:Entity" #DDDDFF 
 ObservationUnit --|> "prov:Entity"
-class "ppeo:ObservationUnit" #EEFFCC 
-ObservationUnit --|> "ppeo:ObservationUnit"
+class "ppeo:observation_unit" #EEFFCC 
+ObservationUnit --|> "ppeo:observation_unit"
 class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
 GrowthFacility --|> ObservationUnit
 class GrowthFacilityType 
 GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
+class Study 
+Study --> GrowthFacility : hasGrowthFacility
 class Deployment 
 Deployment --> Platform : deployedOnPlatform
 class Assay 

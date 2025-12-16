@@ -1,5 +1,7 @@
 @startuml
 class Trait  #line.bold
+class "ppeo:trait" #EEFFCC 
+Trait --|> "ppeo:trait"
 class "cdi:Concept" #CCEEFF 
 Trait --|> "cdi:Concept"
 class "schema:DefinedTerm" #DDFFDD 
