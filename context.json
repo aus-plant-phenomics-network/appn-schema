@@ -1,6 +1,6 @@
 {
   "@id": "https://schema.plantphenomics.org.au/context/1.0/context.json",
-  "name": "APPN Extensions Context",
+  "name": "APPN Extensions Context for RO-Crate",
   "version": "1.0",
   "isBasedOn": [
     {
@@ -22,6 +22,7 @@
     "GrowthFacility": "https://schema.plantphenomics.org/GrowthFacility",
     "GrowthFacilityType": "https://schema.plantphenomics.org/GrowthFacilityType",
     "Investigation": "https://schema.plantphenomics.org/Investigation",
+    "MaterialSource": "https://schema.plantphenomics.org/MaterialSource",
     "Method": "https://schema.plantphenomics.org/Method",
     "Observation": "https://schema.plantphenomics.org/Observation",
     "ObservationUnit": "https://schema.plantphenomics.org/ObservationUnit",
@@ -46,11 +47,14 @@
     "controls": "https://schema.plantphenomics.org/controls",
     "deployedOnPlatform": "https://schema.plantphenomics.org/deployedOnPlatform",
     "deployedSystem": "https://schema.plantphenomics.org/deployedSystem",
+    "derivesFrom": "https://schema.plantphenomics.org/derivesFrom",
     "hasBiologicalMaterial": "https://schema.plantphenomics.org/hasBiologicalMaterial",
     "hasBiologicalUnitType": "https://schema.plantphenomics.org/hasBiologicalUnitType",
     "hasDefaultValue": "https://schema.plantphenomics.org/hasDefaultValue",
+    "hasGrowthFacility": "https://schema.plantphenomics.org/hasGrowthFacility",
     "hasGrowthFacilityType": "https://schema.plantphenomics.org/hasGrowthFacilityType",
     "hasLocation": "https://schema.plantphenomics.org/hasLocation",
+    "hasMaterialSource": "https://schema.plantphenomics.org/hasMaterialSource",
     "hasResult": "https://schema.plantphenomics.org/hasResult",
     "hasScale": "https://schema.plantphenomics.org/hasScale",
     "hasTrait": "https://schema.plantphenomics.org/hasTrait",
@@ -67,6 +71,6 @@
     "row": "https://schema.plantphenomics.org/row",
     "treats": "https://schema.plantphenomics.org/treats",
     "usedMethod": "https://schema.plantphenomics.org/usedMethod",
-    "usesData": "https://schema.plantphenomics.org/usesData",
+    "usesData": "https://schema.plantphenomics.org/usesData"
   }
-} 
+}

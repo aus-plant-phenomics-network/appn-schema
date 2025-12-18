@@ -22,12 +22,10 @@ A BiologicalUnit that has been created from an existing BiologicalUnit through a
     * Identifies the BiologicalUnit from which a Sample was sampled.
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
     * Links a BiologicalUnit to its type.
-* [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
-    * Links a BiologicalUnit to its genetic and taxonomic profile.
-
-Identifies the BiologicalMaterial for a BiologicalUnit.
 * [appn:Sample](/doc/appn_Sample.md) **appn:derivesFrom** [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md)
     * Identifies the BiologicalUnit from which a Sample was sampled.
+* [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
+    * Identifies the BiologicalMaterial for a BiologicalUnit.
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:inheritsContext** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)

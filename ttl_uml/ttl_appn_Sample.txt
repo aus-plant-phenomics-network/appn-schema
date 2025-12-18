@@ -24,9 +24,9 @@ class BiologicalUnit
 Sample --> BiologicalUnit : derivesFrom
 class BiologicalUnitType 
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
+Sample --> BiologicalUnit : derivesFrom
 class BiologicalMaterial 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
-Sample --> BiologicalUnit : derivesFrom
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

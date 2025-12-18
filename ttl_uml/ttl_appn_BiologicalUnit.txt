@@ -14,10 +14,10 @@ class "bio:BioChemEntity" #EECCFF
 BiologicalUnit --|> "bio:BioChemEntity"
 class BiologicalUnitType 
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
-class BiologicalMaterial 
-BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 class Sample 
 Sample --> BiologicalUnit : derivesFrom
+class BiologicalMaterial 
+BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 

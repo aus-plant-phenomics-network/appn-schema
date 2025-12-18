@@ -318,12 +318,6 @@ appn:hasBiologicalUnitType a rdfs:Property ;
   schema:domainIncludes appn:BiologicalUnit ;
   schema:rangeIncludes appn:BiologicalUnitType .
 
-appn:hasBiologicalMaterial a rdfs:Property ;
-  rdfs:label "hasBiologicalMaterial" ; 
-  rdfs:comment "Links a BiologicalUnit to its genetic and taxonomic profile." ;
-  schema:domainIncludes appn:BiologicalUnit ;
-  schema:rangeIncludes appn:BiologicalMaterial .
-
 # COMMENT: Needs a range.
 appn:hasDefaultValue a rdfs:Property ;
   rdfs:label "hasDefaultValue" ; 
