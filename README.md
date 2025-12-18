@@ -9,7 +9,7 @@ The [ttl2uml.py](/ttl2uml.py) script generates a set of UML diagrams from the Tu
 * [ttl_appn-ppeo-sosa-ssn-cdi-prov.png](/ttl_uml/ttl_appn-ppeo-sosa-ssn-cdi-prov.png) - Inheritiance of APPN schema classes, including inheritance only from schema.org and bioschemas.org
 * [UML diagrams for each APPN schema class](/ttl_uml/)
 
-Markdown pages for all classes can be found here: [doc/appn_schema.md](/doc/appn_schema.md)
+Markdown pages for all classes (including the UML diagrams above) can be found here: [doc/appn_schema.md](/doc/appn_schema.md)
 
 The ttl2uml.py script also generates a JSON-LD context document to include the APPN classes and properties in an RO-Crate: [context.json](/context.json)
 
