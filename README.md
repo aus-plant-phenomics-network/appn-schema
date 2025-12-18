@@ -2,14 +2,16 @@
 This repository is to develop schema artefacts for APPN data management.
 
 ## Turtle representation (Active)
-The schema is represented in Turtle: [appn-schema.ttl](/appn-schema.ttl)
+The schema is represented in Turtle: [appn-schema.ttl](/appn-schema.ttl). It defines classes and properties in an APPN namespace but indicating subclass relationships to key ontologies and schemas: [schema.org](https://schema.org/), [PPEO](http://purl.org/ppeo/PPEO.owl), [bioschemas.org](https://bioschemas.org/), [SOSA](https://www.w3.org/ns/sosa/)/[SSN](https://www.w3.org/ns/ssn/), [DDI-CDI](http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/) and [PROV](http://www.w3.org/ns/prov). The set of included properties is still incomplete relative to the scope of MIAPPE/PPEO.
 
 The [ttl2uml.py](/ttl2uml.py) script generates a set of UML diagrams from the Turtle representation (using PlantUML). The UML outputs include:
 * [ttl_appn_full.png](/ttl_uml/ttl_appn_full.png) - Inheritance of all APPN schema classes, including classes from external packages (very wide diagram)
-* [ttl_appn-ppeo-sosa-ssn-cdi.png](/ttl_uml/ttl_appn-ppeo-sosa-ssn-cdi.png) - Inheritiance of APPN schema classes, including inheritance only from schema.org and bioschemas.org
+* [ttl_appn-ppeo-sosa-ssn-cdi-prov.png](/ttl_uml/ttl_appn-ppeo-sosa-ssn-cdi-prov.png) - Inheritiance of APPN schema classes, including inheritance only from schema.org and bioschemas.org
 * [UML diagrams for each APPN schema class](/ttl_uml/)
 
 Markdown pages for all classes can be found here: [doc/appn_schema.md](/doc/appn_schema.md)
+
+The ttl2uml.py script also generates a JSON-LD context document to include the APPN classes and properties in an RO-Crate: [context.json](/context.json)
 
 ## Older UML diagrams (Deprecated)
 The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
