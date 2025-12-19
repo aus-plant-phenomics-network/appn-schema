@@ -32,7 +32,9 @@ class GrowthFacilityType
 class BiologicalUnitType
 class BiologicalMaterial
 class MaterialSource
+class Location
 class SpatialLocation
+class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
@@ -44,6 +46,7 @@ package "schema" {
     class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Enumeration" #DDFFDD
+    class "schema:Place" #DDFFDD
 }
 package "bio" {
     class "bio:ComputationalWorkflow" #EECCFF
@@ -92,5 +95,8 @@ BiologicalUnit --|> "bio:BioChemEntity"
 BiologicalUnitType --|> "schema:Enumeration"
 BiologicalMaterial --|> "bio:Taxon"
 MaterialSource --|> "bio:BioSample"
-SpatialLocation --|> "schema:Thing"
+Location --|> "schema:Thing"
+SpatialLocation --|> Location
+SpatialLocation --|> "schema:Place"
+XYZLocation --|> Location
 @enduml

@@ -1,15 +1,15 @@
 @startuml
-class SpatialLocation  #line.bold
-class Location  
+class Location  #line.bold
 class "ppeo:spatial_distribution" #EEFFCC 
 Location --|> "ppeo:spatial_distribution"
 class "schema:Thing" #DDFFDD 
 Location --|> "schema:Thing"
-SpatialLocation --|> Location
-class "schema:Place" #DDFFDD 
-SpatialLocation --|> "schema:Place"
 class ObservationUnit 
 ObservationUnit --> Location : hasLocation
 class ObservationUnit 
 Location --> ObservationUnit : isLocationWithin
+class SpatialLocation 
+SpatialLocation --|> Location
+class XYZLocation 
+XYZLocation --|> Location
 @enduml

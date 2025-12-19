@@ -190,7 +190,7 @@ appn:Deployment a rdfs:Class ;
 
 appn:GrowthFacility a rdfs:Class ;
   rdfs:label "GrowthFacility" ;
-  rdfs:comment "A building, enclosed space, field unit, container or other entity in which plants are grown. GrowthFacilities may be nested inside other GrowthFacilities, e.g. rhizoboxes inside a growth chamber, to any depth. GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits. Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a SpatialLocation. GrowthFacilities may be Platforms for Sensors and Actuators." ;
+  rdfs:comment "A building, enclosed space, field unit, container or other entity in which plants are grown. GrowthFacilities may be nested inside other GrowthFacilities, e.g. rhizoboxes inside a growth chamber, to any depth. GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits. Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a Location. GrowthFacilities may be Platforms for Sensors and Actuators." ;
   rdfs:subClassOf ppeo:growth_facility ;
   rdfs:subClassOf appn:Platform ;
   rdfs:subClassOf appn:ObservationUnit .
@@ -202,7 +202,7 @@ appn:GrowthFacilityType a rdfs:Class ;
 
 appn:BiologicalUnit a rdfs:Class ;
   rdfs:label "BiologicalUnit" ;
-  rdfs:comment "A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or crop in a field) or any Sample of a plant (e.g. an individual organ or leaf clipping) or set of plants (e.g. a cut from a plot) that is treated as an ObservationUnit for collecting or reporting data. BiologicalUnits may be part of larger BiologicalUnits. For example a plant (BiologicalUnit) may be part of a cohort (BiologicalUnit) sharing the same BiologicalMaterial and Treatments. Where relevant, the position of a BiologicalUnit within a larger BiologicalUnit or within a GrowthFacility can be specified using a SpatialLocation." ;
+  rdfs:comment "A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or crop in a field) or any Sample of a plant (e.g. an individual organ or leaf clipping) or set of plants (e.g. a cut from a plot) that is treated as an ObservationUnit for collecting or reporting data. BiologicalUnits may be part of larger BiologicalUnits. For example a plant (BiologicalUnit) may be part of a cohort (BiologicalUnit) sharing the same BiologicalMaterial and Treatments. Where relevant, the position of a BiologicalUnit within a larger BiologicalUnit or within a GrowthFacility can be specified using a Location." ;
   rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf bio:BioChemEntity .
 
@@ -223,11 +223,22 @@ appn:MaterialSource a rdfs:Class ;
   rdfs:subClassOf ppeo:material_source ;
   rdfs:subClassOf bio:BioSample .
 
-appn:SpatialLocation a rdfs:Class ;
-  rdfs:label "SpatialLocation" ;
-  rdfs:comment "A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates or using a locally appropriate organisation into rows and columns (and optionally levels)." ;
+appn:Location a rdfs:Class ;
+  rdfs:label "Location" ;
+  rdfs:comment "A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates (SpatialLocation) or using a locally appropriate organisation into rows and columns and optionally levels (XYZLocation)." ;
   rdfs:subClassOf ppeo:spatial_distribution ;
   rdfs:subClassOf schema:Thing .
+
+appn:SpatialLocation a rdfs:Class ;
+  rdfs:label "SpatialLocation" ;
+  rdfs:comment "A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape." ;
+  rdfs:subClassOf appn:Location ;
+  rdfs:subClassOf schema:Place .
+
+appn:XYZLocation a rdfs:Class ;
+  rdfs:label "XYZLocation" ;
+  rdfs:comment "A location defined using an appropriate local spatial geometry in three dimensions." ;
+  rdfs:subClassOf appn:Location .
 
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdfs:Property ;
@@ -328,31 +339,31 @@ appn:hasLocation a rdfs:Property ;
   rdfs:label "hasLocation" ; 
   rdfs:comment "Specifies the location for an ObservationUnit." ;
   schema:domainIncludes appn:ObservationUnit ;
-  schema:rangeIncludes appn:SpatialLocation .
+  schema:rangeIncludes appn:Location .
 
 appn:isLocationWithin a rdfs:Property ;
   rdfs:label "isLocationWithin" ; 
   rdfs:comment "Specifies that a location is a position within an ObservationUnit." ;
-  schema:domainIncludes appn:SpatialLocation ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:ObservationUnit .
 
 # COMMENT: Needs a range.
 appn:row a rdfs:Property ;
   rdfs:label "row" ; 
-  rdfs:comment "Specifies the row for a SpatialLocation." ;
-  schema:domainIncludes appn:SpatialLocation .
+  rdfs:comment "Specifies the row for an XYZLocation." ;
+  schema:domainIncludes appn:XYZLocation .
 
 # COMMENT: Needs a range.
 appn:column a rdfs:Property ;
   rdfs:label "column" ; 
-  rdfs:comment "Specifies the column for a SpatialLocation." ;
-  schema:domainIncludes appn:SpatialLocation .
+  rdfs:comment "Specifies the column for an XYZLocation." ;
+  schema:domainIncludes appn:XYZLocation .
 
 # COMMENT: Needs a range.
 appn:level a rdfs:Property ;
   rdfs:label "level" ; 
-  rdfs:comment "Specifies the level for a SpatialLocation in a three-dimensional configuration." ;
-  schema:domainIncludes appn:SpatialLocation .
+  rdfs:comment "Specifies the level for an XYZLocation in a three-dimensional configuration." ;
+  schema:domainIncludes appn:XYZLocation .
 
 appn:deployedSystem a rdfs:Property ;
   rdfs:label "deployedSystem" ; 

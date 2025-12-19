@@ -22,10 +22,10 @@ class Assay
 Assay --> ObservationUnit : isForObservationUnit
 class ObservationUnit 
 ObservationUnit --> ObservationUnit : inheritsContext
-class SpatialLocation 
-ObservationUnit --> SpatialLocation : hasLocation
-class SpatialLocation 
-SpatialLocation --> ObservationUnit : isLocationWithin
+class Location 
+ObservationUnit --> Location : hasLocation
+class Location 
+Location --> ObservationUnit : isLocationWithin
 class Sample 
 Sample --|> BiologicalUnit
 @enduml

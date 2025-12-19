@@ -32,7 +32,9 @@ class GrowthFacilityType
 class BiologicalUnitType
 class BiologicalMaterial
 class MaterialSource
+class Location
 class SpatialLocation
+class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:HowTo" #DDFFDD
@@ -44,6 +46,7 @@ package "schema" {
     class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Enumeration" #DDFFDD
+    class "schema:Place" #DDFFDD
 }
 package "prov" {
     class "prov:Activity" #DDDDFF
@@ -161,6 +164,9 @@ BiologicalMaterial --|> "ppeo:biological_material"
 BiologicalMaterial --|> "bio:Taxon"
 MaterialSource --|> "ppeo:material_source"
 MaterialSource --|> "bio:BioSample"
-SpatialLocation --|> "ppeo:spatial_distribution"
-SpatialLocation --|> "schema:Thing"
+Location --|> "ppeo:spatial_distribution"
+Location --|> "schema:Thing"
+SpatialLocation --|> Location
+SpatialLocation --|> "schema:Place"
+XYZLocation --|> Location
 @enduml

@@ -1,16 +1,18 @@
-# SpatialLocation
-[https://schema.plantphenomics.org.au/SpatialLocation](https://schema.plantphenomics.org.au/SpatialLocation)
+# XYZLocation
+[https://schema.plantphenomics.org.au/XYZLocation](https://schema.plantphenomics.org.au/XYZLocation)
 
-A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape.
+A location defined using an appropriate local spatial geometry in three dimensions.
 
-![UML diagram for SpatialLocation](/ttl_uml/ttl_appn_SpatialLocation.png)
+![UML diagram for XYZLocation](/ttl_uml/ttl_appn_XYZLocation.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Location](/doc/appn_Location.md)
 * http://purl.org/ppeo/PPEO.owl#spatial_distribution
 * https://schema.org/Thing
-* https://schema.org/Place
 ## Properties
+* XYZLocation https://schema.plantphenomics.org.au/row
+* XYZLocation https://schema.plantphenomics.org.au/column
+* XYZLocation https://schema.plantphenomics.org.au/level
 * [appn:ObservationUnit](/doc/appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](/doc/appn_Location.md)
     * Specifies the location for an ObservationUnit.
 * [appn:Location](/doc/appn_Location.md) **appn:isLocationWithin** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)

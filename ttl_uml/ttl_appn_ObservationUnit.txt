@@ -11,10 +11,10 @@ ObservationUnit --|> "sosa:FeatureOfInterest"
 class Assay 
 Assay --> ObservationUnit : isForObservationUnit
 ObservationUnit --> ObservationUnit : inheritsContext
-class SpatialLocation 
-ObservationUnit --> SpatialLocation : hasLocation
-class SpatialLocation 
-SpatialLocation --> ObservationUnit : isLocationWithin
+class Location 
+ObservationUnit --> Location : hasLocation
+class Location 
+Location --> ObservationUnit : isLocationWithin
 class GrowthFacility 
 GrowthFacility --|> ObservationUnit
 class BiologicalUnit 

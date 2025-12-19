@@ -13,6 +13,7 @@
 * [appn:GrowthFacility](/doc/appn_GrowthFacility.md)
 * [appn:GrowthFacilityType](/doc/appn_GrowthFacilityType.md)
 * [appn:Investigation](/doc/appn_Investigation.md)
+* [appn:Location](/doc/appn_Location.md)
 * [appn:MaterialSource](/doc/appn_MaterialSource.md)
 * [appn:Method](/doc/appn_Method.md)
 * [appn:Observation](/doc/appn_Observation.md)
@@ -34,3 +35,4 @@
 * [appn:Treatment](/doc/appn_Treatment.md)
 * [appn:TreatmentVariable](/doc/appn_TreatmentVariable.md)
 * [appn:Variable](/doc/appn_Variable.md)
+* [appn:XYZLocation](/doc/appn_XYZLocation.md)
