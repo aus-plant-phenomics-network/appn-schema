@@ -377,11 +377,24 @@ appn:deployedOnPlatform a rdfs:Property ;
   schema:domainIncludes appn:Deployment ;
   schema:rangeIncludes appn:Platform .
 
+# ISSUE: Include for variables as well as assays?
 appn:usedMethod a rdfs:Property ;
   rdfs:label "usedMethod" ;
   rdfs:comment "Identifies a Method used to conduct an Assay." ;
-  schema:domainIncludes appn:Assay ;
+  schema:domainIncludes appn:Variable, appn:Assay ;
   schema:rangeIncludes appn:Method .
+
+appn:forBiologicalUnitType a rdfs:Property ;
+  rdfs:label "forBiologicalUnitType" ; 
+  rdfs:comment "Links a Variable to the BiologicalUnitType to which it relates." ;
+  schema:domainIncludes appn:Variable ;
+  schema:rangeIncludes appn:BiologicalUnitType .
+
+appn:forBiologicalMaterial a rdfs:Property ;
+  rdfs:label "forBiologicalUnitType" ; 
+  rdfs:comment "Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates." ;
+  schema:domainIncludes appn:Variable ;
+  schema:rangeIncludes appn:BiologicalUnitType .
 
 appn:hasTrait a rdfs:Property ;
   rdfs:label "hasTrait" ;

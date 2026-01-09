@@ -28,8 +28,6 @@ class ObservedVariable
 Observation --> ObservedVariable : observes
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
-class Method 
-Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 @enduml

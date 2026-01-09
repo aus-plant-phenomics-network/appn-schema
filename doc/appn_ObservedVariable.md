@@ -15,6 +15,10 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
 * [appn:Observation](/doc/appn_Observation.md) **appn:observes** appn:ObservedVariable
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
 * ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+    * Links a Variable to the BiologicalUnitType to which it relates.
+* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalMaterial** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+    * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasTrait** [appn:Trait](/doc/appn_Trait.md)
     * Identifies the Trait associated with a Variable.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)

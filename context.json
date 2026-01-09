@@ -50,6 +50,8 @@
     "deployedOnPlatform": "https://schema.plantphenomics.org/deployedOnPlatform",
     "deployedSystem": "https://schema.plantphenomics.org/deployedSystem",
     "derivesFrom": "https://schema.plantphenomics.org/derivesFrom",
+    "forBiologicalMaterial": "https://schema.plantphenomics.org/forBiologicalMaterial",
+    "forBiologicalUnitType": "https://schema.plantphenomics.org/forBiologicalUnitType",
     "hasBiologicalMaterial": "https://schema.plantphenomics.org/hasBiologicalMaterial",
     "hasBiologicalUnitType": "https://schema.plantphenomics.org/hasBiologicalUnitType",
     "hasDefaultValue": "https://schema.plantphenomics.org/hasDefaultValue",

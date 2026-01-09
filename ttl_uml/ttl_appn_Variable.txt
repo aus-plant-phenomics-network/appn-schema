@@ -9,6 +9,10 @@ Variable --|> "schema:InstanceValue"
 class Variable #line.bold {
     hasDefaultValue
 }
+class BiologicalUnitType 
+Variable --> BiologicalUnitType : forBiologicalUnitType
+class BiologicalUnitType 
+Variable --> BiologicalUnitType : forBiologicalMaterial
 class Trait 
 Variable --> Trait : hasTrait
 class Scale 

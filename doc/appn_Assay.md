@@ -13,8 +13,6 @@ A research action that observes or modifies a set of ObservationUnits.
 ## Properties
 * appn:Assay **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
-* appn:Assay **appn:usedMethod** [appn:Method](/doc/appn_Method.md)
-    * Identifies a Method used to conduct an Assay.
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
     * Relates an Assay to the Study that includes it or a Study to an Investigation.
 ## Subclasses

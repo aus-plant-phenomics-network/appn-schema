@@ -11,6 +11,10 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
 * https://schema.org/InstanceValue
 ## Properties
 * Variable https://schema.plantphenomics.org.au/hasDefaultValue
+* appn:Variable **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+    * Links a Variable to the BiologicalUnitType to which it relates.
+* appn:Variable **appn:forBiologicalMaterial** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+    * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * appn:Variable **appn:hasTrait** [appn:Trait](/doc/appn_Trait.md)
     * Identifies the Trait associated with a Variable.
 * appn:Variable **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)

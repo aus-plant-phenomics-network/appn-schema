@@ -14,6 +14,10 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 * [appn:Control](/doc/appn_Control.md) **appn:controls** appn:ControlledVariable
     * Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.
 * ControlledVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+    * Links a Variable to the BiologicalUnitType to which it relates.
+* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalMaterial** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+    * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasTrait** [appn:Trait](/doc/appn_Trait.md)
     * Identifies the Trait associated with a Variable.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)

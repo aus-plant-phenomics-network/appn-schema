@@ -4,4 +4,8 @@ class "schema:Enumeration" #DDFFDD
 BiologicalUnitType --|> "schema:Enumeration"
 class BiologicalUnit 
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
+class Variable 
+Variable --> BiologicalUnitType : forBiologicalUnitType
+class Variable 
+Variable --> BiologicalUnitType : forBiologicalMaterial
 @enduml
