@@ -42,7 +42,7 @@ appn:Assay a rdfs:Class ;
   rdfs:label "Assay" ;
   rdfs:comment "A research action that observes or modifies a set of ObservationUnits." ;
   rdfs:subClassOf appn:ResearchActivity ;
-  rdfs:subClassOf sosa:Execution ;
+  rdfs:subClassOf sosa:Execution .
 
 appn:Method a rdfs:Class ;
   rdfs:label "Method" ;
