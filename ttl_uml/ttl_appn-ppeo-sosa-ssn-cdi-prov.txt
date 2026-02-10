@@ -25,6 +25,7 @@ class Person
 class SoftwareApplication
 class Sample
 class BiologicalUnit
+class BioChemEntity
 class Platform
 class Deployment
 class GrowthFacility
@@ -85,6 +86,7 @@ SoftwareApplication --|> "bio:ComputationalWorkflow"
 SoftwareApplication --|> Observer
 SoftwareApplication --|> Controller
 Sample --|> BiologicalUnit
+BioChemEntity --|> "bio:BioChemEntity"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform

@@ -11,6 +11,7 @@
   "@context": {
     "Actuator": "https://schema.plantphenomics.org/Actuator",
     "Assay": "https://schema.plantphenomics.org/Assay",
+    "BioChemEntity": "https://schema.plantphenomics.org/BioChemEntity",
     "BiologicalMaterial": "https://schema.plantphenomics.org/BiologicalMaterial",
     "BiologicalUnit": "https://schema.plantphenomics.org/BiologicalUnit",
     "BiologicalUnitType": "https://schema.plantphenomics.org/BiologicalUnitType",
@@ -74,6 +75,7 @@
     "producesSample": "https://schema.plantphenomics.org/producesSample",
     "row": "https://schema.plantphenomics.org/row",
     "treats": "https://schema.plantphenomics.org/treats",
+    "treatsWith": "https://schema.plantphenomics.org/treatsWith",
     "usedMethod": "https://schema.plantphenomics.org/usedMethod",
     "usesData": "https://schema.plantphenomics.org/usesData"
   }

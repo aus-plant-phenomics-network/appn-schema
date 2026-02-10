@@ -71,7 +71,7 @@ appn:Sampling a rdfs:Class ;
 
 appn:Treatment a rdfs:Class ;
   rdfs:label "Treatment" ;
-  rdfs:comment "An Assay that adds or removes a quantity of some Variable to a set of ObservationUnits but no resulting state value is recorded." ;
+  rdfs:comment "An Assay that adds a quantity of some BioChemEntity to a set of ObservationUnits (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
   rdfs:subClassOf ppeo:event ;
   rdfs:subClassOf appn:Assay .
 
@@ -117,7 +117,7 @@ appn:ControlledVariable a rdfs:Class ;
 
 appn:TreatmentVariable a rdfs:Class ;
   rdfs:label "TreatmentVariable" ;
-  rdfs:comment "A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state." ;
+  rdfs:comment "A Variable (representation of a quantity using a defined Scale) for a BioChemEntity applied to one or more ObservationUnits." ;
   rdfs:subClassOf appn:Variable .
 
 appn:Observer a rdfs:Class ;
@@ -175,6 +175,11 @@ appn:Sample a rdfs:Class ;
   rdfs:subClassOf ppeo:sample ;
   rdfs:subClassOf sosa:Sample ;
   rdfs:subClassOf appn:BiologicalUnit .
+
+appn:BioChemEntity a rdfs:Class ;
+  rdfs:label "BioChemEntity" ;
+  rdfs:comment "A biological or chemical entity used in a Treatment assay." ;
+  rdfs:subClassOf bio:BioChemEntity .
 
 appn:Platform a rdfs:Class ;
   rdfs:label "Platform" ;
@@ -301,9 +306,15 @@ appn:controls a rdfs:Property ;
 
 appn:treats a rdfs:Property ;
   rdfs:label "treats" ; 
-  rdfs:comment "Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
+  rdfs:comment "Identifies a TreatmentVariable associated with a Treatment assay. The Treatment makes an input of a quantity of some BioChemEntity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
   schema:domainIncludes appn:Treatment ;
   schema:rangeIncludes appn:TreatmentVariable .
+
+appn:treatsWith a rdfs:Property ;
+  rdfs:label "treatsWith" ; 
+  rdfs:comment "Identifies a BioChemEntity linked to a Treatment assay. This represents the biological or chemical substance applied to the ObservationUnit." ;
+  schema:domainIncludes appn:Treatment ;
+  schema:rangeIncludes appn:BioChemEntity .
 
 appn:observes a rdfs:Property ;
   rdfs:label "observes" ; 

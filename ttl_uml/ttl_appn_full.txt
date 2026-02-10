@@ -25,6 +25,7 @@ class Person
 class SoftwareApplication
 class Sample
 class BiologicalUnit
+class BioChemEntity
 class Platform
 class Deployment
 class GrowthFacility
@@ -149,6 +150,7 @@ SoftwareApplication --|> Controller
 Sample --|> "ppeo:sample"
 Sample --|> "sosa:Sample"
 Sample --|> BiologicalUnit
+BioChemEntity --|> "bio:BioChemEntity"
 Platform --|> "sosa:Platform"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "ssn:Deployment"

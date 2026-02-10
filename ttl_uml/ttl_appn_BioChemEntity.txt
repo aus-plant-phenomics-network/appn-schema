@@ -1,0 +1,7 @@
+@startuml
+class BioChemEntity  #line.bold
+class "bio:BioChemEntity" #EECCFF 
+BioChemEntity --|> "bio:BioChemEntity"
+class Treatment 
+Treatment --> BioChemEntity : treatsWith
+@enduml

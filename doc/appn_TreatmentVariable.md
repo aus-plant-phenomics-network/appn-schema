@@ -1,7 +1,7 @@
 # TreatmentVariable
 [https://schema.plantphenomics.org.au/TreatmentVariable](https://schema.plantphenomics.org.au/TreatmentVariable)
 
-A Variable (representation of a Trait using a defined Scale) modified for one or more ObservationUnits but with undefined resulting state.
+A Variable (representation of a quantity using a defined Scale) for a BioChemEntity applied to one or more ObservationUnits.
 
 ![UML diagram for TreatmentVariable](/ttl_uml/ttl_appn_TreatmentVariable.png)
 
@@ -12,7 +12,7 @@ A Variable (representation of a Trait using a defined Scale) modified for one or
 * https://schema.org/InstanceValue
 ## Properties
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:treats** appn:TreatmentVariable
-    * Identifies a TreatmentVariable controlled by a Treatment assay. The Treatment makes an input of some quantity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
+    * Identifies a TreatmentVariable associated with a Treatment assay. The Treatment makes an input of a quantity of some BioChemEntity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
 * TreatmentVariable https://schema.plantphenomics.org.au/hasDefaultValue
 * [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalUnitType to which it relates.
