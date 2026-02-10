@@ -6,6 +6,8 @@ class "cdi:Concept" #CCEEFF
 Trait --|> "cdi:Concept"
 class "schema:DefinedTerm" #DDFFDD 
 Trait --|> "schema:DefinedTerm"
-class Variable 
-Variable --> Trait : hasTrait
+class ObservedVariable 
+ObservedVariable --> Trait : hasTrait
+class ControlledVariable 
+ControlledVariable --> Trait : hasTrait
 @enduml

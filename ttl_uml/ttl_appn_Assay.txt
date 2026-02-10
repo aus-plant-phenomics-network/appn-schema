@@ -10,6 +10,8 @@ class "sosa:Execution" #FFCCEE
 Assay --|> "sosa:Execution"
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
+class Method 
+Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 class Observation 

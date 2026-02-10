@@ -10,15 +10,17 @@ Variable --|> "schema:InstanceValue"
 ControlledVariable --|> Variable
 class Control 
 Control --> ControlledVariable : controls
+class Trait 
+ControlledVariable --> Trait : hasTrait
 class Variable #line.bold {
     hasDefaultValue
 }
+class Method 
+Variable --> Method : usedMethod
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalUnitType
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalMaterial
-class Trait 
-Variable --> Trait : hasTrait
 class Scale 
 Variable --> Scale : hasScale
 @enduml

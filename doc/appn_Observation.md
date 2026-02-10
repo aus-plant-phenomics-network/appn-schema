@@ -28,5 +28,7 @@ An Assay that observes or measures properties of one or more ObservationUnits re
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
 * [appn:Assay](/doc/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/doc/appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
+* [appn:Assay](/doc/appn_Assay.md) **appn:usedMethod** [appn:Method](/doc/appn_Method.md)
+    * Identifies a Method used to conduct an Assay.
 * [appn:ResearchActivity](/doc/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/doc/appn_ResearchActivity.md)
     * Relates an Assay to the Study that includes it or a Study to an Investigation.

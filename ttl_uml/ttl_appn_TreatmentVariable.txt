@@ -10,15 +10,17 @@ Variable --|> "schema:InstanceValue"
 TreatmentVariable --|> Variable
 class Treatment 
 Treatment --> TreatmentVariable : treats
+class BioChemEntity 
+TreatmentVariable --> BioChemEntity : treatsWith
 class Variable #line.bold {
     hasDefaultValue
 }
+class Method 
+Variable --> Method : usedMethod
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalUnitType
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalMaterial
-class Trait 
-Variable --> Trait : hasTrait
 class Scale 
 Variable --> Scale : hasScale
 @enduml

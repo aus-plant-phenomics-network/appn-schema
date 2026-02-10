@@ -8,4 +8,8 @@ class "prov:Plan" #DDDDFF
 Method --|> "prov:Plan"
 class "schema:HowTo" #DDFFDD 
 Method --|> "schema:HowTo"
+class Variable 
+Variable --> Method : usedMethod
+class Assay 
+Assay --> Method : usedMethod
 @enduml

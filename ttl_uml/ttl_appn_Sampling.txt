@@ -16,6 +16,8 @@ class Sample
 Sampling --> Sample : producesSample
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
+class Method 
+Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 @enduml

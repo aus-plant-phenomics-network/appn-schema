@@ -8,5 +8,5 @@ A biological or chemical entity used in a Treatment assay.
 ## Superclasses
 * https://bioschemas.org/BioChemEntity
 ## Properties
-* [appn:Treatment](/doc/appn_Treatment.md) **appn:treatsWith** appn:BioChemEntity
-    * Identifies a BioChemEntity linked to a Treatment assay. This represents the biological or chemical substance applied to the ObservationUnit.
+* [appn:TreatmentVariable](/doc/appn_TreatmentVariable.md) **appn:treatsWith** appn:BioChemEntity
+    * Identifies a BioChemEntity linked to a TreatmentVariable. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.

@@ -20,6 +20,8 @@ class ControlledVariable
 Control --> ControlledVariable : controls
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
+class Method 
+Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 @enduml

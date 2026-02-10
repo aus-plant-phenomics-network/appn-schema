@@ -305,15 +305,15 @@ appn:controls a rdfs:Property ;
   schema:rangeIncludes appn:ControlledVariable .
 
 appn:treats a rdfs:Property ;
-  rdfs:label "treats" ; 
+  rdfs:label "treatsWith" ; 
   rdfs:comment "Identifies a TreatmentVariable associated with a Treatment assay. The Treatment makes an input of a quantity of some BioChemEntity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
   schema:domainIncludes appn:Treatment ;
   schema:rangeIncludes appn:TreatmentVariable .
 
 appn:treatsWith a rdfs:Property ;
-  rdfs:label "treatsWith" ; 
-  rdfs:comment "Identifies a BioChemEntity linked to a Treatment assay. This represents the biological or chemical substance applied to the ObservationUnit." ;
-  schema:domainIncludes appn:Treatment ;
+  rdfs:label "usesBioChemEntity" ; 
+  rdfs:comment "Identifies a BioChemEntity linked to a TreatmentVariable. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
+  schema:domainIncludes appn:TreatmentVariable ;
   schema:rangeIncludes appn:BioChemEntity .
 
 appn:observes a rdfs:Property ;
@@ -410,7 +410,7 @@ appn:forBiologicalMaterial a rdfs:Property ;
 appn:hasTrait a rdfs:Property ;
   rdfs:label "hasTrait" ;
   rdfs:comment "Identifies the Trait associated with a Variable." ;
-  schema:domainIncludes appn:Variable ;
+  schema:domainIncludes appn:ObservedVariable, appn:ControlledVariable ;
   schema:rangeIncludes appn:Trait .
 
 appn:hasScale a rdfs:Property ;

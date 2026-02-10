@@ -12,15 +12,17 @@ Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 class Observation 
 Observation --> ObservedVariable : observes
+class Trait 
+ObservedVariable --> Trait : hasTrait
 class Variable #line.bold {
     hasDefaultValue
 }
+class Method 
+Variable --> Method : usedMethod
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalUnitType
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalMaterial
-class Trait 
-Variable --> Trait : hasTrait
 class Scale 
 Variable --> Scale : hasScale
 @enduml

@@ -16,10 +16,10 @@ class Controller
 Treatment --> Controller : madeByController
 class TreatmentVariable 
 Treatment --> TreatmentVariable : treats
-class BioChemEntity 
-Treatment --> BioChemEntity : treatsWith
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
+class Method 
+Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 @enduml

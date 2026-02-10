@@ -13,12 +13,14 @@ A Variable (representation of a quantity using a defined Scale) for a BioChemEnt
 ## Properties
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:treats** appn:TreatmentVariable
     * Identifies a TreatmentVariable associated with a Treatment assay. The Treatment makes an input of a quantity of some BioChemEntity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
+* appn:TreatmentVariable **appn:treatsWith** [appn:BioChemEntity](/doc/appn_BioChemEntity.md)
+    * Identifies a BioChemEntity linked to a TreatmentVariable. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
 * TreatmentVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](/doc/appn_Variable.md) **appn:usedMethod** [appn:Method](/doc/appn_Method.md)
+    * Identifies a Method used to conduct an Assay.
 * [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalUnitType to which it relates.
 * [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalMaterial** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
-* [appn:Variable](/doc/appn_Variable.md) **appn:hasTrait** [appn:Trait](/doc/appn_Trait.md)
-    * Identifies the Trait associated with a Variable.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)
     * Identifies the Scale associated with a Variable.

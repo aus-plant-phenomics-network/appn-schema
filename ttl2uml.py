@@ -53,8 +53,8 @@ pattern_class = re.compile(r"^(\w+):(\w+) a rdfs:Class[ \.;]*$")
 pattern_subclass = re.compile(r"^\s* rdfs:subClassOf (\w+):(\w+)[ \.;]*$")
 pattern_property = re.compile(r"^(\w+):(\w+) a rdfs:Property[ \.;]*$")
 pattern_subproperty = re.compile(r"^\s*rdfs:subPropertyOf (\w+):(\w+)[ \.;]*$")
-pattern_domain = re.compile(r"^\s*schema:domainIncludes ([\w,:]+)[ \.;]*$")
-pattern_range = re.compile(r"^\s*schema:rangeIncludes ([\w,:]+)[ \.;]*$")
+pattern_domain = re.compile(r"^\s*schema:domainIncludes ([\w, :]+)[ \.;]*$")
+pattern_range = re.compile(r"^\s*schema:rangeIncludes ([\w, :]+ *)[ \.;]*$")
 pattern_comment = re.compile(r'^\s*rdfs:comment "([^"]*)"[ \.;]*$')
 
 # State objects to store data needed for diagrams
@@ -110,7 +110,7 @@ def add_property_inheritance(child: tuple[str,str], parent: tuple[str,str]) -> N
 def add_domain(pty: tuple[str,str], domain_classes: str) -> None:
     ppty = get_property(pty[0], pty[1])
     for cls in domain_classes.split(","):
-        prefix, c = cls.split(":")
+        prefix, c = cls.strip().split(":")
         domain = (prefix, c)
         property = properties[ppty]
         if domain not in property[0]:
@@ -120,7 +120,7 @@ def add_domain(pty: tuple[str,str], domain_classes: str) -> None:
 def add_range(pty: tuple[str,str], range_classes: str) -> None:
     ppty = get_property(pty[0], pty[1])
     for cls in range_classes.split(","):
-        prefix, c = cls.split(":")
+        prefix, c = cls.strip().split(":")
         range = (prefix, c)
         property = properties[ppty]
         if range not in property[1]:

@@ -2,6 +2,6 @@
 class BioChemEntity  #line.bold
 class "bio:BioChemEntity" #EECCFF 
 BioChemEntity --|> "bio:BioChemEntity"
-class Treatment 
-Treatment --> BioChemEntity : treatsWith
+class TreatmentVariable 
+TreatmentVariable --> BioChemEntity : treatsWith
 @enduml
