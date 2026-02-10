@@ -20,7 +20,7 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
     * Identifies a Method used to conduct an Assay.
 * [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalUnitType to which it relates.
-* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalMaterial** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalMaterial** [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
     * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)
     * Identifies the Scale associated with a Variable.

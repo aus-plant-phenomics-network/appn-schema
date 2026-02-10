@@ -15,7 +15,7 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
     * Identifies a Method used to conduct an Assay.
 * appn:Variable **appn:forBiologicalUnitType** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalUnitType to which it relates.
-* appn:Variable **appn:forBiologicalMaterial** [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
+* appn:Variable **appn:forBiologicalMaterial** [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
     * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * appn:Variable **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)
     * Identifies the Scale associated with a Variable.

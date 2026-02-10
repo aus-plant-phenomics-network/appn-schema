@@ -19,8 +19,8 @@ class Method
 Variable --> Method : usedMethod
 class BiologicalUnitType 
 Variable --> BiologicalUnitType : forBiologicalUnitType
-class BiologicalUnitType 
-Variable --> BiologicalUnitType : forBiologicalMaterial
+class BiologicalMaterial 
+Variable --> BiologicalMaterial : forBiologicalMaterial
 class Scale 
 Variable --> Scale : hasScale
 @enduml

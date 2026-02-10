@@ -9,6 +9,8 @@ A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possib
 * http://purl.org/ppeo/PPEO.owl#biological_material
 * https://bioschemas.org/Taxon
 ## Properties
+* [appn:Variable](/doc/appn_Variable.md) **appn:forBiologicalMaterial** appn:BiologicalMaterial
+    * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** appn:BiologicalMaterial
     * Identifies the BiologicalMaterial for a BiologicalUnit.
 * appn:BiologicalMaterial **appn:hasMaterialSource** [appn:MaterialSource](/doc/appn_MaterialSource.md)

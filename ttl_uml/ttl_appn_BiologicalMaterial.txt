@@ -4,6 +4,8 @@ class "ppeo:biological_material" #EEFFCC
 BiologicalMaterial --|> "ppeo:biological_material"
 class "bio:Taxon" #EECCFF 
 BiologicalMaterial --|> "bio:Taxon"
+class Variable 
+Variable --> BiologicalMaterial : forBiologicalMaterial
 class BiologicalUnit 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 class MaterialSource 

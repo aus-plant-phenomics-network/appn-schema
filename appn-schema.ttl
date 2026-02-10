@@ -402,10 +402,10 @@ appn:forBiologicalUnitType a rdfs:Property ;
   schema:rangeIncludes appn:BiologicalUnitType .
 
 appn:forBiologicalMaterial a rdfs:Property ;
-  rdfs:label "forBiologicalUnitType" ; 
+  rdfs:label "forBiologicalMaterial" ; 
   rdfs:comment "Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates." ;
   schema:domainIncludes appn:Variable ;
-  schema:rangeIncludes appn:BiologicalUnitType .
+  schema:rangeIncludes appn:BiologicalMaterial .
 
 appn:hasTrait a rdfs:Property ;
   rdfs:label "hasTrait" ;
