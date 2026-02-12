@@ -1,7 +1,7 @@
 # Control
 [https://schema.plantphenomics.org.au/Control](https://schema.plantphenomics.org.au/Control)
 
-An Assay that modifies a property of one or more ObservationUnits.
+An Assay that modifies a property of an ObservationUnit.
 
 ![UML diagram for Control](/ttl_uml/ttl_appn_Control.png)
 

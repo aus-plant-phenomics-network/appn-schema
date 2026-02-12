@@ -54,14 +54,14 @@ appn:Method a rdfs:Class ;
 
 appn:Observation a rdfs:Class ;
   rdfs:label "Observation" ;
-  rdfs:comment "An Assay that observes or measures properties of one or more ObservationUnits returning results as property values or images." ;
+  rdfs:comment "An Assay that observes or measures properties of an ObservationUnit returning results as property values or images." ;
   rdfs:subClassOf schema:Observation ;
   rdfs:subClassOf appn:Assay ;
   rdfs:subClassOf ppeo:observation .
 
 appn:Control a rdfs:Class ;
   rdfs:label "Control" ;
-  rdfs:comment "An Assay that modifies a property of one or more ObservationUnits." ;
+  rdfs:comment "An Assay that modifies a property of an ObservationUnit." ;
   rdfs:subClassOf appn:Assay .
 
 appn:Sampling a rdfs:Class ;
@@ -71,7 +71,7 @@ appn:Sampling a rdfs:Class ;
 
 appn:Treatment a rdfs:Class ;
   rdfs:label "Treatment" ;
-  rdfs:comment "An Assay that adds a quantity of some BioChemEntity to a set of ObservationUnits (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
+  rdfs:comment "An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
   rdfs:subClassOf ppeo:event ;
   rdfs:subClassOf appn:Assay .
 
@@ -106,18 +106,18 @@ appn:Variable a rdfs:Class ;
 
 appn:ObservedVariable a rdfs:Class ;
   rdfs:label "ObservedVariable" ;
-  rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits." ;
+  rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit." ;
   rdfs:subClassOf ppeo:observed_variable ;
   rdfs:subClassOf appn:Variable .
 
 appn:ControlledVariable a rdfs:Class ;
   rdfs:label "ControlledVariable" ;
-  rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for one or more ObservationUnits." ;
+  rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit." ;
   rdfs:subClassOf appn:Variable .
 
-appn:TreatmentVariable a rdfs:Class ;
-  rdfs:label "TreatmentVariable" ;
-  rdfs:comment "A Variable (representation of a quantity using a defined Scale) for a BioChemEntity applied to one or more ObservationUnits." ;
+appn:SubstanceQuantity a rdfs:Class ;
+  rdfs:label "SubstanceQuantity" ;
+  rdfs:comment "A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit." ;
   rdfs:subClassOf appn:Variable .
 
 appn:Observer a rdfs:Class ;
@@ -176,10 +176,10 @@ appn:Sample a rdfs:Class ;
   rdfs:subClassOf sosa:Sample ;
   rdfs:subClassOf appn:BiologicalUnit .
 
-appn:BioChemEntity a rdfs:Class ;
-  rdfs:label "BioChemEntity" ;
-  rdfs:comment "A biological or chemical entity used in a Treatment assay." ;
-  rdfs:subClassOf bio:BioChemEntity .
+appn:Substance a rdfs:Class ;
+  rdfs:label "Substance" ;
+  rdfs:comment "A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity." ;
+  rdfs:subClassOf bio:Substance .
 
 appn:Platform a rdfs:Class ;
   rdfs:label "Platform" ;
@@ -304,17 +304,23 @@ appn:controls a rdfs:Property ;
   schema:domainIncludes appn:Control ;
   schema:rangeIncludes appn:ControlledVariable .
 
-appn:treats a rdfs:Property ;
-  rdfs:label "treatsWith" ; 
-  rdfs:comment "Identifies a TreatmentVariable associated with a Treatment assay. The Treatment makes an input of a quantity of some BioChemEntity associated with the TreatmentVariable. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
-  schema:domainIncludes appn:Treatment ;
-  schema:rangeIncludes appn:TreatmentVariable .
-
 appn:treatsWith a rdfs:Property ;
-  rdfs:label "usesBioChemEntity" ; 
-  rdfs:comment "Identifies a BioChemEntity linked to a TreatmentVariable. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
-  schema:domainIncludes appn:TreatmentVariable ;
-  schema:rangeIncludes appn:BioChemEntity .
+  rdfs:label "treatsWith" ; 
+  rdfs:comment "Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
+  schema:domainIncludes appn:Treatment ;
+  schema:rangeIncludes appn:Substance,appn:SubstanceQuantity .
+
+appn:isOfSubstance a rdfs:Property ;
+  rdfs:label "isOfSubstance" ; 
+  rdfs:comment "Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
+  schema:domainIncludes appn:SubstanceQuantity ;
+  schema:rangeIncludes appn:Substance .
+
+appn:amount a rdfs:Property ;
+  rdfs:label "amount" ; 
+  rdfs:comment "Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale." ;
+  schema:domainIncludes appn:SubstanceQuantity ;
+  schema:rangeIncludes appn:Substance .
 
 appn:observes a rdfs:Property ;
   rdfs:label "observes" ; 
@@ -416,7 +422,7 @@ appn:hasTrait a rdfs:Property ;
 appn:hasScale a rdfs:Property ;
   rdfs:label "hasScale" ;
   rdfs:comment "Identifies the Scale associated with a Variable." ;
-  schema:domainIncludes appn:Variable ;
+  schema:domainIncludes appn:Variable, appn:SubstanceQuantity ;
   schema:rangeIncludes appn:Scale .
 
 appn:derivesFrom a rdfs:Property ;

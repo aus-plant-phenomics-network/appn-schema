@@ -14,7 +14,7 @@ class Scale
 class Variable
 class ObservedVariable
 class ControlledVariable
-class TreatmentVariable
+class SubstanceQuantity
 class Observer
 class Controller
 class Sampler
@@ -25,7 +25,7 @@ class Person
 class SoftwareApplication
 class Sample
 class BiologicalUnit
-class BioChemEntity
+class Substance
 class Platform
 class Deployment
 class GrowthFacility
@@ -88,6 +88,7 @@ package "cdi" {
 }
 package "bio" {
     class "bio:ComputationalWorkflow" #EECCFF
+    class "bio:Substance" #EECCFF
     class "bio:BioChemEntity" #EECCFF
     class "bio:Taxon" #EECCFF
     class "bio:BioSample" #EECCFF
@@ -129,7 +130,7 @@ Variable --|> "schema:InstanceValue"
 ObservedVariable --|> "ppeo:observed_variable"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
-TreatmentVariable --|> Variable
+SubstanceQuantity --|> Variable
 Observer --|> "sosa:Sensor"
 Controller --|> "sosa:Actuator"
 Sampler --|> "sosa:Sampler"
@@ -150,7 +151,7 @@ SoftwareApplication --|> Controller
 Sample --|> "ppeo:sample"
 Sample --|> "sosa:Sample"
 Sample --|> BiologicalUnit
-BioChemEntity --|> "bio:BioChemEntity"
+Substance --|> "bio:Substance"
 Platform --|> "sosa:Platform"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "ssn:Deployment"

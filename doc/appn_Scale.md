@@ -11,3 +11,5 @@ A system of units or representation format for values associated with a Variable
 ## Properties
 * [appn:Variable](/doc/appn_Variable.md) **appn:hasScale** appn:Scale
     * Identifies the Scale associated with a Variable.
+* [appn:SubstanceQuantity](/doc/appn_SubstanceQuantity.md) **appn:hasScale** appn:Scale
+    * Identifies the Scale associated with a Variable.

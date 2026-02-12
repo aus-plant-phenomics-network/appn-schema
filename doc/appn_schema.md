@@ -2,7 +2,6 @@
 ## APPN Classes
 * [appn:Actuator](/doc/appn_Actuator.md)
 * [appn:Assay](/doc/appn_Assay.md)
-* [appn:BioChemEntity](/doc/appn_BioChemEntity.md)
 * [appn:BiologicalMaterial](/doc/appn_BiologicalMaterial.md)
 * [appn:BiologicalUnit](/doc/appn_BiologicalUnit.md)
 * [appn:BiologicalUnitType](/doc/appn_BiologicalUnitType.md)
@@ -32,8 +31,9 @@
 * [appn:SoftwareApplication](/doc/appn_SoftwareApplication.md)
 * [appn:SpatialLocation](/doc/appn_SpatialLocation.md)
 * [appn:Study](/doc/appn_Study.md)
+* [appn:Substance](/doc/appn_Substance.md)
+* [appn:SubstanceQuantity](/doc/appn_SubstanceQuantity.md)
 * [appn:Trait](/doc/appn_Trait.md)
 * [appn:Treatment](/doc/appn_Treatment.md)
-* [appn:TreatmentVariable](/doc/appn_TreatmentVariable.md)
 * [appn:Variable](/doc/appn_Variable.md)
 * [appn:XYZLocation](/doc/appn_XYZLocation.md)

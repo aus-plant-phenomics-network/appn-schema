@@ -6,4 +6,6 @@ class "schema:DefinedTerm" #DDFFDD
 Scale --|> "schema:DefinedTerm"
 class Variable 
 Variable --> Scale : hasScale
+class SubstanceQuantity 
+SubstanceQuantity --> Scale : hasScale
 @enduml

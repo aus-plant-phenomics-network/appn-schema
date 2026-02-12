@@ -14,8 +14,10 @@ Assay --|> "sosa:Execution"
 Treatment --|> Assay
 class Controller 
 Treatment --> Controller : madeByController
-class TreatmentVariable 
-Treatment --> TreatmentVariable : treats
+class Substance 
+Treatment --> Substance : treatsWith
+class SubstanceQuantity 
+Treatment --> SubstanceQuantity : treatsWith
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 

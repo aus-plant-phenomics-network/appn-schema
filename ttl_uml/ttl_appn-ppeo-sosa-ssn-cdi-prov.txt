@@ -14,7 +14,7 @@ class Scale
 class Variable
 class ObservedVariable
 class ControlledVariable
-class TreatmentVariable
+class SubstanceQuantity
 class Observer
 class Controller
 class Sampler
@@ -25,7 +25,7 @@ class Person
 class SoftwareApplication
 class Sample
 class BiologicalUnit
-class BioChemEntity
+class Substance
 class Platform
 class Deployment
 class GrowthFacility
@@ -51,6 +51,7 @@ package "schema" {
 }
 package "bio" {
     class "bio:ComputationalWorkflow" #EECCFF
+    class "bio:Substance" #EECCFF
     class "bio:BioChemEntity" #EECCFF
     class "bio:Taxon" #EECCFF
     class "bio:BioSample" #EECCFF
@@ -71,7 +72,7 @@ Scale --|> "schema:DefinedTerm"
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
-TreatmentVariable --|> Variable
+SubstanceQuantity --|> Variable
 Sensor --|> Observer
 Sensor --|> "schema:IndividualProduct"
 Actuator --|> Controller
@@ -86,7 +87,7 @@ SoftwareApplication --|> "bio:ComputationalWorkflow"
 SoftwareApplication --|> Observer
 SoftwareApplication --|> Controller
 Sample --|> BiologicalUnit
-BioChemEntity --|> "bio:BioChemEntity"
+Substance --|> "bio:Substance"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform

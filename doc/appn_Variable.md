@@ -22,4 +22,4 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
 ## Subclasses
 * [https://schema.plantphenomics.org.au/ObservedVariable](/doc/appn_ObservedVariable.md)
 * [https://schema.plantphenomics.org.au/ControlledVariable](/doc/appn_ControlledVariable.md)
-* [https://schema.plantphenomics.org.au/TreatmentVariable](/doc/appn_TreatmentVariable.md)
+* [https://schema.plantphenomics.org.au/SubstanceQuantity](/doc/appn_SubstanceQuantity.md)

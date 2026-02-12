@@ -1,7 +1,7 @@
 # ObservedVariable
 [https://schema.plantphenomics.org.au/ObservedVariable](https://schema.plantphenomics.org.au/ObservedVariable)
 
-A Variable (representation of a Trait using a defined Scale) observed or measured for one or more ObservationUnits.
+A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit.
 
 ![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
 

@@ -1,0 +1,11 @@
+@startuml
+class Substance  #line.bold
+class "bio:Substance" #EECCFF 
+Substance --|> "bio:Substance"
+class Treatment 
+Treatment --> Substance : treatsWith
+class SubstanceQuantity 
+SubstanceQuantity --> Substance : isOfSubstance
+class SubstanceQuantity 
+SubstanceQuantity --> Substance : amount
+@enduml
