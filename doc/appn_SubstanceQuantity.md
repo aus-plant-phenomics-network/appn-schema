@@ -13,7 +13,7 @@ A Variable (representation of a quantity using a defined Scale) for a Substance 
 ## Properties
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:treatsWith** appn:SubstanceQuantity
     * Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
-* appn:SubstanceQuantity **appn:hasComponent** [appn:Substance](/doc/appn_Substance.md)
+* [appn:Substance](/doc/appn_Substance.md) **appn:hasComponent** appn:SubstanceQuantity
     * Identifies a Substance or SubstanceQuantity included in the current Substance.
 * appn:SubstanceQuantity **appn:isOfSubstance** [appn:Substance](/doc/appn_Substance.md)
     * Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.

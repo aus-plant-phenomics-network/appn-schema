@@ -6,7 +6,7 @@ class Treatment
 Treatment --> Substance : treatsWith
 Substance --> Substance : hasComponent
 class SubstanceQuantity 
-SubstanceQuantity --> Substance : hasComponent
+Substance --> SubstanceQuantity : hasComponent
 class SubstanceQuantity 
 SubstanceQuantity --> Substance : isOfSubstance
 @enduml

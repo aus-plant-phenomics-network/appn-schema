@@ -11,7 +11,7 @@ SubstanceQuantity --|> Variable
 class Treatment 
 Treatment --> SubstanceQuantity : treatsWith
 class Substance 
-SubstanceQuantity --> Substance : hasComponent
+Substance --> SubstanceQuantity : hasComponent
 class Substance 
 SubstanceQuantity --> Substance : isOfSubstance
 class SubstanceQuantity #line.bold {
