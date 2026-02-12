@@ -56,6 +56,7 @@
     "forBiologicalUnitType": "https://schema.plantphenomics.org/forBiologicalUnitType",
     "hasBiologicalMaterial": "https://schema.plantphenomics.org/hasBiologicalMaterial",
     "hasBiologicalUnitType": "https://schema.plantphenomics.org/hasBiologicalUnitType",
+    "hasComponent": "https://schema.plantphenomics.org/hasComponent",
     "hasDefaultValue": "https://schema.plantphenomics.org/hasDefaultValue",
     "hasGrowthFacility": "https://schema.plantphenomics.org/hasGrowthFacility",
     "hasGrowthFacilityType": "https://schema.plantphenomics.org/hasGrowthFacilityType",

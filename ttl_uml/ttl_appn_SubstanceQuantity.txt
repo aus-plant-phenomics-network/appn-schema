@@ -11,9 +11,12 @@ SubstanceQuantity --|> Variable
 class Treatment 
 Treatment --> SubstanceQuantity : treatsWith
 class Substance 
-SubstanceQuantity --> Substance : isOfSubstance
+SubstanceQuantity --> Substance : hasComponent
 class Substance 
-SubstanceQuantity --> Substance : amount
+SubstanceQuantity --> Substance : isOfSubstance
+class SubstanceQuantity #line.bold {
+    amount
+}
 class Scale 
 SubstanceQuantity --> Scale : hasScale
 class Variable #line.bold {

@@ -310,6 +310,13 @@ appn:treatsWith a rdfs:Property ;
   schema:domainIncludes appn:Treatment ;
   schema:rangeIncludes appn:Substance,appn:SubstanceQuantity .
 
+appn:hasComponent a rdfs:Property ;
+  rdfs:label "hasComponent" ; 
+  rdfs:comment "Identifies a Substance or SubstanceQuantity included in the current Substance." ;
+  schema:domainIncludes appn:Substance ;
+  schema:rangeIncludes appn:Substance ;
+  schema:domainIncludes appn:SubstanceQuantity .
+
 appn:isOfSubstance a rdfs:Property ;
   rdfs:label "isOfSubstance" ; 
   rdfs:comment "Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
@@ -319,8 +326,7 @@ appn:isOfSubstance a rdfs:Property ;
 appn:amount a rdfs:Property ;
   rdfs:label "amount" ; 
   rdfs:comment "Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale." ;
-  schema:domainIncludes appn:SubstanceQuantity ;
-  schema:rangeIncludes appn:Substance .
+  schema:domainIncludes appn:SubstanceQuantity .
 
 appn:observes a rdfs:Property ;
   rdfs:label "observes" ; 

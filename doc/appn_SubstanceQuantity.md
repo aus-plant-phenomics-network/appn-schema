@@ -13,10 +13,11 @@ A Variable (representation of a quantity using a defined Scale) for a Substance 
 ## Properties
 * [appn:Treatment](/doc/appn_Treatment.md) **appn:treatsWith** appn:SubstanceQuantity
     * Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
+* appn:SubstanceQuantity **appn:hasComponent** [appn:Substance](/doc/appn_Substance.md)
+    * Identifies a Substance or SubstanceQuantity included in the current Substance.
 * appn:SubstanceQuantity **appn:isOfSubstance** [appn:Substance](/doc/appn_Substance.md)
     * Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
-* appn:SubstanceQuantity **appn:amount** [appn:Substance](/doc/appn_Substance.md)
-    * Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale.
+* SubstanceQuantity https://schema.plantphenomics.org.au/amount
 * appn:SubstanceQuantity **appn:hasScale** [appn:Scale](/doc/appn_Scale.md)
     * Identifies the Scale associated with a Variable.
 * SubstanceQuantity https://schema.plantphenomics.org.au/hasDefaultValue

@@ -4,8 +4,9 @@ class "bio:Substance" #EECCFF
 Substance --|> "bio:Substance"
 class Treatment 
 Treatment --> Substance : treatsWith
+Substance --> Substance : hasComponent
+class SubstanceQuantity 
+SubstanceQuantity --> Substance : hasComponent
 class SubstanceQuantity 
 SubstanceQuantity --> Substance : isOfSubstance
-class SubstanceQuantity 
-SubstanceQuantity --> Substance : amount
 @enduml
