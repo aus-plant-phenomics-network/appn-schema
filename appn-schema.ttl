@@ -315,7 +315,7 @@ appn:hasComponent a rdfs:Property ;
   rdfs:comment "Identifies a Substance or SubstanceQuantity included in the current Substance." ;
   schema:domainIncludes appn:Substance ;
   schema:rangeIncludes appn:Substance ;
-  schema:domainIncludes appn:SubstanceQuantity .
+  schema:rangeIncludes appn:SubstanceQuantity .
 
 appn:isOfSubstance a rdfs:Property ;
   rdfs:label "isOfSubstance" ; 
