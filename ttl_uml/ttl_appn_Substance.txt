@@ -1,5 +1,15 @@
 @startuml
 class Substance  #line.bold
+class ObservationUnit  
+class "schema:Thing" #DDFFDD 
+ObservationUnit --|> "schema:Thing"
+class "prov:Entity" #DDDDFF 
+ObservationUnit --|> "prov:Entity"
+class "ppeo:observation_unit" #EEFFCC 
+ObservationUnit --|> "ppeo:observation_unit"
+class "sosa:FeatureOfInterest" #FFCCEE 
+ObservationUnit --|> "sosa:FeatureOfInterest"
+Substance --|> ObservationUnit
 class "bio:Substance" #EECCFF 
 Substance --|> "bio:Substance"
 class Treatment 
@@ -9,4 +19,12 @@ class SubstanceQuantity
 Substance --> SubstanceQuantity : hasComponent
 class SubstanceQuantity 
 SubstanceQuantity --> Substance : isOfSubstance
+class Assay 
+Assay --> ObservationUnit : isForObservationUnit
+class ObservationUnit 
+ObservationUnit --> ObservationUnit : inheritsContext
+class Location 
+ObservationUnit --> Location : hasLocation
+class Location 
+Location --> ObservationUnit : isLocationWithin
 @enduml

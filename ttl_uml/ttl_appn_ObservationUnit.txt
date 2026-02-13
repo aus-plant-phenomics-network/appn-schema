@@ -15,6 +15,8 @@ class Location
 ObservationUnit --> Location : hasLocation
 class Location 
 Location --> ObservationUnit : isLocationWithin
+class Substance 
+Substance --|> ObservationUnit
 class GrowthFacility 
 GrowthFacility --|> ObservationUnit
 class BiologicalUnit 

@@ -151,6 +151,7 @@ SoftwareApplication --|> Controller
 Sample --|> "ppeo:sample"
 Sample --|> "sosa:Sample"
 Sample --|> BiologicalUnit
+Substance --|> ObservationUnit
 Substance --|> "bio:Substance"
 Platform --|> "sosa:Platform"
 Platform --|> "schema:IndividualProduct"

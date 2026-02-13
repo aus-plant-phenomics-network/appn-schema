@@ -87,6 +87,7 @@ SoftwareApplication --|> "bio:ComputationalWorkflow"
 SoftwareApplication --|> Observer
 SoftwareApplication --|> Controller
 Sample --|> BiologicalUnit
+Substance --|> ObservationUnit
 Substance --|> "bio:Substance"
 Platform --|> "schema:IndividualProduct"
 Deployment --|> "schema:Thing"

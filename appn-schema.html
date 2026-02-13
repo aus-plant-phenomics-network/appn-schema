@@ -130,7 +130,7 @@
         <h2 id="ObservationUnit">Class: ObservationUnit</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ObservationUnit" target="_blank">https://schema.plantphenomics.org.au/ObservationUnit</a></div>
         <img src="image/ttl_appn_ObservationUnit.png"/>
-        <div class="description"><b>ObservationUnit:</b> An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities.</div>
+        <div class="description"><b>ObservationUnit:</b> An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/prov#Entity">http://www.w3.org/ns/prov#Entity</a></div>
@@ -146,6 +146,7 @@
         <div class="property"><a href="#Location">Location</a> <b>isLocationWithin</b> ObservationUnit</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies that a location is a position within an ObservationUnit.</div>
         <h3>Subclasses</h3>
+        <div class="child"><a href="#Substance">Substance</a></div>
         <div class="child"><a href="#GrowthFacility">GrowthFacility</a></div>
         <div class="child"><a href="#BiologicalUnit">BiologicalUnit</a></div>
         <h2 id="Trait">Class: Trait</h2>
@@ -357,6 +358,7 @@
         <img src="image/ttl_appn_Substance.png"/>
         <div class="description"><b>Substance:</b> A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity.</div>
         <h3>Superclasses</h3>
+        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="parent"><a href="https://bioschemas.org/Substance">https://bioschemas.org/Substance</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> Substance</div>

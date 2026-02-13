@@ -1,7 +1,7 @@
 # ObservationUnit
 [https://schema.plantphenomics.org.au/ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
 
-An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities.
+An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances.
 
 ![UML diagram for ObservationUnit](/ttl_uml/ttl_appn_ObservationUnit.png)
 
@@ -20,6 +20,7 @@ An entity for which a Study collects data or controls the environment and other 
 * [appn:Location](/doc/appn_Location.md) **appn:isLocationWithin** appn:ObservationUnit
     * Specifies that a location is a position within an ObservationUnit.
 ## Subclasses
+* [https://schema.plantphenomics.org.au/Substance](/doc/appn_Substance.md)
 * [https://schema.plantphenomics.org.au/GrowthFacility](/doc/appn_GrowthFacility.md)
 * [https://schema.plantphenomics.org.au/BiologicalUnit](/doc/appn_BiologicalUnit.md)
 * [https://schema.plantphenomics.org.au/Sample](/doc/appn_Sample.md)

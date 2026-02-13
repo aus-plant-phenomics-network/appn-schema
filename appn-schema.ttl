@@ -77,7 +77,7 @@ appn:Treatment a rdfs:Class ;
 
 appn:ObservationUnit a rdfs:Class ;
   rdfs:label "ObservationUnit" ;
-  rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities." ;
+  rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances." ;
   rdfs:subClassOf schema:Thing ;
   rdfs:subClassOf prov:Entity ;
   rdfs:subClassOf ppeo:observation_unit ;
@@ -179,6 +179,7 @@ appn:Sample a rdfs:Class ;
 appn:Substance a rdfs:Class ;
   rdfs:label "Substance" ;
   rdfs:comment "A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity." ;
+  rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf bio:Substance .
 
 appn:Platform a rdfs:Class ;
