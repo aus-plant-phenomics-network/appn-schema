@@ -247,6 +247,25 @@ def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,s
             uml.write(f"{child_name} --|> {class_name}\n")
     return class_name
 
+indent = 0
+
+# Write HTML and try to maintain indent
+def write_html(f: _io.TextIOWrapper, html: str) -> None:
+    global indent
+
+    increment = False
+    html = html.strip()
+    end_tags = html.count("</")
+    null_tags = html.count("/>")
+    start_tags = html.count("<") - html.count("< ") - 2 * end_tags - null_tags
+    if start_tags < 0:
+        indent -= 1
+    elif start_tags > 0:
+        increment = True
+    f.write(f"{'    ' * indent}{html}\n")
+    if increment:
+        indent += 1
+
 # Parse the turtle
 with open(ttl_file) as f:
     for line in f:
@@ -333,7 +352,74 @@ else:
             write_children(uml_file, md_file, appn_class, appn_class)
             uml_file.write("@enduml\n")
 
-    with open(os.path.join(markdown_folder, "appn_schema.md"), "w") as md_file:
-        md_file.write("# APPN Schema Overview\n## APPN Classes\n")
-        for appn_class in sorted(packages["appn"]):
-            md_file.write(f"* [appn:{appn_class[1]}](/doc/appn_{appn_class[1]}.md)\n")
+    with open("appn-schema.html", "w") as html_file:
+        for l in ["<html>", "<head>", "<title>APPN schema</title>", "</head>", "<body>", f"<h1>APPN schema</h1>"]:
+            write_html(html_file, l)
+        for appn_class in packages["appn"]:
+            cls = appn_class[1]
+            write_html(html_file, f'<h2 id="{cls}">Class: {cls}</h2>')
+            write_html(html_file, f'<div class="uri"><a href="https://schema.plantphenomics.org.au/{cls}" target="_blank">https://schema.plantphenomics.org.au/{cls}</a></div>')
+            write_html(html_file, f'<img src="image/ttl_appn_{cls}.png"/>')
+            if appn_class in comments:
+                write_html(html_file, f'<div class="description"><b>{cls}:</b> {comments[appn_class]}</div>')
+            if appn_class in inheritance:
+                write_html(html_file, f'<h3>Superclasses</h3>')
+            for parent in inheritance[appn_class]:
+                if parent[0] == "appn":
+                    write_html(html_file, f'<div class="parent"><a href="#{parent[1]}">{parent[1]}</a></div>')
+                else:
+                    write_html(html_file, f'<div class="parent"><a href="{prefixes[parent[0]]}{parent[1]}">{prefixes[parent[0]]}{parent[1]}</a></div>')
+            heading_written = False
+            for ppty in properties:
+                ppty_name = get_name(ppty)
+                property = properties[ppty]
+                if appn_class in property[0]:
+                    if not heading_written:
+                        write_html(html_file, f"<h3>Properties</h3>")
+                        heading_written = True
+                    if len(property[1]) == 0:
+                        write_html(html_file, f'<div class="property">{cls} <b>{ppty_name}</b></div>')
+                        write_html(html_file, f'<div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/{ppty_name}">{prefixes[ppty[0]]}{ppty[1]}</a></div>')
+                        if ppty in comments:
+                            write_html(html_file, f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>')
+                    for r in property[1]:
+                        if r == appn_class:
+                            reflexive = True
+                        if r[0] == "appn":
+                            other_class = f'<a href="#{r[1]}">{r[1]}</a>'
+                        else:
+                            other_class = f'<a href="{prefixes[r[0]]}{r[1]}">{prefixes[r[0]]}{r[1]}</a>'
+                        write_html(html_file, f'<div class="property">{cls} <b>{ppty_name}</b> {other_class}</div>')
+                        if ppty in comments:
+                            write_html(html_file, f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>')
+                if appn_class in property[1]:
+                    for r in property[0]:
+                        if not heading_written:
+                            write_html(html_file, f"<h3>Properties</h3>")
+                            heading_written = True
+                        if r != appn_class or not reflexive:
+                            r_name = get_name(r)
+                            if r[0] == "appn":
+                                other_class = f'<a href="#{r[1]}">{r[1]}</a>'
+                            else:
+                                other_class = f'<a href="{prefixes[r[0]]}{r[1]}">{prefixes[r[0]]}{r[1]}</a>'
+                            write_html(html_file, f'<div class="property">{other_class} <b>{ppty_name}</b> {cls}</div>')
+                            if ppty in comments:
+                                write_html(html_file, f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>')
+            heading_written = False
+            for child in inheritance:
+                if appn_class in inheritance[child]:
+                    if not heading_written:
+                        write_html(html_file, f"<h3>Subclasses</h3>")
+                        heading_written = True
+                    if child[0] == "appn":
+                        write_html(html_file, f'<div class="child"><a href="#{child[1]}">{child[1]}</a></div>')
+                    else:
+                        write_html(html_file, f'<div class="child"><a href="{prefixes[child[0]]}{child[1]}">{prefixes[child[0]]}{child[1]}</a></div>')
+        for l in ["</body>", "</html>"]:
+            write_html(html_file, l)
+
+with open(os.path.join(markdown_folder, "appn_schema.md"), "w") as md_file:
+    md_file.write("# APPN Schema Overview\n## APPN Classes\n")
+    for appn_class in sorted(packages["appn"]):
+        md_file.write(f"* [appn:{appn_class[1]}](/doc/appn_{appn_class[1]}.md)\n")

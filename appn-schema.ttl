@@ -99,7 +99,7 @@ appn:Scale a rdfs:Class ;
 
 appn:Variable a rdfs:Class ;
   rdfs:label "Variable" ;
-  rdfs:comment "Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVriable." ;
+  rdfs:comment "Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVariable." ;
   rdfs:subClassOf sosa:Property ;
   rdfs:subClassOf cdi:RepresentedVariable ;
   rdfs:subClassOf schema:InstanceValue .

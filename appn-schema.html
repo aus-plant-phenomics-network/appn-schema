@@ -1,0 +1,492 @@
+<html>
+    <head>
+        <title>APPN schema</title>
+    </head>
+    <body>
+        <h1>APPN schema</h1>
+        <h2 id="ResearchActivity">Class: ResearchActivity</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/ResearchActivity" target="_blank">https://schema.plantphenomics.org.au/ResearchActivity</a></div>
+        <img src="image/ttl_appn_ResearchActivity.png"/>
+        <div class="description"><b>ResearchActivity:</b> A time-delimited activity contributing to a research goal.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Action">https://schema.org/Action</a></div>
+        <div class="parent"><a href="http://www.w3.org/ns/prov#Activity">http://www.w3.org/ns/prov#Activity</a></div>
+        <h3>Properties</h3>
+        <div class="property">ResearchActivity <b>isPartOf</b> <a href="#ResearchActivity">ResearchActivity</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to the Study that includes it or a Study to an Investigation.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#Investigation">Investigation</a></div>
+        <div class="child"><a href="#Study">Study</a></div>
+        <div class="child"><a href="#Assay">Assay</a></div>
+        <h2 id="Investigation">Class: Investigation</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Investigation" target="_blank">https://schema.plantphenomics.org.au/Investigation</a></div>
+        <img src="image/ttl_appn_Investigation.png"/>
+        <div class="description"><b>Investigation:</b> A research programme including one or more Studies.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#ResearchActivity">ResearchActivity</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#investigation">http://purl.org/ppeo/PPEO.owl#investigation</a></div>
+        <h2 id="Study">Class: Study</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Study" target="_blank">https://schema.plantphenomics.org.au/Study</a></div>
+        <img src="image/ttl_appn_Study.png"/>
+        <div class="description"><b>Study:</b> A research activity including one or more Assays that record data on a set of ObservationUnits.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#ResearchActivity">ResearchActivity</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#study">http://purl.org/ppeo/PPEO.owl#study</a></div>
+        <h3>Properties</h3>
+        <div class="property">Study <b>hasGrowthFacility</b> <a href="#GrowthFacility">GrowthFacility</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a GrowthFacility used in a Study.</div>
+        <h2 id="Assay">Class: Assay</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Assay" target="_blank">https://schema.plantphenomics.org.au/Assay</a></div>
+        <img src="image/ttl_appn_Assay.png"/>
+        <div class="description"><b>Assay:</b> A research action that observes or modifies a set of ObservationUnits.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#ResearchActivity">ResearchActivity</a></div>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Execution">https://www.w3.org/ns/sosa/Execution</a></div>
+        <h3>Properties</h3>
+        <div class="property">Assay <b>isForObservationUnit</b> <a href="#ObservationUnit">ObservationUnit</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.</div>
+        <div class="property">Assay <b>usedMethod</b> <a href="#Method">Method</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#Observation">Observation</a></div>
+        <div class="child"><a href="#Control">Control</a></div>
+        <div class="child"><a href="#Sampling">Sampling</a></div>
+        <div class="child"><a href="#Treatment">Treatment</a></div>
+        <h2 id="Method">Class: Method</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Method" target="_blank">https://schema.plantphenomics.org.au/Method</a></div>
+        <img src="image/ttl_appn_Method.png"/>
+        <div class="description"><b>Method:</b> A method or process for performing an Assay.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#method">http://purl.org/ppeo/PPEO.owl#method</a></div>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Procedure">https://www.w3.org/ns/sosa/Procedure</a></div>
+        <div class="parent"><a href="http://www.w3.org/ns/prov#Plan">http://www.w3.org/ns/prov#Plan</a></div>
+        <div class="parent"><a href="https://schema.org/HowTo">https://schema.org/HowTo</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Variable">Variable</a> <b>usedMethod</b> Method</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay.</div>
+        <div class="property"><a href="#Assay">Assay</a> <b>usedMethod</b> Method</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay.</div>
+        <h2 id="Observation">Class: Observation</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Observation" target="_blank">https://schema.plantphenomics.org.au/Observation</a></div>
+        <img src="image/ttl_appn_Observation.png"/>
+        <div class="description"><b>Observation:</b> An Assay that observes or measures properties of an ObservationUnit returning results as property values or images.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Observation">https://schema.org/Observation</a></div>
+        <div class="parent"><a href="#Assay">Assay</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observation">http://purl.org/ppeo/PPEO.owl#observation</a></div>
+        <h3>Properties</h3>
+        <div class="property">Observation <b>madeByObserver</b> <a href="#Observer">Observer</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.</div>
+        <div class="property">Observation <b>hasResult</b> <a href="https://schema.org/Dataset">https://schema.org/Dataset</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="property">Observation <b>hasResult</b> <a href="https://schema.org/File">https://schema.org/File</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="property">Observation <b>usesData</b> <a href="https://schema.org/Dataset">https://schema.org/Dataset</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
+        <div class="property">Observation <b>usesData</b> <a href="https://schema.org/File">https://schema.org/File</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
+        <div class="property">Observation <b>observes</b> <a href="#ObservedVariable">ObservedVariable</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.</div>
+        <h2 id="Control">Class: Control</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Control" target="_blank">https://schema.plantphenomics.org.au/Control</a></div>
+        <img src="image/ttl_appn_Control.png"/>
+        <div class="description"><b>Control:</b> An Assay that modifies a property of an ObservationUnit.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Assay">Assay</a></div>
+        <h3>Properties</h3>
+        <div class="property">Control <b>madeByController</b> <a href="#Controller">Controller</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="property">Control <b>hasResult</b> <a href="https://schema.org/Dataset">https://schema.org/Dataset</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="property">Control <b>hasResult</b> <a href="https://schema.org/File">https://schema.org/File</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="property">Control <b>controls</b> <a href="#ControlledVariable">ControlledVariable</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
+        <h2 id="Sampling">Class: Sampling</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Sampling" target="_blank">https://schema.plantphenomics.org.au/Sampling</a></div>
+        <img src="image/ttl_appn_Sampling.png"/>
+        <div class="description"><b>Sampling:</b> An Assay that derives a new representative ObservationUnit from an existing ObservationUnit.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Assay">Assay</a></div>
+        <h3>Properties</h3>
+        <div class="property">Sampling <b>madeBySampler</b> <a href="#Sampler">Sampler</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.</div>
+        <div class="property">Sampling <b>producesSample</b> <a href="#Sample">Sample</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Sample produced by a Sampling assay.</div>
+        <h2 id="Treatment">Class: Treatment</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Treatment" target="_blank">https://schema.plantphenomics.org.au/Treatment</a></div>
+        <img src="image/ttl_appn_Treatment.png"/>
+        <div class="description"><b>Treatment:</b> An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.).</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#event">http://purl.org/ppeo/PPEO.owl#event</a></div>
+        <div class="parent"><a href="#Assay">Assay</a></div>
+        <h3>Properties</h3>
+        <div class="property">Treatment <b>madeByController</b> <a href="#Controller">Controller</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="property">Treatment <b>treatsWith</b> <a href="#Substance">Substance</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="property">Treatment <b>treatsWith</b> <a href="#SubstanceQuantity">SubstanceQuantity</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <h2 id="ObservationUnit">Class: ObservationUnit</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/ObservationUnit" target="_blank">https://schema.plantphenomics.org.au/ObservationUnit</a></div>
+        <img src="image/ttl_appn_ObservationUnit.png"/>
+        <div class="description"><b>ObservationUnit:</b> An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits or GrowthFacilities.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
+        <div class="parent"><a href="http://www.w3.org/ns/prov#Entity">http://www.w3.org/ns/prov#Entity</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observation_unit">http://purl.org/ppeo/PPEO.owl#observation_unit</a></div>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/FeatureOfInterest">https://www.w3.org/ns/sosa/FeatureOfInterest</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Assay">Assay</a> <b>isForObservationUnit</b> ObservationUnit</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.</div>
+        <div class="property">ObservationUnit <b>inheritsContext</b> <a href="#ObservationUnit">ObservationUnit</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant.</div>
+        <div class="property">ObservationUnit <b>hasLocation</b> <a href="#Location">Location</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the location for an ObservationUnit.</div>
+        <div class="property"><a href="#Location">Location</a> <b>isLocationWithin</b> ObservationUnit</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies that a location is a position within an ObservationUnit.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#GrowthFacility">GrowthFacility</a></div>
+        <div class="child"><a href="#BiologicalUnit">BiologicalUnit</a></div>
+        <h2 id="Trait">Class: Trait</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Trait" target="_blank">https://schema.plantphenomics.org.au/Trait</a></div>
+        <img src="image/ttl_appn_Trait.png"/>
+        <div class="description"><b>Trait:</b> A concept represented by a Variable associated with an ObservationUnit. In the DDI-CDI Variable Cascade, a Trait is a Concept or ConceptualVariable.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#trait">http://purl.org/ppeo/PPEO.owl#trait</a></div>
+        <div class="parent"><a href="http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept">http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept</a></div>
+        <div class="parent"><a href="https://schema.org/DefinedTerm">https://schema.org/DefinedTerm</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#ObservedVariable">ObservedVariable</a> <b>hasTrait</b> Trait</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <div class="property"><a href="#ControlledVariable">ControlledVariable</a> <b>hasTrait</b> Trait</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <h2 id="Scale">Class: Scale</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Scale" target="_blank">https://schema.plantphenomics.org.au/Scale</a></div>
+        <img src="image/ttl_appn_Scale.png"/>
+        <div class="description"><b>Scale:</b> A system of units or representation format for values associated with a Variable.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#scale">http://purl.org/ppeo/PPEO.owl#scale</a></div>
+        <div class="parent"><a href="https://schema.org/DefinedTerm">https://schema.org/DefinedTerm</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Variable">Variable</a> <b>hasScale</b> Scale</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <div class="property"><a href="#SubstanceQuantity">SubstanceQuantity</a> <b>hasScale</b> Scale</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <h2 id="Variable">Class: Variable</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Variable" target="_blank">https://schema.plantphenomics.org.au/Variable</a></div>
+        <img src="image/ttl_appn_Variable.png"/>
+        <div class="description"><b>Variable:</b> Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVariable.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Property">https://www.w3.org/ns/sosa/Property</a></div>
+        <div class="parent"><a href="http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable">http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable</a></div>
+        <div class="parent"><a href="https://schema.org/InstanceValue">https://schema.org/InstanceValue</a></div>
+        <h3>Properties</h3>
+        <div class="property">Variable <b>hasDefaultValue</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasDefaultValue">https://schema.plantphenomics.org.au/hasDefaultValue</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the default value for a variable.</div>
+        <div class="property">Variable <b>usedMethod</b> <a href="#Method">Method</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay.</div>
+        <div class="property">Variable <b>forBiologicalUnitType</b> <a href="#BiologicalUnitType">BiologicalUnitType</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalUnitType to which it relates.</div>
+        <div class="property">Variable <b>forBiologicalMaterial</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
+        <div class="property">Variable <b>hasScale</b> <a href="#Scale">Scale</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#ObservedVariable">ObservedVariable</a></div>
+        <div class="child"><a href="#ControlledVariable">ControlledVariable</a></div>
+        <div class="child"><a href="#SubstanceQuantity">SubstanceQuantity</a></div>
+        <h2 id="ObservedVariable">Class: ObservedVariable</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/ObservedVariable" target="_blank">https://schema.plantphenomics.org.au/ObservedVariable</a></div>
+        <img src="image/ttl_appn_ObservedVariable.png"/>
+        <div class="description"><b>ObservedVariable:</b> A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observed_variable">http://purl.org/ppeo/PPEO.owl#observed_variable</a></div>
+        <div class="parent"><a href="#Variable">Variable</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Observation">Observation</a> <b>observes</b> ObservedVariable</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.</div>
+        <div class="property">ObservedVariable <b>hasTrait</b> <a href="#Trait">Trait</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <h2 id="ControlledVariable">Class: ControlledVariable</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/ControlledVariable" target="_blank">https://schema.plantphenomics.org.au/ControlledVariable</a></div>
+        <img src="image/ttl_appn_ControlledVariable.png"/>
+        <div class="description"><b>ControlledVariable:</b> A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Variable">Variable</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Control">Control</a> <b>controls</b> ControlledVariable</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
+        <div class="property">ControlledVariable <b>hasTrait</b> <a href="#Trait">Trait</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <h2 id="SubstanceQuantity">Class: SubstanceQuantity</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/SubstanceQuantity" target="_blank">https://schema.plantphenomics.org.au/SubstanceQuantity</a></div>
+        <img src="image/ttl_appn_SubstanceQuantity.png"/>
+        <div class="description"><b>SubstanceQuantity:</b> A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Variable">Variable</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> SubstanceQuantity</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="property"><a href="#Substance">Substance</a> <b>hasComponent</b> SubstanceQuantity</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
+        <div class="property">SubstanceQuantity <b>isOfSubstance</b> <a href="#Substance">Substance</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
+        <div class="property">SubstanceQuantity <b>amount</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/amount">https://schema.plantphenomics.org.au/amount</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale.</div>
+        <div class="property">SubstanceQuantity <b>hasScale</b> <a href="#Scale">Scale</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <h2 id="Observer">Class: Observer</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Observer" target="_blank">https://schema.plantphenomics.org.au/Observer</a></div>
+        <img src="image/ttl_appn_Observer.png"/>
+        <div class="description"><b>Observer:</b> The entity responsible for performing an Observation and delivering a value for an ObservedVariable. The Observer may be a Person, a Sensor or a SoftwareApplication. Note that SOSA maps sosa:Sensor to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Sensor">https://www.w3.org/ns/sosa/Sensor</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Observation">Observation</a> <b>madeByObserver</b> Observer</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#Sensor">Sensor</a></div>
+        <div class="child"><a href="#Person">Person</a></div>
+        <div class="child"><a href="#SoftwareApplication">SoftwareApplication</a></div>
+        <h2 id="Controller">Class: Controller</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Controller" target="_blank">https://schema.plantphenomics.org.au/Controller</a></div>
+        <img src="image/ttl_appn_Controller.png"/>
+        <div class="description"><b>Controller:</b> The entity responsible for performing an Control action and delivering a value for a ControlledVariable. The Controller may be a Person, an Actuator, a SoftwareApplication or an ExternalEvent. Note that SOSA maps sosa:Actuator to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Actuator">https://www.w3.org/ns/sosa/Actuator</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Control">Control</a> <b>madeByController</b> Controller</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="property"><a href="#Treatment">Treatment</a> <b>madeByController</b> Controller</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#Actuator">Actuator</a></div>
+        <div class="child"><a href="#ExternalEvent">ExternalEvent</a></div>
+        <div class="child"><a href="#Person">Person</a></div>
+        <div class="child"><a href="#SoftwareApplication">SoftwareApplication</a></div>
+        <h2 id="Sampler">Class: Sampler</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Sampler" target="_blank">https://schema.plantphenomics.org.au/Sampler</a></div>
+        <img src="image/ttl_appn_Sampler.png"/>
+        <div class="description"><b>Sampler:</b> The entity responsible for performing a Sampling and delivering a Sample. The Observer will normally be a Person, although in some contexts some kind of device could be involved. Note that SOSA maps sosa:Sampler to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Sampler">https://www.w3.org/ns/sosa/Sampler</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Sampling">Sampling</a> <b>madeBySampler</b> Sampler</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#Person">Person</a></div>
+        <h2 id="Sensor">Class: Sensor</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Sensor" target="_blank">https://schema.plantphenomics.org.au/Sensor</a></div>
+        <img src="image/ttl_appn_Sensor.png"/>
+        <div class="description"><b>Sensor:</b> An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Observer">Observer</a></div>
+        <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Deployment">Deployment</a> <b>deployedSystem</b> Sensor</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <h2 id="Actuator">Class: Actuator</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Actuator" target="_blank">https://schema.plantphenomics.org.au/Actuator</a></div>
+        <img src="image/ttl_appn_Actuator.png"/>
+        <div class="description"><b>Actuator:</b> An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Controller">Controller</a></div>
+        <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Deployment">Deployment</a> <b>deployedSystem</b> Actuator</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <h2 id="ExternalEvent">Class: ExternalEvent</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/ExternalEvent" target="_blank">https://schema.plantphenomics.org.au/ExternalEvent</a></div>
+        <img src="image/ttl_appn_ExternalEvent.png"/>
+        <div class="description"><b>ExternalEvent:</b> A default entity to represent any trigger outside the control of the experimenters that may affect the state of the experiment and alter a Variable of interest, e.g. severe weather events or equipment failures. Where possible, the resulting state of the experiment should be quantified and the ExternalEvent modeled as the Controller for a Control event. Where quantification is impossible, the ExternalEvent should be modeled as the Controller for a Treatment event.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Controller">Controller</a></div>
+        <div class="parent"><a href="https://schema.org/Event">https://schema.org/Event</a></div>
+        <h2 id="Person">Class: Person</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Person" target="_blank">https://schema.plantphenomics.org.au/Person</a></div>
+        <img src="image/ttl_appn_Person.png"/>
+        <div class="description"><b>Person:</b> A Person, preferably identified using an ORCID, that may perform an Assay.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#person">http://purl.org/ppeo/PPEO.owl#person</a></div>
+        <div class="parent"><a href="#Observer">Observer</a></div>
+        <div class="parent"><a href="#Controller">Controller</a></div>
+        <div class="parent"><a href="#Sampler">Sampler</a></div>
+        <div class="parent"><a href="https://schema.org/Person">https://schema.org/Person</a></div>
+        <h2 id="SoftwareApplication">Class: SoftwareApplication</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/SoftwareApplication" target="_blank">https://schema.plantphenomics.org.au/SoftwareApplication</a></div>
+        <img src="image/ttl_appn_SoftwareApplication.png"/>
+        <div class="description"><b>SoftwareApplication:</b> A piece of software that may be perform an Assay. Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://bioschemas.org/ComputationalWorkflow">https://bioschemas.org/ComputationalWorkflow</a></div>
+        <div class="parent"><a href="#Observer">Observer</a></div>
+        <div class="parent"><a href="#Controller">Controller</a></div>
+        <h2 id="Sample">Class: Sample</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Sample" target="_blank">https://schema.plantphenomics.org.au/Sample</a></div>
+        <img src="image/ttl_appn_Sample.png"/>
+        <div class="description"><b>Sample:</b> A BiologicalUnit that has been created from an existing BiologicalUnit through a Sampling assay.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#sample">http://purl.org/ppeo/PPEO.owl#sample</a></div>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Sample">https://www.w3.org/ns/sosa/Sample</a></div>
+        <div class="parent"><a href="#BiologicalUnit">BiologicalUnit</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Sampling">Sampling</a> <b>producesSample</b> Sample</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Sample produced by a Sampling assay.</div>
+        <div class="property">Sample <b>derivesFrom</b> <a href="#BiologicalUnit">BiologicalUnit</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalUnit from which a Sample was sampled.</div>
+        <h2 id="BiologicalUnit">Class: BiologicalUnit</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalUnit" target="_blank">https://schema.plantphenomics.org.au/BiologicalUnit</a></div>
+        <img src="image/ttl_appn_BiologicalUnit.png"/>
+        <div class="description"><b>BiologicalUnit:</b> A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or crop in a field) or any Sample of a plant (e.g. an individual organ or leaf clipping) or set of plants (e.g. a cut from a plot) that is treated as an ObservationUnit for collecting or reporting data. BiologicalUnits may be part of larger BiologicalUnits. For example a plant (BiologicalUnit) may be part of a cohort (BiologicalUnit) sharing the same BiologicalMaterial and Treatments. Where relevant, the position of a BiologicalUnit within a larger BiologicalUnit or within a GrowthFacility can be specified using a Location.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
+        <div class="parent"><a href="https://bioschemas.org/BioChemEntity">https://bioschemas.org/BioChemEntity</a></div>
+        <h3>Properties</h3>
+        <div class="property">BiologicalUnit <b>hasBiologicalUnitType</b> <a href="#BiologicalUnitType">BiologicalUnitType</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a BiologicalUnit to its type.</div>
+        <div class="property"><a href="#Sample">Sample</a> <b>derivesFrom</b> BiologicalUnit</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalUnit from which a Sample was sampled.</div>
+        <div class="property">BiologicalUnit <b>hasBiologicalMaterial</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalMaterial for a BiologicalUnit.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#Sample">Sample</a></div>
+        <h2 id="Substance">Class: Substance</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Substance" target="_blank">https://schema.plantphenomics.org.au/Substance</a></div>
+        <img src="image/ttl_appn_Substance.png"/>
+        <div class="description"><b>Substance:</b> A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://bioschemas.org/Substance">https://bioschemas.org/Substance</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> Substance</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="property">Substance <b>hasComponent</b> <a href="#Substance">Substance</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
+        <div class="property">Substance <b>hasComponent</b> <a href="#SubstanceQuantity">SubstanceQuantity</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
+        <div class="property"><a href="#SubstanceQuantity">SubstanceQuantity</a> <b>isOfSubstance</b> Substance</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
+        <h2 id="Platform">Class: Platform</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Platform" target="_blank">https://schema.plantphenomics.org.au/Platform</a></div>
+        <img src="image/ttl_appn_Platform.png"/>
+        <div class="description"><b>Platform:</b> A vehicle, building, person or other entity that may carry or include Sensors or Actuators.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://www.w3.org/ns/sosa/Platform">https://www.w3.org/ns/sosa/Platform</a></div>
+        <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Deployment">Deployment</a> <b>deployedOnPlatform</b> Platform</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Platform on which Sensors or Actuators are deployed.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#GrowthFacility">GrowthFacility</a></div>
+        <h2 id="Deployment">Class: Deployment</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Deployment" target="_blank">https://schema.plantphenomics.org.au/Deployment</a></div>
+        <img src="image/ttl_appn_Deployment.png"/>
+        <div class="description"><b>Deployment:</b> A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://www.w3.org/ns/ssn/Deployment">https://www.w3.org/ns/ssn/Deployment</a></div>
+        <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
+        <h3>Properties</h3>
+        <div class="property">Deployment <b>deployedSystem</b> <a href="#Sensor">Sensor</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <div class="property">Deployment <b>deployedSystem</b> <a href="#Actuator">Actuator</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <div class="property">Deployment <b>deployedOnPlatform</b> <a href="#Platform">Platform</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Platform on which Sensors or Actuators are deployed.</div>
+        <h2 id="GrowthFacility">Class: GrowthFacility</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacility" target="_blank">https://schema.plantphenomics.org.au/GrowthFacility</a></div>
+        <img src="image/ttl_appn_GrowthFacility.png"/>
+        <div class="description"><b>GrowthFacility:</b> A building, enclosed space, field unit, container or other entity in which plants are grown. GrowthFacilities may be nested inside other GrowthFacilities, e.g. rhizoboxes inside a growth chamber, to any depth. GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits. Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a Location. GrowthFacilities may be Platforms for Sensors and Actuators.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#growth_facility">http://purl.org/ppeo/PPEO.owl#growth_facility</a></div>
+        <div class="parent"><a href="#Platform">Platform</a></div>
+        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
+        <h3>Properties</h3>
+        <div class="property">GrowthFacility <b>hasGrowthFacilityType</b> <a href="#GrowthFacilityType">GrowthFacilityType</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
+        <div class="property"><a href="#Study">Study</a> <b>hasGrowthFacility</b> GrowthFacility</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a GrowthFacility used in a Study.</div>
+        <h2 id="GrowthFacilityType">Class: GrowthFacilityType</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacilityType" target="_blank">https://schema.plantphenomics.org.au/GrowthFacilityType</a></div>
+        <img src="image/ttl_appn_GrowthFacilityType.png"/>
+        <div class="description"><b>GrowthFacilityType:</b> A term from an enumeration of types of GrowthFacility.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#GrowthFacility">GrowthFacility</a> <b>hasGrowthFacilityType</b> GrowthFacilityType</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
+        <h2 id="BiologicalUnitType">Class: BiologicalUnitType</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalUnitType" target="_blank">https://schema.plantphenomics.org.au/BiologicalUnitType</a></div>
+        <img src="image/ttl_appn_BiologicalUnitType.png"/>
+        <div class="description"><b>BiologicalUnitType:</b> A term from an enumeration of types of BiologicalUnit.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#BiologicalUnit">BiologicalUnit</a> <b>hasBiologicalUnitType</b> BiologicalUnitType</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a BiologicalUnit to its type.</div>
+        <div class="property"><a href="#Variable">Variable</a> <b>forBiologicalUnitType</b> BiologicalUnitType</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalUnitType to which it relates.</div>
+        <h2 id="BiologicalMaterial">Class: BiologicalMaterial</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalMaterial" target="_blank">https://schema.plantphenomics.org.au/BiologicalMaterial</a></div>
+        <img src="image/ttl_appn_BiologicalMaterial.png"/>
+        <div class="description"><b>BiologicalMaterial:</b> A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possible, this should include the material source for the BiologicalMaterial.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#biological_material">http://purl.org/ppeo/PPEO.owl#biological_material</a></div>
+        <div class="parent"><a href="https://bioschemas.org/Taxon">https://bioschemas.org/Taxon</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Variable">Variable</a> <b>forBiologicalMaterial</b> BiologicalMaterial</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
+        <div class="property"><a href="#BiologicalUnit">BiologicalUnit</a> <b>hasBiologicalMaterial</b> BiologicalMaterial</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalMaterial for a BiologicalUnit.</div>
+        <div class="property">BiologicalMaterial <b>hasMaterialSource</b> <a href="#MaterialSource">MaterialSource</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the MaterialSource for BiologicalMaterial.</div>
+        <h2 id="MaterialSource">Class: MaterialSource</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/MaterialSource" target="_blank">https://schema.plantphenomics.org.au/MaterialSource</a></div>
+        <img src="image/ttl_appn_MaterialSource.png"/>
+        <div class="description"><b>MaterialSource:</b> The source for the BiologicalMaterial.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#material_source">http://purl.org/ppeo/PPEO.owl#material_source</a></div>
+        <div class="parent"><a href="https://bioschemas.org/BioSample">https://bioschemas.org/BioSample</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#BiologicalMaterial">BiologicalMaterial</a> <b>hasMaterialSource</b> MaterialSource</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the MaterialSource for BiologicalMaterial.</div>
+        <h2 id="Location">Class: Location</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Location" target="_blank">https://schema.plantphenomics.org.au/Location</a></div>
+        <img src="image/ttl_appn_Location.png"/>
+        <div class="description"><b>Location:</b> A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates (SpatialLocation) or using a locally appropriate organisation into rows and columns and optionally levels (XYZLocation).</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#spatial_distribution">http://purl.org/ppeo/PPEO.owl#spatial_distribution</a></div>
+        <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#ObservationUnit">ObservationUnit</a> <b>hasLocation</b> Location</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the location for an ObservationUnit.</div>
+        <div class="property">Location <b>isLocationWithin</b> <a href="#ObservationUnit">ObservationUnit</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies that a location is a position within an ObservationUnit.</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#SpatialLocation">SpatialLocation</a></div>
+        <div class="child"><a href="#XYZLocation">XYZLocation</a></div>
+        <h2 id="SpatialLocation">Class: SpatialLocation</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/SpatialLocation" target="_blank">https://schema.plantphenomics.org.au/SpatialLocation</a></div>
+        <img src="image/ttl_appn_SpatialLocation.png"/>
+        <div class="description"><b>SpatialLocation:</b> A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Location">Location</a></div>
+        <div class="parent"><a href="https://schema.org/Place">https://schema.org/Place</a></div>
+        <h2 id="XYZLocation">Class: XYZLocation</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/XYZLocation" target="_blank">https://schema.plantphenomics.org.au/XYZLocation</a></div>
+        <img src="image/ttl_appn_XYZLocation.png"/>
+        <div class="description"><b>XYZLocation:</b> A location defined using an appropriate local spatial geometry in three dimensions.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#Location">Location</a></div>
+        <h3>Properties</h3>
+        <div class="property">XYZLocation <b>row</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/row">https://schema.plantphenomics.org.au/row</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the row for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>column</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/column">https://schema.plantphenomics.org.au/column</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the column for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>level</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/level">https://schema.plantphenomics.org.au/level</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
+    </body>
+</html>
