@@ -51,7 +51,7 @@ for arg in sys.argv[1:]:
 pattern_prefix = re.compile(r"^@prefix (\w+): <(.*)>[ \.;]*$")
 pattern_class = re.compile(r"^(\w+):(\w+) a rdfs:Class[ \.;]*$")
 pattern_subclass = re.compile(r"^\s* rdfs:subClassOf (\w+):(\w+)[ \.;]*$")
-pattern_property = re.compile(r"^(\w+):(\w+) a rdfs:Property[ \.;]*$")
+pattern_property = re.compile(r"^(\w+):(\w+) a rdf:Property[ \.;]*$")
 pattern_subproperty = re.compile(r"^\s*rdfs:subPropertyOf (\w+):(\w+)[ \.;]*$")
 pattern_domain = re.compile(r"^\s*schema:domainIncludes ([\w, :]+)[ \.;]*$")
 pattern_range = re.compile(r"^\s*schema:rangeIncludes ([\w, :]+ *)[ \.;]*$")
