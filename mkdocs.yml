@@ -1,0 +1,123 @@
+# ── Site metadata ─────────────────────────────────────────────────────────────
+site_name: APPN Schema Documentation
+site_description: Documentation for APPN RO‑Crate data packaging entities
+repo_url: https://github.com/aus-plant-phenomics-network/appn-schema
+repo_name: appn-schema
+edit_uri: edit/main/doc/
+
+# ── Source and output paths (mkdocs.yml + pages are both in ./doc) ───────────
+docs_dir: ./doc
+site_dir: site
+use_directory_urls: true
+strict: true
+
+# ── Theme (Material) ─────────────────────────────────────────────────────────
+theme:
+  
+theme:
+  name: material
+  logo: assets/img/appn_logo.svg
+  favicon: assets/img/appn_logo.svg
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - toc.integrate
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: green
+      accent: light green
+    - scheme: slate
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+
+# ── Navigation ────────────────────────────────────────────────────────────────
+nav:
+  - Home: index.md
+  - Entities:
+      - Actuator: appn_Actuator.md
+      - Assay: appn_Assay.md
+      - BioChem Entity: appn_BioChemEntity.md
+      - Biological Material: appn_BiologicalMaterial.md
+      - Biological Unit: appn_BiologicalUnit.md
+      - Biological Unit Type: appn_BiologicalUnitType.md
+      - Control: appn_Control.md
+      - Controlled Variable: appn_ControlledVariable.md
+      - Controller: appn_Controller.md
+      - Deployment: appn_Deployment.md
+      - External Event: appn_ExternalEvent.md
+      - Growth Facility: appn_GrowthFacility.md
+      - Growth Facility Type: appn_GrowthFacilityType.md
+      - Input: appn_Input.md
+      - Input Variable: appn_InputVariable.md
+      - Investigation: appn_Investigation.md
+      - Location: appn_Location.md
+      - Material Source: appn_MaterialSource.md
+      - Method: appn_Method.md
+      - Observation: appn_Observation.md
+      - Observation Unit: appn_ObservationUnit.md
+      - Observed Variable: appn_ObservedVariable.md
+      - Observer: appn_Observer.md
+      - Person: appn_Person.md
+      - Platform: appn_Platform.md
+      - Research Activity: appn_ResearchActivity.md
+      - Sample: appn_Sample.md
+      - Sampler: appn_Sampler.md
+      - Sampling: appn_Sampling.md
+      - Scale: appn_Scale.md
+      - Schema: appn_schema.md
+      - Sensor: appn_Sensor.md
+      - Software Application: appn_SoftwareApplication.md
+      - Spatial Location: appn_SpatialLocation.md
+      - Study: appn_Study.md
+      - Substance: appn_Substance.md
+      - Substance Quantity: appn_SubstanceQuantity.md
+      - Trait: appn_Trait.md
+      - Treatment: appn_Treatment.md
+      - Variable: appn_Variable.md
+      - XYZ Location: appn_XYZLocation.md
+
+# ── Plugins (optional but handy) ──────────────────────────────────────────────
+plugins:
+  - search
+  - minify:
+      minify_html: false
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+      type: datetime
+      timezone: Australia/Adelaide
+
+# ── Markdown extensions ───────────────────────────────────────────────────────
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - sane_lists
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: false
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+# ── Dev server ────────────────────────────────────────────────────────────────
+dev_addr: 127.0.0.1:8000
+watch:
+  - .

@@ -1,0 +1,93 @@
+name: Build UML & Copy PNGs
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write  # needed to commit back using GITHUB_TOKEN
+
+jobs:
+  build-uml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          # fetch-depth 0 allows committing back and handling tags if needed
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Java (for PlantUML)
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Make build_uml.sh executable
+        run: chmod +x build_uml.sh
+
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+          dot -V   # verify
+          
+      - name: Download PlantUML JAR 
+        run: | 
+          test -f ../plantuml.jar && (echo "plantuml.jar found" && exit 0)
+          wget https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-1.2026.1.jar -O plantuml.jar
+
+      - name: Run UML build script
+        # If your script expects to be run from a specific subdir, add 'working-directory: <path>'
+        env:
+          # Increase PlantUML limit consistent with your script
+          PLANTUML_LIMIT_SIZE: "8192"
+        run: |
+          set -euo pipefail
+          ./build_uml.sh
+
+      - name: Copy generated PNGs to doc/assets/img
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo $GITHUB_WORKSPACE          
+          # ls -la ./ttl_uml
+          # Find any .png files produced anywhere in the repo (common case: ./ttl_uml/*.png)
+          mapfile -t pngs < <(find ./ttl_uml -type f -name '*.png')
+          if (( ${#pngs[@]} )); then
+            # Copy while flattening to the destination folder; adjust to preserve dirs if you prefer
+            for f in "${pngs[@]}"; do
+              cp "$f" $GITHUB_WORKSPACE/doc/assets/img
+              # ls $GITHUB_WORKSPACE/doc/assets/img
+              echo "$f"
+            done
+          else
+            echo "No PNGs found—verify that the script generated images."
+          fi
+          
+      - name: Check that files are copied
+        shell: bash
+        run: |
+          set -euo pipefail
+          ls $GITHUB_WORKSPACE/doc/assets/img
+          
+      - name: Commit and push changes (if any)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # if ! git diff --quiet -- doc/assets/img; then
+            # git config user.name "github-actions[bot]"
+            # git config user.email "github-actions[bot]@users.noreply.github.com"
+            # git add doc/assets/img
+            # git commit -m "chore: update UML PNGs via workflow"
+            # git push
+          # else
+            # echo "No changes in doc/assets/img to commit."
+          # fi

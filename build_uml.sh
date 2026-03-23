@@ -1,16 +1,18 @@
 #!/bin/bash
 # Generate products from APPN turtle schema
 export PLANTUML_LIMIT_SIZE=8192
-source ./dunnock/bin/activate
+# source ./dunnock/bin/activate
 
 # Generate markdown pages and PlantUML source for top-level diagram and for each class diagram
+echo "build_uml.sh: Generate markdown pages and PlantUML source"
 python ttl2uml.py
 
-# Generate UML source for simplified top-level diagram omitting some namespaces
+echo "build_uml.sh: Generate UML source for simplified top-level diagram omitting some namespaces"
 python ttl2uml.py -ppeo -sosa -ssn -cdi -prov
 
-# Generate UML diagrams from source
-java -jar plantuml-1.2025.4.jar ttl_uml
+# java -jar plantuml-1.2025.4.jar ttl_uml
+echo "build_uml.sh: Generate UML diagrams from source"
+java -jar plantuml.jar ttl_uml
 
 # Build contents for RO-Crate context file including all APPN classes and properties - concatenates three streams:
 # 1) Export current context.json up to and including the line with @context
@@ -20,5 +22,6 @@ java -jar plantuml-1.2025.4.jar ttl_uml
 # 3) Get final braces from context.json
 contents=`sed '/@context/q' context.json; sed -En -e 's/^appn:(\w+).*/    "\1": "https:\/\/schema.plantphenomics.org\/\1"/p' appn-schema.ttl | LC_COLLATE=C sort | sed -E -e '$ ! s/$/,/'; tail -2 context.json;`
 
-# Write contents to context.json
+
+echo "build_uml.sh: Write contents to context.json"
 echo "${contents}" > context.json
