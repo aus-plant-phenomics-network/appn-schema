@@ -16,8 +16,8 @@ theme:
   
 theme:
   name: material
-  logo: images/appn_logo.svg
-  favicon: images/appn_logo.svg
+  logo: docs/images/appn_logo.svg
+  favicon: docs/images/appn_logo.svg
   language: en
   features:
     - navigation.instant

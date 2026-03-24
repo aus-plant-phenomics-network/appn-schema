@@ -94,18 +94,12 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Commit the updated TTL and generated HTML
           git add script-ghp/appn-schema.ttl.new
           git add script-ghp/appn-schema-pyviz.html
-
-          # If using GitHub Pages via docs/, add:
           git add docs/viz/index.html
-
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-
           git commit -m "chore: update TTL + graph HTML [skip ci]"
           git push
