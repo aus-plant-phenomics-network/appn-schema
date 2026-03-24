@@ -3,7 +3,7 @@
 
 A concept represented by a Variable associated with an ObservationUnit. In the DDI-CDI Variable Cascade, a Trait is a Concept or ConceptualVariable.
 
-![UML diagram for Trait](/ttl_uml/ttl_appn_Trait.png)
+![UML diagram for Trait](images/ttl_appn_Trait.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#trait

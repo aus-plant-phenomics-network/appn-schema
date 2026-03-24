@@ -3,7 +3,7 @@
 
 A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity.
 
-![UML diagram for Substance](/ttl_uml/ttl_appn_Substance.png)
+![UML diagram for Substance](images/ttl_appn_Substance.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)

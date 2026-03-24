@@ -3,7 +3,7 @@
 
 A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit.
 
-![UML diagram for SubstanceQuantity](/ttl_uml/ttl_appn_SubstanceQuantity.png)
+![UML diagram for SubstanceQuantity](images/ttl_appn_SubstanceQuantity.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)

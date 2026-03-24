@@ -3,7 +3,7 @@
 
 A research action that observes or modifies a set of ObservationUnits.
 
-![UML diagram for Assay](/ttl_uml/ttl_appn_Assay.png)
+![UML diagram for Assay](images/ttl_appn_Assay.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)

@@ -3,7 +3,7 @@
 
 A method or process for performing an Assay.
 
-![UML diagram for Method](/ttl_uml/ttl_appn_Method.png)
+![UML diagram for Method](images/ttl_appn_Method.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#method

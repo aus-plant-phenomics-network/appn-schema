@@ -3,7 +3,7 @@
 
 An Assay that modifies a property of an ObservationUnit.
 
-![UML diagram for Control](/ttl_uml/ttl_appn_Control.png)
+![UML diagram for Control](images/ttl_appn_Control.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)

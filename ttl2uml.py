@@ -343,7 +343,7 @@ else:
             md_file.write(f"[{uri}]({uri})\n\n")
             if appn_class in comments:
                 md_file.write(f"{comments[appn_class]}\n\n")
-            md_file.write(f"![UML diagram for {cls}](/{uml_folder}/ttl_appn_{cls}.png)\n\n")
+            md_file.write(f"![UML diagram for {cls}](images/ttl_appn_{cls}.png)\n\n")
             uml_file.write("@startuml\n")
             if appn_class in inheritance:
                 md_file.write(f"## Superclasses\n")

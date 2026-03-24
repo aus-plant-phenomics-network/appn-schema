@@ -3,7 +3,7 @@
 
 The entity responsible for performing an Observation and delivering a value for an ObservedVariable. The Observer may be a Person, a Sensor or a SoftwareApplication. Note that SOSA maps sosa:Sensor to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
-![UML diagram for Observer](/ttl_uml/ttl_appn_Observer.png)
+![UML diagram for Observer](images/ttl_appn_Observer.png)
 
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sensor

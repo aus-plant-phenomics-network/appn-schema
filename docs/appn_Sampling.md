@@ -3,7 +3,7 @@
 
 An Assay that derives a new representative ObservationUnit from an existing ObservationUnit.
 
-![UML diagram for Sampling](/ttl_uml/ttl_appn_Sampling.png)
+![UML diagram for Sampling](images/ttl_appn_Sampling.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)

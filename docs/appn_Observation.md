@@ -3,7 +3,7 @@
 
 An Assay that observes or measures properties of an ObservationUnit returning results as property values or images.
 
-![UML diagram for Observation](/ttl_uml/ttl_appn_Observation.png)
+![UML diagram for Observation](images/ttl_appn_Observation.png)
 
 ## Superclasses
 * https://schema.org/Observation

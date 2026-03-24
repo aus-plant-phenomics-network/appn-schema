@@ -3,7 +3,7 @@
 
 A system of units or representation format for values associated with a Variable.
 
-![UML diagram for Scale](/ttl_uml/ttl_appn_Scale.png)
+![UML diagram for Scale](images/ttl_appn_Scale.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#scale

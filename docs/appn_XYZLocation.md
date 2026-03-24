@@ -3,7 +3,7 @@
 
 A location defined using an appropriate local spatial geometry in three dimensions.
 
-![UML diagram for XYZLocation](/ttl_uml/ttl_appn_XYZLocation.png)
+![UML diagram for XYZLocation](images/ttl_appn_XYZLocation.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Location](appn_Location.md)

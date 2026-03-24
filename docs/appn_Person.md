@@ -3,7 +3,7 @@
 
 A Person, preferably identified using an ORCID, that may perform an Assay.
 
-![UML diagram for Person](/ttl_uml/ttl_appn_Person.png)
+![UML diagram for Person](images/ttl_appn_Person.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#person

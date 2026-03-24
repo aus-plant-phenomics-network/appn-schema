@@ -3,7 +3,7 @@
 
 An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
-![UML diagram for Actuator](/ttl_uml/ttl_appn_Actuator.png)
+![UML diagram for Actuator](images/ttl_appn_Actuator.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)

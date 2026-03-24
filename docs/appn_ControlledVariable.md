@@ -3,7 +3,7 @@
 
 A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit.
 
-![UML diagram for ControlledVariable](/ttl_uml/ttl_appn_ControlledVariable.png)
+![UML diagram for ControlledVariable](images/ttl_appn_ControlledVariable.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)

@@ -3,7 +3,7 @@
 
 A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape.
 
-![UML diagram for SpatialLocation](/ttl_uml/ttl_appn_SpatialLocation.png)
+![UML diagram for SpatialLocation](images/ttl_appn_SpatialLocation.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Location](appn_Location.md)

@@ -3,7 +3,7 @@
 
 A vehicle, building, person or other entity that may carry or include Sensors or Actuators.
 
-![UML diagram for Platform](/ttl_uml/ttl_appn_Platform.png)
+![UML diagram for Platform](images/ttl_appn_Platform.png)
 
 ## Superclasses
 * https://www.w3.org/ns/sosa/Platform

@@ -33,7 +33,11 @@ jobs:
         run: |
           mkdir -p site/viz
           cp -f script-ghp/appn-schema-pyviz.html site/viz/index.html
-
+          
+      - name: Copy png to site/images
+        run: |
+          mkdir -p site/viz
+          cp -f ttl_uml/*.png site/images/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

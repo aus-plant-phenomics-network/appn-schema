@@ -3,7 +3,7 @@
 
 A research activity including one or more Assays that record data on a set of ObservationUnits.
 
-![UML diagram for Study](/ttl_uml/ttl_appn_Study.png)
+![UML diagram for Study](images/ttl_appn_Study.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)

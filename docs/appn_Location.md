@@ -3,7 +3,7 @@
 
 A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates (SpatialLocation) or using a locally appropriate organisation into rows and columns and optionally levels (XYZLocation).
 
-![UML diagram for Location](/ttl_uml/ttl_appn_Location.png)
+![UML diagram for Location](images/ttl_appn_Location.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#spatial_distribution

@@ -3,7 +3,7 @@
 
 The source for the BiologicalMaterial.
 
-![UML diagram for MaterialSource](/ttl_uml/ttl_appn_MaterialSource.png)
+![UML diagram for MaterialSource](images/ttl_appn_MaterialSource.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#material_source

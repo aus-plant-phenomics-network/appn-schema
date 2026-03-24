@@ -3,7 +3,7 @@
 
 A term from an enumeration of types of BiologicalUnit.
 
-![UML diagram for BiologicalUnitType](/ttl_uml/ttl_appn_BiologicalUnitType.png)
+![UML diagram for BiologicalUnitType](images/ttl_appn_BiologicalUnitType.png)
 
 ## Superclasses
 * https://schema.org/Enumeration

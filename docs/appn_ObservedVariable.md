@@ -3,7 +3,7 @@
 
 A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit.
 
-![UML diagram for ObservedVariable](/ttl_uml/ttl_appn_ObservedVariable.png)
+![UML diagram for ObservedVariable](images/ttl_appn_ObservedVariable.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#observed_variable

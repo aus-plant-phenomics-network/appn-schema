@@ -3,7 +3,7 @@
 
 An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances.
 
-![UML diagram for ObservationUnit](/ttl_uml/ttl_appn_ObservationUnit.png)
+![UML diagram for ObservationUnit](images/ttl_appn_ObservationUnit.png)
 
 ## Superclasses
 * https://schema.org/Thing

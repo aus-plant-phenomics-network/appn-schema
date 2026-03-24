@@ -3,7 +3,7 @@
 
 A default entity to represent any trigger outside the control of the experimenters that may affect the state of the experiment and alter a Variable of interest, e.g. severe weather events or equipment failures. Where possible, the resulting state of the experiment should be quantified and the ExternalEvent modeled as the Controller for a Control event. Where quantification is impossible, the ExternalEvent should be modeled as the Controller for a Treatment event.
 
-![UML diagram for ExternalEvent](/ttl_uml/ttl_appn_ExternalEvent.png)
+![UML diagram for ExternalEvent](images/ttl_appn_ExternalEvent.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)

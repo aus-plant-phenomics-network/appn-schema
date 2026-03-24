@@ -3,7 +3,7 @@
 
 An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.).
 
-![UML diagram for Treatment](/ttl_uml/ttl_appn_Treatment.png)
+![UML diagram for Treatment](images/ttl_appn_Treatment.png)
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#event

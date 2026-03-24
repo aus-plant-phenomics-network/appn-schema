@@ -3,7 +3,7 @@
 
 A term from an enumeration of types of GrowthFacility.
 
-![UML diagram for GrowthFacilityType](/ttl_uml/ttl_appn_GrowthFacilityType.png)
+![UML diagram for GrowthFacilityType](images/ttl_appn_GrowthFacilityType.png)
 
 ## Superclasses
 * https://schema.org/Enumeration

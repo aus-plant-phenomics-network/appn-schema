@@ -3,7 +3,7 @@
 
 A research programme including one or more Studies.
 
-![UML diagram for Investigation](/ttl_uml/ttl_appn_Investigation.png)
+![UML diagram for Investigation](images/ttl_appn_Investigation.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)

@@ -3,7 +3,7 @@
 
 A piece of software that may be perform an Assay. Note that SOSA maps software components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.
 
-![UML diagram for SoftwareApplication](/ttl_uml/ttl_appn_SoftwareApplication.png)
+![UML diagram for SoftwareApplication](images/ttl_appn_SoftwareApplication.png)
 
 ## Superclasses
 * https://bioschemas.org/ComputationalWorkflow
