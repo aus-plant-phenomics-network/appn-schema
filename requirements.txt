@@ -1,3 +1,5 @@
 mkdocs>=1.5,<2.0
 mkdocs-material>=9,<10
-mkdocs-minify-plugin
+pymdown-extensions>=10
+mkdocs-minify-plugin>=0.7
+mkdocs-git-revision-date-localized-plugin>=1.2
