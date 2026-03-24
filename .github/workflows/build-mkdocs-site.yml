@@ -28,6 +28,11 @@ jobs:
       - run: pip install -r requirements.txt
 
       - run: mkdocs build
+      
+      - name: Move HTML to docs as index.html
+        run: |
+          mkdir -p site/viz
+          cp -f script-ghp/appn-schema-pyviz.html site/viz/index.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
