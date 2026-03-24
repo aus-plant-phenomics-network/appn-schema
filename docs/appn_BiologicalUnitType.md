@@ -8,7 +8,7 @@ A term from an enumeration of types of BiologicalUnit.
 ## Superclasses
 * https://schema.org/Enumeration
 ## Properties
-* [appn:BiologicalUnit](/docs/appn_BiologicalUnit.md) **appn:hasBiologicalUnitType** appn:BiologicalUnitType
+* [appn:BiologicalUnit](appn_BiologicalUnit.md) **appn:hasBiologicalUnitType** appn:BiologicalUnitType
     * Links a BiologicalUnit to its type.
-* [appn:Variable](/docs/appn_Variable.md) **appn:forBiologicalUnitType** appn:BiologicalUnitType
+* [appn:Variable](appn_Variable.md) **appn:forBiologicalUnitType** appn:BiologicalUnitType
     * Links a Variable to the BiologicalUnitType to which it relates.

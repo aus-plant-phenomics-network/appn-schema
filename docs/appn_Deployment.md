@@ -9,9 +9,9 @@ A transient or long-term association between a Sensor or Actuator and a Platform
 * https://www.w3.org/ns/ssn/Deployment
 * https://schema.org/Thing
 ## Properties
-* appn:Deployment **appn:deployedSystem** [appn:Sensor](/docs/appn_Sensor.md)
+* appn:Deployment **appn:deployedSystem** [appn:Sensor](appn_Sensor.md)
     * Identifies a Sensor or Actuator deployed on a Platform.
-* appn:Deployment **appn:deployedSystem** [appn:Actuator](/docs/appn_Actuator.md)
+* appn:Deployment **appn:deployedSystem** [appn:Actuator](appn_Actuator.md)
     * Identifies a Sensor or Actuator deployed on a Platform.
-* appn:Deployment **appn:deployedOnPlatform** [appn:Platform](/docs/appn_Platform.md)
+* appn:Deployment **appn:deployedOnPlatform** [appn:Platform](appn_Platform.md)
     * Identifies a Platform on which Sensors or Actuators are deployed.

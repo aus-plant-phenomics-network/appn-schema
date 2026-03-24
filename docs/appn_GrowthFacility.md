@@ -7,26 +7,26 @@ A building, enclosed space, field unit, container or other entity in which plant
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#growth_facility
-* [https://schema.plantphenomics.org.au/Platform](/docs/appn_Platform.md)
+* [https://schema.plantphenomics.org.au/Platform](appn_Platform.md)
 * https://www.w3.org/ns/sosa/Platform
 * https://schema.org/IndividualProduct
-* [https://schema.plantphenomics.org.au/ObservationUnit](/docs/appn_ObservationUnit.md)
+* [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * https://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
-* appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](/docs/appn_GrowthFacilityType.md)
+* appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
     * Links a GrowthFacility to its type.
-* [appn:Study](/docs/appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
+* [appn:Study](appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
     * Identifies a GrowthFacility used in a Study.
-* [appn:Deployment](/docs/appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](/docs/appn_Platform.md)
+* [appn:Deployment](appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](appn_Platform.md)
     * Identifies a Platform on which Sensors or Actuators are deployed.
-* [appn:Assay](/docs/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/docs/appn_ObservationUnit.md)
+* [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
-* [appn:ObservationUnit](/docs/appn_ObservationUnit.md) **appn:inheritsContext** [appn:ObservationUnit](/docs/appn_ObservationUnit.md)
+* [appn:ObservationUnit](appn_ObservationUnit.md) **appn:inheritsContext** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant.
-* [appn:ObservationUnit](/docs/appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](/docs/appn_Location.md)
+* [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](appn_Location.md)
     * Specifies the location for an ObservationUnit.
-* [appn:Location](/docs/appn_Location.md) **appn:isLocationWithin** [appn:ObservationUnit](/docs/appn_ObservationUnit.md)
+* [appn:Location](appn_Location.md) **appn:isLocationWithin** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Specifies that a location is a position within an ObservationUnit.

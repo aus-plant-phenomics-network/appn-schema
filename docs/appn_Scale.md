@@ -9,7 +9,7 @@ A system of units or representation format for values associated with a Variable
 * http://purl.org/ppeo/PPEO.owl#scale
 * https://schema.org/DefinedTerm
 ## Properties
-* [appn:Variable](/docs/appn_Variable.md) **appn:hasScale** appn:Scale
+* [appn:Variable](appn_Variable.md) **appn:hasScale** appn:Scale
     * Identifies the Scale associated with a Variable.
-* [appn:SubstanceQuantity](/docs/appn_SubstanceQuantity.md) **appn:hasScale** appn:Scale
+* [appn:SubstanceQuantity](appn_SubstanceQuantity.md) **appn:hasScale** appn:Scale
     * Identifies the Scale associated with a Variable.

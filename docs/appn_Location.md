@@ -9,10 +9,10 @@ A position associated with the placement of a GrowthFacility within another Grow
 * http://purl.org/ppeo/PPEO.owl#spatial_distribution
 * https://schema.org/Thing
 ## Properties
-* [appn:ObservationUnit](/docs/appn_ObservationUnit.md) **appn:hasLocation** appn:Location
+* [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** appn:Location
     * Specifies the location for an ObservationUnit.
-* appn:Location **appn:isLocationWithin** [appn:ObservationUnit](/docs/appn_ObservationUnit.md)
+* appn:Location **appn:isLocationWithin** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Specifies that a location is a position within an ObservationUnit.
 ## Subclasses
-* [https://schema.plantphenomics.org.au/SpatialLocation](/docs/appn_SpatialLocation.md)
-* [https://schema.plantphenomics.org.au/XYZLocation](/docs/appn_XYZLocation.md)
+* [https://schema.plantphenomics.org.au/SpatialLocation](appn_SpatialLocation.md)
+* [https://schema.plantphenomics.org.au/XYZLocation](appn_XYZLocation.md)

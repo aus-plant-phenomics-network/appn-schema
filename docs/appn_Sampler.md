@@ -8,7 +8,7 @@ The entity responsible for performing a Sampling and delivering a Sample. The Ob
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sampler
 ## Properties
-* [appn:Sampling](/docs/appn_Sampling.md) **appn:madeBySampler** appn:Sampler
+* [appn:Sampling](appn_Sampling.md) **appn:madeBySampler** appn:Sampler
     * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.
 ## Subclasses
-* [https://schema.plantphenomics.org.au/Person](/docs/appn_Person.md)
+* [https://schema.plantphenomics.org.au/Person](appn_Person.md)

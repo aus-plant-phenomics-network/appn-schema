@@ -6,13 +6,13 @@ An electromechanical device that can control the value for a ControlledVariable 
 ![UML diagram for Actuator](/ttl_uml/ttl_appn_Actuator.png)
 
 ## Superclasses
-* [https://schema.plantphenomics.org.au/Controller](/docs/appn_Controller.md)
+* [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/IndividualProduct
 ## Properties
-* [appn:Deployment](/docs/appn_Deployment.md) **appn:deployedSystem** appn:Actuator
+* [appn:Deployment](appn_Deployment.md) **appn:deployedSystem** appn:Actuator
     * Identifies a Sensor or Actuator deployed on a Platform.
-* [appn:Control](/docs/appn_Control.md) **appn:madeByController** [appn:Controller](/docs/appn_Controller.md)
+* [appn:Control](appn_Control.md) **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
-* [appn:Treatment](/docs/appn_Treatment.md) **appn:madeByController** [appn:Controller](/docs/appn_Controller.md)
+* [appn:Treatment](appn_Treatment.md) **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.

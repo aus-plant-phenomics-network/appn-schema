@@ -9,5 +9,5 @@ The source for the BiologicalMaterial.
 * http://purl.org/ppeo/PPEO.owl#material_source
 * https://bioschemas.org/BioSample
 ## Properties
-* [appn:BiologicalMaterial](/docs/appn_BiologicalMaterial.md) **appn:hasMaterialSource** appn:MaterialSource
+* [appn:BiologicalMaterial](appn_BiologicalMaterial.md) **appn:hasMaterialSource** appn:MaterialSource
     * Identifies the MaterialSource for BiologicalMaterial.

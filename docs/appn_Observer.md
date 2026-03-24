@@ -8,9 +8,9 @@ The entity responsible for performing an Observation and delivering a value for 
 ## Superclasses
 * https://www.w3.org/ns/sosa/Sensor
 ## Properties
-* [appn:Observation](/docs/appn_Observation.md) **appn:madeByObserver** appn:Observer
+* [appn:Observation](appn_Observation.md) **appn:madeByObserver** appn:Observer
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
 ## Subclasses
-* [https://schema.plantphenomics.org.au/Sensor](/docs/appn_Sensor.md)
-* [https://schema.plantphenomics.org.au/Person](/docs/appn_Person.md)
-* [https://schema.plantphenomics.org.au/SoftwareApplication](/docs/appn_SoftwareApplication.md)
+* [https://schema.plantphenomics.org.au/Sensor](appn_Sensor.md)
+* [https://schema.plantphenomics.org.au/Person](appn_Person.md)
+* [https://schema.plantphenomics.org.au/SoftwareApplication](appn_SoftwareApplication.md)

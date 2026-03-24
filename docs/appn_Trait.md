@@ -10,7 +10,7 @@ A concept represented by a Variable associated with an ObservationUnit. In the D
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
 * https://schema.org/DefinedTerm
 ## Properties
-* [appn:ObservedVariable](/docs/appn_ObservedVariable.md) **appn:hasTrait** appn:Trait
+* [appn:ObservedVariable](appn_ObservedVariable.md) **appn:hasTrait** appn:Trait
     * Identifies the Trait associated with a Variable.
-* [appn:ControlledVariable](/docs/appn_ControlledVariable.md) **appn:hasTrait** appn:Trait
+* [appn:ControlledVariable](appn_ControlledVariable.md) **appn:hasTrait** appn:Trait
     * Identifies the Trait associated with a Variable.

@@ -6,11 +6,11 @@ A default entity to represent any trigger outside the control of the experimente
 ![UML diagram for ExternalEvent](/ttl_uml/ttl_appn_ExternalEvent.png)
 
 ## Superclasses
-* [https://schema.plantphenomics.org.au/Controller](/docs/appn_Controller.md)
+* [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
 * https://www.w3.org/ns/sosa/Actuator
 * https://schema.org/Event
 ## Properties
-* [appn:Control](/docs/appn_Control.md) **appn:madeByController** [appn:Controller](/docs/appn_Controller.md)
+* [appn:Control](appn_Control.md) **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
-* [appn:Treatment](/docs/appn_Treatment.md) **appn:madeByController** [appn:Controller](/docs/appn_Controller.md)
+* [appn:Treatment](appn_Treatment.md) **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.

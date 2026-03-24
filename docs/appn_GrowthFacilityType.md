@@ -8,5 +8,5 @@ A term from an enumeration of types of GrowthFacility.
 ## Superclasses
 * https://schema.org/Enumeration
 ## Properties
-* [appn:GrowthFacility](/docs/appn_GrowthFacility.md) **appn:hasGrowthFacilityType** appn:GrowthFacilityType
+* [appn:GrowthFacility](appn_GrowthFacility.md) **appn:hasGrowthFacilityType** appn:GrowthFacilityType
     * Links a GrowthFacility to its type.

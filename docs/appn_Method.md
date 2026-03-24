@@ -11,7 +11,7 @@ A method or process for performing an Assay.
 * http://www.w3.org/ns/prov#Plan
 * https://schema.org/HowTo
 ## Properties
-* [appn:Variable](/docs/appn_Variable.md) **appn:usedMethod** appn:Method
+* [appn:Variable](appn_Variable.md) **appn:usedMethod** appn:Method
     * Identifies a Method used to conduct an Assay.
-* [appn:Assay](/docs/appn_Assay.md) **appn:usedMethod** appn:Method
+* [appn:Assay](appn_Assay.md) **appn:usedMethod** appn:Method
     * Identifies a Method used to conduct an Assay.

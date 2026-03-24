@@ -6,11 +6,11 @@ An electromechanical device that can return the value for an ObservedVariable an
 ![UML diagram for Sensor](/ttl_uml/ttl_appn_Sensor.png)
 
 ## Superclasses
-* [https://schema.plantphenomics.org.au/Observer](/docs/appn_Observer.md)
+* [https://schema.plantphenomics.org.au/Observer](appn_Observer.md)
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/IndividualProduct
 ## Properties
-* [appn:Deployment](/docs/appn_Deployment.md) **appn:deployedSystem** appn:Sensor
+* [appn:Deployment](appn_Deployment.md) **appn:deployedSystem** appn:Sensor
     * Identifies a Sensor or Actuator deployed on a Platform.
-* [appn:Observation](/docs/appn_Observation.md) **appn:madeByObserver** [appn:Observer](/docs/appn_Observer.md)
+* [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.

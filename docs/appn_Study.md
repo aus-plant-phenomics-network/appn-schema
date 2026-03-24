@@ -6,12 +6,12 @@ A research activity including one or more Assays that record data on a set of Ob
 ![UML diagram for Study](/ttl_uml/ttl_appn_Study.png)
 
 ## Superclasses
-* [https://schema.plantphenomics.org.au/ResearchActivity](/docs/appn_ResearchActivity.md)
+* [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * http://purl.org/ppeo/PPEO.owl#study
 ## Properties
-* appn:Study **appn:hasGrowthFacility** [appn:GrowthFacility](/docs/appn_GrowthFacility.md)
+* appn:Study **appn:hasGrowthFacility** [appn:GrowthFacility](appn_GrowthFacility.md)
     * Identifies a GrowthFacility used in a Study.
-* [appn:ResearchActivity](/docs/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/docs/appn_ResearchActivity.md)
+* [appn:ResearchActivity](appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](appn_ResearchActivity.md)
     * Relates an Assay to the Study that includes it or a Study to an Investigation.

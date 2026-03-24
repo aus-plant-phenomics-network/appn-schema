@@ -7,14 +7,14 @@ An Assay that observes or measures properties of an ObservationUnit returning re
 
 ## Superclasses
 * https://schema.org/Observation
-* [https://schema.plantphenomics.org.au/Assay](/docs/appn_Assay.md)
-* [https://schema.plantphenomics.org.au/ResearchActivity](/docs/appn_ResearchActivity.md)
+* [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)
+* [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * https://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#observation
 ## Properties
-* appn:Observation **appn:madeByObserver** [appn:Observer](/docs/appn_Observer.md)
+* appn:Observation **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
 * appn:Observation **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
@@ -24,11 +24,11 @@ An Assay that observes or measures properties of an ObservationUnit returning re
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
 * appn:Observation **appn:usesData** [schema:File](https://schema.org/File)
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
-* appn:Observation **appn:observes** [appn:ObservedVariable](/docs/appn_ObservedVariable.md)
+* appn:Observation **appn:observes** [appn:ObservedVariable](appn_ObservedVariable.md)
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
-* [appn:Assay](/docs/appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](/docs/appn_ObservationUnit.md)
+* [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
-* [appn:Assay](/docs/appn_Assay.md) **appn:usedMethod** [appn:Method](/docs/appn_Method.md)
+* [appn:Assay](appn_Assay.md) **appn:usedMethod** [appn:Method](appn_Method.md)
     * Identifies a Method used to conduct an Assay.
-* [appn:ResearchActivity](/docs/appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](/docs/appn_ResearchActivity.md)
+* [appn:ResearchActivity](appn_ResearchActivity.md) **appn:isPartOf** [appn:ResearchActivity](appn_ResearchActivity.md)
     * Relates an Assay to the Study that includes it or a Study to an Investigation.
