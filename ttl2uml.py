@@ -250,7 +250,7 @@ def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,s
 indent = 0
 
 # Write HTML and try to maintain indent
-def write_html(f: _io.TextIOWrapper, html: str) -> None:
+def write_html(f: io.TextIOWrapper, html: str) -> None:
     global indent
 
     increment = False

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generate products from APPN turtle schema
 export PLANTUML_LIMIT_SIZE=8192
-source ./dunnock/bin/activate
+# source ./dunnock/bin/activate
 
 # Generate markdown pages and PlantUML source for top-level diagram and for each class diagram
 python ttl2uml.py
