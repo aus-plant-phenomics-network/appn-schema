@@ -10,7 +10,7 @@ python ttl2uml.py
 python ttl2uml.py -ppeo -sosa -ssn -cdi -prov
 
 # Generate UML diagrams from source
-java -jar plantuml-1.2025.4.jar ttl_uml
+java -jar plantuml.jar ttl_uml
 
 # Build contents for RO-Crate context file including all APPN classes and properties - concatenates three streams:
 # 1) Export current context.json up to and including the line with @context
