@@ -3,3 +3,4 @@
 plantuml*.jar
 uml/uml
 ttl2uml.log
+script-ghp/lib/**

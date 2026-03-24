@@ -195,9 +195,12 @@ from urllib.parse import urlparse
 
 def to_appn_github_uri(uri: str,
                        expected_host: str = "schema.plantphenomics.org.au",
-                       redirect_url: str = "https://github.com/aus-plant-phenomics-network/appn-schema/"
-        "blob/main/doc/",
-                       require_https: bool = False) -> str:
+                      # redirect_url: str = "https://github.com/aus-plant-phenomics-network/appn-schema/"
+                      # "blob/main/doc/",
+                      redirect_url: str = "https://aus-plant-phenomics-network.github.io/appn-schema/",
+        
+                       require_https: bool = False,
+                       add_md: bool = False ) -> str:
     """
     Convert an APPN schema term URI like
       https://schema.plantphenomics.org.au/Variable
@@ -222,7 +225,7 @@ def to_appn_github_uri(uri: str,
 
     Raises
     ------
-    ValueError
+    ValueError 
         If the URL is invalid, host/scheme doesn’t match, or name part is missing.
     """
     if not isinstance(uri, str) or not uri.strip():
@@ -243,9 +246,12 @@ def to_appn_github_uri(uri: str,
     local = path.rstrip("/").split("/")[-1] if path else ""
     if not local:
         raise ValueError(f"Could not extract local name from path: {path!r}")
-
-    # Form the GitHub docs filename pattern: appn_<Local>.md
-    filename = f"appn_{local}.md"
+    
+    if add_md :
+        # Form the GitHub docs filename pattern: appn_<Local>.md
+        filename = f"appn_{local}.md"
+    else: 
+        filename = f"appn_{local}/"
 
     # Build the final GitHub URL
     gh_url = (
