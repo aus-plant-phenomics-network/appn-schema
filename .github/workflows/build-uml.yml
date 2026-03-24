@@ -84,7 +84,15 @@ jobs:
           set -euo pipefail
           ls $GITHUB_WORKSPACE/docs/assets/img
           
+      # - name: Upload result
+        # uses: actions/upload-artifact@v4
+        # with:
+          # name: interactive-schema-viz
+          # path: docs/
+
+          
       - name: Commit and push changes (if any)
+        if: ${{ inputs.dry_run == 'false' }}
         shell: bash
         run: |
           set -euo pipefail
