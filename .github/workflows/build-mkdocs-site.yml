@@ -29,8 +29,8 @@ jobs:
       
       - name: Copy png to site/images
         run: |
-          mkdir -p site/images
-          cp -f ttl_uml/*.png site/images/
+          mkdir -p site/docs
+          cp -f ttl_uml/*.png docs/images/
 
       - run: mkdocs build
       
