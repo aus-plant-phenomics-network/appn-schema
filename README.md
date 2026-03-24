@@ -13,6 +13,18 @@ Markdown pages for all classes (including the UML diagrams above) can be found h
 
 The ttl2uml.py script also generates a JSON-LD context document to include the APPN classes and properties in an RO-Crate: [context.json](/context.json)
 
+## Automation of GitHub mkdocs *github.io* site
+There is a GitHub Actions script that can be run from: [Actions](https://github.com/aus-plant-phenomics-network/appn-schema/actions) to update the documentation site [https://aus-plant-phenomics-network.github.io/appn-schema/](https://aus-plant-phenomics-network.github.io/appn-schema/).
+  
+*Please note:*  
+If the `appn-schema.ttl` description changes, then:
+- The class diagrams need to be regenerated using the `build_uml.sh` script (this runs ttl2uml.py)
+- The interactive visualisation needs to be regenerated using the `script-ghp/appn_schema_pyvizgraph.py` script (updating `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`)
+- The changes need to be pushed the the github repo.
+- The [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml) wrkflow needs to be run to update the github.io site.
+  
+This processdure should be automated in the future.
+
 ## Older UML diagrams (Deprecated)
 The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
 
