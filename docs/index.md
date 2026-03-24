@@ -1,5 +1,7 @@
 # Home
-This is a (currently not completly automated) build of the documentation of the Australian Plant Phenomics Network *data schema*. For more details of the mission of this work, there is link to the APPN Data main webpage here: 
+This is a build of the documentation of the Australian Plant Phenomics Network *data schema*. 
+  
+For more details of the mission of this work, there is link to the APPN Data main webpage here: 
 
 [https://www.plantphenomics.org.au/data](https://www.plantphenomics.org.au/data)
   
