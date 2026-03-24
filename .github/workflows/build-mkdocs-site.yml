@@ -26,6 +26,11 @@ jobs:
           python-version: '3.x'
 
       - run: pip install -r requirements.txt
+      
+      - name: Copy png to site/images
+        run: |
+          mkdir -p site/images
+          cp -f ttl_uml/*.png site/images/
 
       - run: mkdocs build
       
@@ -34,10 +39,7 @@ jobs:
           mkdir -p site/viz
           cp -f script-ghp/appn-schema-pyviz.html site/viz/index.html
           
-      - name: Copy png to site/images
-        run: |
-          mkdir -p site/viz
-          cp -f ttl_uml/*.png site/images/
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
