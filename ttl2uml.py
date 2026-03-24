@@ -22,7 +22,7 @@ ttl_file = "appn-schema.ttl"
 uml_folder = "ttl_uml"
 if not os.path.exists(uml_folder):
     os.mkdir(uml_folder)
-markdown_folder = "doc"
+markdown_folder = "docs"
 if not os.path.exists(markdown_folder):
     os.mkdir(markdown_folder)
 
@@ -166,12 +166,12 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                 if cls == focus_class:
                     this_class = f"{focus_class[0]}:{focus_class[1]}"
                 elif cls[0] == "appn":
-                    this_class = f"[appn:{cls[1]}](/doc/appn_{cls[1]}.md)"
+                    this_class = f"[appn:{cls[1]}](/docs/appn_{cls[1]}.md)"
                 else:
                     expanded_r = f"{prefixes[cls[0]]}{cls[1]}"
                     this_class = f"[{cls[0]}:{cls[1]}]({expanded_r})"
                 if r[0] == "appn":
-                    other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
+                    other_class = f"[appn:{r[1]}](/docs/appn_{r[1]}.md)"
                 else:
                     other_class = f"[{r[0]}:{r[1]}]({prefixes[r[0]]}{r[1]})"
                 if ppty in comments:
@@ -192,12 +192,12 @@ def write_properties(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str
                     if cls == focus_class:
                         this_class = f"{focus_class[0]}:{focus_class[1]}"
                     elif cls[0] == "appn":
-                        this_class = f"[{cls[0]}:{cls[1]}](/doc/appn_{cls[1]}.md)"
+                        this_class = f"[{cls[0]}:{cls[1]}](/docs/appn_{cls[1]}.md)"
                     else:
                         expanded_r = f"{prefixes[cls[0]]}{cls[1]}"
                         this_class = f"[{cls[0]}:{cls[1]}]({expanded_r})"
                     if r[0] == "appn":
-                        other_class = f"[appn:{r[1]}](/doc/appn_{r[1]}.md)"
+                        other_class = f"[appn:{r[1]}](/docs/appn_{r[1]}.md)"
                     else:
                         other_class = f"{prefixes[r[0]]}{r[1]}"
                     if ppty in comments:
@@ -220,7 +220,7 @@ def write_parents(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple, focus
     if cls in inheritance:
         for parent in inheritance[cls]:
             if parent[0] == "appn":
-                md.write(f"* [{prefixes[parent[0]]}{parent[1]}](/doc/appn_{parent[1]}.md)\n")
+                md.write(f"* [{prefixes[parent[0]]}{parent[1]}](/docs/appn_{parent[1]}.md)\n")
             else:
                 md.write(f"* {prefixes[parent[0]]}{parent[1]}\n")
             parent_name = write_parents(uml, md, parent, focus_class)
@@ -234,7 +234,7 @@ def write_children(uml: io.TextIOWrapper, md: io.TextIOWrapper, cls: tuple[str,s
         package_colour = "" if cls[0] == "appn" else package_colours[cls[0]]
         uml.write(f"class {class_name} {package_colour}\n")
         if cls[0] == "appn":
-            md.write(f"* [{prefixes[cls[0]]}{cls[1]}](/doc/appn_{cls[1]}.md)\n")
+            md.write(f"* [{prefixes[cls[0]]}{cls[1]}](/docs/appn_{cls[1]}.md)\n")
         else:
             md.write(f"* {prefixes[cls[0]]}{cls[1]}\n")
     heading_written = False
@@ -422,4 +422,4 @@ else:
 with open(os.path.join(markdown_folder, "appn_schema.md"), "w") as md_file:
     md_file.write("# APPN Schema Overview\n## APPN Classes\n")
     for appn_class in sorted(packages["appn"]):
-        md_file.write(f"* [appn:{appn_class[1]}](/doc/appn_{appn_class[1]}.md)\n")
+        md_file.write(f"* [appn:{appn_class[1]}](/docs/appn_{appn_class[1]}.md)\n")

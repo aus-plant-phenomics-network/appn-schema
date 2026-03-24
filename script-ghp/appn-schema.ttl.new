@@ -1,4 +1,4 @@
-# TODO: Prune unnecessary prefixes
+# TODO: Prune unnecessary 
 @prefix appn: <https://schema.plantphenomics.org.au/> .
 @prefix bio: <https://bioschemas.org/> .
 @prefix cdi: <http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/> .

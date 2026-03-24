@@ -1,7 +1,14 @@
 name: Build TTL Schema Graph
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      # environment:
+        # type: environment
+        # required: true
+      dry_run:
+        type: boolean
+        default: false
   # schedule:
   #   # Runs at 03:15 UTC every day – adjust to your needs
   #   - cron: "15 3 * * *"
@@ -58,7 +65,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate HTML from TTL
-        if: steps.checkchange.outputs.no_changes == 'false'
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' }}
         working-directory: script-ghp
         run: |
           set -euo pipefail
@@ -67,14 +74,20 @@ jobs:
           test -f appn-schema-pyviz.html || (echo "HTML output not found" && exit 1)
 
       - name: Move HTML to docs as index.html
-        if: steps.checkchange.outputs.no_changes == 'false'
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' }}
         run: |
-          mkdir -p docs
-          cp -f script-ghp/appn-schema-pyviz.html doc/viz/appn-schema-pyviz.html
+          mkdir -p docs/viz
+          cp -f script-ghp/appn-schema-pyviz.html docs/viz/index.html
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: interactive-schema-viz
+          path: docs/viz/index.html
 
       # Optional: commit generated HTML back to repo (adjust path if using docs/)
       - name: Commit and push generated HTML
-        if: steps.checkchange.outputs.no_changes == 'false'
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' &&  inputs.dry_run == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -87,7 +100,7 @@ jobs:
           git add script-ghp/appn-schema-pyviz.html
 
           # If using GitHub Pages via docs/, add:
-          git add doc/viz/appn-schema-pyviz.html
+          git add docs/viz/index.html
 
           if git diff --cached --quiet; then
             echo "No changes to commit."

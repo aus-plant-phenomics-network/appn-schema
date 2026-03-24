@@ -5,8 +5,8 @@ repo_url: https://github.com/aus-plant-phenomics-network/appn-schema
 repo_name: appn-schema
 edit_uri: edit/main/doc/
 
-# ── Source and output paths (mkdocs.yml + pages are both in ./doc) ───────────
-docs_dir: ./doc
+# ── Source and output paths (mkdocs.yml + pages are both in ./docs) ───────────
+docs_dir: ./docs
 site_dir: site
 use_directory_urls: true
 strict: true
