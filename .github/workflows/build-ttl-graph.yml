@@ -1,0 +1,111 @@
+name: Build TTL Schema Graph
+
+on:
+  workflow_dispatch:
+    inputs:
+      # environment: 
+        # type: environment
+        # required: true
+      dry_run:
+        type: boolean
+        default: false
+  # schedule:
+  #   # Runs at 03:15 UTC every day – adjust to your needs
+  #   - cron: "15 3 * * *"
+
+permissions:
+  contents: write   # Required to push generated HTML or commit files
+
+concurrency:
+  group: ttl-schema-graph
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Run download; detect whether the TTL actually changed
+      - name: Run TTL download script and detect change
+        id: checkchange
+        working-directory: script-ghp
+        run: |
+          set -euo pipefail
+
+          # Ensure the expected file is present
+          test -f ../appn-schema.ttl || (echo "appn-schema.ttl not found" && exit 1)
+
+          # Check if the schema ttl file has changed           
+          if diff -q appn-schema.ttl.new ../appn-schema.ttl >/dev/null 2>&1; then
+            echo "no_changes=true" >> "$GITHUB_OUTPUT"
+            echo "No changes in TTL."
+            exit 1
+          else
+            echo "no_changes=false" >> "$GITHUB_OUTPUT"
+            echo "TTL changed."
+            # Update the working copy so downstream steps use the latest
+            cp -f ../appn-schema.ttl appn-schema.ttl.new
+          fi
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        if: ${{ hashFiles('script-ghp/requirements.txt') != '' }}
+        working-directory: script-ghp
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate HTML from TTL
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' }}
+        working-directory: script-ghp
+        run: |
+          set -euo pipefail
+          # The script reads ./ttl_files/appn-schema.ttl by default
+          python appn_schema_pyvizgraph.py
+          test -f appn-schema-pyviz.html || (echo "HTML output not found" && exit 1)
+
+      - name: Move HTML to docs as index.html
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' }}
+        run: |
+          mkdir -p docs/viz
+          cp -f script-ghp/appn-schema-pyviz.html docs/viz/index.html
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: interactive-schema-viz
+          path: docs/viz/index.html
+
+      # Optional: commit generated HTML back to repo (adjust path if using docs/)
+      - name: Commit and push generated HTML
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' &&  inputs.dry_run == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Commit the updated TTL and generated HTML
+          git add script-ghp/appn-schema.ttl.new
+          git add script-ghp/appn-schema-pyviz.html
+
+          # If using GitHub Pages via docs/, add:
+          git add docs/viz/index.html
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update TTL + graph HTML [skip ci]"
+          git push
