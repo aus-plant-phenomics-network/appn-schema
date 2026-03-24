@@ -1,5 +1,5 @@
 # ── Site metadata ─────────────────────────────────────────────────────────────
-site_name: APPN Schema MKDocs Documentation 
+site_name: APPN Schema Documentation 
 site_description: Documentation for APPN RO‑Crate data packaging entities
 repo_url: https://github.com/aus-plant-phenomics-network/appn-schema
 repo_name: appn-schema
@@ -13,11 +13,9 @@ strict: true
 
 # ── Theme (Material) ─────────────────────────────────────────────────────────
 theme:
-  
-theme:
   name: material
-  logo: docs/images/appn.svg
-  favicon: docs/images/appn.svg
+  logo: images/appn.svg
+  favicon: images/appn.svg
   language: en
   features:
     - navigation.instant
