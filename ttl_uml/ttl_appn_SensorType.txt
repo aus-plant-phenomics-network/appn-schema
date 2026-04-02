@@ -1,0 +1,7 @@
+@startuml
+class SensorType  #line.bold
+class "schema:Enumeration" #DDFFDD 
+SensorType --|> "schema:Enumeration"
+class Sensor 
+Sensor --> SensorType : hasSensorType
+@enduml

@@ -6,6 +6,8 @@ Observer --|> "sosa:Sensor"
 Sensor --|> Observer
 class "schema:IndividualProduct" #DDFFDD 
 Sensor --|> "schema:IndividualProduct"
+class SensorType 
+Sensor --> SensorType : hasSensorType
 class Deployment 
 Deployment --> Sensor : deployedSystem
 class Observation 

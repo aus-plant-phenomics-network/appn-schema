@@ -10,6 +10,8 @@ An electromechanical device that can return the value for an ObservedVariable an
 * https://www.w3.org/ns/sosa/Sensor
 * https://schema.org/IndividualProduct
 ## Properties
+* appn:Sensor **appn:hasSensorType** [appn:SensorType](appn_SensorType.md)
+    * Links a Sensor to its type.
 * [appn:Deployment](appn_Deployment.md) **appn:deployedSystem** appn:Sensor
     * Identifies a Sensor or Actuator deployed on a Platform.
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)

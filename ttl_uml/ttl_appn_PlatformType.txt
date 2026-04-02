@@ -1,0 +1,7 @@
+@startuml
+class PlatformType  #line.bold
+class "schema:Enumeration" #DDFFDD 
+PlatformType --|> "schema:Enumeration"
+class Platform 
+Platform --> PlatformType : hasPlatformType
+@enduml

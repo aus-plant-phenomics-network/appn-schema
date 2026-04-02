@@ -287,8 +287,19 @@
         <div class="parent"><a href="#Observer">Observer</a></div>
         <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
+        <div class="property">Sensor <b>hasSensorType</b> <a href="#SensorType">SensorType</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Sensor to its type.</div>
         <div class="property"><a href="#Deployment">Deployment</a> <b>deployedSystem</b> Sensor</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <h2 id="SensorType">Class: SensorType</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/SensorType" target="_blank">https://schema.plantphenomics.org.au/SensorType</a></div>
+        <img src="image/ttl_appn_SensorType.png"/>
+        <div class="description"><b>SensorType:</b> A term from an enumeration of types of Sensor.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Sensor">Sensor</a> <b>hasSensorType</b> SensorType</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Sensor to its type.</div>
         <h2 id="Actuator">Class: Actuator</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Actuator" target="_blank">https://schema.plantphenomics.org.au/Actuator</a></div>
         <img src="image/ttl_appn_Actuator.png"/>
@@ -377,10 +388,21 @@
         <div class="parent"><a href="https://www.w3.org/ns/sosa/Platform">https://www.w3.org/ns/sosa/Platform</a></div>
         <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
+        <div class="property">Platform <b>hasPlatformType</b> <a href="#PlatformType">PlatformType</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Platform to its type.</div>
         <div class="property"><a href="#Deployment">Deployment</a> <b>deployedOnPlatform</b> Platform</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Platform on which Sensors or Actuators are deployed.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#GrowthFacility">GrowthFacility</a></div>
+        <h2 id="PlatformType">Class: PlatformType</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/PlatformType" target="_blank">https://schema.plantphenomics.org.au/PlatformType</a></div>
+        <img src="image/ttl_appn_PlatformType.png"/>
+        <div class="description"><b>PlatformType:</b> A term from an enumeration of types of Platform.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Platform">Platform</a> <b>hasPlatformType</b> PlatformType</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Platform to its type.</div>
         <h2 id="Deployment">Class: Deployment</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Deployment" target="_blank">https://schema.plantphenomics.org.au/Deployment</a></div>
         <img src="image/ttl_appn_Deployment.png"/>
@@ -406,6 +428,12 @@
         <h3>Properties</h3>
         <div class="property">GrowthFacility <b>hasGrowthFacilityType</b> <a href="#GrowthFacilityType">GrowthFacilityType</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
+        <div class="property">GrowthFacility <b>containmentLevel</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/containmentLevel">https://schema.plantphenomics.org.au/containmentLevel</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Provides the containment level for a GrowthFacility.</div>
+        <div class="property">GrowthFacility <b>quarantine</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/quarantine">https://schema.plantphenomics.org.au/quarantine</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates if a GrowthFacility is for quarantine.</div>
         <div class="property"><a href="#Study">Study</a> <b>hasGrowthFacility</b> GrowthFacility</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a GrowthFacility used in a Study.</div>
         <h2 id="GrowthFacilityType">Class: GrowthFacilityType</h2>

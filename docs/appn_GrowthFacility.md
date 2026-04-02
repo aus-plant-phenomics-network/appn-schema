@@ -18,8 +18,12 @@ A building, enclosed space, field unit, container or other entity in which plant
 ## Properties
 * appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
     * Links a GrowthFacility to its type.
+* GrowthFacility https://schema.plantphenomics.org.au/containmentLevel
+* GrowthFacility https://schema.plantphenomics.org.au/quarantine
 * [appn:Study](appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
     * Identifies a GrowthFacility used in a Study.
+* [appn:Platform](appn_Platform.md) **appn:hasPlatformType** [appn:PlatformType](appn_PlatformType.md)
+    * Links a Platform to its type.
 * [appn:Deployment](appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](appn_Platform.md)
     * Identifies a Platform on which Sensors or Actuators are deployed.
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)

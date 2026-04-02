@@ -19,6 +19,7 @@ class Observer
 class Controller
 class Sampler
 class Sensor
+class SensorType
 class Actuator
 class ExternalEvent
 class Person
@@ -27,6 +28,7 @@ class Sample
 class BiologicalUnit
 class Substance
 class Platform
+class PlatformType
 class Deployment
 class GrowthFacility
 class GrowthFacilityType
@@ -44,9 +46,9 @@ package "schema" {
     class "schema:DefinedTerm" #DDFFDD
     class "schema:InstanceValue" #DDFFDD
     class "schema:IndividualProduct" #DDFFDD
+    class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
     class "schema:Person" #DDFFDD
-    class "schema:Enumeration" #DDFFDD
     class "schema:Place" #DDFFDD
 }
 package "prov" {
@@ -136,6 +138,7 @@ Controller --|> "sosa:Actuator"
 Sampler --|> "sosa:Sampler"
 Sensor --|> Observer
 Sensor --|> "schema:IndividualProduct"
+SensorType --|> "schema:Enumeration"
 Actuator --|> Controller
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
@@ -155,6 +158,7 @@ Substance --|> ObservationUnit
 Substance --|> "bio:Substance"
 Platform --|> "sosa:Platform"
 Platform --|> "schema:IndividualProduct"
+PlatformType --|> "schema:Enumeration"
 Deployment --|> "ssn:Deployment"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> "ppeo:growth_facility"

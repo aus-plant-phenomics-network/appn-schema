@@ -4,6 +4,8 @@ class "sosa:Platform" #FFCCEE
 Platform --|> "sosa:Platform"
 class "schema:IndividualProduct" #DDFFDD 
 Platform --|> "schema:IndividualProduct"
+class PlatformType 
+Platform --> PlatformType : hasPlatformType
 class Deployment 
 Deployment --> Platform : deployedOnPlatform
 class GrowthFacility 
