@@ -1,0 +1,2567 @@
+{
+    "@context": {
+        "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "https://schema.org/",
+        "skos": "http://www.w3.org/2004/02/skos/core#"
+    },
+    "@graph": [
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh01",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH01",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C type AHU, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%, 90 % (not included). Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse",
+            "appn:quarantine": "biosecurity certification PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh02",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH02",
+            "rdfs:comment": "Growth room of 48 m (6*8) size, with 1 louvre window to outside and AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh03",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH03",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh04",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH04",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh05",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH05",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh06",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH06",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh07",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH07",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh08",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH08",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh09",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH09",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh10",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH10",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh11",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH11",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh12",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH12",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh13",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH13",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh14",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH14",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh15",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH15",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh16",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH16",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh17",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH17",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh18",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH18",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh19",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH19",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh20",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH20",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh21",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH21",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh22",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH22",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh23",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH23",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh24",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH24",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh25_ds",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH25 DS",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh26_pe",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH26 PE",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh27",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH27",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh28",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH28",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh29",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH29",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh30",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH30",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh31",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH31",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh32",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH32",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh33",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH33",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh34",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH34",
+            "rdfs:comment": "Growth room of 24 m (3*8) size, with 2 louvre windows to corridor and A/C AHU type, temperature range of 25 degrees cooling and 19 degrees heating. Light system 2 X 150 watts floods and 1 X 36 watts fluro. Power of 1 x BMS and 1 x GPO and shades of 50%. Water system options of cold, R.O. and rain. ",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.3"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.4"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.5"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.6"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.7",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.7"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.3"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.4"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.5"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.6"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.7",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.7"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.8",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.8"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gen1000",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GEN1000"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/sanyo_mlr-351",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "Sanyo MLR-351"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/imga",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IMGA"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/shb",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHB"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/shc",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHC"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/imgd",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IMGD"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/she",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHE"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/shf",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHF"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Platform/m3m_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "M3M_1",
+            "rdfs:comment": "DJI Mavic 3 Multispectral ",
+            "appn:hasPlatformType": "https://id.plantphenomics.org.au/AU/PlatformType/uav",
+            "schema:brand": "Shenzhen Da-Jiang Innovations",
+            "schema:model": "Mavic 3 Multispectral",
+            "schema:serialNumber": "1581F5FKD238K00DF6NJ",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/platform"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Platform/if1200_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IF1200_1",
+            "rdfs:comment": "Inspired Flight IF1200 Heavy-Lift Hexacopter",
+            "appn:hasPlatformType": "https://id.plantphenomics.org.au/AU/PlatformType/uav",
+            "schema:brand": "Inspired Flight Technologies",
+            "schema:model": "IF1200",
+            "schema:serialNumber": "5361",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/platform"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/PlatformType/uav",
+            "@type": "PlatformType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "UAV"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Sensor/m3m_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "M3M_1",
+            "rdfs:comment": "RGB: Hasselblad 20MP, 4/3 CMOS\nMultispectral: 1/2.8-inch CMOS, effective pixels: 5 MP (wavelengths: 560, 650, 730, 860 nm)",
+            "schema:model": "Mavic 3 Multispectral",
+            "schema:serialNumber": "1581F5FKD238K00DF6NJ",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/Sensor"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Sensor/calvis_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "CALVIS_1",
+            "rdfs:comment": "Hyperspectral: Headwall Co-Aligned VNIR-SWIR (400-2500nm), LiDAR: Velodyne",
+            "schema:model": "CALVIS",
+            "schema:serialNumber": "caHP-190",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/Sensor"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Deployment/m3m_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "M3M_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Deployment/if1200_1_calvis_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IF1200_1_CALVIS_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_number",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed number",
+            "rdfs:comment": "Seed number (start from 1)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_number",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_number_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_attenuation_mean_value",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed attenuation mean value",
+            "rdfs:comment": "Mean attenuation value of this specific seed",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_attenuation_mean_value",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_attenuation_mean_value_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_spherical_ratio",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio",
+            "rdfs:comment": "Describes the shape of the seed",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/seed_spherical_ratio_scale",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_spherical_ratio",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_spherical_ratio_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_spherical_ratio_spherical_radius",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio spherical radius",
+            "rdfs:comment": "Radius of a sphere that has the same volume as the seed",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_spherical_ratio_spherical_radius",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_spherical_ratio_spherical_radius_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_spherical_ratio_sphere_minimum_covering_sphere_radius",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio sphere minimum covering sphere radius",
+            "rdfs:comment": "MCS=minimum covering sphere; radius of the smallest sphere surrounding the seed (SphericalRatioSphereRadius/SphericalRatioSphereMCSRadius=SphereicalRatio)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_spherical_ratio_sphere_minimum_covering_sphere_radius",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_spherical_ratio_sphere_minimum_covering_sphere_radius_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_density_mean_value",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed density mean value",
+            "rdfs:comment": "Mean grey value of the seed (corresponse to density)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_density_mean_value",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_density_mean_value_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_center_of_mass_x/y/z",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed center of mass X/Y/Z",
+            "rdfs:comment": "Position of the center of mass of the seed within the volume in x/y/z (in pixel)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_center_of_mass_x/y/z",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_center_of_mass_x/y/z_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_minimum_covering_sphere_radius",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed minimum covering sphere radius",
+            "rdfs:comment": "Minimum covering sphere",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_minimum_covering_sphere_radius",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_minimum_covering_sphere_radius_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_minimum_covering_sphere_center_x/y/z",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed minimum covering sphere center X/Y/Z",
+            "rdfs:comment": "Center position of the minimum covering sphere within the volume in x/y/z (in pixel)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_minimum_covering_sphere_center_x/y/z",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_minimum_covering_sphere_center_x/y/z_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_ratio_surface_to_blob_voxel",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed ratio surface to blob voxel",
+            "rdfs:comment": "Ratio between the surface and the volume of the seed (surface area to volume ratio)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_ratio_surface_to_blob_voxel",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_ratio_surface_to_blob_voxel_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_length",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed length",
+            "rdfs:comment": "Length (mm) of individual seeds",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_length",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_length_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed weight",
+            "rdfs:comment": "Weight of the seed in g (calculated by mass_correction_factor; mass_correction factor=mean value of actual weight/mean value of seed weight in g) (seed weight)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_volume",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed volume",
+            "rdfs:comment": "Volume of the seed",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/cubic_millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_volume",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_volume_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_structural_similarity",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed structural similarity",
+            "rdfs:comment": "Structural similarity of the seed.  0 - not similar to the seed class at all. 1 - identical with the seed class",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/seed_structural_similarity_scale",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_structural_similarity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_structural_similarity_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/seed_class",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed class",
+            "rdfs:comment": "Classification of the seed class 0=big, 1=medium, 2=small, 3=very small",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/seed_class_scale",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/seed_class",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/seed_class_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_number",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed number",
+            "rdfs:comment": "Total number of seeds on this spike",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_number",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_number_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_weight_total",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight total",
+            "rdfs:comment": "Total weight of seeds",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_weight_total",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_weight_total_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_weight_average",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight average",
+            "rdfs:comment": "Average of seed weight on this spike",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_weight_average",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_weight_average_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_weight_average_standard_deviation",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight average standard deviation",
+            "rdfs:comment": "Standard deviation of Seedqweight_ave",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_weight_average_standard_deviation",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_weight_average_standard_deviation_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_length",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed length",
+            "rdfs:comment": "Average length of seeds on this spike",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_length",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_length_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_length_standard_deviation",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed length standard deviation",
+            "rdfs:comment": "Standard deviation of SeedLength_(mm)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_length_standard_deviation",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_length_standard_deviation_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_cat_radius",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike CAT radius",
+            "rdfs:comment": "The radius of the Circle that has the same Area as the seed maximum Transverse section",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_cat_radius",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_cat_radius_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_cat_radius_standard_deviation",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike CAT radius standard deviation",
+            "rdfs:comment": "Standard deviation of Circle that has the same Area as the seed maximum Transverse section radius(mm)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_cat_radius_standard_deviation",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_cat_radius_standard_deviation_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_size",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed size",
+            "rdfs:comment": "Averge seed size in mm3",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/cubic_millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_size",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_size_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_size_standard_deviation",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed size standard deviation",
+            "rdfs:comment": "Standard deviation of Seed size",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_size_standard_deviation",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_size_standard_deviation_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_surface_area",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed surface area",
+            "rdfs:comment": "Average seed surface area (mm2)",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/square_millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_surface_area",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_surface_area_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_surface_area_standard_deviation",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed surface area standard deviation",
+            "rdfs:comment": "Standard deviation of Surface area",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_surface_area_standard_deviation",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_surface_area_standard_deviation_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_ratio_surface_to_volume",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ratio surface to volume",
+            "rdfs:comment": "The ratio of surface area to seed size in volex",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/ratio",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ratio_surface_to_volume",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ratio_surface_to_volume_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_mean_gray_value",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed mean gray value",
+            "rdfs:comment": "Average gray value of the seeds on this spike, correlate to seed density. High MeanGrayValue = high seed density",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_mean_gray_value",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_mean_gray_value_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_mean_gray_value_standard_deviation",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed mean gray value standard deviation",
+            "rdfs:comment": "Standard deviation of Mean Gray Value",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_mean_gray_value_standard_deviation",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_mean_gray_value_standard_deviation_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_ear_x",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear X",
+            "rdfs:comment": "Distance between the furthest apart seeds on X axis",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_x",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_x_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/ear"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_ear_y",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear Y",
+            "rdfs:comment": "Distance between the furthest apart seeds on Y axis",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_y",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_y_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/ear"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_ear_z",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear Z",
+            "rdfs:comment": "Distance between the furthest apart seeds on Z axis",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_z",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_z_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/ear"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_ear_length",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear length",
+            "rdfs:comment": "Longest distance between seeds base on their spatial positions",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_length",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_length_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/spike_seed_class_percentage",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed class percentage",
+            "rdfs:comment": "The percentage of grains classified as Seed Class 0, 1, 2, 3 on this spike. See \"output_ears_raw\" tab for examples of different seed classes. ",
+            "dc:creator": "Bettina Berger",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_class_percentage",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/spike_seed_class_percentage_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/shoot_fresh_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot fresh weight",
+            "rdfs:comment": "The total weight of shoots per plant",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/shoot_fresh_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/shoot_fresh_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/shoot"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/shoot_dry_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot dry weight",
+            "rdfs:comment": "The total weight shoots after drying",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/shoot_dry_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/shoot_dry_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/shoot"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/root_fresh_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root fresh weight",
+            "rdfs:comment": "The total weight of roots",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/root_fresh_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/root_fresh_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/root"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/root_dry_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root dry weight",
+            "rdfs:comment": "The total weight of roots after drying",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/root_dry_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/root_dry_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/root"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/total_fresh_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total fresh weight",
+            "rdfs:comment": "The total weight of shoots and roots",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/total_fresh_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/total_fresh_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/total_dry_weight",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total dry weight",
+            "rdfs:comment": "The total weight of shoots and roots after drying",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/total_dry_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/total_dry_weight_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/harvest_index",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "harvest index",
+            "rdfs:comment": "Ratio of grain yield to aboveground fresh or dry biomass",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/gram/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/harvest_index",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/harvest_index_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/soil_nitrate_concentration",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil nitrate concentration",
+            "rdfs:comment": "Soil nitrogen concentration (mg/g) attributable to nitrate",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/milligram/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/soil_nitrate_concentration",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/soil_nitrate_concentration_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/soil"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/soil_ammonia_concentration",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil ammonia concentration",
+            "rdfs:comment": "Soil nitrogen concentration (mg/g) attributable to ammonia",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/milligram/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/soil_ammonia_concentration",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/soil_ammonia_concentration_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/soil"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/soil_nitrogen_concentration",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil nitrogen concentration",
+            "rdfs:comment": "The sum of the soil NO3 and NH4 concentrations (mg/g)",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/milligram/gram",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/soil_nitrogen_concentration",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/soil_nitrogen_concentration_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/soil"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/projected_shoot_area",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "projected shoot area ",
+            "rdfs:comment": "The projected shoot area of a plant",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/projected_shoot_area",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/projected_shoot_area__method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/absolute_projected_shoot_area_growth_rates",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates",
+            "rdfs:comment": "The absolute projected shoot area growth rates (kpixels / day)",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/absolute_projected_shoot_area_growth_rates",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/absolute_projected_shoot_area_growth_rates_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/relative_projected_shoot_area_growth_rates",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rates",
+            "rdfs:comment": "The relative projected shoot area growth rates (per day)",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/relative_projected_shoot_area_growth_rates",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/relative_projected_shoot_area_growth_rates_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/daily_water_use",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "daily water use",
+            "rdfs:comment": "The daily plant water use",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/milliliter/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/daily_water_use",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/daily_water_use_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/total_water_use",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total water use",
+            "rdfs:comment": "Defined for each plant as the sum of all daily water use values",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/milliliter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/total_water_use",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/total_water_use_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/water_use_index",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "water use index",
+            "rdfs:comment": "Water use index of the plant",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/milliliter",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/water_use_index",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/water_use_index_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/smoothed_projected_shoot_area",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smoothed projected shoot area",
+            "rdfs:comment": "The smoothed projected shoot area",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/smoothed_projected_shoot_area",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/smoothed_projected_shoot_area_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/absolute_smoothed_projected_shoot_area_growth_rates",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates",
+            "rdfs:comment": "The absolute projected shoot area growth rates (kpixels / day)",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/absolute_smoothed_projected_shoot_area_growth_rates",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/absolute_smoothed_projected_shoot_area_growth_rates_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/relative_smoothed_projected_shoot_area_growth_rate",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate",
+            "rdfs:comment": "The relative projected shoot area growth rates (day)",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/relative_smoothed_projected_shoot_area_growth_rate",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/relative_smoothed_projected_shoot_area_growth_rate_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/projected_shoot_area_for_a_single_time_point",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "projected shoot area for a single time point",
+            "rdfs:comment": "The projected shoot area for a single time point",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/projected_shoot_area_for_a_single_time_point",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/projected_shoot_area_for_a_single_time_point_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/absolute_projected_shoot_area_growth_rates_for_a_single_time_point",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates for a single time point",
+            "rdfs:comment": "The absolute  projected shoot area growth rates for a single time point",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/absolute_projected_shoot_area_growth_rates_for_a_single_time_point",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/absolute_projected_shoot_area_growth_rates_for_a_single_time_point_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/relative_projected_shoot_area_growth_rate_for_a_single_time_point",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rate for a single time point",
+            "rdfs:comment": "The relative projected shoot area growth rates for a single time point",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/per_day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/relative_projected_shoot_area_growth_rate_for_a_single_time_point",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/relative_projected_shoot_area_growth_rate_for_a_single_time_point_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/absolute_projected_shoot_area_growth_rates_over_a_time_interval",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates over a time interval",
+            "rdfs:comment": "The absolute projected shoot area growth rates over a time interval",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/absolute_projected_shoot_area_growth_rates_over_a_time_interval",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/absolute_projected_shoot_area_growth_rates_over_a_time_interval_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/relative_projected_shoot_area_growth_rate_over_a_time_interval",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rate over a time interval",
+            "rdfs:comment": "The relative projected shoot area growth rates over a time interval",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/per_day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/relative_projected_shoot_area_growth_rate_over_a_time_interval",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/relative_projected_shoot_area_growth_rate_over_a_time_interval_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/smoothed_projected_shoot_area_for_a_single_time_point",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smoothed projected shoot area for a single time point",
+            "rdfs:comment": "The smoothed projected shoot area for a single time point",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/smoothed_projected_shoot_area_for_a_single_time_point",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/smoothed_projected_shoot_area_for_a_single_time_point_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/absolute_smoothed_projected_shoot_area_growth_rates_for_a_single_time_point",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates for a single time point",
+            "rdfs:comment": "The absolute smoothed projected shoot area growth rates for a single time point",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/absolute_smoothed_projected_shoot_area_growth_rates_for_a_single_time_point",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/absolute_smoothed_projected_shoot_area_growth_rates_for_a_single_time_point_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/relative_smoothed_projected_shoot_area_growth_rate_for_a_single_time_point",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate for a single time point",
+            "rdfs:comment": "The relative smoothed projected shoot area growth rates for a single time point",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/per_day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/relative_smoothed_projected_shoot_area_growth_rate_for_a_single_time_point",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/relative_smoothed_projected_shoot_area_growth_rate_for_a_single_time_point_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/absolute_smoothed_projected_shoot_area_growth_rates_over_a_time_interval",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates over a time interval",
+            "rdfs:comment": "The absolute smoothed projected shoot area growth rates over a time interval",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/absolute_smoothed_projected_shoot_area_growth_rates_over_a_time_interval",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/absolute_smoothed_projected_shoot_area_growth_rates_over_a_time_interval_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/ObservedVariable/relative_smoothed_projected_shoot_area_growth_rate_over_a_time_interval",
+            "@type": "ObservedVariable",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate over a time interval",
+            "rdfs:comment": "The relative smoothed projected shoot area growth rates over a time interval",
+            "dc:creator": "Chris Brien",
+            "dc:language": "English",
+            "appn:hasScale": "https://id.plantphenomics.org.au/AU/Scale/per_day",
+            "appn:hasTrait": "https://id.plantphenomics.org.au/AU/Trait/relative_smoothed_projected_shoot_area_growth_rate_over_a_time_interval",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/AU/Method/relative_smoothed_projected_shoot_area_growth_rate_over_a_time_interval_method",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/integer",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "integer",
+            "rdfs:comment": "An integer is the number zero (0), a positive natural number (1, 2, 3, etc.) or a negative integer (−1, −2, −3, etc.)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/seed_spherical_ratio_scale",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio scale",
+            "rdfs:comment": "Seed spherical ratio scale. (0) Sphere shape; spherical ratio=0, infinitive long cylinder shape (seed shape), (1) Spherical ratio"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/millimeter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "millimeter",
+            "schema:alternateName": "mm",
+            "rdfs:comment": "A length unit which is equal to one thousandth of a meter or 10^[-3] m",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000016"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/gram",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "gram",
+            "schema:alternateName": "g",
+            "rdfs:comment": "A mass unit which is equal to one thousandth of a kilogram or 10^[-3] kg.",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000021"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/cubic_millimeter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "cubic millimeter",
+            "schema:alternateName": "mm3",
+            "rdfs:comment": "A measure of volume in the metric system. One thousand ccs equal one liter."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/seed_structural_similarity_scale",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed structural similarity scale",
+            "rdfs:comment": "Seed structural similarity scale. (0) not similar to the seed class at all, (1) identical with the seed class"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/seed_class_scale",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed class scale",
+            "rdfs:comment": "Seed class scale. (0) Big, (1) medium, (2) small, (3) very small"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/square_millimeter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "square millimeter",
+            "schema:alternateName": "mm2",
+            "rdfs:comment": "An area unit which is equal to one millionth of a square meter or 10^[-6] m^[2].",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000082"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/ratio",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "ratio",
+            "rdfs:comment": "A dimensionless ratio unit which, given a pair of quantities a and b, for which b is a multiple of a, denotes b by giving the multiplier (coefficient) c for a to result in b",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0010006"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/gram/gram",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "gram/gram",
+            "schema:alternateName": "g/g",
+            "rdfs:comment": "A unit which is equal to 1 gram per 1 gram.",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/UO_0000021"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/milligram/gram",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "milligram/gram",
+            "schema:alternateName": "mg/g ",
+            "rdfs:comment": "A unit which is equal to 10⁻³ gram per 1 gram.",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/UO_0000022; http://purl.obolibrary.org/obo/UO_0000021"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/kilopixels",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "kilopixels",
+            "schema:alternateName": "kpixels",
+            "rdfs:comment": "A thousand pixels quotations"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/day",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "kilopixels/day",
+            "schema:alternateName": "kpixels / day",
+            "rdfs:comment": "A thousand pixels quotations per day",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/UO_0000033"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/day",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "day",
+            "rdfs:comment": "A time unit which is equal to 24 hours.",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000033"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/milliliter/day",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "milliliter/day",
+            "schema:alternateName": "ml/day ",
+            "rdfs:comment": "The total volume in milliliters used, taken, or produced over 24 hours"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/milliliter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "milliliter",
+            "schema:alternateName": "ml",
+            "rdfs:comment": "A volume unit which is equal to one thousandth of a liter or 10^[-3] L, or to 1 cubic centimeter.",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000098"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/kilopixels/milliliter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "kilopixels/milliliter",
+            "schema:alternateName": "kpixels/ml",
+            "rdfs:comment": "A thousand pixels quotations per milliliter",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/UO_0000098; http://purl.obolibrary.org/obo/UO_0000033"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Scale/per_day",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "per day",
+            "schema:alternateName": "/day",
+            "rdfs:comment": "A rate, expressing the amount, frequency, or change of a quantity normalized by a time interval of one day (JCGM 200:2012; BIPM, 2019)",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/UO_0000033"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_number",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed number",
+            "rdfs:comment": "Seed number (start from 1)",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0000445; http://purl.obolibrary.org/obo/TO_0001134"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_attenuation_mean_value",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed attenuation mean value",
+            "rdfs:comment": "Mean attenuation value of this specific seed",
+            "schema:alternateName": "attenuationmeanvalue"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_spherical_ratio",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio",
+            "rdfs:comment": "Describes the shape of the seed",
+            "schema:alternateName": "sphericalratio",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/FLOPO_0002293"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_spherical_ratio_spherical_radius",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio spherical radius",
+            "rdfs:comment": "Radius of a sphere that has the same volume as the seed",
+            "schema:alternateName": "sphericalratiosphericalradius",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/FLOPO_0002293"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_spherical_ratio_sphere_minimum_covering_sphere_radius",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio sphere minimum covering sphere radius",
+            "rdfs:comment": "MCS=minimum covering sphere; radius of the smallest sphere surrounding the seed (SphericalRatioSphereRadius/SphericalRatioSphereMCSRadius=SphereicalRatio)",
+            "schema:alternateName": "sphericalratiospheremcsradius",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/FLOPO_0002293"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_density_mean_value",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed density mean value",
+            "rdfs:comment": "Mean grey value of the seed (corresponse to density)",
+            "schema:alternateName": "meanvalue",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/FLOPO_0023914"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_center_of_mass_x/y/z",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed center of mass X/Y/Z",
+            "rdfs:comment": "Position of the center of mass of the seed within the volume in x/y/z (in pixel)",
+            "schema:alternateName": "centerofmass_x/y/z",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/FLOPO_0015519"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_minimum_covering_sphere_radius",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed minimum covering sphere radius",
+            "rdfs:comment": "Minimum covering sphere",
+            "schema:alternateName": "mcs_radius"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_minimum_covering_sphere_center_x/y/z",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed minimum covering sphere center X/Y/Z",
+            "rdfs:comment": "Center position of the minimum covering sphere within the volume in x/y/z (in pixel)",
+            "schema:alternateName": "mcs_center_X/Y/Z"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_ratio_surface_to_blob_voxel",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed ratio surface to blob voxel",
+            "rdfs:comment": "Ratio between the surface and the volume of the seed (surface area to volume ratio)",
+            "schema:alternateName": "ratiosurfacetoblobvoxel"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_length",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed length",
+            "rdfs:comment": "Length (mm) of individual seeds",
+            "schema:alternateName": "seedlength_mm",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000146"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed weight",
+            "rdfs:comment": "Weight of the seed in g (calculated by mass_correction_factor; mass_correction factor=mean value of actual weight/mean value of seed weight in g) (seed weight)",
+            "schema:alternateName": "seedweight_g",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000181"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_volume",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed volume",
+            "rdfs:comment": "Volume of the seed",
+            "schema:alternateName": "seedvolume_mm3",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0007000"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_structural_similarity",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed structural similarity",
+            "rdfs:comment": "Structural similarity of the seed.  0 - not similar to the seed class at all. 1 - identical with the seed class",
+            "schema:alternateName": "ssim"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/seed_class",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed class",
+            "rdfs:comment": "Classification of the seed class 0=big, 1=medium, 2=small, 3=very small",
+            "schema:alternateName": "seedclass"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_number",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed number",
+            "rdfs:comment": "Total number of seeds on this spike",
+            "schema:alternateName": "seednumber"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_weight_total",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight total",
+            "rdfs:comment": "Total weight of seeds",
+            "schema:alternateName": "seedweight_total(g)",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000181"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_weight_average",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight average",
+            "rdfs:comment": "Average of seed weight on this spike",
+            "schema:alternateName": "seedweight_ave(g)",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000181"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_weight_average_standard_deviation",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight average standard deviation",
+            "rdfs:comment": "Standard deviation of Seedqweight_ave",
+            "schema:alternateName": "seedweight_avesd",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000181"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_length",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed length",
+            "rdfs:comment": "Average length of seeds on this spike",
+            "schema:alternateName": "seedlength(mm)",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000146"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_length_standard_deviation",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed length standard deviation",
+            "rdfs:comment": "Standard deviation of SeedLength_(mm)",
+            "schema:alternateName": "seedlength_sd",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000146"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_cat_radius",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike CAT radius",
+            "rdfs:comment": "The radius of the Circle that has the same Area as the seed maximum Transverse section",
+            "schema:alternateName": "cat_radius(mm)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_cat_radius_standard_deviation",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike CAT radius standard deviation",
+            "rdfs:comment": "Standard deviation of Circle that has the same Area as the seed maximum Transverse section radius(mm)",
+            "schema:alternateName": "cat_rsd"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_size",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed size",
+            "rdfs:comment": "Averge seed size in mm3",
+            "schema:alternateName": "seedsize(mm3)",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0000391"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_size_standard_deviation",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed size standard deviation",
+            "rdfs:comment": "Standard deviation of Seed size",
+            "schema:alternateName": "seedsize_sd",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000391"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_surface_area",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed surface area",
+            "rdfs:comment": "Average seed surface area (mm2)",
+            "schema:alternateName": "surfacearea(mm2)",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0002741"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_surface_area_standard_deviation",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed surface area standard deviation",
+            "rdfs:comment": "Standard deviation of Surface area",
+            "schema:alternateName": "surfacearea_sd",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0002741"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ratio_surface_to_volume",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ratio surface to volume",
+            "rdfs:comment": "The ratio of surface area to seed size in volex",
+            "schema:alternateName": "ratiosurfacetovolume"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_mean_gray_value",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed mean gray value",
+            "rdfs:comment": "Average gray value of the seeds on this spike, correlate to seed density. High MeanGrayValue = high seed density",
+            "schema:alternateName": "meangrayvalue(hu)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_mean_gray_value_standard_deviation",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed mean gray value standard deviation",
+            "rdfs:comment": "Standard deviation of Mean Gray Value",
+            "schema:alternateName": "meangrayvalue_sd"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_x",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear X",
+            "rdfs:comment": "Distance between the furthest apart seeds on X axis",
+            "schema:alternateName": "ear_X(mm)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_y",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear Y",
+            "rdfs:comment": "Distance between the furthest apart seeds on Y axis",
+            "schema:alternateName": "ear_Y(mm)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_z",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear Z",
+            "rdfs:comment": "Distance between the furthest apart seeds on Z axis",
+            "schema:alternateName": "ear_Z(mm)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_ear_length",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear length",
+            "rdfs:comment": "Longest distance between seeds base on their spatial positions",
+            "schema:alternateName": "earlength(mm)",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0000431"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/spike_seed_class_percentage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed class percentage",
+            "rdfs:comment": "The percentage of grains classified as Seed Class 0, 1, 2, 3 on this spike. See \"output_ears_raw\" tab for examples of different seed classes. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/shoot_fresh_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot fresh weight",
+            "rdfs:comment": "The total weight of shoots per plant",
+            "schema:alternateName": "fresh shoot weight",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000571"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/shoot_dry_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot dry weight",
+            "rdfs:comment": "The total weight shoots after drying",
+            "schema:alternateName": "dry shoot weight",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000552"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/root_fresh_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root fresh weight",
+            "rdfs:comment": "The total weight of roots",
+            "schema:alternateName": "fresh root weight",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000578"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/root_dry_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root dry weight",
+            "rdfs:comment": "The total weight of roots after drying",
+            "schema:alternateName": "dry root weight",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000078"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/total_fresh_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total fresh weight",
+            "rdfs:comment": "The total weight of shoots and roots",
+            "schema:alternateName": "total biomass"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/total_dry_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total dry weight",
+            "rdfs:comment": "The total weight of shoots and roots after drying",
+            "schema:alternateName": "total above and below ground dry weight "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/harvest_index",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "harvest index",
+            "rdfs:comment": "Ratio of grain yield to aboveground fresh or dry biomass",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000128"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/soil_nitrate_concentration",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil nitrate concentration",
+            "rdfs:comment": "Soil nitrogen concentration (mg/g) attributable to nitrate",
+            "schema:alternateName": "soil NO3",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/ENVO_09200007"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/soil_ammonia_concentration",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil ammonia concentration",
+            "rdfs:comment": "Soil nitrogen concentration (mg/g) attributable to ammonia",
+            "schema:alternateName": "soil NH4"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/soil_nitrogen_concentration",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil nitrogen concentration",
+            "rdfs:comment": "The sum of the soil NO3 and NH4 concentrations (mg/g)",
+            "schema:alternateName": "total soil N concentration",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/ENVO_09000017"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/projected_shoot_area",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "projected shoot area ",
+            "rdfs:comment": "The projected shoot area of a plant",
+            "schema:alternateName": "PSA"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/absolute_projected_shoot_area_growth_rates",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates",
+            "rdfs:comment": "The absolute projected shoot area growth rates (kpixels / day)",
+            "schema:alternateName": "absolute PSA growth rates"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/relative_projected_shoot_area_growth_rates",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rates",
+            "rdfs:comment": "The relative projected shoot area growth rates (per day)",
+            "schema:alternateName": "relative PSA growth rate"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/daily_water_use",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "daily water use",
+            "rdfs:comment": "The daily plant water use"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/total_water_use",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total water use",
+            "rdfs:comment": "Defined for each plant as the sum of all daily water use values"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/water_use_index",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "water use index",
+            "rdfs:comment": "Water use index of the plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/smoothed_projected_shoot_area",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smoothed projected shoot area",
+            "rdfs:comment": "The smoothed projected shoot area",
+            "schema:alternateName": "sPSA"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/absolute_smoothed_projected_shoot_area_growth_rates",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates",
+            "rdfs:comment": "The absolute projected shoot area growth rates (kpixels / day)",
+            "schema:alternateName": "absolute smoothed PSA growth rates"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/relative_smoothed_projected_shoot_area_growth_rate",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate",
+            "rdfs:comment": "The relative projected shoot area growth rates (day)",
+            "schema:alternateName": "relative smoothed PSA growth rate"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/projected_shoot_area_for_a_single_time_point",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "projected shoot area for a single time point",
+            "rdfs:comment": "The projected shoot area for a single time point"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/absolute_projected_shoot_area_growth_rates_for_a_single_time_point",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates for a single time point",
+            "rdfs:comment": "The absolute  projected shoot area growth rates for a single time point",
+            "schema:alternateName": "absolute PSA growth rates for a single time point"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/relative_projected_shoot_area_growth_rate_for_a_single_time_point",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rate for a single time point",
+            "rdfs:comment": "The relative projected shoot area growth rates for a single time point",
+            "schema:alternateName": "relative PSA growth rate for a single time point"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/absolute_projected_shoot_area_growth_rates_over_a_time_interval",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates over a time interval",
+            "rdfs:comment": "The absolute projected shoot area growth rates over a time interval",
+            "schema:alternateName": "absolute PSA growth rates over a time interval"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/relative_projected_shoot_area_growth_rate_over_a_time_interval",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rate over a time interval",
+            "rdfs:comment": "The relative projected shoot area growth rates over a time interval",
+            "schema:alternateName": "relative PSA growth rate over a time interval"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/smoothed_projected_shoot_area_for_a_single_time_point",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smoothed projected shoot area for a single time point",
+            "rdfs:comment": "The smoothed projected shoot area for a single time point"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/absolute_smoothed_projected_shoot_area_growth_rates_for_a_single_time_point",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates for a single time point",
+            "rdfs:comment": "The absolute smoothed projected shoot area growth rates for a single time point",
+            "schema:alternateName": "absolute smoothed PSA growth rates for a single time point"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/relative_smoothed_projected_shoot_area_growth_rate_for_a_single_time_point",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate for a single time point",
+            "rdfs:comment": "The relative smoothed projected shoot area growth rates for a single time point",
+            "schema:alternateName": "relative smoothed PSA growth rate for a single time point"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/absolute_smoothed_projected_shoot_area_growth_rates_over_a_time_interval",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates over a time interval",
+            "rdfs:comment": "The absolute smoothed projected shoot area growth rates over a time interval",
+            "schema:alternateName": "absolute smoothed PSA growth rates over a time interval"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Trait/relative_smoothed_projected_shoot_area_growth_rate_over_a_time_interval",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate over a time interval",
+            "rdfs:comment": "The relative smoothed projected shoot area growth rates over a time interval",
+            "schema:alternateName": "relative smoothed PSA growth rate over a time interval"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_number_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed number_method",
+            "rdfs:comment": "Scanning seed number using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_attenuation_mean_value_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed attenuation mean value_method",
+            "rdfs:comment": "Scanning seed attenuation mean value using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_spherical_ratio_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio_method",
+            "rdfs:comment": "Scanning seed spherical ratio using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_spherical_ratio_spherical_radius_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio spherical radius_method",
+            "rdfs:comment": "Scanning seed spherical ratio spherical radius using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_spherical_ratio_sphere_minimum_covering_sphere_radius_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed spherical ratio sphere minimum covering sphere radius_method",
+            "rdfs:comment": "Scanning seed spherical ratio sphere MCS radius using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_density_mean_value_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed density mean value_method",
+            "rdfs:comment": "Scanning seed density mean value using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_center_of_mass_x/y/z_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed center of mass X/Y/Z_method",
+            "rdfs:comment": "Scanning seed center of mass X/Y/Z using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_minimum_covering_sphere_radius_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed minimum covering sphere radius_method",
+            "rdfs:comment": "Scanning seed MCS radius using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_minimum_covering_sphere_center_x/y/z_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed minimum covering sphere center X/Y/Z_method",
+            "rdfs:comment": "Scanning seed MCS center X/Y/Z using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_ratio_surface_to_blob_voxel_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed ratio surface to blob voxel_method",
+            "rdfs:comment": "Scanning seed ratio surface to blob voxel using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_length_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed length_method",
+            "rdfs:comment": "Scanning seed length using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed weight_method",
+            "rdfs:comment": "Scanning weight of the seed in g (calculated by mass_correction_factor; mass_correction factor=mean value of actual weight/mean value of seed weight in g from the .csv) (seed weight) using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_volume_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed volume_method",
+            "rdfs:comment": "Scanning volume of the seed using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_structural_similarity_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed structural similarity_method",
+            "rdfs:comment": "Scanning seed structural similarity using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/seed_class_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed class_method",
+            "rdfs:comment": "Scanning seed class using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_number_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed number_method",
+            "rdfs:comment": "Scanning spike sum of  seed weight recorded in grams using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_weight_total_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight total_method",
+            "rdfs:comment": "Scanning spike seed weight total using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_weight_average_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight average_method",
+            "rdfs:comment": "Scanning spike seed weight average using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_weight_average_standard_deviation_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed weight average standard deviation_method",
+            "rdfs:comment": "Scanning spike standard deviation of seed weight average using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_length_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed length_method",
+            "rdfs:comment": "Scanning spike seed length using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_length_standard_deviation_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed length standard deviation_method",
+            "rdfs:comment": "Scanning spike seed length standard deviation using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_cat_radius_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike CAT radius_method",
+            "rdfs:comment": "Scanning spike CAT radius using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_cat_radius_standard_deviation_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike CAT radius standard deviation_method",
+            "rdfs:comment": "Scanning spike CAT radius standard deviation using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_size_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed size_method",
+            "rdfs:comment": "Scanning spike seed size using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_size_standard_deviation_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed size standard deviation_method",
+            "rdfs:comment": "Scanning spike seed size standard deviation using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_surface_area_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed surface area_method",
+            "rdfs:comment": "Scanning spike seed surface area using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_surface_area_standard_deviation_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed surface area standard deviation_method",
+            "rdfs:comment": "Scanning spike seed surface area standard deviation using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ratio_surface_to_volume_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ratio surface to volume_method",
+            "rdfs:comment": "Scanning spike seed ratio surface to volume using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_mean_gray_value_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed mean gray value_method",
+            "rdfs:comment": "Scanning spike seed mean gray value using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_mean_gray_value_standard_deviation_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed mean gray value standard deviation_method",
+            "rdfs:comment": "Scanning spike seed mean gray value standard deviation using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_x_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear X_method",
+            "rdfs:comment": "Scanning spike seed ear X using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_y_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear Y_method",
+            "rdfs:comment": "Scanning spike seed ear Y using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_z_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear Z_method",
+            "rdfs:comment": "Scanning spike seed ear Z using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_ear_length_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed ear length_method",
+            "rdfs:comment": "Scanning spike seed ear length using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/spike_seed_class_percentage_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike seed class percentage_method",
+            "rdfs:comment": "Scanning spike seed class percentage using an X-ray CT scanner, at 220kV voltage and 6mA current, utilizing a 0.5mm copper filter for image acquisition at a resolution of 84µm. The specimen stage rotated 220 degrees with a rotation step increment of 0.15 degrees. Throughout the 7-minute scanning duration, 1500 projections were collected at an exposure time of 250 ms each. Correction and reconstruction were carried out using the Fraunhofer EZRT CTProcessingNet, following the approach described by Schmidt et al. (2020). Reconstructed 3D grey-scale volume, with a depth of 16 bits, was then segmented into 30 individual 3D volumes using the EarSTubesSegmentation algorithm. Spike, automatic wheat seed segmentation and measurements were conducted using the EarS algorithm. Spikelet information, including the number of spikelets per spike and the number of grains per spikelet, estimated using a method described by Zhou et al. (2021), with modifications implemented in a Python 3.0 environment."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/shoot_fresh_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot fresh weight_method",
+            "rdfs:comment": "Calculated as the total weight of the above ground plant material "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/shoot_dry_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot dry weight_method",
+            "rdfs:comment": "Calculated as the total weight of the dried above ground plant material "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/root_fresh_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root fresh weight_method",
+            "rdfs:comment": "Calculated as the total weight of below ground plant material "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/root_dry_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root dry weight_method",
+            "rdfs:comment": "Calculated as the total weight of the dried below ground plant material "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/total_fresh_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total fresh weight_method",
+            "rdfs:comment": "Calculated as the total weight of above and below ground plant material "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/total_dry_weight_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total dry weight_method",
+            "rdfs:comment": "Calculated as the total weight of dried above and below ground plant material "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/harvest_index_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "harvest index_method",
+            "rdfs:comment": "Calculated as ratio of Yield to Biomass"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/soil_nitrate_concentration_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil nitrate concentration_method",
+            "rdfs:comment": "Short method description including refs if available. Need to talk to Bettina about these."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/soil_ammonia_concentration_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil ammonia concentration_method",
+            "rdfs:comment": "Short method description including refs if available. Need to talk to Bettina about these."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/soil_nitrogen_concentration_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil nitrogen concentration_method",
+            "rdfs:comment": "Short method description including refs if available. Need to talk to Bettina about these."
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/projected_shoot_area__method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "projected shoot area _method",
+            "rdfs:comment": "Calculated as the sum of the number of plant pixels typically from 3 camera views (LemnaTec Scanalyzer 3D) comprising two side views and aview from above, described by Brien et al. (2020) (https://doi.org/10.1186/s13007-020-00577-6), employing the R package growthPheno (Brien, 2021c) http://cran.at.r-project.org/package=growthPheno)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/absolute_projected_shoot_area_growth_rates_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates_method",
+            "rdfs:comment": "The absolute PSA growth rates were calculated by differencing consecutive PSA values, and dividing by the time differences. (cross-reference traits - PSA 'Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/relative_projected_shoot_area_growth_rates_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rates_method",
+            "rdfs:comment": "The relative PSA growth rates were calculated by differencing consecutive ln(PSA) values, and dividing by the time differences. (cross-reference traits - PSA 'Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/daily_water_use_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "daily water use_method",
+            "rdfs:comment": "Daily water use (WUR mL/day) was computed for each pot using the Droughtspotter gravimetric platform (Droughtspotter, Phenospex, Heerlen, Netherlands) (https://phenospex.com/products/plant-phenotyping/drought-control-platform/)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/total_water_use_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "total water use_method",
+            "rdfs:comment": "Total Water Use (TWU) was defined for each plant as the sum of all daily WUR values (cross-reference Traits WUR - 'daily water use' [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/water_use_index_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "water use index_method",
+            "rdfs:comment": "Water Use Index (WUI kpixels/mL) was calculated as the ratio of sPSA 50 (proxy for final biomass) to TWU. Higher values of WUI correspond to higher water efficiency (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID], TWU Total Water Use [Trait ID]), biomass [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/smoothed_projected_shoot_area_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smoothed projected shoot area_method",
+            "rdfs:comment": "The smoothed PSA (sPSA kpixels) is calculated by smoothing the PSA using splines as described by Brien et al. (2020). (cross-reference traits - PSA 'Projected Shoot Area [Trait ID]), described by Brien et al. (2020) (https://doi.org/10.1186/s13007-020-00577-6), employing the R package growthPheno (Brien, 2021c) http://cran.at.r-project.org/package=growthPheno)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/absolute_smoothed_projected_shoot_area_growth_rates_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates_method",
+            "rdfs:comment": "The absolute sPSA growth rates were calculated by differencing consecutive sPSA values, respectively, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/relative_smoothed_projected_shoot_area_growth_rate_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate_method",
+            "rdfs:comment": "The relative sPSA growth rates were calculated by differencing consecutive ln(PSA) values, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/projected_shoot_area_for_a_single_time_point_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "projected shoot area for a single time point_method",
+            "rdfs:comment": "Calculated as the sum of the number of plant pixels from 3 camera views (LemnaTec Scanalyzer 3D) comprising two side views and aview from above, described by Brien et al. (2020) (https://doi.org/10.1186/s13007-020-00577-6), employing the R package growthPheno (Brien, 2021c) http://cran.at.r-project.org/package=growthPheno)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/absolute_projected_shoot_area_growth_rates_for_a_single_time_point_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates for a single time point_method",
+            "rdfs:comment": "The absolute PSA growth rates were calculated by differencing consecutive PSA values, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/relative_projected_shoot_area_growth_rate_for_a_single_time_point_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rate for a single time point_method",
+            "rdfs:comment": "The relative PSA growth rates were calculated by differencing consecutive ln(PSA) values, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/absolute_projected_shoot_area_growth_rates_over_a_time_interval_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute projected shoot area growth rates over a time interval_method",
+            "rdfs:comment": "The absolute PSA growth rates were calculated by differencing PSA values at two different time points, t1 and t2, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/relative_projected_shoot_area_growth_rate_over_a_time_interval_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative projected shoot area growth rate over a time interval_method",
+            "rdfs:comment": "The relative PSA growth rates were calculated by differencing ln(PSA) values at two different time points, t1 and t2, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/smoothed_projected_shoot_area_for_a_single_time_point_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smoothed projected shoot area for a single time point_method",
+            "rdfs:comment": "The smoothed PSA (sPSA) is calculated by smoothing the PSA using splines as described by Brien et al. (2020). (cross-reference traits - PSA 'Projected Shoot Area [Trait ID]), described by Brien et al. (2020) (https://doi.org/10.1186/s13007-020-00577-6), employing the R package growthPheno (Brien, 2021c) http://cran.at.r-project.org/package=growthPheno)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/absolute_smoothed_projected_shoot_area_growth_rates_for_a_single_time_point_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates for a single time point_method",
+            "rdfs:comment": "The absolute sPSA growth rates were calculated by differencing consecutive sPSA values and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/relative_smoothed_projected_shoot_area_growth_rate_for_a_single_time_point_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate for a single time point_method",
+            "rdfs:comment": "The relative sPSA growth rates were calculated by differencing consecutive ln(sPSA) values, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/absolute_smoothed_projected_shoot_area_growth_rates_over_a_time_interval_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "absolute smoothed projected shoot area growth rates over a time interval_method",
+            "rdfs:comment": "The absolute sPSA growth rates were calculated by differencing sPSA values at two different time points, t1 and t2, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Method/relative_smoothed_projected_shoot_area_growth_rate_over_a_time_interval_method",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "relative smoothed projected shoot area growth rate over a time interval_method",
+            "rdfs:comment": "The relative sPSA growth rates were calculated by differencing ln(sPSA) values at two different time points, t1 and t2, and dividing by the time differences. (cross-reference traits - sPSA 'smoothed Projected Shoot Area [Trait ID])"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/barley",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "barley"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalMaterial/wheat",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "wheat"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/seed",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "seed"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/spike",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "spike"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/ear",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "ear"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/shoot",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "shoot"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/root",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "root"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/plant",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "plant"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/BiologicalUnitType/soil",
+            "@type": "BiologicalUnitType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "soil"
+        }
+    ]
+}

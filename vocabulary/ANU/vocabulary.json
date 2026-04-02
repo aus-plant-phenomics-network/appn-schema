@@ -1,0 +1,1891 @@
+{
+    "@context": {
+        "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "https://schema.org/",
+        "skos": "http://www.w3.org/2004/02/skos/core#"
+    },
+    "@graph": [
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_1",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG20",
+            "schema:serialNumber": "80204.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_2",
+            "rdfs:comment": "Reach-in growth chambers single tier Ultra Low Temperature",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG20",
+            "schema:serialNumber": "80208.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_3",
+            "rdfs:comment": "Reach-in growth chambers single tier Ultra Low Temperature",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG20",
+            "schema:serialNumber": "80207.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_4",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "200068.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_5",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG20",
+            "schema:serialNumber": "80198.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_6",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG20",
+            "schema:serialNumber": "100201.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_7",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_7",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "240279.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_8",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_8",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "240276.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_9",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_9",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "240280.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_10",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_10",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "240275.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_11",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_11",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "240277.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_12",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_12",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "240278.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_13",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_13",
+            "rdfs:comment": "Reach-in growth chambers multi tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "100187.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_14",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_14",
+            "rdfs:comment": "Reach-in growth chambers multi tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "ATC60",
+            "schema:serialNumber": "100197.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_15",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_15",
+            "rdfs:comment": "Reach-in growth chambers multi tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "ATC60",
+            "schema:serialNumber": "100196.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_16",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_16",
+            "rdfs:comment": "Reach-in growth chambers multi tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "ATC60",
+            "schema:serialNumber": "100194.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_17",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_17",
+            "rdfs:comment": "Reach-in growth chambers multi tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "ATC60",
+            "schema:serialNumber": "100188.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_18",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_18",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "ATC60",
+            "schema:serialNumber": "100192.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_19",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_19",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "160131.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_20",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_20",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "100130.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_21",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_21",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "160132.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_22",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_22",
+            "rdfs:comment": "Reach-in growth chambers Flex tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "250146.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_23",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_23",
+            "rdfs:comment": "Reach-in growth chambers Flex tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "250149.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_24",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_24",
+            "rdfs:comment": "Reach-in growth chambers Flex tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "250147.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_25",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_25",
+            "rdfs:comment": "Reach-in growth chambers Flex tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "250148.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_26",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_26",
+            "rdfs:comment": "Reach-in growth chambers Flex tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "250145.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_33",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_33",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "Adaptis A1000",
+            "schema:serialNumber": "110413.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_34",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_34",
+            "rdfs:comment": "Reach-in growth chambers single tier",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "Adaptis A1000",
+            "schema:serialNumber": "110412.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_35",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_35",
+            "rdfs:comment": "Reach-in growth chambers single tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "130141.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_36",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_36",
+            "rdfs:comment": "Reach-in growth chambers single tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "130140.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/pgf_37",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "PGF_37",
+            "rdfs:comment": "Reach-in growth chambers single tier LED",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "schema:brand": "Conviron",
+            "schema:model": "PCG-Flex",
+            "schema:serialNumber": "130142.0",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_1a",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_1A",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_1b",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_1B",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_2a",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_2A",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_2b",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_2B",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_3a",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_3A",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_3b",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_3B",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_4a",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_4A",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/capsule_4b",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Capsule_4B",
+            "rdfs:comment": "Walk-in outdoor chamber",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "schema:brand": "Photon Systems Instrument",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/eucalyptus_gh1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Eucalyptus GH1",
+            "rdfs:comment": "Glasshouse AC",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/eucalyptus_gh2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Eucalyptus GH2",
+            "rdfs:comment": "Glasshouse AC",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/eucalyptus_gh3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Eucalyptus GH3",
+            "rdfs:comment": "Glasshouse AC",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/eucalyptus_gh4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Eucalyptus GH4",
+            "rdfs:comment": "Glasshouse AC",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/eucalyptus_gh5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Eucalyptus GH5",
+            "rdfs:comment": "Glasshouse AC",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/eucalyptus_gh6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Eucalyptus GH6",
+            "rdfs:comment": "Glasshouse AC",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH1",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH2",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH3",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH4",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH5",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH6",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh7",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia_GH7",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh8",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH8",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/darwinia_gh9",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Darwinia GH9",
+            "rdfs:comment": "Glasshouse Evaporative Cooling",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "appn:containmentLevel": "PC1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box001",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box001",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box002",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box002",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box003",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box003",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box004",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box004",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box005",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box005",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box006",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box006",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box007",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box007",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box008",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box008",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box009",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box009",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box010",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box010",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box011",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box011",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box012",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box012",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box013",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box013",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box014",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box014",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box015",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box015",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box016",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box016",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box017",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box017",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box018",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box018",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box019",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box019",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box020",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box020",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box021",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box021",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box022",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box022",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box023",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box023",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box024",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box024",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box025",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box025",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box026",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box026",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box027",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box027",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box028",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box028",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box029",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box029",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box030",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box030",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box031",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box031",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box032",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box032",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box033",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box033",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box034",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box034",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box035",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box035",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box036",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box036",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box037",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box037",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box038",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box038",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box039",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box039",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box040",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box040",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box041",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box041",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box042",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box042",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box043",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box043",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box044",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box044",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box045",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box045",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box046",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box046",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box047",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box047",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box048",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box048",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box049",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box049",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box050",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box050",
+            "rdfs:comment": "Small rhizobox with dimensions 50 x 60 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box051",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box051",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box052",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box052",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box053",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box053",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box054",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box054",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box055",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box055",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box056",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box056",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box057",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box057",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box058",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box058",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box059",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box059",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box060",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box060",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box061",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box061",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box062",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box062",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box063",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box063",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box064",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box064",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box065",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box065",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box066",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box066",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box067",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box067",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box068",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box068",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box069",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box069",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box070",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box070",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box071",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box071",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box072",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box072",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box073",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box073",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box074",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box074",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box075",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box075",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box076",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box076",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box077",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box077",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box078",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box078",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box079",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box079",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box080",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box080",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box081",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box081",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box082",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box082",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box083",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box083",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box084",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box084",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box085",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box085",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box086",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box086",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box087",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box087",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box088",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box088",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box089",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box089",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box090",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box090",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box091",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box091",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box092",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box092",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box093",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box093",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box094",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box094",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box095",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box095",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box096",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box096",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box097",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box097",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box098",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box098",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box099",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box099",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box100",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box100",
+            "rdfs:comment": "Large rhizobox with dimensions 50 x 120 x 2 cm (WxHxD)",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box101",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box101",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box102",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box102",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box103",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box103",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box104",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box104",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box105",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box105",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box106",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box106",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box107",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box107",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box108",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box108",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box109",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box109",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box110",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box110",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box111",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box111",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box112",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box112",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box113",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box113",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box114",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box114",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box115",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box115",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box116",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box116",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box117",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box117",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box118",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box118",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box119",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box119",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box120",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box120",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box121",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box121",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box122",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box122",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box123",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box123",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box124",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box124",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box125",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box125",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box126",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box126",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box127",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box127",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box128",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box128",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box129",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box129",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box130",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box130",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box131",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box131",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box132",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box132",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box133",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box133",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box134",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box134",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box135",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box135",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box136",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box136",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box137",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box137",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box138",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box138",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box139",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box139",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box140",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box140",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box141",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box141",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box142",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box142",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box143",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box143",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box144",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box144",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box145",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box145",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box146",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box146",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box147",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box147",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box148",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box148",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box149",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box149",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacility/box150",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Box150",
+            "rdfs:comment": "Dual mini rhizobox",
+            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/reach-in_growth_cabinet",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "reach-in growth cabinet"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/outdoor_walk-in_growth_chamber",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Outdoor Walk-in growth chamber"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/glasshouse",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "glasshouse "
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/GrowthFacilityType/rhizobox",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "rhizobox"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/Platform/rhizobox_camera_dolly",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Rhizobox_Camera_Dolly",
+            "rdfs:comment": "Manually moved dolly to hold a camera and large or small rhizobox (but not mini)",
+            "appn:hasPlatformType": "https://id.plantphenomics.org.au/ANU/PlatformType/manual_trolley",
+            "schema:brand": "N/A (built in house)"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/Platform/dji_mavic_3m",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "DJI_Mavic_3M",
+            "rdfs:comment": "DJI Mavic 3 Multispectral",
+            "appn:hasPlatformType": "https://id.plantphenomics.org.au/ANU/PlatformType/drone",
+            "schema:brand": "DJI",
+            "schema:model": "Mavic 3 Multispectral"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/PlatformType/manual_trolley",
+            "@type": "PlatformType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Manual trolley"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/PlatformType/drone",
+            "@type": "PlatformType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Drone"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/Sensor/canon_r5",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Canon_R5",
+            "rdfs:comment": "Full-frame CMOS Sensor; 45 MP",
+            "appn:hasSensorType": "https://id.plantphenomics.org.au/ANU/SensorType/rgb_camera",
+            "schema:brand": "Canon",
+            "schema:model": "Canon EOS R5"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/Sensor/dji_m3m",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "DJI_M3M",
+            "rdfs:comment": "RGB: Hasselblad 20MP, 4/3 CMOS\nMultispectral: 1/2.8-inch CMOS, effective pixels: 5 MP (wavelengths: 560, 650, 730, 860 nm)",
+            "appn:hasSensorType": "https://id.plantphenomics.org.au/ANU/SensorType/rgb_multispectral_camera",
+            "schema:brand": "DJI",
+            "schema:model": "Mavic 3 Multispectral"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/SensorType/rgb_camera",
+            "@type": "SensorType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "RGB camera"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/SensorType/rgb_multispectral_camera",
+            "@type": "SensorType",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "RGB + multispectral camera"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/ANU/Deployment/rhizobox_camera_dolly-canon_r5",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/019wvm592",
+            "rdfs:label": "Rhizobox_Camera_Dolly-Canon_R5"
+        }
+    ]
+}

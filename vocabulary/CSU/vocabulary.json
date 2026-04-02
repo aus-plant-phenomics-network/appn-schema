@@ -1,0 +1,123 @@
+{
+    "@context": {
+        "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "https://schema.org/",
+        "skos": "http://www.w3.org/2004/02/skos/core#"
+    },
+    "@graph": [
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/GrowthFacility/core_1__depth1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "core 1_ depth1_"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/GrowthFacility/core_1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "core 1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Platform/m3m_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "M3M_1",
+            "rdfs:comment": "DJI Mavic 3 Multispectral ",
+            "schema:model": "Mavic 3 Multispectral",
+            "schema:serialNumber": "1587F5FKD238100DE9F6",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/platform"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Platform/m350_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "M350_1",
+            "rdfs:comment": "DJI Matrice 350 RTK",
+            "schema:model": "M 350 RTK",
+            "schema:serialNumber": "1581F6GKB24850040D2L",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/platform"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Platform/if1200_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "IF1200_1",
+            "rdfs:comment": "Inspired Flight IF1200 Heavy-Lift Hexacopter",
+            "schema:model": "IF1200",
+            "schema:serialNumber": "1791553629",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/platform"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Sensor/m3m_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "M3M_1",
+            "rdfs:comment": "RGB: Hasselblad 20MP, 4/3 CMOS\nMultispectral: 1/2.8-inch CMOS, effective pixels: 5 MP (wavelengths: 560, 650, 730, 860 nm)",
+            "schema:model": "Mavic 3 Multispectral",
+            "schema:serialNumber": "1587F5FKD238100DE9F6",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/sensor"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Sensor/gobi_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "GOBI_1",
+            "rdfs:comment": "RGB: Sony ILX-LR1 61MP\nHyperspectral: Headwall Nano HP (400-1000nm)\nLiDAR: Ouster OS1VLP16",
+            "schema:model": "GOBI",
+            "schema:serialNumber": "2404",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/sensor"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Sensor/hires_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "HIRES_1",
+            "rdfs:comment": "PhaseOne 120Mp RGB Camera",
+            "schema:model": "iXM GS-120",
+            "schema:serialNumber": "MC030156",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/sensor"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Sensor/calvis_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "CALVIS_1",
+            "rdfs:comment": "Hyperspectral: Headwall Co-Aligned VNIR-SWIR (400-2500nm), LiDAR: Velodyne",
+            "schema:model": "CALVIS",
+            "schema:serialNumber": "caHP-192",
+            "skos:closeMatch": "http://www.w3.org/ns/sosa/sensor"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Deployment/m3m_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "M3M_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Deployment/m350_1_gobi_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "M350_1_GOBI_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Deployment/if1200_1_gobi_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "IF1200_1_GOBI_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Deployment/m350_1_hires_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "M350_1_HIRES_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/CSU/Deployment/if1200_1_calvis_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/00wfvh315 ",
+            "rdfs:label": "IF1200_1_CALVIS_1"
+        }
+    ]
+}
