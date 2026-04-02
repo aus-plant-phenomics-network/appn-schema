@@ -388,15 +388,24 @@ def format_html(
 
     # This assumes objects are sorted by type. Otherwise some headings will repeat.
     with open(html_path, "w") as html_file:
-        graph = json["@graph"]
         indent = write_html(html_file, "<html>")
         indent = write_html(html_file, "<head>", indent)
+        indent = write_html(html_file, '<meta charset="UTF-8"/>', indent)
+        indent = write_html(
+            html_file,
+            '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>',
+            indent,
+        )
         indent = write_html(html_file, f"<title>APPN {node} vocabulary</title>", indent)
+        indent = write_html(
+            html_file, '<link rel="stylesheet" href="/css/style.css"/>', indent
+        )
         indent = write_html(html_file, "</head>", indent)
         indent = write_html(html_file, "<body>", indent)
         indent = write_html(html_file, f"<h1>APPN {node} vocabulary</h1>", indent)
+
         current_class = ""
-        for node in graph:
+        for node in json["@graph"]:
             if "@type" in node and node["@type"] != current_class:  # type: ignore
                 indent = write_html(html_file, f"<h2>{node['@type']}</h2>", indent)  # type: ignore
                 current_class = node["@type"]  # type: ignore
@@ -414,6 +423,7 @@ def format_html(
                         indent,
                     )
             indent = write_html(html_file, f"</dl>", indent)
+
         indent = write_html(html_file, "</body>", indent)
         indent = write_html(html_file, "</html>", indent)
 
