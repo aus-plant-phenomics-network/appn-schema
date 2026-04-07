@@ -361,13 +361,13 @@ appn:hasGrowthFacilityType a rdf:Property ;
 appn:containmentLevel a rdf:Property ;
   rdfs:label "containmentLevel" ; 
   rdfs:comment "Provides the containment level for a GrowthFacility." ;
-  schema:domainIncludes appn:GrowthFacility ;
+  schema:domainIncludes appn:GrowthFacility .
 
 # COMMENT: Needs a range.
 appn:quarantine a rdf:Property ;
   rdfs:label "quarantine" ; 
   rdfs:comment "Indicates if a GrowthFacility is for quarantine." ;
-  schema:domainIncludes appn:GrowthFacility ;
+  schema:domainIncludes appn:GrowthFacility .
 
 appn:hasBiologicalUnitType a rdf:Property ;
   rdfs:label "hasBiologicalUnitType" ; 
