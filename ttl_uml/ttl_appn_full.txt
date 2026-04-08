@@ -1,99 +1,99 @@
 @startuml
-class ResearchActivity
-class Investigation
-class Study
-class Assay
-class Method
-class Observation
-class Control
-class Sampling
-class Treatment
-class ObservationUnit
-class Trait
-class Scale
-class Variable
-class ObservedVariable
-class ControlledVariable
-class SubstanceQuantity
-class Observer
-class Controller
-class Sampler
-class Sensor
-class SensorType
 class Actuator
-class ExternalEvent
-class Person
-class SoftwareApplication
-class Sample
+class Assay
+class BiologicalMaterial
 class BiologicalUnit
-class Substance
-class Platform
-class PlatformType
+class BiologicalUnitType
+class Control
+class ControlledVariable
+class Controller
 class Deployment
+class ExternalEvent
 class GrowthFacility
 class GrowthFacilityType
-class BiologicalUnitType
-class BiologicalMaterial
-class MaterialSource
+class Investigation
 class Location
+class MaterialSource
+class Method
+class Observation
+class ObservationUnit
+class ObservedVariable
+class Observer
+class Person
+class Platform
+class PlatformType
+class ResearchActivity
+class Sample
+class Sampler
+class Sampling
+class Scale
+class Sensor
+class SensorType
+class SoftwareApplication
 class SpatialLocation
+class Study
+class Substance
+class SubstanceQuantity
+class Trait
+class Treatment
+class Variable
 class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
-    class "schema:HowTo" #DDFFDD
-    class "schema:Observation" #DDFFDD
-    class "schema:Thing" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
-    class "schema:InstanceValue" #DDFFDD
-    class "schema:IndividualProduct" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
+    class "schema:HowTo" #DDFFDD
+    class "schema:IndividualProduct" #DDFFDD
+    class "schema:InstanceValue" #DDFFDD
+    class "schema:Observation" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Place" #DDFFDD
+    class "schema:Thing" #DDFFDD
 }
 package "prov" {
     class "prov:Activity" #DDDDFF
-    class "prov:Plan" #DDDDFF
     class "prov:Entity" #DDDDFF
+    class "prov:Plan" #DDDDFF
 }
 package "ppeo" {
+    class "ppeo:biological_material" #EEFFCC
+    class "ppeo:event" #EEFFCC
+    class "ppeo:growth_facility" #EEFFCC
     class "ppeo:investigation" #EEFFCC
-    class "ppeo:study" #EEFFCC
+    class "ppeo:material_source" #EEFFCC
     class "ppeo:method" #EEFFCC
     class "ppeo:observation" #EEFFCC
-    class "ppeo:event" #EEFFCC
     class "ppeo:observation_unit" #EEFFCC
-    class "ppeo:trait" #EEFFCC
-    class "ppeo:scale" #EEFFCC
     class "ppeo:observed_variable" #EEFFCC
     class "ppeo:person" #EEFFCC
     class "ppeo:sample" #EEFFCC
-    class "ppeo:growth_facility" #EEFFCC
-    class "ppeo:biological_material" #EEFFCC
-    class "ppeo:material_source" #EEFFCC
+    class "ppeo:scale" #EEFFCC
     class "ppeo:spatial_distribution" #EEFFCC
+    class "ppeo:study" #EEFFCC
+    class "ppeo:trait" #EEFFCC
 }
 package "sosa" {
-    class "sosa:Execution" #FFCCEE
-    class "sosa:Procedure" #FFCCEE
-    class "sosa:FeatureOfInterest" #FFCCEE
-    class "sosa:Property" #FFCCEE
-    class "sosa:Sensor" #FFCCEE
     class "sosa:Actuator" #FFCCEE
-    class "sosa:Sampler" #FFCCEE
-    class "sosa:Sample" #FFCCEE
+    class "sosa:Execution" #FFCCEE
+    class "sosa:FeatureOfInterest" #FFCCEE
     class "sosa:Platform" #FFCCEE
+    class "sosa:Procedure" #FFCCEE
+    class "sosa:Property" #FFCCEE
+    class "sosa:Sample" #FFCCEE
+    class "sosa:Sampler" #FFCCEE
+    class "sosa:Sensor" #FFCCEE
 }
 package "cdi" {
     class "cdi:Concept" #CCEEFF
     class "cdi:RepresentedVariable" #CCEEFF
 }
 package "bio" {
+    class "bio:BioChemEntity" #EECCFF
+    class "bio:BioSample" #EECCFF
     class "bio:ComputationalWorkflow" #EECCFF
     class "bio:Substance" #EECCFF
-    class "bio:BioChemEntity" #EECCFF
     class "bio:Taxon" #EECCFF
-    class "bio:BioSample" #EECCFF
 }
 package "ssn" {
     class "ssn:Deployment" #FFEECC
