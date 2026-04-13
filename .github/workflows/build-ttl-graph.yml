@@ -43,8 +43,7 @@ jobs:
           # Check if the schema ttl file has changed           
           if diff -q appn-schema.ttl.new ../appn-schema.ttl >/dev/null 2>&1; then
             echo "no_changes=true" >> "$GITHUB_OUTPUT"
-            echo "No changes in TTL."
-            exit 1
+            echo "No changes in TTL."           
           else
             echo "no_changes=false" >> "$GITHUB_OUTPUT"
             echo "TTL changed."
@@ -87,7 +86,7 @@ jobs:
 
       # Optional: commit generated HTML back to repo (adjust path if using docs/)
       - name: Commit and push generated HTML
-        if: ${{ steps.checkchange.outputs.no_changes == 'false' &&  inputs.dry_run == 'false' }}
+        if: ${{ steps.checkchange.outputs.no_changes == 'false' &&  inputs.dry_run != 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
