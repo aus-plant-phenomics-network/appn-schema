@@ -8,96 +8,1032 @@
     },
     "@graph": [
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_101",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 101",
-            "rdfs:comment": "100sqm Glasshouse with fertigation, temp, humidity and supplemental LED lighting (Cool-White,Blue, Red, Far-Red) control, includes black out curtains to control photoperiod",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_glasshouse",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "plant",
+            "rdfs:comment": "An ObservationUnit comprising a plant",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_102",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 102",
-            "rdfs:comment": "100sqm Closed environment phenotyping room with fertigation, temp, humidity and LED lighting (Cool-White,Red, Far-Red)",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_room",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "leaf",
+            "rdfs:comment": "An ObservationUnit comprising a leaf",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_103",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 103",
-            "rdfs:comment": "100sqm Glasshouse with fertigation, temp, humidity and LED supplemental lighting (Cool-White,Blue, Red, Far-Red) control, includes black out curtains to control photoperiod",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_glasshouse",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "branch",
+            "rdfs:comment": "An ObservationUnit comprising a branch",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_104",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/canopy",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 104",
-            "rdfs:comment": "100sqm Glasshouse with fertigation, temp, humidity and supplemental LED lighting (Cool-White,Blue, Red, Far-Red) control",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_glasshouse",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "canopy",
+            "rdfs:comment": "An ObservationUnit comprising a canopy",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_105",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/stem",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 105",
-            "rdfs:comment": "100sqm Closed environment phenotyping room with fertigation, temp, humidity and LED lighting (Cool-White,Blue, Red, Far-Red)",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_room",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "stem",
+            "rdfs:comment": "An ObservationUnit comprising a stem",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_106",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 106",
-            "rdfs:comment": "100sqm Glasshouse with fertigation, temp, humidity and supplemental LED lighting (Cool-White,Blue, Red, Far-Red) control",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_glasshouse",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "shoot",
+            "rdfs:comment": "An ObservationUnit comprising a shoot",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/rd4a_compartment_107",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/flower",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "RD4A Compartment 107",
-            "rdfs:comment": "30sqm Glasshouse with fertigation, temp, humidity and supplemental LED lighting (Cool-White,Blue, Red, Far-Red) control",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_glasshouse",
-            "schema:brand": "Fertigation, Temp, Humidity: PRIVA, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "flower",
+            "rdfs:comment": "An ObservationUnit comprising a flower",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacility/agriobio_cer_4.07",
-            "@type": "GrowthFacility",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "AgrioBio CER 4.07",
-            "rdfs:comment": "30sqm Closed environment phenotyping room with temp, humidity and LED lighting (Cool-White,Red, Far-Red)",
-            "appn:hasGrowthFacilityType": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_room",
-            "schema:brand": "Temp, Humidity: AgriBio, LEDs: PSI",
-            "appn:containmentLevel": "Normal / Can be PC2"
+            "rdfs:label": "fruit",
+            "rdfs:comment": "An ObservationUnit comprising a fruit",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_glasshouse",
-            "@type": "GrowthFacilityType",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/root",
+            "@type": "BiologicalUnitType",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "Controlled environment glasshouse"
+            "rdfs:label": "root",
+            "rdfs:comment": "An ObservationUnit comprising a root",
+            "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/GrowthFacilityType/controlled_environment_room",
-            "@type": "GrowthFacilityType",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "Controlled environment room"
+            "rdfs:label": "plant",
+            "rdfs:comment": "Plants are the eukaryotic organisms that constitute the kingdom Plantae.",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/Plantae",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/grain",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "grain",
+            "rdfs:comment": "Poaceae, also called Gramineae, is a large and nearly ubiquitous family of monocotyledonous flowering plants commonly known as true grasses.",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/Poaceae",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/wheat",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "wheat",
+            "rdfs:comment": "Wheat is a group of wild and domesticated grasses of the genus Triticum.",
+            "skos:exactMatch": "http://cavoc.org/cvo/ns/2/C2",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/Wheat",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/barley",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "barley",
+            "rdfs:comment": "Barley, a member of the grass family, is a major cereal grain grown in temperate climates globally.",
+            "skos:exactMatch": "http://cavoc.org/cvo/ns/2/C259",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/Barley",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/tomato",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "tomato",
+            "rdfs:comment": "The tomato is a plant whose fruit is an edible berry that is eaten as a vegetable.",
+            "skos:exactMatch": "http://cavoc.org/cvo/ns/2/C6",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/Tomato",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/cannabis",
+            "@type": "BiologicalMaterial",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "cannabis",
+            "rdfs:comment": "Cannabis sativa is an annual herbaceous flowering plant.",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/Cannabis_sativa",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/growth_stage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "growth stage",
+            "rdfs:comment": "Visual assessment of growth stage using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/overall_stature",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "overall stature",
+            "rdfs:comment": "Visual assessment of overall stature using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/fungal_gnats_leaf_damage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fungal gnats leaf damage",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/spider_mites_leaf_damage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "spider mites leaf damage",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/thrips_leaf_damage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "thrips leaf damage",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/whitefly_leaf_damage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "whitefly leaf damage",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/aphid_leaf_damage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "aphid leaf damage",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/insect_leaf_damage",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "insect leaf damage ",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/botrytis_cinerea_infection",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "botrytis cinerea infection",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/powdery_mildew_infection",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "powdery mildew infection",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/leaf_rust_infection",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf rust infection",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/fusarium_infection",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fusarium infection",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/fungal_infection",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fungal infection",
+            "rdfs:comment": "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/leaf_colour",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf colour",
+            "rdfs:comment": "Visual assessment of leaf colour using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/leaf_colour_gradient",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf colour gradient",
+            "rdfs:comment": "Visual assessment of leaf colour gradient using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/nitrogen_deficiency",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "nitrogen deficiency",
+            "rdfs:comment": "Visual assessment of nitrogen deficiency using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/phosphorus_deficiency",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "phosphorus deficiency",
+            "rdfs:comment": "Visual assessment of phosphorus deficiency using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/phosphorus_toxicity",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "phosphorus toxicity",
+            "rdfs:comment": "Visual assessment of phosphorus toxicity using scale categories",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/plant_height",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "plant height",
+            "rdfs:comment": "Height of the plant recorded with tape measure",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/average_branch_length",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "average branch length",
+            "rdfs:comment": "Average branch length recorded with tape measure",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/canopy_diameter",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "canopy diameter",
+            "rdfs:comment": "Canopy diameter recorded with tape measure",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/steam_diameter",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "steam diameter",
+            "rdfs:comment": "Steam diameter recorded with calipers",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/shoot_axis_internode_length",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "shoot axis internode length",
+            "rdfs:comment": "Internode length with tape measure",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/internode_count",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "internode count",
+            "rdfs:comment": "Physical count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/shoot_primary_branch_count",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "shoot primary branch count",
+            "rdfs:comment": "Physical count of branch number along the primary shoot axis, counting all nodes along the main stem from the base towards its tip",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/shoot_secondary_branch_count",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "shoot secondary branch count",
+            "rdfs:comment": "Physical count of secondary branch number (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/leaf_number",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf number",
+            "rdfs:comment": "Physical count of average number of leaf on a number of representative branches",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/flower_number_trait",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "flower number trait",
+            "rdfs:comment": "Physical count of all flowers on a plant",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/ripe_fruit_count",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "ripe fruit count",
+            "rdfs:comment": "Physical count of all ripe fruit on a plant",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/unripe_fruit_count",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "unripe fruit count",
+            "rdfs:comment": "Physical count of all unripe / green fruit on a plant",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/harvest_weight",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "harvest weight",
+            "rdfs:comment": "Weighing plant material immediately during harvest (fresh weight) or after oven drying to a specified residual moisture content (dry weight)",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/root_density",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "root density",
+            "rdfs:comment": "Visual assessment ",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/nutrient_content_result",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "nutrient content result",
+            "rdfs:comment": "Laboratory colorimetric assays",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/primary_metabolite_result",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "primary metabolite result",
+            "rdfs:comment": "Laboratory colorimetric assays",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/elemental_composition_result",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "elemental composition result",
+            "rdfs:comment": "Laboratory ICP-MS & CNS analyses",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/leaf_fluorescence",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf fluorescence",
+            "rdfs:comment": "Recordings from fluorescence camera/hand-held FluorPen",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/total_amount_of_carbon_fixed_by_plant/leaf",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "total amount of carbon fixed by plant/leaf",
+            "rdfs:comment": "LiCOR recordings",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Method/leaf_optical_property",
+            "@type": "Method",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf optical property",
+            "rdfs:comment": "Spectral, multi- and hyperspectral imaging data (www.indexdatabase.de)",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "integer",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "centimeter",
+            "schema:alternateName": "cm",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000015",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/millimeter",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "millimeter",
+            "schema:alternateName": "mm",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000016",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/gram",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "gram",
+            "schema:alternateName": "gram",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000021",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/growth_stage",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "growth stage",
+            "skos:relatedMatch": "https://en.wikipedia.org/wiki/BBCH-scale",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/overall_stature",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "overall stature",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fungal gnats leaf damage",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "spider mites leaf damage severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "thrips leaf damage severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "whitefly leaf damage severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "aphid leaf damage severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "insect leaf damage severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "botrytis cinerea infection severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "powdery mildew infection severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf rust infection severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fusarium infection severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fungal infection severity",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf colour",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf colour gradient",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "nitrogen deficiency colour",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "phosphorus deficiency colour",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "phosphorus toxicity colour",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/root_density",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "root density",
+            "schema:alternateName": "root architecture",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "micromoles per gram of fresh weight",
+            "schema:alternateName": "µmol g-1 FW",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf fluorescence",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/co2_uptake",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "CO2 uptake",
+            "schema:alternateName": "µmol CO2 consumed m-2 sec-1 (or g-1 FW h-1)",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_optical_property",
+            "@type": "Scale",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf optical property",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/growth_stage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "growth stage",
+            "rdfs:comment": "Plant phenological development stages described by the BBCH-scale. BBCH-scales have been developed for a range of crop species where similar growth stages of each plant are given the same code (doi:10.1111/j.1744-7348.1991.tb04895.x)",
+            "schema:alternateName": "developmental stage",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/PO_0007033",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/PPO_0000013",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/overall_stature",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "overall stature",
+            "rdfs:comment": "Overall plant phenotype meeting breeding objectives, e.g., compact, enhanced branching, determinate, indeterminate, etc",
+            "schema:alternateName": "plant growth habit",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0002756",
+                "http://purl.obolibrary.org/obo/TO_1000009"
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/fungal_gnats_leaf_damage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fungal gnats leaf damage",
+            "rdfs:comment": "Fungal gnats leaf damage determined by severity scale",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/spider_mites_leaf_damage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "spider mites leaf damage",
+            "rdfs:comment": "Spider mites leaf damage determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0020122",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/thrips_leaf_damage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "thrips leaf damage",
+            "rdfs:comment": "Thrip leaf damage determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000154",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/whitefly_leaf_damage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "whitefly leaf damage",
+            "rdfs:comment": "Whitefly leaf damage determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000261",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/aphid_leaf_damage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "aphid leaf damage",
+            "rdfs:comment": "Aphid leaf damage determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0006067",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/insect_leaf_damage",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "insect leaf damage ",
+            "rdfs:comment": "Insect leaf damage determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000261",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/botrytis_cinerea_infection",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "botrytis cinerea infection",
+            "rdfs:comment": "Botrytis cinerea infection determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000439",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/powdery_mildew_infection",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "powdery mildew infection",
+            "rdfs:comment": "Powdery mildew infection determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000439",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_rust_infection",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf rust infection",
+            "rdfs:comment": "Leaf rust infection determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000439",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/fusarium_infection",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fusarium infection",
+            "rdfs:comment": "Fusarium infection determined by severity scale",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000439",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/fungal_infection",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "fungal infection",
+            "rdfs:comment": "Fungal infection determined by severity scale",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf colour",
+            "rdfs:comment": "A leaf morphology trait which is the color of a leaf",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000326",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour_gradient",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf colour gradient",
+            "rdfs:comment": "Leaf colour differences between young mature and old leaves as indicators of leaf senescence",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0000326",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0012011",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/nitrogen_deficiency",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "nitrogen deficiency",
+            "rdfs:comment": "Plant species specific leaf symptoms that indicate nitrogen deficiency",
+            "schema:alternateName": "N_deficiency",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0020098",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_deficiency",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "phosphorus deficiency",
+            "rdfs:comment": "Plant species specific leaf symptoms that indicate phosphorus deficiency",
+            "schema:alternateName": "P_deficiency",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000102",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_toxicity",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "phosphorus toxicity",
+            "rdfs:comment": "Plant species specific leaf symptoms that indicate excess supply of phosphate",
+            "schema:alternateName": "P_toxicity",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0020112",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/plant_height",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "plant height",
+            "rdfs:comment": "A whole plant morphology trait which is the height of a whole plant",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000207",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/average_branch_length",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "average branch length",
+            "rdfs:comment": "Average branch length of all branches of a plant",
+            "schema:alternateName": "branch length",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0000576",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/canopy_diameter",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "canopy diameter",
+            "rdfs:comment": "Maximal canopy width as extension of longest branches",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0006062",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/steam_diameter",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "steam diameter ",
+            "rdfs:comment": "A stem morphology trait  which is the diameter of a stem. Refer to diameter: A length quality which is equal to the length of any straight line segment that passes through the center of a circle and whose endpoints are on the circular boundary.",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0020083",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/shoot_axis_internode_length",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "shoot axis internode length",
+            "rdfs:comment": "A shoot axis internode morphology trait which is the length of a shoot axis internode",
+            "schema:alternateName": "internode length",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000145",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/internode_count",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "internode count",
+            "rdfs:comment": "Internode count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip",
+            "schema:alternateName": "internode count",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0000634",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/shoot_primary_branch_count",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "shoot primary branch count",
+            "rdfs:comment": "Branch count along the primary shoot axis, counting all nodes along the main stem from the base towards its tip",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0002639",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/shoot_secondary_branch_count",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "shoot secondary branch count",
+            "rdfs:comment": "Secondary branch count (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip",
+            "skos:closeMatch": "http://purl.obolibrary.org/obo/TO_0020019",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_number",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf number",
+            "rdfs:comment": "Average leaf count on a number of representative branches",
+            "schema:alternateName": "leaf count",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0000241",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0000659",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/flower_number_trait",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "flower number trait",
+            "rdfs:comment": "An inflorescence morphology trait which is the number of flowers",
+            "schema:alternateName": "flower count",
+            "skos:exactMatch": "http://purl.obolibrary.org/obo/TO_0002736",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/ripe_fruit_count",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "ripe fruit count",
+            "rdfs:comment": "A simple fruit or compound fruit number that is in the fruit ripe stage",
+            "schema:alternateName": "ripe fruit count",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0002633",
+                "http://purl.obolibrary.org/obo/PPO_0001045"
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/unripe_fruit_count",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "unripe fruit count",
+            "rdfs:comment": "A simple fruit or compound fruit number that is in the fruit unripe stage",
+            "schema:alternateName": "unripe fruit count",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/harvest_weight",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "harvest weight",
+            "rdfs:comment": "Harvest dry weight of branch, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_leaf, oldest_leaf, mature_leaf, young_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, unripe fruit, ripe/fully mature fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0000352",
+                "http://purl.obolibrary.org/obo/TO_0000442",
+                "http://purl.obolibrary.org/obo/TO_0000078",
+                "http://purl.obolibrary.org/obo/TO_0000578",
+                "http://purl.obolibrary.org/obo/TO_0000552",
+                "http://purl.obolibrary.org/obo/TO_0000571",
+                "http://purl.obolibrary.org/obo/TO_0003001",
+                "http://purl.obolibrary.org/obo/TO_0003000",
+                "http://purl.obolibrary.org/obo/TO_0000181"
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/root_density",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "root density",
+            "rdfs:comment": "A qualitative root system classification",
+            "schema:alternateName": "root density",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0001042",
+                "http://purl.obolibrary.org/obo/TO_0001042",
+                "http://purl.obolibrary.org/obo/TO_0000065 ",
+                "http://purl.obolibrary.org/obo/TO_0001051",
+                "http://purl.obolibrary.org/obo/TO_0000306",
+                "http://purl.obolibrary.org/obo/TO_0001112",
+                "http://purl.obolibrary.org/obo/TO_0000084"
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/nutrient_content_result",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "nutrient content result",
+            "rdfs:comment": "Laboratory nutrient results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
+            "schema:alternateName": "lab nutrient content results",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0020102",
+                "http://purl.obolibrary.org/obo/TO_0020094"
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/primary_metabolite_result",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "primary metabolite result",
+            "rdfs:comment": "Laboratory metabolite results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
+            "schema:alternateName": "lab primary metabolite results",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0000696",
+                "http://purl.obolibrary.org/obo/TO_0000071",
+                "http://purl.obolibrary.org/obo/TO_0000496",
+                "http://purl.obolibrary.org/obo/TO_0000071",
+                "http://purl.obolibrary.org/obo/TO_0000598"
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/elemental_composition_result",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "elemental composition result",
+            "rdfs:comment": "Laboratory elemental composition results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
+            "schema:alternateName": "lab elemental composition results",
+            "skos:relatedMatch": [
+                "http://purl.obolibrary.org/obo/TO_0006045",
+                "http://purl.obolibrary.org/obo/TO_0000466",
+                "http://purl.obolibrary.org/obo/TO_0020089",
+                "http://purl.obolibrary.org/obo/TO_0020093 "
+            ],
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_fluorescence",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf fluorescence",
+            "rdfs:comment": "Leaf fluorescence data / parameters",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0012006",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/total_amount_of_carbon_fixed_by_plant/leaf",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "total amount of carbon fixed by plant/leaf",
+            "rdfs:comment": "Leaf carbon assimilation rate",
+            "skos:relatedMatch": "http://purl.obolibrary.org/obo/TO_0001015",
+            "dc:created": "Ricarda Jost"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_optical_property",
+            "@type": "Trait",
+            "schema:owner": "https://ror.org/01rxfrp27",
+            "rdfs:label": "leaf optical property",
+            "rdfs:comment": "A ratio of incoming light, which is reflected, absorbed or transmitted by a leaf",
+            "schema:alternateName": "leaf optical properties",
+            "dc:created": "Ricarda Jost"
         },
         {
             "@id": "https://id.plantphenomics.org.au/LTU/ObservedVariable/growth_stage",
@@ -105,9 +1041,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "growth stage",
             "rdfs:comment": "Plant phenological development stages described by the BBCH-scale. BBCH-scales have been developed for a range of crop species where similar growth stages of each plant are given the same code (doi:10.1111/j.1744-7348.1991.tb04895.x)",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/growth_stages_scale_0-9",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/growth_stage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/growth_stage",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/growth_stage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -116,9 +1054,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "overall stature",
             "rdfs:comment": "Overall plant phenotype meeting breeding objectives, e.g., compact, enhanced branching, determinate, indeterminate, etc",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/overall_stature_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/overall_stature",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/overall_stature",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/overall_stature",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -127,9 +1067,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "fungal gnats leaf damage",
             "rdfs:comment": "Fungal gnats leaf damage determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/fungal_gnats_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/fungal_gnats_leaf_damage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -138,9 +1080,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "spider mites leaf damage",
             "rdfs:comment": "Spider mites leaf damage determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/spider_mites_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/spider_mites_leaf_damage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -149,9 +1093,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "thrips leaf damage",
             "rdfs:comment": "Thrip leaf damage determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severiy_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/thrips_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/thrips_leaf_damage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -160,9 +1106,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "whitefly leaf damage",
             "rdfs:comment": "Whitefly leaf damage determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/whitefly_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/whitefly_leaf_damage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -171,9 +1119,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "aphid leaf damage",
             "rdfs:comment": "Aphid leaf damage determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/aphid_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/aphid_leaf_damage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -182,9 +1132,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "insect leaf damage ",
             "rdfs:comment": "Insect leaf damage determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/insect_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/insect_leaf_damage",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -193,9 +1145,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "botrytis cinerea infection",
             "rdfs:comment": "Botrytis cinerea infection determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/botrytis_cinerea_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/botrytis_cinerea_infection",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -204,9 +1158,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "powdery mildew infection",
             "rdfs:comment": "Powdery mildew infection determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/powdery_mildew_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/powdery_mildew_infection",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -214,10 +1170,12 @@
             "@type": "ObservedVariable",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "leaf rust infection",
-            "rdfs:comment": "Leaf rust infecti+L11on determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity_scale_1-5",
+            "rdfs:comment": "Leaf rust infection determined by severity scale",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_rust_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_rust_infection",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -226,9 +1184,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "fusarium infection",
             "rdfs:comment": "Fusarium infection determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/fusarium_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/fusarium_infection",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -237,9 +1197,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "fungal infection",
             "rdfs:comment": "Fungal infection determined by severity scale",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity_scale_1-6",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/fungal_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/fungal_infection",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -248,9 +1210,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "leaf colour",
             "rdfs:comment": "A leaf morphology trait which is the color of a leaf",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_scale_1-13",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_colour",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -259,9 +1223,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "leaf colour gradient",
             "rdfs:comment": "Leaf colour differences between young mature and old leaves as indicators of leaf senescence",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour_gradient",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_colour_gradient",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -270,9 +1236,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "nitrogen deficiency",
             "rdfs:comment": "Plant species specific leaf symptoms that indicate nitrogen deficiency",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/nitrogen_deficiency",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/nitrogen_deficiency",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -281,9 +1249,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "phosphorus deficiency",
             "rdfs:comment": "Plant species specific leaf symptoms that indicate phosphorus deficiency",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_deficiency",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/phosphorus_deficiency",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -292,9 +1262,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "phosphorus toxicity",
             "rdfs:comment": "Plant species specific leaf symptoms that indicate excess supply of phosphate",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour_scale_1-5",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_toxicity",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/phosphorus_toxicity",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -303,9 +1275,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "plant height",
             "rdfs:comment": "A whole plant morphology trait which is the height of a whole plant",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/plant_height",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/plant_height",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -314,9 +1288,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "average branch length",
             "rdfs:comment": "Average branch length of all branches of a plant",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/average_branch_length",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/average_branch_length",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch"
         },
         {
@@ -325,9 +1301,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "canopy diameter",
             "rdfs:comment": "Maximal canopy width as extension of longest branches",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/canopy_diameter",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/canopy_diameter",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/canopy"
         },
         {
@@ -336,10 +1314,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "steam diameter ",
             "rdfs:comment": "A stem morphology trait  which is the diameter of a stem. Refer to diameter: A length quality which is equal to the length of any straight line segment that passes through the center of a circle and whose endpoints are on the circular boundary.",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/millimeter",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/steam_diameter",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
-            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/steam"
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/millimeter",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/stem"
         },
         {
             "@id": "https://id.plantphenomics.org.au/LTU/ObservedVariable/shoot_axis_internode_length",
@@ -347,9 +1326,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "shoot axis internode length",
             "rdfs:comment": "A shoot axis internode morphology trait which is the length of a shoot axis internode",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/shoot_axis_internode_length",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/shoot_axis_internode_length",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch"
         },
         {
@@ -358,9 +1339,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "internode count",
             "rdfs:comment": "Internode count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/internode_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/internode_count",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch"
         },
         {
@@ -369,9 +1352,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "shoot primary branch count",
             "rdfs:comment": "Branch count along the primary shoot axis, counting all nodes along the main stem from the base towards its tip",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/shoot_primary_branch_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/shoot_primary_branch_count",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot"
         },
         {
@@ -380,9 +1365,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "shoot secondary branch count",
             "rdfs:comment": "Secondary branch count (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/shoot_secondary_branch_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/shoot_secondary_branch_count",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot"
         },
         {
@@ -391,9 +1378,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "leaf number",
             "rdfs:comment": "Average leaf count on a number of representative branches",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_number",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_number",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -402,9 +1391,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "flower number trait",
             "rdfs:comment": "An inflorescence morphology trait which is the number of flowers",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/flower_number_trait",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/flower_number_trait",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/flower"
         },
         {
@@ -413,9 +1404,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "ripe fruit count",
             "rdfs:comment": "A simple fruit or compound fruit number that is in the fruit ripe stage",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/ripe_fruit_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/ripe_fruit_count",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit"
         },
         {
@@ -424,9 +1417,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "unripe fruit count",
             "rdfs:comment": "A simple fruit or compound fruit number that is in the fruit unripe stage",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/unripe_fruit_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/unripe_fruit_count",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit"
         },
         {
@@ -435,9 +1430,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "harvest weight",
             "rdfs:comment": "Harvest dry weight of branch, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_leaf, oldest_leaf, mature_leaf, young_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, unripe fruit, ripe/fully mature fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/gram",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/harvest_weight",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/gram",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/harvest_weight",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -446,9 +1443,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "root density",
             "rdfs:comment": "A qualitative root system classification",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/root_density_scale_1-8",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/root_density",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/root_density",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/root_density",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/root"
         },
         {
@@ -457,9 +1456,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "nutrient content result",
             "rdfs:comment": "Laboratory nutrient results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/nutrient_content_result",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/nutrient_content_result",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -468,9 +1469,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "primary metabolite result",
             "rdfs:comment": "Laboratory metabolite results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/primary_metabolite_result",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/primary_metabolite_result",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -479,9 +1482,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "elemental composition result",
             "rdfs:comment": "Laboratory elemental composition results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/elemental_composition_result",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/elemental_composition_result",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -490,9 +1495,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "leaf fluorescence",
             "rdfs:comment": "Leaf fluorescence data / parameters",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence_scale",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_fluorescence",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_fluorescence",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -501,9 +1508,11 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "total amount of carbon fixed by plant/leaf",
             "rdfs:comment": "Leaf carbon assimilation rate",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_of_carbon_dioxide_taken_up_per_square_metre_per_second",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/total_amount_of_carbon_fixed_by_plant/leaf",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/co2_uptake",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/total_amount_of_carbon_fixed_by_plant/leaf",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -512,530 +1521,12 @@
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "leaf optical property",
             "rdfs:comment": "A ratio of incoming light, which is reflected, absorbed or transmitted by a leaf",
-            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_optical_property_scale",
+            "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_optical_property",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
+            "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_optical_property",
+            "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_optical_property",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/growth_stages_scale_0-9",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "growth stages scale 0-9"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/overall_stature_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "overall stature scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fungal gnats leaf damage scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "spider mites leaf damage severity scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severiy_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "thrips leaf damage severiy scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "whitefly leaf damage severity scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "aphid leaf damage severity scale 1-6 "
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "insect leaf damage severity scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "botrytis cinerea infection severity scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "powdery mildew infection severity scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf rust infection severity scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fusarium infection severity scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity_scale_1-6",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fungal infection severity scale 1-6"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_scale_1-13",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf colour scale 1-13"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf colour gradient scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "nitrogen deficiency colour scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "phosphorus deficiency colour scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour_scale_1-5",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "phosphorus toxicity colour scale 1-5"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "centimeter",
-            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000015"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/millimeter",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "millimeter",
-            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000016"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/integer",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "integer"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/gram",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "gram",
-            "skos:exactMatch": "http://purl.obolibrary.org/obo/UO_0000021"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/root_density_scale_1-8",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "root density scale 1-8"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "micromoles per gram of fresh weight"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence_scale",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf fluorescence scale"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_of_carbon_dioxide_taken_up_per_square_metre_per_second",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "micromoles of carbon dioxide taken up per square metre per second"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Scale/leaf_optical_property_scale",
-            "@type": "Scale",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf optical property scale"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/growth_stage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "growth stage",
-            "rdfs:comment": "Plant phenological development stages described by the BBCH-scale. BBCH-scales have been developed for a range of crop species where similar growth stages of each plant are given the same code (doi:10.1111/j.1744-7348.1991.tb04895.x)",
-            "schema:alternateName": "developmental stage"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/overall_stature",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "overall stature",
-            "rdfs:comment": "Overall plant phenotype meeting breeding objectives, e.g., compact, enhanced branching, determinate, indeterminate, etc",
-            "schema:alternateName": "plant growth habit"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/fungal_gnats_leaf_damage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fungal gnats leaf damage",
-            "rdfs:comment": "Fungal gnats leaf damage determined by severity scale",
-            "schema:alternateName": "fungal gnats"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/spider_mites_leaf_damage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "spider mites leaf damage",
-            "rdfs:comment": "Spider mites leaf damage determined by severity scale",
-            "schema:alternateName": "spider mites"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/thrips_leaf_damage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "thrips leaf damage",
-            "rdfs:comment": "Thrip leaf damage determined by severity scale",
-            "schema:alternateName": "thrips"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/whitefly_leaf_damage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "whitefly leaf damage",
-            "rdfs:comment": "Whitefly leaf damage determined by severity scale",
-            "schema:alternateName": "whitefly"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/aphid_leaf_damage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "aphid leaf damage",
-            "rdfs:comment": "Aphid leaf damage determined by severity scale",
-            "schema:alternateName": "aphid"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/insect_leaf_damage",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "insect leaf damage ",
-            "rdfs:comment": "Insect leaf damage determined by severity scale",
-            "schema:alternateName": "insect damage scale"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/botrytis_cinerea_infection",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "botrytis cinerea infection",
-            "rdfs:comment": "Botrytis cinerea infection determined by severity scale",
-            "schema:alternateName": "botrytis cinerea"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/powdery_mildew_infection",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "powdery mildew infection",
-            "rdfs:comment": "Powdery mildew infection determined by severity scale",
-            "schema:alternateName": "powdery mildew"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_rust_infection",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf rust infection",
-            "rdfs:comment": "Leaf rust infecti+L11on determined by severity scale",
-            "schema:alternateName": "leaf rust"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/fusarium_infection",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fusarium infection",
-            "rdfs:comment": "Fusarium infection determined by severity scale",
-            "schema:alternateName": "fungal infection scale"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/fungal_infection",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fungal infection",
-            "rdfs:comment": "Fungal infection determined by severity scale"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf colour",
-            "rdfs:comment": "A leaf morphology trait which is the color of a leaf"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour_gradient",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf colour gradient",
-            "rdfs:comment": "Leaf colour differences between young mature and old leaves as indicators of leaf senescence"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/nitrogen_deficiency",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "nitrogen deficiency",
-            "rdfs:comment": "Plant species specific leaf symptoms that indicate nitrogen deficiency",
-            "schema:alternateName": "N_deficiency"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_deficiency",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "phosphorus deficiency",
-            "rdfs:comment": "Plant species specific leaf symptoms that indicate phosphorus deficiency",
-            "schema:alternateName": "P_deficiency"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_toxicity",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "phosphorus toxicity",
-            "rdfs:comment": "Plant species specific leaf symptoms that indicate excess supply of phosphate",
-            "schema:alternateName": "P_toxicity"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/plant_height",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "plant height",
-            "rdfs:comment": "A whole plant morphology trait which is the height of a whole plant"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/average_branch_length",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "average branch length",
-            "rdfs:comment": "Average branch length of all branches of a plant",
-            "schema:alternateName": "branch length"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/canopy_diameter",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "canopy diameter",
-            "rdfs:comment": "Maximal canopy width as extension of longest branches"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/steam_diameter",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "steam diameter ",
-            "rdfs:comment": "A stem morphology trait  which is the diameter of a stem. Refer to diameter: A length quality which is equal to the length of any straight line segment that passes through the center of a circle and whose endpoints are on the circular boundary."
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/shoot_axis_internode_length",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "shoot axis internode length",
-            "rdfs:comment": "A shoot axis internode morphology trait which is the length of a shoot axis internode",
-            "schema:alternateName": "internode length"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/internode_count",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "internode count",
-            "rdfs:comment": "Internode count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip",
-            "schema:alternateName": "internode count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/shoot_primary_branch_count",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "shoot primary branch count",
-            "rdfs:comment": "Branch count along the primary shoot axis, counting all nodes along the main stem from the base towards its tip",
-            "schema:alternateName": "branch count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/shoot_secondary_branch_count",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "shoot secondary branch count",
-            "rdfs:comment": "Secondary branch count (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip",
-            "schema:alternateName": "branch count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_number",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf number",
-            "rdfs:comment": "Average leaf count on a number of representative branches",
-            "schema:alternateName": "leaf count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/flower_number_trait",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "flower number trait",
-            "rdfs:comment": "An inflorescence morphology trait which is the number of flowers",
-            "schema:alternateName": "flower count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/ripe_fruit_count",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "ripe fruit count",
-            "rdfs:comment": "A simple fruit or compound fruit number that is in the fruit ripe stage",
-            "schema:alternateName": "ripe fruit count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/unripe_fruit_count",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "unripe fruit count",
-            "rdfs:comment": "A simple fruit or compound fruit number that is in the fruit unripe stage",
-            "schema:alternateName": "unripe fruit count"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/harvest_weight",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "harvest weight",
-            "rdfs:comment": "Harvest dry weight of branch, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_leaf, oldest_leaf, mature_leaf, young_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, unripe fruit, ripe/fully mature fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/root_density",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "root density",
-            "rdfs:comment": "A qualitative root system classification",
-            "schema:alternateName": "root density"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/nutrient_content_result",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "nutrient content result",
-            "rdfs:comment": "Laboratory nutrient results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "schema:alternateName": "lab nutrient content results"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/primary_metabolite_result",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "primary metabolite result",
-            "rdfs:comment": "Laboratory metabolite results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "schema:alternateName": "lab primary metabolite results"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/elemental_composition_result",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "elemental composition result",
-            "rdfs:comment": "Laboratory elemental composition results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc",
-            "schema:alternateName": "lab elemental composition results"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_fluorescence",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf fluorescence",
-            "rdfs:comment": "Leaf fluorescence data / parameters"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/total_amount_of_carbon_fixed_by_plant/leaf",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "total amount of carbon fixed by plant/leaf",
-            "rdfs:comment": "Leaf carbon assimilation rate"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/Trait/leaf_optical_property",
-            "@type": "Trait",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf optical property",
-            "rdfs:comment": "A ratio of incoming light, which is reflected, absorbed or transmitted by a leaf",
-            "schema:alternateName": "leaf optical properties"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/general",
-            "@type": "BiologicalMaterial",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "general"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "plant"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "leaf"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "branch"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/canopy",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "canopy"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/steam",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "steam"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "shoot"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/flower",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "flower"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "fruit"
-        },
-        {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/root",
-            "@type": "BiologicalUnitType",
-            "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "root"
         }
     ]
 }

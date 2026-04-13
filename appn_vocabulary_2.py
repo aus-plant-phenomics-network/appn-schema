@@ -41,7 +41,7 @@ class Mapper:
         instances: dict[str, dict[str, dict[str, str]]],
         node: str,
         series: pd.Series,
-    ) -> Optional[str | list[str]]:
+    ) -> Optional[str]:
         return None
 
     # Return the name associated with the Mapper instance - this is to allow
@@ -67,7 +67,7 @@ class PropertyMapper(Mapper):
         instances: dict[str, dict[str, dict[str, str]]],
         node: str,
         series: pd.Series,
-    ) -> Optional[str | list[str]]:
+    ) -> Optional[str]:
         if self.column in series:
             value = str(series[self.column])
             if value not in [
@@ -78,48 +78,6 @@ class PropertyMapper(Mapper):
                 "No",
             ]:
                 return str(series[self.column])
-        return None
-
-    # Return the name of the property handled by this Mapper.
-    def get_name(self) -> Optional[str]:
-        return self.column
-
-
-### RepeatedPropertyMapper ####################################################
-#
-# Mapper class to return either a single value or a list of values for the
-# supplied column name - any column name with an integer suffix will match.
-#
-class RepeatedPropertyMapper(Mapper):
-    def __init__(self, column: str) -> None:
-        super().__init__()
-        self.column = column
-        self.pattern = re.compile(f"^{column}[0-9]*$")
-
-    # Return the cell value as a string unless it is a None value (including
-    # "NA").
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        values = []
-        for column in series.keys():
-            if self.pattern.match(column):
-                value = str(series[column])
-                if value not in [
-                    None,
-                    "",
-                    "nan",
-                    "NA",
-                    "No",
-                ]:
-                    values.append(value)
-        if len(values) == 1:
-            return values[0]
-        elif len(values) > 1:
-            return values
         return None
 
     # Return the name of the property handled by this Mapper.
@@ -143,52 +101,10 @@ class InstanceMapper(Mapper):
         instances: dict[str, dict[str, dict[str, str]]],
         node: str,
         series: pd.Series,
-    ) -> Optional[str | list[str]]:
+    ) -> Optional[str]:
         instance = get_instance(instances, self.class_name, node, series)
         if instance is not None and "@id" in instance:
             return instance["@id"]
-        return None
-
-
-### ExternalInstanceMapper #####################################################
-#
-# Mapper class to return the id of an schema class instance defined in another
-# sheet. The classname should also be a column name in the present sheet, but
-# this can be overridden with an explicit column selection.
-#
-class ExternalInstanceMapper(Mapper):
-    def __init__(self, class_name: str, column: Optional[str] = None) -> None:
-        super().__init__()
-        self.class_name = class_name
-        self.column = column
-
-    # Process the series (using get_instance) to find or create an instance of
-    # a specified schema class and return its id (URI) as a property value.
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        # The label for the external instance should be found in a column with
-        # the class name as its name but may be overridden with an explicit
-        # column name.
-        value = ""
-        if self.column is not None and self.column in series:
-            value = str(series[self.column])
-        if self.class_name in series:
-            value = str(series[self.class_name])
-        if value not in [
-            None,
-            "",
-            "nan",
-            "NA",
-            "No",
-        ]:
-            id = get_id(self.class_name, node, value)
-            if self.class_name in instances and id in instances[self.class_name]:
-                return id
-
         return None
 
 
@@ -234,30 +150,24 @@ def get_instance(
 
     # Need class to be included in mappings dictionary.
     if class_name not in mappings:
-        logging.error(f"No mapping definecd for class {class_name}")
+        logging.error(f"No mapping defined for class {class_name}")
         return None
     mapping = mappings[class_name]
 
-    # Use supplied id if defined, otherwise derive from name
-    if "@id" in mapping:
-        id = mapping["@id"].get_value(instances, node, series)
+    # Need the row to contain a name that can serve as an identifier.
+    if "rdfs:label" not in mapping:
+        logging.error(f"No name property defined for class {class_name}")
+        return None
 
-    else:
+    # Since the spreadsheets are intended as templates, there may be incomplete
+    # rows that should not be processed.
+    name = mapping["rdfs:label"].get_value(instances, node, series)
+    if name is None:
+        logging.debug(f"No name supplied for new instance")
+        return None
 
-        # Need the row to contain a name that can serve as an identifier.
-        if "rdfs:label" not in mapping:
-            logging.error(f"No name property defined for class {class_name}")
-            return None
-
-        # Since the spreadsheets are intended as templates, there may be incomplete
-        # rows that should not be processed.
-        name = mapping["rdfs:label"].get_value(instances, node, series)
-        if name is None:
-            logging.debug(f"No name supplied for new instance")
-            return None
-
-        # Get URI from instance name.
-        id = get_id(class_name, node, name)
+    # Get URI from instance name.
+    id = get_id(class_name, node, name)
 
     # The instances dictionary is organised by schema class to keep it sorted
     # for when the vocabulary is generated. Make sure this class is included.
@@ -381,7 +291,7 @@ def start_log(
 #
 # Write line to HTML file, maintaining tidy indentation.
 #
-#   NOTE: Type checking is disabled for rows accessing JSON gracph nodes.
+#   NOTE: Type checking is disabled for rows accessing JSON graph nodes.
 #
 #     html_file         : file to write HTML content.
 #     html              : line of HTML to be written.
@@ -554,11 +464,6 @@ organisations = {
 # Mapper object that encapsulates function to extract a value for the property
 # from a spreadsheet row.
 mappings = {
-    "Person": {
-        "@id": PropertyMapper("orcid"),
-        "rfds:label": PropertyMapper("name"),
-        "schema:email": PropertyMapper("email"),
-    },
     "GrowthFacility": {
         "rdfs:label": PropertyMapper("growth facility name *"),
         "rdfs:comment": PropertyMapper("growth facility description *"),
@@ -603,58 +508,43 @@ mappings = {
         "appn:deployedSystem": InstanceMapper("Sensor"),
     },
     "ObservedVariable": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
-        "dc:creator": PropertyMapper("author"),
+        "rdfs:label": PropertyMapper("trait name"),
+        "rdfs:comment": PropertyMapper("trait description"),
+        "skos:closeMatch": PropertyMapper("Variable Xref"),
+        "dc:creator": PropertyMapper("Scientist"),
         "dc:created": PropertyMapper("Date"),
         "dc:language": PropertyMapper("Language"),
-        "appn:hasTrait": ExternalInstanceMapper("Trait", "name"),
-        "appn:hasScale": ExternalInstanceMapper("Scale"),
-        "appn:usedMethod": ExternalInstanceMapper("Method"),
-        "appn:forBiologicalMaterial": ExternalInstanceMapper("BiologicalMaterial"),
-        "appn:forBiologicalUnitType": ExternalInstanceMapper("BiologicalUnitType"),
+        "appn:hasScale": InstanceMapper("Scale"),
+        "appn:hasTrait": InstanceMapper("Trait"),
+        "appn:usedMethod": InstanceMapper("Method"),
+        "appn:forBiologicalMaterial": InstanceMapper("BiologicalMaterial"),
+        "appn:forBiologicalUnitType": InstanceMapper("BiologicalUnitType"),
     },
     "BiologicalMaterial": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "rdfs:label": PropertyMapper("crop"),
     },
     "BiologicalUnitType": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "rdfs:label": PropertyMapper("entity"),
     },
     "Trait": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
-        "schema:alternateName": PropertyMapper("altLabel"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "rdfs:label": PropertyMapper("trait name"),
+        "rdfs:comment": PropertyMapper("trait description"),
+        "schema:alternateName": PropertyMapper("trait alternative label"),
+        "skos:exactMatch": PropertyMapper("trait exactmatch"),
+        "skos:closeMatch": PropertyMapper("trait closematch"),
+        "skos:relatedMatch": PropertyMapper("trait relatedmatch"),
     },
     "Method": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "rdfs:label": PropertyMapper("method name"),
+        "rdfs:comment": PropertyMapper("method description"),
     },
     "Scale": {
-        "rdfs:label": PropertyMapper("name"),
-        "schema:alternateName": PropertyMapper("altLabel"),
-        "rdfs:comment": PropertyMapper("description "),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "rdfs:label": PropertyMapper("scale name"),
+        "schema:alternateName": PropertyMapper("scale alternative label"),
+        "rdfs:comment": PropertyMapper("scale description "),
+        "skos:exactMatch": PropertyMapper("scale exactmatch"),
+        "skos:closeMatch": PropertyMapper("scale closematch"),
+        "skos:relatedMatch": PropertyMapper("Scale relatedmatch"),
     },
 }
 
@@ -704,7 +594,7 @@ if __name__ == "__main__":
         instances = {}
 
         # Loop over Excel spreadsheets in the folder for the node.
-        for file in folder.glob("*Restructure.xls*"):
+        for file in folder.glob("*.xls*"):
 
             # Ignore temporary files that still have xls in their name
             if file.name.startswith("."):
@@ -719,19 +609,8 @@ if __name__ == "__main__":
                 # spacing and capitalisation.
                 for sheet in pd.ExcelFile(file).sheet_names:
                     sheet_normal = sheet.lower().replace(" ", "")
-                    if "trait" in sheet_normal:
-                        sheets["Trait"] = sheet
+                    if "sheet1" in sheet_normal:
                         sheets["ObservedVariable"] = sheet
-                    elif "method" in sheet_normal:
-                        sheets["Method"] = sheet
-                    elif "scale" in sheet_normal:
-                        sheets["Scale"] = sheet
-                    elif "biologicalunittype" in sheet_normal:
-                        sheets["BiologicalUnitType"] = sheet
-                    elif "biologicalmaterial" in sheet_normal:
-                        sheets["BiologicalMaterial"] = sheet
-                    elif "author" in sheet_normal:
-                        sheets["Person"] = sheet
                     elif "platform" in sheet_normal:
                         sheets["Platform"] = sheet
                     elif "sensor" in sheet_normal:
@@ -745,12 +624,6 @@ if __name__ == "__main__":
 
                 # Ensure that classes are added in a safe order (Deployment after Platform and Sensor)
                 for class_name in [
-                    "Person",
-                    "BiologicalUnitType",
-                    "BiologicalMaterial",
-                    "Method",
-                    "Scale",
-                    "Trait",
                     "GrowthFacility",
                     "Platform",
                     "Sensor",

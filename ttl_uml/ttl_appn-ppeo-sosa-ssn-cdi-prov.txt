@@ -1,62 +1,62 @@
 @startuml
-class ResearchActivity
-class Investigation
-class Study
-class Assay
-class Method
-class Observation
-class Control
-class Sampling
-class Treatment
-class ObservationUnit
-class Trait
-class Scale
-class Variable
-class ObservedVariable
-class ControlledVariable
-class SubstanceQuantity
-class Observer
-class Controller
-class Sampler
-class Sensor
-class SensorType
 class Actuator
-class ExternalEvent
-class Person
-class SoftwareApplication
-class Sample
+class Assay
+class BiologicalMaterial
 class BiologicalUnit
-class Substance
-class Platform
-class PlatformType
+class BiologicalUnitType
+class Control
+class ControlledVariable
+class Controller
 class Deployment
+class ExternalEvent
 class GrowthFacility
 class GrowthFacilityType
-class BiologicalUnitType
-class BiologicalMaterial
-class MaterialSource
+class Investigation
 class Location
+class MaterialSource
+class Method
+class Observation
+class ObservationUnit
+class ObservedVariable
+class Observer
+class Person
+class Platform
+class PlatformType
+class ResearchActivity
+class Sample
+class Sampler
+class Sampling
+class Scale
+class Sensor
+class SensorType
+class SoftwareApplication
 class SpatialLocation
+class Study
+class Substance
+class SubstanceQuantity
+class Trait
+class Treatment
+class Variable
 class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
-    class "schema:HowTo" #DDFFDD
-    class "schema:Observation" #DDFFDD
-    class "schema:Thing" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
-    class "schema:InstanceValue" #DDFFDD
-    class "schema:IndividualProduct" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
+    class "schema:HowTo" #DDFFDD
+    class "schema:IndividualProduct" #DDFFDD
+    class "schema:InstanceValue" #DDFFDD
+    class "schema:Observation" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Place" #DDFFDD
+    class "schema:Thing" #DDFFDD
 }
 package "bio" {
+    class "bio:BioChemEntity" #EECCFF
+    class "bio:BioSample" #EECCFF
     class "bio:ComputationalWorkflow" #EECCFF
     class "bio:Substance" #EECCFF
-    class "bio:BioChemEntity" #EECCFF
     class "bio:Taxon" #EECCFF
-    class "bio:BioSample" #EECCFF
 }
 ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
