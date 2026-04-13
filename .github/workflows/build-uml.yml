@@ -38,18 +38,21 @@ jobs:
 
       - name: Make build_uml.sh executable
         run: chmod +x build_uml.sh
-
           
       - name: Download PlantUML JAR 
         run: | 
           test -f ../plantuml.jar && (echo "plantuml.jar found" && exit 0)
           wget https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-1.2026.1.jar -O plantuml.jar
+          
+      - name: Install Graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz
 
       - name: Run UML build script
         # If your script expects to be run from a specific subdir, add 'working-directory: <path>'
         env:
           # Increase PlantUML limit consistent with your script
           PLANTUML_LIMIT_SIZE: "8192"
+          GRAPHVIZ_DOT: /usr/bin/dot
         run: |
           set -euo pipefail
           ./build_uml.sh
@@ -77,7 +80,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ls $GITHUB_WORKSPACE/docs/images
+          ls -l $GITHUB_WORKSPACE/docs/images
           
       # - name: Upload result
         # uses: actions/upload-artifact@v4
