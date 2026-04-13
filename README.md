@@ -14,17 +14,17 @@ Markdown pages for all classes (including the UML diagrams above) can be found h
 The ttl2uml.py script also generates a JSON-LD context document to include the APPN classes and properties in an RO-Crate: [context.json](/context.json)
 
 ## Automation of GitHub mkdocs *github.io* site
-There is a GitHub Actions script that can be run from: [Actions](https://github.com/aus-plant-phenomics-network/appn-schema/actions) to update the documentation site [https://aus-plant-phenomics-network.github.io/appn-schema/](https://aus-plant-phenomics-network.github.io/appn-schema/).
+ A version of the the documentation site [https://aus-plant-phenomics-network.github.io/appn-schema/](https://aus-plant-phenomics-network.github.io/appn-schema/).
   
 *Please note:*  
-If the `appn-schema.ttl` description changes, then there are GitHub Actions available to do the following:
-- Regenerate the Class diagrams using the `build_uml.sh` script (this runs ttl2uml.py). 
+If the `appn-schema.ttl` description changes, then there are GitHub Actions available to do the following (they should be run in the following order):
+1. Regenerate the Class diagrams using the `build_uml.sh` script (this runs ttl2uml.py).  
   Here: [build-uml](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-uml.yml)
   
-- Regenerate the interactive visualisation using the `script-ghp/appn_schema_pyvizgraph.py` script (updates `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`). 
+2. Regenerate the [interactive visualisation](https://aus-plant-phenomics-network.github.io/appn-schema/viz) using the `script-ghp/appn_schema_pyvizgraph.py` script (updates `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`).  
   Here: [build-ttl-graph](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-ttl-graph.yml) 
 
-- Regenerate the   to update the github.io site.
+3. Regenerate the   to update the github.io site.  
   Here: [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml)
 
 > N.B. The changes are pushed to the repository automaticaly.
