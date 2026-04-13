@@ -54,7 +54,7 @@ jobs:
           set -euo pipefail
           ./build_uml.sh
 
-      - name: Copy generated PNGs to docs/assets/img
+      - name: Copy generated PNGs to docs/images
         shell: bash
         run: |
           set -euo pipefail
@@ -65,8 +65,8 @@ jobs:
           if (( ${#pngs[@]} )); then
             # Copy while flattening to the destination folder; adjust to preserve dirs if you prefer
             for f in "${pngs[@]}"; do
-              cp "$f" $GITHUB_WORKSPACE/docs/assets/img
-              # ls $GITHUB_WORKSPACE/docs/assets/img
+              cp "$f" $GITHUB_WORKSPACE/docs/images
+              # ls $GITHUB_WORKSPACE/docs/images
               echo "$f"
             done
           else
@@ -77,7 +77,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ls $GITHUB_WORKSPACE/docs/assets/img
+          ls $GITHUB_WORKSPACE/docs/images
           
       # - name: Upload result
         # uses: actions/upload-artifact@v4
@@ -91,12 +91,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if ! git diff --quiet -- docs/assets/img; then
+          if ! git diff --quiet -- docs/images ; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add docs/assets/img
+            git add docs/images
             git commit -m "chore: update UML PNGs via workflow"
             git push
           else
-            echo "No changes in docs/assets/img to commit."
+            echo "No changes in docs/images to commit."
           fi

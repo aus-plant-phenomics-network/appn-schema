@@ -1,6 +1,15 @@
 # Script for creation of GitHub Pages Visualisation
 
-The `appn_schema_pyvizgraph.py` script is used in conjunction with a GitHub Action (see: .github/workflows/build-ttl-graph.yaml) to produce an interactive web-based plot of the current `appn-schma.ttl` file. 
+The `appn_schema_pyvizgraph.py` script is used in conjunction with a GitHub Action (see: .github/workflows/build-ttl-graph.yaml) 
+to produce an interactive web-based plot of the current `appn-schma.ttl` file. 
+
+The links from the nodes in the interactive graph currently point to the https://aus-plant-phenomics-network.github.io/appn-schema/ 
+version of the documentation. This needs to be made up-to-date with running:
+1. "Build UML & Copy PNGs" GitHub Action (mostly an interface to the `build_uml.sh` script)
+2. "Deploy MkDocs to Pages" GitHub Action
+3. "Build TTL Schema Graph" GitHub action
+
+The actions are available here: [https://github.com/aus-plant-phenomics-network/appn-schema/actions](https://github.com/aus-plant-phenomics-network/appn-schema/actions)
 
 ### Test the GitHub Action
 From the root directory of the repository you can run:

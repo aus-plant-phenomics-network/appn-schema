@@ -21,9 +21,9 @@ If the `appn-schema.ttl` description changes, then:
 - The class diagrams need to be regenerated using the `build_uml.sh` script (this runs ttl2uml.py)
 - The interactive visualisation needs to be regenerated using the `script-ghp/appn_schema_pyvizgraph.py` script (updating `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`)
 - The changes need to be pushed the the github repo.
-- The [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml) wrkflow needs to be run to update the github.io site.
+- The [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml) workflow needs to be run to update the github.io site.
   
-This processdure should be automated in the future.
+This procedure should be automated in the future.
 
 ## Older UML diagrams (Deprecated)
 The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
