@@ -23,11 +23,11 @@ If the `appn-schema.ttl` description changes, then there are GitHub Actions avai
   
 2. Regenerate the [interactive visualisation](https://aus-plant-phenomics-network.github.io/appn-schema/viz) using the `script-ghp/appn_schema_pyvizgraph.py` script (updates `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`).  
   Here: [build-ttl-graph](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-ttl-graph.yml) 
-
-3. Regenerate the   to update the github.io site.  
+  
+3. Regenerate the MkDocs based site generation to be pushed to the github.io site.  
   Here: [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml)
-
-> N.B. The changes are pushed to the repository automaticaly.
+  
+> N.B. Changes are pushed to the repository automaticaly on exectution of the first two steps.
 
 ## Older UML diagrams (Deprecated)
 The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
