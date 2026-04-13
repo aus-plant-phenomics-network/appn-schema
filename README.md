@@ -17,13 +17,17 @@ The ttl2uml.py script also generates a JSON-LD context document to include the A
 There is a GitHub Actions script that can be run from: [Actions](https://github.com/aus-plant-phenomics-network/appn-schema/actions) to update the documentation site [https://aus-plant-phenomics-network.github.io/appn-schema/](https://aus-plant-phenomics-network.github.io/appn-schema/).
   
 *Please note:*  
-If the `appn-schema.ttl` description changes, then:
-- The class diagrams need to be regenerated using the `build_uml.sh` script (this runs ttl2uml.py)
-- The interactive visualisation needs to be regenerated using the `script-ghp/appn_schema_pyvizgraph.py` script (updating `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`)
-- The changes need to be pushed the the github repo.
-- The [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml) workflow needs to be run to update the github.io site.
+If the `appn-schema.ttl` description changes, then there are GitHub Actions available to do the following:
+- Regenerate the Class diagrams using the `build_uml.sh` script (this runs ttl2uml.py). 
+  Here: [build-uml](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-uml.yml)
   
-This procedure should be automated in the future.
+- Regenerate the interactive visualisation using the `script-ghp/appn_schema_pyvizgraph.py` script (updates `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`). 
+  Here: [build-ttl-graph](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-ttl-graph.yml) 
+
+- Regenerate the   to update the github.io site.
+  Here: [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml)
+
+> N.B. The changes are pushed to the repository automaticaly.
 
 ## Older UML diagrams (Deprecated)
 The following diagrams were prepared previously to assist with concept development. They included outdated representations and will be removed later.
