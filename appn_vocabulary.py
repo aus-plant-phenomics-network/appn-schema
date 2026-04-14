@@ -457,10 +457,14 @@ def process_value(
         for v in value:
             if isinstance(v, dict) and "@id" in v:
                 v = format_id(prefixes, v["@id"])
+            elif isinstance(v, str) and v.startswith("http"):
+                v = f'<a href="{v}">{v}</a>'
             if len(formatted) > 0:
                 formatted += "<br/>"
             formatted += v
         value = formatted
+    elif isinstance(value, str) and value.startswith("http"):
+        value = f'<a href="{value}">{value}</a>'
     else:
         value = str(value)
     return value
@@ -616,7 +620,9 @@ mappings = {
     },
     "BiologicalMaterial": {
         "rdfs:label": PropertyMapper("name"),
+        "bio:scientificName": PropertyMapper("scientificName"),
         "rdfs:comment": PropertyMapper("description"),
+        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
@@ -625,6 +631,7 @@ mappings = {
     "BiologicalUnitType": {
         "rdfs:label": PropertyMapper("name"),
         "rdfs:comment": PropertyMapper("description"),
+        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
@@ -633,7 +640,7 @@ mappings = {
     "Trait": {
         "rdfs:label": PropertyMapper("name"),
         "rdfs:comment": PropertyMapper("description"),
-        "schema:alternateName": PropertyMapper("altLabel"),
+        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
@@ -642,6 +649,7 @@ mappings = {
     "Method": {
         "rdfs:label": PropertyMapper("name"),
         "rdfs:comment": PropertyMapper("description"),
+        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
@@ -649,8 +657,8 @@ mappings = {
     },
     "Scale": {
         "rdfs:label": PropertyMapper("name"),
-        "schema:alternateName": PropertyMapper("altLabel"),
         "rdfs:comment": PropertyMapper("description "),
+        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
@@ -661,6 +669,7 @@ mappings = {
 # Dictionary of vocabulary prefixes
 prefixes = {
     "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
+    "bio": "https://bioschemas.org/types/Taxon/1.0-RELEASE#",
     "dc": "http://purl.org/dc/elements/1.1/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",

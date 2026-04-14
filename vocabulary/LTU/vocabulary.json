@@ -1,6 +1,7 @@
 {
     "@context": {
         "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
+        "bio": "https://bioschemas.org/types/Taxon/1.0-RELEASE#",
         "dc": "http://purl.org/dc/elements/1.1/",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "schema": "https://schema.org/",
@@ -84,6 +85,7 @@
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "plant",
+            "bio:scientificName": "Plantae",
             "rdfs:comment": "Plants are the eukaryotic organisms that constitute the kingdom Plantae.",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Plantae",
             "dc:created": "Ricarda Jost"
@@ -93,6 +95,7 @@
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "grain",
+            "bio:scientificName": "Poaceae",
             "rdfs:comment": "Poaceae, also called Gramineae, is a large and nearly ubiquitous family of monocotyledonous flowering plants commonly known as true grasses.",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Poaceae",
             "dc:created": "Ricarda Jost"
@@ -102,6 +105,7 @@
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "wheat",
+            "bio:scientificName": "Triticum aestivum",
             "rdfs:comment": "Wheat is a group of wild and domesticated grasses of the genus Triticum.",
             "skos:exactMatch": "http://cavoc.org/cvo/ns/2/C2",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Wheat",
@@ -112,6 +116,7 @@
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "barley",
+            "bio:scientificName": "Hordeum vulgare",
             "rdfs:comment": "Barley, a member of the grass family, is a major cereal grain grown in temperate climates globally.",
             "skos:exactMatch": "http://cavoc.org/cvo/ns/2/C259",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Barley",
@@ -122,6 +127,7 @@
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "tomato",
+            "bio:scientificName": "Solanum lycopersicum",
             "rdfs:comment": "The tomato is a plant whose fruit is an edible berry that is eaten as a vegetable.",
             "skos:exactMatch": "http://cavoc.org/cvo/ns/2/C6",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Tomato",
@@ -132,6 +138,7 @@
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
             "rdfs:label": "cannabis",
+            "bio:scientificName": "Cannabis sativa",
             "rdfs:comment": "Cannabis sativa is an annual herbaceous flowering plant.",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Cannabis_sativa",
             "dc:created": "Ricarda Jost"

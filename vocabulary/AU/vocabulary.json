@@ -1,6 +1,7 @@
 {
     "@context": {
         "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
+        "bio": "https://bioschemas.org/types/Taxon/1.0-RELEASE#",
         "dc": "http://purl.org/dc/elements/1.1/",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "schema": "https://schema.org/",
