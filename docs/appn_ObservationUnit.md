@@ -1,7 +1,7 @@
 # ObservationUnit
 [https://schema.plantphenomics.org.au/ObservationUnit](https://schema.plantphenomics.org.au/ObservationUnit)
 
-An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances.
+An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, Substances, Platforms (including GrowthFacilities) or devices (Sensors and Actuators).
 
 ![UML diagram for ObservationUnit](images/ttl_appn_ObservationUnit.png)
 
