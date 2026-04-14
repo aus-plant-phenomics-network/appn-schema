@@ -81,10 +81,10 @@
             "dc:created": "Ricarda Jost"
         },
         {
-            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "@id": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "@type": "BiologicalMaterial",
             "schema:owner": "https://ror.org/01rxfrp27",
-            "rdfs:label": "plant",
+            "rdfs:label": "any plant",
             "bio:scientificName": "Plantae",
             "rdfs:comment": "Plants are the eukaryotic organisms that constitute the kingdom Plantae.",
             "skos:relatedMatch": "https://en.wikipedia.org/wiki/Plantae",
@@ -1052,7 +1052,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/growth_stage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/growth_stage",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/growth_stage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1065,7 +1065,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/overall_stature",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/overall_stature",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/overall_stature",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1078,7 +1078,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/fungal_gnats_leaf_damage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/fungal_gnats_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1091,7 +1091,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/spider_mites_leaf_damage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/spider_mites_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1104,7 +1104,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/thrips_leaf_damage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/thrips_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1117,7 +1117,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/whitefly_leaf_damage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/whitefly_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1130,7 +1130,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/aphid_leaf_damage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/aphid_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1143,7 +1143,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/insect_leaf_damage",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/insect_leaf_damage",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1156,7 +1156,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/botrytis_cinerea_infection",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/botrytis_cinerea_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1169,7 +1169,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/powdery_mildew_infection",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/powdery_mildew_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1182,7 +1182,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_rust_infection",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_rust_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1195,7 +1195,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/fusarium_infection",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/fusarium_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1208,7 +1208,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/fungal_infection",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/fungal_infection",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1221,7 +1221,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_colour",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1234,7 +1234,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_colour_gradient",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_colour_gradient",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1247,7 +1247,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/nitrogen_deficiency",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/nitrogen_deficiency",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1260,7 +1260,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_deficiency",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/phosphorus_deficiency",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1273,7 +1273,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/phosphorus_toxicity",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/phosphorus_toxicity",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1286,7 +1286,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/plant_height",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/plant_height",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1299,7 +1299,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/average_branch_length",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/average_branch_length",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch"
         },
         {
@@ -1312,7 +1312,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/canopy_diameter",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/canopy_diameter",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/canopy"
         },
         {
@@ -1324,7 +1324,7 @@
             "dc:creator": "Ricarda Jost",
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/steam_diameter",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/millimeter",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/stem"
         },
         {
@@ -1337,7 +1337,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/shoot_axis_internode_length",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/centimeter",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/shoot_axis_internode_length",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch"
         },
         {
@@ -1350,7 +1350,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/internode_count",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/internode_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch"
         },
         {
@@ -1363,7 +1363,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/shoot_primary_branch_count",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/shoot_primary_branch_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot"
         },
         {
@@ -1376,7 +1376,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/shoot_secondary_branch_count",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/shoot_secondary_branch_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot"
         },
         {
@@ -1389,7 +1389,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_number",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_number",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1402,7 +1402,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/flower_number_trait",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/flower_number_trait",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/flower"
         },
         {
@@ -1415,7 +1415,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/ripe_fruit_count",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/ripe_fruit_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit"
         },
         {
@@ -1428,7 +1428,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/unripe_fruit_count",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/integer",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/unripe_fruit_count",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit"
         },
         {
@@ -1441,7 +1441,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/harvest_weight",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/gram",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/harvest_weight",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1454,7 +1454,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/root_density",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/root_density",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/root_density",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/root"
         },
         {
@@ -1467,7 +1467,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/nutrient_content_result",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/nutrient_content_result",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1480,7 +1480,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/primary_metabolite_result",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/primary_metabolite_result",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1493,7 +1493,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/elemental_composition_result",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/elemental_composition_result",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1506,7 +1506,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_fluorescence",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_fluorescence",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         },
         {
@@ -1519,7 +1519,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/total_amount_of_carbon_fixed_by_plant/leaf",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/co2_uptake",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/total_amount_of_carbon_fixed_by_plant/leaf",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant"
         },
         {
@@ -1532,7 +1532,7 @@
             "appn:hasTrait": "https://id.plantphenomics.org.au/LTU/Trait/leaf_optical_property",
             "appn:hasScale": "https://id.plantphenomics.org.au/LTU/Scale/leaf_optical_property",
             "appn:usedMethod": "https://id.plantphenomics.org.au/LTU/Method/leaf_optical_property",
-            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/plant",
+            "appn:forBiologicalMaterial": "https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant",
             "appn:forBiologicalUnitType": "https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf"
         }
     ]

@@ -20,7 +20,10 @@ An entity for which a Study collects data or controls the environment and other 
 * [appn:Location](appn_Location.md) **appn:isLocationWithin** appn:ObservationUnit
     * Specifies that a location is a position within an ObservationUnit.
 ## Subclasses
+* [https://schema.plantphenomics.org.au/Sensor](appn_Sensor.md)
+* [https://schema.plantphenomics.org.au/Actuator](appn_Actuator.md)
 * [https://schema.plantphenomics.org.au/Substance](appn_Substance.md)
+* [https://schema.plantphenomics.org.au/Platform](appn_Platform.md)
 * [https://schema.plantphenomics.org.au/GrowthFacility](appn_GrowthFacility.md)
 * [https://schema.plantphenomics.org.au/BiologicalUnit](appn_BiologicalUnit.md)
 * [https://schema.plantphenomics.org.au/Sample](appn_Sample.md)

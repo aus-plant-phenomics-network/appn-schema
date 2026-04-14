@@ -15,10 +15,16 @@ class Location
 ObservationUnit --> Location : hasLocation
 class Location 
 Location --> ObservationUnit : isLocationWithin
+class Sensor 
+Sensor --|> ObservationUnit
+class Actuator 
+Actuator --|> ObservationUnit
 class Substance 
 Substance --|> ObservationUnit
+class Platform 
 class GrowthFacility 
-GrowthFacility --|> ObservationUnit
+GrowthFacility --|> Platform
+Platform --|> ObservationUnit
 class BiologicalUnit 
 class Sample 
 Sample --|> BiologicalUnit

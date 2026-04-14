@@ -5,9 +5,6 @@ GrowthFacility --|> "ppeo:growth_facility"
 class Platform  
 class "sosa:Platform" #FFCCEE 
 Platform --|> "sosa:Platform"
-class "schema:IndividualProduct" #DDFFDD 
-Platform --|> "schema:IndividualProduct"
-GrowthFacility --|> Platform
 class ObservationUnit  
 class "schema:Thing" #DDFFDD 
 ObservationUnit --|> "schema:Thing"
@@ -17,7 +14,10 @@ class "ppeo:observation_unit" #EEFFCC
 ObservationUnit --|> "ppeo:observation_unit"
 class "sosa:FeatureOfInterest" #FFCCEE 
 ObservationUnit --|> "sosa:FeatureOfInterest"
-GrowthFacility --|> ObservationUnit
+Platform --|> ObservationUnit
+class "schema:IndividualProduct" #DDFFDD 
+Platform --|> "schema:IndividualProduct"
+GrowthFacility --|> Platform
 class GrowthFacilityType 
 GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
 class GrowthFacility #line.bold {

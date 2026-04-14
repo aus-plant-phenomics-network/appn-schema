@@ -76,9 +76,11 @@ ObservedVariable --|> Variable
 ControlledVariable --|> Variable
 SubstanceQuantity --|> Variable
 Sensor --|> Observer
+Sensor --|> ObservationUnit
 Sensor --|> "schema:IndividualProduct"
 SensorType --|> "schema:Enumeration"
 Actuator --|> Controller
+Actuator --|> ObservationUnit
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
 ExternalEvent --|> "schema:Event"
@@ -92,11 +94,11 @@ SoftwareApplication --|> Controller
 Sample --|> BiologicalUnit
 Substance --|> ObservationUnit
 Substance --|> "bio:Substance"
+Platform --|> ObservationUnit
 Platform --|> "schema:IndividualProduct"
 PlatformType --|> "schema:Enumeration"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> Platform
-GrowthFacility --|> ObservationUnit
 GrowthFacilityType --|> "schema:Enumeration"
 BiologicalUnit --|> ObservationUnit
 BiologicalUnit --|> "bio:BioChemEntity"
