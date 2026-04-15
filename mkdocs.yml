@@ -41,6 +41,7 @@ theme:
 nav:
   - Home: index.md
   - Visualisation : InteractiveVis.md
+  - Schema: appn_schema.md
   - Entities:
       - Actuator: appn_Actuator.md
       - Assay: appn_Assay.md
@@ -73,7 +74,6 @@ nav:
       - Sampler: appn_Sampler.md
       - Sampling: appn_Sampling.md
       - Scale: appn_Scale.md
-      - Schema: appn_schema.md
       - Sensor: appn_Sensor.md
       - Software Application: appn_SoftwareApplication.md
       - Spatial Location: appn_SpatialLocation.md
