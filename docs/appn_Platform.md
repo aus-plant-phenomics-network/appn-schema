@@ -1,6 +1,8 @@
 # Platform
 [https://schema.plantphenomics.org.au/Platform](https://schema.plantphenomics.org.au/Platform)
 
+A vehicle, building, person or other entity that may carry or include Sensors or Actuators. A Platform is also an ObservationUnit so that it may be the target for Observation Assays (reading device state as ObservedVariables) and potentially for Control Assays (setting parameters as ControlledVariables).
+
 ![UML diagram for Platform](images/ttl_appn_Platform.png)
 
 ## Superclasses
