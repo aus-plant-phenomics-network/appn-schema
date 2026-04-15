@@ -40,6 +40,7 @@ theme:
 # ── Navigation ────────────────────────────────────────────────────────────────
 nav:
   - Home: index.md
+  - Visualisation : InteractiveVis.md
   - Entities:
       - Actuator: appn_Actuator.md
       - Assay: appn_Assay.md
@@ -66,6 +67,7 @@ nav:
       - Observer: appn_Observer.md
       - Person: appn_Person.md
       - Platform: appn_Platform.md
+      - Platform Type: appn_PlatformType.md
       - Research Activity: appn_ResearchActivity.md
       - Sample: appn_Sample.md
       - Sampler: appn_Sampler.md

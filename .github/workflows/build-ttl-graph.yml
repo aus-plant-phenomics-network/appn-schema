@@ -68,7 +68,7 @@ jobs:
         working-directory: script-ghp
         run: |
           set -euo pipefail
-          # The script reads ./ttl_files/appn-schema.ttl by default
+          # The script reads ./script-ghp/appn-schema.ttl.new by default
           python appn_schema_pyvizgraph.py
           test -f appn-schema-pyviz.html || (echo "HTML output not found" && exit 1)
 

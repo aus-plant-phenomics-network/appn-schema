@@ -5,4 +5,7 @@ uml/uml
 *.log
 script-ghp/lib/**
 publish.sh
+
+.venv/**
+
 **/*\#
