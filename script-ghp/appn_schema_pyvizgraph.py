@@ -436,7 +436,7 @@ def make_node_uri(term: URIRef):
     return iri
     
 # ---------- build network ----------
-net = Network(height="1540px", width="100%", directed=True)
+net = Network(height="1340px", width="100%", directed=True)
 net.toggle_physics(True)
 
 # Add nodes for classes and properties with prefix-based coloring
