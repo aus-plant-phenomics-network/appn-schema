@@ -18,14 +18,15 @@ The ttl2uml.py script also generates a JSON-LD context document to include the A
   
 *Please note:*  
 If the `appn-schema.ttl` description changes, then there are GitHub Actions available to do the following (they should be run in the following order):
-1. Regenerate the Class diagrams using the `build_uml.sh` script (this runs ttl2uml.py).  
-  Here: [build-uml](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-uml.yml)
+1. Regenerate the PNG inheritance diagrams and markdown descriptions using the `build_uml.sh` script (this runs ttl2uml.py).
+   N.B. This is typically done manualy and the changes pushed, *so we can skip this step*. 
+   Here: [build-uml](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-uml.yml)
   
-2. Regenerate the [interactive visualisation](https://aus-plant-phenomics-network.github.io/appn-schema/viz) using the `script-ghp/appn_schema_pyvizgraph.py` script (updates `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`).  
-  Here: [build-ttl-graph](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-ttl-graph.yml) 
+2. Regenerate the [interactive visualisation](https://aus-plant-phenomics-network.github.io/appn-schema/viz) html using the `script-ghp/appn_schema_pyvizgraph.py` script (updates `script-ghp/appn-schema.ttl.new` to the new contents of `appn-schema.ttl`).  
+   Here: [build-ttl-graph](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-ttl-graph.yml) 
   
 3. Regenerate the MkDocs based site generation to be pushed to the github.io site.  
-  Here: [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml)
+   Here: [build-mkdocs-site](https://github.com/aus-plant-phenomics-network/appn-schema/actions/workflows/build-mkdocs-site.yml)
   
 > N.B. Changes are pushed to the repository automaticaly on exectution of the first two steps.
 
