@@ -191,7 +191,7 @@ appn:Substance a rdfs:Class ;
 
 appn:Platform a rdfs:Class ;
   rdfs:label "Platform" ;
-  rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators. A Platform is also an ObservationUnit so that it may be the target for Observation Assays (reading device state as ObservedVariables) and potentially for Control Assays (setting parameters as ControlledVariables). ;
+  rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators. A Platform is also an ObservationUnit so that it may be the target for Observation Assays (reading device state as ObservedVariables) and potentially for Control Assays (setting parameters as ControlledVariables)." ;
   rdfs:subClassOf sosa:Platform ;
   rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf schema:IndividualProduct .
