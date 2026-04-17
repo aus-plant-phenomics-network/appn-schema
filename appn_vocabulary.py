@@ -462,7 +462,7 @@ mappings = {
         "schema:model": PropertyMapper("growth facility model *"),
         "schema:serialNumber": PropertyMapper("growth facility serial number *"),
         "appn:containmentLevel": PropertyMapper("containment level *"),
-        "appn:quarantine": PropertyMapper("quarantine *"),
+        "appn:quarantine": PropertyMapper("quarantine details *"),
         "skos:closeMatch": PropertyMapper("growth facility ontology IRI"),
     },
     "GrowthFacilityType": {
@@ -531,7 +531,7 @@ mappings = {
     "Scale": {
         "rdfs:label": PropertyMapper("scale name"),
         "schema:alternateName": PropertyMapper("scale alternative label"),
-        "rdfs:comment": PropertyMapper("scale description "),
+        "rdfs:comment": PropertyMapper("scale description"),
         "skos:exactMatch": PropertyMapper("scale exactmatch"),
         "skos:closeMatch": PropertyMapper("scale closematch"),
         "skos:relatedMatch": PropertyMapper("Scale relatedmatch"),
