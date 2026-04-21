@@ -571,7 +571,7 @@ mappings = {
         "schema:model": PropertyMapper("growth facility model *"),
         "schema:serialNumber": PropertyMapper("growth facility serial number *"),
         "appn:containmentLevel": PropertyMapper("containment level *"),
-        "appn:quarantine": PropertyMapper("quarantine *"),
+        "appn:quarantine": PropertyMapper("quarantine details *"),
         "skos:closeMatch": PropertyMapper("growth facility ontology IRI"),
     },
     "GrowthFacilityType": {
