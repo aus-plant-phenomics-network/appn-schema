@@ -10,7 +10,6 @@ on:
         type: boolean
         default: false
 
-
 permissions:
   contents: write  # needed to commit back using GITHUB_TOKEN
 
@@ -90,7 +89,7 @@ jobs:
 
           
       - name: Commit and push changes (if any)
-        if: ${{ inputs.dry_run == 'false' }}
+        if: ${{ inputs.dry_run != 'true' }}
         shell: bash
         run: |
           set -euo pipefail

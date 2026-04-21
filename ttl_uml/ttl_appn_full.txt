@@ -137,9 +137,11 @@ Observer --|> "sosa:Sensor"
 Controller --|> "sosa:Actuator"
 Sampler --|> "sosa:Sampler"
 Sensor --|> Observer
+Sensor --|> ObservationUnit
 Sensor --|> "schema:IndividualProduct"
 SensorType --|> "schema:Enumeration"
 Actuator --|> Controller
+Actuator --|> ObservationUnit
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
 ExternalEvent --|> "schema:Event"
@@ -157,13 +159,13 @@ Sample --|> BiologicalUnit
 Substance --|> ObservationUnit
 Substance --|> "bio:Substance"
 Platform --|> "sosa:Platform"
+Platform --|> ObservationUnit
 Platform --|> "schema:IndividualProduct"
 PlatformType --|> "schema:Enumeration"
 Deployment --|> "ssn:Deployment"
 Deployment --|> "schema:Thing"
 GrowthFacility --|> "ppeo:growth_facility"
 GrowthFacility --|> Platform
-GrowthFacility --|> ObservationUnit
 GrowthFacilityType --|> "schema:Enumeration"
 BiologicalUnit --|> ObservationUnit
 BiologicalUnit --|> "bio:BioChemEntity"

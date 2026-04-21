@@ -10,9 +10,10 @@
         <h2 id="Actuator">Class: Actuator</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Actuator" target="_blank">https://schema.plantphenomics.org.au/Actuator</a></div>
         <img src="image/ttl_appn_Actuator.png"/>
-        <div class="description"><b>Actuator:</b> An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <div class="description"><b>Actuator:</b> An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role. An Actuator is also an ObservationUnit so that it may be the target for Control Assays (setting device parameters as ControlledVariables) and potentially for Observation Assays (reading device state as ObservedVariables).</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Controller">Controller</a></div>
+        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Deployment">Deployment</a> <b>deployedSystem</b> Actuator</div>
@@ -145,7 +146,6 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#growth_facility">http://purl.org/ppeo/PPEO.owl#growth_facility</a></div>
         <div class="parent"><a href="#Platform">Platform</a></div>
-        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
         <h3>Properties</h3>
         <div class="property">GrowthFacility <b>hasGrowthFacilityType</b> <a href="#GrowthFacilityType">GrowthFacilityType</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
@@ -236,7 +236,7 @@
         <h2 id="ObservationUnit">Class: ObservationUnit</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ObservationUnit" target="_blank">https://schema.plantphenomics.org.au/ObservationUnit</a></div>
         <img src="image/ttl_appn_ObservationUnit.png"/>
-        <div class="description"><b>ObservationUnit:</b> An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances.</div>
+        <div class="description"><b>ObservationUnit:</b> An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, Substances, Platforms (including GrowthFacilities) or devices (Sensors and Actuators).</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/prov#Entity">http://www.w3.org/ns/prov#Entity</a></div>
@@ -252,8 +252,10 @@
         <div class="property"><a href="#Location">Location</a> <b>isLocationWithin</b> ObservationUnit</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies that a location is a position within an ObservationUnit.</div>
         <h3>Subclasses</h3>
+        <div class="child"><a href="#Sensor">Sensor</a></div>
+        <div class="child"><a href="#Actuator">Actuator</a></div>
         <div class="child"><a href="#Substance">Substance</a></div>
-        <div class="child"><a href="#GrowthFacility">GrowthFacility</a></div>
+        <div class="child"><a href="#Platform">Platform</a></div>
         <div class="child"><a href="#BiologicalUnit">BiologicalUnit</a></div>
         <h2 id="ObservedVariable">Class: ObservedVariable</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ObservedVariable" target="_blank">https://schema.plantphenomics.org.au/ObservedVariable</a></div>
@@ -293,9 +295,10 @@
         <h2 id="Platform">Class: Platform</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Platform" target="_blank">https://schema.plantphenomics.org.au/Platform</a></div>
         <img src="image/ttl_appn_Platform.png"/>
-        <div class="description"><b>Platform:</b> A vehicle, building, person or other entity that may carry or include Sensors or Actuators.</div>
+        <div class="description"><b>Platform:</b> A vehicle, building, person or other entity that may carry or include Sensors or Actuators. A Platform is also an ObservationUnit so that it may be the target for Observation Assays (reading device state as ObservedVariables) and potentially for Control Assays (setting parameters as ControlledVariables).</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="https://www.w3.org/ns/sosa/Platform">https://www.w3.org/ns/sosa/Platform</a></div>
+        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property">Platform <b>hasPlatformType</b> <a href="#PlatformType">PlatformType</a></div>
@@ -377,9 +380,10 @@
         <h2 id="Sensor">Class: Sensor</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sensor" target="_blank">https://schema.plantphenomics.org.au/Sensor</a></div>
         <img src="image/ttl_appn_Sensor.png"/>
-        <div class="description"><b>Sensor:</b> An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role.</div>
+        <div class="description"><b>Sensor:</b> An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role. A Sensor is also an ObservationUnit so that it may be the target for Control Assays (setting device parameters as ControlledVariables) and potentially for Observation Assays (reading device state as ObservedVariables).</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Observer">Observer</a></div>
+        <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property">Sensor <b>hasSensorType</b> <a href="#SensorType">SensorType</a></div>

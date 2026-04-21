@@ -1,4 +1,4 @@
-# TODO: Prune unnecessary  
+# TODO: Prune unnecessary prefixes
 @prefix appn: <https://schema.plantphenomics.org.au/> .
 @prefix bio: <https://bioschemas.org/> .
 @prefix cdi: <http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/> .
@@ -77,7 +77,7 @@ appn:Treatment a rdfs:Class ;
 
 appn:ObservationUnit a rdfs:Class ;
   rdfs:label "ObservationUnit" ;
-  rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, GrowthFacilities or Substances." ;
+  rdfs:comment "An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, Substances, Platforms (including GrowthFacilities) or devices (Sensors and Actuators)." ;
   rdfs:subClassOf schema:Thing ;
   rdfs:subClassOf prov:Entity ;
   rdfs:subClassOf ppeo:observation_unit ;
@@ -137,14 +137,21 @@ appn:Sampler a rdfs:Class ;
 
 appn:Sensor a rdfs:Class ;
   rdfs:label "Sensor" ;
-  rdfs:comment "An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
+  rdfs:comment "An electromechanical device that can return the value for an ObservedVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role. A Sensor is also an ObservationUnit so that it may be the target for Control Assays (setting device parameters as ControlledVariables) and potentially for Observation Assays (reading device state as ObservedVariables)." ;
   rdfs:subClassOf appn:Observer ;
+  rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf schema:IndividualProduct .
+
+appn:SensorType a rdfs:Class ;
+  rdfs:label "SensorType" ;
+  rdfs:comment "A term from an enumeration of types of Sensor." ;
+  rdfs:subClassOf schema:Enumeration .
 
 appn:Actuator a rdfs:Class ;
   rdfs:label "Actuator" ;
-  rdfs:comment "An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role." ;
+  rdfs:comment "An electromechanical device that can control the value for a ControlledVariable and that may be mounted on a Platform. Note that SOSA maps electromechanical components to prov:Agent, but CDIF recommendation is that Agent should be an intentional role. An Actuator is also an ObservationUnit so that it may be the target for Control Assays (setting device parameters as ControlledVariables) and potentially for Observation Assays (reading device state as ObservedVariables)." ;
   rdfs:subClassOf appn:Controller ;
+  rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf schema:IndividualProduct .
 
 appn:ExternalEvent a rdfs:Class ;
@@ -184,9 +191,15 @@ appn:Substance a rdfs:Class ;
 
 appn:Platform a rdfs:Class ;
   rdfs:label "Platform" ;
-  rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators." ;
+  rdfs:comment "A vehicle, building, person or other entity that may carry or include Sensors or Actuators. A Platform is also an ObservationUnit so that it may be the target for Observation Assays (reading device state as ObservedVariables) and potentially for Control Assays (setting parameters as ControlledVariables)." ;
   rdfs:subClassOf sosa:Platform ;
+  rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf schema:IndividualProduct .
+
+appn:PlatformType a rdfs:Class ;
+  rdfs:label "PlatformType" ;
+  rdfs:comment "A term from an enumeration of types of Platform." ;
+  rdfs:subClassOf schema:Enumeration .
 
 appn:Deployment a rdfs:Class ;
   rdfs:label "Deployment" ;
@@ -198,8 +211,7 @@ appn:GrowthFacility a rdfs:Class ;
   rdfs:label "GrowthFacility" ;
   rdfs:comment "A building, enclosed space, field unit, container or other entity in which plants are grown. GrowthFacilities may be nested inside other GrowthFacilities, e.g. rhizoboxes inside a growth chamber, to any depth. GrowthFacilities include all non-biological ObservationUnits and may be defined for each spatial context at which environmental observations are collected or management actions (Treatments) are performed for one or more BiologicalUnits. Where relevant, the position of a GrowthFacility within a larger GrowthFacility can be specified using a Location. GrowthFacilities may be Platforms for Sensors and Actuators." ;
   rdfs:subClassOf ppeo:growth_facility ;
-  rdfs:subClassOf appn:Platform ;
-  rdfs:subClassOf appn:ObservationUnit .
+  rdfs:subClassOf appn:Platform .
 
 appn:GrowthFacilityType a rdfs:Class ;
   rdfs:label "GrowthFacilityType" ;
@@ -347,11 +359,35 @@ appn:hasGrowthFacilityType a rdf:Property ;
   schema:domainIncludes appn:GrowthFacility ;
   schema:rangeIncludes appn:GrowthFacilityType .
 
+# COMMENT: Needs a range.
+appn:containmentLevel a rdf:Property ;
+  rdfs:label "containmentLevel" ; 
+  rdfs:comment "Provides the containment level for a GrowthFacility." ;
+  schema:domainIncludes appn:GrowthFacility .
+
+# COMMENT: Needs a range.
+appn:quarantine a rdf:Property ;
+  rdfs:label "quarantine" ; 
+  rdfs:comment "Indicates if a GrowthFacility is for quarantine." ;
+  schema:domainIncludes appn:GrowthFacility .
+
 appn:hasBiologicalUnitType a rdf:Property ;
   rdfs:label "hasBiologicalUnitType" ; 
   rdfs:comment "Links a BiologicalUnit to its type." ;
   schema:domainIncludes appn:BiologicalUnit ;
   schema:rangeIncludes appn:BiologicalUnitType .
+
+appn:hasPlatformType a rdf:Property ;
+  rdfs:label "hasPlatformType" ; 
+  rdfs:comment "Links a Platform to its type." ;
+  schema:domainIncludes appn:Platform ;
+  schema:rangeIncludes appn:PlatformType .
+
+appn:hasSensorType a rdf:Property ;
+  rdfs:label "hasSensorType" ; 
+  rdfs:comment "Links a Sensor to its type." ;
+  schema:domainIncludes appn:Sensor ;
+  schema:rangeIncludes appn:SensorType .
 
 # COMMENT: Needs a range.
 appn:hasDefaultValue a rdf:Property ;

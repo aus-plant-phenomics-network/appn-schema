@@ -5,3 +5,8 @@ uml/uml
 *.log
 script-ghp/lib/**
 **/.DS_Store
+publish.sh
+
+.venv/**
+
+**/*\#

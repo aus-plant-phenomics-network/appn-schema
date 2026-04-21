@@ -4,6 +4,16 @@ class Controller
 class "sosa:Actuator" #FFCCEE 
 Controller --|> "sosa:Actuator"
 Actuator --|> Controller
+class ObservationUnit  
+class "schema:Thing" #DDFFDD 
+ObservationUnit --|> "schema:Thing"
+class "prov:Entity" #DDDDFF 
+ObservationUnit --|> "prov:Entity"
+class "ppeo:observation_unit" #EEFFCC 
+ObservationUnit --|> "ppeo:observation_unit"
+class "sosa:FeatureOfInterest" #FFCCEE 
+ObservationUnit --|> "sosa:FeatureOfInterest"
+Actuator --|> ObservationUnit
 class "schema:IndividualProduct" #DDFFDD 
 Actuator --|> "schema:IndividualProduct"
 class Deployment 
@@ -12,4 +22,12 @@ class Control
 Control --> Controller : madeByController
 class Treatment 
 Treatment --> Controller : madeByController
+class Assay 
+Assay --> ObservationUnit : isForObservationUnit
+class ObservationUnit 
+ObservationUnit --> ObservationUnit : inheritsContext
+class Location 
+ObservationUnit --> Location : hasLocation
+class Location 
+Location --> ObservationUnit : isLocationWithin
 @enduml

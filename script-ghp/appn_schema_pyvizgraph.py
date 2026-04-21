@@ -436,7 +436,7 @@ def make_node_uri(term: URIRef):
     return iri
     
 # ---------- build network ----------
-net = Network(height="1020px", width="100%", directed=True)
+net = Network(height="1340px", width="100%", directed=True)
 net.toggle_physics(True)
 
 # Add nodes for classes and properties with prefix-based coloring
@@ -497,7 +497,7 @@ for p in properties:
 # We'll pin legend nodes at the top-left and disable physics for them.
 legend_group = "Legend"
 legend_nodes = []
-x0, y0 = -1300, -1300
+x0, y0 = -1300, -1400
 dx, dy = 0, 60
 
 # Only list prefixes that actually appear (preserves compactness)

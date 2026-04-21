@@ -4,6 +4,16 @@ class Observer
 class "sosa:Sensor" #FFCCEE 
 Observer --|> "sosa:Sensor"
 Sensor --|> Observer
+class ObservationUnit  
+class "schema:Thing" #DDFFDD 
+ObservationUnit --|> "schema:Thing"
+class "prov:Entity" #DDDDFF 
+ObservationUnit --|> "prov:Entity"
+class "ppeo:observation_unit" #EEFFCC 
+ObservationUnit --|> "ppeo:observation_unit"
+class "sosa:FeatureOfInterest" #FFCCEE 
+ObservationUnit --|> "sosa:FeatureOfInterest"
+Sensor --|> ObservationUnit
 class "schema:IndividualProduct" #DDFFDD 
 Sensor --|> "schema:IndividualProduct"
 class SensorType 
@@ -12,4 +22,12 @@ class Deployment
 Deployment --> Sensor : deployedSystem
 class Observation 
 Observation --> Observer : madeByObserver
+class Assay 
+Assay --> ObservationUnit : isForObservationUnit
+class ObservationUnit 
+ObservationUnit --> ObservationUnit : inheritsContext
+class Location 
+ObservationUnit --> Location : hasLocation
+class Location 
+Location --> ObservationUnit : isLocationWithin
 @enduml
