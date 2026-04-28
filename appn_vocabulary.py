@@ -282,6 +282,8 @@ def get_instance(
     for property, mapper in mappings[class_name].items():
         value = mapper.get_value(instances, node, series)
         if value is not None:
+            if isinstance(value, str) and value.startswith("http"):
+                value = {"@id": value}
             instance[property] = value
 
     return instance
