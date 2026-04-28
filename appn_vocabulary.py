@@ -201,7 +201,7 @@ class ExternalInstanceMapper(Mapper):
 #     node              : short name (abbreviation) for APPN node.
 #     name              : name of class instance.
 #
-name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}\[\]]+")
+name_pattern = re.compile(r"[/\s'\"\\?;:,°*+(){}\[\]]+")
 
 
 def get_id(class_name: str, node: str, name: str) -> str:
@@ -713,7 +713,7 @@ if __name__ == "__main__":
         instances = {}
 
         # Loop over Excel spreadsheets in the folder for the node.
-        for file in folder.glob("*Restructure.xls*"):
+        for file in folder.glob("*.xls*"):
 
             # Ignore temporary files that still have xls in their name
             if file.name.startswith("."):
