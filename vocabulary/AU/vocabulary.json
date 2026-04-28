@@ -7,5 +7,923 @@
         "schema": "https://schema.org/",
         "skos": "http://www.w3.org/2004/02/skos/core#"
     },
-    "@graph": []
+    "@graph": [
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Platform/m3m_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "M3M_1",
+            "rdfs:comment": "DJI Mavic 3 Multispectral ",
+            "appn:hasPlatformType": {
+                "@id": "https://id.plantphenomics.org.au/AU/PlatformType/uav"
+            },
+            "schema:brand": "DJI",
+            "schema:model": "mavic 3 multispectral",
+            "schema:serialNumber": "1581F5FKD238K00DF6NJ",
+            "skos:closeMatch": {
+                "@id": "http://www.w3.org/ns/sosa/platform"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Platform/if1200_1",
+            "@type": "Platform",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IF1200_1",
+            "rdfs:comment": "Inspired Flight IF1200 Heavy-Lift Hexacopter",
+            "appn:hasPlatformType": {
+                "@id": "https://id.plantphenomics.org.au/AU/PlatformType/uav"
+            },
+            "schema:brand": "inspired flight technologies",
+            "schema:model": "IF1200",
+            "schema:serialNumber": "5361",
+            "skos:closeMatch": {
+                "@id": "http://www.w3.org/ns/sosa/platform"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/PlatformType/uav",
+            "@type": "PlatformType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "UAV"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Sensor/m3m_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "M3M_1",
+            "rdfs:comment": "RGB: Hasselblad 20MP, 4/3 CMOS\nMultispectral: 1/2.8-inch CMOS, effective pixels: 5 MP (wavelengths: 560, 650, 730, 860 nm)",
+            "appn:hasSensorType": {
+                "@id": "https://id.plantphenomics.org.au/AU/SensorType/rgb_camera_multispectral_camera"
+            },
+            "schema:brand": "DJI",
+            "schema:model": "mavic 3 multispectral",
+            "schema:serialNumber": "1581F5FKD238K00DF6NJ",
+            "skos:closeMatch": {
+                "@id": "http://www.w3.org/ns/sosa/sensor"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Sensor/calvis_1",
+            "@type": "Sensor",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "CALVIS_1",
+            "rdfs:comment": "Hyperspectral: Headwall Co-Aligned VNIR-SWIR (400-2500nm), LiDAR: Velodyne VLP16",
+            "appn:hasSensorType": {
+                "@id": "https://id.plantphenomics.org.au/AU/SensorType/hyperspectral_lidar"
+            },
+            "schema:brand": "headwall photonics + velodyne",
+            "schema:model": "CALVIS",
+            "schema:serialNumber": "CAHP-190",
+            "skos:closeMatch": {
+                "@id": "http://www.w3.org/ns/sosa/sensor"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/SensorType/rgb_camera_multispectral_camera",
+            "@type": "SensorType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RGB camera + multispectral camera"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/SensorType/hyperspectral_lidar",
+            "@type": "SensorType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "hyperspectral + LiDAR"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Deployment/m3m_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "M3M_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/Deployment/if1200_1_calvis_1",
+            "@type": "Deployment",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IF1200_1_CALVIS_1"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh01",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH01",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 2 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 50%, 90% (not installed). Water supply includes options of cold, R.O., rain. Speciality: vip.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh02",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH02",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 2 to corridor and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh03",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH03",
+            "rdfs:comment": "Greenhouse of size 48m (6 *8) with louvre window 1 to outside and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 4 x 400w floods, 2 x 36w fluros. Power of 2 x BMS, 2 x GPO. Shades of 0.5. Water supply includes options of 2 x cold, 2 x R.O., 2 x rain. Speciality: rice",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh04",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH04",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 2 to corridor and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh05",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH05",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh06",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH06",
+            "rdfs:comment": "Greenhouse of size 48m (6 *8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 4 x 400w floods, 2 x 36w fluros. Power of 2 x BMS, 2 x GPO. Shades of 0.5. Water supply includes options of 2 x cold, 2 x R.O., 2 x rain. Speciality: rice",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh07",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH07",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 1 to outside and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh08",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH08",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 4 x 90w led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: bio security area",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "appn:quarantine": "BC5.2.4",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh09",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH09",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 4 x 90w  led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: bio security area",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "appn:quarantine": "BC5.2.4",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh10",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH10",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 4 x 90w led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: bio security area",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "appn:quarantine": "BC5.2.4",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh11",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH11",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 4 x 75w led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: bio security area",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "appn:quarantine": "BC5.2.4",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh12",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH12",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 1 to outside and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 2 x 150w  floods, 10 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh13",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH13",
+            "rdfs:comment": "Greenhouse of size 48m (6 *8) with louvre window 2 to outside and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 400w floods, 2 x 36w fluros, 15 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: fire exit door",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh14",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH14",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 2 to corridor and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro, 10 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh15",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH15",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 1 to outside and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 5 x 150w floods, 1 x 36w fluro, 10 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh16",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH16",
+            "rdfs:comment": "Greenhouse of size 48m (6 *8) with louvre window 1 to outside and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 400w floods, 2 x 36w fluros, 15 x fixed spectrum grow lights. Power of 2 x BMS, 2 x GPO. Shades of 0.5. Water supply includes options of 2 x cold, 2 x R.O., 2 x rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh17",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH17",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) with louvre window 2 to corridor and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 5 x 150w floods, 1 x 36w fluro, 10 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh18",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH18",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 5 x 150w floods, 1 x 36w fluro, 8 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: vip",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh19",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH19",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type chilled. Temperature range of 25 cooling 19 heating. Light system 2 x 150w floods, 1 x 36w fluro, 10 x fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 50% blockout. Water supply includes options of 3 x cold, 3 x R.O., 3 x rain. Speciality: vip",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh20",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH20",
+            "rdfs:comment": "Greenhouse of size 72m (9*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 400w floods, 36 x philips fixed spectrum grow lights. Power of 3 x BMS, 3 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh21",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH21",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh22",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH22",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh23",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH23",
+            "rdfs:comment": "Greenhouse of size 48m (6 *8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 3 x 400w floods, 2 x 36w fluros. Power of 2 x BMS, 2 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: xray",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh24",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH24",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh25_ds",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH25 DS",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type chilled. Temperature range of 25 cooling 19 heating. Light system 4 x 150w floods, 12 x philips fixed spectrum grow lights. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: drought spotter",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh26",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH26 ",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 26 cooling, 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh27",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH27",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 27 cooling, 19 heating. Light system 4 x 90w led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: bio security area",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "appn:quarantine": "BC5.2.4",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh28",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH28",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 28 cooling, 19 heating. Light system 4 x 90w x led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: bio security area",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "appn:quarantine": "BC5.2.4",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh29",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH29",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap/heat coil. Temperature range of 27 cooling, 19 heating. Light system 4 x 54w x led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh30",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH30",
+            "rdfs:comment": "Greenhouse of size 48m (6 *8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 54w x led floods, 2 x 36w fluro. Power of 2 x BMS, 2 x GPO. Shades of 0.5. Water supply includes options of 2 x cold, 2 x R.O., 2 x rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh31",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH31",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 2 x 150w floods, 2 x 54w x led floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh32",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH32",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh33",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH33",
+            "rdfs:comment": "Greenhouse of size 72m (9*8) and A/C type evap cooling/hydroponic heat. Temperature range of 27 cooling 19 heating. Light system 4 x 400w floods, 2 x 36w fluros, 20 x fixed spectrum grow lights. Power of 3 x BMS, 3 x GPO. Shades of 0.5. Water supply includes options of 3 x cold, 3 xR.O., 3 x rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gh34",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GH34",
+            "rdfs:comment": "Greenhouse of size 24m (3*8) and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 2 x 150w floods, 1 x 36w fluro. Power of 1 x BMS, 1 x GPO. Shades of 0.5. Water supply includes options of cold, R.O., rain. Speciality: vip",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse"
+            },
+            "appn:containmentLevel": "PC2",
+            "skos:closeMatch": {
+                "@id": "http://purl.obolibrary.org/obo/ENVO_03600087"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/imga",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IMGA",
+            "rdfs:comment": "Imaging hall north, size 141.4m and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 9 x 36w fluro. Power of 7 x GPO. Shades of 0.5. Water supply includes options of 2 x cold, 2 x R.O., 2 x rain. Speciality: lemnatec imaging system",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/imaging_hall"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/shb",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHB",
+            "rdfs:comment": "Smarthouse north west, size 132.1m with louvre window 2 to corridor and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 6 x 400w hpi-t symmetry floods, 4 x 36w fluro. Power of 2 x BMS, 4 x GPO. Shades of 0.5. Water supply includes options of 1 x rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/smarthouse"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/shc",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHC",
+            "rdfs:comment": "Smarthouse south west, size 143.2m with louvre window 2 to corridor and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 6 x 400w hpi-t symmetry floods, 4 x 36w fluro. Power of 2 x BMS, 4 x GPO. Shades of 0.5. Water supply includes options of 1 x rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/smarthouse"
+            }
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/imgd",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "IMGD",
+            "rdfs:comment": "Imaging hall south, size 140.2m and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 7 x 36w fluro. Power of 8 x GPO. Shades of 0.5. Water supply includes options of 4 x cold, 4 x R.O., 4 x rain",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/imaging_hall"
+            },
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/she",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHE",
+            "rdfs:comment": "Smarthouse  south east, size 142.2m with louvre window 2 to corridor and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 5 x zones of fixed spectrum led light bars, 3 x 400w hpi-t symmetry floods, 4 x 36w fluro. Power of 2 x BMS, 4 x GPO. Shades of 0.5. Water supply includes options of 1 x rain. Speciality: up to 1000 umol, daylight compensating",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/smarthouse"
+            },
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/shf",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "SHF",
+            "rdfs:comment": "Smarthouse south west, size 143.2m with louvre window 2 to corridor and A/C type AHU. Temperature range of 25 cooling 19 heating. Light system 5 x zones of fixed spectrum led light bars, 3 x 400w hpi-t symmetry floods, 4 x 36w fluro. Power of 2 x BMS, 4 x GPO. Shades of 0.5. Water supply includes options of 1 x rain. Speciality: up to 1000 umol, daylight compensating",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/smarthouse"
+            },
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.1",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20",
+            "schema:serialNumber": "100168",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.2",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20",
+            "schema:serialNumber": "100166",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.3",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20",
+            "schema:serialNumber": "100167",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.4",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20",
+            "schema:serialNumber": "100169",
+            "appn:containmentLevel": "non-PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.5",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20",
+            "schema:serialNumber": "100170",
+            "appn:containmentLevel": "non-PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.6",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20 flex",
+            "schema:serialNumber": "100165",
+            "appn:containmentLevel": "non-PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/ri.7",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "RI.7",
+            "rdfs:comment": "Reach-in cabinet, size 1.9 m2, height 1.46 m. Temperature system with lights on 10 to 40, lights off 4 to 40. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of power/ instrument access hole",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "PGC 20 flex",
+            "schema:serialNumber": "100164",
+            "appn:containmentLevel": "non-PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.1",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.1",
+            "rdfs:comment": "Walk-in growth room, size 7.5 m2, height 2.4m. Temperature system with lights on10 to 37, lights off 4 to 37. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 1 x GPO. Water supply includes options of cold, R.O.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "BDW 80",
+            "schema:serialNumber": "100158-LED",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.2",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.2",
+            "rdfs:comment": "Walk-in growth room, size 11.3 m2, height 2.4m. Temperature system with lights on10 to 37, lights off 4 to 37. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 1 x GPO. Water supply includes options of cold, R.O.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "BDW 120",
+            "schema:serialNumber": "100159-LED",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.3",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.3",
+            "rdfs:comment": "Walk-in growth room of size 13.5 m2, height 2m. Temperature system with lights on 15 to 35, lights off 10 to 35. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 2 x GPO. Water supply includes options of cold, R.O.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "MTPS 216",
+            "schema:serialNumber": "100162",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.4",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.4",
+            "rdfs:comment": "Walk-in growth room of size 13.5 m2, height 2m. Temperature system with lights on 15 to 35, lights off 10 to 35. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 2 x GPO. Water supply includes options of cold, R.O.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "MTPS 216",
+            "schema:serialNumber": "100163",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.5",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.5",
+            "rdfs:comment": "Walk-in growth room of size 11.3 m2, height 2.4m. Temperature system with lights on10 to 37, lights off 4 to 37. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 1 x GPO. Water supply includes options of cold, R.O.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "BDW 120",
+            "schema:serialNumber": "100160-LED",
+            "appn:containmentLevel": "non-PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.6",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.6",
+            "rdfs:comment": "Walk-in growth room of size 11.3 m2, height 2.4m. Temperature system with lights on10 to 37, lights off 4 to 37. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 1 x GPO. Water supply includes options of cold, R.O.",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "BDW 120",
+            "schema:serialNumber": "100161-LED",
+            "appn:containmentLevel": "non-PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.7",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.7",
+            "rdfs:comment": "Walk-in growth room of size 15.8 m2. Temperature system with lights on 15 to 35, lights off 10 to 35. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 2 x GPO. Water supply includes options of rain(watering), R.O.(humidity)",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "GR 96",
+            "schema:serialNumber": "170166",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/wi.8",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "WI.8",
+            "rdfs:comment": "Walk-in growth room of size 15.8 m2. Temperature system with lights on 15 to 35, lights off 10 to 35. Humidity range of up to 90%. Light intensity 20 - 1000 umol/m2/s. Power of 2 x GPO. Water supply includes options of rain(watering), R.O.(humidity)",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room"
+            },
+            "schema:brand": "conviron",
+            "schema:model": "GR 96",
+            "schema:serialNumber": "170165",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/gen1000",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "GEN1000",
+            "rdfs:comment": "Reach-in growth chamber, conviron size 0.53 m2 per shelf. Temperature system with lights on 6 to 45, lights off 4 to 45. Light intensity 550   per shelf (2 shelves) umol/m2/s. Shades of gen 1000 info. Short plant",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_growth_chamber"
+            },
+            "schema:brand": "conviron",
+            "schema:serialNumber": "200505",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacility/sanyo_mlr-351",
+            "@type": "GrowthFacility",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "sanyo MLR-351",
+            "rdfs:comment": "Growth chamber size 0.2 m2 per shelf, up to 5 shelves. Temperature system with lights on 10 to 45, lights off 4 to 45. Light intensity 0-210 umol/m2/s. Shades of sanyo mlr-351",
+            "appn:hasGrowthFacilityType": {
+                "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/growth_chamber"
+            },
+            "schema:brand": "sanyo",
+            "schema:model": "MLR-351",
+            "appn:containmentLevel": "PC2"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/greenhouse",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "greenhouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/imaging_hall",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "Imaging hall"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/smarthouse",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "smarthouse"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_cabinet",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "reach-in cabinet"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/walk-in_growth_room",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "walk-in growth room"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/reach-in_growth_chamber",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "reach-in growth chamber"
+        },
+        {
+            "@id": "https://id.plantphenomics.org.au/AU/GrowthFacilityType/growth_chamber",
+            "@type": "GrowthFacilityType",
+            "schema:owner": "https://ror.org/028g18b61",
+            "rdfs:label": "growth chamber"
+        }
+    ]
 }
