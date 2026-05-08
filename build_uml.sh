@@ -18,7 +18,7 @@ java -jar plantuml.jar ttl_uml
 # 2b) Sort property mappings with uppercase first (to get classes before properties)
 # 2c) Add trailing comma to all but last property mapping
 # 3) Get final braces from context.json
-contents=`sed '/@context/q' context.json; sed -En -e 's/^appn:(\w+).*/    "\1": "https:\/\/schema.plantphenomics.org\/\1"/p' appn-schema.ttl | LC_COLLATE=C sort | sed -E -e '$ ! s/$/,/'; tail -2 context.json;`
+contents=`sed '/@context/q' context.json; sed -En -e 's/^appn:(\w+).*/    "\1": "https:\/\/schema.plantphenomics.org.au\/\1"/p' appn-schema.ttl | LC_COLLATE=C sort | sed -E -e '$ ! s/$/,/'; tail -2 context.json;`
 
 # Write contents to context.json
 echo "${contents}" > context.json
