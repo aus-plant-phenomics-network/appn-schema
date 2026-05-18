@@ -439,6 +439,27 @@ def make_node_uri(term: URIRef):
 net = Network(height="1340px", width="100%", directed=True)
 net.toggle_physics(True)
 
+from urllib.parse import quote
+
+def to_agroportal_url(ontology_uri: str) -> str:
+    # Normalize to canonical PPEO URI
+    # ontology_uri = ontology_uri.replace(
+        # "https://raw.githubusercontent.com/MIAPPE/MIAPPE-ontology/master/PPEO.owl",
+        # "http://purl.org/ppeo/PPEO.owl"
+    # )
+    
+    base = "https://agroportal.eu/ontologies/PPEO"
+    encoded_uri = quote(ontology_uri, safe='')
+    
+    url = (
+        f"{base}?p=classes"
+        f"&conceptid={encoded_uri}"
+        f"&language=EN"
+    )
+    
+    return url.replace("&", "&amp;")
+
+
 # Add nodes for classes and properties with prefix-based coloring
 def add_node(net, n, is_property: bool):
     nid = str(n)
@@ -449,11 +470,18 @@ def add_node(net, n, is_property: bool):
     title = make_node_title(n, px)
     
     uri   = make_node_uri(n)
+    
+    
+    if "purl.org" in uri:
+        uri = to_agroportal_url(uri)
+
     try:
         uri = to_appn_github_uri(uri)
     except ValueError as e:
         None 
         #print(f'No issue with uri rewrite: {e}')
+    
+    # print(uri)
         
     net.add_node(
         nid,
