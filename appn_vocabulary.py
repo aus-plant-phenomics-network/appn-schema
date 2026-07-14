@@ -21,6 +21,7 @@ import logging
 import os
 import re
 import sys
+import datetime
 from pathlib import Path
 from typing import Optional, Any
 
@@ -201,7 +202,7 @@ class ExternalInstanceMapper(Mapper):
 #     node              : short name (abbreviation) for APPN node.
 #     name              : name of class instance.
 #
-name_pattern = re.compile(r"[/\s'\"\\?;:,°*+(){}\[\]]+")
+name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}\[\]]+")
 
 
 def get_id(class_name: str, node: str, name: str) -> str:
@@ -245,13 +246,13 @@ def get_instance(
     else:
 
         # Need the row to contain a name that can serve as an identifier.
-        if "rdfs:label" not in mapping:
+        if "schema:name" not in mapping:
             logging.error(f"No name property defined for class {class_name}")
             return None
 
         # Since the spreadsheets are intended as templates, there may be incomplete
         # rows that should not be processed.
-        name = mapping["rdfs:label"].get_value(instances, node, series)
+        name = mapping["schema:name"].get_value(instances, node, series)
         if name is None:
             logging.debug(f"No name supplied for new instance")
             return None
@@ -282,8 +283,6 @@ def get_instance(
     for property, mapper in mappings[class_name].items():
         value = mapper.get_value(instances, node, series)
         if value is not None:
-            if isinstance(value, str) and value.startswith("http"):
-                value = {"@id": value}
             instance[property] = value
 
     return instance
@@ -320,6 +319,7 @@ def process_sheet(
 #
 #     -n, --node        : Node name (actually name of subfolder under source)
 #                         or "all" to process all nodes (subfolders).
+#     -m, --mode        : Output mode "json" for JSON-LD or "rdf" for xml/rdf (default)
 #     -l, --log-level   : "info" / "error" / "debug".
 #     -e,               : Display logging outputs to stderr.
 #      --echo-to-stderr
@@ -329,6 +329,7 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         prog=argv[0],
         description=f"{argv[0]}: Generate linked-data outputs from APPN node vocabulary sheets",
     )
+    parser.add_argument("-m", "--mode", choices=("json", "rdf", "all"), default="rdf")
     parser.add_argument(
         "-l", "--log-level", choices=("error", "info", "debug"), default="info"
     )
@@ -383,7 +384,7 @@ def start_log(
 #
 # Write line to HTML file, maintaining tidy indentation.
 #
-#   NOTE: Type checking is disabled for rows accessing JSON gracph nodes.
+#   NOTE: Type checking is disabled for rows accessing JSON graph nodes.
 #
 #     html_file         : file to write HTML content.
 #     html              : line of HTML to be written.
@@ -534,6 +535,26 @@ def format_html(
         indent = write_html(html_file, "</html>", indent)
 
 
+### write_property ########################################################
+#
+# Write RDF property and value.
+#
+#     f         : open file
+#     ppty      : property name
+#     json      : value string
+#
+def write_property(f: _io.TextIOWrapper, ppty: str, value: str) -> None:
+    value = value.replace("&", "&amp;")
+    if value.startswith("http"):
+        f.write(f'        <{ppty} rdf:resource="{value}"/>\n')
+    elif ppty == "@type":
+        f.write(
+            f'        <rdf:type rdf:resource="https://schema.plantphenomics.org.au/{value}"/>\n'
+        )
+    else:
+        f.write(f'        <{ppty} xml:lang="en">{value}</{ppty}>\n')
+
+
 ### GLOBAL VARIABLES ##########################################################
 #
 # Definition objects controlled the execution
@@ -566,8 +587,8 @@ mappings = {
         "schema:email": PropertyMapper("email"),
     },
     "GrowthFacility": {
-        "rdfs:label": PropertyMapper("growth facility name *"),
-        "rdfs:comment": PropertyMapper("growth facility description *"),
+        "schema:name": PropertyMapper("growth facility name *"),
+        "schema:description": PropertyMapper("growth facility description *"),
         "appn:hasGrowthFacilityType": InstanceMapper("GrowthFacilityType"),
         "schema:brand": PropertyMapper("growth facility type brand *"),
         "schema:model": PropertyMapper("growth facility model *"),
@@ -577,11 +598,11 @@ mappings = {
         "skos:closeMatch": PropertyMapper("growth facility ontology IRI"),
     },
     "GrowthFacilityType": {
-        "rdfs:label": PropertyMapper("growth facility type *"),
+        "schema:name": PropertyMapper("growth facility type *"),
     },
     "Platform": {
-        "rdfs:label": PropertyMapper("platform name"),
-        "rdfs:comment": PropertyMapper("platform description *"),
+        "schema:name": PropertyMapper("platform name"),
+        "schema:description": PropertyMapper("platform description *"),
         "appn:hasPlatformType": InstanceMapper("PlatformType"),
         "schema:brand": PropertyMapper("platform type brand"),
         "schema:model": PropertyMapper("platform model *"),
@@ -589,11 +610,11 @@ mappings = {
         "skos:closeMatch": PropertyMapper("platform ontology IRI"),
     },
     "PlatformType": {
-        "rdfs:label": PropertyMapper("platform type *"),
+        "schema:name": PropertyMapper("platform type *"),
     },
     "Sensor": {
-        "rdfs:label": PropertyMapper("sensor name"),
-        "rdfs:comment": PropertyMapper("sensor description *"),
+        "schema:name": PropertyMapper("sensor name"),
+        "schema:description": PropertyMapper("sensor description *"),
         "appn:hasSensorType": InstanceMapper("SensorType"),
         "schema:brand": PropertyMapper("sensor type brand"),
         "schema:model": PropertyMapper("sensor model *"),
@@ -601,19 +622,18 @@ mappings = {
         "skos:closeMatch": PropertyMapper("sensor ontology IRI"),
     },
     "SensorType": {
-        "rdfs:label": PropertyMapper("sensor type *"),
+        "schema:name": PropertyMapper("sensor type *"),
     },
     "Deployment": {
-        "rdfs:label": PropertyMapper("appn deployment name"),
+        "schema:name": PropertyMapper("appn deployment name"),
         "appn:deployedOnPlatform": InstanceMapper("Platform"),
         "appn:deployedSystem": InstanceMapper("Sensor"),
     },
     "ObservedVariable": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
-        "dc:creator": PropertyMapper("author"),
-        "dc:created": PropertyMapper("Date"),
-        "dc:language": PropertyMapper("Language"),
+        "schema:name": PropertyMapper("name"),
+        "schema:description": PropertyMapper("description"),
+        "dcterms:creator": PropertyMapper("author"),
+        "dcterms:language": PropertyMapper("Language"),
         "appn:hasTrait": ExternalInstanceMapper("Trait", "name"),
         "appn:hasScale": ExternalInstanceMapper("Scale"),
         "appn:usedMethod": ExternalInstanceMapper("Method"),
@@ -621,50 +641,50 @@ mappings = {
         "appn:forBiologicalUnitType": ExternalInstanceMapper("BiologicalUnitType"),
     },
     "BiologicalMaterial": {
-        "rdfs:label": PropertyMapper("name"),
+        "schema:name": PropertyMapper("name"),
         "bio:scientificName": PropertyMapper("scientificName"),
-        "rdfs:comment": PropertyMapper("description"),
+        "schema:description": PropertyMapper("description"),
         "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "dcterms:creator": PropertyMapper("author"),
     },
     "BiologicalUnitType": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
+        "schema:name": PropertyMapper("name"),
+        "schema:description": PropertyMapper("description"),
         "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "dcterms:creator": PropertyMapper("author"),
     },
     "Trait": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
+        "schema:name": PropertyMapper("name"),
+        "schema:description": PropertyMapper("description"),
         "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "dcterms:creator": PropertyMapper("author"),
     },
     "Method": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description"),
+        "schema:name": PropertyMapper("name"),
+        "schema:description": PropertyMapper("description"),
         "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "dcterms:creator": PropertyMapper("author"),
     },
     "Scale": {
-        "rdfs:label": PropertyMapper("name"),
-        "rdfs:comment": PropertyMapper("description "),
+        "schema:name": PropertyMapper("name"),
+        "schema:description": PropertyMapper("description "),
         "schema:alternateName": RepeatedPropertyMapper("altLabel"),
         "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
         "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
         "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dc:created": PropertyMapper("author"),
+        "dcterms:creator": PropertyMapper("author"),
     },
 }
 
@@ -707,15 +727,18 @@ if __name__ == "__main__":
             sys.exit(1)
         logging.info(f"Selected folder {node}")
 
+    timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
     # Generate vocabulary for each selected node in turn.
     for folder in folders:
         node = folder.name
+        organisation_name, ror = organisations[node]
 
         # Dictionary to map URIs to the class instances (as dictionaries).
         instances = {}
 
         # Loop over Excel spreadsheets in the folder for the node.
-        for file in folder.glob("*.xls*"):
+        for file in folder.glob("*Restructure.xls*"):
 
             # Ignore temporary files that still have xls in their name
             if file.name.startswith("."):
@@ -778,18 +801,83 @@ if __name__ == "__main__":
                             instances, class_name, node, file, sheets[class_name]
                         )
 
-        # Flatten the instance dictionaries into a single list.
-        node_instances = []
-        for class_name in instances:
-            node_instances += instances[class_name].values()
+        # Generate outputs for target format
 
-        # Generate and write the JSON-LD vocabulary.
-        vocabulary = {
-            "@context": prefixes,
-            "@graph": node_instances,
-        }
         target = Path("vocabulary") / node
-        os.makedirs(target, exist_ok=True)
-        with open(target / "vocabulary.json", "w", encoding="utf-8") as f:
-            json.dump(vocabulary, f, ensure_ascii=False, indent=4)
-            format_html(target / "vocabulary.html", node, vocabulary, prefixes)
+
+        if args["mode"] in ["json", "all"]:
+            # Flatten the instance dictionaries into a single list.
+            node_instances = []
+            for class_name in instances:
+                node_instances += instances[class_name].values()
+
+            # Generate and write the JSON-LD vocabulary.
+            vocabulary = {
+                "@context": prefixes,
+                "@graph": node_instances,
+            }
+            os.makedirs(target, exist_ok=True)
+            with open(target / "vocabulary.json", "w", encoding="utf-8") as f:
+                json.dump(vocabulary, f, ensure_ascii=False, indent=4)
+                format_html(target / "vocabulary.html", node, vocabulary, prefixes)
+
+        if args["mode"] in ["rdf", "all"]:
+            with open(target / "vocabulary.rdf", "w", encoding="utf-8") as f:
+                f.writelines(
+                    [
+                        '<?xml version="1.0" encoding="UTF-8"?>\n',
+                        "<rdf:RDF\n",
+                        '    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"\n',
+                        '    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"\n',
+                        '    xmlns:skos="http://www.w3.org/2004/02/skos/core#"\n',
+                        '    xmlns:dcterms="http://purl.org/dc/terms/"\n',
+                        '    xmlns:appn="https://schema.plantphenomics.org.au/"\n',
+                        '    xmlns:bio="https://bioschemas.org/"\n',
+                        '    xmlns:schema="https://schema.org/">\n',
+                        "\n",
+                    ]
+                )
+
+                for class_name in instances:
+                    f.writelines(
+                        [
+                            f'    <rdf:Description rdf:about="https://id.plantphenomics.org.au/{node}/{class_name}">\n',
+                            '        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>\n',
+                            f'        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">{timestamp}</dcterms:created>\n',
+                            f'        <dcterms:creator rdf:resource="{ror}"/>\n',
+                            f'        <dcterms:description xml:lang="en">Set of terms for APPN schema class {class_name} in use by {organisation_name} node.</dcterms:description>\n',
+                            f'        <dcterms:title xml:lang="en">{class_name}</dcterms:title>\n',
+                            "    </rdf:Description>\n",
+                            "\n",
+                        ]
+                    )
+
+                    for instance in instances[class_name].values():
+                        f.write(
+                            f'    <rdf:Description rdf:about="{instance["@id"]}">\n'
+                        )
+                        f.write(
+                            f'        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>\n'
+                        )
+                        f.write(
+                            f'        <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/{node}/{class_name}"/>\n'
+                        )
+                        f.write(
+                            f'        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">{timestamp}</dcterms:created>\n'
+                        )
+                        for k, v in instance.items():
+                            print(f"{k}: {v}")
+                            if k != "@id":
+                                if isinstance(v, list):
+                                    for item in v:
+                                        write_property(f, k, item)
+                                else:
+                                    write_property(f, k, v)
+                                    if k == "schema:name":
+                                        write_property(f, "rdfs:label", v)
+                                    elif k == "schema:description":
+                                        write_property(f, "rdfs:comment", v)
+
+                        f.write("    </rdf:Description>\n\n")
+
+                f.writelines(["</rdf:RDF>\n"])
