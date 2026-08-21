@@ -96,6 +96,18 @@ class Dictionary:
     def list_triples(self) -> list[Tuple[str, str, str]]:
         return [(s, p, o) for (s, p, o) in self.graph]
 
+    def list_triples_for_subject(self, subject: str) -> list[Tuple[str, str, str]]:
+        subject = self.expand_curie(subject)
+        return [(s, p, o) for (s, p, o) in self.graph if (str(s) == subject)]
+
+    def list_triples_for_object(self, object_: str) -> list[Tuple[str, str, str]]:
+        object_ = self.expand_curie(object_)
+        return [(s, p, o) for (s, p, o) in self.graph if (str(o) == object_)]
+
+    def list_triples_for_property(self, property_: str) -> list[Tuple[str, str, str]]:
+        peoperty_ = self.expand_curie(property_)
+        return [(s, p, o) for (s, p, o) in self.graph if (str(p) == property_)]
+
     def list_classes(self) -> list[str]:
         classes = []
         for c in self.graph.query("""
@@ -155,9 +167,9 @@ class Dictionary:
             logging.debug(f"Issuing query:\n{query}")
             for p in self.graph.query(query):
                 if isinstance(p[0], URIRef):
-                    ppty = str(p[0])
-                    if ppty not in property_list:
-                        property_list.append((ppty, c))
+                    property_ = str(p[0])
+                    if property_ not in property_list:
+                        property_list.append((property_, c))
 
         logging.debug(f"Matching properties: {', '.join([p for p,c in property_list])}")
         return property_list
@@ -184,9 +196,9 @@ class Dictionary:
             logging.debug(f"Issuing query:\n{query}")
             for p in self.graph.query(query):
                 if isinstance(p[0], URIRef):
-                    ppty = str(p[0])
-                    if ppty not in property_list:
-                        property_list.append((ppty, c))
+                    property_ = str(p[0])
+                    if property_ not in property_list:
+                        property_list.append((property_, c))
 
         logging.debug(f"Matching properties: {', '.join([p for p,c in property_list])}")
         return property_list
@@ -224,7 +236,8 @@ class Dictionary:
 # Safely process sys.argv, returning a dictionary of option values.
 #
 #     query             : query type - one of:
-#                          { classes, domain, range, namespaces }.
+#                          { classes, domain, range, namespaces, subject, 
+#                            property, object }.
 #     -l, --log-level   : "info" / "error" / "debug".
 #     -e,               : Display logging outputs to stderr.
 #      --echo-to-stderr
@@ -234,7 +247,7 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         prog=argv[0],
         description=f"{argv[0]}: Generate linked-data outputs from APPN node vocabulary sheets",
     )
-    parser.add_argument("query", choices=["classes", "domain", "range", "namespaces"])
+    parser.add_argument("query", choices=["classes", "domain", "range", "namespaces", "subject", "property", "object"])
     parser.add_argument("iri", default="all")
     parser.add_argument(
         "-l", "--log-level", choices=("error", "info", "debug"), default="info"
@@ -323,5 +336,27 @@ if __name__ == "__main__":
     elif args["query"] == "namespaces":
         for p, ns in d.list_namespaces():
             print(f"{p} : {ns}")
+
+    elif args["query"] in [ "subject", "property", "object" ]:
+        if args["query"] == "subject":
+            triples = d.list_triples_for_subject(args["iri"])
+        elif args["query"] == "property":
+            triples = d.list_triples_for_property(args["iri"])
+        else:
+            triples = d.list_triples_for_object(args["iri"])
+        len_s = 0
+        len_p = 0
+        curie_triples = []
+        for s, p, o in triples:
+            s = d.get_curie(s)
+            p = d.get_curie(p)
+            o = d.get_curie(o)
+            curie_triples.append((s, p, o))
+            if len(s) > len_s:
+                len_s = len(s)
+            if len(p) > len_p:
+                len_p = len(p)
+        for s, p, o in curie_triples:
+            print(f"{s:{len_s}s}   {p:{len_p}s}   {o}")
 
     logger.info("Finished")
