@@ -128,3 +128,5 @@ erDiagram
   <li><strong>PK</strong> = Primary Key</li>
   <li><strong>FK</strong> = Foreign Key</li>
 </ul>
+  
+> N.B. The foreign key designation is not automated from the generator script and the primary key field is currently a temporary placeholder.
