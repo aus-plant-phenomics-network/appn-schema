@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script>
+</head>
+<body>
+
+
+<h3>Legend</h3>
+<h3>Relationship Cardinality - E2 relationship with E1</h3>
+
+<pre class="mermaid">
+erDiagram
+    E1 ||--|| E2 : "Exactly one"
+    E1 o|--|| E2 : "Zero or one"
+    E1 |{--|| E2 : "One or more"
+    E1 o{--|| E2 : "Zero or more"
+</pre>
+
+<ul>
+  <li><strong>PK</strong> = Primary Key</li>
+  <li><strong>FK</strong> = Foreign Key</li>
+</ul>
+
+
+
+<pre class="mermaid">
+erDiagram
+
+    appn_Investigation {
+    string investigationIdentifier
+    string investigationTitle
+    string investigationDescription
+    array studyIdentifier PK
+    }
+    appn_Study {
+    string studyIdentifier PK
+    string studyalternateIdentifier
+    string studyTitle PK
+    string studyDescription PK
+    string additionalType PK
+    array personIdentifier PK
+    object investigationIdentifier
+    array placeName PK
+    array growthFacilityName PK
+    array biologicalMaterialIdentifier PK
+    array deploymentName
+    }
+    schema_Person {
+    string givenName PK
+    string familyName PK
+    array identifier
+    array email
+    string jobTitle
+    string roleName PK
+    array affiliation PK
+    }
+    schema_Organization {
+    string legalName PK
+    array identifier PK
+    string address
+    string roleName
+    }
+    schema_Grant {
+    string name
+    array identifier
+    object funder
+    object fundedItem
+    number amount
+    }
+    appn_SpatialLocation {
+    string name PK
+    string GeoLatLong
+    string GeoShape
+    }
+    appn_GrowthFacility {
+    string growthFacilityName PK
+    string growthFacilityType PK
+    string growthFacilityContainmentLevel PK
+    boolean growthFacilityQuarantine PK
+    }
+    appn_Deployment {
+    string deploymentName PK
+    }
+    appn_BiologicalMaterial {
+    string biologicalMaterialIdentifier
+    string biologicalMaterialGenus PK
+    string biologicalMaterialSpecies PK
+    array biologicalMaterialInfraspecificName
+    string biologicalMaterialPreprocessing
+    string geneticallyModifiedStatus
+    string quaratineStatus
+    object materialSourceIdentifier
+    }
+    appn_MaterialSource {
+    array materialSourceDescription
+    array materialSourceIdentifier PK
+    }
+
+    appn_Study |{--|| appn_Investigation : studyIdentifier
+    schema_Person |{--|| appn_Study : personIdentifier
+    appn_Investigation o|--|| appn_Study : investigationIdentifier
+    appn_SpatialLocation |{--|| appn_Study : placeName
+    appn_GrowthFacility |{--|| appn_Study : growthFacilityName
+    appn_BiologicalMaterial |{--|| appn_Study : biologicalMaterialIdentifier
+    appn_Deployment o{--|| appn_Study : deploymentName
+    schema_Grant o{--|| schema_Person : identifier
+    schema_Organization |{--|| schema_Person : affiliation
+    schema_Person |{--|| schema_Organization : identifier
+    schema_Organization o{--|| schema_Grant : identifier
+    schema_Organization o|--|| schema_Grant : funder
+    schema_Person o|--|| schema_Grant : fundedItem
+    appn_MaterialSource o|--|| appn_BiologicalMaterial : materialSourceIdentifier
+</pre>
+
+
+</body>
+</html>
+    
