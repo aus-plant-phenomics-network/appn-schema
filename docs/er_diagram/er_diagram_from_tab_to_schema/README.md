@@ -21,8 +21,10 @@ The schema file is then reprocessed to output a Mermaid ER diagram
 ```python
 python generate_mermaide_from_schema.py appn_schema_tabdelim_appn_hand_edited.json
 ```
+The above code produces a file named ```erd.html```, that can be loaded into a web browser for interactive display.
 
-The current output generates something like the following:
+  
+The output file will produce something like the following (automatically rendered on GitHub):
   
 ```mermaid
 erDiagram
@@ -31,29 +33,29 @@ erDiagram
     string investigationIdentifier
     string investigationTitle
     string investigationDescription
-    array studyIdentifier PK
+    array studyIdentifier FK
     }
     appn_Study {
     string studyIdentifier PK
     string studyalternateIdentifier
-    string studyTitle PK
-    string studyDescription PK
-    string additionalType PK
-    array personIdentifier PK
-    object investigationIdentifier
-    array placeName PK
-    array growthFacilityName PK
-    array biologicalMaterialIdentifier PK
-    array deploymentName
+    string studyTitle
+    string studyDescription
+    string additionalType
+    array personIdentifier FK
+    object investigationIdentifier FK
+    array placeName FK
+    array growthFacilityName FK
+    array biologicalMaterialIdentifier FK
+    array deploymentName FK
     }
     schema_Person {
-    string givenName PK
-    string familyName PK
-    array identifier
+    string givenName
+    string familyName
+    array identifier PK
     array email
     string jobTitle
-    string roleName PK
-    array affiliation PK
+    string roleName
+    array affiliation FK
     }
     schema_Organization {
     string legalName PK
@@ -63,7 +65,7 @@ erDiagram
     }
     schema_Grant {
     string name
-    array identifier
+    array identifier PK
     object funder
     object fundedItem
     number amount
@@ -75,15 +77,15 @@ erDiagram
     }
     appn_GrowthFacility {
     string growthFacilityName PK
-    string growthFacilityType PK
-    string growthFacilityContainmentLevel PK
-    boolean growthFacilityQuarantine PK
+    string growthFacilityType
+    string growthFacilityContainmentLevel
+    boolean growthFacilityQuarantine
     }
     appn_Deployment {
     string deploymentName PK
     }
     appn_BiologicalMaterial {
-    string biologicalMaterialIdentifier
+    string biologicalMaterialIdentifier PK
     string biologicalMaterialGenus PK
     string biologicalMaterialSpecies PK
     array biologicalMaterialInfraspecificName
@@ -129,4 +131,4 @@ erDiagram
   <li><strong>FK</strong> = Foreign Key</li>
 </ul>
   
-> N.B. The foreign key designation is not automated from the generator script and the primary key field is currently a temporary placeholder.
+> N.B. The foreign key designation is not automated from the generator script (it has been had assigned in this verion of the diagram) and the primary key field is currently a temporary placeholder.
