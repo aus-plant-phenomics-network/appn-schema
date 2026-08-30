@@ -5,12 +5,12 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:appn="https://schema.plantphenomics.org.au/"
-    xmlns:bio="https://bioschemas.org/terms/"
+    xmlns:bio="https://bioschemas.org/"
     xmlns:schema="https://schema.org/">
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <dcterms:creator rdf:resource="https://ror.org/01rxfrp27"/>
         <dcterms:description xml:lang="en">Set of terms for APPN schema class BiologicalUnitType in use by La Trobe University node.</dcterms:description>
         <dcterms:title xml:lang="en">BiologicalUnitType</dcterms:title>
@@ -19,7 +19,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/whole_plant">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whole plant</schema:name>
@@ -33,7 +33,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/leaf">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf</schema:name>
@@ -47,7 +47,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/branch">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">branch</schema:name>
@@ -61,7 +61,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/canopy">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">canopy</schema:name>
@@ -74,7 +74,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/stem">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">stem</schema:name>
@@ -88,7 +88,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/shoot">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot</schema:name>
@@ -102,7 +102,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/flower">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">flower</schema:name>
@@ -116,7 +116,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/fruit">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fruit</schema:name>
@@ -130,7 +130,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/root">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root</schema:name>
@@ -144,7 +144,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType/plant">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalUnitType"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalUnitType"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">plant</schema:name>
@@ -156,7 +156,7 @@
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <dcterms:creator rdf:resource="https://ror.org/01rxfrp27"/>
         <dcterms:description xml:lang="en">Set of terms for APPN schema class BiologicalMaterial in use by La Trobe University node.</dcterms:description>
         <dcterms:title xml:lang="en">BiologicalMaterial</dcterms:title>
@@ -165,7 +165,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial/any_plant">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalMaterial"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalMaterial"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">any plant</schema:name>
@@ -181,7 +181,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial/grain">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalMaterial"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalMaterial"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">grain</schema:name>
@@ -197,7 +197,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial/wheat">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalMaterial"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalMaterial"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">wheat</schema:name>
@@ -213,7 +213,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial/barley">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalMaterial"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalMaterial"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">barley</schema:name>
@@ -229,7 +229,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial/tomato">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalMaterial"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalMaterial"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">tomato</schema:name>
@@ -245,7 +245,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalMaterial/cannabis">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/BiologicalMaterial"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/BiologicalMaterial"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">cannabis</schema:name>
@@ -260,7 +260,7 @@
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <dcterms:creator rdf:resource="https://ror.org/01rxfrp27"/>
         <dcterms:description xml:lang="en">Set of terms for APPN schema class Method in use by La Trobe University node.</dcterms:description>
         <dcterms:title xml:lang="en">Method</dcterms:title>
@@ -269,7 +269,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/growth_stage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">growth stage method</schema:name>
@@ -282,7 +282,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/overall_stature_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">overall stature method</schema:name>
@@ -295,7 +295,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/fungal_gnats_leaf_damage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal gnats leaf damage method</schema:name>
@@ -308,7 +308,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/spider_mites_leaf_damage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">spider mites leaf damage method</schema:name>
@@ -321,7 +321,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/thrips_leaf_damage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">thrips leaf damage method</schema:name>
@@ -334,7 +334,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/whitefly_leaf_damage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whitefly leaf damage method</schema:name>
@@ -347,7 +347,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/aphid_leaf_damage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">aphid leaf damage method</schema:name>
@@ -360,7 +360,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/insect_leaf_damage_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">insect leaf damage method</schema:name>
@@ -373,7 +373,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/botrytis_cinerea_infection_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">botrytis cinerea infection method</schema:name>
@@ -386,7 +386,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/powdery_mildew_infection_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">powdery mildew infection method</schema:name>
@@ -399,7 +399,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_rust_infection_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf rust infection method</schema:name>
@@ -412,7 +412,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/fusarium_infection_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fusarium infection method</schema:name>
@@ -425,7 +425,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/fungal_infection_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal infection method</schema:name>
@@ -438,7 +438,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_colour_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour method</schema:name>
@@ -451,7 +451,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_colour_gradient_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour gradient method</schema:name>
@@ -464,7 +464,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/nitrogen_deficiency_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nitrogen deficiency method</schema:name>
@@ -477,7 +477,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/phosphorus_deficiency_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus deficiency method</schema:name>
@@ -490,7 +490,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/phosphorus_toxicity_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus toxicity method</schema:name>
@@ -503,7 +503,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/plant_height_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">plant height method</schema:name>
@@ -516,7 +516,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/branch_length_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">branch length method</schema:name>
@@ -529,7 +529,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/canopy_diameter_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">canopy diameter method</schema:name>
@@ -542,7 +542,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/steam_diameter_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">steam diameter method</schema:name>
@@ -555,7 +555,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/shoot_axis_internode_length_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot axis internode length method</schema:name>
@@ -568,7 +568,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/internode_count_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">internode count method</schema:name>
@@ -581,7 +581,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/shoot_primary_branch_count_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot primary branch count method</schema:name>
@@ -594,7 +594,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/shoot_secondary_branch_count_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot secondary branch count method</schema:name>
@@ -607,7 +607,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_number_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf number method</schema:name>
@@ -620,7 +620,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/flower_number_trait_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">flower number trait method</schema:name>
@@ -633,7 +633,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/ripe_fruit_count_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">ripe fruit count method</schema:name>
@@ -646,7 +646,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/unripe_fruit_count_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">unripe fruit count method</schema:name>
@@ -659,7 +659,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/harvest_weight_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">harvest weight method</schema:name>
@@ -672,7 +672,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/root_density_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root density method</schema:name>
@@ -685,7 +685,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/nutrient_content_result_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nutrient content result method</schema:name>
@@ -698,7 +698,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/primary_metabolite_result_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">primary metabolite result method</schema:name>
@@ -711,7 +711,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/elemental_composition_result_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">elemental composition result method</schema:name>
@@ -724,7 +724,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_fluorescence_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf fluorescence method</schema:name>
@@ -737,7 +737,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/total_amount_of_carbon_fixed_by_plant_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">total amount of carbon fixed by plant method</schema:name>
@@ -750,7 +750,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_optical_property_method">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf optical property method</schema:name>
@@ -763,7 +763,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/growth_stage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">growth stage</schema:name>
@@ -776,7 +776,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/overall_stature">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">overall stature</schema:name>
@@ -789,7 +789,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/fungal_gnats_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal gnats leaf damage</schema:name>
@@ -802,7 +802,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/spider_mites_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">spider mites leaf damage</schema:name>
@@ -815,7 +815,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/thrips_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">thrips leaf damage</schema:name>
@@ -828,7 +828,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/whitefly_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whitefly leaf damage</schema:name>
@@ -841,7 +841,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/aphid_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">aphid leaf damage</schema:name>
@@ -854,7 +854,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/insect_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">insect leaf damage </schema:name>
@@ -867,7 +867,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/botrytis_cinerea_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">botrytis cinerea infection</schema:name>
@@ -880,7 +880,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/powdery_mildew_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">powdery mildew infection</schema:name>
@@ -893,7 +893,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_rust_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf rust infection</schema:name>
@@ -906,7 +906,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/fusarium_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fusarium infection</schema:name>
@@ -919,7 +919,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/fungal_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal infection</schema:name>
@@ -932,7 +932,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour</schema:name>
@@ -945,7 +945,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_colour_gradient">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour gradient</schema:name>
@@ -958,7 +958,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/nitrogen_deficiency">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nitrogen deficiency</schema:name>
@@ -971,7 +971,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/phosphorus_deficiency">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus deficiency</schema:name>
@@ -984,7 +984,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/phosphorus_toxicity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus toxicity</schema:name>
@@ -997,7 +997,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/plant_height">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">plant height</schema:name>
@@ -1010,7 +1010,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/average_branch_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">average branch length</schema:name>
@@ -1023,7 +1023,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/canopy_diameter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">canopy diameter</schema:name>
@@ -1036,7 +1036,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/steam_diameter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">steam diameter</schema:name>
@@ -1049,7 +1049,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/shoot_axis_internode_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot axis internode length</schema:name>
@@ -1062,7 +1062,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/internode_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">internode count</schema:name>
@@ -1075,7 +1075,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/shoot_primary_branch_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot primary branch count</schema:name>
@@ -1088,7 +1088,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/shoot_secondary_branch_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot secondary branch count</schema:name>
@@ -1101,7 +1101,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_number">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf number</schema:name>
@@ -1114,7 +1114,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/flower_number_trait">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">flower number trait</schema:name>
@@ -1127,7 +1127,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/ripe_fruit_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">ripe fruit count</schema:name>
@@ -1140,7 +1140,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/unripe_fruit_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">unripe fruit count</schema:name>
@@ -1153,7 +1153,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/harvest_weight">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">harvest weight</schema:name>
@@ -1166,7 +1166,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/root_density">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root density</schema:name>
@@ -1179,7 +1179,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/nutrient_content_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nutrient content result</schema:name>
@@ -1192,7 +1192,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/primary_metabolite_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">primary metabolite result</schema:name>
@@ -1205,7 +1205,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/elemental_composition_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">elemental composition result</schema:name>
@@ -1218,7 +1218,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_fluorescence">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf fluorescence</schema:name>
@@ -1231,7 +1231,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/total_amount_of_carbon_fixed_by_plant/leaf">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">total amount of carbon fixed by plant/leaf</schema:name>
@@ -1244,7 +1244,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Method/leaf_optical_property">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Method"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Method"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf optical property</schema:name>
@@ -1256,7 +1256,7 @@
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <dcterms:creator rdf:resource="https://ror.org/01rxfrp27"/>
         <dcterms:description xml:lang="en">Set of terms for APPN schema class Scale in use by La Trobe University node.</dcterms:description>
         <dcterms:title xml:lang="en">Scale</dcterms:title>
@@ -1265,7 +1265,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/integer">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">integer</schema:name>
@@ -1276,7 +1276,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/centimeter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">centimeter</schema:name>
@@ -1289,7 +1289,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/millimeter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">millimeter</schema:name>
@@ -1302,7 +1302,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/gram">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">gram</schema:name>
@@ -1315,7 +1315,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/growth_stages_scale_0-9">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">growth stages scale 0-9</schema:name>
@@ -1327,7 +1327,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/overall_stature_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">overall stature scale 1-6</schema:name>
@@ -1338,7 +1338,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal gnats leaf damage scale 1-6</schema:name>
@@ -1349,7 +1349,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">spider mites leaf damage severity scale 1-6</schema:name>
@@ -1360,7 +1360,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severiy_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">thrips leaf damage severiy scale 1-6</schema:name>
@@ -1371,7 +1371,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whitefly leaf damage severity scale 1-6</schema:name>
@@ -1382,7 +1382,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">aphid leaf damage severity scale 1-6 </schema:name>
@@ -1393,7 +1393,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">insect leaf damage severity scale 1-6</schema:name>
@@ -1404,7 +1404,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">botrytis cinerea infection severity scale 1-5</schema:name>
@@ -1415,7 +1415,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">powdery mildew infection severity scale 1-5</schema:name>
@@ -1426,7 +1426,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf rust infection severity scale 1-5</schema:name>
@@ -1437,7 +1437,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fusarium infection severity scale 1-5</schema:name>
@@ -1448,7 +1448,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity_scale_1-6">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal infection severity scale 1-6</schema:name>
@@ -1459,7 +1459,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_scale_1-13">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour scale 1-13</schema:name>
@@ -1470,7 +1470,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour gradient scale 1-5</schema:name>
@@ -1481,7 +1481,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nitrogen deficiency colour scale 1-5</schema:name>
@@ -1492,7 +1492,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus deficiency colour scale 1-5</schema:name>
@@ -1503,7 +1503,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour_scale_1-5">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus toxicity colour scale 1-5</schema:name>
@@ -1514,7 +1514,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/root_density_scale_1-8">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root density scale 1-8</schema:name>
@@ -1525,7 +1525,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/micromoles_per_gram_of_fresh_weight">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">micromoles per gram of fresh weight</schema:name>
@@ -1537,7 +1537,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence_scale">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf fluorescence scale</schema:name>
@@ -1548,7 +1548,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/co2_uptake">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">CO2 uptake</schema:name>
@@ -1560,7 +1560,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_optical_property">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf optical property</schema:name>
@@ -1571,7 +1571,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/growth_stage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">growth stage</schema:name>
@@ -1583,7 +1583,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/overall_stature">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">overall stature</schema:name>
@@ -1594,7 +1594,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/fungal_gnats_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal gnats leaf damage</schema:name>
@@ -1605,7 +1605,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/spider_mites_leaf_damage_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">spider mites leaf damage severity</schema:name>
@@ -1616,7 +1616,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/thrips_leaf_damage_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">thrips leaf damage severity</schema:name>
@@ -1627,7 +1627,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/whitefly_leaf_damage_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whitefly leaf damage severity</schema:name>
@@ -1638,7 +1638,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/aphid_leaf_damage_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">aphid leaf damage severity</schema:name>
@@ -1649,7 +1649,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/insect_leaf_damage_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">insect leaf damage severity</schema:name>
@@ -1660,7 +1660,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/botrytis_cinerea_infection_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">botrytis cinerea infection severity</schema:name>
@@ -1671,7 +1671,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/powdery_mildew_infection_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">powdery mildew infection severity</schema:name>
@@ -1682,7 +1682,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_rust_infection_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf rust infection severity</schema:name>
@@ -1693,7 +1693,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/fusarium_infection_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fusarium infection severity</schema:name>
@@ -1704,7 +1704,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/fungal_infection_severity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal infection severity</schema:name>
@@ -1715,7 +1715,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour</schema:name>
@@ -1726,7 +1726,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_colour_gradient">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour gradient</schema:name>
@@ -1737,7 +1737,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/nitrogen_deficiency_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nitrogen deficiency colour</schema:name>
@@ -1748,7 +1748,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/phosphorus_deficiency_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus deficiency colour</schema:name>
@@ -1759,7 +1759,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/phosphorus_toxicity_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus toxicity colour</schema:name>
@@ -1770,7 +1770,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/root_density">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root density</schema:name>
@@ -1782,7 +1782,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Scale/leaf_fluorescence">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Scale"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Scale"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf fluorescence</schema:name>
@@ -1792,7 +1792,7 @@
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <dcterms:creator rdf:resource="https://ror.org/01rxfrp27"/>
         <dcterms:description xml:lang="en">Set of terms for APPN schema class Trait in use by La Trobe University node.</dcterms:description>
         <dcterms:title xml:lang="en">Trait</dcterms:title>
@@ -1801,7 +1801,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/growth_stage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">growth stage</schema:name>
@@ -1817,7 +1817,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/overall_stature">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">overall stature</schema:name>
@@ -1833,7 +1833,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/fungal_gnats_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal gnats leaf damage</schema:name>
@@ -1847,7 +1847,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/spider_mites_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">spider mites leaf damage</schema:name>
@@ -1862,7 +1862,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/thrips_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">thrips leaf damage</schema:name>
@@ -1877,7 +1877,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/whitefly_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whitefly leaf damage</schema:name>
@@ -1892,7 +1892,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/aphid_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">aphid leaf damage</schema:name>
@@ -1907,7 +1907,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/insect_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">insect leaf damage </schema:name>
@@ -1922,7 +1922,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/botrytis_cinerea_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">botrytis cinerea infection</schema:name>
@@ -1937,7 +1937,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/powdery_mildew_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">powdery mildew infection</schema:name>
@@ -1952,7 +1952,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/leaf_rust_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf rust infection</schema:name>
@@ -1967,7 +1967,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/fusarium_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fusarium infection</schema:name>
@@ -1982,7 +1982,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/fungal_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal infection</schema:name>
@@ -1995,7 +1995,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/leaf_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour</schema:name>
@@ -2009,7 +2009,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/leaf_colour_gradient">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour gradient</schema:name>
@@ -2024,7 +2024,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/nitrogen_deficiency">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nitrogen deficiency</schema:name>
@@ -2039,7 +2039,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/phosphorus_deficiency">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus deficiency</schema:name>
@@ -2054,7 +2054,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/phosphorus_toxicity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus toxicity</schema:name>
@@ -2069,7 +2069,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/plant_height">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">plant height</schema:name>
@@ -2083,7 +2083,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/branch_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">branch length</schema:name>
@@ -2097,7 +2097,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/canopy_diameter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">canopy diameter</schema:name>
@@ -2111,7 +2111,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/steam_diameter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">steam diameter </schema:name>
@@ -2125,7 +2125,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/shoot_axis_internode_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot axis internode length</schema:name>
@@ -2140,7 +2140,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/internode_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">internode count</schema:name>
@@ -2155,7 +2155,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/shoot_primary_branch_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot primary branch count</schema:name>
@@ -2170,7 +2170,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/shoot_secondary_branch_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot secondary branch count</schema:name>
@@ -2185,7 +2185,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/leaf_number">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf number</schema:name>
@@ -2201,7 +2201,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/flower_number_trait">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">flower number trait</schema:name>
@@ -2216,7 +2216,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/ripe_fruit_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">ripe fruit count</schema:name>
@@ -2231,7 +2231,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/unripe_fruit_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">unripe fruit count</schema:name>
@@ -2244,7 +2244,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/harvest_weight">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">harvest weight</schema:name>
@@ -2266,7 +2266,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/root_density">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root density</schema:name>
@@ -2286,7 +2286,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/nutrient_content_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nutrient content result</schema:name>
@@ -2302,7 +2302,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/primary_metabolite_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">primary metabolite result</schema:name>
@@ -2321,7 +2321,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/elemental_composition_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">elemental composition result</schema:name>
@@ -2339,7 +2339,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/leaf_fluorescence">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf fluorescence</schema:name>
@@ -2353,7 +2353,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/total_amount_of_carbon_fixed_by_plant">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">total amount of carbon fixed by plant</schema:name>
@@ -2368,7 +2368,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/leaf_optical_property">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf optical property</schema:name>
@@ -2382,7 +2382,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/average_branch_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">average branch length</schema:name>
@@ -2397,7 +2397,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/Trait/total_amount_of_carbon_fixed_by_plant/leaf">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/Trait"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/Trait"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">total amount of carbon fixed by plant/leaf</schema:name>
@@ -2410,7 +2410,7 @@
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <dcterms:creator rdf:resource="https://ror.org/01rxfrp27"/>
         <dcterms:description xml:lang="en">Set of terms for APPN schema class ObservedVariable in use by La Trobe University node.</dcterms:description>
         <dcterms:title xml:lang="en">ObservedVariable</dcterms:title>
@@ -2419,7 +2419,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/growth_stage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">growth stage</schema:name>
@@ -2436,7 +2436,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/overall_stature">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">overall stature</schema:name>
@@ -2453,7 +2453,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/fungal_gnats_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal gnats leaf damage</schema:name>
@@ -2471,7 +2471,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/spider_mites_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">spider mites leaf damage</schema:name>
@@ -2489,7 +2489,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/thrips_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">thrips leaf damage</schema:name>
@@ -2507,7 +2507,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/whitefly_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">whitefly leaf damage</schema:name>
@@ -2525,7 +2525,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/aphid_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">aphid leaf damage</schema:name>
@@ -2543,7 +2543,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/insect_leaf_damage">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">insect leaf damage </schema:name>
@@ -2561,7 +2561,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/botrytis_cinerea_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">botrytis cinerea infection</schema:name>
@@ -2579,7 +2579,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/powdery_mildew_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">powdery mildew infection</schema:name>
@@ -2597,7 +2597,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/leaf_rust_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf rust infection</schema:name>
@@ -2615,7 +2615,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/fusarium_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fusarium infection</schema:name>
@@ -2633,7 +2633,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/fungal_infection">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">fungal infection</schema:name>
@@ -2651,7 +2651,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/leaf_colour">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour</schema:name>
@@ -2669,7 +2669,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/leaf_colour_gradient">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf colour gradient</schema:name>
@@ -2687,7 +2687,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/nitrogen_deficiency">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nitrogen deficiency</schema:name>
@@ -2705,7 +2705,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/phosphorus_deficiency">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus deficiency</schema:name>
@@ -2723,7 +2723,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/phosphorus_toxicity">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">phosphorus toxicity</schema:name>
@@ -2741,7 +2741,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/plant_height">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">plant height</schema:name>
@@ -2758,7 +2758,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/branch_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">branch length</schema:name>
@@ -2776,7 +2776,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/canopy_diameter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">canopy diameter</schema:name>
@@ -2794,7 +2794,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/steam_diameter">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">steam diameter </schema:name>
@@ -2812,7 +2812,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/shoot_axis_internode_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot axis internode length</schema:name>
@@ -2830,7 +2830,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/internode_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">internode count</schema:name>
@@ -2848,7 +2848,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/shoot_primary_branch_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot primary branch count</schema:name>
@@ -2866,7 +2866,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/shoot_secondary_branch_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">shoot secondary branch count</schema:name>
@@ -2884,7 +2884,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/leaf_number">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf number</schema:name>
@@ -2902,7 +2902,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/flower_number_trait">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">flower number trait</schema:name>
@@ -2920,7 +2920,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/ripe_fruit_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">ripe fruit count</schema:name>
@@ -2938,7 +2938,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/unripe_fruit_count">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">unripe fruit count</schema:name>
@@ -2956,7 +2956,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/harvest_weight">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">harvest weight</schema:name>
@@ -2973,7 +2973,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/root_density">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">root density</schema:name>
@@ -2991,7 +2991,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/nutrient_content_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">nutrient content result</schema:name>
@@ -3008,7 +3008,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/primary_metabolite_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">primary metabolite result</schema:name>
@@ -3025,7 +3025,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/elemental_composition_result">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">elemental composition result</schema:name>
@@ -3042,7 +3042,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/leaf_fluorescence">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf fluorescence</schema:name>
@@ -3060,7 +3060,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/total_amount_of_carbon_fixed_by_plant">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">total amount of carbon fixed by plant</schema:name>
@@ -3076,7 +3076,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/leaf_optical_property">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">leaf optical property</schema:name>
@@ -3093,7 +3093,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/average_branch_length">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">average branch length</schema:name>
@@ -3111,7 +3111,7 @@
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/ObservedVariable/total_amount_of_carbon_fixed_by_plant/leaf">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/LTU/ObservedVariable"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-14T01:39:08.423698+00:00</dcterms:created>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-08-27T05:41:17.046696+00:00</dcterms:created>
         <rdf:type rdf:resource="https://schema.plantphenomics.org.au/ObservedVariable"/>
         <schema:owner rdf:resource="https://ror.org/01rxfrp27"/>
         <schema:name xml:lang="en">total amount of carbon fixed by plant/leaf</schema:name>

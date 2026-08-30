@@ -18,55 +18,17 @@
 import argparse
 import logging
 import sys
-from collections import namedtuple
 from pathlib import Path
 
 from rdflib import Graph, URIRef
 from rdflib.namespace import Namespace, NamespaceManager
-from typing import Any, NamedTuple, Optional
+from typing import Any, Optional
+
+from appn_types import Namespace, Term, Triple
+from appn_configuration import load_configuration
 
 logger = logging.getLogger(__name__)
 
-# Standard APPN namespace URLs
-
-APPN_SCHEMA = "https://schema.plantphenomics.org.au/"
-
-# Schema.org publishes versions using both HTTP and HTTPS - we use
-# HTTPS which seems to be most widely used.
-SCHEMA_SCHEMA = "https://schema.org/"
-BIO_SCHEMA = "https://bioschemas.org/terms/"
-CDI_SCHEMA = "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/"
-DC_SCHEMA = "http://purl.org/dc/terms/"
-PPEO_SCHEMA = "http://purl.org/ppeo/PPEO.owl#"
-PROV_SCHEMA = "http://www.w3.org/ns/prov#"
-RDF_SCHEMA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-RDFS_SCHEMA = "http://www.w3.org/2000/01/rdf-schema#"
-SKOS_SCHEMA = "http://www.w3.org/2004/02/skos/core#"
-SOSA_SCHEMA = "http://www.w3.org/ns/sosa/"
-SSN_SCHEMA = "http://www.w3.org/ns/ssn/"
-
-APPN_VOCABULARY = "https://id.plantphenomics.org.au/"
-ANU_VOCABULARY = "https://id.plantphenomics.org.au/ANU/"
-AU_VOCABULARY = "https://id.plantphenomics.org.au/AU/"
-CSU_VOCABULARY = "https://id.plantphenomics.org.au/CSU/"
-DPIRD_VOCABULARY = "https://id.plantphenomics.org.au/DPIRD/"
-LTU_VOCABULARY = "https://id.plantphenomics.org.au/LTU/"
-UQ_VOCABULARY = "https://id.plantphenomics.org.au/UQ/"
-USYD_VOCABULARY = "https://id.plantphenomics.org.au/USYD/"
-UWA_VOCABULARY = "https://id.plantphenomics.org.au/UWA/"
-WSU_VOCABULARY = "https://id.plantphenomics.org.au/WSU/"
-
-### Term ######################################################################
-#
-# Namedtuple as simple class for IRI elements
-#
-Term = namedtuple("Term", ["iri", "curie", "ns", "prefix", "name"])
-
-### Triple ####################################################################
-#
-# Namedtuple as simple class for triples
-#
-Triple = namedtuple("Triple", ["subject", "property", "object"])
 
 
 ### Dictionary ################################################################
@@ -82,14 +44,13 @@ Triple = namedtuple("Triple", ["subject", "property", "object"])
 #
 class Dictionary:
 
-    def __init__(self, asset_paths: Optional[dict[str, str]] = None) -> None:
+    def __init__(self, namespaces: Optional[dict[str,Namespace]] = None) -> None:
         self.graph = Graph()
         self.namespace_manager = NamespaceManager(self.graph)
         self.loaded = set()
         self.cache = {}
-        self.namespaces = {}
         self.reverse_namespaces = {}
-        self.asset_paths = {} if asset_paths is None else asset_paths
+        self.namespaces = {} if namespaces is None else namespaces
 
     def load(
         self,
@@ -98,15 +59,18 @@ class Dictionary:
         asset_prefix: Optional[str] = None,
     ) -> None:
         try:
+            if asset_namespace in self.namespaces and isinstance(self.namespaces[asset_namespace], Namespace):
+                namespace : Namespace = self.namespaces[asset_namespace]
+            else:
+                namespace = None
             if asset_path is None:
-                if asset_namespace in self.asset_paths:
-                    asset_path = self.asset_paths[asset_namespace]
+                if namespace is not None and namespace.path is not None:
+                    asset_path = namespace.path
                 else:
                     asset_path = asset_namespace
+            if asset_prefix is None and namespace is not None and namespace.prefix is not None:
+                    asset_prefix = namespace.prefix
             logger.info(
-                f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
-            )
-            print(
                 f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
             )
             self.graph.parse(asset_path)
@@ -701,7 +665,7 @@ if __name__ == "__main__":
         SKOS_SCHEMA: "schema_assets/skos.rdf",
         SOSA_SCHEMA: "schema_assets/sosa.ttl",
         SSN_SCHEMA: "schema_assets/ssn.ttl",
-        APPN_VOCABULARY: "vocabulary/vocabulary.rdf",
+        APPN_VOCABULARY: "vocabulary/APPN/vocabulary.rdf",
         ANU_VOCABULARY: "vocabulary/ANU/vocabulary.rdf",
         AU_VOCABULARY: "vocabulary/AU/vocabulary.rdf",
         CSU_VOCABULARY: "vocabulary/CSU/vocabulary.rdf",
@@ -716,7 +680,19 @@ if __name__ == "__main__":
     args = process_argv(sys.argv)
     start_log(args["log_level"], None, args["echo_to_stderr"])
 
-    d = Dictionary(asset_paths=schema_assets)
+    config = load_configuration("appn")
+    namespace_definitions = []
+    if "namespaces" in config and isinstance(config["namespaces"], dict):
+        for ns, properties = config["namespaces"].items():
+            prefix, path = None, None
+            if isinstance(properties, dict):
+                if "prefix" in properties:
+                    prefix = properties["prefix"]
+                if "path" in properties:
+                    path = properties["path"]
+            namespace_definitions.append(Namespace(ns, prefix, path))
+
+    d = Dictionary(namespace_definitions = namespace_definitions)
     d.load(APPN_SCHEMA)
     if args["asset"] is not None:
         for i in range(len(args["asset"])):

@@ -1,0 +1,4 @@
+namespaces:
+  "https://test.plantphenomics.org.au/": "test-2"
+namespace_paths:
+  "https://test.plantphenomics.org.au/": "./test/test.ttl"

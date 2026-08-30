@@ -25,6 +25,11 @@ import datetime
 from pathlib import Path
 from typing import Optional, Any
 
+import appn_dictionary as dictionary
+from appn_types import Term
+from appn_dictionary import Dictionary
+from appn_configuration import load_configuration
+
 
 ### Mapper ####################################################################
 #
@@ -562,6 +567,7 @@ def write_property(f: _io.TextIOWrapper, ppty: str, value: str) -> None:
 
 # Dictionary of APPN nodes
 organisations = {
+    "APPN": ("Australian Plant Phenomics Network", "https://ror.org/02zj7b759"),
     "ANU": ("Australian National University", "https://ror.org/019wvm592"),
     "AU": ("Adelaide University", "https://ror.org/028g18b61"),
     "CSU": ("Charles Sturt University", "https://ror.org/00wfvh315 "),
@@ -709,11 +715,43 @@ if __name__ == "__main__":
     args = process_argv(sys.argv)
     start_log(args["log_level"], None, args["echo_to_stderr"])
 
+    config = load_configuration("appn")
+
     node = args["node"]
+
+    dictionary = Dictionary(
+        {
+            dictionary.APPN_SCHEMA: "./appn-schema.ttl",
+            dictionary.SCHEMA_SCHEMA: "schema_assets/schemaorg-current-https.ttl",
+            dictionary.BIO_SCHEMA: "schema_assets/bioschemas_types.ttl",
+            dictionary.CDI_SCHEMA: "schema_assets/ddi-cdi.jsonld",
+            dictionary.DC_SCHEMA: "schema_assets/dublin_core_terms.rdf",
+            dictionary.PPEO_SCHEMA: "schema_assets/PPEO.owl",
+            dictionary.PROV_SCHEMA: "schema_assets/prov.ttl",
+            dictionary.RDFS_SCHEMA: "schema_assets/rdf-schema.ttl",
+            dictionary.RDF_SCHEMA: "schema_assets/22-rdf-syntax-ns.ttl",
+            dictionary.SKOS_SCHEMA: "schema_assets/skos.rdf",
+            dictionary.SOSA_SCHEMA: "schema_assets/sosa.ttl",
+            dictionary.SSN_SCHEMA: "schema_assets/ssn.ttl",
+            dictionary.APPN_VOCABULARY: "vocabulary/APPN/vocabulary.rdf",
+            dictionary.ANU_VOCABULARY: "vocabulary/ANU/vocabulary.rdf",
+            dictionary.AU_VOCABULARY: "vocabulary/AU/vocabulary.rdf",
+            dictionary.CSU_VOCABULARY: "vocabulary/CSU/vocabulary.rdf",
+            dictionary.DPIRD_VOCABULARY: "vocabulary/DPIRD/vocabulary.rdf",
+            dictionary.LTU_VOCABULARY: "vocabulary/LTU/vocabulary.rdf",
+            dictionary.UQ_VOCABULARY: "vocabulary/UQ/vocabulary.rdf",
+            dictionary.USYD_VOCABULARY: "vocabulary/USYD/vocabulary.rdf",
+            dictionary.UWA_VOCABULARY: "vocabulary/UWA/vocabulary.rdf",
+            dictionary.WSU_VOCABULARY: "vocabulary/WSU/vocabulary.rdf",
+        }
+    )
 
     # Make list of folders to process (either for a single node or for all)
     if node == "all":
-        folders = list(Path("source").glob("*/"))
+        folders = sorted(
+            list(Path("source").glob("*/")),
+            key=lambda p: f"{'0' if 'APPN' in str(p) else '1'}{p}",
+        )
         if len(folders) == 0:
             logging.error(f"No folders to process")
             sys.exit(1)
@@ -866,7 +904,7 @@ if __name__ == "__main__":
                             f'        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">{timestamp}</dcterms:created>\n'
                         )
                         for k, v in instance.items():
-                            print(f"{k}: {v}")
+                            # print(f"{k}: {v}")
                             if k != "@id":
                                 if isinstance(v, list):
                                     for item in v:
