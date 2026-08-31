@@ -5,7 +5,7 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:appn="https://schema.plantphenomics.org.au/"
-    xmlns:bio="https://bioschemas.org/"
+    xmlns:bio="https://bioschemas.org/terms/"
     xmlns:schema="https://schema.org/">
 
     <rdf:Description rdf:about="https://id.plantphenomics.org.au/LTU/BiologicalUnitType">

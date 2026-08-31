@@ -16,11 +16,11 @@
 
 from collections import namedtuple
 
-### Namespace #################################################################
+### NamespaceDefinition #######################################################
 #
 # Namedtuple as simple class for namespace definitions
 #
-Namespace = namedtuple("Namespace", ["ns", "prefix", "path"])
+NamespaceDefinition = namedtuple("NamespaceDefinition", ["ns", "prefix", "path"])
 
 ### Term ######################################################################
 #

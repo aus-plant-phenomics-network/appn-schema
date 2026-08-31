@@ -24,8 +24,8 @@ from rdflib import Graph, URIRef
 from rdflib.namespace import Namespace, NamespaceManager
 from typing import Any, Optional
 
-from appn_types import Namespace, Term, Triple
-from appn_configuration import load_configuration
+from appn_types import NamespaceDefinition, Term, Triple
+from appn_configuration import Configuration, APPN_SCHEMA
 
 logger = logging.getLogger(__name__)
 
@@ -44,13 +44,13 @@ logger = logging.getLogger(__name__)
 #
 class Dictionary:
 
-    def __init__(self, namespaces: Optional[dict[str,Namespace]] = None) -> None:
+    def __init__(self, namespace_definitions: Optional[dict[str,NamespaceDefinition]] = None) -> None:
         self.graph = Graph()
         self.namespace_manager = NamespaceManager(self.graph)
         self.loaded = set()
         self.cache = {}
         self.reverse_namespaces = {}
-        self.namespaces = {} if namespaces is None else namespaces
+        self.namespace_definitions = {} if namespace_definitions is None else namespace_definitions
 
     def load(
         self,
@@ -59,17 +59,24 @@ class Dictionary:
         asset_prefix: Optional[str] = None,
     ) -> None:
         try:
-            if asset_namespace in self.namespaces and isinstance(self.namespaces[asset_namespace], Namespace):
-                namespace : Namespace = self.namespaces[asset_namespace]
+            if asset_namespace in self.namespace_definitions and isinstance(self.namespace_definitions[asset_namespace], NamespaceDefinition):
+                namespace_definition = self.namespace_definitions[asset_namespace]
+                logging.info(f"Found namespace for {asset_namespace}: {namespace_definition}")
             else:
-                namespace = None
+                namespace_definition = None
             if asset_path is None:
-                if namespace is not None and namespace.path is not None:
-                    asset_path = namespace.path
+                if namespace_definition is not None and namespace_definition.path is not None:
+                    asset_path = namespace_definition.path
                 else:
                     asset_path = asset_namespace
-            if asset_prefix is None and namespace is not None and namespace.prefix is not None:
-                    asset_prefix = namespace.prefix
+            if asset_prefix is None:
+                if namespace_definition is not None and namespace_definition.prefix is not None:
+                    asset_prefix = namespace_definition.prefix
+                else:
+                    index = 1
+                    while f"ns{index}" in self.namespaces:
+                        index += 1
+                    asset_prefix = f"ns{index}"
             logger.info(
                 f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
             )
@@ -651,46 +658,11 @@ def execute_query(
 
 if __name__ == "__main__":
 
-    # Locations to use for machine-readable assets
-    schema_assets = {
-        APPN_SCHEMA: "./appn-schema.ttl",
-        SCHEMA_SCHEMA: "schema_assets/schemaorg-current-https.ttl",
-        BIO_SCHEMA: "schema_assets/bioschemas_types.ttl",
-        CDI_SCHEMA: "schema_assets/ddi-cdi.jsonld",
-        DC_SCHEMA: "schema_assets/dublin_core_terms.rdf",
-        PPEO_SCHEMA: "schema_assets/PPEO.owl",
-        PROV_SCHEMA: "schema_assets/prov.ttl",
-        RDFS_SCHEMA: "schema_assets/rdf-schema.ttl",
-        RDF_SCHEMA: "schema_assets/22-rdf-syntax-ns.ttl",
-        SKOS_SCHEMA: "schema_assets/skos.rdf",
-        SOSA_SCHEMA: "schema_assets/sosa.ttl",
-        SSN_SCHEMA: "schema_assets/ssn.ttl",
-        APPN_VOCABULARY: "vocabulary/APPN/vocabulary.rdf",
-        ANU_VOCABULARY: "vocabulary/ANU/vocabulary.rdf",
-        AU_VOCABULARY: "vocabulary/AU/vocabulary.rdf",
-        CSU_VOCABULARY: "vocabulary/CSU/vocabulary.rdf",
-        DPIRD_VOCABULARY: "vocabulary/DPIRD/vocabulary.rdf",
-        LTU_VOCABULARY: "vocabulary/LTU/vocabulary.rdf",
-        UQ_VOCABULARY: "vocabulary/UQ/vocabulary.rdf",
-        USYD_VOCABULARY: "vocabulary/USYD/vocabulary.rdf",
-        UWA_VOCABULARY: "vocabulary/UWA/vocabulary.rdf",
-        WSU_VOCABULARY: "vocabulary/WSU/vocabulary.rdf",
-    }
-
     args = process_argv(sys.argv)
     start_log(args["log_level"], None, args["echo_to_stderr"])
 
-    config = load_configuration("appn")
-    namespace_definitions = []
-    if "namespaces" in config and isinstance(config["namespaces"], dict):
-        for ns, properties = config["namespaces"].items():
-            prefix, path = None, None
-            if isinstance(properties, dict):
-                if "prefix" in properties:
-                    prefix = properties["prefix"]
-                if "path" in properties:
-                    path = properties["path"]
-            namespace_definitions.append(Namespace(ns, prefix, path))
+    config = Configuration()
+    namespace_definitions = config.get_namespace_definitions()
 
     d = Dictionary(namespace_definitions = namespace_definitions)
     d.load(APPN_SCHEMA)
@@ -700,13 +672,13 @@ if __name__ == "__main__":
             if args["prefix"] is not None and i in range(len(args["prefix"])):
                 prefix = args["prefix"][i]
             else:
-                prefix = f"asset{i}"
+                prefix = None
             if args["filepath_to_asset"] is not None and i in range(
                 len(args["filepath_to_asset"])
             ):
                 path = args["filepath_to_asset"][i]
             else:
-                path = asset
+                path = None
             d.load(asset, asset_path=path, asset_prefix=prefix)
     d.import_references()
 

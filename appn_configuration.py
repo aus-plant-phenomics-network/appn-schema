@@ -17,10 +17,10 @@ import os
 import logging
 from pathlib import Path
 from typing import Optional
-from appn_types import Namespace
+from appn_types import NamespaceDefinition
 
 APPN_DEFAULT_CONFIGURATION_FOLDER = Path("./")
-APPN_DEFAULT_CONFIGURATION_NAME = "APPN"
+APPN_DEFAULT_CONFIGURATION_NAME = "appn"
 
 APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY = "APPN_CONFIGURATION_FOLDER"
 APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY = "APPN_CONFIGURATION_NAME"
@@ -46,7 +46,7 @@ SKOS_SCHEMA = "http://www.w3.org/2004/02/skos/core#"
 SOSA_SCHEMA = "http://www.w3.org/ns/sosa/"
 SSN_SCHEMA = "http://www.w3.org/ns/ssn/"
 
-APPN_VOCABULARY = "https://id.plantphenomics.org.au/"
+APPN_VOCABULARY = "https://id.plantphenomics.org.au/APPN"
 ANU_VOCABULARY = "https://id.plantphenomics.org.au/ANU/"
 AU_VOCABULARY = "https://id.plantphenomics.org.au/AU/"
 CSU_VOCABULARY = "https://id.plantphenomics.org.au/CSU/"
@@ -70,7 +70,7 @@ DEFAULT_NAMESPACES = {
     SOSA_SCHEMA: "sosa",
     SSN_SCHEMA: "ssn",
     BIO_SCHEMA: "bio",
-    APPN_VOCABULARY: "appn-all",
+    APPN_VOCABULARY: "id",
     ANU_VOCABULARY: "anu",
     AU_VOCABULARY: "au",
     CSU_VOCABULARY: "csu",
@@ -109,6 +109,8 @@ class Configuration:
         else:
             self.configuration_folder = Path(configuration_folder)
 
+        logging.info(f"Configuration folder: {self.configuration_folder}")
+
         if configuration_name is None:
             if APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY in os.environ:
                 configuration_name = os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY]
@@ -116,14 +118,17 @@ class Configuration:
             else:
                 configuration_name = APPN_DEFAULT_CONFIGURATION_NAME
 
+        logging.info(f"Configuration name: {configuration_name}")
+
         if not self.configuration_folder.exists():
+            message = (
+                f"Configuration folder {self.configuration_folder} does not exist"
+            )
             if defaults_overridden:
-                message = (
-                    f"Configuration folder {self.configuration_folder} does not exist"
-                )
                 logging.error(message)
                 raise ValueError(message)
             else:
+                logging.info(message)
                 return
 
         self.configuration_filepath = (
@@ -131,27 +136,28 @@ class Configuration:
         )
 
         if not self.configuration_filepath.exists():
+            message = (
+                f"Configuration file {self.configuration_filepath} does not exist"
+            )
             if defaults_overridden:
-                message = (
-                    f"Configuration file {self.configuration_filepath} does not exist"
-                )
                 logging.error(message)
                 raise ValueError(message)
             else:
+                logging.info(message)
                 return
 
         with open(self.configuration_filepath, "r") as stream:
             try:
-                print(self.configuration_filepath)
+                logging.info(f"Loading configuration: {self.configuration_filepath}")
                 self.configuration = yaml.safe_load(stream)
-                logging.info(f"Loaded configuration: {self.configuration_filepath}")
+                logging.debug(f"Loaded configuration: \n{self.configuration}")
             except yaml.YAMLError as exc:
                 logging.error(f"config.load: {str(exc)}")
                 raise ValueError(
                     f"Failed to load configuration from {self.configuration_filepath}"
                 )
 
-    def get_namespaces(self) -> dict[str, Namespace]:
+    def get_namespace_definitions(self) -> dict[str, NamespaceDefinition]:
         if self.namespaces is not None:
             return self.namespaces
 
@@ -159,11 +165,12 @@ class Configuration:
             self.configuration[CONFIGURATION_KEY_NAMESPACE_PATHS], dict
         ):
             paths = self.configuration[CONFIGURATION_KEY_NAMESPACE_PATHS]
+            logging.info(f"Imported namespace paths: {paths}")
         else:
             paths = {}
 
         self.namespaces = {
-            ns: Namespace(ns, pre, paths[ns] if ns in paths else ns)
+            ns: NamespaceDefinition(ns, pre, paths[ns] if ns in paths else ns)
             for ns, pre in DEFAULT_NAMESPACES.items()
         }
 
@@ -171,7 +178,7 @@ class Configuration:
             definitions = self.configuration[CONFIGURATION_KEY_NAMESPACES]
             if isinstance(definitions, dict):
                 for ns, pre in definitions.items():
-                    self.namespaces[ns] = Namespace(
+                    self.namespaces[ns] = NamespaceDefinition(
                         ns, pre, paths[ns] if ns in paths else ns
                     )
 
