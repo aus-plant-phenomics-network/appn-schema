@@ -1,3 +1,13 @@
+# APPN Linked Data configuration ##############################################
+#
+# Settings controlling the behaviour of APPN linked-data components.
+#
+# YAML in this file is parsed and exposed by the appn_configuration.Configuration
+# class
+
+
+# Map schema/vocabulary namespaces to locations from which machine-readable versions can be accessed
+# Namespaces that are not mapped here will be accessed via the namespace URL.
 namespace_paths:
   "https://schema.plantphenomics.org.au/": "./appn-schema.ttl"
   "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/": "./schema_assets/ddi-cdi.jsonld"
@@ -21,3 +31,65 @@ namespace_paths:
   "https://id.plantphenomics.org.au/USYD/": "./vocabulary/USYD/vocabulary.rdf"
   "https://id.plantphenomics.org.au/UWA/": "./vocabulary/UWA/vocabulary.rdf"
   "https://id.plantphenomics.org.au/WSU/": "./vocabulary/WSU/vocabulary.rdf"
+
+# Namespaces that should be searched for properties used in vocabulary spreadsheets.
+# These are in descending order of priority - a property in a namespace listed 
+# earlier in this list will take precedence over one with the same name listed
+# later.
+vocabulary_column_namespaces:
+  - "https://schema.org/"
+  - "http://www.w3.org/2004/02/skos/core#"
+  - "http://purl.org/dc/terms/"
+
+# Filter for classes that should be explicitly included as rdf:type values. Each
+# key is a namespace. The value can be "all" for every superclass from the namespace,
+# "first" for the most proximal superclass from the namespace (i.e. the one that is
+# lowest in the hierarchy, or a list of class names.
+explicit_classes:
+  "https://schema.plantphenomics.org.au/": "all"
+  "https://schema.org/": "first"
+
+# Filter for classes that should NOT be included in explicit classes. A list of IRIs
+# for classes.
+excluded_classes:
+  - "https://schema.plantphenomics.org.au/Variable"
+  - "https://schema.org/Thing"
+
+# Overrides for how sheet names are interpreted. 
+sheet_aliases:
+  # Trait is a subclass of ObservedVariable and the "Trait" sheet includes elements
+  # associated with ObservedVariable instances. All ObservedVariable instances are
+  # also instances of Trait.
+  "Trait": "ObservedVariable"
+
+# Overrides for how column names are interpreted.
+column_aliases:
+  # parent is an alias for appn:higherTaxon with a BiologicalMaterial instance as 
+  # the object.
+  "parent": "BiologicalMaterial"
+
+# Abbreviated names for classes for use in composing IRIs
+class_abbreviations:
+  "BiologicalMaterial": "bm"
+  "BiologicalUnit": "bu"
+  "BiologicalUnitType": "but"
+  "GrowthFacility": "gf"
+  "ObservedVariable": "ov"
+  "Deployment": "deploy"
+  "ConceptScheme": "cs"
+
+# Additional properties to be added whenever a specified property is added.
+# Both properties get the same value.
+property_expansions:
+  "https://schema.org/name":
+    - "http://purl.org/dc/terms/title"
+  "https://schema.org/description":
+    - "http://purl.org/dc/terms/description"
+
+# Classes for which properties may be embedded in the definition of another
+# class. Any columns with names starting with the embedded classname
+# in lowercase will be grouped as the definition for a referenced instance
+# of the embedded class.
+embedded_classes:
+  "ObservedVariable":
+    - "Method"

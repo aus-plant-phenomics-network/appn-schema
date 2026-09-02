@@ -18,6 +18,7 @@ import logging
 from pathlib import Path
 from typing import Optional
 from appn_types import NamespaceDefinition
+from rdflib import URIRef
 
 APPN_DEFAULT_CONFIGURATION_FOLDER = Path("./")
 APPN_DEFAULT_CONFIGURATION_NAME = "appn"
@@ -27,6 +28,17 @@ APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY = "APPN_CONFIGURATION_NAME"
 
 CONFIGURATION_KEY_NAMESPACES = "namespaces"
 CONFIGURATION_KEY_NAMESPACE_PATHS = "namespace_paths"
+CONFIGURATION_KEY_VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
+CONFIGURATION_KEY_EXPLICIT_CLASSES = "explicit_classes"
+CONFIGURATION_KEY_EXCLUDED_CLASSES = "excluded_classes"
+CONFIGURATION_KEY_SHEET_ALIASES = "sheet_aliases"
+CONFIGURATION_KEY_COLUMN_ALIASES = "column_aliases"
+CONFIGURATION_KEY_CLASS_ABBREVIATIONS = "class_abbreviations"
+CONFIGURATION_KEY_PROPERTY_EXPANSIONS = "property_expansions"
+CONFIGURATION_KEY_EMBEDDED_CLASSES = "embedded_classes"
+
+EXPLICIT_CLASSES_ALL = "all"
+EXPLICIT_CLASSES_FIRST = "first"
 
 # Standard APPN namespace URLs
 
@@ -95,7 +107,7 @@ class Configuration:
             configuration_folder is not None or configuration_name is not None
         )
 
-        self.namespaces = None
+        self.namespace_definitions = None
         self.configuration = {}
 
         if configuration_folder is None:
@@ -109,7 +121,7 @@ class Configuration:
         else:
             self.configuration_folder = Path(configuration_folder)
 
-        logging.info(f"Configuration folder: {self.configuration_folder}")
+        logging.debug(f"Configuration folder: {self.configuration_folder}")
 
         if configuration_name is None:
             if APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY in os.environ:
@@ -118,17 +130,15 @@ class Configuration:
             else:
                 configuration_name = APPN_DEFAULT_CONFIGURATION_NAME
 
-        logging.info(f"Configuration name: {configuration_name}")
+        logging.debug(f"Configuration name: {configuration_name}")
 
         if not self.configuration_folder.exists():
-            message = (
-                f"Configuration folder {self.configuration_folder} does not exist"
-            )
+            message = f"Configuration folder {self.configuration_folder} does not exist"
             if defaults_overridden:
                 logging.error(message)
                 raise ValueError(message)
             else:
-                logging.info(message)
+                logging.debug(message)
                 return
 
         self.configuration_filepath = (
@@ -136,19 +146,17 @@ class Configuration:
         )
 
         if not self.configuration_filepath.exists():
-            message = (
-                f"Configuration file {self.configuration_filepath} does not exist"
-            )
+            message = f"Configuration file {self.configuration_filepath} does not exist"
             if defaults_overridden:
                 logging.error(message)
                 raise ValueError(message)
             else:
-                logging.info(message)
+                logging.debug(message)
                 return
 
         with open(self.configuration_filepath, "r") as stream:
             try:
-                logging.info(f"Loading configuration: {self.configuration_filepath}")
+                logging.debug(f"Loading configuration: {self.configuration_filepath}")
                 self.configuration = yaml.safe_load(stream)
                 logging.debug(f"Loaded configuration: \n{self.configuration}")
             except yaml.YAMLError as exc:
@@ -158,18 +166,18 @@ class Configuration:
                 )
 
     def get_namespace_definitions(self) -> dict[str, NamespaceDefinition]:
-        if self.namespaces is not None:
-            return self.namespaces
+        if self.namespace_definitions is not None:
+            return self.namespace_definitions.copy()
 
         if CONFIGURATION_KEY_NAMESPACE_PATHS in self.configuration and isinstance(
             self.configuration[CONFIGURATION_KEY_NAMESPACE_PATHS], dict
         ):
             paths = self.configuration[CONFIGURATION_KEY_NAMESPACE_PATHS]
-            logging.info(f"Imported namespace paths: {paths}")
+            logging.debug(f"Imported namespace paths: {paths}")
         else:
             paths = {}
 
-        self.namespaces = {
+        self.namespace_definitions = {
             ns: NamespaceDefinition(ns, pre, paths[ns] if ns in paths else ns)
             for ns, pre in DEFAULT_NAMESPACES.items()
         }
@@ -178,8 +186,54 @@ class Configuration:
             definitions = self.configuration[CONFIGURATION_KEY_NAMESPACES]
             if isinstance(definitions, dict):
                 for ns, pre in definitions.items():
-                    self.namespaces[ns] = NamespaceDefinition(
+                    self.namespace_definitions[ns] = NamespaceDefinition(
                         ns, pre, paths[ns] if ns in paths else ns
                     )
 
-        return self.namespaces
+        return self.namespace_definitions.copy()
+
+    def get_vocabulary_column_namespaces(self) -> list[str]:
+        if CONFIGURATION_KEY_VOCABULARY_COLUMN_NAMESPACES in self.configuration:
+            return self.configuration[
+                CONFIGURATION_KEY_VOCABULARY_COLUMN_NAMESPACES
+            ].copy()
+        return []
+
+    def get_explicit_classes(self) -> dict[str, str | list[str]]:
+        if CONFIGURATION_KEY_EXPLICIT_CLASSES in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_EXPLICIT_CLASSES].copy()
+        return {}
+
+    def get_excluded_classes(self) -> list[str]:
+        if CONFIGURATION_KEY_EXCLUDED_CLASSES in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_EXCLUDED_CLASSES].copy()
+        return []
+
+    def get_sheet_aliases(self) -> dict[str, str]:
+        if CONFIGURATION_KEY_SHEET_ALIASES in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_SHEET_ALIASES].copy()
+        return {}
+
+    def get_column_aliases(self) -> dict[str, str]:
+        if CONFIGURATION_KEY_COLUMN_ALIASES in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_COLUMN_ALIASES].copy()
+        return {}
+
+    def get_class_abbreviations(self) -> dict[str, str]:
+        if CONFIGURATION_KEY_CLASS_ABBREVIATIONS in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_CLASS_ABBREVIATIONS].copy()
+        return {}
+
+    def get_property_expansions(self) -> dict[URIRef, list[URIRef]]:
+        expansions = {}
+        if CONFIGURATION_KEY_PROPERTY_EXPANSIONS in self.configuration:
+            for k, v in self.configuration[
+                CONFIGURATION_KEY_PROPERTY_EXPANSIONS
+            ].items():
+                expansions[URIRef(k)] = [URIRef(e) for e in v]
+        return expansions
+
+    def get_embedded_classes(self) -> dict[str, list[str]]:
+        if CONFIGURATION_KEY_EMBEDDED_CLASSES in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_EMBEDDED_CLASSES].copy()
+        return {}

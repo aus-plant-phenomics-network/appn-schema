@@ -17,6 +17,7 @@
 
 import argparse
 import logging
+from os import name
 import sys
 from pathlib import Path
 
@@ -28,7 +29,6 @@ from appn_types import NamespaceDefinition, Term, Triple
 from appn_configuration import Configuration, APPN_SCHEMA
 
 logger = logging.getLogger(__name__)
-
 
 
 ### Dictionary ################################################################
@@ -44,13 +44,17 @@ logger = logging.getLogger(__name__)
 #
 class Dictionary:
 
-    def __init__(self, namespace_definitions: Optional[dict[str,NamespaceDefinition]] = None) -> None:
+    def __init__(
+        self, namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
+    ) -> None:
         self.graph = Graph()
         self.namespace_manager = NamespaceManager(self.graph)
         self.loaded = set()
         self.cache = {}
         self.reverse_namespaces = {}
-        self.namespace_definitions = {} if namespace_definitions is None else namespace_definitions
+        self.namespace_definitions = (
+            {} if namespace_definitions is None else namespace_definitions
+        )
 
     def load(
         self,
@@ -59,25 +63,35 @@ class Dictionary:
         asset_prefix: Optional[str] = None,
     ) -> None:
         try:
-            if asset_namespace in self.namespace_definitions and isinstance(self.namespace_definitions[asset_namespace], NamespaceDefinition):
+            if asset_namespace in self.namespace_definitions and isinstance(
+                self.namespace_definitions[asset_namespace], NamespaceDefinition
+            ):
                 namespace_definition = self.namespace_definitions[asset_namespace]
-                logging.info(f"Found namespace for {asset_namespace}: {namespace_definition}")
+                logging.debug(
+                    f"Found namespace for {asset_namespace}: {namespace_definition}"
+                )
             else:
                 namespace_definition = None
             if asset_path is None:
-                if namespace_definition is not None and namespace_definition.path is not None:
+                if (
+                    namespace_definition is not None
+                    and namespace_definition.path is not None
+                ):
                     asset_path = namespace_definition.path
                 else:
                     asset_path = asset_namespace
             if asset_prefix is None:
-                if namespace_definition is not None and namespace_definition.prefix is not None:
+                if (
+                    namespace_definition is not None
+                    and namespace_definition.prefix is not None
+                ):
                     asset_prefix = namespace_definition.prefix
                 else:
                     index = 1
                     while f"ns{index}" in self.namespaces:
                         index += 1
                     asset_prefix = f"ns{index}"
-            logger.info(
+            logger.debug(
                 f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
             )
             self.graph.parse(asset_path)
@@ -93,7 +107,7 @@ class Dictionary:
             }
             self.reverse_namespaces = {v: k for k, v in self.namespaces.items()}
 
-            logger.info(f"Loaded {asset_namespace}")
+            logger.debug(f"Loaded {asset_namespace}")
 
         except Exception:
             logger.error(f"Failed to load {asset_namespace}: repr(e)", exc_info=True)
@@ -110,7 +124,8 @@ class Dictionary:
                     logger.debug(f"Found IRI <{iri}>")
                     iris.add(iri)
 
-    def get_namespace_from_iri(self, iri: str) -> Optional[str]:
+    def get_namespace_from_iri(self, iri: str|Term) -> Optional[str]:
+        iri = self.get_iri(iri)
         for ns in self.reverse_namespaces.keys():
             if iri.startswith(ns):
                 return ns
@@ -122,7 +137,7 @@ class Dictionary:
     def list_triples(self) -> list[Triple]:
         return [Triple(s, p, o) for (s, p, o) in self.graph]
 
-    def list_triples_for_subject(self, subject: str) -> list[Triple]:
+    def list_triples_for_subject(self, subject: str|Term) -> list[Triple]:
         subject = self.get_iri(subject)
         subject_key = f"subject|{subject}"
 
@@ -133,7 +148,7 @@ class Dictionary:
 
         return self.cache[subject_key]
 
-    def list_triples_for_object(self, object_: str) -> list[Triple]:
+    def list_triples_for_object(self, object_: str|Term) -> list[Triple]:
         object_ = self.get_iri(object_)
         object_key = f"object|{object_}"
 
@@ -144,7 +159,7 @@ class Dictionary:
 
         return self.cache[object_key]
 
-    def list_triples_for_property(self, property_: str) -> list[Triple]:
+    def list_triples_for_property(self, property_: str|Term) -> list[Triple]:
         property_ = self.get_iri(property_)
         property_key = f"object|{property_}"
 
@@ -155,49 +170,89 @@ class Dictionary:
 
         return self.cache[property_key]
 
-    def list_classes(self) -> list[Term]:
-        return self.list_iris(["?q rdf:type rdfs:Class"], f"classes")
-
-    def list_properties(self) -> list[Term]:
-        return self.list_iris(["?q rdf:type rdf:Property"], f"properties")
-
-    def list_superclasses(self, class_iri: str) -> list[Term]:
-        logging.info(f"Finding all classes for class {class_iri}")
-        return self.list_iris_transitive(
-            class_iri, "rdfs:subClassOf", f"superclasses|{class_iri}"
+    def list_classes(
+        self,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
+        return self.list_iris(
+            ["?q rdf:type rdfs:Class"], f"classes|{namespace}", namespace
         )
 
-    def list_superproperties(self, property_iri: str) -> list[Term]:
-        logging.info(f"Finding all properties for property {property_iri}")
-        return self.list_iris_transitive(
-            property_iri, "rdfs:subPropertyOf", f"superclasses|{property_iri}"
+    def list_properties(
+        self,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
+        return self.list_iris(
+            ["?q rdf:type rdf:Property"], f"properties|{namespace}", namespace
         )
 
-    def list_domain_properties_for_class(self, class_iri: str) -> list[Term]:
+    def list_superclasses(
+        self,
+        class_iri: str|Term,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
+        logging.debug(f"Finding all classes for class {class_iri}")
+        return self.list_iris_transitive(
+            class_iri,
+            "rdfs:subClassOf",
+            f"superclasses|{class_iri}|{namespace}",
+            namespace=namespace,
+        )
+
+    def list_superproperties(
+        self,
+        property_iri: str|Term,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
+        logging.debug(f"Finding all properties for property {property_iri}")
+        return self.list_iris_transitive(
+            property_iri,
+            "rdfs:subPropertyOf",
+            f"superclasses|{property_iri}|{namespace}",
+            namespace=namespace,
+        )
+
+    def list_domain_properties_for_class(
+        self,
+        class_iri: str|Term,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
         class_iri = self.get_iri(class_iri)
         query_strings = [
             f"?q schema:domainIncludes <{class_.iri}>"
             for class_ in self.list_superclasses(class_iri)
         ]
-        return self.list_iris(query_strings, f"domain|{class_iri}")
+        return self.list_iris(
+            query_strings, f"domain|{class_iri}|{namespace}", namespace
+        )
 
-    def list_range_properties_for_class(self, class_iri: str) -> list[Term]:
+    def list_range_properties_for_class(
+        self,
+        class_iri: str|Term,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
         class_iri = self.get_iri(class_iri)
         query_strings = [
             f"?q schema:rangeIncludes <{class_.iri}>"
             for class_ in self.list_superclasses(class_iri)
         ]
-        return self.list_iris(query_strings, f"range|{class_iri}")
+        return self.list_iris(
+            query_strings, f"range|{class_iri}|{namespace}", namespace
+        )
 
-    def list_instances(self, class_iri: str) -> list[Term]:
+    def list_instances(
+        self, class_iri: str|Term, namespace: Optional[str] = None
+    ) -> list[Term]:
         class_iri = self.get_iri(class_iri)
         return self.list_iris(
-            [f"?q rdf:type <{class_iri}> ."], f"instances|{class_iri}"
+            [f"?q rdf:type <{class_iri}> ."],
+            f"instances|{class_iri}|{namespace}",
+            namespace,
         )
 
     def list_instances_by_class_and_name(
         self,
-        class_iri: str,
+        class_iri: str|Term,
         name: str,
         check_alternate_names: bool = False,
         namespace: Optional[str] = None,
@@ -231,7 +286,27 @@ class Dictionary:
             namespace=namespace,
         )
 
-    def get_iri(self, curie: str) -> str:
+    def list_properties_by_domain_and_range(
+        self, domain_iri: str|Term, range_iri: str, namespace: Optional[str] = None
+    ) -> list[Term]:
+        cache_key = f"domain-and-range|{domain_iri}|{range_iri}|{namespace}"
+
+        if cache_key in self.cache:
+            return self.cache[cache_key]
+
+        domain_properties = self.list_domain_properties_for_class(domain_iri, namespace)
+        range_properties = self.list_range_properties_for_class(range_iri, namespace)
+
+        properties = list(set(domain_properties) & set(range_properties))
+
+        self.cache[cache_key] = properties
+
+        return properties
+
+    def get_iri(self, curie: str|Term) -> str:
+        if isinstance(curie, Term):
+            return curie.iri
+
         cache_key = f"iri|{curie}"
 
         if cache_key in self.cache:
@@ -257,7 +332,10 @@ class Dictionary:
 
         return iri
 
-    def get_curie(self, iri: str) -> str:
+    def get_curie(self, iri: str|Term) -> str:
+        if isinstance(iri, Term):
+            return iri.curie
+
         cache_key = f"curie|{iri}"
 
         if cache_key in self.cache:
@@ -297,7 +375,9 @@ class Dictionary:
         self, query_strings: list[str], cache_key: str, namespace: Optional[str] = None
     ) -> list[Term]:
 
-        logging.info(f"Listing IRIs for query: {query_strings}")
+        logging.debug(
+            f"Listing IRIs for query: {query_strings} (namespace: {namespace})"
+        )
 
         if namespace is not None and namespace in self.namespaces:
             namespace = self.namespaces[namespace]
@@ -340,9 +420,10 @@ class Dictionary:
         transitive_property: str,
         cache_key: Optional[str],
         matches: Optional[list[Term]] = None,
+        namespace: Optional[str] = None,
     ) -> list[Term]:
 
-        logging.info(
+        logging.debug(
             f"Listing IRIs for subject: {subject} with transitive property: {transitive_property}"
         )
 
@@ -370,7 +451,8 @@ class Dictionary:
             if isinstance(t[0], URIRef):
                 match = self.get_term(str(t[0]))
                 if match not in matches:
-                    matches.append(match)
+                    if namespace is None or match.ns.startswith(namespace):
+                        matches.append(match)
                     self.list_iris_transitive(
                         match.iri, transitive_property, None, matches
                     )
@@ -664,7 +746,7 @@ if __name__ == "__main__":
     config = Configuration()
     namespace_definitions = config.get_namespace_definitions()
 
-    d = Dictionary(namespace_definitions = namespace_definitions)
+    d = Dictionary(namespace_definitions=namespace_definitions)
     d.load(APPN_SCHEMA)
     if args["asset"] is not None:
         for i in range(len(args["asset"])):

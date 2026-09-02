@@ -13,189 +13,40 @@
 # Created Date: 2026-03-31
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
-import pandas as pd
 import argparse
-import _io
-import json
 import logging
-import os
 import re
 import sys
 import datetime
-from pathlib import Path
-from typing import Optional, Any
+import warnings
 
-import appn_dictionary as dictionary
+import pandas as pd
+
+from pathlib import Path
+from typing import Optional, Any, NamedTuple
 from appn_types import Term
 from appn_dictionary import Dictionary
-from appn_configuration import load_configuration
+from appn_configuration import (
+    APPN_VOCABULARY,
+    BIO_SCHEMA,
+    DC_SCHEMA,
+    EXPLICIT_CLASSES_ALL,
+    EXPLICIT_CLASSES_FIRST,
+    RDF_SCHEMA,
+    RDFS_SCHEMA,
+    SCHEMA_SCHEMA,
+    Configuration,
+    APPN_SCHEMA,
+    SKOS_SCHEMA,
+)
+from rdflib import Graph, URIRef, Literal
 
 
-### Mapper ####################################################################
-#
-# Base class for objects to map excel column values to instance properties.
-# Subclasses provide the actual behaviour for different contexts.
-#
-class Mapper:
-    def __init__(self) -> None:
-        pass
-
-    # Return a property value based on an Excel row (pandas Series). The
-    # instances and node parameters are required by at least one subclass.
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        return None
-
-    # Return the name associated with the Mapper instance - this is to allow
-    # a client to check what property will be generated.
-    def get_name(self) -> Optional[str]:
-        return None
-
-
-### PropertyMapper ############################################################
-#
-# Mapper class to return the value of an Excel cell as an instance property if
-# it is present and contains a valid value.
-#
-class PropertyMapper(Mapper):
-    def __init__(self, column: str) -> None:
-        super().__init__()
-        self.column = column
-
-    # Return the cell value as a string unless it is a None value (including
-    # "NA").
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        if self.column in series:
-            value = str(series[self.column])
-            if value not in [
-                None,
-                "",
-                "nan",
-                "NA",
-                "No",
-            ]:
-                return str(series[self.column])
-        return None
-
-    # Return the name of the property handled by this Mapper.
-    def get_name(self) -> Optional[str]:
-        return self.column
-
-
-### RepeatedPropertyMapper ####################################################
-#
-# Mapper class to return either a single value or a list of values for the
-# supplied column name - any column name with an integer suffix will match.
-#
-class RepeatedPropertyMapper(Mapper):
-    def __init__(self, column: str) -> None:
-        super().__init__()
-        self.column = column
-        self.pattern = re.compile(f"^{column}[0-9]*$")
-
-    # Return the cell value as a string unless it is a None value (including
-    # "NA").
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        values = []
-        for column in series.keys():
-            if self.pattern.match(column):
-                value = str(series[column])
-                if value not in [
-                    None,
-                    "",
-                    "nan",
-                    "NA",
-                    "No",
-                ]:
-                    values.append(value)
-        if len(values) == 1:
-            return values[0]
-        elif len(values) > 1:
-            return values
-        return None
-
-    # Return the name of the property handled by this Mapper.
-    def get_name(self) -> Optional[str]:
-        return self.column
-
-
-### InstanceMapper #############################################################
-#
-# Mapper class to return the id of an associated schema class instance.
-#
-class InstanceMapper(Mapper):
-    def __init__(self, class_name: str) -> None:
-        super().__init__()
-        self.class_name = class_name
-
-    # Process the series (using get_instance) to find or create an instance of
-    # a specified schema class and return its id (URI) as a property value.
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        instance = get_instance(instances, self.class_name, node, series)
-        if instance is not None and "@id" in instance:
-            return instance["@id"]
-        return None
-
-
-### ExternalInstanceMapper #####################################################
-#
-# Mapper class to return the id of an schema class instance defined in another
-# sheet. The classname should also be a column name in the present sheet, but
-# this can be overridden with an explicit column selection.
-#
-class ExternalInstanceMapper(Mapper):
-    def __init__(self, class_name: str, column: Optional[str] = None) -> None:
-        super().__init__()
-        self.class_name = class_name
-        self.column = column
-
-    # Process the series (using get_instance) to find or create an instance of
-    # a specified schema class and return its id (URI) as a property value.
-    def get_value(
-        self,
-        instances: dict[str, dict[str, dict[str, str]]],
-        node: str,
-        series: pd.Series,
-    ) -> Optional[str | list[str]]:
-        # The label for the external instance should be found in a column with
-        # the class name as its name but may be overridden with an explicit
-        # column name.
-        value = ""
-        if self.column is not None and self.column in series:
-            value = str(series[self.column])
-        if self.class_name in series:
-            value = str(series[self.class_name])
-        if value not in [
-            None,
-            "",
-            "nan",
-            "NA",
-            "No",
-        ]:
-            id = get_id(self.class_name, node, value)
-            if self.class_name in instances and id in instances[self.class_name]:
-                return id
-
-        return None
+class RequiredProperty(NamedTuple):
+    subject: URIRef
+    property: URIRef
+    object_class: str
+    object_iri: str
 
 
 ### get_id ####################################################################
@@ -210,112 +61,18 @@ class ExternalInstanceMapper(Mapper):
 name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}\[\]]+")
 
 
-def get_id(class_name: str, node: str, name: str) -> str:
-    clean_name = name_pattern.sub("_", name).strip("_").lower()
-    return f"https://id.plantphenomics.org.au/{node}/{class_name}/{clean_name}"
+def sanitize_name(name: str) -> str:
+    return "".join([w.title() for w in name_pattern.sub(" ", name).strip().split()])
 
 
-### get_instance ##############################################################
-#
-# Process a row from an Excel spreadsheet (as a pandas Series). Most of the
-# work is carried out by the Mapper instances from the mappings dictionary.
-# This includes recursive calls to this function for processing columns that
-# represent instances of other classes referenced by this row (for example, to
-# generate a Scale instance as part of processing an ObservedVariable and then
-# to return the Scale id, i.e. its URI, as the mapped value to be included as
-# a property for the ObservedVariable).
-#
-#     instances         : dictionary for accessing all currently defined
-#                         instances of class classes and returning new ones.
-#     class_name        : name of the schema class to be processed from row.
-#     node              : abbreviated name for APPN node.
-#     series            : row from spreadsheet (as pandas Series).
-#
-def get_instance(
-    instances: dict[str, dict[str, dict[str, str]]],
-    class_name: str,
-    node: str,
-    series: pd.Series,
-) -> Optional[dict[str, str]]:
-
-    # Need class to be included in mappings dictionary.
-    if class_name not in mappings:
-        logging.error(f"No mapping definecd for class {class_name}")
-        return None
-    mapping = mappings[class_name]
-
-    # Use supplied id if defined, otherwise derive from name
-    if "@id" in mapping:
-        id = mapping["@id"].get_value(instances, node, series)
-
-    else:
-
-        # Need the row to contain a name that can serve as an identifier.
-        if "schema:name" not in mapping:
-            logging.error(f"No name property defined for class {class_name}")
-            return None
-
-        # Since the spreadsheets are intended as templates, there may be incomplete
-        # rows that should not be processed.
-        name = mapping["schema:name"].get_value(instances, node, series)
-        if name is None:
-            logging.debug(f"No name supplied for new instance")
-            return None
-
-        # Get URI from instance name.
-        id = get_id(class_name, node, name)
-
-    # The instances dictionary is organised by schema class to keep it sorted
-    # for when the vocabulary is generated. Make sure this class is included.
-    if class_name not in instances:
-        instances[class_name] = {}
-
-    # If this instance is already defined (based on the derived URI), just
-    # return the current instance.
-    if id in instances[class_name]:
-        logging.info(f"Returning instance with id {id}")
-        return instances[class_name][id]
-
-    # Create the new instance.
-    logging.info(f"Creating new instance with id {id}")
-    instance = {"@id": id, "@type": class_name}
-    if node in organisations:
-        instance["schema:owner"] = organisations[node][1]
-    instances[class_name][id] = instance
-
-    # Run all mappers associated with the schema class to get all available
-    # properties for the instance.
-    for property, mapper in mappings[class_name].items():
-        value = mapper.get_value(instances, node, series)
-        if value is not None:
-            instance[property] = value
-
-    return instance
-
-
-### process_sheet #############################################################
-#
-# Loop over the rows in an Excel spreadsheet to generate all schema class
-# instances.
-#
-#     instances         : dictionary for accessing all currently defined
-#                         instances of class classes and returning new ones.
-#     class_name        : name of the schema class to be processed from sheet.
-#     node              : abbreviated name for APPN node.
-#     file_path         : location of Excel spreadsheet.
-#     sheet             : name of sheet to process from spreadsheet.
-#
-def process_sheet(
-    instances: dict[str, dict[str, dict[str, str]]],
-    class_name: str,
-    node: str,
-    file_path: Path,
-    sheet: str,
-) -> None:
-    df = pd.read_excel(file_path, sheet_name=sheet)
-    for _, series in df.iterrows():
-        logging.debug(f"Row: {series.to_dict()}")
-        get_instance(instances, class_name, node, series)
+def get_id(class_name: str, node: str, name: str, abbreviations: dict[str, str]) -> str:
+    clean_name = "".join(
+        [w.title() for w in name_pattern.sub(" ", name).strip().split()]
+    )
+    class_name = (
+        abbreviations[class_name] if class_name in abbreviations else class_name
+    ).lower()
+    return f"https://id.plantphenomics.org.au/{node}/{class_name}_{clean_name}"
 
 
 ### process_argv ##############################################################
@@ -385,181 +142,6 @@ def start_log(
     logging.info(f"Logging started to {logfile_name} at level {level} and echo {echo}")
 
 
-### write_html ################################################################
-#
-# Write line to HTML file, maintaining tidy indentation.
-#
-#   NOTE: Type checking is disabled for rows accessing JSON graph nodes.
-#
-#     html_file         : file to write HTML content.
-#     html              : line of HTML to be written.
-#     indent            : indentation level.
-#
-def write_html(html_file: _io.TextIOWrapper, html: str, indent: int = 0) -> int:
-    increment = False
-    html = html.strip()
-    end_tags = html.count("</")
-    null_tags = html.count("/>")
-    start_tags = html.count("<") - html.count("< ") - 2 * end_tags - null_tags
-    if start_tags < 0:
-        indent += start_tags
-    html_file.write(f"{'    ' * indent}{html}\n")
-    if start_tags > 0:
-        indent += start_tags
-    return 0 if indent < 0 else indent
-
-
-### substitute ################################################################
-#
-# Expand prefixes where they appear in a text string
-#
-def substitute(prefixes: dict[str, str], s: str) -> str:
-    for k, v in prefixes.items():
-        if k in s:
-            s = s.replace(k, v)
-    return s
-
-
-### format_id #################################################################
-#
-# Expand URIs and link for a property value within or outside this document
-#
-def format_id(prefixes: dict[str, str], id: str) -> str:
-    expanded = substitute(prefixes, id)
-    if "plantphenomics" in expanded and "schema" not in expanded:
-        return f'<a href="#{id}">{expanded}</a>'
-    else:
-        return f'<a href="{expanded}" target="_blank">{expanded}</a>'
-
-
-### format_property ###########################################################
-#
-# Expand URIs and return link for a property key
-#
-def format_property(prefixes: dict[str, str], key: str) -> str:
-    parts = key.split(":")
-    return f'{parts[0]}: <a href="{substitute(prefixes, key)}" target="_blank">{parts[1]}</a>'
-
-
-### get_anchor ################################################################
-#
-# Get final parts of id as anchor in HTML
-#
-def get_anchor(id: str) -> str:
-    return "/".join(id.split("/")[-2:])
-
-
-### process_value #############################################################
-#
-# Turn a property value into formatted content to include in a <dd> tag
-# Convert dictionaries containing just an @id into links
-# Insert <br> between list values
-#
-def process_value(
-    prefixes: dict[str, str], value: str | list[str | dict[str, str]] | dict[str, str]
-) -> str:
-    if isinstance(value, dict) and "@id" in value:
-        return format_id(prefixes, value["@id"])
-    elif isinstance(value, list):
-        formatted = ""
-        for v in value:
-            if isinstance(v, dict) and "@id" in v:
-                v = format_id(prefixes, v["@id"])
-            elif isinstance(v, str) and v.startswith("http"):
-                v = f'<a href="{v}">{v}</a>'
-            if len(formatted) > 0:
-                formatted += "<br/>"
-            formatted += v
-        value = formatted
-    elif isinstance(value, str) and value.startswith("http"):
-        value = f'<a href="{value}">{value}</a>'
-    else:
-        value = str(value)
-    return value
-
-
-### format_html ###############################################################
-#
-# Write JSON-LD vocabulary as an HTML file, maintaining tidy indentation.
-#
-#   NOTE: Type checking is disabled for rows accessing JSON graph nodes.
-#
-#     html_path         : path to HTML file.
-#     node              : abbreviated APPN node name.
-#     json              : JSON-LD vocabulary data.
-#     prefixes          : dictionary of vocabulary prefixes.
-#
-def format_html(
-    html_path: Path, node: str, json: Any, prefixes: dict[str, str]
-) -> None:
-
-    # Append colons to prefixes for substition
-    substitutions = {f"{k}:": v for k, v in prefixes.items()}
-
-    # This assumes objects are sorted by type. Otherwise some headings will repeat.
-    with open(html_path, "w") as html_file:
-        indent = write_html(html_file, "<html>")
-        indent = write_html(html_file, "<head>", indent)
-        indent = write_html(html_file, '<meta charset="UTF-8"/>', indent)
-        indent = write_html(
-            html_file,
-            '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>',
-            indent,
-        )
-        indent = write_html(html_file, f"<title>APPN {node} vocabulary</title>", indent)
-        indent = write_html(
-            html_file, '<link rel="stylesheet" href="/css/style.css"/>', indent
-        )
-        indent = write_html(html_file, "</head>", indent)
-        indent = write_html(html_file, "<body>", indent)
-        indent = write_html(html_file, f"<h1>APPN {node} vocabulary</h1>", indent)
-
-        current_class = ""
-        for node in sorted(
-            json["@graph"], key=lambda n: n["@id"] if "@id" in n else "ZZZ"
-        ):
-            if "@type" in node and node["@type"] != current_class:  # type: ignore
-                indent = write_html(html_file, f"<h2>{node['@type']}</h2>", indent)  # type: ignore
-                current_class = node["@type"]  # type: ignore
-            indent = write_html(
-                html_file,
-                f'<h3 id="{get_anchor(node['@id'])}">{substitute(substitutions, node["@id"])}</h3>',  # type: ignore
-                indent,
-            )
-            indent = write_html(html_file, f"<dl>", indent)
-            for k, v in node.items():  # type: ignore
-                if not k.startswith("@"):
-                    indent = write_html(
-                        html_file,
-                        f"<dt><b>{format_property(substitutions, k)}</b></dt><dd>{process_value(substitutions, v)}</dd>",
-                        indent,
-                    )
-            indent = write_html(html_file, f"</dl>", indent)
-
-        indent = write_html(html_file, "</body>", indent)
-        indent = write_html(html_file, "</html>", indent)
-
-
-### write_property ########################################################
-#
-# Write RDF property and value.
-#
-#     f         : open file
-#     ppty      : property name
-#     json      : value string
-#
-def write_property(f: _io.TextIOWrapper, ppty: str, value: str) -> None:
-    value = value.replace("&", "&amp;")
-    if value.startswith("http"):
-        f.write(f'        <{ppty} rdf:resource="{value}"/>\n')
-    elif ppty == "@type":
-        f.write(
-            f'        <rdf:type rdf:resource="https://schema.plantphenomics.org.au/{value}"/>\n'
-        )
-    else:
-        f.write(f'        <{ppty} xml:lang="en">{value}</{ppty}>\n')
-
-
 ### GLOBAL VARIABLES ##########################################################
 #
 # Definition objects controlled the execution
@@ -582,127 +164,162 @@ organisations = {
     "WSU": ("Western Sydney University", "https://ror.org/03t52dk35"),
 }
 
-# Map of maps of maps. A dictionary that maps schema class names to dictionaries
-# of associated properties. Each property dictionary maps a property name to a
-# Mapper object that encapsulates function to extract a value for the property
-# from a spreadsheet row.
-mappings = {
-    "Person": {
-        "@id": PropertyMapper("orcid"),
-        "rfds:label": PropertyMapper("name"),
-        "schema:email": PropertyMapper("email"),
-    },
-    "GrowthFacility": {
-        "schema:name": PropertyMapper("growth facility name *"),
-        "schema:description": PropertyMapper("growth facility description *"),
-        "appn:hasGrowthFacilityType": InstanceMapper("GrowthFacilityType"),
-        "schema:brand": PropertyMapper("growth facility type brand *"),
-        "schema:model": PropertyMapper("growth facility model *"),
-        "schema:serialNumber": PropertyMapper("growth facility serial number *"),
-        "appn:containmentLevel": PropertyMapper("containment level *"),
-        "appn:quarantine": PropertyMapper("quarantine details *"),
-        "skos:closeMatch": PropertyMapper("growth facility ontology IRI"),
-    },
-    "GrowthFacilityType": {
-        "schema:name": PropertyMapper("growth facility type *"),
-    },
-    "Platform": {
-        "schema:name": PropertyMapper("platform name"),
-        "schema:description": PropertyMapper("platform description *"),
-        "appn:hasPlatformType": InstanceMapper("PlatformType"),
-        "schema:brand": PropertyMapper("platform type brand"),
-        "schema:model": PropertyMapper("platform model *"),
-        "schema:serialNumber": PropertyMapper("platform serial number *"),
-        "skos:closeMatch": PropertyMapper("platform ontology IRI"),
-    },
-    "PlatformType": {
-        "schema:name": PropertyMapper("platform type *"),
-    },
-    "Sensor": {
-        "schema:name": PropertyMapper("sensor name"),
-        "schema:description": PropertyMapper("sensor description *"),
-        "appn:hasSensorType": InstanceMapper("SensorType"),
-        "schema:brand": PropertyMapper("sensor type brand"),
-        "schema:model": PropertyMapper("sensor model *"),
-        "schema:serialNumber": PropertyMapper("sensor serial number *"),
-        "skos:closeMatch": PropertyMapper("sensor ontology IRI"),
-    },
-    "SensorType": {
-        "schema:name": PropertyMapper("sensor type *"),
-    },
-    "Deployment": {
-        "schema:name": PropertyMapper("appn deployment name"),
-        "appn:deployedOnPlatform": InstanceMapper("Platform"),
-        "appn:deployedSystem": InstanceMapper("Sensor"),
-    },
-    "ObservedVariable": {
-        "schema:name": PropertyMapper("name"),
-        "schema:description": PropertyMapper("description"),
-        "dcterms:creator": PropertyMapper("author"),
-        "dcterms:language": PropertyMapper("Language"),
-        "appn:hasTrait": ExternalInstanceMapper("Trait", "name"),
-        "appn:hasScale": ExternalInstanceMapper("Scale"),
-        "appn:usedMethod": ExternalInstanceMapper("Method"),
-        "appn:forBiologicalMaterial": ExternalInstanceMapper("BiologicalMaterial"),
-        "appn:forBiologicalUnitType": ExternalInstanceMapper("BiologicalUnitType"),
-    },
-    "BiologicalMaterial": {
-        "schema:name": PropertyMapper("name"),
-        "bio:scientificName": PropertyMapper("scientificName"),
-        "schema:description": PropertyMapper("description"),
-        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dcterms:creator": PropertyMapper("author"),
-    },
-    "BiologicalUnitType": {
-        "schema:name": PropertyMapper("name"),
-        "schema:description": PropertyMapper("description"),
-        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dcterms:creator": PropertyMapper("author"),
-    },
-    "Trait": {
-        "schema:name": PropertyMapper("name"),
-        "schema:description": PropertyMapper("description"),
-        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dcterms:creator": PropertyMapper("author"),
-    },
-    "Method": {
-        "schema:name": PropertyMapper("name"),
-        "schema:description": PropertyMapper("description"),
-        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dcterms:creator": PropertyMapper("author"),
-    },
-    "Scale": {
-        "schema:name": PropertyMapper("name"),
-        "schema:description": PropertyMapper("description "),
-        "schema:alternateName": RepeatedPropertyMapper("altLabel"),
-        "skos:exactMatch": RepeatedPropertyMapper("exactMatch"),
-        "skos:closeMatch": RepeatedPropertyMapper("closeMatch"),
-        "skos:relatedMatch": RepeatedPropertyMapper("relatedMatch"),
-        "dcterms:creator": PropertyMapper("author"),
-    },
-}
 
-# Dictionary of vocabulary prefixes
-prefixes = {
-    "appn": "https://schema.plantphenomics.org.au/appn-schema.ttl",
-    "bio": "https://bioschemas.org/types/Taxon/1.0-RELEASE#",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "schema": "https://schema.org/",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-}
+def list_explicit_classes(
+    class_: Term, configuration: Configuration, dictionary: Dictionary
+) -> list[Term]:
+    superclasses = dictionary.list_superclasses(class_.iri)
+    explicit_rules = configuration.get_explicit_classes()
+    excluded_classes = configuration.get_excluded_classes()
+
+    explicit_classes = []
+
+    for superclass in superclasses:
+        if superclass.iri == class_:
+            explicit_classes.append(URIRef(superclass.iri))
+        elif superclass.ns in explicit_rules and superclass.iri not in excluded_classes:
+            rule = explicit_rules[superclass.ns]
+            if isinstance(rule, list):
+                if superclass.name in rule:
+                    explicit_classes.append(URIRef(superclass.iri))
+            elif isinstance(rule, str):
+                if rule == EXPLICIT_CLASSES_ALL:
+                    explicit_classes.append(URIRef(superclass.iri))
+                elif rule == EXPLICIT_CLASSES_FIRST:
+                    explicit_classes.append(URIRef(superclass.iri))
+                    explicit_rules.pop(superclass.ns)
+
+    explicit_classes.append(URIRef("http://www.w3.org/2004/02/skos/core#Concept"))
+
+    return explicit_classes
+
+
+def process_sheet(
+    graph: Graph,
+    df: pd.DataFrame,
+    class_name: str,
+    node: str,
+    column_properties: dict[str, URIRef],
+    column_classes: dict[str, URIRef],
+    name_column: str,
+    class_abbreviations: dict[str, str],
+    required_properties: list[RequiredProperty],
+) -> bool:
+    print(type(df))
+
+    success = True
+    concept_scheme_term = None
+
+    for _, row in df.iterrows():
+        if not pd.isnull(row[name_column]):
+            name = row[name_column]
+            id = get_id(class_.name, node, name, class_abbreviations)
+            id_term = URIRef(id)
+            if id in instances[class_name]:
+                logging.error(
+                    f"ERROR: Multiple entries for class {class_.name} with the same name: {name} - ignoring all but first"
+                )
+                success = False
+            else:
+                if concept_scheme_term is None:
+                    concept_scheme_id = f"https://id.plantphenomics.org.au/{node}/{class_abbreviations['ConceptScheme'] if 'ConceptScheme' in class_abbreviations else 'conceptscheme'}_{class_.name}"
+                    concept_scheme_term = URIRef(concept_scheme_id)
+                    graph.add(
+                        (
+                            concept_scheme_term,
+                            rdf_type,
+                            skos_concept_scheme,
+                        )
+                    )
+                    for p in [schema_name, dc_title]:
+                        graph.add(
+                            (
+                                concept_scheme_term,
+                                p,
+                                Literal(class_name),
+                            )
+                        )
+                    for p in [
+                        schema_description,
+                        dc_description,
+                    ]:
+                        graph.add(
+                            (
+                                concept_scheme_term,
+                                p,
+                                Literal(
+                                    f"Concept scheme including instances of the APPN {class_.name} class from the APPN {node} node"
+                                ),
+                            )
+                        )
+
+                instances[class_.name][id] = id_term
+
+                for explicit_class in explicit_classes:
+                    graph.add(
+                        (
+                            id_term,
+                            rdf_type,
+                            explicit_class,
+                        )
+                    )
+
+                graph.add(
+                    (
+                        id_term,
+                        skos_in_scheme,
+                        concept_scheme_term,
+                    )
+                )
+
+                for column in column_properties:
+                    value = row[column]
+                    if not pd.isnull(value):
+                        property_term = column_properties[column]
+                        if column in column_classes:
+                            required_properties.append(
+                                RequiredProperty(
+                                    id_term,
+                                    property_term,
+                                    column_classes[column].name,
+                                    get_id(
+                                        column_classes[column].name,
+                                        node,
+                                        row[column],
+                                        class_abbreviations,
+                                    ),
+                                )
+                            )
+                        else:
+                            if isinstance(value, str) and value.startswith("http"):
+                                value_term = URIRef(value.strip())
+                            else:
+                                value_term = Literal(value)
+                            graph.add(
+                                (
+                                    id_term,
+                                    property_term,
+                                    value_term,
+                                )
+                            )
+                            if property_term in property_expansions:
+                                for expansion_property in property_expansions[
+                                    property_term
+                                ]:
+                                    graph.add(
+                                        (
+                                            id_term,
+                                            expansion_property,
+                                            value_term,
+                                        )
+                                    )
+
+    return success
+
+
+def lower_first(name: str) -> str:
+    return name[0].lower() + name[1:]
+
 
 ### MAIN PROGRAM ##############################################################
 #
@@ -715,36 +332,17 @@ if __name__ == "__main__":
     args = process_argv(sys.argv)
     start_log(args["log_level"], None, args["echo_to_stderr"])
 
-    config = load_configuration("appn")
+    configuration = Configuration()
 
     node = args["node"]
 
-    dictionary = Dictionary(
-        {
-            dictionary.APPN_SCHEMA: "./appn-schema.ttl",
-            dictionary.SCHEMA_SCHEMA: "schema_assets/schemaorg-current-https.ttl",
-            dictionary.BIO_SCHEMA: "schema_assets/bioschemas_types.ttl",
-            dictionary.CDI_SCHEMA: "schema_assets/ddi-cdi.jsonld",
-            dictionary.DC_SCHEMA: "schema_assets/dublin_core_terms.rdf",
-            dictionary.PPEO_SCHEMA: "schema_assets/PPEO.owl",
-            dictionary.PROV_SCHEMA: "schema_assets/prov.ttl",
-            dictionary.RDFS_SCHEMA: "schema_assets/rdf-schema.ttl",
-            dictionary.RDF_SCHEMA: "schema_assets/22-rdf-syntax-ns.ttl",
-            dictionary.SKOS_SCHEMA: "schema_assets/skos.rdf",
-            dictionary.SOSA_SCHEMA: "schema_assets/sosa.ttl",
-            dictionary.SSN_SCHEMA: "schema_assets/ssn.ttl",
-            dictionary.APPN_VOCABULARY: "vocabulary/APPN/vocabulary.rdf",
-            dictionary.ANU_VOCABULARY: "vocabulary/ANU/vocabulary.rdf",
-            dictionary.AU_VOCABULARY: "vocabulary/AU/vocabulary.rdf",
-            dictionary.CSU_VOCABULARY: "vocabulary/CSU/vocabulary.rdf",
-            dictionary.DPIRD_VOCABULARY: "vocabulary/DPIRD/vocabulary.rdf",
-            dictionary.LTU_VOCABULARY: "vocabulary/LTU/vocabulary.rdf",
-            dictionary.UQ_VOCABULARY: "vocabulary/UQ/vocabulary.rdf",
-            dictionary.USYD_VOCABULARY: "vocabulary/USYD/vocabulary.rdf",
-            dictionary.UWA_VOCABULARY: "vocabulary/UWA/vocabulary.rdf",
-            dictionary.WSU_VOCABULARY: "vocabulary/WSU/vocabulary.rdf",
-        }
-    )
+    # Load schemas that provide key definitions. APPN_SCHEMA does not
+    # directly reference SKOS, so SKOS_SCHEMA is separately loaded, but
+    # others are imported based on their use in these two schemas.
+    dictionary = Dictionary(configuration.get_namespace_definitions())
+    dictionary.load(APPN_SCHEMA)
+    dictionary.load(SKOS_SCHEMA)
+    dictionary.import_references()
 
     # Make list of folders to process (either for a single node or for all)
     if node == "all":
@@ -767,16 +365,34 @@ if __name__ == "__main__":
 
     timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
 
+    # The openpyxl library generates a warning ("Data Validation extension is not supported and will be removed")
+    warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
+
+    integer_stripper = re.compile(r"[0-9]*$")
+
+    sheet_aliases = configuration.get_sheet_aliases()
+    column_aliases = configuration.get_column_aliases()
+    class_abbreviations = configuration.get_class_abbreviations()
+    property_expansions = configuration.get_property_expansions()
+    embedded_classes = configuration.get_embedded_classes()
+
+    rdf_type = URIRef(f"{RDF_SCHEMA}type")
+    rdfs_property = URIRef(f"{RDFS_SCHEMA}Property")
+    schema_name = URIRef(f"{SCHEMA_SCHEMA}name")
+    schema_description = URIRef(f"{SCHEMA_SCHEMA}description")
+    skos_concept = URIRef(f"{SKOS_SCHEMA}Concept")
+    skos_concept_scheme = URIRef(f"{SKOS_SCHEMA}ConceptScheme")
+    skos_in_scheme = URIRef(f"{SKOS_SCHEMA}inScheme")
+    dc_title = URIRef(f"{DC_SCHEMA}title")
+    dc_description = URIRef(f"{DC_SCHEMA}description")
+
     # Generate vocabulary for each selected node in turn.
     for folder in folders:
         node = folder.name
         organisation_name, ror = organisations[node]
 
-        # Dictionary to map URIs to the class instances (as dictionaries).
-        instances = {}
-
         # Loop over Excel spreadsheets in the folder for the node.
-        for file in folder.glob("*Restructure.xls*"):
+        for file in folder.glob("*.xls*"):
 
             # Ignore temporary files that still have xls in their name
             if file.name.startswith("."):
@@ -784,138 +400,229 @@ if __name__ == "__main__":
             else:
                 logging.info(f"Processing file {file}")
 
-                # Dictionary to map schema classes to actual sheet names.
-                sheets = {}
+                graph = Graph()
 
-                # Find sheets with definitions. This code is tolerant of different
-                # spacing and capitalisation.
+                # Dictionary to map URIs to the class instances (as dictionaries).
+                instances = {}
+
+                classes = {
+                    class_.name: class_
+                    for class_ in dictionary.list_classes(namespace=APPN_SCHEMA)
+                }
+                instances: dict[str, dict[str, str]] = {}
+
+                required_properties: list[RequiredProperty] = []
+
                 for sheet in pd.ExcelFile(file).sheet_names:
-                    sheet_normal = sheet.lower().replace(" ", "")
-                    if "trait" in sheet_normal:
-                        sheets["Trait"] = sheet
-                        sheets["ObservedVariable"] = sheet
-                    elif "method" in sheet_normal:
-                        sheets["Method"] = sheet
-                    elif "scale" in sheet_normal:
-                        sheets["Scale"] = sheet
-                    elif "biologicalunittype" in sheet_normal:
-                        sheets["BiologicalUnitType"] = sheet
-                    elif "biologicalmaterial" in sheet_normal:
-                        sheets["BiologicalMaterial"] = sheet
-                    elif "author" in sheet_normal:
-                        sheets["Person"] = sheet
-                    elif "platform" in sheet_normal:
-                        sheets["Platform"] = sheet
-                    elif "sensor" in sheet_normal:
-                        sheets["Sensor"] = sheet
-                    elif "deployment" in sheet_normal:
-                        sheets["Deployment"] = sheet
-                    elif "growthfacility" in sheet_normal:
-                        sheets["GrowthFacility"] = sheet
-                    else:
-                        logging.debug(f"Ignoring sheet {sheet}")
-
-                # Ensure that classes are added in a safe order (Deployment after Platform and Sensor)
-                for class_name in [
-                    "Person",
-                    "BiologicalUnitType",
-                    "BiologicalMaterial",
-                    "Method",
-                    "Scale",
-                    "Trait",
-                    "GrowthFacility",
-                    "Platform",
-                    "Sensor",
-                    "Deployment",
-                    "ObservedVariable",
-                ]:
-                    if class_name in sheets:
-                        logging.info(
-                            f"{node} / {file} / {sheets[class_name]} --> {class_name}"
-                        )
-
-                        # Handle all definitions in the current sheet (including referenced objects).
-                        process_sheet(
-                            instances, class_name, node, file, sheets[class_name]
-                        )
-
-        # Generate outputs for target format
-
-        target = Path("vocabulary") / node
-
-        if args["mode"] in ["json", "all"]:
-            # Flatten the instance dictionaries into a single list.
-            node_instances = []
-            for class_name in instances:
-                node_instances += instances[class_name].values()
-
-            # Generate and write the JSON-LD vocabulary.
-            vocabulary = {
-                "@context": prefixes,
-                "@graph": node_instances,
-            }
-            os.makedirs(target, exist_ok=True)
-            with open(target / "vocabulary.json", "w", encoding="utf-8") as f:
-                json.dump(vocabulary, f, ensure_ascii=False, indent=4)
-                format_html(target / "vocabulary.html", node, vocabulary, prefixes)
-
-        if args["mode"] in ["rdf", "all"]:
-            with open(target / "vocabulary.rdf", "w", encoding="utf-8") as f:
-                f.writelines(
-                    [
-                        '<?xml version="1.0" encoding="UTF-8"?>\n',
-                        "<rdf:RDF\n",
-                        '    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"\n',
-                        '    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"\n',
-                        '    xmlns:skos="http://www.w3.org/2004/02/skos/core#"\n',
-                        '    xmlns:dcterms="http://purl.org/dc/terms/"\n',
-                        '    xmlns:appn="https://schema.plantphenomics.org.au/"\n',
-                        '    xmlns:bio="https://bioschemas.org/"\n',
-                        '    xmlns:schema="https://schema.org/">\n',
-                        "\n",
-                    ]
-                )
-
-                for class_name in instances:
-                    f.writelines(
-                        [
-                            f'    <rdf:Description rdf:about="https://id.plantphenomics.org.au/{node}/{class_name}">\n',
-                            '        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>\n',
-                            f'        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">{timestamp}</dcterms:created>\n',
-                            f'        <dcterms:creator rdf:resource="{ror}"/>\n',
-                            f'        <dcterms:description xml:lang="en">Set of terms for APPN schema class {class_name} in use by {organisation_name} node.</dcterms:description>\n',
-                            f'        <dcterms:title xml:lang="en">{class_name}</dcterms:title>\n',
-                            "    </rdf:Description>\n",
-                            "\n",
-                        ]
+                    sheet_class = (
+                        sheet_aliases[sheet] if sheet in sheet_aliases else sheet
                     )
+                    if sheet_class in classes:
 
-                    for instance in instances[class_name].values():
-                        f.write(
-                            f'    <rdf:Description rdf:about="{instance["@id"]}">\n'
-                        )
-                        f.write(
-                            f'        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>\n'
-                        )
-                        f.write(
-                            f'        <skos:inScheme rdf:resource="https://id.plantphenomics.org.au/{node}/{class_name}"/>\n'
-                        )
-                        f.write(
-                            f'        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">{timestamp}</dcterms:created>\n'
-                        )
-                        for k, v in instance.items():
-                            # print(f"{k}: {v}")
-                            if k != "@id":
-                                if isinstance(v, list):
-                                    for item in v:
-                                        write_property(f, k, item)
-                                else:
-                                    write_property(f, k, v)
-                                    if k == "schema:name":
-                                        write_property(f, "rdfs:label", v)
-                                    elif k == "schema:description":
-                                        write_property(f, "rdfs:comment", v)
+                        class_ = classes[sheet_class]
 
-                        f.write("    </rdf:Description>\n\n")
+                        # Load the sheet as a Pandas dataframe
+                        df = pd.read_excel(file, sheet_name=sheet)
 
-                f.writelines(["</rdf:RDF>\n"])
+                        embedding_prefixes = (
+                            {
+                                embedded_class.lower(): embedded_class
+                                for embedded_class in embedded_classes[class_.name]
+                            }
+                            if class_.name in embedded_classes
+                            else {}
+                        )
+
+                        processing_runs = [""] + list(embedding_prefixes.keys())
+
+                        for processing_run in processing_runs:
+
+                            name_column = lower_first(f"{processing_run}Name")
+                            run_class = (
+                                dictionary.get_term(
+                                    f"{APPN_SCHEMA}{embedding_prefixes[processing_run]}"
+                                )
+                                if processing_run in embedding_prefixes
+                                else class_
+                            )
+
+                            if name_column not in df.columns:
+                                logging.error(
+                                    f"Sheet {sheet} does not include a name column {name_column} - ignoring sheet {sheet} for class {run_class}"
+                                )
+
+                            else:
+                                logging.debug(
+                                    f"Handling rows in sheet {sheet} as instances of {run_class}"
+                                )
+
+                                if run_class.name not in instances:
+                                    instances[run_class.name] = {}
+
+                                explicit_classes = list_explicit_classes(
+                                    run_class, configuration, dictionary
+                                )
+
+                                # Build dictionary of candidate properties for the class. Preference those with
+                                # the class as the domain, processing them in the returned order (which starts
+                                # with properties for the APPN class and proceeds up the superclass chain), and
+                                # then include in descending priority properties from schema.org, SKOS or Dublin
+                                # Core. If a property with the name has already been found, do not overwrite it.
+                                properties = {}
+
+                                # Columns will be handled as properties which include the current class as their
+                                # domain. If no such property exists with the specified name, a matching
+                                # will be selected from one of the namespaces specified in the configuration
+                                # (in descending order of precedence). This code builds a map of unqualified
+                                # property names to the preferred property. A clean map is created for each
+                                # sheet in the spreadsheet since the domain properties vary by class.
+                                for p in dictionary.list_domain_properties_for_class(
+                                    run_class.iri
+                                ):
+                                    if p.name not in properties:
+                                        properties[p.name] = p
+                                for (
+                                    s
+                                ) in configuration.get_vocabulary_column_namespaces():
+                                    for p in dictionary.list_properties(namespace=s):
+                                        if p.name not in properties:
+                                            properties[p.name] = p
+
+                                # Build dictionary of property URIRefs for each column.
+                                column_properties = {}
+
+                                # Build dictionary of columns that represent references to instances of a
+                                # schema class (referenced via the instance name) - these need to be resolved
+                                # to the IRI for the corresponding instance.
+                                column_classes = {}
+
+                                # Build dictionary of any nested classes that should be processed as though
+                                # they were a separate sheet.
+                                embeddings = {}
+
+                                # Map each column name to a property
+                                # TODO Remember columns that are references by name to instances of other classes.
+                                for column in df.columns:
+                                    column_name = integer_stripper.sub("", column)
+
+                                    if column_name in column_aliases:
+                                        column_name = column_aliases[column_name]
+
+                                    if processing_run == "":
+                                        for prefix in embedding_prefixes.keys():
+                                            if column_name.startswith(prefix):
+                                                if column_name == f"{prefix}Name":
+                                                    column_name = embedding_prefixes[
+                                                        prefix
+                                                    ]
+                                                else:
+                                                    column_name = None
+                                                break
+                                    else:
+                                        if column_name.startswith(processing_run):
+                                            column_name = lower_first(
+                                                column_name[len(processing_run)]
+                                            )
+                                        else:
+                                            column_name = None
+
+                                    if column_name is not None:
+                                        property_ = None
+                                        if column_name in properties:
+                                            property_ = properties[column_name]
+                                        elif column_name in classes:
+                                            related_class = classes[column_name]
+                                            range_properties = dictionary.list_properties_by_domain_and_range(
+                                                run_class.iri,
+                                                related_class.iri,
+                                                APPN_SCHEMA,
+                                            )
+                                            column_classes[column] = related_class
+                                            if len(range_properties) == 1:
+                                                property_ = range_properties[0]
+                                            else:
+                                                # TODO A default choice could be specified in the Configuration.
+                                                # Otherwise, should this throw an Error?
+                                                logging.error(
+                                                    f"ERROR: Multiple properties link {class_.curie} to {related_class.curie} - unknown mapping for column {column} in sheet {sheet}"
+                                                )
+
+                                        if property_ is None:
+                                            local_property_id = f"https://id.plantphenomics.org.au/{node}/{lower_first(sanitize_name(column_name))}"
+                                            local_property_term = URIRef(
+                                                local_property_id
+                                            )
+                                            if "Property" not in instances:
+                                                instances["Property"] = {}
+                                            if (
+                                                local_property_id
+                                                not in instances["Property"]
+                                            ):
+                                                graph.add(
+                                                    (
+                                                        local_property_term,
+                                                        rdf_type,
+                                                        rdfs_property,
+                                                    )
+                                                )
+                                            column_properties[column] = (
+                                                local_property_term
+                                            )
+                                        else:
+                                            logging.info(
+                                                f"Column {column} in {sheet} recognised as {property_.curie}"
+                                            )
+                                            column_properties[column] = URIRef(
+                                                property_.iri
+                                            )
+
+                                process_sheet(
+                                    graph,
+                                    df,
+                                    class_.name,
+                                    node,
+                                    column_properties,
+                                    column_classes,
+                                    "name",
+                                    class_abbreviations,
+                                    required_properties,
+                                )
+                                for (
+                                    embedding_class,
+                                    embedding_columns,
+                                ) in embeddings.items():
+
+                                    process_sheet(
+                                        graph,
+                                        df,
+                                        embedding_class,
+                                        node,
+                                        embedding_columns,
+                                    )
+
+                for required_property in required_properties:
+                    if (
+                        required_property.object_class in instances
+                        and required_property.object_iri
+                        in instances[required_property.object_class]
+                    ):
+                        value_term = instances[required_property.object_class][
+                            required_property.object_iri
+                        ]
+                        graph.add(
+                            (
+                                required_property.subject,
+                                required_property.property,
+                                value_term,
+                            )
+                        )
+                    else:
+                        logging.error(
+                            f"ERROR: {str(required_property.subject)} references unknown {required_property.object_class}: {required_property.object_iri}"
+                        )
+
+                graph.bind("appnid", APPN_VOCABULARY, override=True)
+                graph.bind("appn", APPN_SCHEMA, override=True)
+                graph.bind("bio", BIO_SCHEMA)
+                graph.bind(node.lower(), f"https://id.plantphenomics.org.au/{node}/")
+                graph.serialize(destination=f"./vocabulary/{node}/vocabulary.ttl")
