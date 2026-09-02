@@ -93,6 +93,7 @@ appn:Scale a rdfs:Class ;
 appn:Variable a rdfs:Class ;
   schema:name "Variable" ;
   rdfs:comment "Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade, a Variable is a RepresentedVariable or an InstanceVariable." ;
+  rdfs:subClassOf appn:Trait ;
   rdfs:subClassOf sosa:Property ;
   rdfs:subClassOf cdi:RepresentedVariable ;
   rdfs:subClassOf schema:InstanceValue .
@@ -473,6 +474,12 @@ appn:hasBiologicalMaterial a rdf:Property ;
   rdfs:comment "Identifies the BiologicalMaterial for a BiologicalUnit." ;
   rdfs:subPropertyOf ppeo:hasBiologicalMaterial ;
   schema:domainIncludes appn:BiologicalUnit ;
+  schema:rangeIncludes appn:BiologicalMaterial .
+
+appn:hasHigherTaxon a rdf:Property ;
+  schema:name "hasHigherTaxon" ;
+  rdfs:comment "Identifies a more inclusive BiologicalMaterial as a higher taxon." ;
+  schema:domainIncludes appn:BiologicalMaterial ;
   schema:rangeIncludes appn:BiologicalMaterial .
 
 appn:hasMaterialSource a rdf:Property ;
