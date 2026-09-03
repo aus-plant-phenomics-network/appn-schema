@@ -16,8 +16,8 @@ import yaml
 import os
 import logging
 from pathlib import Path
-from typing import Optional, NamedTuple
-from appn_types import NamespaceDefinition
+from typing import Optional
+from appn_types import NamespaceDefinition, Organisation
 from rdflib import URIRef
 
 APPN_DEFAULT_CONFIGURATION_FOLDER = Path("./")
@@ -98,10 +98,6 @@ DEFAULT_NAMESPACES = {
     WSU_VOCABULARY: "wsu",
 }
 
-class Organisation(NamedTuple):
-    id: str
-    name: str
-    ror: str
 
 class Configuration:
 
@@ -248,17 +244,27 @@ class Configuration:
             return self.configuration[CONFIGURATION_KEY_EMBEDDED_CLASSES].copy()
         return {}
 
-    def get_organisations(self) -> dict[str, dict[str,Organisation]]:
+    def get_organisations(self) -> dict[str, Organisation]:
         if self.organisations is None:
             self.organisations = {}
             if CONFIGURATION_KEY_ORGANISATIONS in self.configuration:
-                for id, properties in self.configuration[CONFIGURATION_KEY_ORGANISATIONS].items():
-                    name = properties[ORGANISATION_SUBKEY_NAME] if ORGANISATION_SUBKEY_NAME in properties else None 
-                    ror = properties[ORGANISATION_SUBKEY_ROR] if ORGANISATION_SUBKEY_ROR in properties else None 
+                for id, properties in self.configuration[
+                    CONFIGURATION_KEY_ORGANISATIONS
+                ].items():
+                    name = str(
+                        properties[ORGANISATION_SUBKEY_NAME]
+                        if ORGANISATION_SUBKEY_NAME in properties
+                        else None
+                    )
+                    ror = str(
+                        properties[ORGANISATION_SUBKEY_ROR]
+                        if ORGANISATION_SUBKEY_ROR in properties
+                        else None
+                    )
                     self.organisations[id] = Organisation(id, name, ror)
         return self.organisations.copy()
 
-    def get_organisation_by_id(self, name: str) -> Optional[Organisation]:
+    def get_organisation_by_id(self, id: str) -> Optional[Organisation]:
         organisations = self.get_organisations()
         if id in organisations:
             return organisations[id]

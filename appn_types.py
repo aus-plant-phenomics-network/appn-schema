@@ -14,7 +14,19 @@
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
 
-from typing import NamedTuple
+from typing import NamedTuple, Optional
+from rdflib import URIRef
+
+
+### Organisation ##############################################################
+#
+# Simple class for organisation properties
+#
+class Organisation(NamedTuple):
+    id: str
+    name: str
+    ror: str
+
 
 ### NamespaceDefinition #######################################################
 #
@@ -24,6 +36,7 @@ class NamespaceDefinition(NamedTuple):
     ns: str
     prefix: str
     path: str
+
 
 ### Term ######################################################################
 #
@@ -36,6 +49,7 @@ class Term(NamedTuple):
     prefix: str
     name: str
 
+
 ### Triple ####################################################################
 #
 # Simple class for triples of string
@@ -44,6 +58,7 @@ class Triple(NamedTuple):
     subject: str
     property: str
     object: str
+
 
 ### URIRefTriple ##############################################################
 #
@@ -54,6 +69,7 @@ class URIRefTriple(NamedTuple):
     property: URIRef
     object: URIRef
 
+
 ### ColumnMapping##############################################################
 #
 # Simple class for metadata associated with a spreadsheet column
@@ -61,5 +77,6 @@ class URIRefTriple(NamedTuple):
 class ColumnMapping(NamedTuple):
     column: str
     property: URIRef
-    range_class: Optional(Term)
+    range_class: Optional[Term]
     primary_identifier: bool
+    is_local_property: bool
