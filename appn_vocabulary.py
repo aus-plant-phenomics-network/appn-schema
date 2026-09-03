@@ -180,11 +180,18 @@ if __name__ == "__main__":
 
     organisations = configuration.get_organisations()
 
+    appn_vocabulary_loaded = False
+
     # Generate vocabulary for each selected node in turn.
     for folder in folders:
         node = folder.name
 
         if node in organisations:
+
+            if node != "APPN" and not appn_vocabulary_loaded:
+                dictionary.load(APPN_VOCABULARY, asset_prefix="appnid")
+
+                appn_vocabulary_loaded = True
 
             parser = ExcelVocabularyParser(
                 dictionary, configuration, organisations[node]
