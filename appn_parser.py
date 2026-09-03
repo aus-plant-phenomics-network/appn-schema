@@ -29,7 +29,6 @@ from appn_configuration import (
     EXPLICIT_CLASSES_ALL,
     EXPLICIT_CLASSES_FIRST,
     RDF_SCHEMA,
-    RDFS_SCHEMA,
     SCHEMA_SCHEMA,
     Configuration,
     Organisation,
@@ -40,7 +39,7 @@ from rdflib import Graph, Namespace, URIRef, Literal
 
 rdf_type = URIRef(f"{RDF_SCHEMA}type")
 rdf_property = URIRef(f"{RDF_SCHEMA}Property")
-rdfs_domain_includes = URIRef(f"{RDFS_SCHEMA}domainIncludes")
+schema_domain_includes = URIRef(f"{SCHEMA_SCHEMA}domainIncludes")
 schema_name = URIRef(f"{SCHEMA_SCHEMA}name")
 schema_description = URIRef(f"{SCHEMA_SCHEMA}description")
 skos_concept = URIRef(f"{SKOS_SCHEMA}Concept")
@@ -73,7 +72,7 @@ class ExcelVocabularyParser:
         self.graph = Graph()
         self.concept_schemes: dict[Term, Term] = {}
         self.required_properties: list[URIRefTriple] = []
-        self.deferred_local_properties: dict[str, list[Term]] = {}
+        self.deferred_local_properties: dict[Term, list[Term]] = {}
         self.name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}\[\]]+")
 
         self.graph.bind("appnid", Namespace(APPN_VOCABULARY), override=True)
@@ -244,10 +243,9 @@ class ExcelVocabularyParser:
                         f"https://id.plantphenomics.org.au/{self.node.id}/{self.lower_first(column_name)}"
                     )
                     is_local_property = True
-                    column_key = str(column_property)
-                    if column_key not in self.deferred_local_properties:
-                        self.deferred_local_properties[column_key] = []
-                    self.deferred_local_properties[column_key].append(target_class)
+                    if column_property not in self.deferred_local_properties:
+                        self.deferred_local_properties[column_property] = []
+                    self.deferred_local_properties[column_property].append(target_class)
 
                 logging.info(f"Column {column} recognised as {str(column_property)}")
 
@@ -334,16 +332,15 @@ class ExcelVocabularyParser:
                         value = row[column_mapping.column]
                         if value not in [np.nan, None, ""]:
                             property_term = column_mapping.property
-                            property_key = str(property_term)
                             if (
                                 column_mapping.is_local_property
-                                and property_key in self.deferred_local_properties
+                                and property_term in self.deferred_local_properties
                             ):
                                 self.add_local_property(
                                     property_term,
-                                    self.deferred_local_properties[property_key],
+                                    self.deferred_local_properties[property_term],
                                 )
-                                self.deferred_local_properties.pop(property_key)
+                                self.deferred_local_properties.pop(property_term)
                             if column_mapping.range_class is not None:
                                 self.required_properties.append(
                                     URIRefTriple(
@@ -442,7 +439,7 @@ class ExcelVocabularyParser:
     ) -> None:
         self.get_instance(rdf_property, property)
         for domain_class in domain_classes:
-            self.graph.add((property, rdfs_domain_includes, URIRef(domain_class.iri)))
+            self.graph.add((property, schema_domain_includes, URIRef(domain_class.iri)))
 
     def get_graph(self) -> Graph:
 
