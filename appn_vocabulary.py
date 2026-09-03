@@ -15,45 +15,22 @@
 # -----------------------------------------------------------------------------
 import argparse
 import logging
-import re
 import sys
 import datetime
 import warnings
 
-import pandas as pd
-
 from pathlib import Path
-from typing import Optional, Any, NamedTuple
-from appn_types import Term, URIRefTriple, ColumnMapping
+from typing import Optional, Any
+from appn_types import Term, ColumnMapping
 from appn_dictionary import Dictionary
 from appn_parser import ExcelVocabularyParser
 from appn_configuration import (
     APPN_VOCABULARY,
-    BIO_SCHEMA,
-    DC_SCHEMA,
-    EXPLICIT_CLASSES_ALL,
-    EXPLICIT_CLASSES_FIRST,
-    RDF_SCHEMA,
-    RDFS_SCHEMA,
-    SCHEMA_SCHEMA,
     Configuration,
-    Organisation,
     APPN_SCHEMA,
     SKOS_SCHEMA,
 )
 from rdflib import Graph, Namespace, URIRef, Literal
-
-integer_stripper = re.compile(r"[0-9]*$")
-
-rdf_type = URIRef(f"{RDF_SCHEMA}type")
-rdf_property = URIRef(f"{RDF_SCHEMA}Property")
-schema_name = URIRef(f"{SCHEMA_SCHEMA}name")
-schema_description = URIRef(f"{SCHEMA_SCHEMA}description")
-skos_concept = URIRef(f"{SKOS_SCHEMA}Concept")
-skos_concept_scheme = URIRef(f"{SKOS_SCHEMA}ConceptScheme")
-skos_in_scheme = URIRef(f"{SKOS_SCHEMA}inScheme")
-dc_title = URIRef(f"{DC_SCHEMA}title")
-dc_description = URIRef(f"{DC_SCHEMA}description")
 
 
 ### process_argv ##############################################################
@@ -144,16 +121,6 @@ if __name__ == "__main__":
 
     node = args["node"]
 
-    # Load schemas that provide key definitions. APPN_SCHEMA does not
-    # directly reference SKOS, so SKOS_SCHEMA is separately loaded, but
-    # others are imported based on their use in these two schemas.
-    dictionary = Dictionary(
-        namespace_definitions=configuration.get_namespace_definitions()
-    )
-    dictionary.load(APPN_SCHEMA)
-    dictionary.load(SKOS_SCHEMA)
-    dictionary.import_references()
-
     # Make list of folders to process (either for a single node or for all)
     if node == "all":
         folders = sorted(
@@ -180,22 +147,13 @@ if __name__ == "__main__":
 
     organisations = configuration.get_organisations()
 
-    appn_vocabulary_loaded = False
-
     # Generate vocabulary for each selected node in turn.
     for folder in folders:
         node = folder.name
 
         if node in organisations:
 
-            if node != "APPN" and not appn_vocabulary_loaded:
-                dictionary.load(APPN_VOCABULARY, asset_prefix="appnid")
-
-                appn_vocabulary_loaded = True
-
-            parser = ExcelVocabularyParser(
-                dictionary, configuration, organisations[node]
-            )
+            parser = ExcelVocabularyParser(configuration, organisations[node])
 
             # Loop over Excel spreadsheets in the folder for the node.
             for file in folder.glob("*.xls*"):
@@ -205,9 +163,7 @@ if __name__ == "__main__":
                     logging.debug(f"Processing file {file}")
                     parser.load(file)
 
-            parser.process_required_properties()
-
-            inspector = Dictionary(parser.graph)
+            inspector = Dictionary(parser.get_graph())
 
             counts = inspector.count_triples_by_subject()
             print("Counts of triples by subject\n")

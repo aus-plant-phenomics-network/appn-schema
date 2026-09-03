@@ -51,12 +51,24 @@ dc_description = URIRef(f"{DC_SCHEMA}description")
 
 class ExcelVocabularyParser:
 
-    def __init__(
-        self, dictionary: Dictionary, configuration: Configuration, node: Organisation
-    ):
-        self.dictionary = dictionary
+    def __init__(self, configuration: Configuration, node: Organisation):
         self.configuration = configuration
         self.node = node
+
+        # Load schemas that provide key definitions. APPN_SCHEMA does not
+        # directly reference SKOS, so SKOS_SCHEMA is separately loaded, but
+        # others are imported based on their use in these two schemas.
+        # For any vocabulary other than the central APPN vocabulary, load
+        # the central vocabulary so its terms can be checked.
+        self.dictionary = Dictionary(
+            namespace_definitions=self.configuration.get_namespace_definitions()
+        )
+        self.dictionary.load(APPN_SCHEMA)
+        self.dictionary.load(SKOS_SCHEMA)
+        if node.id != "APPN":
+            self.dictionary.load(APPN_VOCABULARY, asset_prefix="appnid")
+        self.dictionary.import_references()
+
         self.sheet_aliases = configuration.get_sheet_aliases()
         self.column_aliases = configuration.get_column_aliases()
         self.class_abbreviations = configuration.get_class_abbreviations()
@@ -65,7 +77,7 @@ class ExcelVocabularyParser:
         self.explicit_classes = {}
         self.appn_classes_by_name = {
             class_.name: class_
-            for class_ in dictionary.list_classes(namespace=APPN_SCHEMA)
+            for class_ in self.dictionary.list_classes(namespace=APPN_SCHEMA)
         }
         # Dictionary to map URIs to the class instances (as dictionaries).
         self.instances: set[URIRef] = set()
@@ -289,87 +301,108 @@ class ExcelVocabularyParser:
         for _, row in df.iterrows():
             if row[name_column] not in [np.nan, None, ""]:
                 name = str(row[name_column])
-                term = self.get_instance(
-                    target_class,
-                    self.get_id(
-                        target_class.name, self.node.id, name, self.class_abbreviations
-                    ),
-                    True,
-                )
-
-                if term in self.instances:
-                    logging.error(
-                        f"ERROR: Multiple entries for class {target_class.curie} with the same name: {name} - ignoring all but first"
+                if (
+                    self.node.id != "APPN"
+                    and len(
+                        self.dictionary.list_instances_by_class_and_name(
+                            target_class, name, namespace=APPN_VOCABULARY
+                        )
                     )
-                    success = False
-                else:
-                    if concept_scheme_term is None:
-                        concept_scheme_prefix = (
-                            self.class_abbreviations["ConceptScheme"]
-                            if "ConceptScheme" in self.class_abbreviations
-                            else "conceptscheme"
+                    == 0
+                ):
+                    term = self.get_instance(
+                        target_class,
+                        self.get_id(
+                            target_class.name,
+                            self.node.id,
+                            name,
+                            self.class_abbreviations,
+                        ),
+                        True,
+                    )
+
+                    if term in self.instances:
+                        logging.error(
+                            f"ERROR: Multiple entries for class {target_class.curie} with the same name: {name} - ignoring all but first"
                         )
-                        concept_scheme_term = self.get_instance(
-                            skos_concept_scheme,
-                            f"https://id.plantphenomics.org.au/{self.node.id}/{concept_scheme_prefix}_{target_class.name}",
-                        )
-                        self.concept_schemes[target_class] = concept_scheme_term
-                        for p in [schema_name, dc_title]:
-                            self.graph.add(
-                                (concept_scheme_term, p, Literal(target_class.name))
+                        success = False
+                    else:
+                        if concept_scheme_term is None:
+                            concept_scheme_prefix = (
+                                self.class_abbreviations["ConceptScheme"]
+                                if "ConceptScheme" in self.class_abbreviations
+                                else "conceptscheme"
                             )
-                        for p in [schema_description, dc_description]:
-                            value = Literal(
-                                f"Concept scheme including instances of the {target_class.curie} class from the APPN {self.node.id} node"
+                            concept_scheme_term = self.get_instance(
+                                skos_concept_scheme,
+                                f"https://id.plantphenomics.org.au/{self.node.id}/{concept_scheme_prefix}_{target_class.name}",
                             )
-                            self.graph.add((concept_scheme_term, p, value))
-
-                    self.instances.add(term)
-
-                    self.graph.add((term, skos_in_scheme, concept_scheme_term))
-
-                    for column_mapping in column_mappings:
-                        value = row[column_mapping.column]
-                        if value not in [np.nan, None, ""]:
-                            property_term = column_mapping.property
-                            if (
-                                column_mapping.is_local_property
-                                and property_term in self.deferred_local_properties
-                            ):
-                                self.add_local_property(
-                                    property_term,
-                                    self.deferred_local_properties[property_term],
+                            self.concept_schemes[target_class] = concept_scheme_term
+                            for p in [schema_name, dc_title]:
+                                self.graph.add(
+                                    (concept_scheme_term, p, Literal(target_class.name))
                                 )
-                                self.deferred_local_properties.pop(property_term)
-                            if column_mapping.range_class is not None:
-                                self.required_properties.append(
-                                    URIRefTriple(
-                                        term,
+                            for p in [schema_description, dc_description]:
+                                value = Literal(
+                                    f"Concept scheme including instances of the {target_class.curie} class from the APPN {self.node.id} node"
+                                )
+                                self.graph.add((concept_scheme_term, p, value))
+
+                        self.instances.add(term)
+
+                        self.graph.add((term, skos_in_scheme, concept_scheme_term))
+
+                        for column_mapping in column_mappings:
+                            value = row[column_mapping.column]
+                            if value not in [np.nan, None, ""]:
+                                property_term = column_mapping.property
+                                if (
+                                    column_mapping.is_local_property
+                                    and property_term in self.deferred_local_properties
+                                ):
+                                    self.add_local_property(
                                         property_term,
-                                        URIRef(
-                                            self.get_id(
-                                                column_mapping.range_class.name,
-                                                self.node.id,
-                                                str(row[column_mapping.column]),
-                                                self.class_abbreviations,
-                                            )
-                                        ),
+                                        self.deferred_local_properties[property_term],
                                     )
-                                )
-                            else:
-                                if isinstance(value, str) and value.startswith("http"):
-                                    value_term = URIRef(value.strip())
-                                else:
-                                    value_term = Literal(value)
-                                self.graph.add((term, property_term, value_term))
-
-                                if property_term in self.property_expansions:
-                                    for expansion_property in self.property_expansions[
-                                        property_term
-                                    ]:
-                                        self.graph.add(
-                                            (term, expansion_property, value_term)
+                                    self.deferred_local_properties.pop(property_term)
+                                if column_mapping.range_class is not None:
+                                    matching_term = None
+                                    if self.node.id != "APPN":
+                                        matching_terms = self.dictionary.list_instances_by_class_and_name(
+                                            column_mapping.range_class,
+                                            str(value),
+                                            namespace=APPN_VOCABULARY,
                                         )
+                                        if len(matching_terms) > 0:
+                                            matching_term = URIRef(
+                                                matching_terms[0].iri
+                                            )
+                                            self.add_triple(
+                                                term, property_term, matching_term
+                                            )
+                                    if matching_term is None:
+                                        self.required_properties.append(
+                                            URIRefTriple(
+                                                term,
+                                                property_term,
+                                                URIRef(
+                                                    self.get_id(
+                                                        column_mapping.range_class.name,
+                                                        self.node.id,
+                                                        str(value),
+                                                        self.class_abbreviations,
+                                                    )
+                                                ),
+                                            )
+                                        )
+                                else:
+                                    if isinstance(value, str) and value.startswith(
+                                        "http"
+                                    ):
+                                        value_term = URIRef(value.strip())
+                                    else:
+                                        value_term = Literal(value)
+                                    self.add_triple(term, property_term, value_term)
 
         return success
 
@@ -433,6 +466,12 @@ class ExcelVocabularyParser:
         self.explicit_classes[key] = explicit_classes
 
         return explicit_classes
+
+    def add_triple(self, subject: URIRef, property: URIRef, object: URIRef) -> None:
+        self.graph.add((subject, property, object))
+        if property in self.property_expansions:
+            for expansion_property in self.property_expansions[property]:
+                self.graph.add((subject, expansion_property, object))
 
     def add_local_property(
         self, property: URIRef, domain_classes: list[URIRef]
