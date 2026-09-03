@@ -16,7 +16,7 @@ import yaml
 import os
 import logging
 from pathlib import Path
-from typing import Optional
+from typing import Optional, NamedTuple
 from appn_types import NamespaceDefinition
 from rdflib import URIRef
 
@@ -36,9 +36,13 @@ CONFIGURATION_KEY_COLUMN_ALIASES = "column_aliases"
 CONFIGURATION_KEY_CLASS_ABBREVIATIONS = "class_abbreviations"
 CONFIGURATION_KEY_PROPERTY_EXPANSIONS = "property_expansions"
 CONFIGURATION_KEY_EMBEDDED_CLASSES = "embedded_classes"
+CONFIGURATION_KEY_ORGANISATIONS = "organisations"
 
 EXPLICIT_CLASSES_ALL = "all"
 EXPLICIT_CLASSES_FIRST = "first"
+
+ORGANISATION_SUBKEY_NAME = "name"
+ORGANISATION_SUBKEY_ROR = "ror"
 
 # Standard APPN namespace URLs
 
@@ -58,7 +62,7 @@ SKOS_SCHEMA = "http://www.w3.org/2004/02/skos/core#"
 SOSA_SCHEMA = "http://www.w3.org/ns/sosa/"
 SSN_SCHEMA = "http://www.w3.org/ns/ssn/"
 
-APPN_VOCABULARY = "https://id.plantphenomics.org.au/APPN"
+APPN_VOCABULARY = "https://id.plantphenomics.org.au/APPN/"
 ANU_VOCABULARY = "https://id.plantphenomics.org.au/ANU/"
 AU_VOCABULARY = "https://id.plantphenomics.org.au/AU/"
 CSU_VOCABULARY = "https://id.plantphenomics.org.au/CSU/"
@@ -94,6 +98,10 @@ DEFAULT_NAMESPACES = {
     WSU_VOCABULARY: "wsu",
 }
 
+class Organisation(NamedTuple):
+    id: str
+    name: str
+    ror: str
 
 class Configuration:
 
@@ -164,6 +172,8 @@ class Configuration:
                 raise ValueError(
                     f"Failed to load configuration from {self.configuration_filepath}"
                 )
+
+        self.organisations = None
 
     def get_namespace_definitions(self) -> dict[str, NamespaceDefinition]:
         if self.namespace_definitions is not None:
@@ -237,3 +247,19 @@ class Configuration:
         if CONFIGURATION_KEY_EMBEDDED_CLASSES in self.configuration:
             return self.configuration[CONFIGURATION_KEY_EMBEDDED_CLASSES].copy()
         return {}
+
+    def get_organisations(self) -> dict[str, dict[str,Organisation]]:
+        if self.organisations is None:
+            self.organisations = {}
+            if CONFIGURATION_KEY_ORGANISATIONS in self.configuration:
+                for id, properties in self.configuration[CONFIGURATION_KEY_ORGANISATIONS].items():
+                    name = properties[ORGANISATION_SUBKEY_NAME] if ORGANISATION_SUBKEY_NAME in properties else None 
+                    ror = properties[ORGANISATION_SUBKEY_ROR] if ORGANISATION_SUBKEY_ROR in properties else None 
+                    self.organisations[id] = Organisation(id, name, ror)
+        return self.organisations.copy()
+
+    def get_organisation_by_id(self, name: str) -> Optional[Organisation]:
+        organisations = self.get_organisations()
+        if id in organisations:
+            return organisations[id]
+        return None

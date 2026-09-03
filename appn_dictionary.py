@@ -45,13 +45,20 @@ logger = logging.getLogger(__name__)
 class Dictionary:
 
     def __init__(
-        self, namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
+        self, graph: Optional[Graph] = None, namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
     ) -> None:
-        self.graph = Graph()
+        self.graph = Graph() if graph is None else graph
         self.namespace_manager = NamespaceManager(self.graph)
+        if graph is not None:
+            self.namespaces = {
+                p: str(ns) for p, ns in self.namespace_manager.namespaces()
+            }
+            self.reverse_namespaces = {v: k for k, v in self.namespaces.items()}
+        else:
+            self.namespaces = {}
+            self.reverse_namespaces = {}
         self.loaded = set()
         self.cache = {}
-        self.reverse_namespaces = {}
         self.namespace_definitions = (
             {} if namespace_definitions is None else namespace_definitions
         )
@@ -169,6 +176,25 @@ class Dictionary:
             ]
 
         return self.cache[property_key]
+
+    def count_triples_by_subject(self) -> dict[str,int]:
+        return self.count_triples_by_term(0)
+
+    def count_triples_by_property(self) -> dict[str,int]:
+        return self.count_triples_by_term(1)
+
+    def count_triples_by_object(self) -> dict[str,int]:
+        return self.count_triples_by_term(2)
+
+    def count_triples_by_term(self, position: int) -> dict[str,int]:
+        counts = {}
+        for term in [str(triple[position]) for triple in self.graph]:
+            if term.startswith("http"):
+                if term not in counts:
+                    counts[term] = 1
+                else:
+                    counts[term] += 1
+        return counts
 
     def list_classes(
         self,
@@ -472,7 +498,7 @@ class Dictionary:
 #                            subject, property, object, triples,
 #                            property-name, property-name-all,
 #                            instance-name, instance-name-all }.
-#     -l, --log-level   : "info" / "error" / "debug".
+#     -l, --log-level   : "info" / "warning" / "error" / "debug".
 #     -e,               : Display logging outputs to stderr.
 #      --echo-to-stderr
 #

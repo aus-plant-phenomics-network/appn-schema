@@ -14,22 +14,52 @@
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
 
-from collections import namedtuple
+from typing import NamedTuple
 
 ### NamespaceDefinition #######################################################
 #
-# Namedtuple as simple class for namespace definitions
+# Simple class for namespace definitions
 #
-NamespaceDefinition = namedtuple("NamespaceDefinition", ["ns", "prefix", "path"])
+class NamespaceDefinition(NamedTuple):
+    ns: str
+    prefix: str
+    path: str
 
 ### Term ######################################################################
 #
-# Namedtuple as simple class for IRI elements
+# Simple class for IRI elements
 #
-Term = namedtuple("Term", ["iri", "curie", "ns", "prefix", "name"])
+class Term(NamedTuple):
+    iri: str
+    curie: str
+    ns: str
+    prefix: str
+    name: str
 
 ### Triple ####################################################################
 #
-# Namedtuple as simple class for triples
+# Simple class for triples of string
 #
-Triple = namedtuple("Triple", ["subject", "property", "object"])
+class Triple(NamedTuple):
+    subject: str
+    property: str
+    object: str
+
+### URIRefTriple ##############################################################
+#
+# Simple class for triples of URIRef
+#
+class URIRefTriple(NamedTuple):
+    subject: URIRef
+    property: URIRef
+    object: URIRef
+
+### ColumnMapping##############################################################
+#
+# Simple class for metadata associated with a spreadsheet column
+#
+class ColumnMapping(NamedTuple):
+    column: str
+    property: URIRef
+    range_class: Optional(Term)
+    primary_identifier: bool

@@ -93,3 +93,37 @@ property_expansions:
 embedded_classes:
   "ObservedVariable":
     - "Method"
+
+# Properties associated with APPN and its nodes
+organisations:
+    APPN: 
+      name: "Australian Plant Phenomics Network" 
+      ror: "https://ror.org/02zj7b759"
+    ANU: 
+      name: "Australian National University"
+      ror: "https://ror.org/019wvm592"
+    AU:
+      name: "Adelaide University"
+      ror: "https://ror.org/028g18b61"
+    "CSU": 
+      name: "Charles Sturt University"
+      ror: "https://ror.org/00wfvh315 "
+    "DPIRD":
+      name: "WA Department of Primary Industry and Regional Development"
+      ror: "https://ror.org/01awp2978"
+    "LTU": 
+      name: "La Trobe University"
+      ror: "https://ror.org/01rxfrp27"
+    "UQ":
+      name: "University of Queensland"
+      ror: "https://ror.org/00rqy9422"
+    "USYD":
+      name: "University of Sydney"
+      ror: "https://ror.org/0384j8v12"
+    "UWA":
+      name: "University of Western Australia"
+      ror: "https://ror.org/047272k79"
+    "WSU":
+      name: "Western Sydney University"
+      ror: "https://ror.org/03t52dk35"
+
