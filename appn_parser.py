@@ -24,8 +24,11 @@ from appn_types import Term, URIRefTriple, ColumnMapping
 from appn_dictionary import Dictionary
 from appn_configuration import (
     APPN_VOCABULARY,
+    APPN_VOCABULARY_ROOT,
     BIO_SCHEMA,
+    CENTRAL_ORGANISATION,
     DC_SCHEMA,
+    DEFAULT_PREFIXES,
     EXPLICIT_CLASSES_ALL,
     EXPLICIT_CLASSES_FIRST,
     RDF_SCHEMA,
@@ -65,8 +68,8 @@ class ExcelVocabularyParser:
         )
         self.dictionary.load(APPN_SCHEMA)
         self.dictionary.load(SKOS_SCHEMA)
-        if node.id != "APPN":
-            self.dictionary.load(APPN_VOCABULARY, asset_prefix="appnid")
+        if node.id != CENTRAL_ORGANISATION:
+            self.dictionary.load(APPN_VOCABULARY, asset_prefix=node.prefix)
         self.dictionary.import_references()
 
         self.sheet_aliases = configuration.get_sheet_aliases()
@@ -87,13 +90,12 @@ class ExcelVocabularyParser:
         self.deferred_local_properties: dict[Term, list[Term]] = {}
         self.name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}\[\]]+")
 
-        self.graph.bind("appnid", Namespace(APPN_VOCABULARY), override=True)
-        self.graph.bind("appn", Namespace(APPN_SCHEMA), override=True)
-        self.graph.bind("bio", Namespace(BIO_SCHEMA))
-        if self.node.id != "APPN":
-            self.graph.bind(
-                node.id.lower(), f"https://id.plantphenomics.org.au/{node.id}/"
-            )
+        appn = self.configuration.get_appn()
+        self.graph.bind(appn.prefix, appn.namespace, override=True)
+        self.graph.bind(DEFAULT_PREFIXES[APPN_SCHEMA], Namespace(APPN_SCHEMA), override=True)
+        self.graph.bind(DEFAULT_PREFIXES[BIO_SCHEMA], Namespace(BIO_SCHEMA))
+        if self.node.id != CENTRAL_ORGANISATION:
+            self.graph.bind(node.prefix, node.namespace)
 
         self.integer_stripper = re.compile(r"[0-9]*$")
 
@@ -252,7 +254,7 @@ class ExcelVocabularyParser:
 
                 if column_property is None:
                     column_property = URIRef(
-                        f"https://id.plantphenomics.org.au/{self.node.id}/{self.lower_first(column_name)}"
+                        f"{APPN_VOCABULARY_ROOT}{self.node.id}/{self.lower_first(column_name)}"
                     )
                     is_local_property = True
                     if column_property not in self.deferred_local_properties:
@@ -302,8 +304,8 @@ class ExcelVocabularyParser:
             if row[name_column] not in [np.nan, None, ""]:
                 name = str(row[name_column])
                 if (
-                    self.node.id != "APPN"
-                    and len(
+                    self.node.id == CENTRAL_ORGANISATION
+                    or len(
                         self.dictionary.list_instances_by_class_and_name(
                             target_class, name, namespace=APPN_VOCABULARY
                         )
@@ -335,7 +337,7 @@ class ExcelVocabularyParser:
                             )
                             concept_scheme_term = self.get_instance(
                                 skos_concept_scheme,
-                                f"https://id.plantphenomics.org.au/{self.node.id}/{concept_scheme_prefix}_{target_class.name}",
+                                f"{APPN_VOCABULARY_ROOT}{self.node.id}/{concept_scheme_prefix}_{target_class.name}",
                             )
                             self.concept_schemes[target_class] = concept_scheme_term
                             for p in [schema_name, dc_title]:
@@ -367,7 +369,7 @@ class ExcelVocabularyParser:
                                     self.deferred_local_properties.pop(property_term)
                                 if column_mapping.range_class is not None:
                                     matching_term = None
-                                    if self.node.id != "APPN":
+                                    if self.node.id != CENTRAL_ORGANISATION:
                                         matching_terms = self.dictionary.list_instances_by_class_and_name(
                                             column_mapping.range_class,
                                             str(value),
@@ -459,9 +461,7 @@ class ExcelVocabularyParser:
                         explicit_rules.pop(superclass.ns)
 
         if is_concept:
-            explicit_classes.append(
-                URIRef("http://www.w3.org/2004/02/skos/core#Concept")
-            )
+            explicit_classes.append(skos_concept)
 
         self.explicit_classes[key] = explicit_classes
 
@@ -482,6 +482,8 @@ class ExcelVocabularyParser:
 
     def get_graph(self) -> Graph:
 
+        logging.debug(f"Finalising and returning graph")
+
         if len(self.required_properties) > 0:
             self.process_required_properties()
 
@@ -492,6 +494,8 @@ class ExcelVocabularyParser:
         success = True
 
         remaining = []
+
+        logging.debug(f"Processing {len(self.required_properties)} properties")
 
         for required_property in self.required_properties:
             if required_property.object in self.instances:
@@ -509,12 +513,14 @@ class ExcelVocabularyParser:
                 remaining.append(required_property)
                 success = False
 
+        logging.debug(f"{len(remaining)} properties unprocessed")
+
         self.required_properties = remaining
 
         return success
 
     # Convert an instance name to a safe (URI) id. The URI has the pattern:
-    # https://id.plantphenomics.org.au/<node>/<class_name>_<id>.
+    # <APPN_VOCABULARY_ROOT><node>/<class_name>_<id>.
     #
     #     class_name        : name of schema class.
     #     node              : short name (abbreviation) for APPN node.
@@ -530,7 +536,7 @@ class ExcelVocabularyParser:
         class_name = (
             abbreviations[class_name] if class_name in abbreviations else class_name
         ).lower()
-        return f"https://id.plantphenomics.org.au/{node}/{class_name}_{clean_name}"
+        return f"{APPN_VOCABULARY_ROOT}{node}/{class_name}_{clean_name}"
 
     def sanitize_name(self, name: str) -> str:
         return "".join(

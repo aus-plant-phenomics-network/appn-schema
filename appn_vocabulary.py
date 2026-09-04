@@ -166,7 +166,6 @@ if __name__ == "__main__":
             inspector = Dictionary(parser.get_graph())
 
             counts = inspector.count_triples_by_subject()
-            print("Counts of triples by subject\n")
             length = max([len(k) for k in counts.keys()])
             for p in sorted(counts.keys()):
                 print(f"  {p:{length + 1}s} : {counts[p]:>5d}")
@@ -179,14 +178,14 @@ if __name__ == "__main__":
                 print(f"  {p:{length + 1}s} : {counts[p]:>5d}")
             print()
 
-            local_properties = inspector.list_properties(
-                namespace=("appnid" if node == "APPN" else node.lower())
-            )
-            if len(local_properties) > 0:
-                print("New properties associated with this vocabulary\n")
-                for p in local_properties:
-                    print(f"  {p.iri}")
-                print()
+            organisation = configuration.get_organisation_by_id(node)
+            if organisation is not None:
+                local_properties = inspector.list_properties(namespace=organisation.prefix)
+                if len(local_properties) > 0:
+                    print("New properties associated with this vocabulary\n")
+                    for p in local_properties:
+                        print(f"  {p.iri}")
+                    print()
 
             parser.get_graph().serialize(
                 destination=f"./vocabulary/{node}/vocabulary.ttl"

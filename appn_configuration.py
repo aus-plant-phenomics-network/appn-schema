@@ -20,6 +20,9 @@ from typing import Optional
 from appn_types import NamespaceDefinition, Organisation
 from rdflib import URIRef
 
+CENTRAL_ORGANISATION = "APPN"
+DEFAULT_CENTRAL_VOCABULARY_PREFIX = "appnid"
+
 APPN_DEFAULT_CONFIGURATION_FOLDER = Path("./")
 APPN_DEFAULT_CONFIGURATION_NAME = "appn"
 
@@ -43,10 +46,13 @@ EXPLICIT_CLASSES_FIRST = "first"
 
 ORGANISATION_SUBKEY_NAME = "name"
 ORGANISATION_SUBKEY_ROR = "ror"
+ORGANISATION_SUBKEY_NAMESPACE = "namespace"
+ORGANISATION_SUBKEY_PREFIX = "prefix"
 
 # Standard APPN namespace URLs
 
 APPN_SCHEMA = "https://schema.plantphenomics.org.au/"
+APPN_VOCABULARY_ROOT = "https://id.plantphenomics.org.au/"
 
 # Schema.org publishes versions using both HTTP and HTTPS - we use
 # HTTPS which seems to be most widely used.
@@ -62,18 +68,18 @@ SKOS_SCHEMA = "http://www.w3.org/2004/02/skos/core#"
 SOSA_SCHEMA = "http://www.w3.org/ns/sosa/"
 SSN_SCHEMA = "http://www.w3.org/ns/ssn/"
 
-APPN_VOCABULARY = "https://id.plantphenomics.org.au/APPN/"
-ANU_VOCABULARY = "https://id.plantphenomics.org.au/ANU/"
-AU_VOCABULARY = "https://id.plantphenomics.org.au/AU/"
-CSU_VOCABULARY = "https://id.plantphenomics.org.au/CSU/"
-DPIRD_VOCABULARY = "https://id.plantphenomics.org.au/DPIRD/"
-LTU_VOCABULARY = "https://id.plantphenomics.org.au/LTU/"
-UQ_VOCABULARY = "https://id.plantphenomics.org.au/UQ/"
-USYD_VOCABULARY = "https://id.plantphenomics.org.au/USYD/"
-UWA_VOCABULARY = "https://id.plantphenomics.org.au/UWA/"
-WSU_VOCABULARY = "https://id.plantphenomics.org.au/WSU/"
+APPN_VOCABULARY = f"{APPN_VOCABULARY_ROOT}APPN/"
+ANU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}ANU/"
+AU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}AU/"
+CSU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}CSU/"
+DPIRD_VOCABULARY = f"{APPN_VOCABULARY_ROOT}DPIRD/"
+LTU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}LTU/"
+UQ_VOCABULARY = f"{APPN_VOCABULARY_ROOT}UQ/"
+USYD_VOCABULARY = f"{APPN_VOCABULARY_ROOT}USYD/"
+UWA_VOCABULARY = f"{APPN_VOCABULARY_ROOT}UWA/"
+WSU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}WSU/"
 
-DEFAULT_NAMESPACES = {
+DEFAULT_PREFIXES = {
     APPN_SCHEMA: "appn",
     SCHEMA_SCHEMA: "schema",
     CDI_SCHEMA: "cdi",
@@ -86,7 +92,7 @@ DEFAULT_NAMESPACES = {
     SOSA_SCHEMA: "sosa",
     SSN_SCHEMA: "ssn",
     BIO_SCHEMA: "bio",
-    APPN_VOCABULARY: "id",
+    APPN_VOCABULARY: "appnid",
     ANU_VOCABULARY: "anu",
     AU_VOCABULARY: "au",
     CSU_VOCABULARY: "csu",
@@ -185,7 +191,7 @@ class Configuration:
 
         self.namespace_definitions = {
             ns: NamespaceDefinition(ns, pre, paths[ns] if ns in paths else ns)
-            for ns, pre in DEFAULT_NAMESPACES.items()
+            for ns, pre in DEFAULT_PREFIXES.items()
         }
 
         if CONFIGURATION_KEY_NAMESPACES in self.configuration:
@@ -261,7 +267,19 @@ class Configuration:
                         if ORGANISATION_SUBKEY_ROR in properties
                         else None
                     )
-                    self.organisations[id] = Organisation(id, name, ror)
+                    namespace = str(
+                        properties[ORGANISATION_SUBKEY_NAMESPACE]
+                        if ORGANISATION_SUBKEY_NAMESPACE in properties
+                        else f"{APPN_VOCABULARY_ROOT}{id}/"
+                    )
+                    prefix = str(
+                        properties[ORGANISATION_SUBKEY_NAMESPACE]
+                        if ORGANISATION_SUBKEY_NAMESPACE in properties
+                        else (DEFAULT_CENTRAL_VOCABULARY_PREFIX if id == CENTRAL_ORGANISATION else id.lower())
+                    )
+                    self.organisations[id] = Organisation(id, name, ror, namespace, prefix)
+            if CENTRAL_ORGANISATION not in self.organisations:
+                self.organisations[CENTRAL_ORGANISATION] = Organisation(CENTRAL_ORGANISATION, "Australian Plant Phenomics Network", "https://ror.org/02zj7b759", APPN_VOCABULARY, DEFAULT_PREFIXES[CENTRAL_ORGANISATION])
         return self.organisations.copy()
 
     def get_organisation_by_id(self, id: str) -> Optional[Organisation]:
@@ -269,3 +287,6 @@ class Configuration:
         if id in organisations:
             return organisations[id]
         return None
+
+    def get_appn(self) -> Organisation:
+        return self.organisations[CENTRAL_ORGANISATION]

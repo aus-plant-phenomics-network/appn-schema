@@ -5,7 +5,6 @@
 # YAML in this file is parsed and exposed by the appn_configuration.Configuration
 # class
 
-
 # Map schema/vocabulary namespaces to locations from which machine-readable versions can be accessed
 # Namespaces that are not mapped here will be accessed via the namespace URL.
 namespace_paths:
@@ -99,6 +98,7 @@ organisations:
     APPN: 
       name: "Australian Plant Phenomics Network" 
       ror: "https://ror.org/02zj7b759"
+      prefix: "appnid"
     ANU: 
       name: "Australian National University"
       ror: "https://ror.org/019wvm592"

@@ -26,7 +26,8 @@ class Organisation(NamedTuple):
     id: str
     name: str
     ror: str
-
+    namespace: str
+    prefix: str
 
 ### NamespaceDefinition #######################################################
 #
