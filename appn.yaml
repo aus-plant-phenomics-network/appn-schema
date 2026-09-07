@@ -5,6 +5,7 @@
 # YAML in this file is parsed and exposed by the appn_configuration.Configuration
 # class
 
+
 # Map schema/vocabulary namespaces to locations from which machine-readable versions can be accessed
 # Namespaces that are not mapped here will be accessed via the namespace URL.
 namespace_paths:
@@ -66,6 +67,20 @@ column_aliases:
   # parent is an alias for appn:higherTaxon with a BiologicalMaterial instance as 
   # the object.
   "parent": "BiologicalMaterial"
+
+# Rules for completing missing information - specifies a property to add if not
+# already present, and how to construct the value. This is a dictionary of 
+# classes to sets of rules, with each rule keyed by a property requiring
+# completion.
+#
+# If an instance of the class lacks the property indicated by a key in the rules
+# dictionary, the value of the key includes a type property that specifies the
+# rule algorithm. At present, only "reflexive" is defined - this indicates that
+# the class instance should reference itself using the named property.
+completion_rules:
+  "ObservedVariable":
+    "https://schema.plantphenomics.org.au/hasTrait":
+      "type": "reflexive"     
 
 # Abbreviated names for classes for use in composing IRIs
 class_abbreviations:

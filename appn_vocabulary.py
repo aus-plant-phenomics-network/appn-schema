@@ -166,6 +166,7 @@ if __name__ == "__main__":
             inspector = Dictionary(parser.get_graph())
 
             counts = inspector.count_triples_by_subject()
+            print("Instances created\n")
             length = max([len(k) for k in counts.keys()])
             for p in sorted(counts.keys()):
                 print(f"  {p:{length + 1}s} : {counts[p]:>5d}")

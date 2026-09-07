@@ -125,11 +125,16 @@ class ExcelVocabularyParser:
 
         success = True
 
-        df = pd.read_excel(excel_path, sheet_name=sheet)
+        # Read sheet with column headings as first row - this allows for multiple
+        # columns for the same property to share the same heading
+        df = pd.read_excel(excel_path, sheet_name=sheet, header=None)
 
-        if df is None:
+        if df is None or len(df.index) == 0:
             logging.error(f"Could not read sheet {sheet} from Excel file {excel_path}")
             return False
+
+        # Assign column names based on first row (and remove first row)
+        df = self.fix_dataframe_columns(df)
 
         embeddings = []
         if sheet_class.name in self.embedded_classes:
@@ -148,6 +153,25 @@ class ExcelVocabularyParser:
                 success = False
 
         return success
+
+    # Method to use first row of dataframe as column names while allowing
+    # for some columns to share the same name - these are mapped to 
+    # columns with the name sufficed with consecutive integers.
+    # Once the columns have been named, the first row is discarded.
+    def fix_dataframe_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        column_name_matches : dict[str, int] = {}
+        columns : list[str] = []
+        for heading in df.loc[0, :].values:
+            column_name = self.integer_stripper.sub("", heading.strip())
+            if column_name not in column_name_matches:
+                column_name_matches[column_name] = 0
+            else:
+                column_name_matches[column_name] = column_name_matches[column_name] + 1
+                column_name = f"{column_name}{column_name_matches[column_name]}"
+            columns.append(column_name)
+        df.columns = columns
+        df.drop(0)
+        return df
 
     def build_class_maps(
         self, df: pd.DataFrame, primary_class: Term, embeddings: list[Term]
@@ -302,6 +326,7 @@ class ExcelVocabularyParser:
 
         for _, row in df.iterrows():
             if row[name_column] not in [np.nan, None, ""]:
+                
                 name = str(row[name_column])
                 if (
                     self.node.id == CENTRAL_ORGANISATION
@@ -405,6 +430,21 @@ class ExcelVocabularyParser:
                                     else:
                                         value_term = Literal(value)
                                     self.add_triple(term, property_term, value_term)
+
+                    # Get any rules for completing instances of this class:
+                    completion_rules = self.configuration.get_completion_rules(target_class.name)
+                    if len(completion_rules) > 0:
+                        existing_properties = [str(p) for s, p, o in self.graph if s == term]
+                        for desired_property, rule in completion_rules.items():
+                            if desired_property not in existing_properties:
+                                if "type" not in rule:
+                                    logging.error(f"Cannot execute rule {rule} - no rule type specified")
+                                elif rule["type"] == "reflexive":
+                                    logging.debug(f"Completing term {term} with property {desired_property} using rule {rule}")
+                                    self.add_triple(term, URIRef(desired_property), term)
+                                else:
+                                    logging.warning(f"Cannot execute rule {rule} - unknown rule type {rule['type']}")
+                    
 
         return success
 

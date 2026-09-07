@@ -36,6 +36,7 @@ CONFIGURATION_KEY_EXPLICIT_CLASSES = "explicit_classes"
 CONFIGURATION_KEY_EXCLUDED_CLASSES = "excluded_classes"
 CONFIGURATION_KEY_SHEET_ALIASES = "sheet_aliases"
 CONFIGURATION_KEY_COLUMN_ALIASES = "column_aliases"
+CONFIGURATION_KEY_COMPLETION_RULES = "completion_rules"
 CONFIGURATION_KEY_CLASS_ABBREVIATIONS = "class_abbreviations"
 CONFIGURATION_KEY_PROPERTY_EXPANSIONS = "property_expansions"
 CONFIGURATION_KEY_EMBEDDED_CLASSES = "embedded_classes"
@@ -231,6 +232,16 @@ class Configuration:
             return self.configuration[CONFIGURATION_KEY_COLUMN_ALIASES].copy()
         return {}
 
+    def get_completion_rules(self) -> dict[str, dict[str, dict[str, str]]]:
+        if CONFIGURATION_KEY_COMPLETION_RULES in self.configuration:
+            return self.configuration[CONFIGURATION_KEY_COMPLETION_RULES].copy()
+        return {}
+
+    def get_completion_rules(self, class_name: str) -> dict[str, dict[str, str]]:
+        if CONFIGURATION_KEY_COMPLETION_RULES in self.configuration and class_name in self.configuration[CONFIGURATION_KEY_COMPLETION_RULES]:
+            return self.configuration[CONFIGURATION_KEY_COMPLETION_RULES][class_name].copy()
+        return {}
+
     def get_class_abbreviations(self) -> dict[str, str]:
         if CONFIGURATION_KEY_CLASS_ABBREVIATIONS in self.configuration:
             return self.configuration[CONFIGURATION_KEY_CLASS_ABBREVIATIONS].copy()
@@ -273,8 +284,8 @@ class Configuration:
                         else f"{APPN_VOCABULARY_ROOT}{id}/"
                     )
                     prefix = str(
-                        properties[ORGANISATION_SUBKEY_NAMESPACE]
-                        if ORGANISATION_SUBKEY_NAMESPACE in properties
+                        properties[ORGANISATION_SUBKEY_PREFIX]
+                        if ORGANISATION_SUBKEY_PREFIX in properties
                         else (DEFAULT_CENTRAL_VOCABULARY_PREFIX if id == CENTRAL_ORGANISATION else id.lower())
                     )
                     self.organisations[id] = Organisation(id, name, ror, namespace, prefix)
