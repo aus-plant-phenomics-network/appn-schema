@@ -290,7 +290,7 @@ class Configuration:
                     )
                     self.organisations[id] = Organisation(id, name, ror, namespace, prefix)
             if CENTRAL_ORGANISATION not in self.organisations:
-                self.organisations[CENTRAL_ORGANISATION] = Organisation(CENTRAL_ORGANISATION, "Australian Plant Phenomics Network", "https://ror.org/02zj7b759", APPN_VOCABULARY, DEFAULT_PREFIXES[CENTRAL_ORGANISATION])
+                self.organisations[CENTRAL_ORGANISATION] = Organisation(CENTRAL_ORGANISATION, "Australian Plant Phenomics Network", "https://ror.org/02zj7b759", APPN_VOCABULARY, DEFAULT_PREFIXES[APPN_VOCABULARY])
         return self.organisations.copy()
 
     def get_organisation_by_id(self, id: str) -> Optional[Organisation]:
@@ -300,4 +300,4 @@ class Configuration:
         return None
 
     def get_appn(self) -> Organisation:
-        return self.organisations[CENTRAL_ORGANISATION]
+        return self.get_organisation_by_id(CENTRAL_ORGANISATION)

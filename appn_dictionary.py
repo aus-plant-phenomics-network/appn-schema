@@ -31,6 +31,12 @@ from appn_configuration import Configuration, APPN_SCHEMA
 logger = logging.getLogger(__name__)
 
 
+# Explicit names for indexes into triples
+POSITION_SUBJECT = 0
+POSITION_PROPERTY = 1
+POSITION_OBJECT = 2
+
+
 ### Dictionary ################################################################
 #
 # Wrapper class around rdflib Graph instance to simplify common query needs
@@ -125,7 +131,7 @@ class Dictionary:
             for iri in [s, o, p]:
                 if isinstance(iri, URIRef) and iri not in iris:
                     ns = self.get_namespace_from_iri(iri)
-                    logger.debug(f"{iri} -> {ns}")
+                    logger.debug(f"Mapped <{iri}> to namespace <{ns}>")
                     if ns is not None and ns not in self.loaded:
                         self.load(ns)
                     logger.debug(f"Found IRI <{iri}>")
@@ -143,6 +149,23 @@ class Dictionary:
 
     def list_triples(self) -> list[Triple]:
         return [Triple(s, p, o) for (s, p, o) in self.graph]
+
+    def list_unique_subjects(self, namespace: Optional[str] = None) -> list[Term]:
+        return self.list_unique_terms_by_position(POSITION_SUBJECT, namespace)
+
+    def list_unique_properties(self, namespace: Optional[str] = None) -> list[Term]:
+        return self.list_unique_terms_by_position(POSITION_PROPERTY, namespace)
+
+    def list_unique_objects(self, namespace: Optional[str] = None) -> list[Term]:
+        return self.list_unique_terms_by_position(POSITION_OBJECT, namespace)
+
+    def list_unique_terms_by_position(self, position: int, namespace: Optional[str] = None) -> list[Term]:
+        if namespace is None:
+            namespace = ""
+        elif namespace in self.namespaces:
+            namespace = self.namespaces[namespace]
+        values = {str(triple[position]) for triple in self.graph if isinstance(triple[position], URIRef)}
+        return [self.get_term(value) for value in sorted(values) if value.startswith(namespace)]
 
     def list_triples_for_subject(self, subject: str|Term) -> list[Triple]:
         subject = self.get_iri(subject)
@@ -217,7 +240,7 @@ class Dictionary:
         class_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
-        logging.debug(f"Finding all classes for class {class_iri}")
+        logging.debug(f"Finding all superclasses for class {class_iri}")
         return self.list_iris_transitive(
             class_iri,
             "rdfs:subClassOf",
@@ -230,7 +253,7 @@ class Dictionary:
         property_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
-        logging.debug(f"Finding all properties for property {property_iri}")
+        logging.debug(f"Finding all superproperties for property {property_iri}")
         return self.list_iris_transitive(
             property_iri,
             "rdfs:subPropertyOf",
@@ -488,6 +511,39 @@ class Dictionary:
 
         return matches
 
+    ### format_tuple_list ########################################################
+    #
+    # Return string containing (column-aligned) a specified number of elements 
+    # from each in a list of tuples.
+    #
+    #     tuples            : list of tuples
+    #     element_count     : number of tuple elements to display
+    #     max_rows          : optional cap on the number of tuples to process
+    #
+    def format_tuple_list(
+        self,
+        tuples: list[Term] | list[Triple],
+        element_count: Optional[int] = None,
+        max_rows: Optional[int] = None,
+    ) -> None:
+        if max_rows is not None:
+            tuples = tuples[0:max_rows]
+        if element_count is None:
+            if len(tuples) > 0:
+                element_count = len(tuples[0])
+            else:
+                element_count = 1
+        lengths = [0] * element_count
+        for t in tuples:
+            for element in range(min(element_count, len(t))):
+                length = len(t[element])
+                if length > lengths[element]:
+                    lengths[element] = length
+
+        return "\n".join([
+                "   ".join([f"{t[e]:{lengths[e]}s}" for e in range(min(element_count, len(t)))]).strip()
+                    for t in tuples])
+
 
 ### process_argv ##############################################################
 #
@@ -505,6 +561,9 @@ class Dictionary:
 subcommand_helptext = {
     "namespaces": "List all prefixes and namespaces from loaded assets.",
     "triples": "List all triples from loaded assets.",
+    "unique_subjects": "List IRIs and CURIEs for all unique subjects of triples.",
+    "unique_properties": "List IRIs and CURIEs for all unique properties of triples.",
+    "unique_objects": "List IRIs and CURIEs for all unique objects of triples.",
     "classes": "List IRIs and CURIEs for all classes defined or referenced by loaded assets.",
     "properties": "List IRIs and CURIEs for all properties defined or referenced by loaded assets.",
     "superclasses": "List IRIs and CURIEs for all known superclasses for a class specified using its IRI or CURIE.",
@@ -547,6 +606,11 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
         subparser.add_argument("iri")
+    for cmd in ["unique-subjects", "unique-properties", "unique-objects"]:
+        subparser = subparsers.add_parser(
+            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
+        )
+        subparser.add_argument("-n", "--namespace")
     for cmd in ["property-name", "property-name-all"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
@@ -633,83 +697,59 @@ def start_log(
     logging.info(f"Logging started to {logfile_name} at level {level} and echo {echo}")
 
 
-### show_tuple_list ###########################################################
-#
-# Print (column-aligned) a specified number of elements from each in a list of
-# tuples.
-#
-#     tuples            : list of tuples
-#     element_count     : number of tuple elements to display
-#     max_rows          : optional cap on the number of tuples to process
-#
-def show_tuple_list(
-    tuples: list[Term] | list[Triple],
-    element_count: Optional[int] = None,
-    max_rows: Optional[int] = None,
-) -> None:
-    if max_rows is not None:
-        tuples = tuples[0:max_rows]
-    if element_count is None:
-        if len(tuples) > 0:
-            element_count = len(tuples[0])
-        else:
-            element_count = 1
-    lengths = [0] * element_count
-    for t in tuples:
-        for element in range(min(element_count, len(t))):
-            length = len(t[element])
-            if length > lengths[element]:
-                lengths[element] = length
-
-    for t in tuples:
-        print(
-            "   ".join(
-                [f"{t[e]:{lengths[e]}s}" for e in range(min(element_count, len(t)))]
-            ).strip()
-        )
-
-
 def execute_query(
     d: Dictionary, args: dict[str, Any], max_rows: Optional[int] = None
 ) -> None:
 
     if args["query"] == "classes":
-        show_tuple_list(d.list_classes(), 2, max_rows=max_rows)
+        print(d.format_tuple_list(d.list_classes(), 2, max_rows=max_rows))
 
     elif args["query"] == "properties":
-        show_tuple_list(d.list_properties(), 2, max_rows=max_rows)
+        print(d.format_tuple_list(d.list_properties(), 2, max_rows=max_rows))
 
     elif args["query"] == "superclasses":
-        show_tuple_list(d.list_superclasses(args["iri"]), max_rows=max_rows)
+        print(d.format_tuple_list(d.list_superclasses(args["iri"]), max_rows=max_rows))
 
     elif args["query"] == "superproperties":
-        show_tuple_list(d.list_superproperties(args["iri"]), 2, max_rows=max_rows)
+        print(d.format_tuple_list(d.list_superproperties(args["iri"]), 2, max_rows=max_rows))
 
     elif args["query"] == "instances":
-        show_tuple_list(d.list_instances(args["iri"]), 2, max_rows=max_rows)
+        print(d.format_tuple_list(d.list_instances(args["iri"]), 2, max_rows=max_rows))
+
+    elif args["query"] == "unique-subjects":
+        print(d.format_tuple_list(d.list_unique_subjects(namespace=args["namespace"] if "namespace" in args else None),
+        2, max_rows=max_rows))
+
+    elif args["query"] == "unique-properties":
+        print(d.format_tuple_list(d.list_unique_properties(namespace=args["namespace"] if "namespace" in args else None),
+        2, max_rows=max_rows))
+
+    elif args["query"] == "unique-objects":
+        print(d.format_tuple_list(d.list_unique_objects(namespace=args["namespace"] if "namespace" in args else None),
+        2, max_rows=max_rows))
 
     elif args["query"] == "domain":
-        show_tuple_list(
+        print(d.format_tuple_list(
             d.list_domain_properties_for_class(args["iri"]), 2, max_rows=max_rows
-        )
+        ))
 
     elif args["query"] == "range":
-        show_tuple_list(
+        print(d.format_tuple_list(
             d.list_range_properties_for_class(args["iri"]), 2, max_rows=max_rows
-        )
+        ))
 
     elif args["query"] == "property-name":
-        show_tuple_list(
+        print(d.format_tuple_list(
             d.list_properties_by_name(
                 args["name"],
                 namespace=args["namespace"] if "namespace" in args else None,
             ),
             2,
             max_rows=max_rows,
-        )
+        ))
 
     elif args["query"] == "property-name-all":
-        show_tuple_list(
+        print(d.format_tuple_list(
             d.list_properties_by_name(
                 args["name"],
                 check_alternate_names=True,
@@ -717,10 +757,10 @@ def execute_query(
             ),
             2,
             max_rows=max_rows,
-        )
+        ))
 
     elif args["query"] == "instance-name":
-        show_tuple_list(
+        print(d.format_tuple_list(
             d.list_instances_by_class_and_name(
                 args["class"],
                 args["name"],
@@ -728,10 +768,10 @@ def execute_query(
             ),
             2,
             max_rows=max_rows,
-        )
+        ))
 
     elif args["query"] == "instance-name-all":
-        show_tuple_list(
+        print(d.format_tuple_list(
             d.list_instances_by_class_and_name(
                 args["class"],
                 args["name"],
@@ -740,7 +780,7 @@ def execute_query(
             ),
             2,
             max_rows=max_rows,
-        )
+        ))
 
     elif args["query"] == "namespaces":
         namespaces = d.get_namespaces()
@@ -761,7 +801,7 @@ def execute_query(
             triples = d.list_triples_for_object(args["iri"])
         else:
             triples = d.list_triples()
-        show_tuple_list(triples, 3, max_rows=max_rows)
+        print(d.format_tuple_list(triples, 3, max_rows=max_rows))
 
 
 if __name__ == "__main__":

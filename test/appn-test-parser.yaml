@@ -1,0 +1,49 @@
+# Map schema/vocabulary namespaces to locations from which machine-readable versions can be accessed
+# Namespaces that are not mapped here will be accessed via the namespace URL.
+namespace_paths:
+  "https://schema.plantphenomics.org.au/": "./appn-schema.ttl"
+  "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/": "./schema_assets/ddi-cdi.jsonld"
+  "http://purl.org/ppeo/PPEO.owl#": "./schema_assets/PPEO.owl"
+  "https://bioschemas.org/terms/": "./schema_assets/bioschemas_types.ttl"
+  "http://purl.org/dc/terms/": "./schema_assets/dublin_core_terms.rdf"
+  "http://www.w3.org/ns/prov#": "./schema_assets/prov.ttl"
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#": "./schema_assets/22-rdf-syntax-ns.ttl"
+  "http://www.w3.org/2000/01/rdf-schema#": "./schema_assets/rdf-schema.ttl"
+  "https://schema.org/": "./schema_assets/schemaorg-current-https.ttl"
+  "http://www.w3.org/2004/02/skos/core#": "./schema_assets/skos.rdf"
+  "http://www.w3.org/ns/sosa/": "./schema_assets/sosa.ttl"
+  "http://www.w3.org/ns/ssn/": "./schema_assets/ssn.ttl"
+  "https://id.plantphenomics.org.au/APPN/": "./vocabulary/APPN/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/ANU/": "./vocabulary/ANU/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/AU/": "./vocabulary/AU/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/CSU/": "./vocabulary/CSU/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/DPIRD/": "./vocabulary/DPIRD/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/LTU/": "./vocabulary/LTU/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/UQ/": "./vocabulary/UQ/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/USYD/": "./vocabulary/USYD/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/UWA/": "./vocabulary/UWA/vocabulary.ttl"
+  "https://id.plantphenomics.org.au/WSU/": "./vocabulary/WSU/vocabulary.ttl"
+
+# Namespaces that should be searched for properties used in vocabulary spreadsheets.
+# These are in descending order of priority - a property in a namespace listed 
+# earlier in this list will take precedence over one with the same name listed
+# later.
+vocabulary_column_namespaces:
+  - "https://schema.org/"
+  - "http://www.w3.org/2004/02/skos/core#"
+  - "http://purl.org/dc/terms/"
+
+# Overrides for how sheet names are interpreted. 
+sheet_aliases:
+  # Trait is a subclass of ObservedVariable and the "Trait" sheet includes elements
+  # associated with ObservedVariable instances. All ObservedVariable instances are
+  # also instances of Trait.
+  "Trait": "ObservedVariable"
+
+# Classes for which properties may be embedded in the definition of another
+# class. Any columns with names starting with the embedded classname
+# in lowercase will be grouped as the definition for a referenced instance
+# of the embedded class.
+embedded_classes:
+  "ObservedVariable":
+    - "BiologicalMaterial"

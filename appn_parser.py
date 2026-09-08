@@ -58,6 +58,9 @@ class ExcelVocabularyParser:
         self.configuration = configuration
         self.node = node
 
+        # The rdflib library generates a warning ("ConjunctiveGraph is deprecated, use Dataset instead")
+        warnings.filterwarnings("ignore", category=DeprecationWarning, module="rdflib")
+
         # Load schemas that provide key definitions. APPN_SCHEMA does not
         # directly reference SKOS, so SKOS_SCHEMA is separately loaded, but
         # others are imported based on their use in these two schemas.
@@ -66,6 +69,7 @@ class ExcelVocabularyParser:
         self.dictionary = Dictionary(
             namespace_definitions=self.configuration.get_namespace_definitions()
         )
+
         self.dictionary.load(APPN_SCHEMA)
         self.dictionary.load(SKOS_SCHEMA)
         if node.id != CENTRAL_ORGANISATION:
@@ -170,7 +174,7 @@ class ExcelVocabularyParser:
                 column_name = f"{column_name}{column_name_matches[column_name]}"
             columns.append(column_name)
         df.columns = columns
-        df.drop(0)
+        df = df.drop(0)
         return df
 
     def build_class_maps(
@@ -180,13 +184,13 @@ class ExcelVocabularyParser:
         class_maps: dict[Term, list[ColumnMapping]] = {}
 
         class_map = self.build_class_map(
-            df, primary_class, "", [e.name.lower() for e in embeddings]
+            df, primary_class, "", [self.lower_first(e.name) for e in embeddings]
         )
         if class_map is not None:
             class_maps[primary_class] = class_map
 
         for embedding in embeddings:
-            class_map = self.build_class_map(df, embedding, embedding.name.lower(), [])
+            class_map = self.build_class_map(df, embedding, self.lower_first(embedding.name), [])
             if class_map is not None:
                 class_maps[embedding] = class_map
 
@@ -240,62 +244,74 @@ class ExcelVocabularyParser:
 
             is_local_property = False
 
-            if column_name.startswith(required_prefix) and not any(
-                [column_name.startswith(prefix) for prefix in excluded_prefixes]
-            ):
-                if (
-                    len(required_prefix) > 0
-                    and column_name is not None
-                    and column_name.startswith(required_prefix)
-                ):
-                    column_name = self.lower_first(column_name[len(required_prefix) :])
+            if column_name.startswith(required_prefix):
+                ignore_column = False
 
-                if column_name in self.column_aliases:
-                    column_name = self.column_aliases[column_name]
+                # Exclude any columns with names starting with an excluded
+                # prefix EXCEPT for columns with names of the form 
+                # "<excluded_prefix>Name" - these should be treated as 
+                # properties linking to an instance of the specified class.
+                for excluded_prefix in excluded_prefixes:
+                    if column_name.startswith(excluded_prefix):
+                        if column_name == f"{excluded_prefix}Name":
+                            column_name = self.upper_first(excluded_prefix)
+                        else:
+                            ignore_column = True
 
-                column_property = None
-                related_class = None
-                if column_name in properties:
-                    column_property = URIRef(properties[column_name].iri)
-                elif column_name in self.appn_classes_by_name:
-                    related_class = self.appn_classes_by_name[column_name]
-                    range_properties = (
-                        self.dictionary.list_properties_by_domain_and_range(
-                            target_class.iri,
-                            related_class.iri,
-                            namespace=APPN_SCHEMA,
+                if not ignore_column:
+                    if (
+                        len(required_prefix) > 0
+                        and column_name is not None
+                        and column_name.startswith(required_prefix)
+                    ):
+                        column_name = self.lower_first(column_name[len(required_prefix) :])
+
+                    if column_name in self.column_aliases:
+                        column_name = self.column_aliases[column_name]
+
+                    column_property = None
+                    related_class = None
+                    if column_name in properties:
+                        column_property = URIRef(properties[column_name].iri)
+                    elif column_name in self.appn_classes_by_name:
+                        related_class = self.appn_classes_by_name[column_name]
+                        range_properties = (
+                            self.dictionary.list_properties_by_domain_and_range(
+                                target_class.iri,
+                                related_class.iri,
+                                namespace=APPN_SCHEMA,
+                            )
+                        )
+                        if len(range_properties) == 1:
+                            column_property = URIRef(range_properties[0].iri)
+                        else:
+                            # NOTE A default choice could be specified in the Configuration.
+                            # At present, leave the column to be mapped as a local property.
+                            logging.error(
+                                f"ERROR: Multiple properties link {target_class.curie} to {related_class.curie} - unknown mapping for column {column}"
+                            )
+                            related_class = None
+
+                    if column_property is None:
+                        column_property = URIRef(
+                            f"{APPN_VOCABULARY_ROOT}{self.node.id}/{self.lower_first(column_name)}"
+                        )
+                        is_local_property = True
+                        if column_property not in self.deferred_local_properties:
+                            self.deferred_local_properties[column_property] = []
+                        self.deferred_local_properties[column_property].append(target_class)
+
+                    logging.info(f"Column {column} recognised as {str(column_property)} for class {target_class.curie}")
+
+                    column_mappings.append(
+                        ColumnMapping(
+                            column,
+                            column_property,
+                            related_class,
+                            column == name_column,
+                            is_local_property,
                         )
                     )
-                    if len(range_properties) == 1:
-                        column_property = URIRef(range_properties[0].iri)
-                    else:
-                        # NOTE A default choice could be specified in the Configuration.
-                        # At present, leave the column to be mapped as a local property.
-                        logging.error(
-                            f"ERROR: Multiple properties link {target_class.curie} to {related_class.curie} - unknown mapping for column {column}"
-                        )
-                        related_class = None
-
-                if column_property is None:
-                    column_property = URIRef(
-                        f"{APPN_VOCABULARY_ROOT}{self.node.id}/{self.lower_first(column_name)}"
-                    )
-                    is_local_property = True
-                    if column_property not in self.deferred_local_properties:
-                        self.deferred_local_properties[column_property] = []
-                    self.deferred_local_properties[column_property].append(target_class)
-
-                logging.info(f"Column {column} recognised as {str(column_property)}")
-
-                column_mappings.append(
-                    ColumnMapping(
-                        column,
-                        column_property,
-                        related_class,
-                        column == name_column,
-                        is_local_property,
-                    )
-                )
 
         return column_mappings if len(column_mappings) > 0 else None
 
@@ -349,10 +365,26 @@ class ExcelVocabularyParser:
                     )
 
                     if term in self.instances:
-                        logging.error(
-                            f"ERROR: Multiple entries for class {target_class.curie} with the same name: {name} - ignoring all but first"
-                        )
-                        success = False
+                        # We already have a defined instance with this name. 
+                        # 
+                        # If the instance comes from a sheet dedicated to the class 
+                        # (in which case the name_column will simply be "name"), log
+                        # a failure. 
+                        #
+                        # Otherwise, warn that only the first definition will be used.
+                        # NOTE: It would be possible to compare the rows in question
+                        # and only report a warning if they are different, but this
+                        # approach allows a user to leave all columns blank in the 
+                        # second and subsequent references.
+                        if name_column == "name":
+                            logging.error(
+                                f"ERROR: Multiple entries for class {target_class.curie} with the same name: {name} - ignoring all but first"
+                            )
+                            success = False
+                        else:
+                            logging.info(
+                                f"Multiple rows define class {target_class.curie} with the same name: {name} - ignoring all but first"
+                            )
                     else:
                         if concept_scheme_term is None:
                             concept_scheme_prefix = (
@@ -538,6 +570,8 @@ class ExcelVocabularyParser:
         logging.debug(f"Processing {len(self.required_properties)} properties")
 
         for required_property in self.required_properties:
+            logging.debug(f"Processing required property {required_property}")
+
             if required_property.object in self.instances:
                 self.graph.add(
                     (
@@ -585,3 +619,6 @@ class ExcelVocabularyParser:
 
     def lower_first(self, name: str) -> str:
         return name[0].lower() + name[1:]
+
+    def upper_first(self, name: str) -> str:
+        return name[0].upper() + name[1:]
