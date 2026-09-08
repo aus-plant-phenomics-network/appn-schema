@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 #
-# appn_parser.py
+# appn_parser.py - ExcelVocabularyParser
 #
 # Class for converting Excel spreadsheets into RDF vocabularies
 #
@@ -40,6 +40,7 @@ from appn_configuration import (
 )
 from rdflib import Graph, Namespace, URIRef, Literal
 
+# Convenience versions of regularly used URIRefs 
 rdf_type = URIRef(f"{RDF_SCHEMA}type")
 rdf_property = URIRef(f"{RDF_SCHEMA}Property")
 schema_domain_includes = URIRef(f"{SCHEMA_SCHEMA}domainIncludes")
@@ -51,10 +52,115 @@ skos_in_scheme = URIRef(f"{SKOS_SCHEMA}inScheme")
 dc_title = URIRef(f"{DC_SCHEMA}title")
 dc_description = URIRef(f"{DC_SCHEMA}description")
 
+### ExcelVocabularyParser #####################################################
+"""
+Parser class to parse Excel representations of the APPN-Schema-compliant
+term definitions from an APPN node and generate a corresponding rdflib `Graph`
+representation.
 
+The parser constructs a valid vocabulary of APPN Schema instances (doubling as
+SKOS concepts) for a specified APPN node or for common definitions shared
+across all APPN nodes. Each node vocabulary has its own namespace.
+
+Multiple spreadsheets may consecutively be parsed into the same `Graph`. This
+is intended as a convenience so APPN nodes can manage definitions in the most
+convenient way. It is the responsibility of the user of this parser to ensure
+that all parsed spreadsheets relate to the same node.
+
+The parser scans each Excel spreadsheet for sheets with names that match the 
+(unqualified) name of an APPN schema class (e.g. "Trait", "GrowthFacility").
+
+The behaviour of the parser is controlled by the settings in a supplied
+`Configuration` object and by the content of a `Dictionary` object initialised
+using the `Configuration`. The `Dictionary` includes all definitions from the 
+APPN Schema and from the schemas it directly references and from the SKOS Core
+schema. Additionally, except in the case of the all-APPN vocabulary, the 
+`Dictionary` includes the current all-APPN vocabulary and preferentially 
+uses definitions it contains instead of creating new ones in the namespace of
+the node vocabulary.
+
+The first row in each such sheet is parsed as a set of references to RDF 
+properties or to another APPN schema class that is to be linked by a 
+predictable RDF property. The name in each cell is matched to a property using 
+the first matching strategy from the following:
+
+1. A property that includes the current schema class in its domain.
+2. A property from a namespace returned by the `get_vocabulary_column_namespaces`
+   method of the `Configuration` instance. This is expected to include 
+   schema.org, SKOS Core and Dublin Core, but others may be included.
+3. If the name in the cell matches another APPN Schema class name, a property
+   that includes the current schema class in its domain and the matched class
+   name in its range. (In this case, values in the column will be names of
+   instances of the matched class). NOTE: At present, there are no ambiguous
+   situations where multiple properties match these conditions, but this may
+   change.
+4. If the `get_embedded_classes` method of the `Configuration` instance includes
+   the name of an APPN Schema class that matches the start of the name in the 
+   cell (with the first letter lowered), the remainder of name in the cell is
+   processed as a candidate property for the matched class using steps 1 to 3.
+   Any columns matching this rule are treated as a discrete set that could 
+   have been specified in a separate sheet dedicated to the matching class. 
+5. A new property created in the namespace of the node vocabulary and specifying
+   the current schema class as part of its domain.
+
+The parser accommodates repetition of the same property name in multiple 
+columns. Internally, it renames these temporarily as <property_name><integer> 
+so they can appear as discrete columns in a pandas DataFrame. During all later
+processing stages, the integer suffix is ignored.
+
+Each subsequent row in the sheet is parsed as an instance of the specified
+schema class. The instance receives an IRI constructed from an identifier for
+the APPN node and a normalised version of the value in a column associated 
+with the `schema:name` property. All non-blank cells are interpreted as the 
+object value (a `Literal` or a `URIRef`) for a triple relating to the 
+instance. If an instance of the class is already known with the same name
+(in any namespace, more specifically in the all-APPN vocabulary namespace),
+the new record is treated as a duplicate and ignored. Columns matched using
+step 4 above (i.e. via an "embedded class") are processed as though they 
+are in a separate sheet, but the "<embedded_class>Name" column is also used
+to create a property for the current schema class (using the logic in step
+3).
+
+Options from the `Configuration` allow the results to be tweaked in the 
+following ways:
+
+    `Configuration`.`get_vocabulary_column_namespaces`:
+        Determines which namespaces are searched to map column names to 
+        properties.
+
+    `Configuration`.`get_explicit_classes`: 
+        Inserts additional `rdf:type` properties when an instance of a 
+        specified class is created.
+
+    `Configuration`.`get_excluded_classes`: 
+        Excludes some classes from coarse selections by 
+        `get_explicit_classes`.
+
+    `Configuration`.`get_sheet_aliases`:
+        Overrides the name of a sheet to match a desired APPN schema
+        class
+
+    `Configuration`.`get_column_aliases`: 
+        Overrides the name of a column to match a different property
+
+    `Configuration`.`get_completion_rules`: 
+        Specifies additional processing for instances of an APPN 
+        schema class
+        
+    `Configuration`.`get_class_abbreviations`: 
+        Specifies short prefixes to use in IRIs of instances of specific 
+        APPN schema classes
+
+    `Configuration`.`get_property_expansions`:
+        Specifies additional properties that should be added whenever
+        a specified property is added
+
+    `Configuration`.`get_embedded_classes`: 
+        Lists classes that may appear as specified in step 4 above
+"""
 class ExcelVocabularyParser:
 
-    def __init__(self, configuration: Configuration, node: Organisation):
+    def __init__(self, configuration: Configuration, node: Organisation) -> None:
         self.configuration = configuration
         self.node = node
 
