@@ -72,10 +72,17 @@ class URIRefTriple(NamedTuple):
 
 
 ### ColumnMapping##############################################################
-#
-# Simple class for metadata associated with a spreadsheet column
-#
+
 class ColumnMapping(NamedTuple):
+    """
+    Simple class for metadata associated with a `DataFrame` column
+
+    :param column: Name of a `DataFrame` column
+    :param property: `URIRef` for the property represented by the column
+    :param range_class: `Term` identifying an APPN schema class representing the range if the `property` links two schema instances
+    :param primary_identifier: True if the `property` matches `schema:name` (used to create the IRI as the unique identifier for an instance)
+    :param is_local_property: True if the `property` is to be defined in the current vocabulary namespace
+    """
     column: str
     property: URIRef
     range_class: Optional[Term]
