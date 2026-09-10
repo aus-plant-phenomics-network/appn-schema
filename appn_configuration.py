@@ -29,32 +29,6 @@ APPN_DEFAULT_CONFIGURATION_NAME = "appn"
 APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY = "APPN_CONFIGURATION_FOLDER"
 APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY = "APPN_CONFIGURATION_NAME"
 
-# Keys for elements expected in YAML configuration file
-
-class ConfigurationKey(StrEnum):
-    NAMESPACE_PATHS = "namespace_paths"
-    VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
-    EXPLICIT_CLASSES = "explicit_classes"
-    EXCLUDED_CLASSES = "excluded_classes"
-    SHEET_ALIASES = "sheet_aliases"
-    COLUMN_ALIASES = "column_aliases"
-    COMPLETION_RULES = "completion_rules"
-    CLASS_ABBREVIATIONS = "class_abbreviations"
-    PROPERTY_EXPANSIONS = "property_expansions"
-    EMBEDDED_CLASSES = "embedded_classes"
-    DOMAIN_RANGE_PROPERTIES = "domain_range_properties"
-    ORGANISATIONS = "organisations"
-
-# Recognised values for namespaces in explicit classes element
-EXPLICIT_CLASSES_ALL = "all"
-EXPLICIT_CLASSES_FIRST = "first"
-
-# Keys for elements in definitions in organisations element
-ORGANISATION_SUBKEY_NAME = "name"
-ORGANISATION_SUBKEY_ROR = "ror"
-ORGANISATION_SUBKEY_NAMESPACE = "namespace"
-ORGANISATION_SUBKEY_PREFIX = "prefix"
-
 # Default settings for central organisation (i.e. APPN)
 CENTRAL_ORGANISATION = "APPN"
 DEFAULT_CENTRAL_VOCABULARY_PREFIX = "appnid"
@@ -114,7 +88,55 @@ DEFAULT_PREFIXES = {
     WSU_VOCABULARY: "wsu",
 }
 
+
+### ConfigurationKey ##########################################################
+
+class ConfigurationKey(StrEnum):
+    """
+    Simple class to define expected YAML keys.
+    """
+    NAMESPACE_PATHS = "namespace_paths"
+    VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
+    EXPLICIT_CLASSES = "explicit_classes"
+    EXCLUDED_CLASSES = "excluded_classes"
+    SHEET_ALIASES = "sheet_aliases"
+    COLUMN_ALIASES = "column_aliases"
+    COMPLETION_RULES = "completion_rules"
+    CLASS_ABBREVIATIONS = "class_abbreviations"
+    PROPERTY_EXPANSIONS = "property_expansions"
+    EMBEDDED_CLASSES = "embedded_classes"
+    DOMAIN_RANGE_PROPERTIES = "domain_range_properties"
+    ORGANISATIONS = "organisations"
+
+
+### ExplicitClassesFilter #####################################################
+
+class ExplicitClassesFilter(StrEnum):
+    """
+    Simple class to define special options for `explicit_classes` filters
+    """
+    ALL = "all"
+    FIRST = "first"
+
+
+### OrganisationProperty ######################################################
+
+class OrganisationProperty(StrEnum):
+    """
+    Simple class for property names in organisation definitions
+    """
+    NAME = "name"
+    ROR = "ror"
+    NAMESPACE = "namespace"
+    PREFIX = "prefix"
+
+
+### ValidationType ############################################################
+
 class ValidationType(StrEnum):
+    """
+    Simple class to define expected YAML structures.
+    """
     LIST = "list[str]"
     DICT = "dict[str,str]"
     DICT_OF_LIST = "dict[str, list[str]]"
@@ -233,7 +255,7 @@ class Configuration:
         self, 
         key: ConfigurationKey, 
         validation_type: ValidationType, 
-        default_value: Optional[Any] = None
+        default_value: Optional[any] = None
         ) -> Optional[list[str]|dict[str,str|list[str]|dict[str,str|list[str]|dict[str,str]]]]:
         """
         Safe and efficient access to YAML configuration elements
@@ -242,7 +264,7 @@ class Configuration:
         (instances of `ConfigurationKey`).
 
         Structure is validated by checking the types of elements and
-        confirming they match a requested nesting of dictionaries, lists
+        confirming they match the expected nesting of dictionaries, lists
         and strings. Since YAML keys are always strings, the types of
         dictionary keys are not checked.
 
@@ -259,7 +281,7 @@ class Configuration:
         
         # All results are cached for quick return on subseqent calls
         if key in self.cache:
-            return self.cache[key]
+            return self.cache[key].copy()
 
         # Verify that the YAML content matches the expected structure.
         # All keys in YAML are strings, so the types of any dictionary 
@@ -408,30 +430,96 @@ class Configuration:
         be scanned for classes that match any of these rules, and extra
         `rdf:type` statements should be added for each match.
 
-        Returns a copy of any dictionary included in the YAML configuration.
+        Returns a copy of the dictionary included in the YAML configuration.
 
-        :return: List of namespace strings
+        :return: Dictionary mapping namespaces to selection rules
         """
         return self.fetch(ConfigurationKey.EXPLICIT_CLASSES,
                         ValidationType.DICT_OF_STRING_OR_LIST, {})
 
     def get_excluded_classes(self) -> list[str]:
+        """
+        Get list of classes that should NOT be matched when using the 
+        rules specified by `get_explicit_classes`
+
+        This allows finer control over the exact set of classes asserted 
+        for an instance.
+
+        Returns a copy of the list included in the YAML configuration.
+
+        :return: List of class IRIs
+        """
         return self.fetch(ConfigurationKey.EXCLUDED_CLASSES,
                         ValidationType.LIST, [])
 
     def get_sheet_aliases(self) -> dict[str, str]:
+        """
+        Get dictionary of class names to use when Excel sheets have
+        other names.
+
+        The primary purpose is to ensure that sheets named Trait are
+        processed as the subclass ObservedVariable and can include 
+        Method or Scale embeddings
+
+        Returns a copy of the dictionary included in the YAML configuration.
+
+        :return: Dictionary mapping names to class names
+        """        
         return self.fetch(ConfigurationKey.SHEET_ALIASES,
                         ValidationType.DICT, {})
 
     def get_column_aliases(self) -> dict[str, str]:
+        """
+        Get dictionary of column names to use when Excel sheets have
+        other names.
+
+        This allows spreadsheets to use names that may not match those of
+        schema properties but that better match the understanding of users.
+
+        Returns a copy of the dictionary included in the YAML configuration.
+
+        :return: Dictionary mapping column names to preferred names
+        """        
         return self.fetch(ConfigurationKey.COLUMN_ALIASES,
                         ValidationType.DICT, {})
 
     def get_completion_rules(self) -> dict[str, dict[str, dict[str, str]]]:
+        """
+        Get dictionary of rules that should be applied to complete terms
+        belonging to specific classes to resolve the state of a specific
+        property. The dictionary maps class names to dictionaries mapping
+        property IRIs to a set of key-value rule elements.
+
+        This is intended to be an extensible framework for post-processing
+        terms. Each rule must include a `type` property matching a name
+        from the `CompletionRuleType` enumeration from `appn_types`.
+
+        Rules are expected to be applied only if there is no pre-existing 
+        instance of the property for the term. This could be altered by
+        including a property to the rule dictionary that specifies
+        multiple instances of the property are allowed.
+
+        The types include `reflexive`, for which the response is to add an
+        instance of the specified property to each class instance with the
+        same class instance as the object of the property. This can be 
+        used to ensure that each APPN `ObservedVariable` has a `hasTrait`
+        property. 
+
+        Returns a copy of the dictionary included in the YAML configuration.
+
+        :return: Dictionary mapping class names to dictionaries mapping
+            property IRIs to dictionaries of rule elements
+        """        
         return self.fetch(ConfigurationKey.COMPLETION_RULES,
                         ValidationType.DICT_OF_DICT_OF_DICT, {})
 
     def get_completion_rules(self, class_name: str) -> dict[str, dict[str, str]]:
+        """
+        Convenience method to get completion rules for a single class
+
+        :return: Dictionary mapping property IRIs to dictionaries of rule
+            elements
+        """  
         rules = self.fetch(ConfigurationKey.COMPLETION_RULES,
                         ValidationType.DICT_OF_DICT_OF_DICT, {})
         if class_name in rules:
@@ -439,10 +527,31 @@ class Configuration:
         return {}
 
     def get_class_abbreviations(self) -> dict[str, str]:
+        """
+        Get dictionary of alternate strings (normally abbreviations) to 
+        substitute for class names in term IRIs.
+
+        This allows otherwise lengthy IRI strings (including e.g. 
+        "observedvariable_") to be shortened in predictable ways (e.g. "ov_").
+
+        :return: Dictionary mapping class names to abbreviations
+        """
         return self.fetch(ConfigurationKey.CLASS_ABBREVIATIONS,
                         ValidationType.DICT, {})
 
     def get_property_expansions(self) -> dict[URIRef, list[URIRef]]:
+        """
+        Get dictionary mapping property IRIs to lists of IRIs that should be
+        added to terms whenever the primary property IRI is used.
+
+        This allows terms to include multiple properties offering the same 
+        value (the object term or literal) to users focused on different
+        schemas.
+
+        This method returns IRIs as URIRefs.
+
+        :return: Dictionary mapping property IRIs to lists of property IRIs
+        """
         property_expansions = self.fetch(ConfigurationKey.PROPERTY_EXPANSIONS,
                         ValidationType.DICT_OF_LIST, {})
         expansions = {}
@@ -451,38 +560,117 @@ class Configuration:
         return expansions
 
     def get_embedded_classes(self) -> dict[str, list[str]]:
+        """
+        Get dictionary mapping class names to lists of names for classes that
+        may be included as embeddings inside sheets for the primary class.
+
+        If a sheet for the primary class includes one or more columns with
+        names starting with a lower-first representation of an embedded class
+        (e.g. "methodName", "methodDescription"), these will be processed as 
+        if they appeared in a sheet named after the embedded class ("Method")
+        and had names without the initial class reference ("name", 
+        "description"). Embedded classes should ALWAYS include a column that
+        will map to "name" once the class reference is removed from the 
+        name.
+
+        Instances of embedded classes may repeat inside the sheet for the 
+        primary class (allowing the same instance to be referenced by more
+        than one instance of the primary class). The embedded class instance
+        will be constructed using terms in the first row that references it.
+        Subsequent definitions of the same embedded class instance will be 
+        ignored.
+
+        :return: Dictionary mapping class names to lists of embeddable classes
+        """
         return self.fetch(ConfigurationKey.EMBEDDED_CLASSES,
                         ValidationType.DICT_OF_LIST, {})
 
     def get_domain_range_properties(self) -> dict[str, dict[str, str]]:
+        """
+        Get dictionary mapping domain class names to dictionaries mapping
+        range class names to property IRIs.
+
+        This supports the use of embedded classes. The ExcelVocabularyParser
+        needs to create properties linking each primary class instance to 
+        the embedded class instance, but the relevant column refers to its
+        relationship to the embedded class as its name (e.g. "methodName").
+        The way that the embedded (range) class instance is linked to the 
+        primary (domain) class instance is not defined.
+
+        In most cases, only one property exists in the APPN schema that has
+        the primary class in its domain and the embedded class in its range.
+        In such cases, the behaviour is to assume this is the intended 
+        property.
+
+        This method allows the property selection to be made explicit. This
+        will be required if the APPN schema includes multiple candidate 
+        properties.
+
+        :return: Dictionary mapping domain class names to dictionaries mapping
+            range class names to property IRIs
+        """
         return self.fetch(ConfigurationKey.DOMAIN_RANGE_PROPERTIES,
                         ValidationType.DICT_OF_DICT, {})
 
     def get_organisations(self) -> dict[str, Organisation]:
+        """
+        Get metadata elements for `Organisation`s defined in schema and for
+        the APPN central organisation.
+
+        Each `Organisation` holds a short id, a name, a ROR identifier,
+        the namespace for the organisation's vocabulary terms, and the prefix
+        to be used for the namespace in CURIE representations.
+
+        Organisation ids are used to identify APPN nodes and APPN as a whole
+        ("APPN") in data produced by APPN. The other components are attached
+        to these ids so that software can correctly generate vocabularies and
+        data.
+
+        The organisation definitions are sourced from the YAML configuration 
+        file. 
+
+        If the name is not specified, the id is used in its place.
+
+        If the namespace is not specified, it is constructed from a root URL
+        combined with the id.
+
+        If the namespace prefix is not specified, a default is selected from
+        `DEFAULT_PREFIXES` if one is defined. Otherwise, the lowercase id is 
+        used.
+
+        Regardless of the YAML content, an entry is always included for the 
+        APPN central organisation.
+
+        Since the organisations dictionary is processed and not found directly
+        in the YAML configuration, it is stored in an instance property of the
+        `Configuration`.
+
+        :return: Dictionary mapping organisation ids to `Organisation`s.
+        """
         if self.organisations is None:
             self.organisations = {}
             organisations = self.fetch(ConfigurationKey.ORGANISATIONS,
                         ValidationType.DICT_OF_DICT, {})
             for id, properties in organisations.items():
                 name = str(
-                    properties[ORGANISATION_SUBKEY_NAME]
-                    if ORGANISATION_SUBKEY_NAME in properties
-                    else None
+                    properties[OrganisationProperty.NAME.value]
+                    if OrganisationProperty.NAME.value in properties
+                    else id
                 )
                 ror = str(
-                    properties[ORGANISATION_SUBKEY_ROR]
-                    if ORGANISATION_SUBKEY_ROR in properties
+                    properties[OrganisationProperty.ROR.value]
+                    if OrganisationProperty.ROR.value in properties
                     else None
                 )
                 namespace = str(
-                    properties[ORGANISATION_SUBKEY_NAMESPACE]
-                    if ORGANISATION_SUBKEY_NAMESPACE in properties
+                    properties[OrganisationProperty.NAMESPACE.value]
+                    if OrganisationProperty.NAMESPACE.value in properties
                     else f"{APPN_VOCABULARY_ROOT}{id}/"
                 )
                 prefix = str(
-                    properties[ORGANISATION_SUBKEY_PREFIX]
-                    if ORGANISATION_SUBKEY_PREFIX in properties
-                    else (DEFAULT_CENTRAL_VOCABULARY_PREFIX if id == CENTRAL_ORGANISATION else id.lower())
+                    properties[OrganisationProperty.PREFIX.value]
+                    if OrganisationProperty.PREFIX.value in properties
+                    else (DEFAULT_CENTRAL_VOCABULARY_PREFIX if id == CENTRAL_ORGANISATION else (DEFAULT_PREFIXES[id] if id in DEFAULT_PREFIXES else id.lower()))
                 )
                 self.organisations[id] = Organisation(id, name, ror, namespace, prefix)
             if CENTRAL_ORGANISATION not in self.organisations:
@@ -490,10 +678,20 @@ class Configuration:
         return self.organisations.copy()
 
     def get_organisation_by_id(self, id: str) -> Optional[Organisation]:
+        """
+        Convenience method to retrieve a single `Organisation` by its id.
+
+        :return: `Organisation` for given id, if defined
+        """
         organisations = self.get_organisations()
         if id in organisations:
             return organisations[id]
         return None
 
     def get_appn(self) -> Organisation:
+        """
+        Convenience method to retrieve the APPN central `Organisation`.
+
+        :return: `Organisation` with id "APPN"
+        """
         return self.get_organisation_by_id(CENTRAL_ORGANISATION)

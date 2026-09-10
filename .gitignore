@@ -14,3 +14,8 @@ TEMP-*
 **/*\#
 
 **/*.pyc
+
+corella/
+test_harness.py
+
+vocabulary/**

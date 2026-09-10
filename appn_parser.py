@@ -30,8 +30,7 @@ from appn_configuration import (
     ConfigurationKey,
     DC_SCHEMA,
     DEFAULT_PREFIXES,
-    EXPLICIT_CLASSES_ALL,
-    EXPLICIT_CLASSES_FIRST,
+    ExplicitClassesFilter,
     RDF_SCHEMA,
     SCHEMA_SCHEMA,
     Configuration,
@@ -168,6 +167,10 @@ class ExcelVocabularyParser:
 
         `Configuration`.`get_embedded_classes`: 
             Lists classes that may appear as specified in step 4 above
+
+        `Configuration`.`get_domain_range_properties`: 
+            Get properties to use when linking primary class instances to
+            embedded class instances
 
     The constructed `Graph` is separate from the `Graph` in the `Dictionary`
     of loaded schema assets. It is accessed using the `get_graph` method.
@@ -672,6 +675,8 @@ class ExcelVocabularyParser:
         processing is complete, and runs any completion rules defined in the
         `Configuration`
 
+        :param excel_path: Location of a vocabulary stored as a multi-sheet Excel spreadsheet
+        :param sheet: Name of the sheet to be processed
         :param row: `Series` (i.e row) to be processed as an instance defined by a set of RDF triples
         :param target_class: `Term` for APPN schema class for instances to generate
         :param name_column: the name of the column in the `Series` that contains the name for the instance
@@ -738,6 +743,8 @@ class ExcelVocabularyParser:
                     and property_term in self.deferred_local_properties
                 ):
                     self.add_local_property(
+                        excel_path,
+                        sheet,
                         property_term,
                         column_mapping.column,
                         self.deferred_local_properties[property_term],
@@ -787,6 +794,9 @@ class ExcelVocabularyParser:
         if len(completion_rules) > 0:
             existing_properties = [str(p) for s, p, o in self._graph if s == term]
             for desired_property, rule in completion_rules.items():
+                # Current rules are expected to fire only of no instance of the desired
+                # property is found - this could be controlled by additional rule 
+                # properties
                 if desired_property not in existing_properties:
                     if "type" not in rule:
                         self.logger.log(logging.ERROR, "Configuration", IssueMessage.COMPLETION_RULE_MISSING_TYPE,
@@ -925,10 +935,10 @@ class ExcelVocabularyParser:
                     if superclass.name in rule:
                         explicit_classes.append(URIRef(superclass.iri))
                 elif isinstance(rule, str):
-                    if rule == EXPLICIT_CLASSES_ALL:
+                    if rule == ExplicitClassesFilter.ALL.value:
                         # Include all classes matching an "all" rule
                         explicit_classes.append(URIRef(superclass.iri))
-                    elif rule == EXPLICIT_CLASSES_FIRST:
+                    elif rule == ExplicitClassesFilter.FIRST.value:
                         # Match only the first class matching a "first" rule
                         explicit_classes.append(URIRef(superclass.iri))
 
@@ -965,13 +975,15 @@ class ExcelVocabularyParser:
                 self._graph.add((subject, expansion_property, object))
 
     def add_local_property(
-        self, iri: URIRef, name: str, domain_classes: list[URIRef]
+        self, excel_path: Path, sheet: str, iri: URIRef, name: str, domain_classes: list[Term]
     ) -> None:
         """
         Add a new RDF `Property` to the graph in the current namespace
 
         Create the property with the supplied name and domain classes.
 
+        :param excel_path: Location of a vocabulary stored as a multi-sheet Excel spreadsheet
+        :param sheet: Name of the sheet to be processed
         :param property: IRI for the property
         :param name: Name for the property
         :param domain_classes: List of classes to be included in the property domain
@@ -980,6 +992,16 @@ class ExcelVocabularyParser:
         self.add_triple(iri, schema_name, Literal(name))
         for domain_class in domain_classes:
             self._graph.add((iri, schema_domain_includes, URIRef(domain_class.iri)))
+        self.logger.log(
+            logging.INFO,
+            "ExcelVocabularyParser",
+            IssueMessage.ADDED_LOCAL_PROPERTY,
+            EXCEL_PATH=excel_path,
+            EXCEL_SHEET=sheet,
+            EXCEL_COLUMN=name,
+            DOMAIN_CLASSES=", ".join([class_.curie for class_ in domain_classes]),
+            NEW_LOCAL_PROPERTY=iri
+        )
 
     def get_graph(self) -> Graph:
         """

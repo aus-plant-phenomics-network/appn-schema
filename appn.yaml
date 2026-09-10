@@ -81,8 +81,6 @@ completion_rules:
   "ObservedVariable":
     "https://schema.plantphenomics.org.au/hasTrait":
       "type": "reflexive"     
-    "https://schema.plantphenomics.org.au/hasMethod":
-      "type": "reflexiv"     
 
 # Abbreviated names for classes for use in composing IRIs
 class_abbreviations:

@@ -21,7 +21,7 @@ class IssueMessage(str, Enum):
 
     def __new__(
         cls, message: str, suggested_fix: Optional[str] = None
-    ) -> Color:
+    ) -> "IssueMessage":
         obj = str.__new__(cls, message)
         obj._value_ = message
         obj.suggested_fix = suggested_fix
@@ -36,6 +36,7 @@ class IssueMessage(str, Enum):
     SHEET_CONTAINS_DUPLICATE_NAMES = ("Sheet contains multiple rows with the same name", "Review sheet and ensure that no two rows share the same value for the name column")
     SHEET_CONTAINS_DUPLICATE_EMBEDDED_NAMES = ("Multiple rows define class with the same name - ignoring all but first", "This relates to an embedded class. Repeated definitions may be expected. Otherwise review sheet and ensure that no two rows share the same value for the name column for the embedded class.")
     MISSING_REFERENCE = ("Did not find expected definition for object referenced in a property", "Either add the referenced object to the appropriate sheet or correct the name where it is referenced.")
+    ADDED_LOCAL_PROPERTY = ("A spreadsheet column name did not match any defined property, so a new property was created in the vocabulary namespace.", "This only needs attention if it was unexpected. Check whether the column should have been mapped to a known property. Adding namespaces to the vocabulary_column_namespaces component of the YAML configuration allows properties from other namespaces to be included.")
 
 
 ### IssueLogger ###############################################################
@@ -56,7 +57,7 @@ class IssueLogger:
         self.module_counts: dict[str, int] = {}
         self.message_counts: dict[str|IssueMessage, int] = {}
 
-    def log(self, level: int, module: str, message: str|IssueMessage, **properties: Any) -> None:
+    def log(self, level: int, module: str, message: str|IssueMessage, **properties: any) -> None:
         """
         Save issue in list and log via logging
         
@@ -109,3 +110,26 @@ class IssueLogger:
         :return: Counts of issues by message
         """
         return self.message_counts
+
+    def format_issues(self) -> str:
+        """
+        Return string with formatted information on all `Issues`.
+
+        :return: Multiline string
+        """
+        report = ""
+        for message, count in self.get_issue_counts_by_message().items():
+            if len(report) > 0:
+                report += "\n"
+            report += f"ISSUE: {message.value if isinstance(message, IssueMessage) else message}\n"
+            if isinstance(message, IssueMessage) and message.suggested_fix is not None:
+                report += f"  SUGGESTED FIX: {message.suggested_fix}\n"
+            report += f"  OCCURRENCES: {count}\n"
+            index = 1
+            issues = self.list_issues(message=message)
+            key_length = max([len(k) for issue in issues for k, v in issue.properties.items()])
+            for issue in issues:
+                report += f"    {index:>3d} : {'\n          '.join([f'{k:{key_length}s} : {str(v)}' for k, v in issue.properties.items()])}\n"
+                index += 1
+
+        return report
