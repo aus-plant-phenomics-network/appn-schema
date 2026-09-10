@@ -20,13 +20,14 @@ import pandas as pd
 
 from pathlib import Path
 from typing import Optional
-from appn_types import Term, URIRefTriple, ColumnMapping
+from appn_types import Term, URIRefTriple, ColumnMapping, CompletionRuleType
 from appn_dictionary import Dictionary
 from appn_configuration import (
     APPN_VOCABULARY,
     APPN_VOCABULARY_ROOT,
     BIO_SCHEMA,
     CENTRAL_ORGANISATION,
+    ConfigurationKey,
     DC_SCHEMA,
     DEFAULT_PREFIXES,
     EXPLICIT_CLASSES_ALL,
@@ -38,6 +39,7 @@ from appn_configuration import (
     APPN_SCHEMA,
     SKOS_SCHEMA,
 )
+from appn_logger import IssueMessage
 from rdflib import Graph, Namespace, URIRef, Literal
 
 # Convenience versions of regularly used URIRefs 
@@ -169,6 +171,9 @@ class ExcelVocabularyParser:
 
     The constructed `Graph` is separate from the `Graph` in the `Dictionary`
     of loaded schema assets. It is accessed using the `get_graph` method.
+
+    Issues requiring the attention of a data administrator are stored using
+    the `IssueLogger` in the `Configuration`.
     """
 
     def __init__(self, configuration: Configuration, node: Organisation) -> None:
@@ -180,6 +185,9 @@ class ExcelVocabularyParser:
         """
         self.configuration = configuration
         self.node = node
+
+        # The `IssueLogger` for messages to data administrators
+        self.logger = configuration.get_logger()
 
         # The rdflib library generates a warning ("ConjunctiveGraph is deprecated, use Dataset instead")
         warnings.filterwarnings("ignore", category=DeprecationWarning, module="rdflib")
@@ -207,6 +215,7 @@ class ExcelVocabularyParser:
         self.class_abbreviations = configuration.get_class_abbreviations()
         self.property_expansions = configuration.get_property_expansions()
         self.embedded_classes = configuration.get_embedded_classes()
+        self.domain_range_properties = configuration.get_domain_range_properties()
 
         # Cache for computed lists of superclasses to include for a specified
         # class
@@ -216,6 +225,13 @@ class ExcelVocabularyParser:
         # name)
         self.appn_classes_by_name = {
             class_.name: class_
+            for class_ in self.dictionary.list_classes(namespace=APPN_SCHEMA)
+        }
+
+        # Dictionary for classes known from APPN schema (keyed by unqualified
+        # iri)
+        self.appn_classes_by_iri = {
+            class_.iri: class_
             for class_ in self.dictionary.list_classes(namespace=APPN_SCHEMA)
         }
 
@@ -253,7 +269,7 @@ class ExcelVocabularyParser:
             self._graph.bind(node.prefix, node.namespace)
 
         # Regular expression for replacing unwanted characters in IRIs
-        self.name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}\[\]]+")
+        self.name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}/\[\]-]+")
 
         # Regular expression for removing trailing integers added to column 
         # names to enable multiple columns to represent the same RDF property
@@ -270,7 +286,12 @@ class ExcelVocabularyParser:
         :return: True if the spreadsheet was loaded without issues that need correction
         """
         if not excel_path.exists():
-            logging.error(f"Excel file {excel_path} not found")
+            self.logger.log(
+                logging.ERROR,
+                "ExcelVocabularyParser",
+                IssueMessage.EXCEL_PATH_INVALID,
+                EXCEL_PATH = excel_path
+            )
             return False
 
         success = True
@@ -308,7 +329,12 @@ class ExcelVocabularyParser:
         # columns for the same property to share the same heading
         df = pd.read_excel(excel_path, sheet_name=sheet, header=None)
         if df is None or len(df.index) == 0:
-            logging.error(f"Could not read sheet {sheet} from Excel file {excel_path}")
+            self.logger.log(
+                logging.ERROR, 
+                "ExcelVocabularyParser", 
+                IssueMessage.EXCEL_SHEET_INVALID, 
+                EXCEL_PATH = excel_path, 
+                EXCEL_SHEET = sheet)
             return False
 
         # Assign column names based on first row (and remove first row)
@@ -327,12 +353,12 @@ class ExcelVocabularyParser:
         # any embedded classes, and process the sheet to extract instances based on
         # each of these maps
         for target_class, column_mappings in self.build_class_maps(
-            df, sheet_class, embeddings
+            excel_path, sheet, df, sheet_class, embeddings
         ).items():
             logging.debug(
                 f"Mapping for: {target_class.curie}\n\n{''.join([f'  {m.column} --> {m.property} ({m.range_class.curie if m.range_class is not None else 'None'}, {m.primary_identifier})\n' for m in column_mappings])}"
             )
-            if not self.parse_rows(df, target_class, column_mappings):
+            if not self.parse_rows(excel_path, sheet, df, target_class, column_mappings):
                 success = False
 
         return success
@@ -364,7 +390,12 @@ class ExcelVocabularyParser:
         return df
 
     def build_class_maps(
-        self, df: pd.DataFrame, primary_class: Term, embeddings: list[Term]
+        self, 
+        excel_path: Path,
+        sheet: str,
+        df: pd.DataFrame, 
+        primary_class: Term, 
+        embeddings: list[Term]
     ) -> dict[Term, list[ColumnMapping]]:
         """
         Provide mappings between column names and RDF properties
@@ -372,6 +403,8 @@ class ExcelVocabularyParser:
         Generates a list of column to property mappings for each of the classes 
         identified by `primary_class` or by `embeddings`
 
+        :param excel_path: Location of a vocabulary stored as a multi-sheet Excel spreadsheet
+        :param sheet: Name of the sheet to be processed
         :param df: `DataFrame` to be mapped
         :param primary_class: `Term` for an APPN schema class for which all columns will be processed unless the column name is based on one of the embedded class names
         :param embeddings: list of `Term`s for APPN schema classes which may be included in the sheet via column names including a modified version of the class name
@@ -387,7 +420,7 @@ class ExcelVocabularyParser:
         # then be handled as a property with the primary class in its domain 
         # and the embedded class in its range
         class_map = self.build_class_map(
-            df, primary_class, "", [self.lower_first(e.name) for e in embeddings]
+            excel_path, sheet, df, primary_class, "", [self.lower_first(e.name) for e in embeddings]
         )
         if class_map is not None:
             class_maps[primary_class] = class_map
@@ -395,7 +428,7 @@ class ExcelVocabularyParser:
         # For each embedding class, map only columns that start with a lower-first
         # version of the class name
         for embedding in embeddings:
-            class_map = self.build_class_map(df, embedding, self.lower_first(embedding.name), [])
+            class_map = self.build_class_map(excel_path, sheet, df, embedding, self.lower_first(embedding.name), [])
             if class_map is not None:
                 class_maps[embedding] = class_map
 
@@ -403,6 +436,8 @@ class ExcelVocabularyParser:
 
     def build_class_map(
         self,
+        excel_path: Path,
+        sheet: str,
         df: pd.DataFrame,
         target_class: Term,
         required_prefix: str,
@@ -414,6 +449,8 @@ class ExcelVocabularyParser:
 
         Generates a list of column to property mappings for `target_class`
 
+        :param excel_path: Location of a vocabulary stored as a multi-sheet Excel spreadsheet
+        :param sheet: Name of the sheet to be processed
         :param df: `DataFrame` to be mapped
         :param target_class: `Term` for an APPN schema class for which the column mapping will be developed
         :param required_prefix: Only column names starting with this string will be processed
@@ -508,20 +545,29 @@ class ExcelVocabularyParser:
                     # correct classes in the domain and range
                     elif column_name in self.appn_classes_by_name:
                         related_class = self.appn_classes_by_name[column_name]
-                        range_properties = (
-                            self.dictionary.list_properties_by_domain_and_range(
-                                target_class.iri,
-                                related_class.iri,
-                                namespace=APPN_SCHEMA,
-                            )
-                        )
-                        if len(range_properties) == 1:
-                            column_property = URIRef(range_properties[0].iri)
+                        # A property may be specified in the `Configuration`
+                        if target_class.name in self.domain_range_properties and related_class.name in self.domain_range_properties[target_class.name]:
+                            column_property = URIRef(self.domain_range_properties[target_class.name][related_class.name])
+                        # Otherwise try to find a unique match based on domain and range
                         else:
-                            # NOTE A default choice could be specified in the Configuration.
-                            # At present, leave the column to be mapped as a local property.
-                            logging.error(
-                                f"ERROR: Multiple properties link {target_class.curie} to {related_class.curie} - unknown mapping for column {column}"
+                            range_properties = (
+                                self.dictionary.list_properties_by_domain_and_range(
+                                    target_class.iri,
+                                    related_class.iri,
+                                    namespace=APPN_SCHEMA,
+                                )
+                            )
+                            if len(range_properties) == 1:
+                                column_property = URIRef(range_properties[0].iri)
+                        if column_property is None:
+                            # Notify the data administrator to add configuration settings.
+                            self.logger.log(logging.ERROR, "ExcelVocabularyParser", 
+                                IssueMessage.COLUMN_PROPERTY_NOT_SELECTED, 
+                                EXCEL_PATH=excel_path, 
+                                EXCEL_SHEET=sheet, 
+                                EXCEL_COLUMN_NAME=column,
+                                DOMAIN_APPN_CLASS=target_class.curie,
+                                RANGE_APPN_CLASS=related_class.curie 
                             )
                             related_class = None
 
@@ -555,11 +601,10 @@ class ExcelVocabularyParser:
                             is_local_property,
                         )
                     )
-
         return column_mappings if len(column_mappings) > 0 else None
 
     def parse_rows(
-        self, df: pd.DataFrame, target_class: Term, column_mappings: list[ColumnMapping]
+        self, excel_path, sheet, df: pd.DataFrame, target_class: Term, column_mappings: list[ColumnMapping]
     ) -> bool:
         """
         Generate APPN schema class instances from `DataFrame` loaded from Excel spreadsheet
@@ -567,6 +612,8 @@ class ExcelVocabularyParser:
         Uses supplied column mappings and `Configuration` settings to generate class instances
         as RDF triples
 
+        :param excel_path: Location of a vocabulary stored as a multi-sheet Excel spreadsheet
+        :param sheet: Name of the sheet to be processed
         :param df: `DataFrame` to be processed
         :param target_class: `Term` for APPN schema class for instances to generate
         :param column_mappings: List of `ColumnMapping` objects for mapped columns
@@ -582,13 +629,18 @@ class ExcelVocabularyParser:
                 name_column = mapping.column
                 break
         if name_column is None:
-            logging.error(
-                f"Name column not specified for instances of target class {target_class.curie}"
+            self.logger.log(
+                logging.ERROR, 
+                "ExcelVocabularyParser", 
+                IssueMessage.NO_NAME_COLUMN_FOR_CLASS,
+                EXCEL_PATH=excel_path, 
+                EXCEL_SHEET=sheet, 
+                APPN_CLASS=target_class.curie,
             )
             return False
 
         # Process all rows with values in the name_column column
-        for _, row in df.iterrows():
+        for index, row in df.iterrows():
             if row[name_column] not in [np.nan, None, ""]:
                 name = str(row[name_column])
 
@@ -606,12 +658,12 @@ class ExcelVocabularyParser:
                     == 0
                 ):
                     if not self.add_instance(
-                        row, target_class, name_column, name, column_mappings):
+                        excel_path, sheet, index, row, target_class, name_column, name, column_mappings):
                         success = False
 
         return success
 
-    def add_instance(self, row: pd.Series, target_class: Term, name_column: str, name: str, column_mappings: list[ColumnMapping]) -> bool:
+    def add_instance(self, excel_path: Path, sheet: str, index: int, row: pd.Series, target_class: Term, name_column: str, name: str, column_mappings: list[ColumnMapping]) -> bool:
         """
         Generate triples from a spreadsheet row
 
@@ -642,13 +694,29 @@ class ExcelVocabularyParser:
             # approach allows a user to leave all columns blank in the 
             # second and subsequent references.
             if name_column == "name":
-                logging.error(
-                    f"ERROR: Multiple entries for class {target_class.curie} with the same name: {name} - ignoring all but first"
+                self.logger.log(
+                    logging.ERROR, 
+                    "ExcelVocabularyParser", 
+                    IssueMessage.SHEET_CONTAINS_DUPLICATE_NAMES,
+                    EXCEL_PATH=excel_path, 
+                    EXCEL_SHEET=sheet, 
+                    EXCEL_ROW=str(index + 2),
+                    EXCEL_COLUMN=name_column,
+                    APPN_CLASS=target_class.curie,
+                    NAME=name,
                 )
                 return False
             else:
-                logging.info(
-                    f"Multiple rows define class {target_class.curie} with the same name: {name} - ignoring all but first"
+                self.logger.log(
+                    logging.INFO, 
+                    "ExcelVocabularyParser", 
+                    IssueMessage.SHEET_CONTAINS_DUPLICATE_EMBEDDED_NAMES,
+                    EXCEL_PATH=excel_path, 
+                    EXCEL_SHEET=sheet, 
+                    EXCEL_ROW=str(index + 2),
+                    EXCEL_COLUMN=name_column,
+                    APPN_CLASS=target_class.curie,
+                    NAME=name,
                 )
                 return True
 
@@ -721,15 +789,26 @@ class ExcelVocabularyParser:
             for desired_property, rule in completion_rules.items():
                 if desired_property not in existing_properties:
                     if "type" not in rule:
-                        logging.error(f"Cannot execute rule {rule} - no rule type specified")
+                        self.logger.log(logging.ERROR, "Configuration", IssueMessage.COMPLETION_RULE_MISSING_TYPE,
+                            CONFIGURATION_FILE = self.configuration.configuration_filepath,
+                            CONFIGURATION_KEY = ConfigurationKey.COMPLETION_RULES,
+                            APPN_SCHEMA_CLASS = target_class.curie,
+                            TARGET_PROPERTY = desired_property,
+                        )
                         success = False
-                    elif rule["type"] == "reflexive":
+                    elif rule["type"] == CompletionRuleType.REFLEXIVE.value:
                         # Rules with the type "reflexive" indicate that the term should have
                         # a reflexive property linking it to itself.
                         logging.debug(f"Completing term {term} with property {desired_property} using rule {rule}")
                         self.add_triple(term, URIRef(desired_property), term)
                     else:
-                        logging.error(f"Cannot execute rule {rule} - unknown rule type {rule['type']}")
+                        self.logger.log(logging.ERROR, "Configuration", IssueMessage.COMPLETION_RULE_UNKNOWN_TYPE,
+                            CONFIGURATION_FILE = self.configuration.configuration_filepath,
+                            CONFIGURATION_KEY = ConfigurationKey.COMPLETION_RULES,
+                            APPN_SCHEMA_CLASS = target_class.curie,
+                            TARGET_PROPERTY = desired_property,
+                            COMPLETION_RULE_TYPE = rule["type"]
+                        )
                         success = False
 
         return success 
@@ -783,11 +862,15 @@ class ExcelVocabularyParser:
         if main_class in self.concept_schemes:
             return self.concept_schemes[main_class]
 
-        concept_scheme_term = self.get_iri("ConceptScheme", main_class)
+        if str(main_class) in self.appn_classes_by_iri:
+            class_name = self.appn_classes_by_iri[str(main_class)].name
+        else:
+            class_name = str(main_class)
+        concept_scheme_term = self.get_iri("ConceptScheme", class_name)
         self.insert_instance(skos_concept_scheme, concept_scheme_term)
-        self.add_triple(concept_scheme_term, schema_name, Literal(main_class))
+        self.add_triple(concept_scheme_term, schema_name, Literal(class_name))
         self.add_triple(concept_scheme_term, schema_description, Literal(
-            f"Concept scheme including instances of the {main_class} class from the APPN {self.node.id} node"
+            f"Concept scheme including instances of the {class_name} class from the APPN {self.node.id} node"
         ))
 
         self.concept_schemes[main_class] = concept_scheme_term
@@ -941,8 +1024,13 @@ class ExcelVocabularyParser:
             else:
                 # If the object does not exist, report and error and remember
                 # the triple
-                logging.error(
-                    f"ERROR: {str(required_property.subject)} references unknown term: {str(required_property.object)}"
+                self.logger.log(
+                    logging.ERROR, 
+                    "ExcelVocabularyParser", 
+                    IssueMessage.MISSING_REFERENCE,
+                    SUBJECT_TERM = str(required_property.subject),
+                    PROPERTY_TERM = str(required_property.property),
+                    MISSING_OBJECT_TERM = str(required_property.object),
                 )
                 remaining.append(required_property)
                 success = False

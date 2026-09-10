@@ -14,9 +14,33 @@
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
 
+import logging
+from enum import StrEnum
 from typing import NamedTuple, Optional
 from rdflib import URIRef
 
+### Issue #####################################################################
+
+class Issue(NamedTuple):
+    """
+    Simple class for notifiable issues
+
+    :param level: Log level for issue (from `logging`)
+    :param module: String name for module logging issue
+    :param message: Error message
+    :param properties: Dictionary of additional information
+    """
+    level: int 
+    module: str
+    message: str
+    properties: dict[str: str]
+
+    def __str__(self) -> str:
+        if len(self.properties) > 0:
+            property_string = f"(Properties: {'; '.join([f'{k}: {v}' for k, v in self.properties.items()])})"
+        else:
+            property_string = ""
+        return f"{logging.getLevelName(self.level)} - {self.module}: {self.message}{property_string}"
 
 ### Organisation ##############################################################
 
@@ -117,3 +141,13 @@ class ColumnMapping(NamedTuple):
     range_class: Optional[Term]
     primary_identifier: bool
     is_local_property: bool
+
+
+### CompletionRuleType ########################################################
+
+class CompletionRuleType(StrEnum):
+    """
+    Simple class for permitted choices for `type` in a `CompletionRule.
+    """
+    REFLEXIVE = "reflexive"
+

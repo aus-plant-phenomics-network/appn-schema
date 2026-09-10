@@ -22,6 +22,7 @@ import warnings
 from pathlib import Path
 from typing import Optional, Any
 from appn_types import Term, ColumnMapping
+from appn_logger import IssueMessage
 from appn_dictionary import Dictionary
 from appn_parser import ExcelVocabularyParser
 from appn_configuration import (
@@ -187,6 +188,19 @@ if __name__ == "__main__":
                     for p in local_properties:
                         print(f"  {p.iri}")
                     print()
+
+            for message, count in configuration.get_logger().get_issue_counts_by_message().items():
+                print(f"ISSUE: {message.value if isinstance(message, IssueMessage) else message}\n")
+                if isinstance(message, IssueMessage) and message.suggested_fix is not None:
+                    print(f"  SUGGESTED FIX: {message.suggested_fix}\n")
+                print(f"  OCCURRENCES: {count}\n")
+                index = 1
+                issue_messages = configuration.get_logger().list_issues(message=message)
+                key_length = max([len(k) for issue in issue_messages for k, v in issue.properties.items()])
+                for issue in issue_messages:
+                    print(f"    {index:>3d} : {'\n          '.join([f'{k:{key_length}s} : {str(v)}' for k, v in issue.properties.items()])}\n")
+                    index += 1
+                print()
 
             parser.get_graph().serialize(
                 destination=f"./vocabulary/{node}/vocabulary.ttl"

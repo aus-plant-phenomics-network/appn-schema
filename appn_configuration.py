@@ -14,9 +14,11 @@
 import yaml
 import os
 import logging
+from enum import StrEnum
 from pathlib import Path
 from typing import Optional
 from appn_types import NamespaceDefinition, Organisation
+from appn_logger import IssueLogger
 from rdflib import URIRef
 
 # Default values for finding YAML configuration file
@@ -28,17 +30,20 @@ APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY = "APPN_CONFIGURATION_FOLDER"
 APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY = "APPN_CONFIGURATION_NAME"
 
 # Keys for elements expected in YAML configuration file
-CONFIGURATION_KEY_NAMESPACE_PATHS = "namespace_paths"
-CONFIGURATION_KEY_VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
-CONFIGURATION_KEY_EXPLICIT_CLASSES = "explicit_classes"
-CONFIGURATION_KEY_EXCLUDED_CLASSES = "excluded_classes"
-CONFIGURATION_KEY_SHEET_ALIASES = "sheet_aliases"
-CONFIGURATION_KEY_COLUMN_ALIASES = "column_aliases"
-CONFIGURATION_KEY_COMPLETION_RULES = "completion_rules"
-CONFIGURATION_KEY_CLASS_ABBREVIATIONS = "class_abbreviations"
-CONFIGURATION_KEY_PROPERTY_EXPANSIONS = "property_expansions"
-CONFIGURATION_KEY_EMBEDDED_CLASSES = "embedded_classes"
-CONFIGURATION_KEY_ORGANISATIONS = "organisations"
+
+class ConfigurationKey(StrEnum):
+    NAMESPACE_PATHS = "namespace_paths"
+    VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
+    EXPLICIT_CLASSES = "explicit_classes"
+    EXCLUDED_CLASSES = "excluded_classes"
+    SHEET_ALIASES = "sheet_aliases"
+    COLUMN_ALIASES = "column_aliases"
+    COMPLETION_RULES = "completion_rules"
+    CLASS_ABBREVIATIONS = "class_abbreviations"
+    PROPERTY_EXPANSIONS = "property_expansions"
+    EMBEDDED_CLASSES = "embedded_classes"
+    DOMAIN_RANGE_PROPERTIES = "domain_range_properties"
+    ORGANISATIONS = "organisations"
 
 # Recognised values for namespaces in explicit classes element
 EXPLICIT_CLASSES_ALL = "all"
@@ -109,6 +114,14 @@ DEFAULT_PREFIXES = {
     WSU_VOCABULARY: "wsu",
 }
 
+class ValidationType(StrEnum):
+    LIST = "list[str]"
+    DICT = "dict[str,str]"
+    DICT_OF_LIST = "dict[str, list[str]]"
+    DICT_OF_DICT = "dict[str, dict[str,str]]"
+    DICT_OF_DICT_OF_DICT = "dict[str, dict[str, dict[str,str]]]"
+    DICT_OF_STRING_OR_LIST = "dict[str, str|list[str]]"
+
 ### Configuration #############################################################
 
 class Configuration:
@@ -122,8 +135,7 @@ class Configuration:
     Access methods always receive a copy of any lists or dictionaries 
     returned so the configuration is not affected by any changes.
 
-    NOTE: The access methods could be hardened to check the types and 
-    contents of the YAML data.
+    Data from YAML is validated to ensure it fits the expected structure.
     """
 
     def __init__(
@@ -137,7 +149,6 @@ class Configuration:
         :param configuration_folder: Folder location containing YAML file
         :param configuration_name: Name of YAML file (with or without yaml extension)
         """
-
         # The severity of errors reported depends on whether an explicit location was
         # offered or defaults used.
         defaults_overridden = (
@@ -147,6 +158,13 @@ class Configuration:
         # Safe defaults if nothing is read
         self.namespace_definitions = None
         self.configuration = {}
+
+        # Dictionary to store cached validated content for configuration elements
+        self.cache = {}
+
+        # Logger to store messages of importance to data administrators. Anything
+        # logged to the logger is also logged via Python logging.
+        self.logger = IssueLogger()
 
         # Use supplied folder or folder from environment or default
         if configuration_folder is None:
@@ -211,6 +229,110 @@ class Configuration:
 
         return
 
+    def fetch(
+        self, 
+        key: ConfigurationKey, 
+        validation_type: ValidationType, 
+        default_value: Optional[Any] = None
+        ) -> Optional[list[str]|dict[str,str|list[str]|dict[str,str|list[str]|dict[str,str]]]]:
+        """
+        Safe and efficient access to YAML configuration elements
+
+        Checks presence and structure of YAML metadata for known keys
+        (instances of `ConfigurationKey`).
+
+        Structure is validated by checking the types of elements and
+        confirming they match a requested nesting of dictionaries, lists
+        and strings. Since YAML keys are always strings, the types of
+        dictionary keys are not checked.
+
+        Maintains cache of validated metadata elements.
+
+        Callers always receive a copy of the validated version, so the 
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :param validation_type: `ValidationType`
+        :return: Dictionary of `NameDefinition` objects keyed by the 
+            namespace string
+        """
+        
+        # All results are cached for quick return on subseqent calls
+        if key in self.cache:
+            return self.cache[key]
+
+        # Verify that the YAML content matches the expected structure.
+        # All keys in YAML are strings, so the types of any dictionary 
+        # keys do not need to be validated.
+        valid = False
+        value = None
+        if key.value in self.configuration:
+            if validation_type == ValidationType.LIST:
+                value: list[str] = self.configuration[key.value]
+                valid = (
+                    isinstance(value, list) 
+                    and all([isinstance(s, str) for s in value])
+                )
+            elif validation_type == ValidationType.DICT:
+                value: dict[str, str] = self.configuration[key.value]
+                valid = (
+                    isinstance(value, dict) 
+                    and all([isinstance(s, str) for s in value.values()])
+                )
+            elif validation_type == ValidationType.DICT_OF_LIST:
+                value: dict[str, list[str]] = self.configuration[key.value]
+                valid = (
+                    isinstance(value, dict) 
+                    and all([isinstance(lst, list) for lst in value.values()])
+                    and all([isinstance(s, str) for lst in value.values() for s in lst])
+                )
+            elif validation_type == ValidationType.DICT_OF_DICT:
+                value: dict[str, dict[str, str]] = self.configuration[key.value]
+                valid = (
+                    isinstance(value, dict) 
+                    and all([isinstance(dct, dict) for dct in value.values()])
+                    and all([isinstance(s, str) for dct in value.values() for s in dct.values()])
+                )
+            elif validation_type == ValidationType.DICT_OF_DICT_OF_DICT:
+                value: dict[str, dict[str, str]] = self.configuration[key.value]
+                valid = (
+                    isinstance(value, dict) 
+                    and all([isinstance(s, dict) for s in value.values()])
+                    and all([isinstance(dct2, dict) for dct in value.values() for dct2 in dct.values()])
+                    and all([isinstance(s, str) for dct in value.values() for dct2 in dct.values() for s in dct2.values()])
+                )
+            elif validation_type == ValidationType.DICT_OF_STRING_OR_LIST:
+                value: dict[str, str|list[str]] = self.configuration[key.value]
+                valid = (
+                    isinstance(value, dict) 
+                    and all([(isinstance(s, str) or isinstance(s, list)) for s in value.values()])
+                    and all([isinstance(s, str) for lst in value.values() if isinstance(lst, list) for s in lst])
+                )
+        if not valid:
+            self.logger.log(
+                logging.ERROR, 
+                "Configuration", 
+                "Configuration contains data that does not match the expected structure - it will be ignored", 
+                CONFIGURATION_FILE = self.configuration_filepath,
+                CONFIGURATION_KEY = key.value,
+                EXPECTED_TYPE = validation_type.value,
+                SUPPLIED_VALUE = str(value)
+            )
+            value = default_value
+
+        self.cache[key.value] = value
+        logging.debug(f"Cached value for configuration key {key.value}")
+ 
+        return value.copy()
+
+    def get_logger(self) -> IssueLogger:
+        """
+        Access the `IssueLogger` for the current context
+
+        :return: `IssueLogger` instance
+        """
+        return self.logger
+
     def get_namespace_definitions(self) -> dict[str, NamespaceDefinition]:
         """
         Return `NamespaceDefinition`s from configuration
@@ -226,29 +348,20 @@ class Configuration:
         :return: Dictionary of `NameDefinition` objects keyed by the 
             namespace string
         """
-        # Cache the definitions since these are built from configuration
-        # information combined with defaults where necessary.
-        if self.namespace_definitions is not None:
-            return self.namespace_definitions.copy()
-
-        # Find any configured namespace paths (locations for schema assets).
-        # Assets without paths will be only be loadable by using the namespace 
-        # as a URL.
-        
-        if CONFIGURATION_KEY_NAMESPACE_PATHS in self.configuration and isinstance(
-            self.configuration[CONFIGURATION_KEY_NAMESPACE_PATHS], dict
-        ):
-            paths = self.configuration[CONFIGURATION_KEY_NAMESPACE_PATHS]
+        # Definitions are held in a property to minimise computation.
+        if self.namespace_definitions is None:
+            # Find any configured namespace paths (locations for schema assets).
+            # Assets without paths will be only be loadable by using the namespace 
+            # as a URL.
+            paths = self.fetch(ConfigurationKey.NAMESPACE_PATHS, ValidationType.DICT, {})        
             logging.debug(f"Imported namespace paths: {paths}")
-        else:
-            paths = {}
 
-        # Build the namespace definitions for all default namespaces, taking
-        # into account the configured namespace paths.
-        self.namespace_definitions = {
-            ns: NamespaceDefinition(ns, pre, paths[ns] if ns in paths else ns)
-            for ns, pre in DEFAULT_PREFIXES.items()
-        }
+            # Build the namespace definitions for all default namespaces, taking
+            # into account the configured namespace paths.
+            self.namespace_definitions = {
+                ns: NamespaceDefinition(ns, pre, paths[ns] if ns in paths else ns)
+                for ns, pre in DEFAULT_PREFIXES.items()
+            }
 
         return self.namespace_definitions.copy()
 
@@ -269,11 +382,8 @@ class Configuration:
 
         :return: List of namespace strings
         """
-        if CONFIGURATION_KEY_VOCABULARY_COLUMN_NAMESPACES in self.configuration:
-            return self.configuration[
-                CONFIGURATION_KEY_VOCABULARY_COLUMN_NAMESPACES
-            ].copy()
-        return []
+        return self.fetch(ConfigurationKey.VOCABULARY_COLUMN_NAMESPACES,
+                        ValidationType.LIST, [])
 
     def get_explicit_classes(self) -> dict[str, str | list[str]]:
         """
@@ -302,82 +412,79 @@ class Configuration:
 
         :return: List of namespace strings
         """
-        if CONFIGURATION_KEY_EXPLICIT_CLASSES in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_EXPLICIT_CLASSES].copy()
-        return {}
+        return self.fetch(ConfigurationKey.EXPLICIT_CLASSES,
+                        ValidationType.DICT_OF_STRING_OR_LIST, {})
 
     def get_excluded_classes(self) -> list[str]:
-        if CONFIGURATION_KEY_EXCLUDED_CLASSES in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_EXCLUDED_CLASSES].copy()
-        return []
+        return self.fetch(ConfigurationKey.EXCLUDED_CLASSES,
+                        ValidationType.LIST, [])
 
     def get_sheet_aliases(self) -> dict[str, str]:
-        if CONFIGURATION_KEY_SHEET_ALIASES in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_SHEET_ALIASES].copy()
-        return {}
+        return self.fetch(ConfigurationKey.SHEET_ALIASES,
+                        ValidationType.DICT, {})
 
     def get_column_aliases(self) -> dict[str, str]:
-        if CONFIGURATION_KEY_COLUMN_ALIASES in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_COLUMN_ALIASES].copy()
-        return {}
+        return self.fetch(ConfigurationKey.COLUMN_ALIASES,
+                        ValidationType.DICT, {})
 
     def get_completion_rules(self) -> dict[str, dict[str, dict[str, str]]]:
-        if CONFIGURATION_KEY_COMPLETION_RULES in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_COMPLETION_RULES].copy()
-        return {}
+        return self.fetch(ConfigurationKey.COMPLETION_RULES,
+                        ValidationType.DICT_OF_DICT_OF_DICT, {})
 
     def get_completion_rules(self, class_name: str) -> dict[str, dict[str, str]]:
-        if CONFIGURATION_KEY_COMPLETION_RULES in self.configuration and class_name in self.configuration[CONFIGURATION_KEY_COMPLETION_RULES]:
-            return self.configuration[CONFIGURATION_KEY_COMPLETION_RULES][class_name].copy()
+        rules = self.fetch(ConfigurationKey.COMPLETION_RULES,
+                        ValidationType.DICT_OF_DICT_OF_DICT, {})
+        if class_name in rules:
+            return rules[class_name]
         return {}
 
     def get_class_abbreviations(self) -> dict[str, str]:
-        if CONFIGURATION_KEY_CLASS_ABBREVIATIONS in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_CLASS_ABBREVIATIONS].copy()
-        return {}
+        return self.fetch(ConfigurationKey.CLASS_ABBREVIATIONS,
+                        ValidationType.DICT, {})
 
     def get_property_expansions(self) -> dict[URIRef, list[URIRef]]:
+        property_expansions = self.fetch(ConfigurationKey.PROPERTY_EXPANSIONS,
+                        ValidationType.DICT_OF_LIST, {})
         expansions = {}
-        if CONFIGURATION_KEY_PROPERTY_EXPANSIONS in self.configuration:
-            for k, v in self.configuration[
-                CONFIGURATION_KEY_PROPERTY_EXPANSIONS
-            ].items():
-                expansions[URIRef(k)] = [URIRef(e) for e in v]
+        for k, v in property_expansions.items():
+            expansions[URIRef(k)] = [URIRef(e) for e in v]
         return expansions
 
     def get_embedded_classes(self) -> dict[str, list[str]]:
-        if CONFIGURATION_KEY_EMBEDDED_CLASSES in self.configuration:
-            return self.configuration[CONFIGURATION_KEY_EMBEDDED_CLASSES].copy()
-        return {}
+        return self.fetch(ConfigurationKey.EMBEDDED_CLASSES,
+                        ValidationType.DICT_OF_LIST, {})
+
+    def get_domain_range_properties(self) -> dict[str, dict[str, str]]:
+        return self.fetch(ConfigurationKey.DOMAIN_RANGE_PROPERTIES,
+                        ValidationType.DICT_OF_DICT, {})
 
     def get_organisations(self) -> dict[str, Organisation]:
         if self.organisations is None:
             self.organisations = {}
-            if CONFIGURATION_KEY_ORGANISATIONS in self.configuration:
-                for id, properties in self.configuration[
-                    CONFIGURATION_KEY_ORGANISATIONS
-                ].items():
-                    name = str(
-                        properties[ORGANISATION_SUBKEY_NAME]
-                        if ORGANISATION_SUBKEY_NAME in properties
-                        else None
-                    )
-                    ror = str(
-                        properties[ORGANISATION_SUBKEY_ROR]
-                        if ORGANISATION_SUBKEY_ROR in properties
-                        else None
-                    )
-                    namespace = str(
-                        properties[ORGANISATION_SUBKEY_NAMESPACE]
-                        if ORGANISATION_SUBKEY_NAMESPACE in properties
-                        else f"{APPN_VOCABULARY_ROOT}{id}/"
-                    )
-                    prefix = str(
-                        properties[ORGANISATION_SUBKEY_PREFIX]
-                        if ORGANISATION_SUBKEY_PREFIX in properties
-                        else (DEFAULT_CENTRAL_VOCABULARY_PREFIX if id == CENTRAL_ORGANISATION else id.lower())
-                    )
-                    self.organisations[id] = Organisation(id, name, ror, namespace, prefix)
+            organisations = self.fetch(ConfigurationKey.ORGANISATIONS,
+                        ValidationType.DICT_OF_DICT, {})
+            for id, properties in organisations.items():
+                name = str(
+                    properties[ORGANISATION_SUBKEY_NAME]
+                    if ORGANISATION_SUBKEY_NAME in properties
+                    else None
+                )
+                ror = str(
+                    properties[ORGANISATION_SUBKEY_ROR]
+                    if ORGANISATION_SUBKEY_ROR in properties
+                    else None
+                )
+                namespace = str(
+                    properties[ORGANISATION_SUBKEY_NAMESPACE]
+                    if ORGANISATION_SUBKEY_NAMESPACE in properties
+                    else f"{APPN_VOCABULARY_ROOT}{id}/"
+                )
+                prefix = str(
+                    properties[ORGANISATION_SUBKEY_PREFIX]
+                    if ORGANISATION_SUBKEY_PREFIX in properties
+                    else (DEFAULT_CENTRAL_VOCABULARY_PREFIX if id == CENTRAL_ORGANISATION else id.lower())
+                )
+                self.organisations[id] = Organisation(id, name, ror, namespace, prefix)
             if CENTRAL_ORGANISATION not in self.organisations:
                 self.organisations[CENTRAL_ORGANISATION] = Organisation(CENTRAL_ORGANISATION, "Australian Plant Phenomics Network", "https://ror.org/02zj7b759", APPN_VOCABULARY, DEFAULT_PREFIXES[APPN_VOCABULARY])
         return self.organisations.copy()

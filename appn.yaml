@@ -81,6 +81,8 @@ completion_rules:
   "ObservedVariable":
     "https://schema.plantphenomics.org.au/hasTrait":
       "type": "reflexive"     
+    "https://schema.plantphenomics.org.au/hasMethod":
+      "type": "reflexiv"     
 
 # Abbreviated names for classes for use in composing IRIs
 class_abbreviations:
@@ -107,6 +109,15 @@ property_expansions:
 embedded_classes:
   "ObservedVariable":
     - "Method"
+
+# Properties specified for use when a property is required between an
+# instance of one (domain) class and an instance of a referenced (range) 
+# class. If no domain-range property is specified for a pair of classes,
+# known properties will be checked. If only one matches the combination,
+# it will be used. Otherwise, an error will be logged.
+domain_range_properties:
+  "ObservedVariable":
+    "Method": "https://schema.plantphenomics.org.au/hasMethod"
 
 # Properties associated with APPN and its nodes
 organisations:
