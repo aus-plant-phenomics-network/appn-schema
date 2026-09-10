@@ -21,6 +21,7 @@ from rdflib import URIRef
 
 ### Issue #####################################################################
 
+
 class Issue(NamedTuple):
     """
     Simple class for notifiable issues
@@ -30,10 +31,11 @@ class Issue(NamedTuple):
     :param message: Error message
     :param properties: Dictionary of additional information
     """
-    level: int 
+
+    level: int
     module: str
     message: str
-    properties: dict[str: str]
+    properties: dict[str:str]
 
     def __str__(self) -> str:
         if len(self.properties) > 0:
@@ -42,7 +44,9 @@ class Issue(NamedTuple):
             property_string = ""
         return f"{logging.getLevelName(self.level)} - {self.module}: {self.message}{property_string}"
 
+
 ### Organisation ##############################################################
+
 
 class Organisation(NamedTuple):
     """
@@ -54,13 +58,16 @@ class Organisation(NamedTuple):
     :param namespace: Namespace for organisation vocabulary
     :param prefix: Prefix to be used for namespace in CURIEs
     """
+
     id: str
     name: str
     ror: str
     namespace: str
     prefix: str
 
+
 ### NamespaceDefinition #######################################################
+
 
 class NamespaceDefinition(NamedTuple):
     """
@@ -70,12 +77,14 @@ class NamespaceDefinition(NamedTuple):
     :param prefix: Prefix to be used for namespace
     :param path: Path to access machine-readable RDF for namespace terms
     """
+
     ns: str
     prefix: str
     path: str
 
 
 ### Term ######################################################################
+
 
 class Term(NamedTuple):
     """
@@ -87,6 +96,7 @@ class Term(NamedTuple):
     :param prefix: String representation of the prefix used for the namespace
     :param name: String representation of the unqualified name from the IRI
     """
+
     iri: str
     curie: str
     ns: str
@@ -96,6 +106,7 @@ class Term(NamedTuple):
 
 ### Triple ####################################################################
 
+
 class Triple(NamedTuple):
     """
     Simple class to represent a triple of strings
@@ -104,12 +115,14 @@ class Triple(NamedTuple):
     :param property: String for the property of a triple
     :param object: String for the object of a triple
     """
+
     subject: str
     property: str
     object: str
 
 
 ### URIRefTriple ##############################################################
+
 
 class URIRefTriple(NamedTuple):
     """
@@ -119,12 +132,14 @@ class URIRefTriple(NamedTuple):
     :param property: `URIRef` for the property of a triple
     :param object: `URIRef` for the object of a triple
     """
+
     subject: URIRef
     property: URIRef
     object: URIRef
 
 
 ### ColumnMapping##############################################################
+
 
 class ColumnMapping(NamedTuple):
     """
@@ -136,6 +151,7 @@ class ColumnMapping(NamedTuple):
     :param primary_identifier: True if the `property` matches `schema:name` (used to create the IRI as the unique identifier for an instance)
     :param is_local_property: True if the `property` is to be defined in the current vocabulary namespace
     """
+
     column: str
     property: URIRef
     range_class: Optional[Term]
@@ -145,9 +161,10 @@ class ColumnMapping(NamedTuple):
 
 ### CompletionRuleType ########################################################
 
+
 class CompletionRuleType(StrEnum):
     """
     Simple class for permitted choices for `type` in a `CompletionRule.
     """
-    REFLEXIVE = "reflexive"
 
+    REFLEXIVE = "reflexive"
