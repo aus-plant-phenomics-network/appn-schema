@@ -17,13 +17,23 @@ import textwrap
 from typing import Optional
 from appn_types import Issue, CompletionRuleType
 
+### IssueMessage ##############################################################
+
 
 class IssueMessage(str, Enum):
+        """
+        Class to hold a message describing an issue and an optional string 
+        suggesting a fix.
+        """
     suggested_fix: str
 
     def __new__(
         cls, message: str, suggested_fix: Optional[str] = None
     ) -> "IssueMessage":
+        """
+        Create the `IssueMessage` as a special string with an extra property 
+        for the suggested fix.
+        """
         obj = str.__new__(cls, message)
         obj._value_ = message
         obj.suggested_fix = suggested_fix
@@ -91,11 +101,15 @@ class IssueLogger:
         self, level: int, module: str, message: str | IssueMessage, **properties: any
     ) -> None:
         """
-        Save issue in list and log via logging
+        Save issue in list and log via logging.
+
+        The message can be provided as an IssueMessage, which can include a 
+        suggested fix, or as a plain text string. Keyword arguments are shared
+        unchanged as a dictionary.
 
         :param level: Log level for `Issue`
         :param module: String identifier for module logging issue
-        :param message: Text of message for issue
+        :param message: `IssueMessage` or text of message for issue
         :param properties: Dictionary of additional information to be logged
         """
         if isinstance(message, IssueMessage):

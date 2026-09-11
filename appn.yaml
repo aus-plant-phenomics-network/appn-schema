@@ -118,8 +118,8 @@ embedded_classes:
 # known properties will be checked. If only one matches the combination,
 # it will be used. Otherwise, an error will be logged.
 domain_range_properties:
-  "ObservedVariable":
-    "Method": "https://schema.plantphenomics.org.au/hasMethod"
+  "GrowthFacility":
+    "Sensor": "https://schema.plantphenomics.org.au/hosts"
 
 # Classes specified to ensure that property values are mapped to IRIs
 # rather than treated as literal values.

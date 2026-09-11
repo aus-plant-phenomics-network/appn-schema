@@ -420,6 +420,12 @@ appn:level a rdf:Property ;
   rdfs:comment "Specifies the level for an XYZLocation in a three-dimensional configuration." ;
   schema:domainIncludes appn:XYZLocation .
 
+appn:hosts a rdf:Property ;
+  schema:name "hosts" ; 
+  rdfs:comment "Identifies a Sensor or Actuator hosted by a Platform." ;
+  schema:domainIncludes appn:Platform ;
+  schema:rangeIncludes appn:Sensor,appn:Actuator .
+
 appn:deployedSystem a rdf:Property ;
   schema:name "deployedSystem" ; 
   rdfs:comment "Identifies a Sensor or Actuator deployed on a Platform." ;

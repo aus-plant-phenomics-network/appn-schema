@@ -179,7 +179,9 @@ if __name__ == "__main__":
                     report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
 
                 report.write("\n")
-                report.write(configuration.get_logger().format_issues())
+                issues = configuration.get_logger().format_issues()
+                report.write(issues)
+                print(issues)
 
             parser.get_graph().serialize(
                 destination=f"./vocabulary/{node}/{node}_vocabulary.ttl"
