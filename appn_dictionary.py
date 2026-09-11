@@ -199,6 +199,7 @@ class Dictionary:
         """
         Find the namespace to which an IRI belongs
 
+        :param iri: IRI for request
         :return: Namespace string if the IRI matches one of the known 
             namespaces, otherwise None
         """
@@ -224,18 +225,30 @@ class Dictionary:
         """
         return [Triple(s, p, o) for (s, p, o) in self.graph]
 
-    def list_unique_subjects(self, namespace: Optional[str] = None) -> list[Term]:
+    def list_unique_subjects(
+        self, 
+        namespace: Optional[str] = None) -> list[Term]:
         """
         Return list of all IRIs used as subjects for triples
 
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param namespace: Optional namespace for filtering results
         :return: List of `Terms` for subject IRIs
         """
         return self.list_unique_terms_by_position(TriplePosition.SUBJECT, namespace)
 
-    def list_unique_properties(self, namespace: Optional[str] = None) -> list[Term]:
+    def list_unique_properties(
+        self, 
+        namespace: Optional[str] = None) -> list[Term]:
         """
         Return list of all IRIs used as properties for triples
 
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param namespace: Optional namespace for filtering results
         :return: List of `Terms` for property IRIs
         """
         return self.list_unique_terms_by_position(TriplePosition.PROPERTY, namespace)
@@ -244,14 +257,27 @@ class Dictionary:
         """
         Return list of all IRIs used as objects for triples
 
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param namespace: Optional namespace for filtering results
         :return: List of `Terms` for object IRIs
         """
         return self.list_unique_terms_by_position(TriplePosition.OBJECT, namespace)
 
-    def list_unique_terms_by_position(self, position: TriplePosition, namespace: Optional[str] = None) -> list[Term]:
+    def list_unique_terms_by_position(
+        self, 
+        position: TriplePosition, 
+        namespace: Optional[str] = None) -> list[Term]:
         """
         Return list of all IRIs from a position in a triple
 
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param position: `TriplePosition` specifying which item in triple is 
+            targeted
+        :param namespace: Optional namespace for filtering results
         :return: List of `Terms` for IRIs in specified position
         """
         if namespace is None:
@@ -265,6 +291,7 @@ class Dictionary:
         """
         Return list of all `Triple`s with a given term as subject
 
+        :param subject: String IRI or `Term`
         :return: List of `Triple`s with given subject
         """
         subject = self.get_iri(subject)
@@ -281,6 +308,7 @@ class Dictionary:
         """
         Return list of all `Triple`s with a given term as object
 
+        :param object_: String IRI or `Term`
         :return: List of `Triple`s with given object
         """
         object_ = self.get_iri(object_)
@@ -297,6 +325,7 @@ class Dictionary:
         """
         Return list of all `Triple`s with a given property term
 
+        :param property_: String IRI or `Term`
         :return: List of `Triple`s with given property term
         """
         property_ = self.get_iri(property_)
@@ -311,36 +340,38 @@ class Dictionary:
 
     def count_triples_by_subject(self) -> dict[str,int]:
         """
-        Return count of Triple`s with a given term as subject
+        Return count of Triple`s  for every term usedm as subject
 
-        :return: Count of matching `Triple`s
+        :return: Counts of matching `Triple`s per term
         """
         return self.count_triples_by_term(TriplePosition.SUBJECT)
 
     def count_triples_by_property(self) -> dict[str,int]:
         """
-        Return count of Triple`s with a given term as property
+        Return count of Triple`s for every term used as property
 
-        :return: Count of matching `Triple`s
+        :return: Counts of matching `Triple`s per term
         """
         return self.count_triples_by_term(TriplePosition.PROPERTY)
 
     def count_triples_by_object(self) -> dict[str,int]:
         """
-        Return count of Triple`s with a given term as object
+        Return count of Triple`s for every term used as object
 
-        :return: Count of matching `Triple`s
+        :return: Counts of matching `Triple`s per term
         """
         return self.count_triples_by_term(TriplePosition.OBJECT)
 
     def count_triples_by_term(self, position: TriplePosition) -> dict[str,int]:
         """
-        Return count of Triple`s with a given term in a specified position
+        Return counts of Triple`s for every term in a specified position
 
-        :return: Count of matching `Triple`s
+        :param position: `TriplePosition` specifying which item in triple is 
+            targeted
+        :return: Counts of matching `Triple`s per term
         """
         counts = {}
-        for term in [str(triple[position]) for triple in self.graph]:
+        for term in [str(triple[position.value]) for triple in self.graph]:
             if term.startswith("http"):
                 if term not in counts:
                     counts[term] = 1
@@ -353,8 +384,12 @@ class Dictionary:
         namespace: Optional[str] = None,
     ) -> list[Term]:
         """
-        List all classes (type rdfs:Class) in `Graph`
+        List all classes (type rdfs:Class) in `Graph`.
 
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param namespace: Optional namespace for filtering results
         :return: List of `Term`s for classes
         """
         return self.list_iris(
@@ -366,8 +401,12 @@ class Dictionary:
         namespace: Optional[str] = None,
     ) -> list[Term]:
         """
-        List all properties (type rdfs:Property) in `Graph`
+        List all properties (type rdfs:Property) in `Graph`.
 
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param namespace: Optional namespace for filtering results
         :return: List of `Term`s for properties
         """
         return self.list_iris(
@@ -379,6 +418,17 @@ class Dictionary:
         class_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all superclasses of a specified class (including the class
+        itself)
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `Term` for class
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for classes
+        """
         logging.debug(f"Finding all superclasses for class {class_iri}")
         return self.list_iris_transitive(
             class_iri,
@@ -392,6 +442,17 @@ class Dictionary:
         property_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all superproperties of a specified property (including the property
+        itself).
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param property_iri: String IRI or `Term` for property
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for properties
+        """
         logging.debug(f"Finding all superproperties for property {property_iri}")
         return self.list_iris_transitive(
             property_iri,
@@ -405,6 +466,16 @@ class Dictionary:
         class_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all known properties that include a specified class in their domain.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `Term` for class
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for properties
+        """
         class_iri = self.get_iri(class_iri)
         query_strings = [
             f"?q schema:domainIncludes <{class_.iri}>"
@@ -419,6 +490,16 @@ class Dictionary:
         class_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all known properties that include a specified class in their range.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `Term` for class
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for properties
+        """
         class_iri = self.get_iri(class_iri)
         query_strings = [
             f"?q schema:rangeIncludes <{class_.iri}>"
@@ -433,6 +514,17 @@ class Dictionary:
         property_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all known classes that are included in the domain of a specified
+        property.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param property_iri: String IRI or `Term` for property
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for classes
+        """
         property_iri = self.get_iri(property_iri)
         query_strings = [
             f"<{property_iri}> schema:domainIncludes ?q"
@@ -447,6 +539,17 @@ class Dictionary:
         property_iri: str|Term,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all known classes that are included in the range of a specified
+        property.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param property_iri: String IRI or `Term` for property
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for classes
+        """
         property_iri = self.get_iri(property_iri)
         query_strings = [
             f"<{property_iri}> schema:rangeIncludes ?q"
@@ -457,8 +560,20 @@ class Dictionary:
         )
 
     def list_instances(
-        self, class_iri: str|Term, namespace: Optional[str] = None
+        self, 
+        class_iri: str|Term, 
+        namespace: Optional[str] = None
     ) -> list[Term]:
+        """
+        List all known instances of the specified class.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `Term` for class
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for instances
+        """
         class_iri = self.get_iri(class_iri)
         return self.list_iris(
             [f"?q rdf:type <{class_iri}> ."],
@@ -473,6 +588,20 @@ class Dictionary:
         check_alternate_names: bool = False,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all known instances of the specified class with the specified
+        unqualified name.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `Term` for class
+        :param name: Unqualified name to find
+        :param check_alternate_names: True if alternateName properties should
+            also be checked
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for instances
+        """
         class_iri = self.get_iri(class_iri)
         cache_key = (
             f"instances-name|{class_iri}|{name}|{check_alternate_names}|{namespace}"
@@ -495,6 +624,19 @@ class Dictionary:
         check_alternate_names: bool = False,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all known properties with the specified unqualified name.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param property_iri: String IRI or `Term` for property
+        :param name: Unqualified name to find
+        :param check_alternate_names: True if alternateName properties should
+            also be checked
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for properties
+        """
         return self.list_instances_by_class_and_name(
             "rdf:Property",
             name,
@@ -503,8 +645,23 @@ class Dictionary:
         )
 
     def list_properties_by_domain_and_range(
-        self, domain_iri: str|Term, range_iri: str, namespace: Optional[str] = None
+        self, 
+        domain_iri: str|Term, 
+        range_iri: str, 
+        namespace: Optional[str] = None
     ) -> list[Term]:
+        """
+        List all known properties with the specified classes in their domain and
+        range (one of each)
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param domain_iri: String IRI or `Term` for domain
+        :param range_iri: String IRI for domain
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term`s for properties
+        """
         cache_key = f"domain-and-range|{domain_iri}|{range_iri}|{namespace}"
 
         if cache_key in self.cache:
@@ -520,6 +677,14 @@ class Dictionary:
         return properties
 
     def get_iri(self, curie: str|Term) -> str:
+        """
+        Get IRI for specified CURIE or Term
+
+        If the supplied value is an IRI, it is returned directly
+
+        :param curie: String CURIE or `Term`
+        :return: String IRI
+        """
         if isinstance(curie, Term):
             return curie.iri
 
@@ -549,6 +714,14 @@ class Dictionary:
         return iri
 
     def get_curie(self, iri: str|Term) -> str:
+        """
+        Get CURIE for specified IRI or Term
+
+        If the supplied value is an CURIE, it is returned directly
+
+        :param iri: String IRI or `Term`
+        :return: String IRI
+        """
         if isinstance(iri, Term):
             return iri.curie
 
@@ -568,6 +741,14 @@ class Dictionary:
         return curie
 
     def get_term(self, iri: str) -> Term:
+        """
+        Get `Term` for specified CURIE or IRI
+
+        If the supplied value is an IRI, it is returned directly
+
+        :param iri: String IRI or CURIE
+        :return: `Term` instance
+        """
         cache_key = f"term|{iri}"
 
         if cache_key in self.cache:
@@ -588,9 +769,22 @@ class Dictionary:
         return term
 
     def list_iris(
-        self, query_strings: list[str], cache_key: str, namespace: Optional[str] = None
+        self, 
+        query_strings: list[str], 
+        cache_key: str, 
+        namespace: Optional[str] = None
     ) -> list[Term]:
+        """
+        List IRIs matching any of a set of SPARQL query strings.
 
+        Results may optionally be filtered using a specified namespace.
+
+        :param query_strings: List of SPARQL query elements
+        :param cache_key: Key to store results in cache - this should be 
+            supplied by the initial caller and None during recursion
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term` instances
+        """
         logging.debug(
             f"Listing IRIs for query: {query_strings} (namespace: {namespace})"
         )
@@ -638,7 +832,24 @@ class Dictionary:
         matches: Optional[list[Term]] = None,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List IRIs connected to the subject IRI or CURIE by any number of
+        links of the specified property.
 
+        The `matches` parameter is internal for the recursion and should
+        not be set by a caller.
+
+        Results may optionally be filtered using a specified namespace.
+
+        :param subject: String IRI or CURIE for starting term
+        :param transitive_property: String IRI or CURIE for property to follow
+        :param cache_key: Key to store results in cache - this should be 
+            supplied by the initial caller and None during recursion
+        :param matches: IRIs for terms already matched - this should be 
+            None on the initial call and is set during recursion
+        :param namespace: Optional namespace for filtering results
+        :return: List of `Term` instances
+        """
         logging.debug(
             f"Listing IRIs for subject: {subject} with transitive property: {transitive_property}"
         )
@@ -678,21 +889,20 @@ class Dictionary:
 
         return matches
 
-    ### format_tuple_list ########################################################
-    #
-    # Return string containing (column-aligned) a specified number of elements 
-    # from each in a list of tuples.
-    #
-    #     tuples            : list of tuples
-    #     element_count     : number of tuple elements to display
-    #     max_rows          : optional cap on the number of tuples to process
-    #
     def format_tuple_list(
         self,
         tuples: list[Term] | list[Triple],
         element_count: Optional[int] = None,
         max_rows: Optional[int] = None,
     ) -> None:
+        """
+        Return string containing (column-aligned) a specified number of elements 
+        from each in a list of tuples.
+        
+        :param tuples: list of `Terms` or `Triples` (treated as tuples)
+        :param element_count: number of tuple elements to display
+        :param max_rows: optional cap on the number of tuples to process
+        """
         if max_rows is not None:
             tuples = tuples[0:max_rows]
         if element_count is None:
