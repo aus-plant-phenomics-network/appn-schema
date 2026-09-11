@@ -21,16 +21,17 @@ namespace_paths:
   "http://www.w3.org/2004/02/skos/core#": "./schema_assets/skos.rdf"
   "http://www.w3.org/ns/sosa/": "./schema_assets/sosa.ttl"
   "http://www.w3.org/ns/ssn/": "./schema_assets/ssn.ttl"
-  "https://id.plantphenomics.org.au/APPN/": "./vocabulary/APPN/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/ANU/": "./vocabulary/ANU/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/AU/": "./vocabulary/AU/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/CSU/": "./vocabulary/CSU/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/DPIRD/": "./vocabulary/DPIRD/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/LTU/": "./vocabulary/LTU/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/UQ/": "./vocabulary/UQ/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/USYD/": "./vocabulary/USYD/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/UWA/": "./vocabulary/UWA/vocabulary.ttl"
-  "https://id.plantphenomics.org.au/WSU/": "./vocabulary/WSU/vocabulary.ttl"
+  "http://rs.tdwg.org/dwc/terms/": "./schema_assets/dcw-terms.ttl"
+  "https://id.plantphenomics.org.au/APPN/": "./vocabulary/APPN/APPN_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/ANU/": "./vocabulary/ANU/ANU_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/AU/": "./vocabulary/AU/AU_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/CSU/": "./vocabulary/CSU/CSU_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/DPIRD/": "./vocabulary/DPIRD/DPIRD_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/LTU/": "./vocabulary/LTU/LTU_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/UQ/": "./vocabulary/UQ/UQ_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/USYD/": "./vocabulary/USYD/USYD_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/UWA/": "./vocabulary/UWA/UWA_vocabulary.ttl"
+  "https://id.plantphenomics.org.au/WSU/": "./vocabulary/WSU/WSU_vocabulary.ttl"
 
 # Namespaces that should be searched for properties used in vocabulary spreadsheets.
 # These are in descending order of priority - a property in a namespace listed 
@@ -88,7 +89,10 @@ class_abbreviations:
   "BiologicalUnit": "bu"
   "BiologicalUnitType": "but"
   "GrowthFacility": "gf"
+  "GrowthFacilityType": "gft"
   "ObservedVariable": "ov"
+  "PlatformType": "pt"
+  "SensorType": "st"
   "Deployment": "deploy"
   "ConceptScheme": "cs"
 
@@ -116,6 +120,12 @@ embedded_classes:
 domain_range_properties:
   "ObservedVariable":
     "Method": "https://schema.plantphenomics.org.au/hasMethod"
+
+# Classes specified to ensure that property values are mapped to IRIs
+# rather than treated as literal values.
+property_range_classes:
+  "GrowthFacility":
+    "hasGrowthFacilityType": "https://schema.plantphenomics.org.au/Scale"
 
 # Properties associated with APPN and its nodes
 organisations:

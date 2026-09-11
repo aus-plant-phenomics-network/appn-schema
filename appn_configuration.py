@@ -41,6 +41,7 @@ SCHEMA_SCHEMA = "https://schema.org/"
 BIO_SCHEMA = "https://bioschemas.org/terms/"
 CDI_SCHEMA = "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/"
 DC_SCHEMA = "http://purl.org/dc/terms/"
+DWC_SCHEMA = "http://rs.tdwg.org/dwc/terms/"
 PPEO_SCHEMA = "http://purl.org/ppeo/PPEO.owl#"
 PROV_SCHEMA = "http://www.w3.org/ns/prov#"
 RDF_SCHEMA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -68,6 +69,7 @@ DEFAULT_PREFIXES = {
     SCHEMA_SCHEMA: "schema",
     CDI_SCHEMA: "cdi",
     DC_SCHEMA: "dcterms",
+    DWC_SCHEMA: "dwc",
     PPEO_SCHEMA: "ppeo",
     RDF_SCHEMA: "rdf",
     RDFS_SCHEMA: "rdfs",
@@ -108,6 +110,7 @@ class ConfigurationKey(StrEnum):
     PROPERTY_EXPANSIONS = "property_expansions"
     EMBEDDED_CLASSES = "embedded_classes"
     DOMAIN_RANGE_PROPERTIES = "domain_range_properties"
+    PROPERTY_RANGE_CLASSES = "property_range_classes"
     ORGANISATIONS = "organisations"
 
 
@@ -657,6 +660,21 @@ class Configuration:
         """
         return self.fetch(
             ConfigurationKey.DOMAIN_RANGE_PROPERTIES, ValidationType.DICT_OF_DICT, {}
+        )
+
+    def get_property_range_classes(self) -> dict[str, dict[str, str]]:
+        """
+        Get classes to expect when processing specified properties for 
+        specific classes.
+
+        Property values will be converted to IRI references when the specified
+        domain class and property are used.
+
+        :return: Dictionary mapping domain class names to dictionaries mapping
+            property names to range class IRIs
+        """
+        return self.fetch(
+            ConfigurationKey.PROPERTY_RANGE_CLASSES, ValidationType.DICT_OF_DICT, {}
         )
 
     def get_organisations(self) -> dict[str, Organisation]:

@@ -72,6 +72,7 @@ class RequiredProperty(NamedTuple):
     :param row: Index of row in sheet
     :param term_name: Name from column in row
     """
+
     subject: URIRef
     property: URIRef
     object: URIRef
@@ -363,7 +364,7 @@ class ExcelVocabularyParser:
 
         # Read sheet with column headings as first row - this allows for multiple
         # columns for the same property to share the same heading
-        df = pd.read_excel(excel_path, sheet_name=sheet, header=None)
+        df = pd.read_excel(excel_path, sheet_name=sheet, header=None, dtype="str")
         if df is None or len(df.index) == 0:
             self.logger.log(
                 logging.ERROR,
@@ -586,6 +587,24 @@ class ExcelVocabularyParser:
                     # identified for this class
                     if column_name in properties:
                         column_property = URIRef(properties[column_name].iri)
+                        
+                        # If the property has a specified range, expect the column to 
+                        # contain references to instances of the class in question
+                        range_classes = self.dictionary.list_range_classes_for_property(column_property, APPN_SCHEMA)
+                        if len(range_classes) == 1:
+                            related_class = range_classes[0]
+                        elif len(range_classes) > 1:
+                            self.logger.log(
+                                logging.ERROR,
+                                "ExcelVocabularyParser",
+                                IssueMessage.RANGE_CLASS_NOT_SELECTED,
+                                EXCEL_PATH=excel_path,
+                                EXCEL_SHEET=sheet,
+                                EXCEL_COLUMN_NAME=column,
+                                DOMAIN_APPN_CLASS=target_class.curie,
+                                COLUMN_PROPERTY=properties[column_name].curie,
+                                RANGE_CLASSES=", ".join([class_.curie for class_ in range_classes])
+                            )
 
                     # Otherwise, if the column name matches the name of an APPN schema
                     # class, the column should be mapped to a property including the
@@ -643,9 +662,13 @@ class ExcelVocabularyParser:
                         is_local_property = True
                         if column_property not in self.deferred_local_properties:
                             self.deferred_local_properties[column_property] = []
-                        self.deferred_local_properties[column_property].append(
+                        if (
                             target_class
-                        )
+                            not in self.deferred_local_properties[column_property]
+                        ):
+                            self.deferred_local_properties[column_property].append(
+                                target_class
+                            )
                     else:
                         is_local_property = False
 
@@ -869,7 +892,7 @@ class ExcelVocabularyParser:
                                 index + 2,
                                 column_mapping.column,
                                 column_mapping.range_class.curie,
-                                str(value)
+                                str(value),
                             )
                         )
                 else:
@@ -979,12 +1002,15 @@ class ExcelVocabularyParser:
         concept_scheme_term = self.get_iri("ConceptScheme", class_name)
         self.insert_instance(skos_concept_scheme, concept_scheme_term)
         self.add_triple(concept_scheme_term, schema_name, Literal(class_name))
+        appn = self.configuration.get_appn()
+        if self.node == appn:
+            description = f"Concept scheme including instances of the {class_name} class from the {appn.name}"
+        else:
+            description = f"Concept scheme including instances of the {class_name} class from the {self.node.name} node of the {appn.name}"
         self.add_triple(
             concept_scheme_term,
             schema_description,
-            Literal(
-                f"Concept scheme including instances of the {class_name} class from the APPN {self.node.id} node"
-            ),
+            Literal(description),
         )
 
         self.concept_schemes[main_class] = concept_scheme_term
@@ -1189,9 +1215,13 @@ class ExcelVocabularyParser:
         :param name: Name to be used in constructing the IRI
         :return: Constructed IRI
         """
-        # Convert name to a safe TitleCase form
+        # Convert name to a safe TitleCase form while preserving any existing
+        # CamelCase words (which means str.title is not suitable).
         clean_name = "".join(
-            [w.title() for w in self.name_pattern.sub(" ", name).strip().split()]
+            [
+                (w[0].upper() + w[1:])
+                for w in self.name_pattern.sub(" ", name).strip().split()
+            ]
         )
 
         # Use any abbreviation for the class from the `Configuration`

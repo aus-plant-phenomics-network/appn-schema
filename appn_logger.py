@@ -62,6 +62,10 @@ class IssueMessage(str, Enum):
         "A spreadsheet column name did not match any defined property, so a new property was created in the vocabulary namespace.",
         "This only needs attention if it was unexpected. Check whether the column should have been mapped to a known property. Adding namespaces to the vocabulary_column_namespaces component of the YAML configuration allows properties from other namespaces to be included.",
     )
+    RANGE_CLASS_NOT_SELECTED = (
+        "A spreadsheet column name matches a property with more than one APPN schema class in its range, so values in the column could not be mapped to any referenced object.",
+        "Add an property_range_classes mapping to the YAML configuration file to specify the class to be used for the property in the context of the domain class.",
+    )
 
 
 ### IssueLogger ###############################################################

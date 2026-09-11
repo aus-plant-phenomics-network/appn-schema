@@ -286,6 +286,34 @@ class Dictionary:
             query_strings, f"range|{class_iri}|{namespace}", namespace
         )
 
+    def list_domain_classes_for_property(
+        self,
+        property_iri: str|Term,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
+        property_iri = self.get_iri(property_iri)
+        query_strings = [
+            f"<{property_iri}> schema:domainIncludes ?q"
+            for property_ in self.list_superproperties(property_iri)
+        ]
+        return self.list_iris(
+            query_strings, f"range|{property_iri}|{namespace}", namespace
+        )
+
+    def list_range_classes_for_property(
+        self,
+        property_iri: str|Term,
+        namespace: Optional[str] = None,
+    ) -> list[Term]:
+        property_iri = self.get_iri(property_iri)
+        query_strings = [
+            f"<{property_iri}> schema:rangeIncludes ?q"
+            for property_ in self.list_superproperties(property_iri)
+        ]
+        return self.list_iris(
+            query_strings, f"range|{property_iri}|{namespace}", namespace
+        )
+
     def list_instances(
         self, class_iri: str|Term, namespace: Optional[str] = None
     ) -> list[Term]:

@@ -1,0 +1,71 @@
+Instances created
+
+  https://id.plantphenomics.org.au/APPN/bm_AnyPlant                     :    10
+  https://id.plantphenomics.org.au/APPN/bm_Barley                       :    13
+  https://id.plantphenomics.org.au/APPN/bm_Cannabis                     :    13
+  https://id.plantphenomics.org.au/APPN/bm_Grain                        :    11
+  https://id.plantphenomics.org.au/APPN/bm_Tomato                       :    13
+  https://id.plantphenomics.org.au/APPN/bm_Wheat                        :    12
+  https://id.plantphenomics.org.au/APPN/but_Branch                      :     9
+  https://id.plantphenomics.org.au/APPN/but_Canopy                      :     8
+  https://id.plantphenomics.org.au/APPN/but_Flower                      :     9
+  https://id.plantphenomics.org.au/APPN/but_Fruit                       :     9
+  https://id.plantphenomics.org.au/APPN/but_Leaf                        :     9
+  https://id.plantphenomics.org.au/APPN/but_Root                        :     9
+  https://id.plantphenomics.org.au/APPN/but_Seed                        :     9
+  https://id.plantphenomics.org.au/APPN/but_Shoot                       :     9
+  https://id.plantphenomics.org.au/APPN/but_Spike                       :     9
+  https://id.plantphenomics.org.au/APPN/but_Stem                        :     9
+  https://id.plantphenomics.org.au/APPN/but_WholePlant                  :     9
+  https://id.plantphenomics.org.au/APPN/cs_BiologicalMaterial           :     5
+  https://id.plantphenomics.org.au/APPN/cs_BiologicalUnitType           :     5
+  https://id.plantphenomics.org.au/APPN/cs_GrowthFacilityType           :     5
+  https://id.plantphenomics.org.au/APPN/cs_PlatformType                 :     5
+  https://id.plantphenomics.org.au/APPN/cs_Scale                        :     5
+  https://id.plantphenomics.org.au/APPN/cs_SensorType                   :     5
+  https://id.plantphenomics.org.au/APPN/gft_Glasshouse                  :    10
+  https://id.plantphenomics.org.au/APPN/gft_ReachInGrowthChamber        :     9
+  https://id.plantphenomics.org.au/APPN/gft_Rhizolysimiter              :    10
+  https://id.plantphenomics.org.au/APPN/gft_WalkInGrowthRoom            :    11
+  https://id.plantphenomics.org.au/APPN/gft_WholeTreeChamber            :     8
+  https://id.plantphenomics.org.au/APPN/pt_CTScanner                    :    10
+  https://id.plantphenomics.org.au/APPN/pt_UAV                          :    10
+  https://id.plantphenomics.org.au/APPN/scale_Centimeter                :    10
+  https://id.plantphenomics.org.au/APPN/scale_CubicMillimeter           :     9
+  https://id.plantphenomics.org.au/APPN/scale_Day                       :     9
+  https://id.plantphenomics.org.au/APPN/scale_Gram                      :    10
+  https://id.plantphenomics.org.au/APPN/scale_GramPerGram               :    10
+  https://id.plantphenomics.org.au/APPN/scale_HounsfieldUnits           :    10
+  https://id.plantphenomics.org.au/APPN/scale_Integer                   :     8
+  https://id.plantphenomics.org.au/APPN/scale_Kilopixels                :     9
+  https://id.plantphenomics.org.au/APPN/scale_KilopixelsPerDay          :     9
+  https://id.plantphenomics.org.au/APPN/scale_KilopixelsPerMilliliter   :     9
+  https://id.plantphenomics.org.au/APPN/scale_Milliliter                :    10
+  https://id.plantphenomics.org.au/APPN/scale_MilliliterPerDay          :     9
+  https://id.plantphenomics.org.au/APPN/scale_Millimeter                :    10
+  https://id.plantphenomics.org.au/APPN/scale_Pixel                     :     8
+  https://id.plantphenomics.org.au/APPN/scale_Ratio                     :     9
+  https://id.plantphenomics.org.au/APPN/scale_SquareMillimeter          :    10
+  https://id.plantphenomics.org.au/APPN/scale_Voxel                     :     9
+  https://id.plantphenomics.org.au/APPN/st_Hyperspectral                :     8
+  https://id.plantphenomics.org.au/APPN/st_LiDAR                        :     8
+  https://id.plantphenomics.org.au/APPN/st_MultispectralCamera          :     8
+  https://id.plantphenomics.org.au/APPN/st_RGBCamera                    :     8
+  https://id.plantphenomics.org.au/APPN/st_RadiationStableXRayDetector  :     8
+
+Counts of triples by property
+
+  http://purl.org/dc/terms/description                 :    52
+  http://purl.org/dc/terms/title                       :    52
+  http://www.w3.org/1999/02/22-rdf-syntax-ns#type      :   138
+  http://www.w3.org/2004/02/skos/core#altLabel         :    22
+  http://www.w3.org/2004/02/skos/core#broader          :     8
+  http://www.w3.org/2004/02/skos/core#exactMatch       :    32
+  http://www.w3.org/2004/02/skos/core#inScheme         :    46
+  https://schema.org/description                       :    52
+  https://schema.org/name                              :    52
+  https://schema.org/url                               :     2
+  https://schema.plantphenomics.org.au/genus           :     4
+  https://schema.plantphenomics.org.au/scientificName  :     6
+
+

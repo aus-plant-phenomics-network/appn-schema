@@ -103,7 +103,6 @@ def start_log(
     if echo:
         logging.getLogger().addHandler(logging.StreamHandler())
 
-    print(f"Logging started to {logfile_name} at level {level} and echo {echo}")
     logging.info(f"Logging started to {logfile_name} at level {level} and echo {echo}")
 
 
@@ -156,7 +155,7 @@ if __name__ == "__main__":
             parser = ExcelVocabularyParser(configuration, organisations[node])
 
             # Loop over Excel spreadsheets in the folder for the node.
-            for file in folder.glob("*.xls*"):
+            for file in folder.glob("*.xlsx"):
 
                 # Ignore temporary files that still have xls in their name
                 if not file.name.startswith("."):
@@ -165,22 +164,23 @@ if __name__ == "__main__":
 
             inspector = Dictionary(parser.get_graph())
 
-            counts = inspector.count_triples_by_subject()
-            print("Instances created\n")
-            length = max([len(k) for k in counts.keys()])
-            for p in sorted(counts.keys()):
-                print(f"  {p:{length + 1}s} : {counts[p]:>5d}")
-            print()
+            with open(f"./vocabulary/{node}/{node}_report.txt", "w") as report:
+                counts = inspector.count_triples_by_subject()
+                report.write(f"Overview of processing for {node} vocabulary\n\n")
+                report.write("Terms defined in vocabulary (with counts of associated properties):\n\n")
+                length = max([len(k) for k in counts.keys()])
+                for p in sorted(counts.keys()):
+                    report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
 
-            counts = inspector.count_triples_by_property()
-            print("Counts of triples by property\n")
-            length = max([len(k) for k in counts.keys()])
-            for p in sorted(counts.keys()):
-                print(f"  {p:{length + 1}s} : {counts[p]:>5d}")
-            print()
+                counts = inspector.count_triples_by_property()
+                report.write("\nCounts of triples by property\n\n")
+                length = max([len(k) for k in counts.keys()])
+                for p in sorted(counts.keys()):
+                    report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
 
-            print(configuration.get_logger().format_issues())
+                report.write("\n")
+                report.write(configuration.get_logger().format_issues())
 
             parser.get_graph().serialize(
-                destination=f"./vocabulary/{node}/vocabulary.ttl"
+                destination=f"./vocabulary/{node}/{node}_vocabulary.ttl"
             )
