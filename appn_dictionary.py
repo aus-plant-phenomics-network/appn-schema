@@ -35,23 +35,41 @@ logger = logging.getLogger(__name__)
 
 
 ### Dictionary ################################################################
-#
-# Wrapper class around rdflib Graph instance to simplify common query needs
-#
-# A new Dictionary has an empty graph and cache. Linked-data objects can be
-# added to the graph via the load() method. When the graph changes, the
-# response cache is cleared.
-#
-# All get_* and list_* methods check the cache for a previous response to the
-# request and otherwise generate and cache a new response from the graph.
-#
+
 class Dictionary:
+    """
+    Wrapper class around rdflib Graph instance to simplify common query needs
+    
+    A new Dictionary has an empty graph and cache. Linked-data objects can be
+    added to the graph via the load() method. When the graph changes, the
+    response cache is cleared.
+    
+    All get_* and list_* methods check the cache for a previous response to the
+    request and otherwise generate and cache a new response from the graph.
+    """
 
     def __init__(
-        self, graph: Optional[Graph] = None, namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
+        self, 
+        graph: Optional[Graph] = None, 
+        namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
     ) -> None:
+        """
+        Initialise properties based either on a supplied `Graph` or a new
+        empty one.
+
+        Use any `NamespaceDefinition`s to manage prefixes and locations for
+        loading assets.
+
+        :param graph: Optional `Graph` to initialise `Dictionary` - note that
+            any `load` operations will modify the graph for all users.
+        :param namespace_definitions: List of `NamespaceDefinition` objects to
+            assist with use of RDF assets.
+        """
         self.graph = Graph() if graph is None else graph
         self.namespace_manager = NamespaceManager(self.graph)
+        
+        # The `namespaces` and `reverse_namespaces` dictionaries enable access
+        # by namespace or by namespace prefix.
         if graph is not None:
             self.namespaces = {
                 p: str(ns) for p, ns in self.namespace_manager.namespaces()
@@ -71,8 +89,24 @@ class Dictionary:
         asset_namespace: str,
         asset_path: Optional[str] = None,
         asset_prefix: Optional[str] = None,
-    ) -> None:
+    ) -> bool:
+        """
+        Load an RDF asset (any format supported by `rdflib`).
+
+        The method loads definitions from the specified namespace into the 
+        `Graph`. If the path (file location) and/or prefix are not passed to
+        the method, the supplied `NamespaceDefinition`s (if any) are checked
+        for the missing information. If they are still not defined, the 
+        namespace will be given an anonymous prefix and loaded from the 
+        namespace URL.
+
+        :param asset_namespace: Namespace string for asset
+        :param asset_path: Optional location for a file containing RDF definitions for the namespace (in any supported RDF format)
+        :param asset_prefix: Prefix to use for namespace in CURIE representations
+        :return: True if successful
+        """
         try:
+            # Check for `NamespaceDefinition`
             if asset_namespace in self.namespace_definitions and isinstance(
                 self.namespace_definitions[asset_namespace], NamespaceDefinition
             ):
@@ -82,6 +116,9 @@ class Dictionary:
                 )
             else:
                 namespace_definition = None
+
+            # Determine where to load the asset from, either a supplied path, or
+            # one from a `NamespaceDefinition`, or the namespace URL.
             if asset_path is None:
                 if (
                     namespace_definition is not None
@@ -90,6 +127,10 @@ class Dictionary:
                     asset_path = namespace_definition.path
                 else:
                     asset_path = asset_namespace
+
+            # Determine what prefix to use for the namespace, either a supplied 
+            # parameter, or one from a `NamespaceDefinition`, or an anonymous
+            # prefix in the series ns1, ns2, ...
             if asset_prefix is None:
                 if (
                     namespace_definition is not None
@@ -101,6 +142,8 @@ class Dictionary:
                     while f"ns{index}" in self.namespaces:
                         index += 1
                     asset_prefix = f"ns{index}"
+
+            # Load the asset into the `Graph` and bind it with the prefix
             logger.debug(
                 f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
             )
@@ -111,6 +154,8 @@ class Dictionary:
                     asset_prefix, Namespace(asset_namespace), override=True
                 )
 
+            # Clear any cached query results because the `Graph` has changed,
+            # and update the namespace dictionaries.
             self.cache = {}
             self.namespaces = {
                 p: str(ns) for p, ns in self.namespace_manager.namespaces()
@@ -119,10 +164,24 @@ class Dictionary:
 
             logger.debug(f"Loaded {asset_namespace}")
 
+            return True
+
         except Exception:
             logger.error(f"Failed to load {asset_namespace}: repr(e)", exc_info=True)
 
-    def import_references(self):
+        return False
+
+    def import_references(self) -> bool:
+        """
+        Load all RDF assets referenced (one-hop) by existing triples in
+        the `Graph`
+
+        For all IRIs in the `Graph`, if the namespace asset has not already been
+        loaded, attempt to do so.
+
+        :return: True if successful
+        """
+        success = True
         iris = set()
         for s, o, p in self.graph:
             for iri in [s, o, p]:
@@ -130,11 +189,19 @@ class Dictionary:
                     ns = self.get_namespace_from_iri(iri)
                     logger.debug(f"Mapped <{iri}> to namespace <{ns}>")
                     if ns is not None and ns not in self.loaded:
-                        self.load(ns)
+                        if not self.load(ns):
+                            success = False
                     logger.debug(f"Found IRI <{iri}>")
                     iris.add(iri)
+        return success
 
     def get_namespace_from_iri(self, iri: str|Term) -> Optional[str]:
+        """
+        Find the namespace to which an IRI belongs
+
+        :return: Namespace string if the IRI matches one of the known 
+            namespaces, otherwise None
+        """
         iri = self.get_iri(iri)
         for ns in self.reverse_namespaces.keys():
             if iri.startswith(ns):
@@ -142,21 +209,51 @@ class Dictionary:
         return None
 
     def get_namespaces(self) -> dict[str, str]:
+        """
+        Get mappings of namespace prefixes to namespaces
+
+        :return: Dictionary of namespace prefixes to loaded namespaces
+        """
         return self.namespaces
 
     def list_triples(self) -> list[Triple]:
+        """
+        Return all `Triple`s in the `Graph`
+
+        :return: List of `Triples` based on `Graph` contents
+        """
         return [Triple(s, p, o) for (s, p, o) in self.graph]
 
     def list_unique_subjects(self, namespace: Optional[str] = None) -> list[Term]:
+        """
+        Return list of all IRIs used as subjects for triples
+
+        :return: List of `Terms` for subject IRIs
+        """
         return self.list_unique_terms_by_position(TriplePosition.SUBJECT, namespace)
 
     def list_unique_properties(self, namespace: Optional[str] = None) -> list[Term]:
+        """
+        Return list of all IRIs used as properties for triples
+
+        :return: List of `Terms` for property IRIs
+        """
         return self.list_unique_terms_by_position(TriplePosition.PROPERTY, namespace)
 
     def list_unique_objects(self, namespace: Optional[str] = None) -> list[Term]:
+        """
+        Return list of all IRIs used as objects for triples
+
+        :return: List of `Terms` for object IRIs
+        """
         return self.list_unique_terms_by_position(TriplePosition.OBJECT, namespace)
 
     def list_unique_terms_by_position(self, position: TriplePosition, namespace: Optional[str] = None) -> list[Term]:
+        """
+        Return list of all IRIs from a position in a triple
+
+        :return: List of `Terms` for IRIs in specified position
+        """
         if namespace is None:
             namespace = ""
         elif namespace in self.namespaces:
@@ -165,6 +262,11 @@ class Dictionary:
         return [self.get_term(value) for value in sorted(values) if value.startswith(namespace)]
 
     def list_triples_for_subject(self, subject: str|Term) -> list[Triple]:
+        """
+        Return list of all `Triple`s with a given term as subject
+
+        :return: List of `Triple`s with given subject
+        """
         subject = self.get_iri(subject)
         subject_key = f"subject|{subject}"
 
@@ -176,6 +278,11 @@ class Dictionary:
         return self.cache[subject_key]
 
     def list_triples_for_object(self, object_: str|Term) -> list[Triple]:
+        """
+        Return list of all `Triple`s with a given term as object
+
+        :return: List of `Triple`s with given object
+        """
         object_ = self.get_iri(object_)
         object_key = f"object|{object_}"
 
@@ -187,6 +294,11 @@ class Dictionary:
         return self.cache[object_key]
 
     def list_triples_for_property(self, property_: str|Term) -> list[Triple]:
+        """
+        Return list of all `Triple`s with a given property term
+
+        :return: List of `Triple`s with given property term
+        """
         property_ = self.get_iri(property_)
         property_key = f"object|{property_}"
 
@@ -198,15 +310,35 @@ class Dictionary:
         return self.cache[property_key]
 
     def count_triples_by_subject(self) -> dict[str,int]:
-        return self.count_triples_by_term(0)
+        """
+        Return count of Triple`s with a given term as subject
+
+        :return: Count of matching `Triple`s
+        """
+        return self.count_triples_by_term(TriplePosition.SUBJECT)
 
     def count_triples_by_property(self) -> dict[str,int]:
-        return self.count_triples_by_term(1)
+        """
+        Return count of Triple`s with a given term as property
+
+        :return: Count of matching `Triple`s
+        """
+        return self.count_triples_by_term(TriplePosition.PROPERTY)
 
     def count_triples_by_object(self) -> dict[str,int]:
-        return self.count_triples_by_term(2)
+        """
+        Return count of Triple`s with a given term as object
 
-    def count_triples_by_term(self, position: int) -> dict[str,int]:
+        :return: Count of matching `Triple`s
+        """
+        return self.count_triples_by_term(TriplePosition.OBJECT)
+
+    def count_triples_by_term(self, position: TriplePosition) -> dict[str,int]:
+        """
+        Return count of Triple`s with a given term in a specified position
+
+        :return: Count of matching `Triple`s
+        """
         counts = {}
         for term in [str(triple[position]) for triple in self.graph]:
             if term.startswith("http"):
@@ -220,6 +352,11 @@ class Dictionary:
         self,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all classes (type rdfs:Class) in `Graph`
+
+        :return: List of `Term`s for classes
+        """
         return self.list_iris(
             ["?q rdf:type rdfs:Class"], f"classes|{namespace}", namespace
         )
@@ -228,6 +365,11 @@ class Dictionary:
         self,
         namespace: Optional[str] = None,
     ) -> list[Term]:
+        """
+        List all properties (type rdfs:Property) in `Graph`
+
+        :return: List of `Term`s for properties
+        """
         return self.list_iris(
             ["?q rdf:type rdf:Property"], f"properties|{namespace}", namespace
         )
