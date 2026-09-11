@@ -15,7 +15,7 @@
 # -----------------------------------------------------------------------------
 
 import logging
-from enum import StrEnum
+from enum import Enum, StrEnum
 from typing import NamedTuple, Optional
 from rdflib import URIRef
 
@@ -121,21 +121,16 @@ class Triple(NamedTuple):
     object: str
 
 
-### URIRefTriple ##############################################################
+### TriplePosition ############################################################
 
 
-class URIRefTriple(NamedTuple):
+class TriplePosition(Enum):
     """
-    Simple class to represent a triple of `URIRef`s
-
-    :param subject: `URIRef` for the subject of a triple
-    :param property: `URIRef` for the property of a triple
-    :param object: `URIRef` for the object of a triple
+    Simple class for positions in a triple
     """
-
-    subject: URIRef
-    property: URIRef
-    object: URIRef
+    SUBJECT = 0
+    PROPERTY = 1
+    OBJECT = 2
 
 
 ### ColumnMapping##############################################################

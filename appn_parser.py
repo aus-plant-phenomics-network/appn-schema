@@ -19,8 +19,8 @@ import numpy as np
 import pandas as pd
 
 from pathlib import Path
-from typing import Optional
-from appn_types import Term, URIRefTriple, ColumnMapping, CompletionRuleType
+from typing import Optional, NamedTuple
+from appn_types import Term, ColumnMapping, CompletionRuleType
 from appn_dictionary import Dictionary
 from appn_configuration import (
     APPN_VOCABULARY,
@@ -52,6 +52,36 @@ skos_concept_scheme = URIRef(f"{SKOS_SCHEMA}ConceptScheme")
 skos_in_scheme = URIRef(f"{SKOS_SCHEMA}inScheme")
 dc_title = URIRef(f"{DC_SCHEMA}title")
 dc_description = URIRef(f"{DC_SCHEMA}description")
+
+
+### RequiredProperty ###########################################################
+
+
+class RequiredProperty(NamedTuple):
+    """
+    Simple class to represent a triple of `URIRef`s and associated metadata for
+    a property that is deferred until the object term is known to have been
+    defined.
+
+    :param subject: `URIRef` for the subject of a triple
+    :param property: `URIRef` for the property of a triple
+    :param object: `URIRef` for the object of a triple
+    :param excel_path: Path to source Excel spreadsheet
+    :param sheet: Name of sheet where the property is defined
+    :param column_str: Name of column where the property is defined
+    :param row: Index of row in sheet
+    :param term_name: Name from column in row
+    """
+    subject: URIRef
+    property: URIRef
+    object: URIRef
+    excel_path: Path
+    sheet: str
+    row: int
+    column_name: str
+    class_name: str
+    term_name: str
+
 
 ### ExcelVocabularyParser #####################################################
 
@@ -251,7 +281,7 @@ class ExcelVocabularyParser:
         # instance are set aside (as "required properties") until all sheets
         # have been processed. This provides a simple way to detect and report
         # on any undefined terms.
-        self.required_properties: list[URIRefTriple] = []
+        self.required_properties: list[RequiredProperty] = []
 
         # Definitions for new "local" properties (in the same namespace as the
         # generated RDF vocabulary) are deferred until a row is encountered
@@ -828,12 +858,18 @@ class ExcelVocabularyParser:
                     # instances that are expected.
                     if matching_term is None:
                         self.required_properties.append(
-                            URIRefTriple(
+                            RequiredProperty(
                                 term,
                                 property_term,
                                 self.get_iri(
                                     column_mapping.range_class.name, str(value)
                                 ),
+                                excel_path,
+                                sheet,
+                                index + 2,
+                                column_mapping.column,
+                                column_mapping.range_class.curie,
+                                str(value)
                             )
                         )
                 else:
@@ -1105,7 +1141,7 @@ class ExcelVocabularyParser:
 
         logging.debug(f"Processing {len(self.required_properties)} properties")
 
-        remaining = []
+        remaining: list[RequiredProperty] = []
         for required_property in self.required_properties:
             logging.debug(f"Processing required property {required_property}")
             if required_property.object in self.instances:
@@ -1119,7 +1155,7 @@ class ExcelVocabularyParser:
                 )
             else:
                 # If the object does not exist, report and error and remember
-                # the triple
+                # the required property.
                 self.logger.log(
                     logging.ERROR,
                     "ExcelVocabularyParser",
@@ -1127,6 +1163,12 @@ class ExcelVocabularyParser:
                     SUBJECT_TERM=str(required_property.subject),
                     PROPERTY_TERM=str(required_property.property),
                     MISSING_OBJECT_TERM=str(required_property.object),
+                    EXCEL_PATH=str(required_property.excel_path),
+                    EXCEL_SHEET=required_property.sheet,
+                    EXCEL_ROW=required_property.row,
+                    EXCEL_COLUMN=required_property.column_name,
+                    MISSING_OBJECT_CLASS=required_property.class_name,
+                    MISSING_OBJECT_NAME=required_property.term_name,
                 )
                 remaining.append(required_property)
                 success = False

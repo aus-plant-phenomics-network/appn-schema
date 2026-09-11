@@ -7,7 +7,10 @@
 # Import RDF assets into a graph and support diverse query mechanisms
 #
 # A primary use case is to make the APPN schema and the ontologies it
-# references accessible for automated use in data processing.
+# references accessible for automated use in data processing. 
+#
+# A `Dictionary` can wrap any existing `Graph` to enable it to be explored
+# more easily
 #
 # -----------------------------------------------------------------------------
 # Created By  : Donald Hobern, donald.hobern@adelaide.edu.au
@@ -17,24 +20,18 @@
 
 import argparse
 import logging
-from os import name
 import sys
-from pathlib import Path
 
+from os import name
+from pathlib import Path
 from rdflib import Graph, URIRef
 from rdflib.namespace import Namespace, NamespaceManager
 from typing import Any, Optional
 
-from appn_types import NamespaceDefinition, Term, Triple
+from appn_types import NamespaceDefinition, Term, Triple, TriplePosition
 from appn_configuration import Configuration, APPN_SCHEMA
 
 logger = logging.getLogger(__name__)
-
-
-# Explicit names for indexes into triples
-POSITION_SUBJECT = 0
-POSITION_PROPERTY = 1
-POSITION_OBJECT = 2
 
 
 ### Dictionary ################################################################
@@ -151,15 +148,15 @@ class Dictionary:
         return [Triple(s, p, o) for (s, p, o) in self.graph]
 
     def list_unique_subjects(self, namespace: Optional[str] = None) -> list[Term]:
-        return self.list_unique_terms_by_position(POSITION_SUBJECT, namespace)
+        return self.list_unique_terms_by_position(TriplePosition.SUBJECT, namespace)
 
     def list_unique_properties(self, namespace: Optional[str] = None) -> list[Term]:
-        return self.list_unique_terms_by_position(POSITION_PROPERTY, namespace)
+        return self.list_unique_terms_by_position(TriplePosition.PROPERTY, namespace)
 
     def list_unique_objects(self, namespace: Optional[str] = None) -> list[Term]:
-        return self.list_unique_terms_by_position(POSITION_OBJECT, namespace)
+        return self.list_unique_terms_by_position(TriplePosition.OBJECT, namespace)
 
-    def list_unique_terms_by_position(self, position: int, namespace: Optional[str] = None) -> list[Term]:
+    def list_unique_terms_by_position(self, position: TriplePosition, namespace: Optional[str] = None) -> list[Term]:
         if namespace is None:
             namespace = ""
         elif namespace in self.namespaces:

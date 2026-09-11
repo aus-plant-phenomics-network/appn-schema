@@ -123,6 +123,8 @@ if __name__ == "__main__":
     node = args["node"]
 
     # Make list of folders to process (either for a single node or for all)
+    # Always process APPN before any nodes because it contains dependencies
+    # for other vocabularies.
     if node == "all":
         folders = sorted(
             list(Path("source").glob("*/")),
@@ -142,9 +144,6 @@ if __name__ == "__main__":
         logging.info(f"Selected folder {node}")
 
     timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
-
-    # The openpyxl library generates a warning ("Data Validation extension is not supported and will be removed")
-    warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
     organisations = configuration.get_organisations()
 

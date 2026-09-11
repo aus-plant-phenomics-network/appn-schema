@@ -13,6 +13,7 @@
 # -----------------------------------------------------------------------------
 import logging
 from enum import Enum
+import textwrap
 from typing import Optional
 from appn_types import Issue, CompletionRuleType
 
@@ -164,7 +165,12 @@ class IssueLogger:
                 report += "\n"
             report += f"ISSUE: {message.value if isinstance(message, IssueMessage) else message}\n"
             if isinstance(message, IssueMessage) and message.suggested_fix is not None:
-                report += f"  SUGGESTED FIX: {message.suggested_fix}\n"
+                indent = " " * 17
+                # The call to `strip` removes the initial indent so all aligns
+                wrapped = "\n".join(textwrap.wrap(
+                    message.suggested_fix, width = 120, initial_indent=indent, subsequent_indent=indent,
+                )).strip()
+                report += f"  SUGGESTED FIX: {wrapped}\n"
             report += f"  OCCURRENCES: {count}\n"
             index = 1
             issues = self.list_issues(message=message)
