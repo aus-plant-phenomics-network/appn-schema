@@ -2,6 +2,7 @@
 @prefix appn: <https://schema.plantphenomics.org.au/> .
 @prefix bio: <https://bioschemas.org/terms/> .
 @prefix cdi: <http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
 @prefix ppeo: <http://purl.org/ppeo/PPEO.owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -495,3 +496,55 @@ appn:hasGrowthFacility a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasGrowthFacility ;
   schema:domainIncludes appn:Study ;
   schema:rangeIncludes appn:GrowthFacility .
+
+appn:airConditioning a rdf:Property ;
+  schema:name "airConditioning" ;
+  rdfs:comment "The airConditioning capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:temperatureRange a rdf:Property ;
+  schema:name "temperatureRange" ;
+  rdfs:comment "The temperature range capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:lights a rdf:Property ;
+  schema:name "lights" ;
+  rdfs:comment "The lighting capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:shade a rdf:Property ;
+  schema:name "shade" ;
+  rdfs:comment "The shade capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:physicalContainmentLevel a rdf:Property ;
+  schema:name "physicalContainmentLevel" ;
+  rdfs:comment "The physical containment (PC) level capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:biocontainmentLevel a rdf:Property ;
+  schema:name "biocontainmentLevel" ;
+  rdfs:comment "The biocontainment level capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:gasSupply a rdf:Property ;
+  schema:name "gasSupply" ;
+  rdfs:comment "The gas supply capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:humidityControl a rdf:Property ;
+  schema:name "humidityControl" ;
+  rdfs:comment "The humidity control capabilities of a GrowthFacility" ;
+  schema:domainIncludes appn:GrowthFacility .
+
+appn:genus a rdf:Property ;
+  schema:name "genus" ;
+  rdfs:comment "A taxonomic rank above species and below family" ;
+  rdfs:subPropertyOf dwc:genus ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:scientificName a rdf:Property ;
+  schema:name "scientificName" ;
+  rdfs:comment "A name for an organism subject to one of the codes of nomenclature" ;
+  rdfs:subPropertyOf dwc:scientificName ;
+  schema:domainIncludes appn:BiologicalMaterial .
