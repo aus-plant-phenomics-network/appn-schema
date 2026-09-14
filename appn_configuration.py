@@ -173,22 +173,23 @@ class Configuration:
     Data from YAML is validated to ensure it fits the expected structure.
     """
 
-    def __init__(
-        self,
-        configuration_folder: Optional[Path | str] = None,
-        configuration_name: Optional[str] = None,
-    ) -> None:
+    instance: Optional["Configuration"] = None
+
+    def __new__(cls):
+        """
+        Use the same instance everywhere in this process
+        """
+        if cls.instance is None: 
+            cls.instance = super().__new__(cls)
+        return cls.instance
+
+    def __init__(self) -> None:
         """
         Read configuration from YAML file
-
-        :param configuration_folder: Folder location containing YAML file
-        :param configuration_name: Name of YAML file (with or without yaml extension)
         """
         # The severity of errors reported depends on whether an explicit location was
         # offered or defaults used.
-        defaults_overridden = (
-            configuration_folder is not None or configuration_name is not None
-        )
+        defaults_overridden = False
 
         # Safe defaults if nothing is read
         self.namespace_definitions = None
@@ -201,26 +202,22 @@ class Configuration:
         # logged to the logger is also logged via Python logging.
         self.logger = IssueLogger()
 
-        # Use supplied folder or folder from environment or default
-        if configuration_folder is None:
-            if APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY in os.environ:
-                self.configuration_folder = Path(
-                    os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY]
-                )
-                defaults_overridden = True
-            else:
-                self.configuration_folder = Path(APPN_DEFAULT_CONFIGURATION_FOLDER)
+        # Use folder from environment or default
+        if APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY in os.environ:
+            self.configuration_folder = Path(
+                os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY]
+            )
+            defaults_overridden = True
         else:
-            self.configuration_folder = Path(configuration_folder)
+            self.configuration_folder = Path(APPN_DEFAULT_CONFIGURATION_FOLDER)
         logging.debug(f"Configuration folder: {self.configuration_folder}")
 
         # Use supplied filename or filename from environment or default
-        if configuration_name is None:
-            if APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY in os.environ:
-                configuration_name = os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY]
-                defaults_overridden = True
-            else:
-                configuration_name = APPN_DEFAULT_CONFIGURATION_NAME
+        if APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY in os.environ:
+            configuration_name = os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY]
+            defaults_overridden = True
+        else:
+            configuration_name = APPN_DEFAULT_CONFIGURATION_NAME
         if not configuration_name.lower().endswith(".yaml"):
             configuration_name = f"{configuration_name}.yaml"
         logging.debug(f"Configuration name: {configuration_name}")
