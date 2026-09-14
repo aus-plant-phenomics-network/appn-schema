@@ -6,7 +6,7 @@ The entity responsible for performing a Sampling and delivering a Sample. The Ob
 ![UML diagram for Sampler](images/ttl_appn_Sampler.png)
 
 ## Superclasses
-* https://www.w3.org/ns/sosa/Sampler
+* http://www.w3.org/ns/sosa/Sampler
 ## Properties
 * [appn:Sampling](appn_Sampling.md) **appn:madeBySampler** appn:Sampler
     * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.

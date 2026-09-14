@@ -10,7 +10,7 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* https://www.w3.org/ns/sosa/Execution
+* http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Sampling **appn:madeBySampler** [appn:Sampler](appn_Sampler.md)
     * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.

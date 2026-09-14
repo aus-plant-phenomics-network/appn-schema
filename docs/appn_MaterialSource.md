@@ -7,7 +7,7 @@ The source for the BiologicalMaterial.
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#material_source
-* https://bioschemas.org/BioSample
+* https://bioschemas.org/terms/BioSample
 ## Properties
 * [appn:BiologicalMaterial](appn_BiologicalMaterial.md) **appn:hasMaterialSource** appn:MaterialSource
     * Identifies the MaterialSource for BiologicalMaterial.

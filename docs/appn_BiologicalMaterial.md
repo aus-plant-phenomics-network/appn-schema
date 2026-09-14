@@ -7,11 +7,15 @@ A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possib
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#biological_material
-* https://bioschemas.org/Taxon
+* https://bioschemas.org/terms/Taxon
 ## Properties
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalMaterial** appn:BiologicalMaterial
     * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * [appn:BiologicalUnit](appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** appn:BiologicalMaterial
     * Identifies the BiologicalMaterial for a BiologicalUnit.
+* appn:BiologicalMaterial **appn:hasHigherTaxon** [appn:BiologicalMaterial](appn_BiologicalMaterial.md)
+    * Identifies a more inclusive BiologicalMaterial as a higher taxon.
 * appn:BiologicalMaterial **appn:hasMaterialSource** [appn:MaterialSource](appn_MaterialSource.md)
     * Identifies the MaterialSource for BiologicalMaterial.
+* BiologicalMaterial https://schema.plantphenomics.org.au/genus
+* BiologicalMaterial https://schema.plantphenomics.org.au/scientificName

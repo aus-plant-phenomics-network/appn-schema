@@ -7,7 +7,11 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)
-* https://www.w3.org/ns/sosa/Property
+* [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
+* http://purl.org/ppeo/PPEO.owl#trait
+* http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
+* https://schema.org/DefinedTerm
+* http://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
@@ -24,3 +28,7 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
     * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * [appn:Variable](appn_Variable.md) **appn:hasScale** [appn:Scale](appn_Scale.md)
     * Identifies the Scale associated with a Variable.
+* [appn:ObservedVariable](appn_ObservedVariable.md) **appn:hasTrait** [appn:Trait](appn_Trait.md)
+    * Identifies the Trait associated with a Variable.
+* [appn:ControlledVariable](appn_ControlledVariable.md) **appn:hasTrait** [appn:Trait](appn_Trait.md)
+    * Identifies the Trait associated with a Variable.

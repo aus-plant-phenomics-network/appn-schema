@@ -14,3 +14,8 @@ A concept represented by a Variable associated with an ObservationUnit. In the D
     * Identifies the Trait associated with a Variable.
 * [appn:ControlledVariable](appn_ControlledVariable.md) **appn:hasTrait** appn:Trait
     * Identifies the Trait associated with a Variable.
+## Subclasses
+* [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)
+* [https://schema.plantphenomics.org.au/ObservedVariable](appn_ObservedVariable.md)
+* [https://schema.plantphenomics.org.au/ControlledVariable](appn_ControlledVariable.md)
+* [https://schema.plantphenomics.org.au/SubstanceQuantity](appn_SubstanceQuantity.md)

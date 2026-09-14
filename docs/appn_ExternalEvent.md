@@ -7,7 +7,7 @@ A default entity to represent any trigger outside the control of the experimente
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
-* https://www.w3.org/ns/sosa/Actuator
+* http://www.w3.org/ns/sosa/Actuator
 * https://schema.org/Event
 ## Properties
 * [appn:Control](appn_Control.md) **appn:madeByController** [appn:Controller](appn_Controller.md)

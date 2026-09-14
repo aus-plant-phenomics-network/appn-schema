@@ -375,7 +375,7 @@ class Configuration:
         if not valid:
             self.logger.log(
                 logging.ERROR,
-                "Configuration",
+                __name__,
                 "Configuration contains data that does not match the expected structure - it will be ignored",
                 CONFIGURATION_FILE=self.configuration_filepath,
                 CONFIGURATION_KEY=key.value,

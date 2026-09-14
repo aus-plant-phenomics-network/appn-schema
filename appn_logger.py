@@ -21,17 +21,18 @@ from appn_types import Issue, CompletionRuleType
 
 
 class IssueMessage(str, Enum):
-        """
-        Class to hold a message describing an issue and an optional string 
-        suggesting a fix.
-        """
-    suggested_fix: str
+    """
+    Class to hold a message describing an issue and an optional string
+    suggesting a fix.
+    """
+
+    suggested_fix: Optional[str]
 
     def __new__(
         cls, message: str, suggested_fix: Optional[str] = None
     ) -> "IssueMessage":
         """
-        Create the `IssueMessage` as a special string with an extra property 
+        Create the `IssueMessage` as a special string with an extra property
         for the suggested fix.
         """
         obj = str.__new__(cls, message)
@@ -103,7 +104,7 @@ class IssueLogger:
         """
         Save issue in list and log via logging.
 
-        The message can be provided as an IssueMessage, which can include a 
+        The message can be provided as an IssueMessage, which can include a
         suggested fix, or as a plain text string. Keyword arguments are shared
         unchanged as a dictionary.
 
@@ -185,9 +186,14 @@ class IssueLogger:
             if isinstance(message, IssueMessage) and message.suggested_fix is not None:
                 indent = " " * 17
                 # The call to `strip` removes the initial indent so all aligns
-                wrapped = "\n".join(textwrap.wrap(
-                    message.suggested_fix, width = 120, initial_indent=indent, subsequent_indent=indent,
-                )).strip()
+                wrapped = "\n".join(
+                    textwrap.wrap(
+                        message.suggested_fix,
+                        width=120,
+                        initial_indent=indent,
+                        subsequent_indent=indent,
+                    )
+                ).strip()
                 report += f"  SUGGESTED FIX: {wrapped}\n"
             report += f"  OCCURRENCES: {count}\n"
             index = 1

@@ -7,7 +7,7 @@ A method or process for performing an Assay.
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#method
-* https://www.w3.org/ns/sosa/Procedure
+* http://www.w3.org/ns/sosa/Procedure
 * http://www.w3.org/ns/prov#Plan
 * https://schema.org/HowTo
 ## Properties

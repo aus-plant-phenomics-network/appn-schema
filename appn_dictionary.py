@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/emv python3
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 #
@@ -7,7 +7,7 @@
 # Import RDF assets into a graph and support diverse query mechanisms
 #
 # A primary use case is to make the APPN schema and the ontologies it
-# references accessible for automated use in data processing. 
+# references accessible for automated use in data processing.
 #
 # A `Dictionary` can wrap any existing `Graph` to enable it to be explored
 # more easily
@@ -18,40 +18,36 @@
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
 
-import argparse
 import logging
-import sys
 
-from os import name
 from pathlib import Path
-from rdflib import Graph, URIRef
+from rdflib import Graph, URIRef, Node
 from rdflib.namespace import Namespace, NamespaceManager
 from typing import Any, Optional
 
-from appn_types import NamespaceDefinition, Term, Triple, TriplePosition
+from appn_iri import IRI, Triple, TriplePosition
+from appn_types import NamespaceDefinition
 from appn_configuration import Configuration, APPN_SCHEMA
 
-logger = logging.getLogger(__name__)
-
-
 ### Dictionary ################################################################
+
 
 class Dictionary:
     """
     Wrapper class around rdflib Graph instance to simplify common query needs
-    
+
     A new Dictionary has an empty graph and cache. Linked-data objects can be
     added to the graph via the load() method. When the graph changes, the
     response cache is cleared.
-    
+
     All get_* and list_* methods check the cache for a previous response to the
     request and otherwise generate and cache a new response from the graph.
     """
 
     def __init__(
-        self, 
-        graph: Optional[Graph] = None, 
-        namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
+        self,
+        graph: Optional[Graph] = None,
+        namespace_definitions: Optional[list[NamespaceDefinition]] = None,
     ) -> None:
         """
         Initialise properties based either on a supplied `Graph` or a new
@@ -63,11 +59,12 @@ class Dictionary:
         :param graph: Optional `Graph` to initialise `Dictionary` - note that
             any `load` operations will modify the graph for all users.
         :param namespace_definitions: List of `NamespaceDefinition` objects to
-            assist with use of RDF assets.
+            assist with use of RDF assets. These are treated as supplements or
+            overrides to those from the local `Configuration`.
         """
         self.graph = Graph() if graph is None else graph
         self.namespace_manager = NamespaceManager(self.graph)
-        
+
         # The `namespaces` and `reverse_namespaces` dictionaries enable access
         # by namespace or by namespace prefix.
         if graph is not None:
@@ -80,9 +77,13 @@ class Dictionary:
             self.reverse_namespaces = {}
         self.loaded = set()
         self.cache = {}
-        self.namespace_definitions = (
-            {} if namespace_definitions is None else namespace_definitions
-        )
+
+        # Get `NamespaceDefinitions` from `Configuration` and add/overwrite any 
+        # supplied as a parameter
+        self.namespace_definitions = Configuration().get_namespace_definitions()
+        if namespace_definitions is not None:
+            for namespace_definition in namespace_definitions:
+                self.namespace_definitions[namespace_definition.ns] = namespace_definition
 
     def load(
         self,
@@ -93,11 +94,11 @@ class Dictionary:
         """
         Load an RDF asset (any format supported by `rdflib`).
 
-        The method loads definitions from the specified namespace into the 
+        The method loads definitions from the specified namespace into the
         `Graph`. If the path (file location) and/or prefix are not passed to
         the method, the supplied `NamespaceDefinition`s (if any) are checked
-        for the missing information. If they are still not defined, the 
-        namespace will be given an anonymous prefix and loaded from the 
+        for the missing information. If they are still not defined, the
+        namespace will be given an anonymous prefix and loaded from the
         namespace URL.
 
         :param asset_namespace: Namespace string for asset
@@ -106,6 +107,13 @@ class Dictionary:
         :return: True if successful
         """
         try:
+            # Tolerate prefix as alias for namespace
+            if not asset_namespace.startswith("http"):
+                for namespace_definition in self.namespace_definitions.values():
+                    if namespace_definition.prefix == asset_namespace:
+                        asset_namespace = namespace_definition.ns
+                        break
+
             # Check for `NamespaceDefinition`
             if asset_namespace in self.namespace_definitions and isinstance(
                 self.namespace_definitions[asset_namespace], NamespaceDefinition
@@ -128,7 +136,7 @@ class Dictionary:
                 else:
                     asset_path = asset_namespace
 
-            # Determine what prefix to use for the namespace, either a supplied 
+            # Determine what prefix to use for the namespace, either a supplied
             # parameter, or one from a `NamespaceDefinition`, or an anonymous
             # prefix in the series ns1, ns2, ...
             if asset_prefix is None:
@@ -144,7 +152,7 @@ class Dictionary:
                     asset_prefix = f"ns{index}"
 
             # Load the asset into the `Graph` and bind it with the prefix
-            logger.debug(
+            logging.debug(
                 f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
             )
             self.graph.parse(asset_path)
@@ -162,12 +170,12 @@ class Dictionary:
             }
             self.reverse_namespaces = {v: k for k, v in self.namespaces.items()}
 
-            logger.debug(f"Loaded {asset_namespace}")
+            logging.debug(f"Loaded {asset_namespace}")
 
             return True
 
         except Exception:
-            logger.error(f"Failed to load {asset_namespace}: repr(e)", exc_info=True)
+            logging.error(f"Failed to load {asset_namespace}: repr(e)", exc_info=True)
 
         return False
 
@@ -187,26 +195,25 @@ class Dictionary:
             for iri in [s, o, p]:
                 if isinstance(iri, URIRef) and iri not in iris:
                     ns = self.get_namespace_from_iri(iri)
-                    logger.debug(f"Mapped <{iri}> to namespace <{ns}>")
+                    logging.debug(f"Mapped <{iri}> to namespace <{ns}>")
                     if ns is not None and ns not in self.loaded:
                         if not self.load(ns):
                             success = False
-                    logger.debug(f"Found IRI <{iri}>")
+                    logging.debug(f"Found IRI <{iri}>")
                     iris.add(iri)
         return success
 
-    def get_namespace_from_iri(self, iri: str|Term) -> Optional[str]:
+    def get_namespace_from_iri(self, iri: str | IRI) -> Optional[str]:
         """
         Find the namespace to which an IRI belongs
 
         :param iri: IRI for request
-        :return: Namespace string if the IRI matches one of the known 
+        :return: Namespace string if the IRI matches one of the known
             namespaces, otherwise None
         """
         iri = self.get_iri(iri)
-        for ns in self.reverse_namespaces.keys():
-            if iri.startswith(ns):
-                return ns
+        if iri.ns not in [None, ""]:
+            return iri.ns
         return None
 
     def get_namespaces(self) -> dict[str, str]:
@@ -219,15 +226,31 @@ class Dictionary:
 
     def list_triples(self) -> list[Triple]:
         """
-        Return all `Triple`s in the `Graph`
+        Return all `Triple`s in the `Graph` with `URIRef`s upgraded to `IRI`s
 
         :return: List of `Triples` based on `Graph` contents
         """
-        return [Triple(s, p, o) for (s, p, o) in self.graph]
+        key = "triples"
+        if key not in self.cache:
+            self.cache[key] = [self.get_triple(s, p, o) for s, p, o in self.graph]
+        return self.cache[key]
 
-    def list_unique_subjects(
-        self, 
-        namespace: Optional[str] = None) -> list[Term]:
+    def get_triple(self, s: Node, p: Node, o: Node) -> Triple:
+        """
+        Produce `Triple` with IRIs in place or URIRefs
+
+        :param s: Triple subject as `rdflib` `Node`
+        :param p: Triple property as `rdflib` `Node`
+        :param o: Triple object as `rdflib` `Node`
+        :return: `Triple`
+        """
+        return Triple(
+            IRI(s) if isinstance(s, URIRef) else s,
+            IRI(p) if isinstance(p, URIRef) else p,
+            IRI(o) if isinstance(o, URIRef) else o,
+        )
+
+    def list_unique_subjects(self, namespace: Optional[str] = None) -> list[IRI]:
         """
         Return list of all IRIs used as subjects for triples
 
@@ -235,13 +258,11 @@ class Dictionary:
         namespace.
 
         :param namespace: Optional namespace for filtering results
-        :return: List of `Terms` for subject IRIs
+        :return: List of `IRIs` for subject IRIs
         """
         return self.list_unique_terms_by_position(TriplePosition.SUBJECT, namespace)
 
-    def list_unique_properties(
-        self, 
-        namespace: Optional[str] = None) -> list[Term]:
+    def list_unique_properties(self, namespace: Optional[str] = None) -> list[IRI]:
         """
         Return list of all IRIs used as properties for triples
 
@@ -249,11 +270,11 @@ class Dictionary:
         namespace.
 
         :param namespace: Optional namespace for filtering results
-        :return: List of `Terms` for property IRIs
+        :return: List of `IRIs` for property IRIs
         """
         return self.list_unique_terms_by_position(TriplePosition.PROPERTY, namespace)
 
-    def list_unique_objects(self, namespace: Optional[str] = None) -> list[Term]:
+    def list_unique_objects(self, namespace: Optional[str] = None) -> list[IRI]:
         """
         Return list of all IRIs used as objects for triples
 
@@ -261,84 +282,91 @@ class Dictionary:
         namespace.
 
         :param namespace: Optional namespace for filtering results
-        :return: List of `Terms` for object IRIs
+        :return: List of `IRIs` for object IRIs
         """
         return self.list_unique_terms_by_position(TriplePosition.OBJECT, namespace)
 
     def list_unique_terms_by_position(
-        self, 
-        position: TriplePosition, 
-        namespace: Optional[str] = None) -> list[Term]:
+        self, position: TriplePosition, namespace: Optional[str] = None
+    ) -> list[IRI]:
         """
         Return list of all IRIs from a position in a triple
 
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param position: `TriplePosition` specifying which item in triple is 
+        :param position: `TriplePosition` specifying which item in triple is
             targeted
         :param namespace: Optional namespace for filtering results
-        :return: List of `Terms` for IRIs in specified position
+        :return: List of `IRIs` for IRIs in specified position
         """
         if namespace is None:
             namespace = ""
         elif namespace in self.namespaces:
             namespace = self.namespaces[namespace]
-        values = {str(triple[position]) for triple in self.graph if isinstance(triple[position], URIRef)}
-        return [self.get_term(value) for value in sorted(values) if value.startswith(namespace)]
+        values = {
+            str(triple[position])
+            for triple in self.graph
+            if isinstance(triple[position], URIRef)
+        }
+        return [
+            self.get_iri(value)
+            for value in sorted(values)
+            if value.startswith(namespace)
+        ]
 
-    def list_triples_for_subject(self, subject: str|Term) -> list[Triple]:
+    def list_triples_for_subject(self, subject: str | IRI) -> list[Triple]:
         """
         Return list of all `Triple`s with a given term as subject
 
-        :param subject: String IRI or `Term`
+        :param subject: String IRI or `IRI`
         :return: List of `Triple`s with given subject
         """
         subject = self.get_iri(subject)
-        subject_key = f"subject|{subject}"
+        key = f"subject|{subject}"
 
-        if subject_key not in self.cache:
-            self.cache[subject_key] = [
-                (s, p, o) for (s, p, o) in self.graph if (str(s) == subject)
+        if key not in self.cache:
+            self.cache[key] = [
+                self.get_triple(s, p, o) for s, p, o in self.graph if s == subject
             ]
 
-        return self.cache[subject_key]
+        return self.cache[key]
 
-    def list_triples_for_object(self, object_: str|Term) -> list[Triple]:
+    def list_triples_for_object(self, object_: str | IRI) -> list[Triple]:
         """
         Return list of all `Triple`s with a given term as object
 
-        :param object_: String IRI or `Term`
+        :param object_: String IRI or `IRI`
         :return: List of `Triple`s with given object
         """
         object_ = self.get_iri(object_)
-        object_key = f"object|{object_}"
+        key = f"object|{object}"
 
-        if object_key not in self.cache:
-            self.cache[object_key] = [
-                (s, p, o) for (s, p, o) in self.graph if (str(o) == object_)
+        if key not in self.cache:
+            self.cache[key] = [
+                self.get_triple(s, p, o) for s, p, o in self.graph if o == object_
             ]
 
-        return self.cache[object_key]
+        return self.cache[key]
 
-    def list_triples_for_property(self, property_: str|Term) -> list[Triple]:
+    def list_triples_for_property(self, property_: str | IRI) -> list[Triple]:
         """
         Return list of all `Triple`s with a given property term
 
-        :param property_: String IRI or `Term`
+        :param property_: String IRI or `IRI`
         :return: List of `Triple`s with given property term
         """
         property_ = self.get_iri(property_)
-        property_key = f"object|{property_}"
+        key = f"property|{property_}"
 
-        if property_key not in self.cache:
-            self.cache[property_key] = [
-                (s, p, o) for (s, p, o) in self.graph if (str(p) == property_)
+        if key not in self.cache:
+            self.cache[key] = [
+                self.get_triple(s, p, o) for s, p, o in self.graph if p == property_
             ]
 
-        return self.cache[property_key]
+        return self.cache[key]
 
-    def count_triples_by_subject(self) -> dict[str,int]:
+    def count_triples_by_subject(self) -> dict[IRI, int]:
         """
         Return count of Triple`s  for every term usedm as subject
 
@@ -346,7 +374,7 @@ class Dictionary:
         """
         return self.count_triples_by_term(TriplePosition.SUBJECT)
 
-    def count_triples_by_property(self) -> dict[str,int]:
+    def count_triples_by_property(self) -> dict[IRI, int]:
         """
         Return count of Triple`s for every term used as property
 
@@ -354,7 +382,7 @@ class Dictionary:
         """
         return self.count_triples_by_term(TriplePosition.PROPERTY)
 
-    def count_triples_by_object(self) -> dict[str,int]:
+    def count_triples_by_object(self) -> dict[IRI, int]:
         """
         Return count of Triple`s for every term used as object
 
@@ -362,27 +390,34 @@ class Dictionary:
         """
         return self.count_triples_by_term(TriplePosition.OBJECT)
 
-    def count_triples_by_term(self, position: TriplePosition) -> dict[str,int]:
+    def count_triples_by_term(self, position: TriplePosition) -> dict[str, int]:
         """
         Return counts of Triple`s for every term in a specified position
 
-        :param position: `TriplePosition` specifying which item in triple is 
+        :param position: `TriplePosition` specifying which item in triple is
             targeted
         :return: Counts of matching `Triple`s per term
         """
+        key = f"counts|position"
+        if key in self.cache:
+            return self.cache[key]
+
         counts = {}
-        for term in [str(triple[position.value]) for triple in self.graph]:
-            if term.startswith("http"):
+        for term in [triple[position] for triple in self.list_triples()]:
+            if isinstance(term, IRI):
                 if term not in counts:
                     counts[term] = 1
                 else:
                     counts[term] += 1
+
+        self.cache[key] = counts
+
         return counts
 
     def list_classes(
         self,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all classes (type rdfs:Class) in `Graph`.
 
@@ -390,7 +425,7 @@ class Dictionary:
         namespace.
 
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for classes
+        :return: List of `IRI`s for classes
         """
         return self.list_iris(
             ["?q rdf:type rdfs:Class"], f"classes|{namespace}", namespace
@@ -399,7 +434,7 @@ class Dictionary:
     def list_properties(
         self,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all properties (type rdfs:Property) in `Graph`.
 
@@ -407,7 +442,7 @@ class Dictionary:
         namespace.
 
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for properties
+        :return: List of `IRI`s for properties
         """
         return self.list_iris(
             ["?q rdf:type rdf:Property"], f"properties|{namespace}", namespace
@@ -415,9 +450,9 @@ class Dictionary:
 
     def list_superclasses(
         self,
-        class_iri: str|Term,
+        class_iri: str | IRI,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all superclasses of a specified class (including the class
         itself)
@@ -425,9 +460,9 @@ class Dictionary:
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param class_iri: String IRI or `Term` for class
+        :param class_iri: String IRI or `IRI` for class
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for classes
+        :return: List of `IRI`s for classes
         """
         logging.debug(f"Finding all superclasses for class {class_iri}")
         return self.list_iris_transitive(
@@ -439,9 +474,9 @@ class Dictionary:
 
     def list_superproperties(
         self,
-        property_iri: str|Term,
+        property_iri: str | IRI,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all superproperties of a specified property (including the property
         itself).
@@ -449,9 +484,9 @@ class Dictionary:
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param property_iri: String IRI or `Term` for property
+        :param property_iri: String IRI or `IRI` for property
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for properties
+        :return: List of `IRI`s for properties
         """
         logging.debug(f"Finding all superproperties for property {property_iri}")
         return self.list_iris_transitive(
@@ -463,18 +498,18 @@ class Dictionary:
 
     def list_domain_properties_for_class(
         self,
-        class_iri: str|Term,
+        class_iri: str | IRI,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all known properties that include a specified class in their domain.
 
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param class_iri: String IRI or `Term` for class
+        :param class_iri: String IRI or `IRI` for class
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for properties
+        :return: List of `IRI`s for properties
         """
         class_iri = self.get_iri(class_iri)
         query_strings = [
@@ -487,18 +522,18 @@ class Dictionary:
 
     def list_range_properties_for_class(
         self,
-        class_iri: str|Term,
+        class_iri: str | IRI,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all known properties that include a specified class in their range.
 
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param class_iri: String IRI or `Term` for class
+        :param class_iri: String IRI or `IRI` for class
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for properties
+        :return: List of `IRI`s for properties
         """
         class_iri = self.get_iri(class_iri)
         query_strings = [
@@ -511,9 +546,9 @@ class Dictionary:
 
     def list_domain_classes_for_property(
         self,
-        property_iri: str|Term,
+        property_iri: str | IRI,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all known classes that are included in the domain of a specified
         property.
@@ -521,13 +556,13 @@ class Dictionary:
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param property_iri: String IRI or `Term` for property
+        :param property_iri: String IRI or `IRI` for property
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for classes
+        :return: List of `IRI`s for classes
         """
         property_iri = self.get_iri(property_iri)
         query_strings = [
-            f"<{property_iri}> schema:domainIncludes ?q"
+            f"<{property_}> schema:domainIncludes ?q"
             for property_ in self.list_superproperties(property_iri)
         ]
         return self.list_iris(
@@ -536,9 +571,9 @@ class Dictionary:
 
     def list_range_classes_for_property(
         self,
-        property_iri: str|Term,
+        property_iri: str | IRI,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all known classes that are included in the range of a specified
         property.
@@ -546,13 +581,13 @@ class Dictionary:
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param property_iri: String IRI or `Term` for property
+        :param property_iri: String IRI or `IRI` for property
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for classes
+        :return: List of `IRI`s for classes
         """
         property_iri = self.get_iri(property_iri)
         query_strings = [
-            f"<{property_iri}> schema:rangeIncludes ?q"
+            f"<{property_}> schema:rangeIncludes ?q"
             for property_ in self.list_superproperties(property_iri)
         ]
         return self.list_iris(
@@ -560,19 +595,17 @@ class Dictionary:
         )
 
     def list_instances(
-        self, 
-        class_iri: str|Term, 
-        namespace: Optional[str] = None
-    ) -> list[Term]:
+        self, class_iri: str | IRI, namespace: Optional[str] = None
+    ) -> list[IRI]:
         """
         List all known instances of the specified class.
 
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param class_iri: String IRI or `Term` for class
+        :param class_iri: String IRI or `IRI` for class
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for instances
+        :return: List of `IRI`s for instances
         """
         class_iri = self.get_iri(class_iri)
         return self.list_iris(
@@ -583,11 +616,11 @@ class Dictionary:
 
     def list_instances_by_class_and_name(
         self,
-        class_iri: str|Term,
+        class_iri: str | IRI,
         name: str,
         check_alternate_names: bool = False,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all known instances of the specified class with the specified
         unqualified name.
@@ -595,12 +628,12 @@ class Dictionary:
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param class_iri: String IRI or `Term` for class
+        :param class_iri: String IRI or `IRI` for class
         :param name: Unqualified name to find
         :param check_alternate_names: True if alternateName properties should
             also be checked
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for instances
+        :return: List of `IRI`s for instances
         """
         class_iri = self.get_iri(class_iri)
         cache_key = (
@@ -623,19 +656,19 @@ class Dictionary:
         name: str,
         check_alternate_names: bool = False,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List all known properties with the specified unqualified name.
 
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param property_iri: String IRI or `Term` for property
+        :param property_iri: String IRI or `IRI` for property
         :param name: Unqualified name to find
         :param check_alternate_names: True if alternateName properties should
             also be checked
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for properties
+        :return: List of `IRI`s for properties
         """
         return self.list_instances_by_class_and_name(
             "rdf:Property",
@@ -645,11 +678,8 @@ class Dictionary:
         )
 
     def list_properties_by_domain_and_range(
-        self, 
-        domain_iri: str|Term, 
-        range_iri: str, 
-        namespace: Optional[str] = None
-    ) -> list[Term]:
+        self, domain_iri: str | IRI, range_iri: str, namespace: Optional[str] = None
+    ) -> list[IRI]:
         """
         List all known properties with the specified classes in their domain and
         range (one of each)
@@ -657,10 +687,10 @@ class Dictionary:
         Results may optionally be filtered to matches within a specified
         namespace.
 
-        :param domain_iri: String IRI or `Term` for domain
+        :param domain_iri: String IRI or `IRI` for domain
         :param range_iri: String IRI for domain
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term`s for properties
+        :return: List of `IRI`s for properties
         """
         cache_key = f"domain-and-range|{domain_iri}|{range_iri}|{namespace}"
 
@@ -676,114 +706,49 @@ class Dictionary:
 
         return properties
 
-    def get_iri(self, curie: str|Term) -> str:
+    def get_iri(self, iri: str | URIRef | IRI) -> IRI:
         """
-        Get IRI for specified CURIE or Term
+        Get `IRI` for specified CURIE or IRI string, `URIRef`` or `IRI`
 
-        If the supplied value is an IRI, it is returned directly
+        If the supplied value is an `IRI`, it is returned directly
 
-        :param curie: String CURIE or `Term`
-        :return: String IRI
-        """
-        if isinstance(curie, Term):
-            return curie.iri
+        CURIEs are mapped to IRI strings using the current namespace_definitions
 
-        cache_key = f"iri|{curie}"
-
-        if cache_key in self.cache:
-            return self.cache[cache_key]
-
-        if curie.startswith("http"):
-            iri = curie
-        else:
-            iri = None
-            parts = curie.split(":")
-            if len(parts) == 2:
-                prefix = parts[0]
-                for p, ns in self.namespace_manager.namespaces():
-                    if p == prefix:
-                        iri = f"{ns}{parts[1]}"
-                        logging.debug(f"Expanded {curie} to {iri}")
-
-        if iri is None:
-            logging.error(f"Could not expand identifier: {curie}")
-            iri = curie
-
-        self.cache[cache_key] = iri
-
-        return iri
-
-    def get_curie(self, iri: str|Term) -> str:
-        """
-        Get CURIE for specified IRI or Term
-
-        If the supplied value is an CURIE, it is returned directly
-
-        :param iri: String IRI or `Term`
-        :return: String IRI
-        """
-        if isinstance(iri, Term):
-            return iri.curie
-
-        cache_key = f"curie|{iri}"
-
-        if cache_key in self.cache:
-            return self.cache[cache_key]
-
-        curie = iri
-        if iri.startswith("http"):
-            for ns in self.reverse_namespaces:
-                if iri.startswith(ns):
-                    curie = f"{self.reverse_namespaces[ns]}:{iri[len(ns):]}"
-
-        self.cache[cache_key] = curie
-
-        return curie
-
-    def get_term(self, iri: str) -> Term:
-        """
-        Get `Term` for specified CURIE or IRI
-
-        If the supplied value is an IRI, it is returned directly
+        IRI strings are then coverted to `IRI` instances
 
         :param iri: String IRI or CURIE
-        :return: `Term` instance
+        :return: `IRI` instance
         """
+        if isinstance(iri, IRI):
+            return iri
+
+        iri = str(iri)
+
         cache_key = f"term|{iri}"
 
         if cache_key in self.cache:
             return self.cache[cache_key]
 
         if not iri.startswith("http"):
-            iri = self.get_iri(iri)
-        curie = self.get_curie(iri)
-        if curie != iri:
-            prefix, name = curie.split(":")
-            ns = self.namespaces[prefix]
-        else:
-            ns, curie, prefix, name = "", "", "", ""
-        term = Term(iri, curie, self.namespaces[prefix], prefix, name)
+            for namespace, namespace_definition in self.namespace_definitions.items():
+                if iri.startswith(f"{namespace_definition.prefix}:"):
+                    iri = f"{namespace}{iri[len(namespace_definition.prefix) + 1:]}"
 
-        self.cache[cache_key] = term
-
-        return term
+        return IRI(iri)
 
     def list_iris(
-        self, 
-        query_strings: list[str], 
-        cache_key: str, 
-        namespace: Optional[str] = None
-    ) -> list[Term]:
+        self, query_strings: list[str], cache_key: str, namespace: Optional[str] = None
+    ) -> list[IRI]:
         """
         List IRIs matching any of a set of SPARQL query strings.
 
         Results may optionally be filtered using a specified namespace.
 
         :param query_strings: List of SPARQL query elements
-        :param cache_key: Key to store results in cache - this should be 
+        :param cache_key: Key to store results in cache - this should be
             supplied by the initial caller and None during recursion
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term` instances
+        :return: List of `IRI` instances
         """
         logging.debug(
             f"Listing IRIs for query: {query_strings} (namespace: {namespace})"
@@ -814,13 +779,13 @@ class Dictionary:
                 if isinstance(p[0], URIRef) and (
                     namespace is None or str(p[0]).startswith(namespace)
                 ):
-                    term = self.get_term(str(p[0]))
-                    if term not in results:
-                        results.append(term)
+                    iri = self.get_iri(str(p[0]))
+                    if iri not in results:
+                        results.append(iri)
 
         self.cache[cache_key] = results
 
-        logging.debug(f"Matching terms: {', '.join([t[0] for t in results])}")
+        logging.debug(f"Matching terms: {', '.join([iri.curie for iri in results])}")
 
         return results
 
@@ -829,9 +794,9 @@ class Dictionary:
         subject: str,
         transitive_property: str,
         cache_key: Optional[str],
-        matches: Optional[list[Term]] = None,
+        matches: Optional[list[IRI]] = None,
         namespace: Optional[str] = None,
-    ) -> list[Term]:
+    ) -> list[IRI]:
         """
         List IRIs connected to the subject IRI or CURIE by any number of
         links of the specified property.
@@ -843,12 +808,12 @@ class Dictionary:
 
         :param subject: String IRI or CURIE for starting term
         :param transitive_property: String IRI or CURIE for property to follow
-        :param cache_key: Key to store results in cache - this should be 
+        :param cache_key: Key to store results in cache - this should be
             supplied by the initial caller and None during recursion
-        :param matches: IRIs for terms already matched - this should be 
+        :param matches: IRIs for terms already matched - this should be
             None on the initial call and is set during recursion
         :param namespace: Optional namespace for filtering results
-        :return: List of `Term` instances
+        :return: List of `IRI` instances
         """
         logging.debug(
             f"Listing IRIs for subject: {subject} with transitive property: {transitive_property}"
@@ -857,8 +822,8 @@ class Dictionary:
         if cache_key is not None and cache_key in self.cache:
             return self.cache[cache_key]
 
-        subject_term = self.get_term(subject)
-        property_term = self.get_term(transitive_property)
+        subject_term = self.get_iri(subject)
+        property_term = self.get_iri(transitive_property)
 
         if matches is None:
             matches = [subject_term]
@@ -876,7 +841,7 @@ class Dictionary:
 
         for t in self.graph.query(query):
             if isinstance(t[0], URIRef):
-                match = self.get_term(str(t[0]))
+                match = self.get_iri(t[0])
                 if match not in matches:
                     if namespace is None or match.ns.startswith(namespace):
                         matches.append(match)
@@ -889,398 +854,81 @@ class Dictionary:
 
         return matches
 
-    def format_tuple_list(
+    def format_iri_list(
         self,
-        tuples: list[Term] | list[Triple],
-        element_count: Optional[int] = None,
+        iris: list[IRI],
         max_rows: Optional[int] = None,
-    ) -> None:
+    ) -> str:
         """
-        Return string containing (column-aligned) a specified number of elements 
+        Return string containing (column-aligned) a specified number of elements
         from each in a list of tuples.
-        
-        :param tuples: list of `Terms` or `Triples` (treated as tuples)
+
+        :param tuples: list of `IRIs` or `Triples` (treated as tuples)
         :param element_count: number of tuple elements to display
         :param max_rows: optional cap on the number of tuples to process
         """
+        if iris is None or len(iris) == 0:
+            return ""
+
         if max_rows is not None:
-            tuples = tuples[0:max_rows]
-        if element_count is None:
-            if len(tuples) > 0:
-                element_count = len(tuples[0])
+            iris = iris[0:max_rows]
+
+        curie_length = max([len(iri.curie) for iri in iris])
+        return "\n".join([f"{iri.curie:{curie_length}s}   {iri.iri}" for iri in iris])
+
+    def format_triple_list(
+        self,
+        triples: list[Triple],
+        max_rows: Optional[int] = None,
+        max_node_length: Optional[int] = None,
+    ) -> str:
+        """
+        Return string containing (column-aligned) a specified number of elements
+        from each in a list of tuples.
+
+        :param tuples: list of `IRIs` or `Triples` (treated as tuples)
+        :param max_rows: optional cap on the number of tuples to process
+        :param max_node_length: maximum string length for any triple member
+        """
+        if triples is None or len(triples) == 0:
+            return ""
+
+        if max_rows is not None and max_rows > 1:
+            triples = triples[0:max_rows]
+
+        if max_node_length is not None and max_node_length < 1:
+            max_node_length = None
+
+        formatted: list[tuple[str, str, str]] = []
+        subject_length = 0
+        property_length = 0
+
+        for triple in triples:
+            if isinstance(triple[0], IRI):
+                s = triple[0].curie
             else:
-                element_count = 1
-        lengths = [0] * element_count
-        for t in tuples:
-            for element in range(min(element_count, len(t))):
-                length = len(t[element])
-                if length > lengths[element]:
-                    lengths[element] = length
+                s = str(triple[0])
+            p = (
+                triple[TriplePosition.PROPERTY].curie
+                if isinstance(triple[TriplePosition.PROPERTY], IRI)
+                else str(triple[TriplePosition.PROPERTY])
+            )
+            o = (
+                triple[TriplePosition.OBJECT].curie
+                if isinstance(triple[TriplePosition.OBJECT], IRI)
+                else str(triple[TriplePosition.OBJECT])
+            )
+            formatted.append((s, p, o))
+        subject_length = max([len(s) for s, _, _ in formatted])
+        if max_node_length is not None and max_node_length < subject_length:
+            subject_length = max_node_length
+        property_length = max([len(p) for _, p, _ in formatted])
+        if max_node_length is not None and max_node_length < property_length:
+            property_length = max_node_length
 
-        return "\n".join([
-                "   ".join([f"{t[e]:{lengths[e]}s}" for e in range(min(element_count, len(t)))]).strip()
-                    for t in tuples])
-
-
-### process_argv ##############################################################
-#
-# Safely process sys.argv, returning a dictionary of option values.
-#
-#     query             : query type - one of:
-#                          { classes, properties, domain, range, namespaces,
-#                            subject, property, object, triples,
-#                            property-name, property-name-all,
-#                            instance-name, instance-name-all }.
-#     -l, --log-level   : "info" / "warning" / "error" / "debug".
-#     -e,               : Display logging outputs to stderr.
-#      --echo-to-stderr
-#
-subcommand_helptext = {
-    "namespaces": "List all prefixes and namespaces from loaded assets.",
-    "triples": "List all triples from loaded assets.",
-    "unique_subjects": "List IRIs and CURIEs for all unique subjects of triples.",
-    "unique_properties": "List IRIs and CURIEs for all unique properties of triples.",
-    "unique_objects": "List IRIs and CURIEs for all unique objects of triples.",
-    "classes": "List IRIs and CURIEs for all classes defined or referenced by loaded assets.",
-    "properties": "List IRIs and CURIEs for all properties defined or referenced by loaded assets.",
-    "superclasses": "List IRIs and CURIEs for all known superclasses for a class specified using its IRI or CURIE.",
-    "superproperties": "List IRIs and CURIEs for all known superproperties for a property specified using its IRI or CURIE.",
-    "instances": "List  IRIs and CURIEs for all known instances of a class specified using its IRI or CURIE.",
-    "domain": "List IRIs and CURIEs for all known properties with a domain including a class specified using its IRI or CURIE.",
-    "range": "List IRIs and CURIEs for all known properties with a range including a class specified using its IRI or CURIE.",
-    "subject": "List all triples with the specified IRI or CURIE as subject.",
-    "property": "List all triples with the specified IRI or CURIE as property.",
-    "object": "List all triples with the specified IRI or CURIE as object.",
-    "property-name": "List IRIs and CURIEs for all properties with the specified value for schema:name or rdfs:label (optionally filtered to a specified namespace).",
-    "property-name-all": "List IRIs and CURIEs for all properties with the specified value for schema:name, rdfs:label or schema:alternateName (optionally filtered to a specified namespace).",
-    "instance-name": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name or rdfs:label (optionally filtered to a specified namespace).",
-    "instance-name-all": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name, rdfs:label or or schema:alternateName (optionally filtered to a specified namespace).",
-    "test": "Run tests for all subcommands.",
-}
-
-
-def process_argv(argv: list[str]) -> dict[str, Any]:
-    parser = argparse.ArgumentParser(
-        prog=argv[0],
-        description=f"{argv[0]}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
-    )
-    subparsers = parser.add_subparsers(dest="query")
-    for cmd in ["namespaces", "triples", "classes", "properties", "test"]:
-        subparser = subparsers.add_parser(
-            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
+        return "\n".join(
+            [
+                f"{s:{subject_length}s}   {p:{property_length}s}   {o if max_node_length is None else o[0:max_node_length]}"
+                for s, p, o in formatted
+            ]
         )
-    for cmd in [
-        "superclasses",
-        "superproperties",
-        "instances",
-        "domain",
-        "range",
-        "subject",
-        "property",
-        "object",
-    ]:
-        subparser = subparsers.add_parser(
-            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
-        )
-        subparser.add_argument("iri")
-    for cmd in ["unique-subjects", "unique-properties", "unique-objects"]:
-        subparser = subparsers.add_parser(
-            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
-        )
-        subparser.add_argument("-n", "--namespace")
-    for cmd in ["property-name", "property-name-all"]:
-        subparser = subparsers.add_parser(
-            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
-        )
-        subparser.add_argument("name")
-        subparser.add_argument("-n", "--namespace")
-    for cmd in ["instance-name", "instance-name-all"]:
-        subparser = subparsers.add_parser(
-            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
-        )
-        subparser.add_argument("class")
-        subparser.add_argument("name")
-        subparser.add_argument("-n", "--namespace")
-
-    parser.add_argument(
-        "-l",
-        "--log-level",
-        choices=("error", "warning", "info", "debug"),
-        default="info",
-        help="Set logging level",
-    )
-    parser.add_argument(
-        "-e",
-        "--echo-to-stderr",
-        action=argparse.BooleanOptionalAction,
-        default=False,
-        help="Echo log messages to console",
-    )
-    parser.add_argument(
-        "-a",
-        "--asset",
-        action="append",
-        help="Namespace for linked-data asset to load into graph.",
-    )
-    parser.add_argument(
-        "-p", "--prefix", action="append", help="Optional prefix for loaded asset."
-    )
-    parser.add_argument(
-        "-f",
-        "--filepath_to_asset",
-        action="append",
-        help="Path to asset file if different from asset namespace.",
-    )
-    args = vars(parser.parse_args(argv[1:]))
-
-    return args
-
-
-### start_log #################################################################
-#
-# Start logging to default or named file and optionally to stderr.
-#
-#     level             : info / error / debug (string or logging enumeration).
-#     name              : (optional) name for log file.
-#     echo              : boolean - duplicate logging to stderr
-#
-def start_log(
-    level: str | int = logging.INFO, name: Optional[str] = None, echo: bool = True
-) -> None:
-    if isinstance(level, str):
-        level = level.lower()
-        if level == "error":
-            log_level = logging.ERROR
-        elif level == "debug":
-            log_level = logging.DEBUG
-        else:
-            log_level = logging.INFO
-    else:
-        log_level = level
-
-    if name is None:
-        name = Path(sys.argv[0]).stem
-    logfile_name = f"{name}.log"
-    logging.basicConfig(
-        filename=logfile_name,
-        filemode="w",
-        level=log_level,
-        format="%(asctime)s %(levelname)s %(filename)s : %(lineno)s - %(funcName)s: %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-    )
-    if echo:
-        logging.getLogger().addHandler(logging.StreamHandler())
-
-    logging.info(f"Logging started to {logfile_name} at level {level} and echo {echo}")
-
-
-def execute_query(
-    d: Dictionary, args: dict[str, Any], max_rows: Optional[int] = None
-) -> None:
-
-    if args["query"] == "classes":
-        print(d.format_tuple_list(d.list_classes(), 2, max_rows=max_rows))
-
-    elif args["query"] == "properties":
-        print(d.format_tuple_list(d.list_properties(), 2, max_rows=max_rows))
-
-    elif args["query"] == "superclasses":
-        print(d.format_tuple_list(d.list_superclasses(args["iri"]), max_rows=max_rows))
-
-    elif args["query"] == "superproperties":
-        print(d.format_tuple_list(d.list_superproperties(args["iri"]), 2, max_rows=max_rows))
-
-    elif args["query"] == "instances":
-        print(d.format_tuple_list(d.list_instances(args["iri"]), 2, max_rows=max_rows))
-
-    elif args["query"] == "unique-subjects":
-        print(d.format_tuple_list(d.list_unique_subjects(namespace=args["namespace"] if "namespace" in args else None),
-        2, max_rows=max_rows))
-
-    elif args["query"] == "unique-properties":
-        print(d.format_tuple_list(d.list_unique_properties(namespace=args["namespace"] if "namespace" in args else None),
-        2, max_rows=max_rows))
-
-    elif args["query"] == "unique-objects":
-        print(d.format_tuple_list(d.list_unique_objects(namespace=args["namespace"] if "namespace" in args else None),
-        2, max_rows=max_rows))
-
-    elif args["query"] == "domain":
-        print(d.format_tuple_list(
-            d.list_domain_properties_for_class(args["iri"]), 2, max_rows=max_rows
-        ))
-
-    elif args["query"] == "range":
-        print(d.format_tuple_list(
-            d.list_range_properties_for_class(args["iri"]), 2, max_rows=max_rows
-        ))
-
-    elif args["query"] == "property-name":
-        print(d.format_tuple_list(
-            d.list_properties_by_name(
-                args["name"],
-                namespace=args["namespace"] if "namespace" in args else None,
-            ),
-            2,
-            max_rows=max_rows,
-        ))
-
-    elif args["query"] == "property-name-all":
-        print(d.format_tuple_list(
-            d.list_properties_by_name(
-                args["name"],
-                check_alternate_names=True,
-                namespace=args["namespace"] if "namespace" in args else None,
-            ),
-            2,
-            max_rows=max_rows,
-        ))
-
-    elif args["query"] == "instance-name":
-        print(d.format_tuple_list(
-            d.list_instances_by_class_and_name(
-                args["class"],
-                args["name"],
-                namespace=args["namespace"] if "namespace" in args else None,
-            ),
-            2,
-            max_rows=max_rows,
-        ))
-
-    elif args["query"] == "instance-name-all":
-        print(d.format_tuple_list(
-            d.list_instances_by_class_and_name(
-                args["class"],
-                args["name"],
-                check_alternate_names=True,
-                namespace=args["namespace"] if "namespace" in args else None,
-            ),
-            2,
-            max_rows=max_rows,
-        ))
-
-    elif args["query"] == "namespaces":
-        namespaces = d.get_namespaces()
-        keys = sorted(namespaces.keys())
-        if max_rows is not None:
-            keys = keys[0:max_rows]
-        length = max([len(k) for k in keys])
-        for k in keys:
-            if len(k) > 0:
-                print(f"{k:>{length}s} : {namespaces[k]}")
-
-    elif args["query"] in ["subject", "property", "object", "triples"]:
-        if args["query"] == "subject":
-            triples = d.list_triples_for_subject(args["iri"])
-        elif args["query"] == "property":
-            triples = d.list_triples_for_property(args["iri"])
-        elif args["query"] == "object":
-            triples = d.list_triples_for_object(args["iri"])
-        else:
-            triples = d.list_triples()
-        print(d.format_tuple_list(triples, 3, max_rows=max_rows))
-
-
-if __name__ == "__main__":
-
-    args = process_argv(sys.argv)
-    start_log(args["log_level"], None, args["echo_to_stderr"])
-
-    config = Configuration()
-    namespace_definitions = config.get_namespace_definitions()
-
-    d = Dictionary(namespace_definitions=namespace_definitions)
-    d.load(APPN_SCHEMA)
-    if args["asset"] is not None:
-        for i in range(len(args["asset"])):
-            asset = args["asset"][i]
-            if args["prefix"] is not None and i in range(len(args["prefix"])):
-                prefix = args["prefix"][i]
-            else:
-                prefix = None
-            if args["filepath_to_asset"] is not None and i in range(
-                len(args["filepath_to_asset"])
-            ):
-                path = args["filepath_to_asset"][i]
-            else:
-                path = None
-            d.load(asset, asset_path=path, asset_prefix=prefix)
-    d.import_references()
-
-    print()
-
-    if args["query"] == "test":
-        for q in [
-            [
-                "namespaces",
-            ],
-            [
-                "triples",
-            ],
-            [
-                "classes",
-            ],
-            [
-                "properties",
-            ],
-            [
-                "superclasses",
-                "appn:Sampling",
-            ],
-            [
-                "superproperties",
-                "schema:name",
-            ],
-            [
-                "instances",
-                "appn:Scale",
-            ],
-            [
-                "domain",
-                "appn:Scale",
-            ],
-            [
-                "range",
-                "appn:Scale",
-            ],
-            [
-                "subject",
-                "appn:Scale",
-            ],
-            [
-                "property",
-                "appn:hasScale",
-            ],
-            [
-                "object",
-                "appn:Scale",
-            ],
-            ["property-name", "name"],
-            [
-                "property-name-all",
-                "comment",
-                "-n",
-                "schema",
-            ],
-            [
-                "instance-name",
-                "appn:Scale",
-                "millimeter",
-            ],
-            [
-                "instance-name-all",
-                "appn:Scale",
-                "mm",
-                "-n",
-                "ltu",
-            ],
-        ]:
-            print(f"Executing: {' '.join(q)}\n")
-            execute_query(d, process_argv([sys.argv[0]] + q), max_rows=5)
-            print()
-    else:
-        execute_query(d, args)
-
-    print()
-
-    logger.info("Finished")

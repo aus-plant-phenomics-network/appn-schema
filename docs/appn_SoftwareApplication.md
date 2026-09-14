@@ -6,11 +6,11 @@ A piece of software that may be perform an Assay. Note that SOSA maps software c
 ![UML diagram for SoftwareApplication](images/ttl_appn_SoftwareApplication.png)
 
 ## Superclasses
-* https://bioschemas.org/ComputationalWorkflow
+* https://bioschemas.org/terms/ComputationalWorkflow
 * [https://schema.plantphenomics.org.au/Observer](appn_Observer.md)
-* https://www.w3.org/ns/sosa/Sensor
+* http://www.w3.org/ns/sosa/Sensor
 * [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
-* https://www.w3.org/ns/sosa/Actuator
+* http://www.w3.org/ns/sosa/Actuator
 ## Properties
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.

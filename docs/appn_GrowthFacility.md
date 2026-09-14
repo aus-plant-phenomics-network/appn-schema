@@ -8,12 +8,12 @@ A building, enclosed space, field unit, container or other entity in which plant
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#growth_facility
 * [https://schema.plantphenomics.org.au/Platform](appn_Platform.md)
-* https://www.w3.org/ns/sosa/Platform
+* http://www.w3.org/ns/sosa/Platform
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
+* http://www.w3.org/ns/sosa/FeatureOfInterest
 * https://schema.org/IndividualProduct
 ## Properties
 * appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
@@ -22,8 +22,20 @@ A building, enclosed space, field unit, container or other entity in which plant
 * GrowthFacility https://schema.plantphenomics.org.au/quarantine
 * [appn:Study](appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
     * Identifies a GrowthFacility used in a Study.
+* GrowthFacility https://schema.plantphenomics.org.au/airConditioning
+* GrowthFacility https://schema.plantphenomics.org.au/temperatureRange
+* GrowthFacility https://schema.plantphenomics.org.au/lights
+* GrowthFacility https://schema.plantphenomics.org.au/shade
+* GrowthFacility https://schema.plantphenomics.org.au/physicalContainmentLevel
+* GrowthFacility https://schema.plantphenomics.org.au/biocontainmentLevel
+* GrowthFacility https://schema.plantphenomics.org.au/gasSupply
+* GrowthFacility https://schema.plantphenomics.org.au/humidityControl
 * [appn:Platform](appn_Platform.md) **appn:hasPlatformType** [appn:PlatformType](appn_PlatformType.md)
     * Links a Platform to its type.
+* [appn:Platform](appn_Platform.md) **appn:hosts** [appn:Sensor](appn_Sensor.md)
+    * Identifies a Sensor or Actuator hosted by a Platform.
+* [appn:Platform](appn_Platform.md) **appn:hosts** [appn:Actuator](appn_Actuator.md)
+    * Identifies a Sensor or Actuator hosted by a Platform.
 * [appn:Deployment](appn_Deployment.md) **appn:deployedOnPlatform** [appn:Platform](appn_Platform.md)
     * Identifies a Platform on which Sensors or Actuators are deployed.
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)

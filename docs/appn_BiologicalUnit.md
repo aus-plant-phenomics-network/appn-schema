@@ -10,8 +10,8 @@ A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or cro
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
-* https://bioschemas.org/BioChemEntity
+* http://www.w3.org/ns/sosa/FeatureOfInterest
+* https://bioschemas.org/terms/BioChemEntity
 ## Properties
 * appn:BiologicalUnit **appn:hasBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)
     * Links a BiologicalUnit to its type.

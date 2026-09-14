@@ -7,16 +7,18 @@ An electromechanical device that can return the value for an ObservedVariable an
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Observer](appn_Observer.md)
-* https://www.w3.org/ns/sosa/Sensor
+* http://www.w3.org/ns/sosa/Sensor
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
+* http://www.w3.org/ns/sosa/FeatureOfInterest
 * https://schema.org/IndividualProduct
 ## Properties
 * appn:Sensor **appn:hasSensorType** [appn:SensorType](appn_SensorType.md)
     * Links a Sensor to its type.
+* [appn:Platform](appn_Platform.md) **appn:hosts** appn:Sensor
+    * Identifies a Sensor or Actuator hosted by a Platform.
 * [appn:Deployment](appn_Deployment.md) **appn:deployedSystem** appn:Sensor
     * Identifies a Sensor or Actuator deployed on a Platform.
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)

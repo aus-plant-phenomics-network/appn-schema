@@ -11,7 +11,7 @@ An Assay that observes or measures properties of an ObservationUnit returning re
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* https://www.w3.org/ns/sosa/Execution
+* http://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#observation
 ## Properties
 * appn:Observation **appn:madeByObserver** [appn:Observer](appn_Observer.md)

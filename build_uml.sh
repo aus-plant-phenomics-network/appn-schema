@@ -24,4 +24,4 @@ contents=`sed '/@context/q' context.json; sed -En -e 's/^appn:(\w+).*/    "\1": 
 echo "${contents}" > context.json
 
 # Generate node vocabularies
-python appn_vocabulary.py
+#python appn_vocabulary.py

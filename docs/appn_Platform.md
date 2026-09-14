@@ -6,16 +6,20 @@ A vehicle, building, person or other entity that may carry or include Sensors or
 ![UML diagram for Platform](images/ttl_appn_Platform.png)
 
 ## Superclasses
-* https://www.w3.org/ns/sosa/Platform
+* http://www.w3.org/ns/sosa/Platform
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
+* http://www.w3.org/ns/sosa/FeatureOfInterest
 * https://schema.org/IndividualProduct
 ## Properties
 * appn:Platform **appn:hasPlatformType** [appn:PlatformType](appn_PlatformType.md)
     * Links a Platform to its type.
+* appn:Platform **appn:hosts** [appn:Sensor](appn_Sensor.md)
+    * Identifies a Sensor or Actuator hosted by a Platform.
+* appn:Platform **appn:hosts** [appn:Actuator](appn_Actuator.md)
+    * Identifies a Sensor or Actuator hosted by a Platform.
 * [appn:Deployment](appn_Deployment.md) **appn:deployedOnPlatform** appn:Platform
     * Identifies a Platform on which Sensors or Actuators are deployed.
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)

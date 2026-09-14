@@ -11,7 +11,7 @@ An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (inc
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* https://www.w3.org/ns/sosa/Execution
+* http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Treatment **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.

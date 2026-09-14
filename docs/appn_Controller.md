@@ -6,7 +6,7 @@ The entity responsible for performing an Control action and delivering a value f
 ![UML diagram for Controller](images/ttl_appn_Controller.png)
 
 ## Superclasses
-* https://www.w3.org/ns/sosa/Actuator
+* http://www.w3.org/ns/sosa/Actuator
 ## Properties
 * [appn:Control](appn_Control.md) **appn:madeByController** appn:Controller
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.

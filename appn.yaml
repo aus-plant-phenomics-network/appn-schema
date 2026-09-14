@@ -21,7 +21,7 @@ namespace_paths:
   "http://www.w3.org/2004/02/skos/core#": "./schema_assets/skos.rdf"
   "http://www.w3.org/ns/sosa/": "./schema_assets/sosa.ttl"
   "http://www.w3.org/ns/ssn/": "./schema_assets/ssn.ttl"
-  "http://rs.tdwg.org/dwc/terms/": "./schema_assets/dcw-terms.ttl"
+  "http://rs.tdwg.org/dwc/terms/": "./schema_assets/dwc-terms.ttl"
   "https://id.plantphenomics.org.au/APPN/": "./vocabulary/APPN/APPN_vocabulary.ttl"
   "https://id.plantphenomics.org.au/ANU/": "./vocabulary/ANU/ANU_vocabulary.ttl"
   "https://id.plantphenomics.org.au/AU/": "./vocabulary/AU/AU_vocabulary.ttl"

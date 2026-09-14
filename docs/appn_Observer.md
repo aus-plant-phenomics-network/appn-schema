@@ -6,7 +6,7 @@ The entity responsible for performing an Observation and delivering a value for 
 ![UML diagram for Observer](images/ttl_appn_Observer.png)
 
 ## Superclasses
-* https://www.w3.org/ns/sosa/Sensor
+* http://www.w3.org/ns/sosa/Sensor
 ## Properties
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** appn:Observer
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.

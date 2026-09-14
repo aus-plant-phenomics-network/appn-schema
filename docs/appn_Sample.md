@@ -7,14 +7,14 @@ A BiologicalUnit that has been created from an existing BiologicalUnit through a
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#sample
-* https://www.w3.org/ns/sosa/Sample
+* http://www.w3.org/ns/sosa/Sample
 * [https://schema.plantphenomics.org.au/BiologicalUnit](appn_BiologicalUnit.md)
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
-* https://bioschemas.org/BioChemEntity
+* http://www.w3.org/ns/sosa/FeatureOfInterest
+* https://bioschemas.org/terms/BioChemEntity
 ## Properties
 * [appn:Sampling](appn_Sampling.md) **appn:producesSample** appn:Sample
     * Identifies the Sample produced by a Sampling assay.

@@ -9,7 +9,7 @@ An entity for which a Study collects data or controls the environment and other 
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
+* http://www.w3.org/ns/sosa/FeatureOfInterest
 ## Properties
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** appn:ObservationUnit
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.

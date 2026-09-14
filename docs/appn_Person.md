@@ -8,11 +8,11 @@ A Person, preferably identified using an ORCID, that may perform an Assay.
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#person
 * [https://schema.plantphenomics.org.au/Observer](appn_Observer.md)
-* https://www.w3.org/ns/sosa/Sensor
+* http://www.w3.org/ns/sosa/Sensor
 * [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
-* https://www.w3.org/ns/sosa/Actuator
+* http://www.w3.org/ns/sosa/Actuator
 * [https://schema.plantphenomics.org.au/Sampler](appn_Sampler.md)
-* https://www.w3.org/ns/sosa/Sampler
+* http://www.w3.org/ns/sosa/Sampler
 * https://schema.org/Person
 ## Properties
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)

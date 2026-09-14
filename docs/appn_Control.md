@@ -10,7 +10,7 @@ An Assay that modifies a property of an ObservationUnit.
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * https://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* https://www.w3.org/ns/sosa/Execution
+* http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Control **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.

@@ -6,7 +6,11 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
 ![UML diagram for Variable](images/ttl_appn_Variable.png)
 
 ## Superclasses
-* https://www.w3.org/ns/sosa/Property
+* [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
+* http://purl.org/ppeo/PPEO.owl#trait
+* http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
+* https://schema.org/DefinedTerm
+* http://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * https://schema.org/InstanceValue
 ## Properties
@@ -19,6 +23,10 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
     * Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.
 * appn:Variable **appn:hasScale** [appn:Scale](appn_Scale.md)
     * Identifies the Scale associated with a Variable.
+* [appn:ObservedVariable](appn_ObservedVariable.md) **appn:hasTrait** [appn:Trait](appn_Trait.md)
+    * Identifies the Trait associated with a Variable.
+* [appn:ControlledVariable](appn_ControlledVariable.md) **appn:hasTrait** [appn:Trait](appn_Trait.md)
+    * Identifies the Trait associated with a Variable.
 ## Subclasses
 * [https://schema.plantphenomics.org.au/ObservedVariable](appn_ObservedVariable.md)
 * [https://schema.plantphenomics.org.au/ControlledVariable](appn_ControlledVariable.md)

@@ -10,8 +10,8 @@ A biological or chemical entity used in a Treatment assay or referenced in a Sub
 * https://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
-* https://www.w3.org/ns/sosa/FeatureOfInterest
-* https://bioschemas.org/Substance
+* http://www.w3.org/ns/sosa/FeatureOfInterest
+* https://bioschemas.org/terms/Substance
 ## Properties
 * [appn:Treatment](appn_Treatment.md) **appn:treatsWith** appn:Substance
     * Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
