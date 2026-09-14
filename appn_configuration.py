@@ -100,6 +100,7 @@ class ConfigurationKey(StrEnum):
     """
 
     NAMESPACE_PATHS = "namespace_paths"
+    NAMESPACE_PREFIXES = "namespace_prefixes"
     VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
     EXPLICIT_CLASSES = "explicit_classes"
     EXCLUDED_CLASSES = "excluded_classes"
@@ -422,12 +423,21 @@ class Configuration:
             )
             logging.debug(f"Imported namespace paths: {paths}")
 
+            # Find any configured namespace prefixes.
+            prefixes = self.fetch(
+                ConfigurationKey.NAMESPACE_PREFIXES, ValidationType.DICT, {}
+            )
+            logging.debug(f"Imported namespace prefixes: {prefixes}")
+
             # Build the namespace definitions for all default namespaces, taking
             # into account the configured namespace paths.
             self.namespace_definitions = {
                 ns: NamespaceDefinition(ns, pre, paths[ns] if ns in paths else ns)
                 for ns, pre in DEFAULT_PREFIXES.items()
             }
+
+            for ns in prefixes:
+                self.namespace_definitions[ns] = NamespaceDefinition(ns, prefixes[ns], paths[ns] if ns in paths else ns)
 
         return self.namespace_definitions.copy()
 

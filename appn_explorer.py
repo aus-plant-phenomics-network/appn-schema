@@ -68,10 +68,12 @@ subcommand_helptext = {
     "subject": "List all triples with the specified IRI or CURIE as subject.",
     "property": "List all triples with the specified IRI or CURIE as property.",
     "object": "List all triples with the specified IRI or CURIE as object.",
-    "property-name": "List IRIs and CURIEs for all properties with the specified value for schema:name or rdfs:label (optionally filtered to a specified namespace).",
-    "property-name-all": "List IRIs and CURIEs for all properties with the specified value for schema:name, rdfs:label or schema:alternateName (optionally filtered to a specified namespace).",
-    "instance-name": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name or rdfs:label (optionally filtered to a specified namespace).",
-    "instance-name-all": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name, rdfs:label or or schema:alternateName (optionally filtered to a specified namespace).",
+    "property-name": "List IRIs and CURIEs for all properties with the specified value for schema:name or rdfs:label, skos:prefLabel (optionally filtered to a specified namespace).",
+    "property-name-all": "List IRIs and CURIEs for all properties with the specified value for schema:name, rdfs:label, skos:prefLabel or schema:alternateName (optionally filtered to a specified namespace).",
+    "instance-class-name": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name, skos:prefLabel or rdfs:label (optionally filtered to a specified namespace).",
+    "instance-class-name-all": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name, rdfs:label, skos:prefLabel or or schema:alternateName (optionally filtered to a specified namespace).",
+    "instance-name": "List IRIs and CURIEs for all terms belonging to any or no class and with the specified value for schema:name or rdfs:label, skos:prefLabel (optionally filtered to a specified namespace).",
+    "instance-name-all": "List IRIs and CURIEs for all terms belonging to any or no class and with the specified value for schema:name, rdfs:label, skos:prefLabel or schema:alternateName (optionally filtered to a specified namespace).",
     "subject_counts": "Count of all triples for each unique subject IRI.",
     "property_counts": "Count of all triples for each unique property IRI.",
     "object_counts": "Count of all triples for each unique object IRI.",
@@ -119,13 +121,13 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
         subparser.add_argument("-n", "--namespace")
-    for cmd in ["property-name", "property-name-all"]:
+    for cmd in ["property-name", "property-name-all", "instance-name", "instance-name-all"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
         subparser.add_argument("name")
         subparser.add_argument("-n", "--namespace")
-    for cmd in ["instance-name", "instance-name-all"]:
+    for cmd in ["instance-class-name", "instance-class-name-all"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
@@ -304,7 +306,7 @@ def execute_query(
             )
         )
 
-    elif args["query"] == "instance-name":
+    elif args["query"] == "instance-class-name":
         print(
             d.format_iri_list(
                 d.list_instances_by_class_and_name(
@@ -316,11 +318,34 @@ def execute_query(
             )
         )
 
-    elif args["query"] == "instance-name-all":
+    elif args["query"] == "instance-class-name-all":
         print(
             d.format_iri_list(
                 d.list_instances_by_class_and_name(
                     args["class"],
+                    args["name"],
+                    check_alternate_names=True,
+                    namespace=args["namespace"] if "namespace" in args else None,
+                ),
+                max_rows=max_rows,
+            )
+        )
+
+    elif args["query"] == "instance-name":
+        print(
+            d.format_iri_list(
+                d.list_instances_by_name(
+                    args["name"],
+                    namespace=args["namespace"] if "namespace" in args else None,
+                ),
+                max_rows=max_rows,
+            )
+        )
+
+    elif args["query"] == "instance-name-all":
+        print(
+            d.format_iri_list(
+                d.list_instances_by_name(
                     args["name"],
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,

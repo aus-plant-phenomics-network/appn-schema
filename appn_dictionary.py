@@ -637,17 +637,51 @@ class Dictionary:
         """
         class_iri = self.get_iri(class_iri)
         cache_key = (
-            f"instances-name|{class_iri}|{name}|{check_alternate_names}|{namespace}"
+            f"instances-class-name|{class_iri}|{name}|{check_alternate_names}|{namespace}"
         )
         query_strings = [
             f"?q rdf:type <{class_iri}> . {{ ?q schema:name '{name}'@en }} UNION {{ ?q schema:name '{name}'}}."
         ]
         query_strings.append(
-            f"?q rdf:type <{class_iri}> .  {{ ?q rdfs:label '{name}'@en }} UNION {{ ?q rdfs:label '{name}'}}."
+            f"?q rdf:type <{class_iri}> .  {{ ?q rdfs:label '{name}'@en }} UNION {{ ?q rdfs:label '{name}'}} UNION {{ ?q skos:prefLabel '{name}'@en}} UNION {{ ?q skos:prefLabel '{name}'}}."
         )
         if check_alternate_names:
             query_strings.append(
                 f"?q rdf:type <{class_iri}> .  {{ ?q schema:alternateName '{name}'@en }} UNION {{ ?q schema:alternateName '{name}'}}."
+            )
+        return self.list_iris(query_strings, cache_key, namespace=namespace)
+
+    def list_instances_by_name(
+        self,
+        name: str,
+        check_alternate_names: bool = False,
+        namespace: Optional[str] = None,
+    ) -> list[IRI]:
+        """
+        List all known instances of any or no class with the specified
+        unqualified name.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param name: Unqualified name to find
+        :param check_alternate_names: True if alternateName properties should
+            also be checked
+        :param namespace: Optional namespace for filtering results
+        :return: List of `IRI`s for instances
+        """
+        cache_key = (
+            f"instances-name|{name}|{check_alternate_names}|{namespace}"
+        )
+        query_strings = [
+            f"{{ ?q schema:name '{name}'@en }} UNION {{ ?q schema:name '{name}'}}."
+        ]
+        query_strings.append(
+            f"{{ ?q rdfs:label '{name}'@en }} UNION {{ ?q rdfs:label '{name}'}} UNION {{ ?q skos:prefLabel '{name}'@en}} UNION {{ ?q skos:prefLabel '{name}'}}."
+        )
+        if check_alternate_names:
+            query_strings.append(
+                f"{{ ?q schema:alternateName '{name}'@en }} UNION {{ ?q schema:alternateName '{name}'}}."
             )
         return self.list_iris(query_strings, cache_key, namespace=namespace)
 
