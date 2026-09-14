@@ -64,7 +64,7 @@ UWA_VOCABULARY = f"{APPN_VOCABULARY_ROOT}UWA/"
 WSU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}WSU/"
 
 # Dictionary of default prefixes to use in APPN linked data
-DEFAULT_PREFIXES = {
+DEFAULT_PREFIXES: dict[str, str] = {
     APPN_SCHEMA: "appn",
     SCHEMA_SCHEMA: "schema",
     CDI_SCHEMA: "cdi",
@@ -180,7 +180,7 @@ class Configuration:
         """
         Use the same instance everywhere in this process
         """
-        if cls.instance is None: 
+        if cls.instance is None:
             cls.instance = super().__new__(cls)
         return cls.instance
 
@@ -266,11 +266,14 @@ class Configuration:
         self,
         key: ConfigurationKey,
         validation_type: ValidationType,
-        default_value: Optional[any] = None,
-    ) -> Optional[
+        default_value: (
+            list[str]
+            | dict[str, str | list[str] | dict[str, str | list[str] | dict[str, str]]]
+        ),
+    ) -> (
         list[str]
         | dict[str, str | list[str] | dict[str, str | list[str] | dict[str, str]]]
-    ]:
+    ):
         """
         Safe and efficient access to YAML configuration elements
 
@@ -300,28 +303,28 @@ class Configuration:
         # Verify that the YAML content matches the expected structure.
         # All keys in YAML are strings, so the types of any dictionary
         # keys do not need to be validated.
-        valid = False
-        value = None
+        value = default_value
+        valid = True
         if key.value in self.configuration:
             if validation_type == ValidationType.LIST:
-                value: list[str] = self.configuration[key.value]
+                value = self.configuration[key.value]
                 valid = isinstance(value, list) and all(
                     [isinstance(s, str) for s in value]
                 )
             elif validation_type == ValidationType.DICT:
-                value: dict[str, str] = self.configuration[key.value]
+                value = self.configuration[key.value]
                 valid = isinstance(value, dict) and all(
                     [isinstance(s, str) for s in value.values()]
                 )
             elif validation_type == ValidationType.DICT_OF_LIST:
-                value: dict[str, list[str]] = self.configuration[key.value]
+                value = self.configuration[key.value]
                 valid = (
                     isinstance(value, dict)
                     and all([isinstance(lst, list) for lst in value.values()])
                     and all([isinstance(s, str) for lst in value.values() for s in lst])
                 )
             elif validation_type == ValidationType.DICT_OF_DICT:
-                value: dict[str, dict[str, str]] = self.configuration[key.value]
+                value = self.configuration[key.value]
                 valid = (
                     isinstance(value, dict)
                     and all([isinstance(dct, dict) for dct in value.values()])
@@ -334,7 +337,7 @@ class Configuration:
                     )
                 )
             elif validation_type == ValidationType.DICT_OF_DICT_OF_DICT:
-                value: dict[str, dict[str, str]] = self.configuration[key.value]
+                value = self.configuration[key.value]
                 valid = (
                     isinstance(value, dict)
                     and all([isinstance(s, dict) for s in value.values()])
@@ -355,7 +358,7 @@ class Configuration:
                     )
                 )
             elif validation_type == ValidationType.DICT_OF_STRING_OR_LIST:
-                value: dict[str, str | list[str]] = self.configuration[key.value]
+                value = self.configuration[key.value]
                 valid = (
                     isinstance(value, dict)
                     and all(
@@ -437,7 +440,11 @@ class Configuration:
             }
 
             for ns in prefixes:
-                self.namespace_definitions[ns] = NamespaceDefinition(ns, prefixes[ns], paths[ns] if ns in paths else ns)
+                self.namespace_definitions[ns] = NamespaceDefinition(
+                    ns, prefixes[ns], paths[ns] if ns in paths else ns
+                )
+
+        print("\n".join([f"{k} -> {v}" for k, v in self.namespace_definitions.items()]))
 
         return self.namespace_definitions.copy()
 
@@ -671,7 +678,7 @@ class Configuration:
 
     def get_property_range_classes(self) -> dict[str, dict[str, str]]:
         """
-        Get classes to expect when processing specified properties for 
+        Get classes to expect when processing specified properties for
         specific classes.
 
         Property values will be converted to IRI references when the specified

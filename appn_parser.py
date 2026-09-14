@@ -257,9 +257,7 @@ class ExcelVocabularyParser:
         # others are imported based on their use in these two schemas.
         # For any vocabulary other than the central APPN vocabulary, load
         # the central vocabulary so its terms can be checked.
-        self.dictionary = Dictionary(
-            namespace_definitions=self.configuration.get_namespace_definitions()
-        )
+        self.dictionary = Dictionary()
         self.dictionary.load(APPN_SCHEMA)
         self.dictionary.load(SKOS_SCHEMA)
         if node.id != CENTRAL_ORGANISATION:
@@ -609,10 +607,12 @@ class ExcelVocabularyParser:
                     # identified for this class
                     if column_name in properties:
                         column_property = URIRef(properties[column_name].iri)
-                        
-                        # If the property has a specified range, expect the column to 
+
+                        # If the property has a specified range, expect the column to
                         # contain references to instances of the class in question
-                        range_classes = self.dictionary.list_range_classes_for_property(column_property, APPN_SCHEMA)
+                        range_classes = self.dictionary.list_range_classes_for_property(
+                            column_property, APPN_SCHEMA
+                        )
                         if len(range_classes) == 1:
                             related_class = range_classes[0]
                         elif len(range_classes) > 1:
@@ -625,7 +625,9 @@ class ExcelVocabularyParser:
                                 EXCEL_COLUMN_NAME=column,
                                 DOMAIN_APPN_CLASS=target_class.curie,
                                 COLUMN_PROPERTY=properties[column_name].curie,
-                                RANGE_CLASSES=", ".join([class_.curie for class_ in range_classes])
+                                RANGE_CLASSES=", ".join(
+                                    [class_.curie for class_ in range_classes]
+                                ),
                             )
 
                     # Otherwise, if the column name matches the name of an APPN schema

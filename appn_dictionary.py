@@ -78,12 +78,14 @@ class Dictionary:
         self.loaded = set()
         self.cache = {}
 
-        # Get `NamespaceDefinitions` from `Configuration` and add/overwrite any 
+        # Get `NamespaceDefinitions` from `Configuration` and add/overwrite any
         # supplied as a parameter
         self.namespace_definitions = Configuration().get_namespace_definitions()
         if namespace_definitions is not None:
             for namespace_definition in namespace_definitions:
-                self.namespace_definitions[namespace_definition.ns] = namespace_definition
+                self.namespace_definitions[namespace_definition.ns] = (
+                    namespace_definition
+                )
 
     def load(
         self,
@@ -636,9 +638,7 @@ class Dictionary:
         :return: List of `IRI`s for instances
         """
         class_iri = self.get_iri(class_iri)
-        cache_key = (
-            f"instances-class-name|{class_iri}|{name}|{check_alternate_names}|{namespace}"
-        )
+        cache_key = f"instances-class-name|{class_iri}|{name}|{check_alternate_names}|{namespace}"
         query_strings = [
             f"?q rdf:type <{class_iri}> . {{ ?q schema:name '{name}'@en }} UNION {{ ?q schema:name '{name}'}}."
         ]
@@ -670,9 +670,7 @@ class Dictionary:
         :param namespace: Optional namespace for filtering results
         :return: List of `IRI`s for instances
         """
-        cache_key = (
-            f"instances-name|{name}|{check_alternate_names}|{namespace}"
-        )
+        cache_key = f"instances-name|{name}|{check_alternate_names}|{namespace}"
         query_strings = [
             f"{{ ?q schema:name '{name}'@en }} UNION {{ ?q schema:name '{name}'}}."
         ]

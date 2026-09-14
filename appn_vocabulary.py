@@ -21,7 +21,6 @@ import warnings
 
 from pathlib import Path
 from typing import Optional, Any
-from appn_types import Term, ColumnMapping
 from appn_logger import IssueMessage
 from appn_dictionary import Dictionary
 from appn_parser import ExcelVocabularyParser
@@ -167,7 +166,9 @@ if __name__ == "__main__":
             with open(f"./vocabulary/{node}/{node}_report.txt", "w") as report:
                 counts = inspector.count_triples_by_subject()
                 report.write(f"Overview of processing for {node} vocabulary\n\n")
-                report.write("Terms defined in vocabulary (with counts of associated properties):\n\n")
+                report.write(
+                    "Terms defined in vocabulary (with counts of associated properties):\n\n"
+                )
                 length = max([len(k) for k in counts.keys()])
                 for p in sorted(counts.keys()):
                     report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
