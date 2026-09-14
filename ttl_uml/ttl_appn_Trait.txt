@@ -10,4 +10,12 @@ class ObservedVariable
 ObservedVariable --> Trait : hasTrait
 class ControlledVariable 
 ControlledVariable --> Trait : hasTrait
+class Variable 
+class ObservedVariable 
+ObservedVariable --|> Variable
+class ControlledVariable 
+ControlledVariable --|> Variable
+class SubstanceQuantity 
+SubstanceQuantity --|> Variable
+Variable --|> Trait
 @enduml

@@ -28,8 +28,36 @@ class GrowthFacility #line.bold {
 }
 class Study 
 Study --> GrowthFacility : hasGrowthFacility
+class GrowthFacility #line.bold {
+    airConditioning
+}
+class GrowthFacility #line.bold {
+    temperatureRange
+}
+class GrowthFacility #line.bold {
+    lights
+}
+class GrowthFacility #line.bold {
+    shade
+}
+class GrowthFacility #line.bold {
+    physicalContainmentLevel
+}
+class GrowthFacility #line.bold {
+    biocontainmentLevel
+}
+class GrowthFacility #line.bold {
+    gasSupply
+}
+class GrowthFacility #line.bold {
+    humidityControl
+}
 class PlatformType 
 Platform --> PlatformType : hasPlatformType
+class Sensor 
+Platform --> Sensor : hosts
+class Actuator 
+Platform --> Actuator : hosts
 class Deployment 
 Deployment --> Platform : deployedOnPlatform
 class Assay 

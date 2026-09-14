@@ -16,6 +16,10 @@ class "schema:IndividualProduct" #DDFFDD
 Platform --|> "schema:IndividualProduct"
 class PlatformType 
 Platform --> PlatformType : hasPlatformType
+class Sensor 
+Platform --> Sensor : hosts
+class Actuator 
+Platform --> Actuator : hosts
 class Deployment 
 Deployment --> Platform : deployedOnPlatform
 class Assay 

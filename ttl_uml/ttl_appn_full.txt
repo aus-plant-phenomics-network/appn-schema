@@ -126,6 +126,7 @@ Trait --|> "cdi:Concept"
 Trait --|> "schema:DefinedTerm"
 Scale --|> "ppeo:scale"
 Scale --|> "schema:DefinedTerm"
+Variable --|> Trait
 Variable --|> "sosa:Property"
 Variable --|> "cdi:RepresentedVariable"
 Variable --|> "schema:InstanceValue"

@@ -8,6 +8,13 @@ class Variable
 Variable --> BiologicalMaterial : forBiologicalMaterial
 class BiologicalUnit 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
+BiologicalMaterial --> BiologicalMaterial : hasHigherTaxon
 class MaterialSource 
 BiologicalMaterial --> MaterialSource : hasMaterialSource
+class BiologicalMaterial #line.bold {
+    genus
+}
+class BiologicalMaterial #line.bold {
+    scientificName
+}
 @enduml

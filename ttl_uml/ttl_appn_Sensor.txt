@@ -18,6 +18,8 @@ class "schema:IndividualProduct" #DDFFDD
 Sensor --|> "schema:IndividualProduct"
 class SensorType 
 Sensor --> SensorType : hasSensorType
+class Platform 
+Platform --> Sensor : hosts
 class Deployment 
 Deployment --> Sensor : deployedSystem
 class Observation 

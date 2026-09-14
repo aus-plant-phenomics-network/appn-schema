@@ -16,6 +16,8 @@ ObservationUnit --|> "sosa:FeatureOfInterest"
 Actuator --|> ObservationUnit
 class "schema:IndividualProduct" #DDFFDD 
 Actuator --|> "schema:IndividualProduct"
+class Platform 
+Platform --> Actuator : hosts
 class Deployment 
 Deployment --> Actuator : deployedSystem
 class Control 

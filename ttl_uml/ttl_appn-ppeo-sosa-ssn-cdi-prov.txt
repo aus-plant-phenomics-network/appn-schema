@@ -71,6 +71,7 @@ Treatment --|> Assay
 ObservationUnit --|> "schema:Thing"
 Trait --|> "schema:DefinedTerm"
 Scale --|> "schema:DefinedTerm"
+Variable --|> Trait
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable

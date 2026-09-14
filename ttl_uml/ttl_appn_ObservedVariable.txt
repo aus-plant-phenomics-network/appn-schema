@@ -3,6 +3,14 @@ class ObservedVariable  #line.bold
 class "ppeo:observed_variable" #EEFFCC 
 ObservedVariable --|> "ppeo:observed_variable"
 class Variable  
+class Trait  
+class "ppeo:trait" #EEFFCC 
+Trait --|> "ppeo:trait"
+class "cdi:Concept" #CCEEFF 
+Trait --|> "cdi:Concept"
+class "schema:DefinedTerm" #DDFFDD 
+Trait --|> "schema:DefinedTerm"
+Variable --|> Trait
 class "sosa:Property" #FFCCEE 
 Variable --|> "sosa:Property"
 class "cdi:RepresentedVariable" #CCEEFF 
@@ -25,4 +33,7 @@ class BiologicalMaterial
 Variable --> BiologicalMaterial : forBiologicalMaterial
 class Scale 
 Variable --> Scale : hasScale
+ObservedVariable --> Trait : hasTrait
+class ControlledVariable 
+ControlledVariable --> Trait : hasTrait
 @enduml
