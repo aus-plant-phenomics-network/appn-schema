@@ -556,6 +556,13 @@ class ExcelVocabularyParser:
                 if p.name not in properties:
                     properties[p.name] = p
 
+        # Get property class mappings for this class
+        configured_range_classes = self.configuration.get_property_range_classes()
+        if target_class.name in configured_range_classes:
+            property_range_classes = configured_range_classes[target_class.name]
+        else:
+            property_range_classes = {}
+
         # Build dictionary of property IRIs for each column.
         column_mappings = []
 
@@ -608,27 +615,39 @@ class ExcelVocabularyParser:
                     if column_name in properties:
                         column_property = IRI(properties[column_name].iri)
 
-                        # If the property has a specified range, expect the column to
-                        # contain references to instances of the class in question
-                        range_classes = self.dictionary.list_range_classes_for_property(
-                            column_property, APPN_SCHEMA
-                        )
-                        if len(range_classes) == 1:
-                            related_class = range_classes[0]
-                        elif len(range_classes) > 1:
-                            self.logger.log(
-                                logging.ERROR,
-                                __name__,
-                                IssueMessage.RANGE_CLASS_NOT_SELECTED,
-                                EXCEL_PATH=excel_path,
-                                EXCEL_SHEET=sheet,
-                                EXCEL_COLUMN_NAME=column,
-                                DOMAIN_APPN_CLASS=target_class.curie,
-                                COLUMN_PROPERTY=properties[column_name].curie,
-                                RANGE_CLASSES=", ".join(
-                                    [class_.curie for class_ in range_classes]
-                                ),
+                        # If the column_property is included in the property range
+                        # classes from the configuration, expect the column to contain
+                        # references to instances of the specified class
+                        if column_property.name in property_range_classes:
+                            related_class = IRI(
+                                property_range_classes[column_property.name]
                             )
+
+                        else:
+                            # If the property itself has a specified range, expect the
+                            # column to contain references to instances of the class in
+                            # question
+                            range_classes = (
+                                self.dictionary.list_range_classes_for_property(
+                                    column_property, APPN_SCHEMA
+                                )
+                            )
+                            if len(range_classes) == 1:
+                                related_class = range_classes[0]
+                            elif len(range_classes) > 1:
+                                self.logger.log(
+                                    logging.ERROR,
+                                    __name__,
+                                    IssueMessage.RANGE_CLASS_NOT_SELECTED,
+                                    EXCEL_PATH=excel_path,
+                                    EXCEL_SHEET=sheet,
+                                    EXCEL_COLUMN_NAME=column,
+                                    DOMAIN_APPN_CLASS=target_class.curie,
+                                    COLUMN_PROPERTY=properties[column_name].curie,
+                                    RANGE_CLASSES=", ".join(
+                                        [class_.curie for class_ in range_classes]
+                                    ),
+                                )
 
                     # Otherwise, if the column name matches the name of an APPN schema
                     # class, the column should be mapped to a property including the
@@ -865,6 +884,7 @@ class ExcelVocabularyParser:
         for column_mapping in column_mappings:
             value = row[column_mapping.column]
             if value not in [np.nan, None, ""]:
+                value = str(value)
                 property_term = column_mapping.property
 
                 # Locally defined properties are only added as the first triple is
@@ -885,7 +905,9 @@ class ExcelVocabularyParser:
                 # For properties with a class instance as the expected range, the
                 # value in the column will be the name of a class instance, either in
                 # the current namespace or in the APPN central namespace.
-                if column_mapping.range_class is not None:
+                if column_mapping.range_class is not None and not value.startswith(
+                    "http"
+                ):
 
                     # If a centrally defined instance exists with this name, the triple
                     # should reference it.

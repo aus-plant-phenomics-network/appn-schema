@@ -22,6 +22,7 @@ namespace_paths:
   "http://www.w3.org/ns/sosa/": "./schema_assets/sosa.ttl"
   "http://www.w3.org/ns/ssn/": "./schema_assets/ssn.ttl"
   "http://rs.tdwg.org/dwc/terms/": "./schema_assets/dwc-terms.ttl"
+  "https://w3id.org/cdif/": "./schema_assets/cdifCoreStructuredSchema.json"
   "https://id.plantphenomics.org.au/APPN/": "./vocabulary/APPN/APPN_vocabulary.ttl"
   "https://id.plantphenomics.org.au/ANU/": "./vocabulary/ANU/ANU_vocabulary.ttl"
   "https://id.plantphenomics.org.au/AU/": "./vocabulary/AU/AU_vocabulary.ttl"
@@ -126,6 +127,8 @@ domain_range_properties:
 property_range_classes:
   "GrowthFacility":
     "hasGrowthFacilityType": "https://schema.plantphenomics.org.au/Scale"
+  "BiologicalMaterial":
+    "broader": "https://schema.plantphenomics.org.au/BiologicalMaterial"
 
 # Properties associated with APPN and its nodes
 organisations:
