@@ -108,55 +108,55 @@ class Dictionary:
         :param asset_prefix: Prefix to use for namespace in CURIE representations
         :return: True if successful
         """
-        try:
-            # Tolerate prefix as alias for namespace
-            if not asset_namespace.startswith("http"):
-                for namespace_definition in self.namespace_definitions.values():
-                    if namespace_definition.prefix == asset_namespace:
-                        asset_namespace = namespace_definition.ns
-                        break
+        # Tolerate prefix as alias for namespace
+        if not asset_namespace.startswith("http"):
+            for namespace_definition in self.namespace_definitions.values():
+                if namespace_definition.prefix == asset_namespace:
+                    asset_namespace = namespace_definition.ns
+                    break
 
-            # Check for `NamespaceDefinition`
-            if asset_namespace in self.namespace_definitions and isinstance(
-                self.namespace_definitions[asset_namespace], NamespaceDefinition
-            ):
-                namespace_definition = self.namespace_definitions[asset_namespace]
-                logging.debug(
-                    f"Found namespace for {asset_namespace}: {namespace_definition}"
-                )
-            else:
-                namespace_definition = None
-
-            # Determine where to load the asset from, either a supplied path, or
-            # one from a `NamespaceDefinition`, or the namespace URL.
-            if asset_path is None:
-                if (
-                    namespace_definition is not None
-                    and namespace_definition.path is not None
-                ):
-                    asset_path = namespace_definition.path
-                else:
-                    asset_path = asset_namespace
-
-            # Determine what prefix to use for the namespace, either a supplied
-            # parameter, or one from a `NamespaceDefinition`, or an anonymous
-            # prefix in the series ns1, ns2, ...
-            if asset_prefix is None:
-                if (
-                    namespace_definition is not None
-                    and namespace_definition.prefix is not None
-                ):
-                    asset_prefix = namespace_definition.prefix
-                else:
-                    index = 1
-                    while f"ns{index}" in self.namespaces:
-                        index += 1
-                    asset_prefix = f"ns{index}"
-
-            # Load the asset into the `Graph` and bind it with the prefix
+        # Check for `NamespaceDefinition`
+        if asset_namespace in self.namespace_definitions and isinstance(
+            self.namespace_definitions[asset_namespace], NamespaceDefinition
+        ):
+            namespace_definition = self.namespace_definitions[asset_namespace]
             logging.debug(
-                f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
+                f"Found namespace for {asset_namespace}: {namespace_definition}"
             )
+        else:
+            namespace_definition = None
+
+        # Determine where to load the asset from, either a supplied path, or
+        # one from a `NamespaceDefinition`, or the namespace URL.
+        if asset_path is None:
+            if (
+                namespace_definition is not None
+                and namespace_definition.path is not None
+            ):
+                asset_path = namespace_definition.path
+            else:
+                asset_path = asset_namespace
+
+        # Determine what prefix to use for the namespace, either a supplied
+        # parameter, or one from a `NamespaceDefinition`, or an anonymous
+        # prefix in the series ns1, ns2, ...
+        if asset_prefix is None:
+            if (
+                namespace_definition is not None
+                and namespace_definition.prefix is not None
+            ):
+                asset_prefix = namespace_definition.prefix
+            else:
+                index = 1
+                while f"ns{index}" in self.namespaces:
+                    index += 1
+                asset_prefix = f"ns{index}"
+
+        # Load the asset into the `Graph` and bind it with the prefix
+        logging.debug(
+            f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
+        )
+        try:
             self.graph.parse(asset_path)
             self.loaded.add(asset_namespace)
             if asset_prefix is not None:
@@ -174,12 +174,11 @@ class Dictionary:
 
             logging.debug(f"Loaded {asset_namespace}")
 
-            return True
-
         except Exception:
-            logging.error(f"Failed to load {asset_namespace}: repr(e)", exc_info=True)
+            logging.error(f"Failed to load {asset_namespace} as linked data asset")
+            return False
 
-        return False
+        return True
 
     def import_references(self) -> bool:
         """
