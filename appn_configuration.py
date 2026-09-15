@@ -16,9 +16,9 @@ import os
 import logging
 from enum import StrEnum
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 from appn_types import NamespaceDefinition, Organisation
-from appn_logger import IssueLogger
+from appn_logger import IssueLogger, IssueMessage
 from rdflib import URIRef
 
 # Default values for finding YAML configuration file
@@ -154,7 +154,7 @@ class ValidationType(StrEnum):
     DICT_OF_LIST = "dict[str, list[str]]"
     DICT_OF_DICT = "dict[str, dict[str,str]]"
     DICT_OF_DICT_OF_DICT = "dict[str, dict[str, dict[str,str]]]"
-    DICT_OF_STRING_OR_LIST = "dict[str, str|list[str]]"
+    DICT_OF_STR_OR_LIST = "dict[str, str|list[str]]"
 
 
 ### Configuration #############################################################
@@ -262,136 +262,309 @@ class Configuration:
 
         return
 
-    def fetch(
+    def fetch_dict(
         self,
         key: ConfigurationKey,
-        validation_type: ValidationType,
-        default_value: (
-            list[str]
-            | dict[str, str | list[str] | dict[str, str | list[str] | dict[str, str]]]
-        ),
-    ) -> (
-        list[str]
-        | dict[str, str | list[str] | dict[str, str | list[str] | dict[str, str]]]
-    ):
+    ) -> dict[str, str]:
         """
-        Safe and efficient access to YAML configuration elements
+        Safe and efficient access to YAML dictionary
 
-        Checks presence and structure of YAML metadata for known keys
-        (instances of `ConfigurationKey`).
+        Checks presence and structure of YAML metadata
+
+        Callers always receive a copy of the validated version, so the
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :return: Dictionary of strings to strings
+        """
+
+        # All results are cached for quick return on subseqent calls
+        if key not in self.cache:
+            # Verify that the YAML content matches the expected structure.
+            # All keys in YAML are strings, so the types of any dictionary
+            # keys do not need to be validated.
+            value = {}
+            if key.value in self.configuration:
+                value = self.configuration[key.value]
+                if not self.validate_configuration_values(ValidationType.DICT, value):
+                    self.logger.log(
+                        logging.ERROR,
+                        __name__,
+                        IssueMessage.RANGE_INVALID_CONFIGURATION_DATA,
+                        CONFIGURATION_FILE=self.configuration_filepath,
+                        CONFIGURATION_KEY=key.value,
+                        EXPECTED_TYPE="Dictionary with strings as keys and values",
+                        SUPPLIED_VALUE=str(value),
+                    )
+            self.cache[key] = value
+            logging.debug(f"Cached value for configuration key {key.value}")
+
+        return self.cache[key].copy()
+
+    def fetch_dict_of_list(
+        self,
+        key: ConfigurationKey,
+    ) -> dict[str, list[str]]:
+        """
+        Safe and efficient access to YAML dictionary of lists
+
+        Checks presence and structure of YAML metadata
+
+        Callers always receive a copy of the validated version, so the
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :return: Dictionary of strings to lists of strings
+        """
+
+        # All results are cached for quick return on subseqent calls
+        if key not in self.cache:
+            # Verify that the YAML content matches the expected structure.
+            # All keys in YAML are strings, so the types of any dictionary
+            # keys do not need to be validated.
+            value = []
+            if key.value in self.configuration:
+                value = self.configuration[key.value]
+                if not self.validate_configuration_values(
+                    ValidationType.DICT_OF_LIST, value
+                ):
+                    self.logger.log(
+                        logging.ERROR,
+                        __name__,
+                        IssueMessage.RANGE_INVALID_CONFIGURATION_DATA,
+                        CONFIGURATION_FILE=self.configuration_filepath,
+                        CONFIGURATION_KEY=key.value,
+                        EXPECTED_TYPE="Dictionary with strings as keys and lists of strings as values",
+                        SUPPLIED_VALUE=str(value),
+                    )
+            self.cache[key] = value
+            logging.debug(f"Cached value for configuration key {key.value}")
+
+        return self.cache[key].copy()
+
+    def fetch_dict_of_dict(
+        self,
+        key: ConfigurationKey,
+    ) -> dict[str, dict[str, str]]:
+        """
+        Safe and efficient access to YAML dictionary of dictionaries
+
+        Checks presence and structure of YAML metadata
+
+        Callers always receive a copy of the validated version, so the
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :return: Dictionary of strings to dictionaries of strings to strings
+        """
+
+        # All results are cached for quick return on subseqent calls
+        if key not in self.cache:
+            # Verify that the YAML content matches the expected structure.
+            # All keys in YAML are strings, so the types of any dictionary
+            # keys do not need to be validated.
+            value = []
+            if key.value in self.configuration:
+                value = self.configuration[key.value]
+                if not self.validate_configuration_values(
+                    ValidationType.DICT_OF_DICT, value
+                ):
+                    self.logger.log(
+                        logging.ERROR,
+                        __name__,
+                        IssueMessage.RANGE_INVALID_CONFIGURATION_DATA,
+                        CONFIGURATION_FILE=self.configuration_filepath,
+                        CONFIGURATION_KEY=key.value,
+                        EXPECTED_TYPE="Dictionary with strings as keys and dictionaries with string keys and values as values",
+                        SUPPLIED_VALUE=str(value),
+                    )
+            self.cache[key] = value
+            logging.debug(f"Cached value for configuration key {key.value}")
+
+        return self.cache[key].copy()
+
+    def fetch_dict_of_dict_of_dict(
+        self,
+        key: ConfigurationKey,
+    ) -> dict[str, dict[str, dict[str, str]]]:
+        """
+        Safe and efficient access to YAML dictionary of dictionaries of dictionaries
+
+        Checks presence and structure of YAML metadata
+
+        Callers always receive a copy of the validated version, so the
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :return: Dictionary of dictionaries of dictionaries with strings for all keys and innermost values
+        """
+
+        # All results are cached for quick return on subseqent calls
+        if key not in self.cache:
+            # Verify that the YAML content matches the expected structure.
+            # All keys in YAML are strings, so the types of any dictionary
+            # keys do not need to be validated.
+            value = []
+            if key.value in self.configuration:
+                value = self.configuration[key.value]
+                if not self.validate_configuration_values(
+                    ValidationType.DICT_OF_DICT_OF_DICT, value
+                ):
+                    self.logger.log(
+                        logging.ERROR,
+                        __name__,
+                        IssueMessage.RANGE_INVALID_CONFIGURATION_DATA,
+                        CONFIGURATION_FILE=self.configuration_filepath,
+                        CONFIGURATION_KEY=key.value,
+                        EXPECTED_TYPE="Dictionary of dictionaries of dictionaries with strings for all keys and innermost values",
+                        SUPPLIED_VALUE=str(value),
+                    )
+            self.cache[key] = value
+            logging.debug(f"Cached value for configuration key {key.value}")
+
+        return self.cache[key].copy()
+
+    def fetch_dict_of_str_or_list(
+        self,
+        key: ConfigurationKey,
+    ) -> dict[str, str | list[str]]:
+        """
+        Safe and efficient access to YAML dictionary of strings to strings or lists of strings
+
+        Checks presence and structure of YAML metadata
+
+        Callers always receive a copy of the validated version, so the
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :return: Dictionary of strings to strings or lists of strings
+        """
+
+        # All results are cached for quick return on subseqent calls
+        if key not in self.cache:
+            # Verify that the YAML content matches the expected structure.
+            # All keys in YAML are strings, so the types of any dictionary
+            # keys do not need to be validated.
+            value = []
+            if key.value in self.configuration:
+                value = self.configuration[key.value]
+                if not self.validate_configuration_values(
+                    ValidationType.DICT_OF_STR_OR_LIST, value
+                ):
+                    self.logger.log(
+                        logging.ERROR,
+                        __name__,
+                        IssueMessage.RANGE_INVALID_CONFIGURATION_DATA,
+                        CONFIGURATION_FILE=self.configuration_filepath,
+                        CONFIGURATION_KEY=key.value,
+                        EXPECTED_TYPE="Dictionary with strings as keys and strings or lists of strings as values",
+                        SUPPLIED_VALUE=str(value),
+                    )
+            self.cache[key] = value
+            logging.debug(f"Cached value for configuration key {key.value}")
+
+        return self.cache[key].copy()
+
+    def fetch_list(
+        self,
+        key: ConfigurationKey,
+    ) -> list[str]:
+        """
+        Safe and efficient access to YAML list
+
+        Checks presence and structure of YAML metadata
+
+        Callers always receive a copy of the validated version, so the
+        configuration is not affected by any external changes.
+
+        :param key: `ConfigurationKey` for requested content
+        :return: List of strings
+        """
+
+        # All results are cached for quick return on subseqent calls
+        if key not in self.cache:
+            # Verify that the YAML content matches the expected structure.
+            # All keys in YAML are strings, so the types of any dictionary
+            # keys do not need to be validated.
+            value = []
+            if key.value in self.configuration:
+                value = self.configuration[key.value]
+                if not self.validate_configuration_values(ValidationType.LIST, value):
+                    self.logger.log(
+                        logging.ERROR,
+                        __name__,
+                        IssueMessage.RANGE_INVALID_CONFIGURATION_DATA,
+                        CONFIGURATION_FILE=self.configuration_filepath,
+                        CONFIGURATION_KEY=key.value,
+                        EXPECTED_TYPE="List of strings",
+                        SUPPLIED_VALUE=str(value),
+                    )
+            self.cache[key] = value
+            logging.debug(f"Cached value for configuration key {key.value}")
+
+        return self.cache[key].copy()
+
+    def validate_configuration_values(
+        self, validation_type: ValidationType, value: Any
+    ) -> bool:
+        """
+        Validate YAML configuration elements
 
         Structure is validated by checking the types of elements and
         confirming they match the expected nesting of dictionaries, lists
         and strings. Since YAML keys are always strings, the types of
         dictionary keys are not checked.
 
-        Maintains cache of validated metadata elements.
-
-        Callers always receive a copy of the validated version, so the
-        configuration is not affected by any external changes.
-
-        :param key: `ConfigurationKey` for requested content
         :param validation_type: `ValidationType`
-        :return: Dictionary of `NameDefinition` objects keyed by the
-            namespace string
+        :param value: Object to validate
+        :return: True if valid
         """
-
-        # All results are cached for quick return on subseqent calls
-        if key in self.cache:
-            return self.cache[key].copy()
-
         # Verify that the YAML content matches the expected structure.
         # All keys in YAML are strings, so the types of any dictionary
         # keys do not need to be validated.
-        value = default_value
-        valid = True
-        if key.value in self.configuration:
-            if validation_type == ValidationType.LIST:
-                value = self.configuration[key.value]
-                valid = isinstance(value, list) and all(
-                    [isinstance(s, str) for s in value]
-                )
-            elif validation_type == ValidationType.DICT:
-                value = self.configuration[key.value]
-                valid = isinstance(value, dict) and all(
-                    [isinstance(s, str) for s in value.values()]
-                )
+        if validation_type == ValidationType.LIST:
+            return isinstance(value, list) and all([isinstance(s, str) for s in value])
+        elif isinstance(value, dict):
+            if validation_type == ValidationType.DICT:
+                return all([isinstance(s, str) for s in value.values()])
             elif validation_type == ValidationType.DICT_OF_LIST:
-                value = self.configuration[key.value]
-                valid = (
-                    isinstance(value, dict)
-                    and all([isinstance(lst, list) for lst in value.values()])
-                    and all([isinstance(s, str) for lst in value.values() for s in lst])
+                return all(
+                    [
+                        self.validate_configuration_values(ValidationType.LIST, lst)
+                        for lst in value.values()
+                    ]
                 )
             elif validation_type == ValidationType.DICT_OF_DICT:
-                value = self.configuration[key.value]
-                valid = (
-                    isinstance(value, dict)
-                    and all([isinstance(dct, dict) for dct in value.values()])
-                    and all(
-                        [
-                            isinstance(s, str)
-                            for dct in value.values()
-                            for s in dct.values()
-                        ]
-                    )
+                return all(
+                    [
+                        self.validate_configuration_values(ValidationType.DICT, dct)
+                        for dct in value.values()
+                    ]
                 )
             elif validation_type == ValidationType.DICT_OF_DICT_OF_DICT:
-                value = self.configuration[key.value]
-                valid = (
-                    isinstance(value, dict)
-                    and all([isinstance(s, dict) for s in value.values()])
-                    and all(
-                        [
-                            isinstance(dct2, dict)
-                            for dct in value.values()
-                            for dct2 in dct.values()
-                        ]
-                    )
-                    and all(
-                        [
-                            isinstance(s, str)
-                            for dct in value.values()
-                            for dct2 in dct.values()
-                            for s in dct2.values()
-                        ]
-                    )
+                return all(
+                    [
+                        self.validate_configuration_values(
+                            ValidationType.DICT_OF_DICT, dct
+                        )
+                        for dct in value.values()
+                    ]
                 )
-            elif validation_type == ValidationType.DICT_OF_STRING_OR_LIST:
-                value = self.configuration[key.value]
-                valid = (
-                    isinstance(value, dict)
-                    and all(
-                        [
-                            (isinstance(s, str) or isinstance(s, list))
-                            for s in value.values()
-                        ]
-                    )
-                    and all(
-                        [
-                            isinstance(s, str)
-                            for lst in value.values()
-                            if isinstance(lst, list)
-                            for s in lst
-                        ]
-                    )
+            elif validation_type == ValidationType.DICT_OF_STR_OR_LIST:
+                return all(
+                    [
+                        (isinstance(s, str) or isinstance(s, list))
+                        for s in value.values()
+                    ]
+                ) and all(
+                    [
+                        isinstance(s, str)
+                        for lst in value.values()
+                        if isinstance(lst, list)
+                        for s in lst
+                    ]
                 )
-        if not valid:
-            self.logger.log(
-                logging.ERROR,
-                __name__,
-                "Configuration contains data that does not match the expected structure - it will be ignored",
-                CONFIGURATION_FILE=self.configuration_filepath,
-                CONFIGURATION_KEY=key.value,
-                EXPECTED_TYPE=validation_type.value,
-                SUPPLIED_VALUE=str(value),
-            )
-            value = default_value
-
-        self.cache[key.value] = value
-        logging.debug(f"Cached value for configuration key {key.value}")
-
-        return value.copy()
+        return False
 
     def get_logger(self) -> IssueLogger:
         """
@@ -421,15 +594,11 @@ class Configuration:
             # Find any configured namespace paths (locations for schema assets).
             # Assets without paths will be only be loadable by using the namespace
             # as a URL.
-            paths = self.fetch(
-                ConfigurationKey.NAMESPACE_PATHS, ValidationType.DICT, {}
-            )
+            paths = self.fetch_dict(ConfigurationKey.NAMESPACE_PATHS)
             logging.debug(f"Imported namespace paths: {paths}")
 
             # Find any configured namespace prefixes.
-            prefixes = self.fetch(
-                ConfigurationKey.NAMESPACE_PREFIXES, ValidationType.DICT, {}
-            )
+            prefixes = self.fetch_dict(ConfigurationKey.NAMESPACE_PREFIXES)
             logging.debug(f"Imported namespace prefixes: {prefixes}")
 
             # Build the namespace definitions for all default namespaces, taking
@@ -443,8 +612,6 @@ class Configuration:
                 self.namespace_definitions[ns] = NamespaceDefinition(
                     ns, prefixes[ns], paths[ns] if ns in paths else ns
                 )
-
-        print("\n".join([f"{k} -> {v}" for k, v in self.namespace_definitions.items()]))
 
         return self.namespace_definitions.copy()
 
@@ -465,9 +632,7 @@ class Configuration:
 
         :return: List of namespace strings
         """
-        return self.fetch(
-            ConfigurationKey.VOCABULARY_COLUMN_NAMESPACES, ValidationType.LIST, []
-        )
+        return self.fetch_list(ConfigurationKey.VOCABULARY_COLUMN_NAMESPACES)
 
     def get_explicit_classes(self) -> dict[str, str | list[str]]:
         """
@@ -496,9 +661,7 @@ class Configuration:
 
         :return: Dictionary mapping namespaces to selection rules
         """
-        return self.fetch(
-            ConfigurationKey.EXPLICIT_CLASSES, ValidationType.DICT_OF_STRING_OR_LIST, {}
-        )
+        return self.fetch_dict_of_str_or_list(ConfigurationKey.EXPLICIT_CLASSES)
 
     def get_excluded_classes(self) -> list[str]:
         """
@@ -512,7 +675,7 @@ class Configuration:
 
         :return: List of class IRIs
         """
-        return self.fetch(ConfigurationKey.EXCLUDED_CLASSES, ValidationType.LIST, [])
+        return self.fetch_list(ConfigurationKey.EXCLUDED_CLASSES)
 
     def get_sheet_aliases(self) -> dict[str, str]:
         """
@@ -527,7 +690,7 @@ class Configuration:
 
         :return: Dictionary mapping names to class names
         """
-        return self.fetch(ConfigurationKey.SHEET_ALIASES, ValidationType.DICT, {})
+        return self.fetch_dict(ConfigurationKey.SHEET_ALIASES)
 
     def get_column_aliases(self) -> dict[str, str]:
         """
@@ -541,7 +704,7 @@ class Configuration:
 
         :return: Dictionary mapping column names to preferred names
         """
-        return self.fetch(ConfigurationKey.COLUMN_ALIASES, ValidationType.DICT, {})
+        return self.fetch_dict(ConfigurationKey.COLUMN_ALIASES)
 
     def get_completion_rules(self) -> dict[str, dict[str, dict[str, str]]]:
         """
@@ -570,20 +733,18 @@ class Configuration:
         :return: Dictionary mapping class names to dictionaries mapping
             property IRIs to dictionaries of rule elements
         """
-        return self.fetch(
-            ConfigurationKey.COMPLETION_RULES, ValidationType.DICT_OF_DICT_OF_DICT, {}
-        )
+        return self.fetch_dict_of_dict_of_dict(ConfigurationKey.COMPLETION_RULES)
 
-    def get_completion_rules(self, class_name: str) -> dict[str, dict[str, str]]:
+    def get_completion_rules_for_class(
+        self, class_name: str
+    ) -> dict[str, dict[str, str]]:
         """
         Convenience method to get completion rules for a single class
 
         :return: Dictionary mapping property IRIs to dictionaries of rule
             elements
         """
-        rules = self.fetch(
-            ConfigurationKey.COMPLETION_RULES, ValidationType.DICT_OF_DICT_OF_DICT, {}
-        )
+        rules = self.get_completion_rules()
         if class_name in rules:
             return rules[class_name]
         return {}
@@ -598,7 +759,7 @@ class Configuration:
 
         :return: Dictionary mapping class names to abbreviations
         """
-        return self.fetch(ConfigurationKey.CLASS_ABBREVIATIONS, ValidationType.DICT, {})
+        return self.fetch_dict(ConfigurationKey.CLASS_ABBREVIATIONS)
 
     def get_property_expansions(self) -> dict[URIRef, list[URIRef]]:
         """
@@ -613,8 +774,8 @@ class Configuration:
 
         :return: Dictionary mapping property IRIs to lists of property IRIs
         """
-        property_expansions = self.fetch(
-            ConfigurationKey.PROPERTY_EXPANSIONS, ValidationType.DICT_OF_LIST, {}
+        property_expansions = self.fetch_dict_of_list(
+            ConfigurationKey.PROPERTY_EXPANSIONS
         )
         expansions = {}
         for k, v in property_expansions.items():
@@ -644,9 +805,7 @@ class Configuration:
 
         :return: Dictionary mapping class names to lists of embeddable classes
         """
-        return self.fetch(
-            ConfigurationKey.EMBEDDED_CLASSES, ValidationType.DICT_OF_LIST, {}
-        )
+        return self.fetch_dict_of_list(ConfigurationKey.EMBEDDED_CLASSES)
 
     def get_domain_range_properties(self) -> dict[str, dict[str, str]]:
         """
@@ -672,9 +831,7 @@ class Configuration:
         :return: Dictionary mapping domain class names to dictionaries mapping
             range class names to property IRIs
         """
-        return self.fetch(
-            ConfigurationKey.DOMAIN_RANGE_PROPERTIES, ValidationType.DICT_OF_DICT, {}
-        )
+        return self.fetch_dict_of_dict(ConfigurationKey.DOMAIN_RANGE_PROPERTIES)
 
     def get_property_range_classes(self) -> dict[str, dict[str, str]]:
         """
@@ -687,9 +844,7 @@ class Configuration:
         :return: Dictionary mapping domain class names to dictionaries mapping
             property names to range class IRIs
         """
-        return self.fetch(
-            ConfigurationKey.PROPERTY_RANGE_CLASSES, ValidationType.DICT_OF_DICT, {}
-        )
+        return self.fetch_dict_of_dict(ConfigurationKey.PROPERTY_RANGE_CLASSES)
 
     def get_organisations(self) -> dict[str, Organisation]:
         """
@@ -728,9 +883,7 @@ class Configuration:
         """
         if self.organisations is None:
             self.organisations = {}
-            organisations = self.fetch(
-                ConfigurationKey.ORGANISATIONS, ValidationType.DICT_OF_DICT, {}
-            )
+            organisations = self.fetch_dict_of_dict(ConfigurationKey.ORGANISATIONS)
             for id, properties in organisations.items():
                 name = str(
                     properties[OrganisationProperty.NAME.value]
@@ -788,4 +941,5 @@ class Configuration:
 
         :return: `Organisation` with id "APPN"
         """
-        return self.get_organisation_by_id(CENTRAL_ORGANISATION)
+        organisations = self.get_organisations()
+        return organisations[CENTRAL_ORGANISATION]

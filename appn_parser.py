@@ -40,19 +40,19 @@ from appn_configuration import (
     SKOS_SCHEMA,
 )
 from appn_logger import IssueMessage
-from rdflib import Graph, Namespace, URIRef, Literal
+from rdflib import Graph, Namespace, Literal
 
-# Convenience versions of regularly used URIRefs
-rdf_type = URIRef(f"{RDF_SCHEMA}type")
-rdf_property = URIRef(f"{RDF_SCHEMA}Property")
-schema_domain_includes = URIRef(f"{SCHEMA_SCHEMA}domainIncludes")
-schema_name = URIRef(f"{SCHEMA_SCHEMA}name")
-schema_description = URIRef(f"{SCHEMA_SCHEMA}description")
-skos_concept = URIRef(f"{SKOS_SCHEMA}Concept")
-skos_concept_scheme = URIRef(f"{SKOS_SCHEMA}ConceptScheme")
-skos_in_scheme = URIRef(f"{SKOS_SCHEMA}inScheme")
-dc_title = URIRef(f"{DC_SCHEMA}title")
-dc_description = URIRef(f"{DC_SCHEMA}description")
+# Convenience versions of regularly used IRIs
+rdf_type = IRI(f"{RDF_SCHEMA}type")
+rdf_property = IRI(f"{RDF_SCHEMA}Property")
+schema_domain_includes = IRI(f"{SCHEMA_SCHEMA}domainIncludes")
+schema_name = IRI(f"{SCHEMA_SCHEMA}name")
+schema_description = IRI(f"{SCHEMA_SCHEMA}description")
+skos_concept = IRI(f"{SKOS_SCHEMA}Concept")
+skos_concept_scheme = IRI(f"{SKOS_SCHEMA}ConceptScheme")
+skos_in_scheme = IRI(f"{SKOS_SCHEMA}inScheme")
+dc_title = IRI(f"{DC_SCHEMA}title")
+dc_description = IRI(f"{DC_SCHEMA}description")
 
 
 ### RequiredProperty ###########################################################
@@ -60,13 +60,13 @@ dc_description = URIRef(f"{DC_SCHEMA}description")
 
 class RequiredProperty(NamedTuple):
     """
-    Simple class to represent a triple of `URIRef`s and associated metadata for
+    Simple class to represent a triple of `IRI`s and associated metadata for
     a property that is deferred until the object iri is known to have been
     defined.
 
-    :param subject: `URIRef` for the subject of a triple
-    :param property: `URIRef` for the property of a triple
-    :param object: `URIRef` for the object of a triple
+    :param subject: `IRI` for the subject of a triple
+    :param property: `IRI` for the property of a triple
+    :param object: `IRI` for the object of a triple
     :param excel_path: Path to source Excel spreadsheet
     :param sheet: Name of sheet where the property is defined
     :param column_str: Name of column where the property is defined
@@ -74,12 +74,12 @@ class RequiredProperty(NamedTuple):
     :param iri_name: Name from column in row
     """
 
-    subject: URIRef
-    property: URIRef
-    object: URIRef
+    subject: IRI
+    property: IRI
+    object: IRI
     excel_path: Path
     sheet: str
-    row: int
+    row: str
     column_name: str
     class_name: str
     iri_name: str
@@ -93,14 +93,14 @@ class ColumnMapping(NamedTuple):
     Simple class for metadata associated with a `DataFrame` column
 
     :param column: Name of a `DataFrame` column
-    :param property: `URIRef` for the property represented by the column
+    :param property: `IRI` for the property represented by the column
     :param range_class: `Term` identifying an APPN schema class representing the range if the `property` links two schema instances
     :param primary_identifier: True if the `property` matches `schema:name` (used to create the IRI as the unique identifier for an instance)
     :param is_local_property: True if the `property` is to be defined in the current vocabulary namespace
     """
 
     column: str
-    property: URIRef
+    property: IRI
     range_class: Optional[IRI]
     primary_identifier: bool
     is_local_property: bool
@@ -176,7 +176,7 @@ class ExcelVocabularyParser:
     schema class. The instance receives an IRI constructed from an identifier for
     the APPN node and a normalised version of the value in a column associated
     with the `schema:name` property. All non-blank cells are interpreted as the
-    object value (a `Literal` or a `URIRef`) for a triple relating to the
+    object value (a `Literal` or a `IRI`) for a triple relating to the
     instance. If an instance of the class is already known with the same name
     (in any namespace, more specifically in the all-APPN vocabulary namespace),
     the new record is treated as a duplicate and ignored. Columns matched using
@@ -274,7 +274,7 @@ class ExcelVocabularyParser:
 
         # Cache for computed lists of superclasses to include for a specified
         # class
-        self.explicit_classes: dict[URIRef, list[URIRef]] = {}
+        self.explicit_classes: dict[IRI, list[IRI]] = {}
 
         # Dictionary for classes known from APPN schema (keyed by unqualified
         # name)
@@ -291,7 +291,7 @@ class ExcelVocabularyParser:
         }
 
         # Set to keep track of RDF objects already created
-        self.instances: set[URIRef] = set()
+        self.instances: set[IRI] = set()
 
         # A separate SKOS `ConceptScheme`` is created for the instances of each
         # APPN schema class. This maps the IRIs for the APPN classes to the
@@ -556,7 +556,7 @@ class ExcelVocabularyParser:
                 if p.name not in properties:
                     properties[p.name] = p
 
-        # Build dictionary of property URIRefs for each column.
+        # Build dictionary of property IRIs for each column.
         column_mappings = []
 
         # Map each relevant column name to a property
@@ -596,7 +596,7 @@ class ExcelVocabularyParser:
                     if column_name in self.column_aliases:
                         column_name = self.column_aliases[column_name]
 
-                    # This column will be mapped to the `URIRef` for a property
+                    # This column will be mapped to the `IRI` for a property
                     column_property = None
 
                     # If the object of the triples represented by this column is expected
@@ -606,7 +606,7 @@ class ExcelVocabularyParser:
                     # The simple case is when the column name matches a property already
                     # identified for this class
                     if column_name in properties:
-                        column_property = URIRef(properties[column_name].iri)
+                        column_property = IRI(properties[column_name].iri)
 
                         # If the property has a specified range, expect the column to
                         # contain references to instances of the class in question
@@ -641,7 +641,7 @@ class ExcelVocabularyParser:
                             and related_class.name
                             in self.domain_range_properties[target_class.name]
                         ):
-                            column_property = URIRef(
+                            column_property = IRI(
                                 self.domain_range_properties[target_class.name][
                                     related_class.name
                                 ]
@@ -656,7 +656,7 @@ class ExcelVocabularyParser:
                                 )
                             )
                             if len(range_properties) == 1:
-                                column_property = URIRef(range_properties[0].iri)
+                                column_property = IRI(range_properties[0].iri)
                         if column_property is None:
                             # Notify the data administrator to add configuration settings.
                             self.logger.log(
@@ -680,7 +680,7 @@ class ExcelVocabularyParser:
                         # property until a row contains an actual value for it
                         is_local_property = True
 
-                        column_property = URIRef(
+                        column_property = IRI(
                             f"{APPN_VOCABULARY_ROOT}{self.node.id}/{self.lower_first(column_name)}"
                         )
                         is_local_property = True
@@ -753,7 +753,8 @@ class ExcelVocabularyParser:
             return False
 
         # Process all rows with values in the name_column column
-        for index, row in df.iterrows():
+        index = 1
+        for _, row in df.iterrows():
             if row[name_column] not in [np.nan, None, ""]:
                 name = str(row[name_column])
 
@@ -773,7 +774,7 @@ class ExcelVocabularyParser:
                     if not self.add_instance(
                         excel_path,
                         sheet,
-                        index,
+                        str(index),
                         row,
                         target_class,
                         name_column,
@@ -781,6 +782,7 @@ class ExcelVocabularyParser:
                         column_mappings,
                     ):
                         success = False
+            index += 1
 
         return success
 
@@ -788,7 +790,7 @@ class ExcelVocabularyParser:
         self,
         excel_path: Path,
         sheet: str,
-        index: int,
+        index: str,
         row: pd.Series,
         target_class: IRI,
         name_column: str,
@@ -805,6 +807,7 @@ class ExcelVocabularyParser:
 
         :param excel_path: Location of a vocabulary stored as a multi-sheet Excel spreadsheet
         :param sheet: Name of the sheet to be processed
+        :param index: String representation of row number (starting at 1)
         :param row: `Series` (i.e row) to be processed as an instance defined by a set of RDF triples
         :param target_class: `IRI` for APPN schema class for instances to generate
         :param name_column: the name of the column in the `Series` that contains the name for the instance
@@ -833,7 +836,7 @@ class ExcelVocabularyParser:
                     IssueMessage.SHEET_CONTAINS_DUPLICATE_NAMES,
                     EXCEL_PATH=excel_path,
                     EXCEL_SHEET=sheet,
-                    EXCEL_ROW=str(index + 1),
+                    EXCEL_ROW=index,
                     EXCEL_COLUMN=name_column,
                     APPN_CLASS=target_class.curie,
                     NAME=name,
@@ -846,7 +849,7 @@ class ExcelVocabularyParser:
                     IssueMessage.SHEET_CONTAINS_DUPLICATE_EMBEDDED_NAMES,
                     EXCEL_PATH=excel_path,
                     EXCEL_SHEET=sheet,
-                    EXCEL_ROW=str(index + 1),
+                    EXCEL_ROW=index,
                     EXCEL_COLUMN=name_column,
                     APPN_CLASS=target_class.curie,
                     NAME=name,
@@ -856,7 +859,7 @@ class ExcelVocabularyParser:
         success = True
 
         # Add the type statements for the IRI to the graph and put it in a `ConceptScheme`
-        iri = self.insert_instance(URIRef(target_class.iri), iri, True)
+        iri = self.insert_instance(IRI(target_class.iri), iri, True)
 
         # Add properties for each mapped column with a non-null value
         for column_mapping in column_mappings:
@@ -896,7 +899,7 @@ class ExcelVocabularyParser:
                             )
                         )
                         if len(matching_terms) > 0:
-                            matching_term = URIRef(matching_terms[0].iri)
+                            matching_term = IRI(matching_terms[0].iri)
                             self.add_triple(iri, property_term, matching_term)
 
                     # If there is no centrally defined instance, document the fact that
@@ -913,7 +916,7 @@ class ExcelVocabularyParser:
                                 ),
                                 excel_path,
                                 sheet,
-                                index + 1,
+                                index,
                                 column_mapping.column,
                                 column_mapping.range_class.curie,
                                 str(value),
@@ -921,16 +924,18 @@ class ExcelVocabularyParser:
                         )
                 else:
                     # For all properties that do not have a range class, create a new
-                    # triple with a URIRef or Literal value
+                    # triple with a IRI or Literal value
                     if isinstance(value, str) and value.startswith("http"):
-                        value_term = URIRef(value.strip())
+                        value_term = IRI(value.strip())
                     else:
                         value_term = Literal(value)
                     self.add_triple(iri, property_term, value_term)
 
         # Get any rules from the `Configuration` for completing instances of this class
         # and process these by type.
-        completion_rules = self.configuration.get_completion_rules(target_class.name)
+        completion_rules = self.configuration.get_completion_rules_for_class(
+            target_class.name
+        )
         if len(completion_rules) > 0:
             existing_properties = [str(p) for s, p, o in self._graph if s == iri]
             for desired_property, rule in completion_rules.items():
@@ -955,7 +960,7 @@ class ExcelVocabularyParser:
                         logging.debug(
                             f"Completing iri {iri} with property {desired_property} using rule {rule}"
                         )
-                        self.add_triple(iri, URIRef(desired_property), iri)
+                        self.add_triple(iri, IRI(desired_property), iri)
                     else:
                         self.logger.log(
                             logging.ERROR,
@@ -972,8 +977,8 @@ class ExcelVocabularyParser:
         return success
 
     def insert_instance(
-        self, main_class: URIRef, iri: URIRef, is_concept: Optional[bool] = False
-    ) -> URIRef:
+        self, main_class: IRI, iri: IRI, is_concept: Optional[bool] = False
+    ) -> IRI:
         """
         Add an IRI to the graph
 
@@ -1005,7 +1010,7 @@ class ExcelVocabularyParser:
 
         return iri
 
-    def add_concept_scheme(self, main_class: URIRef) -> URIRef:
+    def add_concept_scheme(self, main_class: IRI) -> IRI:
         """
         Add triples defining a SKOS `ConceptScheme`
 
@@ -1042,8 +1047,8 @@ class ExcelVocabularyParser:
         return concept_scheme_term
 
     def list_explicit_classes(
-        self, main_class_iri: URIRef, is_concept: Optional[bool] = False
-    ) -> list[URIRef]:
+        self, main_class_iri: IRI, is_concept: Optional[bool] = False
+    ) -> list[IRI]:
         """
         Build list of classes (`rdf:type` values) to define for an instance of
         the given class.
@@ -1051,16 +1056,15 @@ class ExcelVocabularyParser:
         The `Configuration` can specify superclasses that should automatically
         be inserted, and skos:Concept is included for all vocabulary terms.
 
-        :param main_class: `URIRef` for APPN schema class
+        :param main_class: `IRI` for APPN schema class
         :param is_concept: True if `skos:Concept` should be included
         :return: List of IRIs for matching superclasses
         """
         main_class = str(main_class_iri)
 
         # `explicit_classes` is a cache to minimise redundant calculations
-        key = f"{main_class}|{is_concept}"
-        if key in self.explicit_classes:
-            return self.explicit_classes[key]
+        if main_class_iri in self.explicit_classes:
+            return self.explicit_classes[main_class_iri]
 
         # Get list of all known classes in inheritance hierarchy for
         # this class (including the class itself)
@@ -1086,14 +1090,14 @@ class ExcelVocabularyParser:
                 if isinstance(rule, list):
                     # Include any class explicitly referenced by a rule
                     if superclass.name in rule:
-                        explicit_classes.append(URIRef(superclass.iri))
+                        explicit_classes.append(IRI(superclass.iri))
                 elif isinstance(rule, str):
                     if rule == ExplicitClassesFilter.ALL.value:
                         # Include all classes matching an "all" rule
-                        explicit_classes.append(URIRef(superclass.iri))
+                        explicit_classes.append(IRI(superclass.iri))
                     elif rule == ExplicitClassesFilter.FIRST.value:
                         # Match only the first class matching a "first" rule
-                        explicit_classes.append(URIRef(superclass.iri))
+                        explicit_classes.append(IRI(superclass.iri))
 
                         # Remove the rule so we don't add more matches
                         # NOTE - every call to configuration.get_explicit_classes returns
@@ -1105,13 +1109,11 @@ class ExcelVocabularyParser:
             explicit_classes.append(skos_concept)
 
         # Remenber this list
-        self.explicit_classes[key] = explicit_classes
+        self.explicit_classes[main_class_iri] = explicit_classes
 
         return explicit_classes
 
-    def add_triple(
-        self, subject: URIRef, property: URIRef, object: URIRef | Literal
-    ) -> None:
+    def add_triple(self, subject: IRI, property: IRI, object: IRI | Literal) -> None:
         """
         Add a triple to the graph with any specified additions
 
@@ -1133,7 +1135,7 @@ class ExcelVocabularyParser:
         self,
         excel_path: Path,
         sheet: str,
-        iri: URIRef,
+        iri: IRI,
         name: str,
         domain_classes: list[IRI],
     ) -> None:
@@ -1151,7 +1153,7 @@ class ExcelVocabularyParser:
         self.insert_instance(rdf_property, iri)
         self.add_triple(iri, schema_name, Literal(name))
         for domain_class in domain_classes:
-            self._graph.add((iri, schema_domain_includes, URIRef(domain_class.iri)))
+            self._graph.add((iri, schema_domain_includes, IRI(domain_class.iri)))
         self.logger.log(
             logging.INFO,
             __name__,
@@ -1228,7 +1230,7 @@ class ExcelVocabularyParser:
 
         return success
 
-    def get_iri(self, class_name: str, name: str) -> URIRef:
+    def get_iri(self, class_name: str, name: str) -> IRI:
         """
         Generate an IRI for an instance of a class in the current namespace and with the given name
 
@@ -1256,7 +1258,7 @@ class ExcelVocabularyParser:
         ).lower()
 
         # Build and return the IRI
-        return URIRef(f"{APPN_VOCABULARY_ROOT}{self.node.id}/{class_name}_{clean_name}")
+        return IRI(f"{APPN_VOCABULARY_ROOT}{self.node.id}/{class_name}_{clean_name}")
 
     def lower_first(self, name: str) -> str:
         """

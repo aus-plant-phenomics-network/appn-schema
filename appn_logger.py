@@ -77,6 +77,10 @@ class IssueMessage(str, Enum):
         "A spreadsheet column name matches a property with more than one APPN schema class in its range, so values in the column could not be mapped to any referenced object.",
         "Add an property_range_classes mapping to the YAML configuration file to specify the class to be used for the property in the context of the domain class.",
     )
+    RANGE_INVALID_CONFIGURATION_DATA = (
+        "Configuration contains data that does not match the expected structure - it will be ignored",
+        "Check YAML configuration and ensure that value for specified key has the expected structure",
+    )
 
 
 ### IssueLogger ###############################################################
