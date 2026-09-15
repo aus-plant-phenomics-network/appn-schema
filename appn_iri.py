@@ -4,7 +4,7 @@
 #
 # appn_iri.py
 #
-# Class to represent IRIs, both serving as `rdflib` `URIRef` instances and 
+# Class to represent IRIs, both serving as `rdflib` `URIRef` instances and
 # providing properties for easier processing and display, and associated
 # classes for inclusing IRIs in triples
 #
@@ -14,14 +14,12 @@
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
 
-import logging
 from enum import IntEnum
-from typing import NamedTuple, Optional
+from typing import NamedTuple, Optional, Any
 from rdflib import URIRef, Node
 
 from appn_types import NamespaceDefinition
 from appn_configuration import Configuration
-
 
 ### IRI #######################################################################
 
@@ -37,10 +35,8 @@ class IRI(URIRef):
     __slots__ = ("_ns", "_prefix", "_curie", "_name")
 
     namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
-    def __new__(
-        cls,
-        iri: str | URIRef
-    ):
+
+    def __new__(cls, iri: str | URIRef):
         """
         IRI offers URIRef behaviour with additional properties
 
@@ -52,9 +48,7 @@ class IRI(URIRef):
 
         iri = str(iri)
         obj = super().__new__(cls, iri)
-        if (
-            namespace_definition := cls.get_namespace_definition(iri)
-        ) is not None:
+        if (namespace_definition := cls.get_namespace_definition(iri)) is not None:
             obj._ns = namespace_definition.ns
             obj._prefix = namespace_definition.prefix
             obj._name = iri[len(obj._ns) :]
@@ -67,9 +61,7 @@ class IRI(URIRef):
         return obj
 
     @staticmethod
-    def get_namespace_definition(
-        iri: str
-    ) -> Optional[NamespaceDefinition]:
+    def get_namespace_definition(iri: str) -> Optional[NamespaceDefinition]:
         """
         Find `NamespaceDefinition` for given IRI
 
@@ -128,7 +120,7 @@ class IRI(URIRef):
         """
         return self._prefix
 
-    def __eq__(self, other: any) -> bool:
+    def __eq__(self, other: Any) -> bool:
         """
         Equality with other representations of the same IRI
 
@@ -138,7 +130,7 @@ class IRI(URIRef):
         :return: True is object IRI strings match
         """
         if isinstance(other, URIRef) or isinstance(other, str):
-            return (str(other) == self.iri)
+            return str(other) == self.iri
         return super().__eq__(other)
 
     def __hash__(self) -> int:
@@ -151,7 +143,6 @@ class IRI(URIRef):
         :return: True is object IRI strings match
         """
         return hash(self.iri)
-
 
 
 ### Triple ####################################################################
@@ -182,3 +173,4 @@ class TriplePosition(IntEnum):
     SUBJECT = 0
     PROPERTY = 1
     OBJECT = 2
+

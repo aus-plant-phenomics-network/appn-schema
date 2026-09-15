@@ -13,9 +13,8 @@
 # -----------------------------------------------------------------------------
 
 import logging
-from enum import Enum, StrEnum, IntEnum
-from typing import NamedTuple, Optional
-from rdflib import URIRef, Node
+from enum import StrEnum
+from typing import NamedTuple
 
 ### Issue #####################################################################
 

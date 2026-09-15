@@ -392,7 +392,7 @@ class Dictionary:
         """
         return self.count_triples_by_term(TriplePosition.OBJECT)
 
-    def count_triples_by_term(self, position: TriplePosition) -> dict[str, int]:
+    def count_triples_by_term(self, position: TriplePosition) -> dict[IRI, int]:
         """
         Return counts of Triple`s for every term in a specified position
 
@@ -808,12 +808,14 @@ class Dictionary:
             logging.debug(f"Issuing query:\n{query}")
 
             for p in self.graph.query(query):
-                if isinstance(p[0], URIRef) and (
-                    namespace is None or str(p[0]).startswith(namespace)
-                ):
-                    iri = self.get_iri(str(p[0]))
-                    if iri not in results:
-                        results.append(iri)
+                # The rdflib `Result` object may be a boolean
+                if not isinstance(p, bool):
+                    if isinstance(p[0], URIRef) and (
+                        namespace is None or str(p[0]).startswith(namespace)
+                    ):
+                        iri = self.get_iri(str(p[0]))
+                        if iri not in results:
+                            results.append(iri)
 
         self.cache[cache_key] = results
 

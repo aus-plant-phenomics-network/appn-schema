@@ -14,7 +14,7 @@
 import logging
 from enum import Enum
 import textwrap
-from typing import Optional
+from typing import Optional, Any
 from appn_types import Issue, CompletionRuleType
 
 ### IssueMessage ##############################################################
@@ -103,7 +103,7 @@ class IssueLogger:
         self.message_counts: dict[str | IssueMessage, int] = {}
 
     def log(
-        self, level: int, module: str, message: str | IssueMessage, **properties: any
+        self, level: int, module: str, message: str | IssueMessage, **properties: Any
     ) -> None:
         """
         Save issue in list and log via logging.
