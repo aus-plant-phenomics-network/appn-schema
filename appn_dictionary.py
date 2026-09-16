@@ -493,8 +493,58 @@ class Dictionary:
         return self.list_iris_transitive(
             property_iri,
             "rdfs:subPropertyOf",
-            f"superclasses|{property_iri}|{namespace}",
+            f"superproperties|{property_iri}|{namespace}",
             namespace=namespace,
+        )
+
+    def list_subclasses(
+        self,
+        class_iri: str | IRI,
+        namespace: Optional[str] = None,
+    ) -> list[IRI]:
+        """
+        List all subclasses of a specified class (including the class
+        itself)
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `IRI` for class
+        :param namespace: Optional namespace for filtering results
+        :return: List of `IRI`s for classes
+        """
+        logging.debug(f"Finding all subclasses for class {class_iri}")
+        return self.list_iris_transitive(
+            class_iri,
+            "rdfs:subClassOf",
+            f"subclasses|{class_iri}|{namespace}",
+            namespace=namespace,
+            reverse=True,
+        )
+
+    def list_subproperties(
+        self,
+        property_iri: str | IRI,
+        namespace: Optional[str] = None,
+    ) -> list[IRI]:
+        """
+        List all subproperties of a specified property (including the property
+        itself).
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param property_iri: String IRI or `IRI` for property
+        :param namespace: Optional namespace for filtering results
+        :return: List of `IRI`s for properties
+        """
+        logging.debug(f"Finding all subproperties for property {property_iri}")
+        return self.list_iris_transitive(
+            property_iri,
+            "rdfs:subPropertyOf",
+            f"subproperties|{property_iri}|{namespace}",
+            namespace=namespace,
+            reverse=True,
         )
 
     def list_domain_properties_for_class(
@@ -829,6 +879,7 @@ class Dictionary:
         cache_key: Optional[str],
         matches: Optional[list[IRI]] = None,
         namespace: Optional[str] = None,
+        reverse: Optional[bool] = False,
     ) -> list[IRI]:
         """
         List IRIs connected to the subject IRI or CURIE by any number of
@@ -846,6 +897,7 @@ class Dictionary:
         :param matches: IRIs for terms already matched - this should be
             None on the initial call and is set during recursion
         :param namespace: Optional namespace for filtering results
+        :param reverse: If True, treat `subject` as the object and find matching subjects
         :return: List of `IRI` instances
         """
         logging.debug(
@@ -861,14 +913,24 @@ class Dictionary:
         if matches is None:
             matches = [subject_term]
 
-        query = """
-                prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        if reverse:
+            query = """
+                    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-                SELECT ?t
-                WHERE {
-                <%s> <%s> ?t .
-                }
-                """ % (subject_term.iri, property_term.iri)
+                    SELECT ?t
+                    WHERE {
+                    ?t <%s> <%s> .
+                    }
+                    """ % (property_term.iri, subject_term.iri)
+        else:
+            query = """
+                    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+                    SELECT ?t
+                    WHERE {
+                    <%s> <%s> ?t .
+                    }
+                    """ % (subject_term.iri, property_term.iri)
 
         logging.debug(f"Issuing query:\n{query}")
 
@@ -879,7 +941,7 @@ class Dictionary:
                     if namespace is None or match.ns.startswith(namespace):
                         matches.append(match)
                     self.list_iris_transitive(
-                        match.iri, transitive_property, None, matches
+                        match.iri, transitive_property, None, matches, namespace=namespace, reverse=reverse
                     )
 
         if cache_key is not None:

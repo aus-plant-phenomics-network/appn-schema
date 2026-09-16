@@ -37,6 +37,7 @@ from appn_dictionary import Dictionary
 #                            triples, unique_subjects, 
 #                            unique_properties, unique_objects, 
 #                            superclasses, superproperties, 
+#                            subclasses, subproperties, 
 #                            domain_properties, range_properties, 
 #                            domain_classes, range_classes, 
 #                            domain_range_properties, instances, 
@@ -59,6 +60,8 @@ subcommand_helptext = {
     "properties": "List IRIs and CURIEs for all properties defined or referenced by loaded assets.",
     "superclasses": "List IRIs and CURIEs for all known superclasses for a class specified using its IRI or CURIE.",
     "superproperties": "List IRIs and CURIEs for all known superproperties for a property specified using its IRI or CURIE.",
+    "subclasses": "List IRIs and CURIEs for all known subclasses for a class specified using its IRI or CURIE.",
+    "subproperties": "List IRIs and CURIEs for all known subproperties for a property specified using its IRI or CURIE.",
     "instances": "List  IRIs and CURIEs for all known instances of a class specified using its IRI or CURIE.",
     "domain-properties": "List IRIs and CURIEs for all known properties with a domain including a class specified using its IRI or CURIE.",
     "range-properties": "List IRIs and CURIEs for all known properties with a range including a class specified using its IRI or CURIE.",
@@ -92,6 +95,8 @@ def setup_parser() -> argparse.ArgumentParser:
     for cmd in [
         "superclasses",
         "superproperties",
+        "subclasses",
+        "subproperties",
         "instances",
         "domain-properties",
         "range-properties",
@@ -229,6 +234,12 @@ def execute_query(
 
     elif args["query"] == "superproperties":
         print(d.format_iri_list(d.list_superproperties(args["iri"]), max_rows=max_rows))
+
+    elif args["query"] == "subclasses":
+        print(d.format_iri_list(d.list_subclasses(args["iri"]), max_rows=max_rows))
+
+    elif args["query"] == "subproperties":
+        print(d.format_iri_list(d.list_subproperties(args["iri"]), max_rows=max_rows))
 
     elif args["query"] == "instances":
         print(d.format_iri_list(d.list_instances(args["iri"]), max_rows=max_rows))
