@@ -52,19 +52,19 @@ from appn_dictionary import Dictionary
 subcommand_helptext = {
     "namespaces": "List all prefixes and namespaces from loaded assets.",
     "triples": "List all triples from loaded assets.",
-    "unique_subjects": "List IRIs and CURIEs for all unique subjects of triples.",
-    "unique_properties": "List IRIs and CURIEs for all unique properties of triples.",
-    "unique_objects": "List IRIs and CURIEs for all unique objects of triples.",
+    "unique-subjects": "List IRIs and CURIEs for all unique subjects of triples.",
+    "unique-properties": "List IRIs and CURIEs for all unique properties of triples.",
+    "unique-objects": "List IRIs and CURIEs for all unique objects of triples.",
     "classes": "List IRIs and CURIEs for all classes defined or referenced by loaded assets.",
     "properties": "List IRIs and CURIEs for all properties defined or referenced by loaded assets.",
     "superclasses": "List IRIs and CURIEs for all known superclasses for a class specified using its IRI or CURIE.",
     "superproperties": "List IRIs and CURIEs for all known superproperties for a property specified using its IRI or CURIE.",
     "instances": "List  IRIs and CURIEs for all known instances of a class specified using its IRI or CURIE.",
-    "domain properties": "List IRIs and CURIEs for all known properties with a domain including a class specified using its IRI or CURIE.",
-    "range properties": "List IRIs and CURIEs for all known properties with a range including a class specified using its IRI or CURIE.",
-    "domain_range properties": "List IRIs and CURIEs for all known properties with a domain including one class and a range including another class specified using their IRIs or CURIEs.",
-    "domain classes": "List IRIs and CURIEs for all known classes included within the domain of a property specified using its IRI or CURIE.",
-    "range classes": "List IRIs and CURIEs for all known classes included within the range of a property specified using its IRI or CURIE.",
+    "domain-properties": "List IRIs and CURIEs for all known properties with a domain including a class specified using its IRI or CURIE.",
+    "range-properties": "List IRIs and CURIEs for all known properties with a range including a class specified using its IRI or CURIE.",
+    "domain-range-properties": "List IRIs and CURIEs for all known properties with a domain including one class and a range including another class specified using their IRIs or CURIEs.",
+    "domain-classes": "List IRIs and CURIEs for all known classes included within the domain of a property specified using its IRI or CURIE.",
+    "range-classes": "List IRIs and CURIEs for all known classes included within the range of a property specified using its IRI or CURIE.",
     "subject": "List all triples with the specified IRI or CURIE as subject.",
     "property": "List all triples with the specified IRI or CURIE as property.",
     "object": "List all triples with the specified IRI or CURIE as object.",
@@ -74,9 +74,9 @@ subcommand_helptext = {
     "instance-class-name-all": "List IRIs and CURIEs for all terms belonging to the specified class and with the specified value for schema:name, rdfs:label, skos:prefLabel or or schema:alternateName (optionally filtered to a specified namespace).",
     "instance-name": "List IRIs and CURIEs for all terms belonging to any or no class and with the specified value for schema:name or rdfs:label, skos:prefLabel (optionally filtered to a specified namespace).",
     "instance-name-all": "List IRIs and CURIEs for all terms belonging to any or no class and with the specified value for schema:name, rdfs:label, skos:prefLabel or schema:alternateName (optionally filtered to a specified namespace).",
-    "subject_counts": "Count of all triples for each unique subject IRI.",
-    "property_counts": "Count of all triples for each unique property IRI.",
-    "object_counts": "Count of all triples for each unique object IRI.",
+    "subject-counts": "Count of all triples for each unique subject IRI.",
+    "property-counts": "Count of all triples for each unique property IRI.",
+    "object-counts": "Count of all triples for each unique object IRI.",
     "test": "Run tests for all subcommands.",
 }
 
@@ -95,10 +95,10 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         "superclasses",
         "superproperties",
         "instances",
-        "domain_properties",
-        "range_properties",
-        "domain_classes",
-        "range_classes",
+        "domain-properties",
+        "range-properties",
+        "domain-classes",
+        "range-classes",
         "subject",
         "property",
         "object",
@@ -108,7 +108,7 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         )
         subparser.add_argument("iri")
     for cmd in [
-        "domain_range_properties",
+        "domain-range-properties",
     ]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
@@ -134,7 +134,7 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         subparser.add_argument("class")
         subparser.add_argument("name")
         subparser.add_argument("-n", "--namespace")
-    for cmd in ["subject_counts", "property_counts", "object_counts"]:
+    for cmd in ["subject-counts", "property-counts", "object-counts"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
