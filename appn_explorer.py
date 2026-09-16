@@ -423,7 +423,7 @@ if __name__ == "__main__":
     print()
 
     if args["query"] is None:
-        while (query := input(f"\nEnter query (q to quit, h for help): ")) not in ["q", "Q"]:
+        while (query := input(f"Enter query (q to quit, h for help): ")) not in ["q", "Q"]:
             logging.info(f"Processing new query: {query}")
             print()
             if query in ["h", "H"]:
@@ -431,8 +431,9 @@ if __name__ == "__main__":
             else:
                 execute_query(d, vars(parser.parse_args(query.split())))
             print()
+        print()
     else:
-        execute_query(d, vars(parser.parse_args(argv[1:])))
+        execute_query(d, args)
         print()
 
     logging.info("Finished")
