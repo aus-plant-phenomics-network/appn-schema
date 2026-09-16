@@ -77,17 +77,15 @@ subcommand_helptext = {
     "subject-counts": "Count of all triples for each unique subject IRI.",
     "property-counts": "Count of all triples for each unique property IRI.",
     "object-counts": "Count of all triples for each unique object IRI.",
-    "test": "Run tests for all subcommands.",
 }
 
 
-def process_argv(argv: list[str]) -> dict[str, Any]:
+def setup_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog=argv[0],
-        description=f"{argv[0]}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
+        description=f"{__name__}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
     )
     subparsers = parser.add_subparsers(dest="query")
-    for cmd in ["namespaces", "triples", "test"]:
+    for cmd in ["namespaces", "triples"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
@@ -168,9 +166,8 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         action="append",
         help="Path to asset file if different from asset namespace.",
     )
-    args = vars(parser.parse_args(argv[1:]))
 
-    return args
+    return parser
 
 
 
@@ -390,7 +387,8 @@ def execute_query(
 
 if __name__ == "__main__":
 
-    args = process_argv(sys.argv)
+    parser = setup_parser()
+    args = vars(parser.parse_args(sys.argv[1:]))
     start_log(args["log_level"], None, args["echo_to_stderr"])
 
     d = Dictionary()
@@ -413,78 +411,17 @@ if __name__ == "__main__":
 
     print()
 
-    if args["query"] == "test":
-        for q in [
-            [
-                "namespaces",
-            ],
-            [
-                "triples",
-            ],
-            [
-                "classes",
-            ],
-            [
-                "properties",
-            ],
-            [
-                "superclasses",
-                "appn:Sampling",
-            ],
-            [
-                "superproperties",
-                "schema:name",
-            ],
-            [
-                "instances",
-                "appn:Scale",
-            ],
-            [
-                "domain",
-                "appn:Scale",
-            ],
-            [
-                "range",
-                "appn:Scale",
-            ],
-            [
-                "subject",
-                "appn:Scale",
-            ],
-            [
-                "property",
-                "appn:hasScale",
-            ],
-            [
-                "object",
-                "appn:Scale",
-            ],
-            ["property-name", "name"],
-            [
-                "property-name-all",
-                "comment",
-                "-n",
-                "schema",
-            ],
-            [
-                "instance-name",
-                "appn:Scale",
-                "millimeter",
-            ],
-            [
-                "instance-name-all",
-                "appn:Scale",
-                "mm",
-                "-n",
-                "ltu",
-            ],
-        ]:
-            print(f"Executing: {' '.join(q)}\n")
-            execute_query(d, process_argv([sys.argv[0]] + q), max_rows=5)
+    if args["query"] is None:
+        while (query := input(f"\nEnter query (q to quit, h for help): ")) not in ["q", "Q"]:
+            logging.info(f"Processing new query: {query}")
+            print()
+            if query in ["h", "H"]:
+                parser.print_help()
+            else:
+                execute_query(d, vars(parser.parse_args(query.split())))
             print()
     else:
-        execute_query(d, args)
-
-    print()
+        execute_query(d, vars(parser.parse_args(argv[1:])))
+        print()
 
     logging.info("Finished")
