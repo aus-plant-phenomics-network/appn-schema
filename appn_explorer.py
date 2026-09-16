@@ -87,7 +87,7 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         description=f"{argv[0]}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
     )
     subparsers = parser.add_subparsers(dest="query")
-    for cmd in ["namespaces", "triples", "classes", "properties", "test"]:
+    for cmd in ["namespaces", "triples", "test"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
@@ -116,7 +116,7 @@ def process_argv(argv: list[str]) -> dict[str, Any]:
         subparser.add_argument("domain")
         subparser.add_argument("range")
         subparser.add_argument("-n", "--namespace")
-    for cmd in ["unique-subjects", "unique-properties", "unique-objects"]:
+    for cmd in ["classes", "properties", "unique-subjects", "unique-properties", "unique-objects"]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
@@ -218,10 +218,14 @@ def execute_query(
 ) -> None:
 
     if args["query"] == "classes":
-        print(d.format_iri_list(d.list_classes(), max_rows=max_rows))
+        print(d.format_iri_list(d.list_classes(
+                    namespace=args["namespace"] if "namespace" in args else None
+        ), max_rows=max_rows))
 
     elif args["query"] == "properties":
-        print(d.format_iri_list(d.list_properties(), max_rows=max_rows))
+        print(d.format_iri_list(d.list_properties(
+                    namespace=args["namespace"] if "namespace" in args else None
+        ), max_rows=max_rows))
 
     elif args["query"] == "superclasses":
         print(d.format_iri_list(d.list_superclasses(args["iri"]), max_rows=max_rows))
