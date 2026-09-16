@@ -10,7 +10,7 @@
 # Namespaces that are not mapped here will be accessed via the namespace URL.
 namespace_paths:
   "https://schema.plantphenomics.org.au/": "./appn-schema.ttl"
-  "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/": "./schema_assets/ddi-cdi.jsonld"
+  "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/": "./schema_assets/DDI-CDI-Representations.onto.ttl"
   "http://purl.org/ppeo/PPEO.owl#": "./schema_assets/PPEO.owl"
   "https://bioschemas.org/terms/": "./schema_assets/bioschemas_types.ttl"
   "http://purl.org/dc/terms/": "./schema_assets/dublin_core_terms.rdf"
