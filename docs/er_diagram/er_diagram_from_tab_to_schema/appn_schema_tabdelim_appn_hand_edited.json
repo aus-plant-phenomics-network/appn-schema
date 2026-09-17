@@ -36,7 +36,13 @@
       "required": [
         "studyIdentifier"
       ],
-      "appnCardinality": "0..1"
+      "appnCardinality": "0..1",
+      "x-primary-key": [
+        "investigationIdentifier"
+      ],
+      "x-foreign-key": [
+        "studyIdentifier"
+      ]
     },
     "appn:Study": {
       "title": "appn:Study",
@@ -155,7 +161,18 @@
         "growthFacilityName",
         "biologicalMaterialIdentifier"
       ],
-      "appnCardinality": "1..1"
+      "appnCardinality": "1..1",
+      "x-primary-key": [
+        "studyIdentifier"
+      ],
+      "x-foreign-key": [
+        "personIdentifier",
+        "investigationIdentifier",
+        "placeName",
+        "growthFacilityName",
+        "biologicalMaterialIdentifier",
+        "deploymentName"
+      ]
     },
     "schema:Person": {
       "title": "schema:Person",
@@ -169,19 +186,10 @@
           "type": "string",
           "rocrateProperty": "schema:Person.familyName"
         },
-        "identifier": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/schema:Grant"
-              },
-              {
-                "$ref": "#/$defs/schema:GrantReference"
-              }
-            ],
-            "rocrateProperty": "schema:Grant.identifier"
-          }
+        "personIdentifier": {
+          "type": "string",
+          "rocrateProperty": "schema:Thing.identifier",
+          "format": "uri"
         },
         "email": {
           "type": "array",
@@ -212,6 +220,20 @@
             ],
             "rocrateProperty": "schema:Person.affiliation"
           }
+        },
+        "grantIdentifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Grant"
+              },
+              {
+                "$ref": "#/$defs/schema:GrantReference"
+              }
+            ],
+            "rocrateProperty": "schema:Grant.identifier"
+          }
         }
       },
       "required": [
@@ -220,7 +242,14 @@
         "roleName",
         "affiliation"
       ],
-      "appnCardinality": "1..n"
+      "appnCardinality": "1..n",
+      "x-primary-key": [
+        "personIdentifier"
+      ],
+      "x-foreign-key": [
+        "affiliation",
+        "grantIdentifier"
+      ]
     },
     "schema:Organization": {
       "title": "schema:Organization",
@@ -230,7 +259,20 @@
           "type": "string",
           "rocrateProperty": "schema:Organization.legalName"
         },
-        "identifier": {
+        "organizationIdentifier": {
+          "type": "string",
+          "rocrateProperty": "schema:Thing.identifier",
+          "format": "uri"
+        },
+        "address": {
+          "type": "string",
+          "rocrateProperty": "schema:Organization.legalAddress"
+        },
+        "roleName": {
+          "type": "string",
+          "rocrateProperty": "schema.Role.roleName"
+        },
+        "personIdentifier": {
           "type": "array",
           "items": {
             "oneOf": [
@@ -241,23 +283,21 @@
                 "$ref": "#/$defs/schema:PersonReference"
               }
             ],
-            "rocrateProperty": "schema:Thing.identifier"
+            "rocrateProperty": "schema:Person.identifier"
           }
-        },
-        "address": {
-          "type": "string",
-          "rocrateProperty": "schema:Organization.legalAddress"
-        },
-        "roleName": {
-          "type": "string",
-          "rocrateProperty": "schema.Role.roleName"
         }
       },
       "required": [
         "legalName",
-        "identifier"
+        "personIdentifier"
       ],
-      "appnCardinality": "1..n"
+      "appnCardinality": "1..n",
+      "x-primary-key": [
+        "organizationIdentifier"
+      ],
+      "x-foreign-key": [
+        "personIdentifier"
+      ]
     },
     "schema:Grant": {
       "title": "schema:Grant",
@@ -267,7 +307,11 @@
           "type": "string",
           "rocrateProperty": "schema:Thing.name"
         },
-        "identifier": {
+        "grantIdentifier": {
+          "type": "string",
+          "rocrateProperty": "schema:Thing.identifier"
+        },
+        "funder": {
           "type": "array",
           "items": {
             "oneOf": [
@@ -278,19 +322,12 @@
                 "$ref": "#/$defs/schema:OrganizationReference"
               }
             ],
-            "rocrateProperty": "schema:Thing.identifier"
+            "rocrateProperty": "schema:Grant.funder"
           }
         },
-        "funder": {
-          "oneOf": [
-            {
-              "$ref": "#/$defs/schema:Organization"
-            },
-            {
-              "$ref": "#/$defs/schema:OrganizationReference"
-            }
-          ],
-          "rocrateProperty": "schema:Grant.funder"
+        "amount": {
+          "type": "number",
+          "rocrateProperty": "schema:MonetaryGrant.amount"
         },
         "fundedItem": {
           "oneOf": [
@@ -303,18 +340,52 @@
           ],
           "rocrateProperty": "schema:Grant.fundedItem"
         },
-        "amount": {
-          "type": "number",
-          "rocrateProperty": "schema:MonetaryGrant.amount"
+        "personIdentifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Person"
+              },
+              {
+                "$ref": "#/$defs/schema:PersonReference"
+              }
+            ],
+            "rocrateProperty": "schema:Person.identifier"
+          }
+        },
+        "organizationIdentifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Organization"
+              },
+              {
+                "$ref": "#/$defs/schema:OrganizationReference"
+              }
+            ],
+            "rocrateProperty": "schema:Thing.identifier"
+          }
         }
       },
-      "appnCardinality": "0..n"
+      "required": [
+        "funder"
+      ],
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "grantIdentifier"
+      ],
+      "x-foreign-key": [
+        "personIdentifier",
+        "organizationIdentifier"
+      ]
     },
     "appn:SpatialLocation": {
       "title": "appn:SpatialLocation",
       "type": "object",
       "properties": {
-        "name": {
+        "placeName": {
           "type": "string",
           "rocrateProperty": "schema:Place.name"
         },
@@ -328,9 +399,13 @@
         }
       },
       "required": [
-        "name"
+        "placeName"
       ],
-      "appnCardinality": "0..n"
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "placeName"
+      ],
+      "x-foreign-key": []
     },
     "appn:GrowthFacility": {
       "title": "appn:GrowthFacility",
@@ -338,7 +413,8 @@
       "properties": {
         "growthFacilityName": {
           "type": "string",
-          "rocrateProperty": "appn:GrowthFacility.growthFacilityName"
+          "rocrateProperty": "appn:GrowthFacility.growthFacilityName",
+          "format": "uri"
         },
         "growthFacilityType": {
           "type": "string",
@@ -359,7 +435,11 @@
         "growthFacilityContainmentLevel",
         "growthFacilityQuarantine"
       ],
-      "appnCardinality": "0..n"
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "growthFacilityName"
+      ],
+      "x-foreign-key": []
     },
     "appn:Deployment": {
       "title": "appn:Deployment",
@@ -373,7 +453,11 @@
       "required": [
         "deploymentName"
       ],
-      "appnCardinality": "0..n"
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "deploymentName"
+      ],
+      "x-foreign-key": []
     },
     "appn:BiologicalMaterial": {
       "title": "appn:BiologicalMaterial",
@@ -381,7 +465,8 @@
       "properties": {
         "biologicalMaterialIdentifier": {
           "type": "string",
-          "rocrateProperty": "appn:BiologicalMaterial.biologicalMaterialIdentifier"
+          "rocrateProperty": "appn:BiologicalMaterial.biologicalMaterialIdentifier",
+          "format": "uri"
         },
         "biologicalMaterialGenus": {
           "type": "string",
@@ -426,7 +511,13 @@
         "biologicalMaterialGenus",
         "biologicalMaterialSpecies"
       ],
-      "appnCardinality": "1..n"
+      "appnCardinality": "1..n",
+      "x-primary-key": [
+        "biologicalMaterialGenus",
+        "biologicalMaterialSpecies",
+        "biologicalMaterialInfraspecificName"
+      ],
+      "x-foreign-key": []
     },
     "appn:MaterialSource": {
       "title": "appn:MaterialSource",
@@ -450,7 +541,11 @@
       "required": [
         "materialSourceIdentifier"
       ],
-      "appnCardinality": "0..n"
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "materialSourceIdentifier"
+      ],
+      "x-foreign-key": []
     },
     "appn:BiologicalMaterialReference": {
       "title": "appn:BiologicalMaterialReference",

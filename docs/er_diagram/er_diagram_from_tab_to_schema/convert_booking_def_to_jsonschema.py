@@ -8,7 +8,7 @@ Convert an APPN tab-delimited schema specification into JSON Schema.
 Supported property row shapes after the leading indentation tab:
 
 Class rows:
-    classURI    [blank]    [blank]    cardinality
+    classURI    [blank]    [blank]    cardinality....[PK]
 
 Property rows, literal value:
     propertyURI    guiLabel    cardinality    datatype    format
@@ -20,7 +20,8 @@ Property rows, explicit 6-column value:
     propertyURI    guiLabel    cardinality    targetClass    datatype    format
 
 Examples:
-    schema:Person.givenName      givenName      1..1   string
+schema:Person    1..n    personIdentifier  <---------------------------- Class Row
+    schema:Person.givenName      givenName      1..1   string <--------- Property rows
     schema:Person.email          email          0..n   string      email
     schema:Thing.identifier      identifier     0..1   string      uri
     schema:Person.affiliation    affiliation    1..n   schema:Organization
@@ -133,7 +134,8 @@ def normalise_property_columns(raw_line, filename):
 
     if len(cols) >= 6 and col6:
         # Explicit 6-column layout:
-        # propertyURI, label, cardinality, targetClass, datatype, format
+        # propertyURI,          label,      cardinality, targetClass, datatype, format
+        # appn:Study.studyTitle	studyTitle	1..1	     string
         target_class = col4 or None
         datatype = col5 or None
         format_name = col6 or None
@@ -278,7 +280,7 @@ def build_property_schema(
     }
 
 
-def build_class_schema(class_name, class_cardinality, properties):
+def build_class_schema(class_name, class_cardinality, properties, primary_keys, foreign_keys):
     """Build JSON Schema definition for a class."""
     schema = {
         "title": class_name,
@@ -307,7 +309,23 @@ def build_class_schema(class_name, class_cardinality, properties):
     if class_cardinality:
         schema["appnCardinality"] = class_cardinality
 
+    if primary_keys:
+        schema.update(primary_keys) 
+
+    if foreign_keys:
+        schema.update(foreign_keys)
+
     return schema
+    
+def get_pk_fk_lists(col : str):
+    import re
+
+    result_pk_fk = [
+        re.findall(r'[^,\s]+', group)
+        for group in re.findall(r'\[(.*?)\]', col)
+    ]
+
+    return {"x-primary-key" : result_pk_fk[0]}, {"x-foreign-key" : result_pk_fk[1]}
 
 
 def parse_schema_file(filename):
@@ -318,6 +336,8 @@ def parse_schema_file(filename):
     current_class = None
     current_class_cardinality = None
     current_properties = []
+    current_class_pk = []
+    current_class_fk = []
 
     def finish_current_class():
         if current_class is None:
@@ -326,6 +346,8 @@ def parse_schema_file(filename):
             current_class,
             current_class_cardinality,
             current_properties,
+            current_class_pk,
+            current_class_fk
         )
         for prop in current_properties:
             if prop.get("target_class"):
@@ -336,11 +358,16 @@ def parse_schema_file(filename):
             if not raw_line.strip():
                 continue
 
+            # the class definition starts at the first character (no tab)
             if not raw_line.startswith("\t"):
                 finish_current_class()
 
                 cols = raw_line.rstrip("\n").split("\t")
+                
                 current_class = cols[0].strip()
+                current_class_pk, current_class_fk = get_pk_fk_lists(cols[-1])
+                cols.pop()
+                
                 current_class_cardinality = None
 
                 non_empty = [c.strip() for c in cols if c.strip()]
@@ -348,7 +375,18 @@ def parse_schema_file(filename):
                     current_class_cardinality = non_empty[-1]
 
                 current_properties = []
+            # otherwise process a property line    
             else:
+                """
+                appends dict: {
+                    "property_uri": property_uri,
+                    "label": label,
+                    "cardinality": cardinality,
+                    "target_class": target_class,
+                    "datatype": datatype,
+                    "format": format_name,
+                }
+                """
                 current_properties.append(
                     normalise_property_columns(raw_line, filename)
                 )

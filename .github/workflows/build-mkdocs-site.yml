@@ -39,6 +39,11 @@ jobs:
           mkdir -p site/viz
           cp -f script-ghp/appn-schema-pyviz.html site/viz/index.html
           
+      - name: Move ER diagram HTML to docs as index.html
+        run: |
+          mkdir -p site/erdiagram
+          cp -f docs/er_diagram/er_diagram_from_tab_to_schema/erdiagram/index.html site/erdiagram/index.html
+          
 
       - uses: actions/upload-pages-artifact@v3
         with:

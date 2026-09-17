@@ -111,14 +111,19 @@ def build_mermaid(schema):
     for entity_name, entity_def in defs.items():
 
         fields = []
-        required = set(entity_def.get("required", []))
+        #required = set(entity_def.get("required", []))
+        pk = set(entity_def.get("x-primary-key", []))
+        fk = set(entity_def.get("x-foreign-key", []))
 
         for prop_name, prop_def in entity_def.get("properties", {}).items():
 
             ptype = prop_def.get("type", "object")
 
-            if prop_name in required:
+            # if prop_name in required:
+            if prop_name in pk:
                 fields.append(f"    {ptype} {prop_name} PK")
+            elif prop_name in fk:
+                fields.append(f"    {ptype} {prop_name} FK")
             else:
                 fields.append(f"    {ptype} {prop_name}")
 
@@ -131,7 +136,7 @@ def build_mermaid(schema):
         block.append("    }")
 
         # The jsonschema defines 'reference' versions of classes that 
-        # do not need shown as entities or added with relationships
+        # do not need to be shown as entities or added with relationships
         if not entity_id.endswith("Reference") and not entity_id.endswith("Identifier"):
             entities.append("\n".join(block))
 
@@ -263,7 +268,8 @@ mermaid.initialize({{ startOnLoad: true }});
 </html>
     """
 
-    with open("erd.html", "w") as f:
+    Path("erdiagram").mkdir(exist_ok=True)
+    with open("erdiagram/index.html", "w") as f:
         f.write(html)
 
 

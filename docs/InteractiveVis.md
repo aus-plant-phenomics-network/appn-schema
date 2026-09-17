@@ -1,5 +1,7 @@
-# Interactive Visualisation of APPN Schema
+#  Visualisation and Data model descriptions
   
+## Interactive network graph of the APPN Schema
+
 An interactive rendering of the APPN schema is available here:
 
 - [GraphVis Rendering](../viz)
@@ -7,3 +9,6 @@ An interactive rendering of the APPN schema is available here:
   
 The rendering was built using the [Python GraphVis](https://graphviz.readthedocs.io/en/stable/) library.
 
+## Entity-Relationship Diagram of APPN Booking metadata
+
+- [Mermaid ER Diagram](../erdiagram)

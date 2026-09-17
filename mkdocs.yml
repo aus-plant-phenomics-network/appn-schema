@@ -75,6 +75,7 @@ nav:
       - Sampling: appn_Sampling.md
       - Scale: appn_Scale.md
       - Sensor: appn_Sensor.md
+      - Sensor Type: appn_SensorType.md
       - Software Application: appn_SoftwareApplication.md
       - Spatial Location: appn_SpatialLocation.md
       - Study: appn_Study.md

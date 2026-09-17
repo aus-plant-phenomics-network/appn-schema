@@ -32,56 +32,60 @@ erDiagram
 erDiagram
 
     appn_Investigation {
-    string investigationIdentifier
+    string investigationIdentifier PK
     string investigationTitle
     string investigationDescription
-    array studyIdentifier PK
+    array studyIdentifier FK
     }
     appn_Study {
     string studyIdentifier PK
     string studyalternateIdentifier
-    string studyTitle PK
-    string studyDescription PK
-    string additionalType PK
-    array personIdentifier PK
-    object investigationIdentifier
-    array placeName PK
-    array growthFacilityName PK
-    array biologicalMaterialIdentifier PK
-    array deploymentName
+    string studyTitle
+    string studyDescription
+    string additionalType
+    array personIdentifier FK
+    object investigationIdentifier FK
+    array placeName FK
+    array growthFacilityName FK
+    array biologicalMaterialIdentifier FK
+    array deploymentName FK
     }
     schema_Person {
-    string givenName PK
-    string familyName PK
-    array identifier
+    string givenName
+    string familyName
+    string personIdentifier PK
     array email
     string jobTitle
-    string roleName PK
-    array affiliation PK
+    string roleName
+    array affiliation FK
+    array grantIdentifier FK
     }
     schema_Organization {
-    string legalName PK
-    array identifier PK
+    string legalName
+    string organizationIdentifier PK
     string address
     string roleName
+    array personIdentifier FK
     }
     schema_Grant {
     string name
-    array identifier
-    object funder
-    object fundedItem
+    string grantIdentifier PK
+    array funder
     number amount
+    object fundedItem
+    array personIdentifier FK
+    array organizationIdentifier FK
     }
     appn_SpatialLocation {
-    string name PK
+    string placeName PK
     string GeoLatLong
     string GeoShape
     }
     appn_GrowthFacility {
     string growthFacilityName PK
-    string growthFacilityType PK
-    string growthFacilityContainmentLevel PK
-    boolean growthFacilityQuarantine PK
+    string growthFacilityType
+    string growthFacilityContainmentLevel
+    boolean growthFacilityQuarantine
     }
     appn_Deployment {
     string deploymentName PK
@@ -90,7 +94,7 @@ erDiagram
     string biologicalMaterialIdentifier
     string biologicalMaterialGenus PK
     string biologicalMaterialSpecies PK
-    array biologicalMaterialInfraspecificName
+    array biologicalMaterialInfraspecificName PK
     string biologicalMaterialPreprocessing
     string geneticallyModifiedStatus
     string quaratineStatus
@@ -108,12 +112,13 @@ erDiagram
     appn_GrowthFacility |{--|| appn_Study : growthFacilityName
     appn_BiologicalMaterial |{--|| appn_Study : biologicalMaterialIdentifier
     appn_Deployment o{--|| appn_Study : deploymentName
-    schema_Grant o{--|| schema_Person : identifier
     schema_Organization |{--|| schema_Person : affiliation
-    schema_Person |{--|| schema_Organization : identifier
-    schema_Organization o{--|| schema_Grant : identifier
-    schema_Organization o|--|| schema_Grant : funder
+    schema_Grant o{--|| schema_Person : grantIdentifier
+    schema_Person |{--|| schema_Organization : personIdentifier
+    schema_Organization |{--|| schema_Grant : funder
     schema_Person o|--|| schema_Grant : fundedItem
+    schema_Person o{--|| schema_Grant : personIdentifier
+    schema_Organization o{--|| schema_Grant : organizationIdentifier
     appn_MaterialSource o|--|| appn_BiologicalMaterial : materialSourceIdentifier
 </pre>
 
