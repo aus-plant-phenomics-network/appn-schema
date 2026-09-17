@@ -143,7 +143,7 @@ class IssueLogger:
         self,
         level: Optional[int] = None,
         module: Optional[str] = None,
-        message: Optional[str] = None,
+        message: Optional[IssueMessage|str] = None,
     ) -> list[Issue]:
         """
         Get list of recorded issues, optionally filtered by level and/or module name
@@ -160,7 +160,7 @@ class IssueLogger:
             and (message is None or issue.message == message)
         ]
 
-    def get_issue_counts_by_module(self) -> dict[str, int]:
+    def get_issue_counts_by_module(self) -> dict[IssueMessage|str, int]:
         """
         Get dictionary storing counts of logged issues by module
 
@@ -168,7 +168,7 @@ class IssueLogger:
         """
         return self.module_counts
 
-    def get_issue_counts_by_message(self) -> dict[str, int]:
+    def get_issue_counts_by_message(self) -> dict[IssueMessage|str, int]:
         """
         Get dictionary storing counts of logged issues by message
 

@@ -324,7 +324,7 @@ class Configuration:
             # Verify that the YAML content matches the expected structure.
             # All keys in YAML are strings, so the types of any dictionary
             # keys do not need to be validated.
-            value = []
+            value = {}
             if key.value in self.configuration:
                 value = self.configuration[key.value]
                 if not self.validate_configuration_values(
@@ -365,7 +365,7 @@ class Configuration:
             # Verify that the YAML content matches the expected structure.
             # All keys in YAML are strings, so the types of any dictionary
             # keys do not need to be validated.
-            value = []
+            value = {}
             if key.value in self.configuration:
                 value = self.configuration[key.value]
                 if not self.validate_configuration_values(
@@ -406,7 +406,7 @@ class Configuration:
             # Verify that the YAML content matches the expected structure.
             # All keys in YAML are strings, so the types of any dictionary
             # keys do not need to be validated.
-            value = []
+            value = {}
             if key.value in self.configuration:
                 value = self.configuration[key.value]
                 if not self.validate_configuration_values(
@@ -447,7 +447,7 @@ class Configuration:
             # Verify that the YAML content matches the expected structure.
             # All keys in YAML are strings, so the types of any dictionary
             # keys do not need to be validated.
-            value = []
+            value = {}
             if key.value in self.configuration:
                 value = self.configuration[key.value]
                 if not self.validate_configuration_values(

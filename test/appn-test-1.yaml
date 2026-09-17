@@ -1,2 +1,2 @@
-namespaces:
+namespace_prefixes:
   "https://test.plantphenomics.org.au/": "test"

@@ -22,11 +22,18 @@ from appn_configuration import (
 from appn_dictionary import Dictionary
 
 test_configuration = Configuration()
+dictionary = Dictionary()
+dictionary.load(APPN_SCHEMA)
+dictionary.load(LTU_VOCABULARY)
 
 def test_get_namespaces():
-    dictionary = Dictionary(namespace_definitions = test_configuration.get_namespace_definitions())
-    dictionary.load(APPN_SCHEMA)
-    dictionary.load(LTU_VOCABULARY)
     namespaces = dictionary.get_namespaces()
     assert "appn" in namespaces
     assert "schema" in namespaces
+
+def test_get_superclasses():
+    curies = [s.curie for s in dictionary.list_superclasses("appn:Observation")]
+    assert "appn:Assay" in curies
+    assert "appn:Observation" in curies
+    assert "schema:Action" in curies
+    assert "schema:Sampling" not in curies
