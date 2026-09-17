@@ -4,12 +4,12 @@
 
 An interactive rendering of the APPN schema is available here:
 
-- [GraphVis Rendering](/viz/index.htm)
+- [GraphVis Rendering](viz/index.htm)
   
   
 The rendering was built using the [Python GraphVis](https://graphviz.readthedocs.io/en/stable/) library.
 
 ## Entity-Relationship Diagram of APPN Booking metadata
 
-- [Mermaid ER Diagram](/erdiagram/index.html)
+- [Mermaid ER Diagram](erdiagram/index.html)
 
