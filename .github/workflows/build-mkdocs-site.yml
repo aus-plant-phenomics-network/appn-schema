@@ -31,19 +31,16 @@ jobs:
         run: |
           mkdir -p docs/images
           cp -f ttl_uml/*.png docs/images/
-
-      - run: mkdocs build
-      
-      - name: Move HTML to docs as index.html
-        run: |
-          mkdir -p site/viz
-          cp -f script-ghp/appn-schema-pyviz.html site/viz/index.html
+          
           
       - name: Move ER diagram HTML to docs as index.html
         run: |
-          mkdir -p site/erdiagram
-          cp -f docs/er_diagram/er_diagram_from_tab_to_schema/erdiagram/index.html site/erdiagram/index.html
+          mkdir -p docs/erdiagram
+          cp -f docs/er_diagram/er_diagram_from_tab_to_schema/erdiagram/index.html docs/erdiagram/index.html
           
+
+      - run: mkdocs build
+      
 
       - uses: actions/upload-pages-artifact@v3
         with:
