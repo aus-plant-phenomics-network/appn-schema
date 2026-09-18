@@ -85,7 +85,6 @@ class IssueMessage(str, Enum):
 
 ### IssueLogger ###############################################################
 
-
 class IssueLogger:
     """
     Class to capture key notification messages in an issue log as well as in
@@ -134,10 +133,10 @@ class IssueLogger:
                 self.message_counts[message] = 1
             else:
                 self.message_counts[message] = self.message_counts[message] + 1
-        logging.log(
-            level,
-            f"{message} ({'; '.join([f'module: {module}'] + [f'{k}: <{v}>' for k, v in properties.items()])})",
-        )
+            logging.log(
+                level,
+                f"{message} ({'; '.join([f'module: {module}'] + [f'{k}: <{v}>' for k, v in properties.items()])})",
+            )
 
     def list_issues(
         self,
@@ -205,8 +204,10 @@ class IssueLogger:
             key_length = max(
                 [len(k) for issue in issues for k, v in issue.properties.items()]
             )
+            # On Python 3.11, backslashes cannot be used inside the braces parts of f-strings. This is a workaround.
+            issue_indent = "\n          "
             for issue in issues:
-                report += f"    {index:>3d} : {'\n          '.join([f'{k:{key_length}s} : {str(v)}' for k, v in issue.properties.items()])}\n"
+                report += f"    {index:>3d} : {issue_indent.join([f'{k:{key_length}s} : {str(v)}' for k, v in issue.properties.items()])}\n"
                 index += 1
 
         return report

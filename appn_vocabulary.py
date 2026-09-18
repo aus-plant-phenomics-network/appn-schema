@@ -182,7 +182,6 @@ if __name__ == "__main__":
                 report.write("\n")
                 issues = configuration.get_logger().format_issues()
                 report.write(issues)
-                print(issues)
 
             parser.get_graph().serialize(
                 destination=f"./vocabulary/{node}/{node}_vocabulary.ttl"

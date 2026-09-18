@@ -161,10 +161,16 @@ class ValidationType(StrEnum):
 
 ### Configuration #############################################################
 
+# The configuration
+configuration_instance = None
 
 class Configuration:
     """
     Class to access configuration settings for APPN code.
+
+    This is a Singleton class - only one copy exists for each process. The
+    `Configuration` can be used to store persistent state. It is an access
+    point for the current `InstanceLogger`.
 
     Configuration elements are read from a YAML file for which the folder and
     name can be overridden with environment variables. The default is
@@ -176,92 +182,96 @@ class Configuration:
     Data from YAML is validated to ensure it fits the expected structure.
     """
 
-    instance: Optional["Configuration"] = None
-
     def __new__(cls):
+        global configuration_instance
         """
         Use the same instance everywhere in this process
         """
-        if cls.instance is None:
-            cls.instance = super().__new__(cls)
-        return cls.instance
+        if configuration_instance is None:
+            configuration_instance = super().__new__(cls)
+        return configuration_instance
 
     def __init__(self) -> None:
         """
         Read configuration from YAML file
         """
-        # The severity of errors reported depends on whether an explicit location was
-        # offered or defaults used.
-        defaults_overridden = False
+        # Only ever initialise the single instance once
+        if "_initialised" not in dir(self):
 
-        # Safe defaults if nothing is read
-        self.namespace_definitions = None
-        self.configuration = {}
+            # The severity of errors reported depends on whether an explicit location was
+            # offered or defaults used.
+            defaults_overridden = False
 
-        # Dictionary to store cached validated content for configuration elements
-        self.cache = {}
+            # Safe defaults if nothing is read
+            self.namespace_definitions = None
+            self.configuration = {}
 
-        # Logger to store messages of importance to data administrators. Anything
-        # logged to the logger is also logged via Python logging.
-        self.logger = IssueLogger()
+            # Dictionary to store cached validated content for configuration elements
+            self.cache = {}
 
-        # Use folder from environment or default
-        if APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY in os.environ:
-            self.configuration_folder = Path(
-                os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY]
-            )
-            defaults_overridden = True
-        else:
-            self.configuration_folder = Path(APPN_DEFAULT_CONFIGURATION_FOLDER)
-        logging.debug(f"Configuration folder: {self.configuration_folder}")
+            # Logger to store messages of importance to data administrators. Anything
+            # logged to the logger is also logged via Python logging.
+            self.logger = IssueLogger()
 
-        # Use supplied filename or filename from environment or default
-        if APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY in os.environ:
-            configuration_name = os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY]
-            defaults_overridden = True
-        else:
-            configuration_name = APPN_DEFAULT_CONFIGURATION_NAME
-        if not configuration_name.lower().endswith(".yaml"):
-            configuration_name = f"{configuration_name}.yaml"
-        logging.debug(f"Configuration name: {configuration_name}")
-
-        # Validate folder
-        if not self.configuration_folder.exists():
-            message = f"Configuration folder {self.configuration_folder} does not exist"
-            if defaults_overridden:
-                logging.error(message)
-                raise ValueError(message)
-            else:
-                logging.debug(message)
-                return
-
-        # Validate file
-        self.configuration_filepath = self.configuration_folder / configuration_name
-        if not self.configuration_filepath.exists():
-            message = f"Configuration file {self.configuration_filepath} does not exist"
-            if defaults_overridden:
-                logging.error(message)
-                raise ValueError(message)
-            else:
-                logging.debug(message)
-                return
-
-        # Load configuration from file
-        with open(self.configuration_filepath, "r") as stream:
-            try:
-                logging.debug(f"Loading configuration: {self.configuration_filepath}")
-                self.configuration = yaml.safe_load(stream)
-                logging.debug(f"Loaded configuration: \n{self.configuration}")
-            except yaml.YAMLError as exc:
-                logging.error(f"config.load: {str(exc)}")
-                raise ValueError(
-                    f"Failed to load configuration from {self.configuration_filepath}"
+            # Use folder from environment or default
+            if APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY in os.environ:
+                self.configuration_folder = Path(
+                    os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY]
                 )
+                defaults_overridden = True
+            else:
+                self.configuration_folder = Path(APPN_DEFAULT_CONFIGURATION_FOLDER)
+            logging.debug(f"Configuration folder: {self.configuration_folder}")
 
-        # Organisations element requires parsing before use - only do this when
-        # requested
-        self.organisations = None
+            # Use supplied filename or filename from environment or default
+            if APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY in os.environ:
+                configuration_name = os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY]
+                defaults_overridden = True
+            else:
+                configuration_name = APPN_DEFAULT_CONFIGURATION_NAME
+            if not configuration_name.lower().endswith(".yaml"):
+                configuration_name = f"{configuration_name}.yaml"
+            logging.debug(f"Configuration name: {configuration_name}")
 
+            # Validate folder
+            if not self.configuration_folder.exists():
+                message = f"Configuration folder {self.configuration_folder} does not exist"
+                if defaults_overridden:
+                    logging.error(message)
+                    raise ValueError(message)
+                else:
+                    logging.debug(message)
+                    return
+
+            # Validate file
+            self.configuration_filepath = self.configuration_folder / configuration_name
+            if not self.configuration_filepath.exists():
+                message = f"Configuration file {self.configuration_filepath} does not exist"
+                if defaults_overridden:
+                    logging.error(message)
+                    raise ValueError(message)
+                else:
+                    logging.debug(message)
+                    return
+
+            # Load configuration from file
+            with open(self.configuration_filepath, "r") as stream:
+                try:
+                    logging.debug(f"Loading configuration: {self.configuration_filepath}")
+                    self.configuration = yaml.safe_load(stream)
+                    logging.debug(f"Loaded configuration: \n{self.configuration}")
+                except yaml.YAMLError as exc:
+                    logging.error(f"config.load: {str(exc)}")
+                    raise ValueError(
+                        f"Failed to load configuration from {self.configuration_filepath}"
+                    )
+
+            # Organisations element requires parsing before use - only do this when
+            # requested
+            self.organisations = None
+
+            # Make sure we don't re-initialise later.
+            self._initialised = True
         return
 
     def fetch_dict(
