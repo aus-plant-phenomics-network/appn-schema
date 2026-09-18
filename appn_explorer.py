@@ -28,28 +28,8 @@ from appn_dictionary import Dictionary
 
 
 
-### process_argv ##############################################################
-#
-# Safely process sys.argv, returning a dictionary of option values.
-#
-#     query             : query type - one of:
-#                          { namespaces, classes, properties, 
-#                            triples, unique_subjects, 
-#                            unique_properties, unique_objects, 
-#                            superclasses, superproperties, 
-#                            subclasses, subproperties, 
-#                            domain_properties, range_properties, 
-#                            domain_classes, range_classes, 
-#                            domain_range_properties, instances, 
-#                            subject, property, object,
-#                            property-name, property-name-all,
-#                            instance-name, instance-name-all,
-#                            subject_counts, property_counts,
-#                            object_counts }.
-#     -l, --log-level   : "info" / "warning" / "error" / "debug".
-#     -e,               : Display logging outputs to stderr.
-#      --echo-to-stderr
-#
+### setup_parser ##############################################################
+
 subcommand_helptext = {
     "namespaces": "List all prefixes and namespaces from loaded assets.",
     "triples": "List all triples from loaded assets.",
@@ -62,7 +42,8 @@ subcommand_helptext = {
     "superproperties": "List IRIs and CURIEs for all known superproperties for a property specified using its IRI or CURIE.",
     "subclasses": "List IRIs and CURIEs for all known subclasses for a class specified using its IRI or CURIE.",
     "subproperties": "List IRIs and CURIEs for all known subproperties for a property specified using its IRI or CURIE.",
-    "instances": "List  IRIs and CURIEs for all known instances of a class specified using its IRI or CURIE.",
+    "instances": "List  IRIs and CURIEs for all known instances of a class specified using its IRI or CURIE or one of its subclasses.",
+    "instances-specific": "List  IRIs and CURIEs for all known instances of a class specified using its IRI or CURIE without considering subclasses.",
     "domain-properties": "List IRIs and CURIEs for all known properties with a domain including a class specified using its IRI or CURIE.",
     "range-properties": "List IRIs and CURIEs for all known properties with a range including a class specified using its IRI or CURIE.",
     "domain-range-properties": "List IRIs and CURIEs for all known properties with a domain including one class and a range including another class specified using their IRIs or CURIEs.",
@@ -84,6 +65,30 @@ subcommand_helptext = {
 
 
 def setup_parser() -> argparse.ArgumentParser:
+    """
+    Set up parser to handle command-line sys.argv parameters or 
+    interactive parameters in the same format.
+
+    The parser handles the following arguments:
+      -l, --log-level      : "info" / "warning" / "error" / "debug".
+      -e, --echo-to-stderr : Display logging outputs to stderr.
+
+    Subparsers are included for:
+      namespaces, classes, properties, 
+      triples, unique_subjects, 
+      unique_properties, unique_objects, 
+      superclasses, superproperties, 
+      subclasses, subproperties, 
+      instances, instances-specific,
+      domain_properties, range_properties, 
+      domain_classes, range_classes, 
+      domain_range_properties, instances, 
+      subject, property, object,
+      property-name, property-name-all,
+      instance-name, instance-name-all,
+      subject_counts, property_counts,
+      object_counts
+    """
     parser = argparse.ArgumentParser(
         description=f"{__name__}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
     )
@@ -98,6 +103,7 @@ def setup_parser() -> argparse.ArgumentParser:
         "subclasses",
         "subproperties",
         "instances",
+        "instances-specific",
         "domain-properties",
         "range-properties",
         "domain-classes",
@@ -243,6 +249,9 @@ def execute_query(
 
     elif args["query"] == "instances":
         print(d.format_iri_list(d.list_instances(args["iri"]), max_rows=max_rows))
+
+    elif args["query"] == "instances-specific":
+        print(d.format_iri_list(d.list_instances_without_subclasses(args["iri"]), max_rows=max_rows))
 
     elif args["query"] == "unique-subjects":
         print(
@@ -429,7 +438,12 @@ if __name__ == "__main__":
             if query in ["h", "H"]:
                 parser.print_help()
             else:
-                execute_query(d, vars(parser.parse_args(query.split())))
+                # Catch SystemExit so parser does not exit process for bad parameters.
+                # Let it show help, and then continue.
+                try:
+                    execute_query(d, vars(parser.parse_args(query.split())))
+                except SystemExit:
+                    pass
             print()
         print()
     else:

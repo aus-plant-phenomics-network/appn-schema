@@ -646,6 +646,27 @@ class Dictionary:
             query_strings, f"range|{property_iri}|{namespace}", namespace
         )
 
+    def list_instances_without_subclasses(
+        self, class_iri: str | IRI, namespace: Optional[str] = None
+    ) -> list[IRI]:
+        """
+        List all known instances of the specified class ignoring 
+        subclasses.
+
+        Results may optionally be filtered to matches within a specified
+        namespace.
+
+        :param class_iri: String IRI or `IRI` for class
+        :param namespace: Optional namespace for filtering results
+        :return: List of `IRI`s for instances
+        """
+        class_iri = self.get_iri(class_iri)
+        return self.list_iris(
+            [f"?q rdf:type <{class_iri}> ."],
+            f"instances-specific|{class_iri}|{namespace}",
+            namespace,
+        )
+
     def list_instances(
         self, class_iri: str | IRI, namespace: Optional[str] = None
     ) -> list[IRI]:
@@ -666,11 +687,7 @@ class Dictionary:
 
         instances = []
         for class_ in self.list_subclasses(class_iri):
-            instances += self.list_iris(
-                [f"?q rdf:type <{class_}> ."],
-                f"instances-specific|{class_}|{namespace}",
-                namespace,
-            )
+            instances += self.list_instances_without_subclasses(class_)
         self.cache[key] = instances
         return instances
 
