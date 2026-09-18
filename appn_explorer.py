@@ -70,24 +70,24 @@ def setup_parser() -> argparse.ArgumentParser:
     interactive parameters in the same format.
 
     The parser handles the following arguments:
-      -l, --log-level      : "info" / "warning" / "error" / "debug".
-      -e, --echo-to-stderr : Display logging outputs to stderr.
+      -l, --log-level         : "info" / "warning" / "error" / "debug".
+      -e, --echo-to-stderr    : Display logging outputs to stderr.
+      -d, --descriptions      : Output "descriptions" (IRIs with all properties) instead of IRI lists.
+      -a, --asset             : Namespace for an asset to be loaded - may be repeated.
+      -p, --prefix            : (Optional) Prefix for asset to be loaded - the n-th prefix is used for the n-th asset.
+      -f, --filepath-to-asset : (Optional) Filepath for reading asset instead of via URL - the n-th filepath is used for the n-th asset.
+
+    Many subparsers accept the following argument as a filter:
+      -n, --namespace         : (Optional) Only return IRIs from the specified namespace (which may be specified as a prefix).
 
     Subparsers are included for:
-      namespaces, classes, properties, 
-      triples, unique_subjects, 
-      unique_properties, unique_objects, 
-      superclasses, superproperties, 
-      subclasses, subproperties, 
-      instances, instances-specific,
-      domain_properties, range_properties, 
-      domain_classes, range_classes, 
-      domain_range_properties, instances, 
-      subject, property, object,
-      property-name, property-name-all,
-      instance-name, instance-name-all,
-      subject_counts, property_counts,
-      object_counts
+      namespaces, classes, properties, triples, unique_subjects,
+      unique_properties, unique_objects, superclasses, superproperties, 
+      subclasses, subproperties, instances, instances-specific,
+      domain_properties, range_properties, domain_classes, range_classes, 
+      domain_range_properties, instances, subject, property, object,
+      property-name, property-name-all, instance-name, instance-name-all,
+      subject_counts, property_counts, object_counts
     """
     parser = argparse.ArgumentParser(
         description=f"{__name__}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
@@ -163,6 +163,13 @@ def setup_parser() -> argparse.ArgumentParser:
         help="Echo log messages to console",
     )
     parser.add_argument(
+        "-d",
+        "--descriptions",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Output descriptions for IRIs",
+    )
+    parser.add_argument(
         "-a",
         "--asset",
         action="append",
@@ -222,36 +229,36 @@ def start_log(
 
 
 def execute_query(
-    d: Dictionary, args: dict[str, Any], max_rows: Optional[int] = None
+    d: Dictionary, args: dict[str, Any], max_rows: Optional[int] = None, descriptions: Optional[bool] = False
 ) -> None:
 
     if args["query"] == "classes":
         print(d.format_iri_list(d.list_classes(
                     namespace=args["namespace"] if "namespace" in args else None
-        ), max_rows=max_rows))
+        ), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "properties":
         print(d.format_iri_list(d.list_properties(
                     namespace=args["namespace"] if "namespace" in args else None
-        ), max_rows=max_rows))
+        ), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "superclasses":
-        print(d.format_iri_list(d.list_superclasses(args["iri"]), max_rows=max_rows))
+        print(d.format_iri_list(d.list_superclasses(args["iri"]), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "superproperties":
-        print(d.format_iri_list(d.list_superproperties(args["iri"]), max_rows=max_rows))
+        print(d.format_iri_list(d.list_superproperties(args["iri"]), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "subclasses":
-        print(d.format_iri_list(d.list_subclasses(args["iri"]), max_rows=max_rows))
+        print(d.format_iri_list(d.list_subclasses(args["iri"]), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "subproperties":
-        print(d.format_iri_list(d.list_subproperties(args["iri"]), max_rows=max_rows))
+        print(d.format_iri_list(d.list_subproperties(args["iri"]), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "instances":
-        print(d.format_iri_list(d.list_instances(args["iri"]), max_rows=max_rows))
+        print(d.format_iri_list(d.list_instances(args["iri"]), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "instances-specific":
-        print(d.format_iri_list(d.list_instances_without_subclasses(args["iri"]), max_rows=max_rows))
+        print(d.format_iri_list(d.list_instances_without_subclasses(args["iri"]), max_rows=max_rows, descriptions=descriptions))
 
     elif args["query"] == "unique-subjects":
         print(
@@ -259,7 +266,7 @@ def execute_query(
                 d.list_unique_subjects(
                     namespace=args["namespace"] if "namespace" in args else None
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -269,7 +276,7 @@ def execute_query(
                 d.list_unique_properties(
                     namespace=args["namespace"] if "namespace" in args else None
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -279,28 +286,28 @@ def execute_query(
                 d.list_unique_objects(
                     namespace=args["namespace"] if "namespace" in args else None
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
     elif args["query"] == "domain_properties":
         print(
             d.format_iri_list(
-                d.list_domain_properties_for_class(args["iri"]), max_rows=max_rows
+                d.list_domain_properties_for_class(args["iri"]), max_rows=max_rows, descriptions=descriptions
             )
         )
 
     elif args["query"] == "range_properties":
         print(
             d.format_iri_list(
-                d.list_range_properties_for_class(args["iri"]), max_rows=max_rows
+                d.list_range_properties_for_class(args["iri"]), max_rows=max_rows, descriptions=descriptions
             )
         )
 
     elif args["query"] == "domain_range_properties":
         print(
             d.format_iri_list(
-                d.list_properties_by_domain_and_range(args["domain"], args["range"]), max_rows=max_rows
+                d.list_properties_by_domain_and_range(args["domain"], args["range"]), max_rows=max_rows, descriptions=descriptions
             )
         )
 
@@ -311,7 +318,7 @@ def execute_query(
                     args["name"],
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -323,7 +330,7 @@ def execute_query(
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -335,7 +342,7 @@ def execute_query(
                     args["name"],
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -348,7 +355,7 @@ def execute_query(
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -359,7 +366,7 @@ def execute_query(
                     args["name"],
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -371,7 +378,7 @@ def execute_query(
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows,
+                max_rows=max_rows, descriptions=descriptions,
             )
         )
 
@@ -411,6 +418,8 @@ if __name__ == "__main__":
     args = vars(parser.parse_args(sys.argv[1:]))
     start_log(args["log_level"], None, args["echo_to_stderr"])
 
+    descriptions = args["descriptions"]
+
     d = Dictionary()
     d.load(APPN_SCHEMA)
     if args["asset"] is not None:
@@ -441,13 +450,13 @@ if __name__ == "__main__":
                 # Catch SystemExit so parser does not exit process for bad parameters.
                 # Let it show help, and then continue.
                 try:
-                    execute_query(d, vars(parser.parse_args(query.split())))
+                    execute_query(d, vars(parser.parse_args(query.split())), descriptions=descriptions)
                 except SystemExit:
                     pass
             print()
         print()
     else:
-        execute_query(d, args)
+        execute_query(d, args, descriptions=descriptions)
         print()
 
     logging.info("Finished")

@@ -176,7 +176,7 @@ class Dictionary:
             logging.debug(f"Loaded {asset_namespace}")
 
         except Exception:
-            logging.error(f"Failed to load {asset_namespace} as linked data asset")
+            logging.error(f"Failed to load {asset_namespace} as linked data asset", exc_info=True)
             return False
 
         return True
@@ -306,6 +306,11 @@ class Dictionary:
             namespace = ""
         elif namespace in self.namespaces:
             namespace = self.namespaces[namespace]
+        if namespace in self.reverse_namespaces:
+            full_curie = f"{self.reverse_namespaces[namespace]}:"
+        else:
+            full_curie = None
+
         values = {
             str(triple[position])
             for triple in self.graph
@@ -314,7 +319,7 @@ class Dictionary:
         return [
             self.get_iri(value)
             for value in sorted(values)
-            if value.startswith(namespace)
+            if (value.startswith(namespace) or (full_curie is not None and value.startswith(full_curie)))
         ]
 
     def list_triples_for_subject(self, subject: str | IRI) -> list[Triple]:
@@ -327,9 +332,11 @@ class Dictionary:
         subject = self.get_iri(subject)
         key = f"subject|{subject}"
 
+        matching_values = [str(subject), subject.curie]
+
         if key not in self.cache:
             self.cache[key] = [
-                self.get_triple(s, p, o) for s, p, o in self.graph if s == subject
+                self.get_triple(s, p, o) for s, p, o in self.graph if str(s) in matching_values
             ]
 
         return self.cache[key]
@@ -344,9 +351,11 @@ class Dictionary:
         object_ = self.get_iri(object_)
         key = f"object|{object_}"
 
+        matching_values = [str(object_), object_.curie]
+
         if key not in self.cache:
             self.cache[key] = [
-                self.get_triple(s, p, o) for s, p, o in self.graph if o == object_
+                self.get_triple(s, p, o) for s, p, o in self.graph if str(o) in matching_values
             ]
 
         return self.cache[key]
@@ -361,9 +370,11 @@ class Dictionary:
         property_ = self.get_iri(property_)
         key = f"property|{property_}"
 
+        matching_values = [str(property_), property_.curie]
+
         if key not in self.cache:
             self.cache[key] = [
-                self.get_triple(s, p, o) for s, p, o in self.graph if p == property_
+                self.get_triple(s, p, o) for s, p, o in self.graph if str(p) in matching_values
             ]
 
         return self.cache[key]
@@ -861,8 +872,11 @@ class Dictionary:
             f"Listing IRIs for query: {query_strings} (namespace: {namespace})"
         )
 
+        full_curie = None
         if namespace is not None and namespace in self.namespaces:
             namespace = self.namespaces[namespace]
+        if namespace in self.reverse_namespaces:
+            full_curie = f"{self.reverse_namespaces[namespace]}:"
 
         if cache_key in self.cache:
             return self.cache[cache_key]
@@ -886,7 +900,7 @@ class Dictionary:
                 # The rdflib `Result` object may be a boolean
                 if not isinstance(p, bool):
                     if isinstance(p[0], URIRef) and (
-                        namespace is None or str(p[0]).startswith(namespace)
+                        namespace is None or str(p[0]).startswith(namespace) or (full_curie is not None and str(p[0]).startswith(full_curie))
                     ):
                         iri = self.get_iri(str(p[0]))
                         if iri not in results:
@@ -933,6 +947,12 @@ class Dictionary:
         if cache_key is not None and cache_key in self.cache:
             return self.cache[cache_key]
 
+        full_curie = None
+        if namespace is not None and namespace in self.namespaces:
+            namespace = self.namespaces[namespace]
+        if namespace in self.reverse_namespaces:
+            full_curie = f"{self.reverse_namespaces[namespace]}:"
+            
         subject_term = self.get_iri(subject)
         property_term = self.get_iri(transitive_property)
 
@@ -964,7 +984,7 @@ class Dictionary:
             if isinstance(t[0], URIRef):
                 match = self.get_iri(t[0])
                 if match not in matches:
-                    if namespace is None or match.ns.startswith(namespace):
+                    if namespace is None or match.ns.startswith(namespace) or (full_curie is not None and str(p[0]).startswith(full_curie)):
                         matches.append(match)
                     self.list_iris_transitive(
                         match.iri, transitive_property, None, matches, namespace=namespace, reverse=reverse
@@ -979,6 +999,7 @@ class Dictionary:
         self,
         iris: list[IRI],
         max_rows: Optional[int] = None,
+        descriptions: Optional[bool] = False
     ) -> str:
         """
         Return string containing (column-aligned) a specified number of elements
@@ -987,6 +1008,7 @@ class Dictionary:
         :param tuples: list of `IRIs` or `Triples` (treated as tuples)
         :param element_count: number of tuple elements to display
         :param max_rows: optional cap on the number of tuples to process
+        :param descriptions: If True, output properties for each IRI.
         """
         if iris is None or len(iris) == 0:
             return ""
@@ -995,7 +1017,15 @@ class Dictionary:
             iris = iris[0:max_rows]
 
         curie_length = max([len(iri.curie) for iri in iris])
-        return "\n".join([f"{iri.curie:{curie_length}s}   {iri.iri}" for iri in iris])
+        formatted = []
+        for iri in iris:
+            if len(formatted) > 0:
+                formatted.append("")
+            formatted.append(f"{iri.curie:{curie_length}s}   {iri.iri}")
+            if descriptions:
+                for _, pp, po in self.list_triples_for_subject(iri):
+                    formatted.append(f"    {pp.curie} : {po.curie if isinstance(po, IRI) else str(po)}")
+        return "\n".join(formatted)
 
     def format_triple_list(
         self,

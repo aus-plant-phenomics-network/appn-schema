@@ -49,6 +49,12 @@ class IRI(URIRef):
             namespace_definitions = cls.namespace_definitions
 
         iri = str(iri)
+        if iri.startswith("http"):
+            namespace_definition = cls.get_namespace_definition(iri, namespace_definitions)
+        else:
+            if (namespace_definition := cls.get_reverse_namespace_definition(iri, namespace_definitions)) is not None:
+                iri = namespace_definition.ns + iri[len(namespace_definition.curie) + 1:]
+
         obj = super().__new__(cls, iri)
         if (namespace_definition := cls.get_namespace_definition(iri, namespace_definitions)) is not None:
             obj._ns = namespace_definition.ns
@@ -67,7 +73,7 @@ class IRI(URIRef):
         """
         Find `NamespaceDefinition` for given IRI
 
-        :param iri: An existing URIRef or IRI string
+        :param iri: An existing IRI string
         :param namespace_definitions: `NamespaceDefinitions` to determine namespace and prefix (defaults to dictionary from `Configuration`)
         :return: Matching `NamespaceDefinition` or None
         """
@@ -77,6 +83,24 @@ class IRI(URIRef):
         if namespace_definitions is not None:
             for namespace, namespace_definition in namespace_definitions.items():
                 if iri.startswith(namespace):
+                    return namespace_definition
+        return None
+
+    @staticmethod
+    def get_reverse_namespace_definition(curie: str, namespace_definitions: dict[str, NamespaceDefinition]) -> Optional[NamespaceDefinition]:
+        """
+        Find `NamespaceDefinition` for given CURIE
+
+        :param iri: An existing CURIE string
+        :param namespace_definitions: `NamespaceDefinitions` to determine namespace and prefix (defaults to dictionary from `Configuration`)
+        :return: Matching `NamespaceDefinition` or None
+        """
+        if namespace_definitions is None:
+            namespace_definitions = IRI.namespace_definitions
+
+        if namespace_definitions is not None:
+            for namespace, namespace_definition in namespace_definitions.items():
+                if curie.startswith(f"{namespace_definition.prefix}:"):
                     return namespace_definition
         return None
 
