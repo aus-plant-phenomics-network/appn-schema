@@ -36,19 +36,21 @@ class IRI(URIRef):
 
     namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
 
-    def __new__(cls, iri: str | URIRef):
+    def __new__(cls, iri: str | URIRef, namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None):
         """
         IRI offers URIRef behaviour with additional properties
 
         :param iri: An existing URIRef or IRI string
         :param namespace_definitions: List of `NamespaceDefinitions` to determine namespace and prefix
         """
-        if cls.namespace_definitions is None:
-            cls.namespace_definitions = Configuration().get_namespace_definitions()
+        if namespace_definitions is None:
+            if cls.namespace_definitions is None:
+                cls.namespace_definitions = Configuration().get_namespace_definitions()
+            namespace_definitions = cls.namespace_definitions
 
         iri = str(iri)
         obj = super().__new__(cls, iri)
-        if (namespace_definition := cls.get_namespace_definition(iri)) is not None:
+        if (namespace_definition := cls.get_namespace_definition(iri, namespace_definitions)) is not None:
             obj._ns = namespace_definition.ns
             obj._prefix = namespace_definition.prefix
             obj._name = iri[len(obj._ns) :]
@@ -61,16 +63,19 @@ class IRI(URIRef):
         return obj
 
     @staticmethod
-    def get_namespace_definition(iri: str) -> Optional[NamespaceDefinition]:
+    def get_namespace_definition(iri: str, namespace_definitions: dict[str, NamespaceDefinition]) -> Optional[NamespaceDefinition]:
         """
         Find `NamespaceDefinition` for given IRI
 
         :param iri: An existing URIRef or IRI string
-        :param namespace_definitions: List of `NamespaceDefinitions` to determine namespace and prefix
+        :param namespace_definitions: `NamespaceDefinitions` to determine namespace and prefix (defaults to dictionary from `Configuration`)
         :return: Matching `NamespaceDefinition` or None
         """
-        if IRI.namespace_definitions is not None:
-            for namespace, namespace_definition in IRI.namespace_definitions.items():
+        if namespace_definitions is None:
+            namespace_definitions = IRI.namespace_definitions
+
+        if namespace_definitions is not None:
+            for namespace, namespace_definition in namespace_definitions.items():
                 if iri.startswith(namespace):
                     return namespace_definition
         return None

@@ -163,6 +163,7 @@ class Dictionary:
                 self.namespace_manager.bind(
                     asset_prefix, Namespace(asset_namespace), override=True
                 )
+                self.namespace_definitions[asset_namespace] = NamespaceDefinition(asset_namespace, asset_prefix, asset_path)
 
             # Clear any cached query results because the `Graph` has changed,
             # and update the namespace dictionaries.
@@ -246,9 +247,9 @@ class Dictionary:
         :return: `Triple`
         """
         return Triple(
-            IRI(s) if isinstance(s, URIRef) else s,
-            IRI(p) if isinstance(p, URIRef) else p,
-            IRI(o) if isinstance(o, URIRef) else o,
+            self.get_iri(s) if isinstance(s, URIRef) else s,
+            self.get_iri(p) if isinstance(p, URIRef) else p,
+            self.get_iri(o) if isinstance(o, URIRef) else o,
         )
 
     def list_unique_subjects(self, namespace: Optional[str] = None) -> list[IRI]:
@@ -341,7 +342,7 @@ class Dictionary:
         :return: List of `Triple`s with given object
         """
         object_ = self.get_iri(object_)
-        key = f"object|{object}"
+        key = f"object|{object_}"
 
         if key not in self.cache:
             self.cache[key] = [
@@ -649,7 +650,8 @@ class Dictionary:
         self, class_iri: str | IRI, namespace: Optional[str] = None
     ) -> list[IRI]:
         """
-        List all known instances of the specified class.
+        List all known instances of the specified class or a known
+        subclass.
 
         Results may optionally be filtered to matches within a specified
         namespace.
@@ -658,12 +660,19 @@ class Dictionary:
         :param namespace: Optional namespace for filtering results
         :return: List of `IRI`s for instances
         """
-        class_iri = self.get_iri(class_iri)
-        return self.list_iris(
-            [f"?q rdf:type <{class_iri}> ."],
-            f"instances|{class_iri}|{namespace}",
-            namespace,
-        )
+        key = f"instances|{class_iri}|{namespace}"
+        if key in self.cache:
+            return self.cache[key]
+
+        instances = []
+        for class_ in self.list_subclasses(class_iri):
+            instances += self.list_iris(
+                [f"?q rdf:type <{class_}> ."],
+                f"instances-specific|{class_}|{namespace}",
+                namespace,
+            )
+        self.cache[key] = instances
+        return instances
 
     def list_instances_by_class_and_name(
         self,
@@ -787,7 +796,7 @@ class Dictionary:
 
         return properties
 
-    def get_iri(self, iri: str | URIRef | IRI) -> IRI:
+    def get_iri(self, id: str | URIRef | IRI) -> IRI:
         """
         Get `IRI` for specified CURIE or IRI string, `URIRef`` or `IRI`
 
@@ -797,13 +806,13 @@ class Dictionary:
 
         IRI strings are then coverted to `IRI` instances
 
-        :param iri: String IRI or CURIE
+        :param id: String IRI or CURIE
         :return: `IRI` instance
         """
-        if isinstance(iri, IRI):
-            return iri
+        if isinstance(id, IRI):
+            return id
 
-        iri = str(iri)
+        iri = str(id)
 
         cache_key = f"term|{iri}"
 
@@ -815,7 +824,7 @@ class Dictionary:
                 if iri.startswith(f"{namespace_definition.prefix}:"):
                     iri = f"{namespace}{iri[len(namespace_definition.prefix) + 1:]}"
 
-        return IRI(iri)
+        return IRI(iri, self.namespace_definitions)
 
     def list_iris(
         self, query_strings: list[str], cache_key: str, namespace: Optional[str] = None
