@@ -42,6 +42,10 @@ class Dictionary:
 
     All get_* and list_* methods check the cache for a previous response to the
     request and otherwise generate and cache a new response from the graph.
+
+    The cache is managed by the class (rather than using the `cache` or
+    `lru_cache` decorators) since it needs to be flushed whenever a new asset
+    is loaded.
     """
 
     def __init__(
@@ -76,6 +80,9 @@ class Dictionary:
             self.namespaces = {}
             self.reverse_namespaces = {}
         self.loaded = set()
+
+        # Cache for response values. In future this could be changed to a pair
+        # of LRU caches, a large one for IRIs and one for all other responses.
         self.cache = {}
 
         # Get `NamespaceDefinitions` from `Configuration` and add/overwrite any
@@ -163,7 +170,9 @@ class Dictionary:
                 self.namespace_manager.bind(
                     asset_prefix, Namespace(asset_namespace), override=True
                 )
-                self.namespace_definitions[asset_namespace] = NamespaceDefinition(asset_namespace, asset_prefix, asset_path)
+                self.namespace_definitions[asset_namespace] = NamespaceDefinition(
+                    asset_namespace, asset_prefix, asset_path
+                )
 
             # Clear any cached query results because the `Graph` has changed,
             # and update the namespace dictionaries.
@@ -176,7 +185,9 @@ class Dictionary:
             logging.debug(f"Loaded {asset_namespace}")
 
         except Exception:
-            logging.error(f"Failed to load {asset_namespace} as linked data asset", exc_info=True)
+            logging.error(
+                f"Failed to load {asset_namespace} as linked data asset", exc_info=True
+            )
             return False
 
         return True
@@ -319,7 +330,10 @@ class Dictionary:
         return [
             self.get_iri(value)
             for value in sorted(values)
-            if (value.startswith(namespace) or (full_curie is not None and value.startswith(full_curie)))
+            if (
+                value.startswith(namespace)
+                or (full_curie is not None and value.startswith(full_curie))
+            )
         ]
 
     def list_triples_for_subject(self, subject: str | IRI) -> list[Triple]:
@@ -336,7 +350,9 @@ class Dictionary:
 
         if key not in self.cache:
             self.cache[key] = [
-                self.get_triple(s, p, o) for s, p, o in self.graph if str(s) in matching_values
+                self.get_triple(s, p, o)
+                for s, p, o in self.graph
+                if str(s) in matching_values
             ]
 
         return self.cache[key]
@@ -355,7 +371,9 @@ class Dictionary:
 
         if key not in self.cache:
             self.cache[key] = [
-                self.get_triple(s, p, o) for s, p, o in self.graph if str(o) in matching_values
+                self.get_triple(s, p, o)
+                for s, p, o in self.graph
+                if str(o) in matching_values
             ]
 
         return self.cache[key]
@@ -374,7 +392,9 @@ class Dictionary:
 
         if key not in self.cache:
             self.cache[key] = [
-                self.get_triple(s, p, o) for s, p, o in self.graph if str(p) in matching_values
+                self.get_triple(s, p, o)
+                for s, p, o in self.graph
+                if str(p) in matching_values
             ]
 
         return self.cache[key]
@@ -661,7 +681,7 @@ class Dictionary:
         self, class_iri: str | IRI, namespace: Optional[str] = None
     ) -> list[IRI]:
         """
-        List all known instances of the specified class ignoring 
+        List all known instances of the specified class ignoring
         subclasses.
 
         Results may optionally be filtered to matches within a specified
@@ -900,7 +920,9 @@ class Dictionary:
                 # The rdflib `Result` object may be a boolean
                 if not isinstance(p, bool):
                     if isinstance(p[0], URIRef) and (
-                        namespace is None or str(p[0]).startswith(namespace) or (full_curie is not None and str(p[0]).startswith(full_curie))
+                        namespace is None
+                        or str(p[0]).startswith(namespace)
+                        or (full_curie is not None and str(p[0]).startswith(full_curie))
                     ):
                         iri = self.get_iri(str(p[0]))
                         if iri not in results:
@@ -952,7 +974,7 @@ class Dictionary:
             namespace = self.namespaces[namespace]
         if namespace in self.reverse_namespaces:
             full_curie = f"{self.reverse_namespaces[namespace]}:"
-            
+
         subject_term = self.get_iri(subject)
         property_term = self.get_iri(transitive_property)
 
@@ -984,10 +1006,19 @@ class Dictionary:
             if isinstance(t[0], URIRef):
                 match = self.get_iri(t[0])
                 if match not in matches:
-                    if namespace is None or match.ns.startswith(namespace) or (full_curie is not None and str(p[0]).startswith(full_curie)):
+                    if (
+                        namespace is None
+                        or match.ns.startswith(namespace)
+                        or (full_curie is not None and str(p[0]).startswith(full_curie))
+                    ):
                         matches.append(match)
                     self.list_iris_transitive(
-                        match.iri, transitive_property, None, matches, namespace=namespace, reverse=reverse
+                        match.iri,
+                        transitive_property,
+                        None,
+                        matches,
+                        namespace=namespace,
+                        reverse=reverse,
                     )
 
         if cache_key is not None:
@@ -999,7 +1030,7 @@ class Dictionary:
         self,
         iris: list[IRI],
         max_rows: Optional[int] = None,
-        descriptions: Optional[bool] = False
+        descriptions: Optional[bool] = False,
     ) -> str:
         """
         Return string containing (column-aligned) a specified number of elements
@@ -1024,7 +1055,9 @@ class Dictionary:
             formatted.append(f"{iri.curie:{curie_length}s}   {iri.iri}")
             if descriptions:
                 for _, pp, po in self.list_triples_for_subject(iri):
-                    formatted.append(f"    {pp.curie} : {po.curie if isinstance(po, IRI) else str(po)}")
+                    formatted.append(
+                        f"    {pp.curie} : {po.curie if isinstance(po, IRI) else str(po)}"
+                    )
         return "\n".join(formatted)
 
     def format_triple_list(
