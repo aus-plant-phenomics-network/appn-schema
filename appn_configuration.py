@@ -36,8 +36,9 @@ DEFAULT_CENTRAL_VOCABULARY_PREFIX = "appnid"
 # Standard APPN namespace URLs
 APPN_SCHEMA = "https://schema.plantphenomics.org.au/"
 # NOTE: Schema.org publishes versions using both HTTP and HTTPS - we
-# use HTTPS which seems to be most widely used.
-SCHEMA_SCHEMA = "https://schema.org/"
+# use HTTP which matches the RO-Crate context.
+SCHEMA_SCHEMA = "http://schema.org/"
+SCHEMA_ALTSCHEMA = "https://schema.org/"
 BIO_SCHEMA = "https://bioschemas.org/terms/"
 CDI_SCHEMA = "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/"
 DC_SCHEMA = "http://purl.org/dc/terms/"
@@ -164,6 +165,7 @@ class ValidationType(StrEnum):
 # The configuration
 configuration_instance = None
 
+
 class Configuration:
     """
     Class to access configuration settings for APPN code.
@@ -235,7 +237,9 @@ class Configuration:
 
             # Validate folder
             if not self.configuration_folder.exists():
-                message = f"Configuration folder {self.configuration_folder} does not exist"
+                message = (
+                    f"Configuration folder {self.configuration_folder} does not exist"
+                )
                 if defaults_overridden:
                     logging.error(message)
                     raise ValueError(message)
@@ -246,7 +250,9 @@ class Configuration:
             # Validate file
             self.configuration_filepath = self.configuration_folder / configuration_name
             if not self.configuration_filepath.exists():
-                message = f"Configuration file {self.configuration_filepath} does not exist"
+                message = (
+                    f"Configuration file {self.configuration_filepath} does not exist"
+                )
                 if defaults_overridden:
                     logging.error(message)
                     raise ValueError(message)
@@ -257,7 +263,9 @@ class Configuration:
             # Load configuration from file
             with open(self.configuration_filepath, "r") as stream:
                 try:
-                    logging.debug(f"Loading configuration: {self.configuration_filepath}")
+                    logging.debug(
+                        f"Loading configuration: {self.configuration_filepath}"
+                    )
                     self.configuration = yaml.safe_load(stream)
                     logging.debug(f"Loaded configuration: \n{self.configuration}")
                 except yaml.YAMLError as exc:

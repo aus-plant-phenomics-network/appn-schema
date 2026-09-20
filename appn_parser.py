@@ -22,18 +22,25 @@ from pathlib import Path
 from typing import Optional, NamedTuple
 from appn_iri import IRI
 from appn_types import CompletionRuleType
-from appn_dictionary import Dictionary
+from appn_dictionary import (
+    RDF_PROPERTY,
+    RDF_TYPE,
+    SCHEMA_DESCRIPTION,
+    SCHEMA_DOMAIN_INCLUDES,
+    SCHEMA_NAME,
+    SKOS_CONCEPT,
+    SKOS_CONCEPT_SCHEME,
+    SKOS_IN_SCHEME,
+    Dictionary,
+)
 from appn_configuration import (
     APPN_VOCABULARY,
     APPN_VOCABULARY_ROOT,
     BIO_SCHEMA,
     CENTRAL_ORGANISATION,
     ConfigurationKey,
-    DC_SCHEMA,
     DEFAULT_PREFIXES,
     ExplicitClassesFilter,
-    RDF_SCHEMA,
-    SCHEMA_SCHEMA,
     Configuration,
     Organisation,
     APPN_SCHEMA,
@@ -41,19 +48,6 @@ from appn_configuration import (
 )
 from appn_logger import IssueMessage
 from rdflib import Graph, Namespace, Literal
-
-# Convenience versions of regularly used IRIs
-rdf_type = IRI(f"{RDF_SCHEMA}type")
-rdf_property = IRI(f"{RDF_SCHEMA}Property")
-schema_domain_includes = IRI(f"{SCHEMA_SCHEMA}domainIncludes")
-schema_name = IRI(f"{SCHEMA_SCHEMA}name")
-schema_description = IRI(f"{SCHEMA_SCHEMA}description")
-skos_concept = IRI(f"{SKOS_SCHEMA}Concept")
-skos_concept_scheme = IRI(f"{SKOS_SCHEMA}ConceptScheme")
-skos_in_scheme = IRI(f"{SKOS_SCHEMA}inScheme")
-dc_title = IRI(f"{DC_SCHEMA}title")
-dc_description = IRI(f"{DC_SCHEMA}description")
-
 
 ### RequiredProperty ###########################################################
 
@@ -1020,13 +1014,13 @@ class ExcelVocabularyParser:
         # Add type statements for the main class and any superclasses specified by the
         # `Configuration` (and `skos:Concept` if `is_concept` is True).
         for instance_class in self.list_explicit_classes(main_class, is_concept):
-            self._graph.add((iri, rdf_type, instance_class))
+            self._graph.add((iri, RDF_TYPE, instance_class))
 
         # Add any `Concept` to a corresponding `ConceptScheme`
         if is_concept:
             if main_class not in self.concept_schemes:
                 self.add_concept_scheme(main_class)
-            self._graph.add((iri, skos_in_scheme, self.concept_schemes[main_class]))
+            self._graph.add((iri, SKOS_IN_SCHEME, self.concept_schemes[main_class]))
 
         self.instances.add(iri)
 
@@ -1051,8 +1045,8 @@ class ExcelVocabularyParser:
         else:
             class_name = str(main_class)
         concept_scheme_term = self.get_iri("ConceptScheme", class_name)
-        self.insert_instance(skos_concept_scheme, concept_scheme_term)
-        self.add_triple(concept_scheme_term, schema_name, Literal(class_name))
+        self.insert_instance(SKOS_CONCEPT_SCHEME, concept_scheme_term)
+        self.add_triple(concept_scheme_term, SCHEMA_NAME, Literal(class_name))
         appn = self.configuration.get_appn()
         if self.node == appn:
             description = f"Concept scheme including instances of the {class_name} class from the {appn.name}"
@@ -1060,7 +1054,7 @@ class ExcelVocabularyParser:
             description = f"Concept scheme including instances of the {class_name} class from the {self.node.name} node of the {appn.name}"
         self.add_triple(
             concept_scheme_term,
-            schema_description,
+            SCHEMA_DESCRIPTION,
             Literal(description),
         )
 
@@ -1128,7 +1122,7 @@ class ExcelVocabularyParser:
 
         if is_concept:
             # This IRI is also a SKOS Concept
-            explicit_classes.append(skos_concept)
+            explicit_classes.append(SKOS_CONCEPT)
 
         # Remenber this list
         self.explicit_classes[main_class_iri] = explicit_classes
@@ -1172,10 +1166,10 @@ class ExcelVocabularyParser:
         :param name: Name for the property
         :param domain_classes: List of classes to be included in the property domain
         """
-        self.insert_instance(rdf_property, iri)
-        self.add_triple(iri, schema_name, Literal(name))
+        self.insert_instance(RDF_PROPERTY, iri)
+        self.add_triple(iri, SCHEMA_NAME, Literal(name))
         for domain_class in domain_classes:
-            self._graph.add((iri, schema_domain_includes, IRI(domain_class.iri)))
+            self._graph.add((iri, SCHEMA_DOMAIN_INCLUDES, IRI(domain_class.iri)))
         self.logger.log(
             logging.INFO,
             __name__,

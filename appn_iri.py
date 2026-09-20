@@ -36,7 +36,11 @@ class IRI(URIRef):
 
     namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None
 
-    def __new__(cls, iri: str | URIRef, namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None):
+    def __new__(
+        cls,
+        iri: str | URIRef,
+        namespace_definitions: Optional[dict[str, NamespaceDefinition]] = None,
+    ):
         """
         IRI offers URIRef behaviour with additional properties
 
@@ -50,13 +54,26 @@ class IRI(URIRef):
 
         iri = str(iri)
         if iri.startswith("http"):
-            namespace_definition = cls.get_namespace_definition(iri, namespace_definitions)
+            namespace_definition = cls.get_namespace_definition(
+                iri, namespace_definitions
+            )
         else:
-            if (namespace_definition := cls.get_reverse_namespace_definition(iri, namespace_definitions)) is not None:
-                iri = namespace_definition.ns + iri[len(namespace_definition.curie) + 1:]
+            if (
+                namespace_definition := cls.get_reverse_namespace_definition(
+                    iri, namespace_definitions
+                )
+            ) is not None:
+                iri = (
+                    namespace_definition.ns
+                    + iri[len(namespace_definition.prefix) + 1 :]
+                )
 
         obj = super().__new__(cls, iri)
-        if (namespace_definition := cls.get_namespace_definition(iri, namespace_definitions)) is not None:
+        if (
+            namespace_definition := cls.get_namespace_definition(
+                iri, namespace_definitions
+            )
+        ) is not None:
             obj._ns = namespace_definition.ns
             obj._prefix = namespace_definition.prefix
             obj._name = iri[len(obj._ns) :]
@@ -69,7 +86,9 @@ class IRI(URIRef):
         return obj
 
     @staticmethod
-    def get_namespace_definition(iri: str, namespace_definitions: dict[str, NamespaceDefinition]) -> Optional[NamespaceDefinition]:
+    def get_namespace_definition(
+        iri: str, namespace_definitions: dict[str, NamespaceDefinition]
+    ) -> Optional[NamespaceDefinition]:
         """
         Find `NamespaceDefinition` for given IRI
 
@@ -87,7 +106,9 @@ class IRI(URIRef):
         return None
 
     @staticmethod
-    def get_reverse_namespace_definition(curie: str, namespace_definitions: dict[str, NamespaceDefinition]) -> Optional[NamespaceDefinition]:
+    def get_reverse_namespace_definition(
+        curie: str, namespace_definitions: dict[str, NamespaceDefinition]
+    ) -> Optional[NamespaceDefinition]:
         """
         Find `NamespaceDefinition` for given CURIE
 
@@ -202,4 +223,3 @@ class TriplePosition(IntEnum):
     SUBJECT = 0
     PROPERTY = 1
     OBJECT = 2
-

@@ -17,16 +17,10 @@ import logging
 import sys
 
 from pathlib import Path
-from rdflib import Graph, URIRef, Node
-from rdflib.namespace import Namespace, NamespaceManager
 from typing import Any, Optional
 
-from appn_iri import IRI, Triple, TriplePosition
-from appn_types import NamespaceDefinition
-from appn_configuration import Configuration, APPN_SCHEMA
+from appn_configuration import APPN_SCHEMA
 from appn_dictionary import Dictionary
-
-
 
 ### setup_parser ##############################################################
 
@@ -61,12 +55,13 @@ subcommand_helptext = {
     "subject-counts": "Count of all triples for each unique subject IRI.",
     "property-counts": "Count of all triples for each unique property IRI.",
     "object-counts": "Count of all triples for each unique object IRI.",
+    "dump": "Write loaded assets in n3 format to specified file",
 }
 
 
 def setup_parser() -> argparse.ArgumentParser:
     """
-    Set up parser to handle command-line sys.argv parameters or 
+    Set up parser to handle command-line sys.argv parameters or
     interactive parameters in the same format.
 
     The parser handles the following arguments:
@@ -82,12 +77,12 @@ def setup_parser() -> argparse.ArgumentParser:
 
     Subparsers are included for:
       namespaces, classes, properties, triples, unique_subjects,
-      unique_properties, unique_objects, superclasses, superproperties, 
+      unique_properties, unique_objects, superclasses, superproperties,
       subclasses, subproperties, instances, instances-specific,
-      domain_properties, range_properties, domain_classes, range_classes, 
+      domain_properties, range_properties, domain_classes, range_classes,
       domain_range_properties, instances, subject, property, object,
       property-name, property-name-all, instance-name, instance-name-all,
-      subject_counts, property_counts, object_counts
+      subject_counts, property_counts, object_counts, dump
     """
     parser = argparse.ArgumentParser(
         description=f"{__name__}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
@@ -125,12 +120,23 @@ def setup_parser() -> argparse.ArgumentParser:
         subparser.add_argument("domain")
         subparser.add_argument("range")
         subparser.add_argument("-n", "--namespace")
-    for cmd in ["classes", "properties", "unique-subjects", "unique-properties", "unique-objects"]:
+    for cmd in [
+        "classes",
+        "properties",
+        "unique-subjects",
+        "unique-properties",
+        "unique-objects",
+    ]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
         subparser.add_argument("-n", "--namespace")
-    for cmd in ["property-name", "property-name-all", "instance-name", "instance-name-all"]:
+    for cmd in [
+        "property-name",
+        "property-name-all",
+        "instance-name",
+        "instance-name-all",
+    ]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
@@ -147,6 +153,11 @@ def setup_parser() -> argparse.ArgumentParser:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
+    for cmd in ["dump"]:
+        subparser = subparsers.add_parser(
+            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
+        )
+        subparser.add_argument("-o", "--output-file")
 
     parser.add_argument(
         "-l",
@@ -188,8 +199,6 @@ def setup_parser() -> argparse.ArgumentParser:
     return parser
 
 
-
-
 ### start_log #################################################################
 #
 # Start logging to default or named file and optionally to stderr.
@@ -229,36 +238,87 @@ def start_log(
 
 
 def execute_query(
-    d: Dictionary, args: dict[str, Any], max_rows: Optional[int] = None, descriptions: Optional[bool] = False
+    d: Dictionary,
+    args: dict[str, Any],
+    max_rows: Optional[int] = None,
+    descriptions: Optional[bool] = False,
 ) -> None:
 
     if args["query"] == "classes":
-        print(d.format_iri_list(d.list_classes(
+        print(
+            d.format_iri_list(
+                d.list_classes(
                     namespace=args["namespace"] if "namespace" in args else None
-        ), max_rows=max_rows, descriptions=descriptions))
+                ),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "properties":
-        print(d.format_iri_list(d.list_properties(
+        print(
+            d.format_iri_list(
+                d.list_properties(
                     namespace=args["namespace"] if "namespace" in args else None
-        ), max_rows=max_rows, descriptions=descriptions))
+                ),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "superclasses":
-        print(d.format_iri_list(d.list_superclasses(args["iri"]), max_rows=max_rows, descriptions=descriptions))
+        print(
+            d.format_iri_list(
+                d.list_superclasses(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "superproperties":
-        print(d.format_iri_list(d.list_superproperties(args["iri"]), max_rows=max_rows, descriptions=descriptions))
+        print(
+            d.format_iri_list(
+                d.list_superproperties(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "subclasses":
-        print(d.format_iri_list(d.list_subclasses(args["iri"]), max_rows=max_rows, descriptions=descriptions))
+        print(
+            d.format_iri_list(
+                d.list_subclasses(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "subproperties":
-        print(d.format_iri_list(d.list_subproperties(args["iri"]), max_rows=max_rows, descriptions=descriptions))
+        print(
+            d.format_iri_list(
+                d.list_subproperties(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "instances":
-        print(d.format_iri_list(d.list_instances(args["iri"]), max_rows=max_rows, descriptions=descriptions))
+        print(
+            d.format_iri_list(
+                d.list_instances(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "instances-specific":
-        print(d.format_iri_list(d.list_instances_without_subclasses(args["iri"]), max_rows=max_rows, descriptions=descriptions))
+        print(
+            d.format_iri_list(
+                d.list_instances_without_subclasses(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
 
     elif args["query"] == "unique-subjects":
         print(
@@ -266,7 +326,8 @@ def execute_query(
                 d.list_unique_subjects(
                     namespace=args["namespace"] if "namespace" in args else None
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -276,7 +337,8 @@ def execute_query(
                 d.list_unique_properties(
                     namespace=args["namespace"] if "namespace" in args else None
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -286,28 +348,35 @@ def execute_query(
                 d.list_unique_objects(
                     namespace=args["namespace"] if "namespace" in args else None
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
     elif args["query"] == "domain_properties":
         print(
             d.format_iri_list(
-                d.list_domain_properties_for_class(args["iri"]), max_rows=max_rows, descriptions=descriptions
+                d.list_domain_properties_for_class(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
     elif args["query"] == "range_properties":
         print(
             d.format_iri_list(
-                d.list_range_properties_for_class(args["iri"]), max_rows=max_rows, descriptions=descriptions
+                d.list_range_properties_for_class(args["iri"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
     elif args["query"] == "domain_range_properties":
         print(
             d.format_iri_list(
-                d.list_properties_by_domain_and_range(args["domain"], args["range"]), max_rows=max_rows, descriptions=descriptions
+                d.list_properties_by_domain_and_range(args["domain"], args["range"]),
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -318,7 +387,8 @@ def execute_query(
                     args["name"],
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -330,7 +400,8 @@ def execute_query(
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -342,7 +413,8 @@ def execute_query(
                     args["name"],
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -355,7 +427,8 @@ def execute_query(
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -366,7 +439,8 @@ def execute_query(
                     args["name"],
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -378,7 +452,8 @@ def execute_query(
                     check_alternate_names=True,
                     namespace=args["namespace"] if "namespace" in args else None,
                 ),
-                max_rows=max_rows, descriptions=descriptions,
+                max_rows=max_rows,
+                descriptions=descriptions,
             )
         )
 
@@ -404,13 +479,42 @@ def execute_query(
         print(d.format_triple_list(triples, max_rows=max_rows))
 
     elif args["query"] == "subject_counts":
-        print("\n".join([f"{count:>5d} {iri.curie}" for iri, count in d.count_triples_by_subject().items()]))
-        
+        print(
+            "\n".join(
+                [
+                    f"{count:>5d} {iri.curie}"
+                    for iri, count in d.count_triples_by_subject().items()
+                ]
+            )
+        )
+
     elif args["query"] == "property_counts":
-        print("\n".join([f"{count:>5d} {iri.curie}" for iri, count in d.count_triples_by_property().items()]))
-        
+        print(
+            "\n".join(
+                [
+                    f"{count:>5d} {iri.curie}"
+                    for iri, count in d.count_triples_by_property().items()
+                ]
+            )
+        )
+
     elif args["query"] == "object_counts":
-        print("\n".join([f"{count:>5d} {iri.curie}" for iri, count in d.count_triples_by_object().items()]))
+        print(
+            "\n".join(
+                [
+                    f"{count:>5d} {iri.curie}"
+                    for iri, count in d.count_triples_by_object().items()
+                ]
+            )
+        )
+
+    elif args["query"] == "dump":
+        try:
+            d.get_graph().serialize(destination=args["output_file"])
+            print(f"Serialized graph to {args['output_file']}")
+        except:
+            print(f"Could not serialize graph to {args['output_file']}")
+
 
 if __name__ == "__main__":
 
@@ -441,7 +545,10 @@ if __name__ == "__main__":
     print()
 
     if args["query"] is None:
-        while (query := input(f"Enter query (q to quit, h for help): ")) not in ["q", "Q"]:
+        while (query := input(f"Enter query (q to quit, h for help): ")) not in [
+            "q",
+            "Q",
+        ]:
             logging.info(f"Processing new query: {query}")
             print()
             if query in ["h", "H"]:
@@ -450,7 +557,11 @@ if __name__ == "__main__":
                 # Catch SystemExit so parser does not exit process for bad parameters.
                 # Let it show help, and then continue.
                 try:
-                    execute_query(d, vars(parser.parse_args(query.split())), descriptions=descriptions)
+                    execute_query(
+                        d,
+                        vars(parser.parse_args(query.split())),
+                        descriptions=descriptions,
+                    )
                 except SystemExit:
                     pass
             print()

@@ -27,9 +27,30 @@ from typing import Any, Optional
 
 from appn_iri import IRI, Triple, TriplePosition
 from appn_types import NamespaceDefinition
-from appn_configuration import Configuration, APPN_SCHEMA
+from appn_configuration import (
+    Configuration,
+    RDF_SCHEMA,
+    RDFS_SCHEMA,
+    SCHEMA_SCHEMA,
+    SKOS_SCHEMA,
+    DC_SCHEMA,
+)
 
 ### Dictionary ################################################################
+
+# Convenience versions of regularly used IRIs
+RDF_TYPE = IRI(f"{RDF_SCHEMA}type")
+RDF_PROPERTY = IRI(f"{RDF_SCHEMA}Property")
+RDFS_LABEL = IRI(f"{RDFS_SCHEMA}label")
+SCHEMA_DOMAIN_INCLUDES = IRI(f"{SCHEMA_SCHEMA}domainIncludes")
+SCHEMA_NAME = IRI(f"{SCHEMA_SCHEMA}name")
+SCHEMA_DESCRIPTION = IRI(f"{SCHEMA_SCHEMA}description")
+SKOS_CONCEPT = IRI(f"{SKOS_SCHEMA}Concept")
+SKOS_CONCEPT_SCHEME = IRI(f"{SKOS_SCHEMA}ConceptScheme")
+SKOS_IN_SCHEME = IRI(f"{SKOS_SCHEMA}inScheme")
+SKOS_PREF_LABEL = IRI(f"{SKOS_SCHEMA}prefLabel")
+DC_TITLE = IRI(f"{DC_SCHEMA}title")
+DC_DESCRIPTION = IRI(f"{DC_SCHEMA}description")
 
 
 class Dictionary:
@@ -66,19 +87,15 @@ class Dictionary:
             assist with use of RDF assets. These are treated as supplements or
             overrides to those from the local `Configuration`.
         """
-        self.graph = Graph() if graph is None else graph
-        self.namespace_manager = NamespaceManager(self.graph)
+        self._graph = Graph() if graph is None else graph
+        self.namespace_manager = NamespaceManager(self._graph)
 
         # The `namespaces` and `reverse_namespaces` dictionaries enable access
         # by namespace or by namespace prefix.
-        if graph is not None:
-            self.namespaces = {
-                p: str(ns) for p, ns in self.namespace_manager.namespaces()
-            }
-            self.reverse_namespaces = {v: k for k, v in self.namespaces.items()}
-        else:
-            self.namespaces = {}
-            self.reverse_namespaces = {}
+        self.namespaces = {p: str(ns) for p, ns in self.namespace_manager.namespaces()}
+        self.reverse_namespaces = {v: k for k, v in self.namespaces.items()}
+
+        # Keep track of what namespaces have been loaded
         self.loaded = set()
 
         # Cache for response values. In future this could be changed to a pair
@@ -93,6 +110,14 @@ class Dictionary:
                 self.namespace_definitions[namespace_definition.ns] = (
                     namespace_definition
                 )
+
+    def get_graph(self):
+        """
+        Return graph
+
+        :return: Internal `Graph` instance
+        """
+        return self._graph
 
     def load(
         self,
@@ -164,7 +189,7 @@ class Dictionary:
             f"Loading {asset_namespace} from {asset_path} with prefix: {asset_prefix}"
         )
         try:
-            self.graph.parse(asset_path)
+            self._graph.parse(asset_path)
             self.loaded.add(asset_namespace)
             if asset_prefix is not None:
                 self.namespace_manager.bind(
@@ -204,7 +229,7 @@ class Dictionary:
         """
         success = True
         iris = set()
-        for s, o, p in self.graph:
+        for s, o, p in self._graph:
             for iri in [s, o, p]:
                 if isinstance(iri, URIRef) and iri not in iris:
                     ns = self.get_namespace_from_iri(iri)
@@ -245,7 +270,7 @@ class Dictionary:
         """
         key = "triples"
         if key not in self.cache:
-            self.cache[key] = [self.get_triple(s, p, o) for s, p, o in self.graph]
+            self.cache[key] = [self.get_triple(s, p, o) for s, p, o in self._graph]
         return self.cache[key]
 
     def get_triple(self, s: Node, p: Node, o: Node) -> Triple:
@@ -324,7 +349,7 @@ class Dictionary:
 
         values = {
             str(triple[position])
-            for triple in self.graph
+            for triple in self._graph
             if isinstance(triple[position], URIRef)
         }
         return [
@@ -351,7 +376,7 @@ class Dictionary:
         if key not in self.cache:
             self.cache[key] = [
                 self.get_triple(s, p, o)
-                for s, p, o in self.graph
+                for s, p, o in self._graph
                 if str(s) in matching_values
             ]
 
@@ -372,7 +397,7 @@ class Dictionary:
         if key not in self.cache:
             self.cache[key] = [
                 self.get_triple(s, p, o)
-                for s, p, o in self.graph
+                for s, p, o in self._graph
                 if str(o) in matching_values
             ]
 
@@ -393,17 +418,21 @@ class Dictionary:
         if key not in self.cache:
             self.cache[key] = [
                 self.get_triple(s, p, o)
-                for s, p, o in self.graph
+                for s, p, o in self._graph
                 if str(p) in matching_values
             ]
 
         return self.cache[key]
 
     def count_triples_by_subject(self) -> dict[IRI, int]:
-        """
-        Return count of Triple`s  for every term usedm as subject
+        """Dear Rosemary Hobern                                             Res No: 92225
 
-        :return: Counts of matching `Triple`s per term
+
+
+        Thank you for choosing Beach Cabins Merimbula! Here is a quick 2min snapshot of our beautiful surrounds and park: Beach Cabins video overview
+                Return count of Triple`s  for every term usedm as subject
+
+                :return: Counts of matching `Triple`s per term
         """
         return self.count_triples_by_term(TriplePosition.SUBJECT)
 
@@ -916,7 +945,7 @@ class Dictionary:
 
             logging.debug(f"Issuing query:\n{query}")
 
-            for p in self.graph.query(query):
+            for p in self._graph.query(query):
                 # The rdflib `Result` object may be a boolean
                 if not isinstance(p, bool):
                     if isinstance(p[0], URIRef) and (
@@ -1002,14 +1031,14 @@ class Dictionary:
 
         logging.debug(f"Issuing query:\n{query}")
 
-        for t in self.graph.query(query):
+        for t in self._graph.query(query):
             if isinstance(t[0], URIRef):
                 match = self.get_iri(t[0])
                 if match not in matches:
                     if (
                         namespace is None
                         or match.ns.startswith(namespace)
-                        or (full_curie is not None and str(p[0]).startswith(full_curie))
+                        or (full_curie is not None and str(t[0]).startswith(full_curie))
                     ):
                         matches.append(match)
                     self.list_iris_transitive(
@@ -1047,18 +1076,40 @@ class Dictionary:
         if max_rows is not None:
             iris = iris[0:max_rows]
 
-        curie_length = max([len(iri.curie) for iri in iris])
+        if descriptions:
+            separator = "\n\n"
+            curie_length = 0
+        else:
+            separator = "\n"
+            curie_length = max([len(iri.curie) for iri in iris])
         formatted = []
         for iri in iris:
-            if len(formatted) > 0:
-                formatted.append("")
-            formatted.append(f"{iri.curie:{curie_length}s}   {iri.iri}")
             if descriptions:
-                for _, pp, po in self.list_triples_for_subject(iri):
-                    formatted.append(
-                        f"    {pp.curie} : {po.curie if isinstance(po, IRI) else str(po)}"
-                    )
-        return "\n".join(formatted)
+                formatted.append(self.describe(iri))
+            else:
+                formatted.append(f"{iri.curie:{curie_length}s}   {iri.iri}")
+        return separator.join(formatted)
+
+    def describe(self, iri: IRI, friendly: Optional[bool] = False) -> str:
+        """
+        Format an IRI and its properties
+
+        :param iri: IRI to be formatted
+        :return: Multi-line string with CURIE, IRI and all properties
+        """
+        triples = self.list_triples_for_subject(iri)
+        iri_types = []
+        iri_names = set()
+        for t in triples:
+            if t.property == RDF_TYPE:
+                iri_types.append(t.object)
+            elif t.property in [SCHEMA_NAME, RDFS_LABEL, SKOS_PREF_LABEL]:
+                iri_names.add(t.object)
+
+        formatted = f"{iri.curie}   ({iri.iri})"
+        for _, pp, po in triples:
+            formatted += f"\n    {pp.curie if isinstance(pp, IRI) else str(pp)} : {po.curie if isinstance(po, IRI) else str(po)}"
+        return formatted
 
     def format_triple_list(
         self,

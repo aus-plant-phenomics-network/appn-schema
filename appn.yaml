@@ -17,7 +17,7 @@ namespace_paths:
   "http://www.w3.org/ns/prov#": "./schema_assets/prov.ttl"
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#": "./schema_assets/22-rdf-syntax-ns.ttl"
   "http://www.w3.org/2000/01/rdf-schema#": "./schema_assets/rdf-schema.ttl"
-  "https://schema.org/": "./schema_assets/schemaorg-current-https.ttl"
+  "http://schema.org/": "./schema_assets/schemaorg-current-http.ttl"
   "http://www.w3.org/2004/02/skos/core#": "./schema_assets/skos.rdf"
   "http://www.w3.org/ns/sosa/": "./schema_assets/sosa.ttl"
   "http://www.w3.org/ns/ssn/": "./schema_assets/ssn.ttl"
