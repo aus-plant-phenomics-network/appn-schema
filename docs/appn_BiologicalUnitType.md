@@ -6,7 +6,7 @@ A term from an enumeration of types of BiologicalUnit.
 ![UML diagram for BiologicalUnitType](images/ttl_appn_BiologicalUnitType.png)
 
 ## Superclasses
-* https://schema.org/Enumeration
+* http://schema.org/Enumeration
 ## Properties
 * [appn:BiologicalUnit](appn_BiologicalUnit.md) **appn:hasBiologicalUnitType** appn:BiologicalUnitType
     * Links a BiologicalUnit to its type.

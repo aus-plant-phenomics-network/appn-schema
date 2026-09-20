@@ -9,10 +9,10 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
 * [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
 * http://purl.org/ppeo/PPEO.owl#trait
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
-* https://schema.org/DefinedTerm
+* http://schema.org/DefinedTerm
 * http://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
-* https://schema.org/InstanceValue
+* http://schema.org/InstanceValue
 ## Properties
 * Variable https://schema.plantphenomics.org.au/hasDefaultValue
 * appn:Variable **appn:usedMethod** [appn:Method](appn_Method.md)

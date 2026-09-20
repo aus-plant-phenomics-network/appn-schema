@@ -10,10 +10,10 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 * [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
 * http://purl.org/ppeo/PPEO.owl#trait
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
-* https://schema.org/DefinedTerm
+* http://schema.org/DefinedTerm
 * http://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
-* https://schema.org/InstanceValue
+* http://schema.org/InstanceValue
 ## Properties
 * [appn:Control](appn_Control.md) **appn:controls** appn:ControlledVariable
     * Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.

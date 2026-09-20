@@ -8,15 +8,15 @@ An Assay that modifies a property of an ObservationUnit.
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
-* https://schema.org/Action
+* http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Control **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
-* appn:Control **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
+* appn:Control **appn:hasResult** [schema:Dataset](http://schema.org/Dataset)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
-* appn:Control **appn:hasResult** [schema:File](https://schema.org/File)
+* appn:Control **appn:hasResult** [schema:File](http://schema.org/File)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
 * appn:Control **appn:controls** [appn:ControlledVariable](appn_ControlledVariable.md)
     * Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.

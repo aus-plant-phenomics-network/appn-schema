@@ -10,10 +10,10 @@ A Variable (representation of a quantity using a defined Scale) for a Substance 
 * [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
 * http://purl.org/ppeo/PPEO.owl#trait
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
-* https://schema.org/DefinedTerm
+* http://schema.org/DefinedTerm
 * http://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
-* https://schema.org/InstanceValue
+* http://schema.org/InstanceValue
 ## Properties
 * [appn:Treatment](appn_Treatment.md) **appn:treatsWith** appn:SubstanceQuantity
     * Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.

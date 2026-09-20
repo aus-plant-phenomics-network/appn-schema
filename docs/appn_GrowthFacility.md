@@ -10,11 +10,11 @@ A building, enclosed space, field unit, container or other entity in which plant
 * [https://schema.plantphenomics.org.au/Platform](appn_Platform.md)
 * http://www.w3.org/ns/sosa/Platform
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest
-* https://schema.org/IndividualProduct
+* http://schema.org/IndividualProduct
 ## Properties
 * appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
     * Links a GrowthFacility to its type.

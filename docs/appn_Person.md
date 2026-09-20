@@ -13,7 +13,7 @@ A Person, preferably identified using an ORCID, that may perform an Assay.
 * http://www.w3.org/ns/sosa/Actuator
 * [https://schema.plantphenomics.org.au/Sampler](appn_Sampler.md)
 * http://www.w3.org/ns/sosa/Sampler
-* https://schema.org/Person
+* http://schema.org/Person
 ## Properties
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.

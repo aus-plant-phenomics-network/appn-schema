@@ -6,23 +6,23 @@ An Assay that observes or measures properties of an ObservationUnit returning re
 ![UML diagram for Observation](images/ttl_appn_Observation.png)
 
 ## Superclasses
-* https://schema.org/Observation
+* http://schema.org/Observation
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
-* https://schema.org/Action
+* http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * http://www.w3.org/ns/sosa/Execution
 * http://purl.org/ppeo/PPEO.owl#observation
 ## Properties
 * appn:Observation **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
-* appn:Observation **appn:hasResult** [schema:Dataset](https://schema.org/Dataset)
+* appn:Observation **appn:hasResult** [schema:Dataset](http://schema.org/Dataset)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
-* appn:Observation **appn:hasResult** [schema:File](https://schema.org/File)
+* appn:Observation **appn:hasResult** [schema:File](http://schema.org/File)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.
-* appn:Observation **appn:usesData** [schema:Dataset](https://schema.org/Dataset)
+* appn:Observation **appn:usesData** [schema:Dataset](http://schema.org/Dataset)
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
-* appn:Observation **appn:usesData** [schema:File](https://schema.org/File)
+* appn:Observation **appn:usesData** [schema:File](http://schema.org/File)
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
 * appn:Observation **appn:observes** [appn:ObservedVariable](appn_ObservedVariable.md)
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.

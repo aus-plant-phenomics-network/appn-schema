@@ -7,7 +7,7 @@ A transient or long-term association between a Sensor or Actuator and a Platform
 
 ## Superclasses
 * http://www.w3.org/ns/ssn/Deployment
-* https://schema.org/Thing
+* http://schema.org/Thing
 ## Properties
 * appn:Deployment **appn:deployedSystem** [appn:Sensor](appn_Sensor.md)
     * Identifies a Sensor or Actuator deployed on a Platform.

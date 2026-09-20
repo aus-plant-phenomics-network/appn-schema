@@ -6,7 +6,7 @@ A time-delimited activity contributing to a research goal.
 ![UML diagram for ResearchActivity](images/ttl_appn_ResearchActivity.png)
 
 ## Superclasses
-* https://schema.org/Action
+* http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 ## Properties
 * appn:ResearchActivity **appn:isPartOf** [appn:ResearchActivity](appn_ResearchActivity.md)

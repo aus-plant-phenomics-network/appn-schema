@@ -11,10 +11,10 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
 * [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
 * http://purl.org/ppeo/PPEO.owl#trait
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
-* https://schema.org/DefinedTerm
+* http://schema.org/DefinedTerm
 * http://www.w3.org/ns/sosa/Property
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
-* https://schema.org/InstanceValue
+* http://schema.org/InstanceValue
 ## Properties
 * [appn:Observation](appn_Observation.md) **appn:observes** appn:ObservedVariable
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.

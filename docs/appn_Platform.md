@@ -8,11 +8,11 @@ A vehicle, building, person or other entity that may carry or include Sensors or
 ## Superclasses
 * http://www.w3.org/ns/sosa/Platform
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest
-* https://schema.org/IndividualProduct
+* http://schema.org/IndividualProduct
 ## Properties
 * appn:Platform **appn:hasPlatformType** [appn:PlatformType](appn_PlatformType.md)
     * Links a Platform to its type.

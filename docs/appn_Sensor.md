@@ -9,11 +9,11 @@ An electromechanical device that can return the value for an ObservedVariable an
 * [https://schema.plantphenomics.org.au/Observer](appn_Observer.md)
 * http://www.w3.org/ns/sosa/Sensor
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest
-* https://schema.org/IndividualProduct
+* http://schema.org/IndividualProduct
 ## Properties
 * appn:Sensor **appn:hasSensorType** [appn:SensorType](appn_SensorType.md)
     * Links a Sensor to its type.

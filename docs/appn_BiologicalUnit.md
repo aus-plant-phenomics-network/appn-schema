@@ -7,7 +7,7 @@ A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or cro
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest

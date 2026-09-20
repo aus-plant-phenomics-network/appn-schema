@@ -6,7 +6,7 @@ An entity for which a Study collects data or controls the environment and other 
 ![UML diagram for ObservationUnit](images/ttl_appn_ObservationUnit.png)
 
 ## Superclasses
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest

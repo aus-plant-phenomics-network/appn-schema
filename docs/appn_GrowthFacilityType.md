@@ -6,7 +6,7 @@ A term from an enumeration of types of GrowthFacility.
 ![UML diagram for GrowthFacilityType](images/ttl_appn_GrowthFacilityType.png)
 
 ## Superclasses
-* https://schema.org/Enumeration
+* http://schema.org/Enumeration
 ## Properties
 * [appn:GrowthFacility](appn_GrowthFacility.md) **appn:hasGrowthFacilityType** appn:GrowthFacilityType
     * Links a GrowthFacility to its type.

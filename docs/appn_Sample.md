@@ -10,7 +10,7 @@ A BiologicalUnit that has been created from an existing BiologicalUnit through a
 * http://www.w3.org/ns/sosa/Sample
 * [https://schema.plantphenomics.org.au/BiologicalUnit](appn_BiologicalUnit.md)
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest

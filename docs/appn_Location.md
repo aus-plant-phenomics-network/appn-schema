@@ -7,7 +7,7 @@ A position associated with the placement of a GrowthFacility within another Grow
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#spatial_distribution
-* https://schema.org/Thing
+* http://schema.org/Thing
 ## Properties
 * [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** appn:Location
     * Specifies the location for an ObservationUnit.

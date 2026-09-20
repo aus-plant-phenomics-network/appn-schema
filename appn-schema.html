@@ -14,7 +14,7 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Controller">Controller</a></div>
         <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
+        <div class="parent"><a href="http://schema.org/IndividualProduct">http://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Platform">Platform</a> <b>hosts</b> Actuator</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator hosted by a Platform.</div>
@@ -80,7 +80,7 @@
         <img src="image/ttl_appn_BiologicalUnitType.png"/>
         <div class="description"><b>BiologicalUnitType:</b> A term from an enumeration of types of BiologicalUnit.</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#BiologicalUnit">BiologicalUnit</a> <b>hasBiologicalUnitType</b> BiologicalUnitType</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a BiologicalUnit to its type.</div>
@@ -95,9 +95,9 @@
         <h3>Properties</h3>
         <div class="property">Control <b>madeByController</b> <a href="#Controller">Controller</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
-        <div class="property">Control <b>hasResult</b> <a href="https://schema.org/Dataset">https://schema.org/Dataset</a></div>
+        <div class="property">Control <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
-        <div class="property">Control <b>hasResult</b> <a href="https://schema.org/File">https://schema.org/File</a></div>
+        <div class="property">Control <b>hasResult</b> <a href="http://schema.org/File">http://schema.org/File</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
         <div class="property">Control <b>controls</b> <a href="#ControlledVariable">ControlledVariable</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
@@ -134,7 +134,7 @@
         <div class="description"><b>Deployment:</b> A transient or long-term association between a Sensor or Actuator and a Platform on which it is mounted.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://www.w3.org/ns/ssn/Deployment">http://www.w3.org/ns/ssn/Deployment</a></div>
-        <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
+        <div class="parent"><a href="http://schema.org/Thing">http://schema.org/Thing</a></div>
         <h3>Properties</h3>
         <div class="property">Deployment <b>deployedSystem</b> <a href="#Sensor">Sensor</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
@@ -148,7 +148,7 @@
         <div class="description"><b>ExternalEvent:</b> A default entity to represent any trigger outside the control of the experimenters that may affect the state of the experiment and alter a Variable of interest, e.g. severe weather events or equipment failures. Where possible, the resulting state of the experiment should be quantified and the ExternalEvent modeled as the Controller for a Control event. Where quantification is impossible, the ExternalEvent should be modeled as the Controller for a Treatment event.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Controller">Controller</a></div>
-        <div class="parent"><a href="https://schema.org/Event">https://schema.org/Event</a></div>
+        <div class="parent"><a href="http://schema.org/Event">http://schema.org/Event</a></div>
         <h2 id="GrowthFacility">Class: GrowthFacility</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacility" target="_blank">https://schema.plantphenomics.org.au/GrowthFacility</a></div>
         <img src="image/ttl_appn_GrowthFacility.png"/>
@@ -196,7 +196,7 @@
         <img src="image/ttl_appn_GrowthFacilityType.png"/>
         <div class="description"><b>GrowthFacilityType:</b> A term from an enumeration of types of GrowthFacility.</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#GrowthFacility">GrowthFacility</a> <b>hasGrowthFacilityType</b> GrowthFacilityType</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
@@ -213,7 +213,7 @@
         <div class="description"><b>Location:</b> A position associated with the placement of a GrowthFacility within another GrowthFacility or of a BiologicalUnit within another BiologicalUnit or GrowthFacility. Position may be expressed as absolute geospatial coordinates (SpatialLocation) or using a locally appropriate organisation into rows and columns and optionally levels (XYZLocation).</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#spatial_distribution">http://purl.org/ppeo/PPEO.owl#spatial_distribution</a></div>
-        <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
+        <div class="parent"><a href="http://schema.org/Thing">http://schema.org/Thing</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#ObservationUnit">ObservationUnit</a> <b>hasLocation</b> Location</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the location for an ObservationUnit.</div>
@@ -240,7 +240,7 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#method">http://purl.org/ppeo/PPEO.owl#method</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/sosa/Procedure">http://www.w3.org/ns/sosa/Procedure</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/prov#Plan">http://www.w3.org/ns/prov#Plan</a></div>
-        <div class="parent"><a href="https://schema.org/HowTo">https://schema.org/HowTo</a></div>
+        <div class="parent"><a href="http://schema.org/HowTo">http://schema.org/HowTo</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>usedMethod</b> Method</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay.</div>
@@ -251,19 +251,19 @@
         <img src="image/ttl_appn_Observation.png"/>
         <div class="description"><b>Observation:</b> An Assay that observes or measures properties of an ObservationUnit returning results as property values or images.</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Observation">https://schema.org/Observation</a></div>
+        <div class="parent"><a href="http://schema.org/Observation">http://schema.org/Observation</a></div>
         <div class="parent"><a href="#Assay">Assay</a></div>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observation">http://purl.org/ppeo/PPEO.owl#observation</a></div>
         <h3>Properties</h3>
         <div class="property">Observation <b>madeByObserver</b> <a href="#Observer">Observer</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.</div>
-        <div class="property">Observation <b>hasResult</b> <a href="https://schema.org/Dataset">https://schema.org/Dataset</a></div>
+        <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
-        <div class="property">Observation <b>hasResult</b> <a href="https://schema.org/File">https://schema.org/File</a></div>
+        <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/File">http://schema.org/File</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
-        <div class="property">Observation <b>usesData</b> <a href="https://schema.org/Dataset">https://schema.org/Dataset</a></div>
+        <div class="property">Observation <b>usesData</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
-        <div class="property">Observation <b>usesData</b> <a href="https://schema.org/File">https://schema.org/File</a></div>
+        <div class="property">Observation <b>usesData</b> <a href="http://schema.org/File">http://schema.org/File</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
         <div class="property">Observation <b>observes</b> <a href="#ObservedVariable">ObservedVariable</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.</div>
@@ -272,7 +272,7 @@
         <img src="image/ttl_appn_ObservationUnit.png"/>
         <div class="description"><b>ObservationUnit:</b> An entity for which a Study collects data or controls the environment and other parameters. ObservationUnits may be BiologicalUnits, Substances, Platforms (including GrowthFacilities) or devices (Sensors and Actuators).</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Thing">https://schema.org/Thing</a></div>
+        <div class="parent"><a href="http://schema.org/Thing">http://schema.org/Thing</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/prov#Entity">http://www.w3.org/ns/prov#Entity</a></div>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observation_unit">http://purl.org/ppeo/PPEO.owl#observation_unit</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/sosa/FeatureOfInterest">http://www.w3.org/ns/sosa/FeatureOfInterest</a></div>
@@ -325,7 +325,7 @@
         <div class="parent"><a href="#Observer">Observer</a></div>
         <div class="parent"><a href="#Controller">Controller</a></div>
         <div class="parent"><a href="#Sampler">Sampler</a></div>
-        <div class="parent"><a href="https://schema.org/Person">https://schema.org/Person</a></div>
+        <div class="parent"><a href="http://schema.org/Person">http://schema.org/Person</a></div>
         <h2 id="Platform">Class: Platform</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Platform" target="_blank">https://schema.plantphenomics.org.au/Platform</a></div>
         <img src="image/ttl_appn_Platform.png"/>
@@ -333,7 +333,7 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://www.w3.org/ns/sosa/Platform">http://www.w3.org/ns/sosa/Platform</a></div>
         <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
+        <div class="parent"><a href="http://schema.org/IndividualProduct">http://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property">Platform <b>hasPlatformType</b> <a href="#PlatformType">PlatformType</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Platform to its type.</div>
@@ -350,7 +350,7 @@
         <img src="image/ttl_appn_PlatformType.png"/>
         <div class="description"><b>PlatformType:</b> A term from an enumeration of types of Platform.</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Platform">Platform</a> <b>hasPlatformType</b> PlatformType</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Platform to its type.</div>
@@ -359,7 +359,7 @@
         <img src="image/ttl_appn_ResearchActivity.png"/>
         <div class="description"><b>ResearchActivity:</b> A time-delimited activity contributing to a research goal.</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Action">https://schema.org/Action</a></div>
+        <div class="parent"><a href="http://schema.org/Action">http://schema.org/Action</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/prov#Activity">http://www.w3.org/ns/prov#Activity</a></div>
         <h3>Properties</h3>
         <div class="property">ResearchActivity <b>isPartOf</b> <a href="#ResearchActivity">ResearchActivity</a></div>
@@ -409,7 +409,7 @@
         <div class="description"><b>Scale:</b> A system of units or representation format for values associated with a Variable.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#scale">http://purl.org/ppeo/PPEO.owl#scale</a></div>
-        <div class="parent"><a href="https://schema.org/DefinedTerm">https://schema.org/DefinedTerm</a></div>
+        <div class="parent"><a href="http://schema.org/DefinedTerm">http://schema.org/DefinedTerm</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>hasScale</b> Scale</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
@@ -422,7 +422,7 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Observer">Observer</a></div>
         <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="parent"><a href="https://schema.org/IndividualProduct">https://schema.org/IndividualProduct</a></div>
+        <div class="parent"><a href="http://schema.org/IndividualProduct">http://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property">Sensor <b>hasSensorType</b> <a href="#SensorType">SensorType</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Sensor to its type.</div>
@@ -435,7 +435,7 @@
         <img src="image/ttl_appn_SensorType.png"/>
         <div class="description"><b>SensorType:</b> A term from an enumeration of types of Sensor.</div>
         <h3>Superclasses</h3>
-        <div class="parent"><a href="https://schema.org/Enumeration">https://schema.org/Enumeration</a></div>
+        <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Sensor">Sensor</a> <b>hasSensorType</b> SensorType</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Sensor to its type.</div>
@@ -453,7 +453,7 @@
         <div class="description"><b>SpatialLocation:</b> A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Location">Location</a></div>
-        <div class="parent"><a href="https://schema.org/Place">https://schema.org/Place</a></div>
+        <div class="parent"><a href="http://schema.org/Place">http://schema.org/Place</a></div>
         <h2 id="Study">Class: Study</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Study" target="_blank">https://schema.plantphenomics.org.au/Study</a></div>
         <img src="image/ttl_appn_Study.png"/>
@@ -505,7 +505,7 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#trait">http://purl.org/ppeo/PPEO.owl#trait</a></div>
         <div class="parent"><a href="http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept">http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept</a></div>
-        <div class="parent"><a href="https://schema.org/DefinedTerm">https://schema.org/DefinedTerm</a></div>
+        <div class="parent"><a href="http://schema.org/DefinedTerm">http://schema.org/DefinedTerm</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#ObservedVariable">ObservedVariable</a> <b>hasTrait</b> Trait</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
@@ -535,7 +535,7 @@
         <div class="parent"><a href="#Trait">Trait</a></div>
         <div class="parent"><a href="http://www.w3.org/ns/sosa/Property">http://www.w3.org/ns/sosa/Property</a></div>
         <div class="parent"><a href="http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable">http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable</a></div>
-        <div class="parent"><a href="https://schema.org/InstanceValue">https://schema.org/InstanceValue</a></div>
+        <div class="parent"><a href="http://schema.org/InstanceValue">http://schema.org/InstanceValue</a></div>
         <h3>Properties</h3>
         <div class="property">Variable <b>hasDefaultValue</b></div>
         <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasDefaultValue">https://schema.plantphenomics.org.au/hasDefaultValue</a></div>

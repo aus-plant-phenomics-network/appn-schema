@@ -8,7 +8,7 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
-* https://schema.org/Action
+* http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * http://www.w3.org/ns/sosa/Execution
 ## Properties

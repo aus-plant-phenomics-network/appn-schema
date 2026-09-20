@@ -8,7 +8,7 @@ A concept represented by a Variable associated with an ObservationUnit. In the D
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#trait
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/Concept
-* https://schema.org/DefinedTerm
+* http://schema.org/DefinedTerm
 ## Properties
 * [appn:ObservedVariable](appn_ObservedVariable.md) **appn:hasTrait** appn:Trait
     * Identifies the Trait associated with a Variable.

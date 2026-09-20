@@ -9,11 +9,11 @@ An electromechanical device that can control the value for a ControlledVariable 
 * [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
 * http://www.w3.org/ns/sosa/Actuator
 * [https://schema.plantphenomics.org.au/ObservationUnit](appn_ObservationUnit.md)
-* https://schema.org/Thing
+* http://schema.org/Thing
 * http://www.w3.org/ns/prov#Entity
 * http://purl.org/ppeo/PPEO.owl#observation_unit
 * http://www.w3.org/ns/sosa/FeatureOfInterest
-* https://schema.org/IndividualProduct
+* http://schema.org/IndividualProduct
 ## Properties
 * [appn:Platform](appn_Platform.md) **appn:hosts** appn:Actuator
     * Identifies a Sensor or Actuator hosted by a Platform.

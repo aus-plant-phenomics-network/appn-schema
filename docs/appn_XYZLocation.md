@@ -8,7 +8,7 @@ A location defined using an appropriate local spatial geometry in three dimensio
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Location](appn_Location.md)
 * http://purl.org/ppeo/PPEO.owl#spatial_distribution
-* https://schema.org/Thing
+* http://schema.org/Thing
 ## Properties
 * XYZLocation https://schema.plantphenomics.org.au/row
 * XYZLocation https://schema.plantphenomics.org.au/column

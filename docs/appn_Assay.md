@@ -7,7 +7,7 @@ A research action that observes or modifies a set of ObservationUnits.
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
-* https://schema.org/Action
+* http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * http://www.w3.org/ns/sosa/Execution
 ## Properties

@@ -7,7 +7,7 @@ A research activity including one or more Assays that record data on a set of Ob
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
-* https://schema.org/Action
+* http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
 * http://purl.org/ppeo/PPEO.owl#study
 ## Properties

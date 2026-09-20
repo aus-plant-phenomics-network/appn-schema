@@ -9,7 +9,7 @@ A method or process for performing an Assay.
 * http://purl.org/ppeo/PPEO.owl#method
 * http://www.w3.org/ns/sosa/Procedure
 * http://www.w3.org/ns/prov#Plan
-* https://schema.org/HowTo
+* http://schema.org/HowTo
 ## Properties
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** appn:Method
     * Identifies a Method used to conduct an Assay.

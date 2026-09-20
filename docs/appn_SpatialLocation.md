@@ -8,8 +8,8 @@ A location defined with geospatial coordinates. The definition of the location s
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Location](appn_Location.md)
 * http://purl.org/ppeo/PPEO.owl#spatial_distribution
-* https://schema.org/Thing
-* https://schema.org/Place
+* http://schema.org/Thing
+* http://schema.org/Place
 ## Properties
 * [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](appn_Location.md)
     * Specifies the location for an ObservationUnit.
