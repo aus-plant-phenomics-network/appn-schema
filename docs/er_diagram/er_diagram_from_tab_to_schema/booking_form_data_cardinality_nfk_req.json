@@ -1,0 +1,61 @@
+{
+  "appn:Investigation": {},
+  "appn:Study": {
+    "studyIdentifier": "https://example.org/resource",
+    "studyTitle": "<string>",
+    "studyDescription": "<string>",
+    "additionalType": "<string>"
+  },
+  "schema:Person": [
+    {
+      "givenName": "<string>",
+      "familyName": "<string>",
+      "roleName": "<string>"
+    }
+  ],
+  "schema:Organization": [
+    {
+      "legalName": "<string>"
+    }
+  ],
+  "schema:Grant": [
+    {
+      "funder": [
+        {
+          "identifier": "https://example.org/resource"
+        }
+      ]
+    }
+  ],
+  "appn:SpatialLocation": [
+    {
+      "placeName": "<string>"
+    }
+  ],
+  "appn:GrowthFacility": [
+    {
+      "growthFacilityName": "https://example.org/resource",
+      "growthFacilityType": "<string>",
+      "growthFacilityContainmentLevel": "<string>",
+      "growthFacilityQuarantine": false
+    }
+  ],
+  "appn:Deployment": [
+    {
+      "deploymentName": "<string>"
+    }
+  ],
+  "appn:BiologicalMaterial": [
+    {
+      "biologicalMaterialGenus": "<string>",
+      "biologicalMaterialSpecies": "<string>"
+    }
+  ],
+  "appn:MaterialSource": [
+    {
+      "materialSourceIdentifier": [
+        "<string>"
+      ]
+    }
+  ]
+}
