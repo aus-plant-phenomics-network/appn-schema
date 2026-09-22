@@ -17,10 +17,13 @@ import logging
 import sys
 
 from pathlib import Path
-from typing import Any, Optional
+from typing import FrozenSet, NamedTuple, Optional
+
+from rdflib.plugins.sparql.sparql import FrozenDict
 
 from appn_configuration import APPN_SCHEMA
 from appn_dictionary import Dictionary
+from appn_iri import IRI
 
 ### setup_parser ##############################################################
 
@@ -112,6 +115,145 @@ def start_log(
     logging.info(f"Logging started to {logfile_name} at level {level} and echo {echo}")
 
 
+class UnitDefinition(NamedTuple):
+    comparison_hash: int
+    iri: IRI
+    iri_type: Optional[IRI]
+    iri_subtype: Optional[IRI]
+    observed_variables: Optional[FrozenSet[IRI]]
+    controlled_variables: Optional[FrozenSet[IRI]]
+    treatments: Optional[FrozenSet[IRI]]
+    nested_iris: Optional[dict[int, list["UnitDefinition"]]]
+
+
+def build_hierarchy(
+    iri: IRI,
+    reverse_locations,
+    iri_types: dict[IRI, IRI],
+    iri_subtypes: dict[IRI, IRI],
+    observed_variables: dict[IRI, set[IRI]],
+    controlled_variables: dict[IRI, set[IRI]],
+    treatments: dict[IRI, set[IRI]],
+) -> UnitDefinition:
+    subhierarchies = {}
+    subhierarchy_hashes = []
+    if iri in reverse_locations:
+        for nested in sorted(reverse_locations[iri]):
+            subhierarchy = build_hierarchy(
+                nested,
+                reverse_locations,
+                iri_types,
+                iri_subtypes,
+                observed_variables,
+                controlled_variables,
+                treatments,
+            )
+            if subhierarchy.comparison_hash not in subhierarchies:
+                subhierarchies[subhierarchy.comparison_hash] = [subhierarchy]
+            else:
+                subhierarchies[subhierarchy.comparison_hash].append(subhierarchy)
+            subhierarchy_hashes.append(subhierarchy.comparison_hash)
+    iri_type = iri_types[iri] if iri in iri_types else None
+    iri_subtype = iri_subtypes[iri] if iri in iri_subtypes else None
+    iri_observed_variables = (
+        frozenset(observed_variables[iri]) if iri in observed_variables else None
+    )
+    iri_controlled_variables = (
+        frozenset(controlled_variables[iri]) if iri in controlled_variables else None
+    )
+    iri_treatments = frozenset(treatments[iri]) if iri in treatments else None
+    nested_hashes = tuple(subhierarchy_hashes)
+    iri_hash = hash(
+        (
+            iri_type,
+            iri_subtype,
+            iri_observed_variables,
+            iri_controlled_variables,
+            iri_treatments,
+            nested_hashes,
+        )
+    )
+    return UnitDefinition(
+        iri_hash,
+        iri,
+        iri_type,
+        iri_subtype,
+        iri_observed_variables,
+        iri_controlled_variables,
+        iri_treatments,
+        subhierarchies,
+    )
+
+
+def display_hierarchy(
+    unit: UnitDefinition,
+    iri_names: dict[IRI, str],
+    indent: str = "",
+    count: Optional[int] = None,
+    detail: bool = True,
+) -> None:
+    iri = unit.iri
+    if count is None:
+        iri_name = f": {iri_names[iri] if iri in iri_names else iri.curie}"
+    elif count == 1:
+        iri_name = ""
+    else:
+        iri_name = f": {count} instance{'' if count == 1 else 's'}"
+    if unit.iri_type is None:
+        type_name = "ObservationUnit"
+    else:
+        type_name = (
+            iri_names[unit.iri_type]
+            if unit.iri_type in iri_names
+            else unit.iri_type.curie
+        )
+    if unit.iri_subtype is None:
+        subtype_name = ""
+    else:
+        subtype_name = f" ({iri_names[unit.iri_subtype] if unit.iri_subtype in iri_names else unit.iri_subtype.curie})"
+    print(f"{indent}{type_name}{subtype_name}{iri_name}")
+    if detail and unit.observed_variables is not None:
+        print(f"\n{indent}  Observed variables:")
+        for variable in unit.observed_variables:
+            variable_name = (
+                iri_names[variable] if variable in iri_names else variable.curie
+            )
+            print(f"{indent}    {variable_name}")
+    if detail and unit.controlled_variables is not None:
+        print(f"\n{indent}  Controlled variables:")
+        for variable in unit.controlled_variables:
+            variable_name = (
+                iri_names[variable] if variable in iri_names else variable.curie
+            )
+            print(f"{indent}    {variable_name}")
+    if detail and unit.treatments is not None:
+        print(f"\n{indent}  Treatments:")
+        for variable in unit.treatments:
+            variable_name = (
+                iri_names[variable] if variable in iri_names else variable.curie
+            )
+            print(f"{indent}    {variable_name}")
+    if unit.nested_iris is not None and len(unit.nested_iris) > 0:
+        if detail:
+            print(
+                f"\n{indent}  {'The' if count is None else 'Each'} {subtype_name.strip(' ()') if len(subtype_name) > 0 else type_name} includes:"
+            )
+        for nested in unit.nested_iris.values():
+            if detail:
+                print()
+            # Nested count values other than None hide names. Names should
+            # be hidden whenever we have more than one observation unit
+            # with the same properties (i.e. len(nested) > 1) or when we
+            # are in a branch of the hierarchy that dropped names for the
+            # same reason (in which case count is not None).
+            nested_count = len(nested)
+            if count is None and nested_count == 1:
+                nested_count = None
+            display_hierarchy(
+                nested[0], iri_names, indent + "    ", nested_count, detail=detail
+            )
+
+
 if __name__ == "__main__":
 
     parser = setup_parser()
@@ -136,7 +278,75 @@ if __name__ == "__main__":
             d.load(asset, asset_path=path, asset_prefix=prefix)
     d.import_references()
 
+    print("\nSTUDY DESCRIPTION:\n")
+
     for study in d.list_instances("appn:Study"):
-        print(d.describe(study))
+        print(d.describe(study, friendly=True))
+
+    iri_names = {}
+    appn_classes = set(d.list_classes(namespace=APPN_SCHEMA))
+    iri_names = {
+        iri: name
+        for iri, name in d.query("SELECT ?i ?n WHERE { ?i schema1:name ?n . }")
+    }
+    iri_types = {}
+    for iri, rdf_type in d.query("SELECT ?i ?t WHERE { ?i rdf:type ?t . }"):
+        if rdf_type in appn_classes:
+            iri_types[iri] = rdf_type
+    iri_subtypes = {}
+    for iri, iri_subtype in d.query(
+        "SELECT ?i ?t WHERE {{ ?i appn:hasBiologicalUnitType ?t } UNION { ?i appn:hasGrowthFacilityType ?t } UNION { ?i appn:hasPlatformType ?t } UNION { ?i appn:hasSensorType ?t }}"
+    ):
+        iri_subtypes[iri] = iri_subtype
+    locations = {}
+    reverse_locations = {}
+    for iri, location_iri in d.query(
+        "SELECT ?i ?l WHERE { ?i appn:hasLocation ?x . ?x appn:isLocationWithin ?l . }"
+    ):
+        locations[iri] = location_iri
+        if location_iri not in reverse_locations:
+            reverse_locations[location_iri] = set()
+        reverse_locations[location_iri].add(iri)
+    observed_variables = {}
+    for iri, observed_variable_iri in d.query(
+        "SELECT ?u ?v WHERE {?x appn:isForObservationUnit ?u . ?x appn:observes ?v . }"
+    ):
+        if iri not in observed_variables:
+            observed_variables[iri] = set()
+        observed_variables[iri].add(observed_variable_iri)
+    controlled_variables = {}
+    for iri, controlled_variable_iri in d.query(
+        "SELECT ?u ?v WHERE {?x appn:isForObservationUnit ?u . ?x appn:controls ?v . }"
+    ):
+        if iri not in controlled_variables:
+            controlled_variables[iri] = set()
+        controlled_variables[iri].add(controlled_variable_iri)
+    treatments = {}
+    for iri, treatment_iri in d.query(
+        "SELECT ?u ?v WHERE {?x appn:isForObservationUnit ?u . ?x appn:treatsWith ?v . }"
+    ):
+        if iri not in treatments:
+            treatments[iri] = set()
+        treatments[iri].add(treatment_iri)
+
+    for iri in sorted(reverse_locations):
+        if iri not in locations:
+            hierarchy = build_hierarchy(
+                iri,
+                reverse_locations,
+                iri_types,
+                iri_subtypes,
+                observed_variables,
+                controlled_variables,
+                treatments,
+            )
+
+            print("\nOBSERVATION UNIT HIERARCHY (DETAILED):\n")
+            display_hierarchy(hierarchy, iri_names, indent="  ")
+
+            print("\nOBSERVATION UNIT HIERARCHY (COMPACT):\n")
+            display_hierarchy(hierarchy, iri_names, indent="  ", detail=False)
+
+    print()
 
     logging.info("Finished")
