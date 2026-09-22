@@ -96,9 +96,6 @@ class IRI(URIRef):
         :param namespace_definitions: `NamespaceDefinitions` to determine namespace and prefix (defaults to dictionary from `Configuration`)
         :return: Matching `NamespaceDefinition` or None
         """
-        if namespace_definitions is None:
-            namespace_definitions = IRI.namespace_definitions
-
         if namespace_definitions is not None:
             for namespace, namespace_definition in namespace_definitions.items():
                 if iri.startswith(namespace):
@@ -116,9 +113,6 @@ class IRI(URIRef):
         :param namespace_definitions: `NamespaceDefinitions` to determine namespace and prefix (defaults to dictionary from `Configuration`)
         :return: Matching `NamespaceDefinition` or None
         """
-        if namespace_definitions is None:
-            namespace_definitions = IRI.namespace_definitions
-
         if namespace_definitions is not None:
             for namespace, namespace_definition in namespace_definitions.items():
                 if curie.startswith(f"{namespace_definition.prefix}:"):
