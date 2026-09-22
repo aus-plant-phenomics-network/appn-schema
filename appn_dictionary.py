@@ -1,4 +1,4 @@
-#!/usr/bin/emv python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 #
@@ -19,11 +19,12 @@
 # -----------------------------------------------------------------------------
 
 import logging
+import textwrap
 
-from pathlib import Path
+from functools import cache
 from rdflib import Graph, URIRef, Node
 from rdflib.namespace import Namespace, NamespaceManager
-from typing import Any, Optional
+from typing import Optional
 
 from appn_iri import IRI, Triple, TriplePosition
 from appn_types import NamespaceDefinition
@@ -64,9 +65,10 @@ class Dictionary:
     All get_* and list_* methods check the cache for a previous response to the
     request and otherwise generate and cache a new response from the graph.
 
-    The cache is managed by the class (rather than using the `cache` or
-    `lru_cache` decorators) since it needs to be flushed whenever a new asset
-    is loaded.
+    The main cache is managed by the class (rather than using `functools.cache` or
+    `functools.lru_cache`) since it needs to be flushed whenever a new asset
+    is loaded. Caches for the name and type for IRIs use `functools.cache` since
+    the results are not expected to change.
     """
 
     def __init__(
@@ -425,14 +427,10 @@ class Dictionary:
         return self.cache[key]
 
     def count_triples_by_subject(self) -> dict[IRI, int]:
-        """Dear Rosemary Hobern                                             Res No: 92225
+        """
+        Return count of Triple`s  for every term used as subject
 
-
-
-        Thank you for choosing Beach Cabins Merimbula! Here is a quick 2min snapshot of our beautiful surrounds and park: Beach Cabins video overview
-                Return count of Triple`s  for every term usedm as subject
-
-                :return: Counts of matching `Triple`s per term
+        :return: Counts of matching `Triple`s per term
         """
         return self.count_triples_by_term(TriplePosition.SUBJECT)
 
@@ -903,6 +901,92 @@ class Dictionary:
 
         return IRI(iri, self.namespace_definitions)
 
+    def query(self, sparql_query: str) -> list[tuple[IRI | Node, ...]]:
+        """
+        Execute SPARQL query against current `Graph`
+
+        Issue query and convert all URIRefs to IRIs before returning results as a
+        list of tuples.
+
+        :param sparql_query: Query string
+        :return: List of tuples of `IRI`s or `Node`s
+        """
+        results = []
+
+        logging.debug(f"Issuing query:\n{sparql_query}")
+
+        for row in self._graph.query(sparql_query):
+            if not isinstance(row, bool):
+                results.append(
+                    tuple(
+                        self.get_iri(item) if isinstance(item, URIRef) else str(item)
+                        for item in row
+                    )
+                )
+        return results
+
+    @cache
+    def get_name(self, iri: IRI) -> str:
+        """
+        Return name string for supplied IRI if one can be found
+
+        Prefered result is a value for schema:name, otherwise for
+        rdfs:label. If neither can be found, return the CURIE.
+
+        Results are cached using `functools.cache`.
+
+        :param iri: IRI for which name is sought
+        :return: Name string
+        """
+        triples = self.list_triples_for_subject(iri)
+        label = None
+
+        for t in triples:
+            if t.property == SCHEMA_NAME:
+                return str(t.object)
+            if t.property == RDFS_LABEL:
+                label = str(t.object)
+        if label is not None:
+            return label
+        return str(iri.curie)
+
+    @cache
+    def get_type(self, iri: IRI) -> Optional[IRI]:
+        """
+        Return most specific type string available for supplied IRI
+
+        From all `rdf:type` properties for the IRI, find the one
+        that is most specific (not a superclass).
+
+        Results are cached using `functools.cache`.
+
+        :param iri: IRI for which type is sought
+        :return: IRI for type if one exists
+        """
+        triples = self.list_triples_for_subject(iri)
+
+        iri_types = set()
+
+        for t in triples:
+            if t.property == RDF_TYPE:
+                iri_types.add(t.object)
+
+        if len(iri_types) == 0:
+            return None
+
+        if len(iri_types) > 1:
+            for type_iri in list(iri_types):
+                for superclass in self.list_superclasses(type_iri):
+                    if superclass in iri_types:
+                        iri_types.remove(superclass)
+
+        if len(iri_types) > 1:
+            logging.warning(
+                f"IRI {iri} has multiple types: {', '.join([t.curie for t in iri_types])}"
+            )
+
+        return iri_types.pop()
+
     def list_iris(
         self, query_strings: list[str], cache_key: str, namespace: Optional[str] = None
     ) -> list[IRI]:
@@ -937,7 +1021,7 @@ class Dictionary:
             query = """
                     prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                     prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                    prefix schema: <https://schema.org/>
+                    prefix schema: <http://schema.org/>
 
                     SELECT ?q
                     WHERE { %s }
@@ -1055,6 +1139,57 @@ class Dictionary:
 
         return matches
 
+    def describe(self, iri: IRI, friendly: Optional[bool] = False) -> str:
+        """
+        Format an IRI and its properties
+
+        :param iri: IRI to be formatted
+        :return: Multi-line string with CURIE, IRI and all properties
+        """
+        triples = self.list_triples_for_subject(iri)
+
+        if friendly:
+            iri_type = self.get_type(iri)
+            if iri_type is None:
+                type_string = ""
+            else:
+                type_string = f"{self.get_name(iri_type)}: "
+            property_strings = []
+            for _, pp, po in triples:
+                if pp not in [SCHEMA_NAME, RDF_TYPE]:
+                    property_name = self.get_name(pp).title()
+                    if isinstance(po, IRI):
+                        object_name = self.get_name(po)
+                        object_type = self.get_type(po)
+                        if object_type is None:
+                            object_value = object_name
+                        else:
+                            object_value = (
+                                f"{object_name} ({self.get_name(object_type)})"
+                            )
+                    else:
+                        object_value = str(po)
+                    if len(object_value) > 80:
+                        object_value = "\n" + (
+                            "\n".join(
+                                textwrap.wrap(
+                                    object_value,
+                                    width=80,
+                                    initial_indent="        ",
+                                    subsequent_indent="        ",
+                                )
+                            )
+                        )
+                    property_strings.append(f"\n    {property_name} : {object_value}")
+            formatted = (
+                f"{type_string}{self.get_name(iri)}{''.join(sorted(property_strings))}"
+            )
+        else:
+            formatted = f"{iri.curie}   ({iri.iri})"
+            for _, pp, po in triples:
+                formatted += f"\n    {pp.curie if isinstance(pp, IRI) else str(pp)} : {po.curie if isinstance(po, IRI) else str(po)}"
+        return formatted
+
     def format_iri_list(
         self,
         iris: list[IRI],
@@ -1090,27 +1225,6 @@ class Dictionary:
                 formatted.append(f"{iri.curie:{curie_length}s}   {iri.iri}")
         return separator.join(formatted)
 
-    def describe(self, iri: IRI, friendly: Optional[bool] = False) -> str:
-        """
-        Format an IRI and its properties
-
-        :param iri: IRI to be formatted
-        :return: Multi-line string with CURIE, IRI and all properties
-        """
-        triples = self.list_triples_for_subject(iri)
-        iri_types = []
-        iri_names = set()
-        for t in triples:
-            if t.property == RDF_TYPE:
-                iri_types.append(t.object)
-            elif t.property in [SCHEMA_NAME, RDFS_LABEL, SKOS_PREF_LABEL]:
-                iri_names.add(t.object)
-
-        formatted = f"{iri.curie}   ({iri.iri})"
-        for _, pp, po in triples:
-            formatted += f"\n    {pp.curie if isinstance(pp, IRI) else str(pp)} : {po.curie if isinstance(po, IRI) else str(po)}"
-        return formatted
-
     def format_triple_list(
         self,
         triples: list[Triple],
@@ -1139,10 +1253,10 @@ class Dictionary:
         property_length = 0
 
         for triple in triples:
-            if isinstance(triple[0], IRI):
-                s = triple[0].curie
+            if isinstance(triple[TriplePosition.SUBJECT], IRI):
+                s = triple[TriplePosition.SUBJECT].curie
             else:
-                s = str(triple[0])
+                s = str(triple[TriplePosition.SUBJECT])
             p = (
                 triple[TriplePosition.PROPERTY].curie
                 if isinstance(triple[TriplePosition.PROPERTY], IRI)
