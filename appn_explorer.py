@@ -55,6 +55,7 @@ subcommand_helptext = {
     "subject-counts": "Count of all triples for each unique subject IRI.",
     "property-counts": "Count of all triples for each unique property IRI.",
     "object-counts": "Count of all triples for each unique object IRI.",
+    "type": "Most specified type for an IRI",
     "dump": "Write loaded assets in n3 format to specified file",
 }
 
@@ -82,7 +83,7 @@ def setup_parser() -> argparse.ArgumentParser:
       domain_properties, range_properties, domain_classes, range_classes,
       domain_range_properties, instances, subject, property, object,
       property-name, property-name-all, instance-name, instance-name-all,
-      subject_counts, property_counts, object_counts, dump
+      subject_counts, property_counts, object_counts, type, dump
     """
     parser = argparse.ArgumentParser(
         description=f"{__name__}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
@@ -106,6 +107,7 @@ def setup_parser() -> argparse.ArgumentParser:
         "subject",
         "property",
         "object",
+        "type",
     ]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
@@ -456,6 +458,9 @@ def execute_query(
                 descriptions=descriptions,
             )
         )
+
+    elif args["query"] == "type":
+        print(d.get_type(args["iri"]))
 
     elif args["query"] == "namespaces":
         namespaces = d.get_namespaces()
