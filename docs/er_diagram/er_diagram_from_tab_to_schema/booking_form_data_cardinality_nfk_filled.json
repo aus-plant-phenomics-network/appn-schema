@@ -1,0 +1,97 @@
+{
+  "appn:Investigation": {
+    "investigationIdentifier": "https://example.org/resource",
+    "investigationTitle": "<string>",
+    "investigationDescription": "<string>"
+  },
+  "appn:Study": {
+    "studyIdentifier": "https://example.org/resource *",
+    "studyalternateIdentifier": "<string>",
+    "studyTitle": "<string> *",
+    "studyDescription": "<string> *",
+    "additionalType": "<string> *"
+  },
+  "schema:Person": [
+    {
+      "givenName": "<string> *",
+      "familyName": "<string> *",
+      "personIdentifier": "https://example.org/resource",
+      "email": [
+        "name@example.org"
+      ],
+      "jobTitle": "<string>",
+      "roleName": "<string> *"
+    }
+  ],
+  "schema:Organization": [
+    {
+      "legalName": "<string> *",
+      "organizationIdentifier": "https://example.org/resource",
+      "address": "<string>",
+      "roleName": "<string>"
+    }
+  ],
+  "schema:Grant": [
+    {
+      "name": "<string>",
+      "grantIdentifier": "<string>",
+      "funder": [
+        {
+          "identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        }
+      ],
+      "amount": 0.0,
+      "fundedItem": {
+        "identifier": "https://example.org/resource *"
+      }
+    }
+  ],
+  "appn:SpatialLocation": [
+    {
+      "placeName": "<string> *",
+      "GeoLatLong": "<string>",
+      "GeoShape": "<string>"
+    }
+  ],
+  "appn:GrowthFacility": [
+    {
+      "growthFacilityName": "https://example.org/resource *",
+      "growthFacilityType": "<string> *",
+      "growthFacilityContainmentLevel": "<string> *",
+      "growthFacilityQuarantine": "false *"
+    }
+  ],
+  "appn:Deployment": [
+    {
+      "deploymentName": "<string> *"
+    }
+  ],
+  "appn:BiologicalMaterial": [
+    {
+      "biologicalMaterialIdentifier": "https://example.org/resource",
+      "biologicalMaterialGenus": "<string> *",
+      "biologicalMaterialSpecies": "<string> *",
+      "biologicalMaterialInfraspecificName": [
+        "<string>"
+      ],
+      "biologicalMaterialPreprocessing": "<string>",
+      "geneticallyModifiedStatus": "<string>",
+      "quaratineStatus": "<string>",
+      "materialSourceIdentifier": {
+        "identifier": "https://example.org/resource *"
+      }
+    }
+  ],
+  "appn:MaterialSource": [
+    {
+      "materialSourceDescription": [
+        "<string>"
+      ],
+      "materialSourceIdentifier": [
+        "<string> *"
+      ]
+    }
+  ]
+}

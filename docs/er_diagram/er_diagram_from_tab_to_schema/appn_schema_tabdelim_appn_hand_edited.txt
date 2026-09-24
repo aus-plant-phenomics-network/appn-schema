@@ -4,11 +4,11 @@ appn:Investigation			0..1	[investigationIdentifier][studyIdentifier]
 	appn:Investigation.investigationDescription	investigationDescription	0..1	string	
 	appn:Investigation.studyIdentifier	studyIdentifier	1..n	appn:Study	
 appn:Study			1..1	[studyIdentifier][personIdentifier, investigationIdentifier, placeName, growthFacilityName, biologicalMaterialIdentifier, deploymentName]
-	appn:Study.studyIdentifier	studyIdentifier	1..1	string	uri
-	appn:Study.studyalternateIdentifier	studyalternateIdentifier	0..1	string	
+	appn:Study.studyIdentifier	studyIdentifier	0..1	string	uri
+	appn:Study.studyalternateIdentifier	studyalternateIdentifier	1..1	string	
 	appn:Study.studyTitle	studyTitle	1..1	string	
-	appn:Study.studyDescription	studyDescription	1..1	string	
-	schema:Thing.additionalType	additionalType	1..1	string	
+	appn:Study.studyDescription	studyDescription	0..1	string	
+	schema:Thing.additionalType	additionalType	0..1	string	
 	schema:Person.identifier	personIdentifier	1..n	schema:Person	
 	appn:Investigation.investigationIdentifier	investigationIdentifier	0..1	appn:Investigation	
 	schema:Place.name	placeName	1..n	appn:SpatialLocation	

@@ -29,7 +29,7 @@ schema:Person    1..n    personIdentifier  <---------------------------- Class R
 Usage:
 # 1. Change the input_file = "appn_schema_tabdelim_appn.txt" filename value in main() function.
 # 2. Run:
-> python convert_booking_def_to_jsonschema_6cols_oneof_fixed.py 
+> python convert_booking_def_to_jsonschema.py 
 
 # 3. The output filename is the input filename wth a json extension
 # e.g. "appn_schema_tabdelim_appn.json"
