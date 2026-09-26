@@ -19,6 +19,7 @@
 # -----------------------------------------------------------------------------
 
 import logging
+import re
 import textwrap
 
 from functools import cache
@@ -27,15 +28,23 @@ from rdflib.namespace import Namespace, NamespaceManager
 from typing import Optional
 
 from appn_iri import IRI, Triple, TriplePosition
-from appn_types import NamespaceDefinition
+from appn_types import NamespaceDefinition, Organisation
 from appn_configuration import (
     Configuration,
+    ExplicitClassesFilter,
     RDF_SCHEMA,
     RDFS_SCHEMA,
     SCHEMA_SCHEMA,
+    ALT_SCHEMA_SCHEMA,
     SKOS_SCHEMA,
     DC_SCHEMA,
+    DEFAULT_PREFIXES,
+    APPN_VOCABULARY_ROOT,
 )
+
+### NAME_REPLACEMENT_PATTERN ##################################################
+
+NAME_REPLACEMENT_PATTERN = re.compile(r"[\s'\"\\?;:,°*+(){}/\[\]-]+")
 
 ### Dictionary ################################################################
 
@@ -92,6 +101,13 @@ class Dictionary:
         self._graph = Graph() if graph is None else graph
         self.namespace_manager = NamespaceManager(self._graph)
 
+        self.configuration = Configuration()
+
+        # Force selection of HTTP/HTTPS for schema.org to match imported 
+        # assets and RO-Crate expectations
+        self.namespace_manager.bind(DEFAULT_PREFIXES[ALT_SCHEMA_SCHEMA], ALT_SCHEMA_SCHEMA)
+        self.namespace_manager.bind(DEFAULT_PREFIXES[SCHEMA_SCHEMA], SCHEMA_SCHEMA)
+
         # The `namespaces` and `reverse_namespaces` dictionaries enable access
         # by namespace or by namespace prefix.
         self.namespaces = {p: str(ns) for p, ns in self.namespace_manager.namespaces()}
@@ -106,7 +122,7 @@ class Dictionary:
 
         # Get `NamespaceDefinitions` from `Configuration` and add/overwrite any
         # supplied as a parameter
-        self.namespace_definitions = Configuration().get_namespace_definitions()
+        self.namespace_definitions = self.configuration.get_namespace_definitions()
         if namespace_definitions is not None:
             for namespace_definition in namespace_definitions:
                 self.namespace_definitions[namespace_definition.ns] = (
@@ -236,6 +252,8 @@ class Dictionary:
                 if isinstance(iri, URIRef) and iri not in iris:
                     ns = self.get_namespace_from_iri(iri)
                     logging.debug(f"Mapped <{iri}> to namespace <{ns}>")
+                    if ns == ALT_SCHEMA_SCHEMA:
+                        print((s, o, p))
                     if ns is not None and ns not in self.loaded:
                         if not self.load(ns):
                             success = False
@@ -273,7 +291,7 @@ class Dictionary:
         key = "triples"
         if key not in self.cache:
             self.cache[key] = [self.get_triple(s, p, o) for s, p, o in self._graph]
-        return self.cache[key]
+        return self.cache[key].copy()
 
     def get_triple(self, s: Node, p: Node, o: Node) -> Triple:
         """
@@ -382,7 +400,7 @@ class Dictionary:
                 if str(s) in matching_values
             ]
 
-        return self.cache[key]
+        return self.cache[key].copy()
 
     def list_triples_for_object(self, object_: str | IRI) -> list[Triple]:
         """
@@ -403,7 +421,7 @@ class Dictionary:
                 if str(o) in matching_values
             ]
 
-        return self.cache[key]
+        return self.cache[key].copy()
 
     def list_triples_for_property(self, property_: str | IRI) -> list[Triple]:
         """
@@ -424,7 +442,7 @@ class Dictionary:
                 if str(p) in matching_values
             ]
 
-        return self.cache[key]
+        return self.cache[key].copy()
 
     def count_triples_by_subject(self) -> dict[IRI, int]:
         """
@@ -460,7 +478,7 @@ class Dictionary:
         """
         key = f"counts|position"
         if key in self.cache:
-            return self.cache[key]
+            return self.cache[key].copy()
 
         counts = {}
         for term in [triple[position] for triple in self.list_triples()]:
@@ -472,7 +490,7 @@ class Dictionary:
 
         self.cache[key] = counts
 
-        return counts
+        return counts.copy()
 
     def list_classes(
         self,
@@ -741,13 +759,13 @@ class Dictionary:
         """
         key = f"instances|{class_iri}|{namespace}"
         if key in self.cache:
-            return self.cache[key]
+            return self.cache[key].copy()
 
         instances = []
         for class_ in self.list_subclasses(class_iri):
             instances += self.list_instances_without_subclasses(class_)
         self.cache[key] = instances
-        return instances
+        return instances.copy()
 
     def list_instances_by_class_and_name(
         self,
@@ -762,6 +780,8 @@ class Dictionary:
 
         Results may optionally be filtered to matches within a specified
         namespace.
+
+        NOTE: At present, this is case-sensitive.
 
         :param class_iri: String IRI or `IRI` for class
         :param name: Unqualified name to find
@@ -784,6 +804,95 @@ class Dictionary:
             )
         return self.list_iris(query_strings, cache_key, namespace=namespace)
 
+    def get_current_appn_class_instance_by_name(self, class_iri: IRI, node: Organisation, name: str) -> Optional[IRI]:
+        """
+        Select existing object meeting policy-based criteria as the current
+        instance of a class with a given name
+
+        This is a special method to support parsing definitions for objects
+        complying with the APPN schema and having a specified name
+
+        The policy is to look for instances of the specified class (exact
+        match, excluding subclasses) in the vocabulary namespace for the 
+        current APPN node (as an `Organisation`) or (if no such match is
+        found) in the central APPN vocabulary namespace.
+
+        Candidates are evaluated based on the IRI string for each instance.
+        The goal is to find an instance for which the name part of the IRI
+        has the expected prefix for the class and for which the remainder
+        matches a cleaned version of the supplied name. Case is ignored 
+        when comparing the cleaned name parts, so a request for an instance
+        of the GrowthFacilityType class with any of "glasshouse", "Glasshouse"
+        "GlassHouse", "Glass House", "GLASSHOUSE", etc. provided as the
+        search name will match an instance with an IRI ending "gft_Glasshouse".
+
+        The method could fall back to check name and label properties, but 
+        the IRI comparison meets the needs of `ExcelVocabularyParser` and 
+        `Crate` which both use `Dictionary` to construct the name parts of 
+        `IRI`s from supplied name strings.
+
+        :param class_iri: The class to which the instance should belong
+        :param node:      The node for which an instance is sought
+        :param name:      String name for the search
+        :return:          Matching instance if found, else None
+        """
+        key = f"appn_instance|{class_iri}|{node.id}|{name}"
+        if key in self.cache:
+            return self.cache[key]
+
+        iri_name = self.build_iri_name(class_iri, name).lower()
+        for namespace in [node.namespace, APPN_VOCABULARY]:
+            for iri in self.list_instances(class_iri, namespace=node.namespace):
+                if iri.name.lower() == iri_name:
+                    self.cache[key] = iri
+                    return IRI
+
+        self.cache[key] = None
+        return None
+
+    def build_iri(self, class_iri: IRI|str, node: Organisation, name: str) -> IRI:
+        """
+        Generate an IRI for an instance of a class in the node namespace and with the given name
+
+        Converts an instance name to a safe IRI. The IRI has the pattern
+        "<APPN_VOCABULARY_ROOT><node>/<class_identifier>_<name>".
+
+        :param class_iri: The class to which the instance should belong
+        :param node:      The node for which an instance is sought
+        :param name:      String name for the search
+        :return: Constructed IRI
+        """
+        if not isinstance(class_iri, IRI):
+            class_iri = IRI(class_iri)
+
+        class_abbreviations = self.configuration.get_class_abbreviations()
+
+        # Use any abbreviation for the class from the `Configuration`
+        prefix = (
+            class_abbreviations[class_iri.name]
+            if class_iri.name in class_abbreviations
+            else class_iri.name
+        ).lower()
+
+        # Build and return the IRI
+        return IRI(f"{APPN_VOCABULARY_ROOT}{node.id}/{prefix}_{self.build_clean_name(name)}")
+
+
+    def build_clean_name(self, name: str) -> str:
+        """
+        Build clean version of instance name (avoiding whitespace and
+        problematic characters)
+        
+        :param name:      String name to clean
+        :return:          Cleaned name
+        """
+        return "".join(
+            [
+                (w[0].upper() + w[1:])
+                for w in NAME_REPLACEMENT_PATTERN.sub(" ", name).strip().split()
+            ]
+        )
+
     def list_instances_by_name(
         self,
         name: str,
@@ -796,6 +905,8 @@ class Dictionary:
 
         Results may optionally be filtered to matches within a specified
         namespace.
+
+        NOTE: At present, this is case-sensitive.
 
         :param name: Unqualified name to find
         :param check_alternate_names: True if alternateName properties should
@@ -860,7 +971,7 @@ class Dictionary:
         cache_key = f"domain-and-range|{domain_iri}|{range_iri}|{namespace}"
 
         if cache_key in self.cache:
-            return self.cache[cache_key]
+            return self.cache[cache_key].copy()
 
         domain_properties = self.list_domain_properties_for_class(domain_iri, namespace)
         range_properties = self.list_range_properties_for_class(range_iri, namespace)
@@ -869,7 +980,76 @@ class Dictionary:
 
         self.cache[cache_key] = properties
 
-        return properties
+        return properties.copy()
+
+    def list_explicit_classes(
+        self, main_class_iri: IRI, is_concept: Optional[bool] = False
+    ) -> list[IRI]:
+        """
+        Build list of classes (`rdf:type` values) to define for an instance of
+        the given class.
+
+        The `Configuration` can specify superclasses that should automatically
+        be inserted, and skos:Concept is included for all vocabulary terms.
+
+        :param main_class: `IRI` for APPN schema class
+        :param is_concept: True if `skos:Concept` should be included
+        :return: List of IRIs for matching superclasses
+        """
+        main_class = str(main_class_iri)
+
+        key = f"explicit_classes|{main_class}|is_concept"
+
+        # `explicit_classes` is a cache to minimise redundant calculations
+        if key in self.cache:
+            return self.cache[key].copy()
+
+        # Get list of all known classes in inheritance hierarchy for
+        # this class (including the class itself)
+        superclasses = self.list_superclasses(main_class)
+
+        # Rules determining which superclasses should be added
+        explicit_rules = self.configuration.get_explicit_classes()
+
+        # Filters to over rile explicit rules
+        excluded_classes = self.configuration.get_excluded_classes()
+
+        explicit_classes = []
+
+        for superclass in superclasses:
+            if superclass.iri == main_class:
+                # Always include the class itself
+                explicit_classes.append(main_class_iri)
+            elif (
+                superclass.ns in explicit_rules
+                and superclass.iri not in excluded_classes
+            ):
+                rule = explicit_rules[superclass.ns]
+                if isinstance(rule, list):
+                    # Include any class explicitly referenced by a rule
+                    if superclass.name in rule:
+                        explicit_classes.append(IRI(superclass.iri))
+                elif isinstance(rule, str):
+                    if rule == ExplicitClassesFilter.ALL.value:
+                        # Include all classes matching an "all" rule
+                        explicit_classes.append(IRI(superclass.iri))
+                    elif rule == ExplicitClassesFilter.FIRST.value:
+                        # Match only the first class matching a "first" rule
+                        explicit_classes.append(IRI(superclass.iri))
+
+                        # Remove the rule so we don't add more matches
+                        # NOTE - every call to configuration.get_explicit_classes returns
+                        # a new copy, so popping the value is safe.
+                        explicit_rules.pop(superclass.ns)
+
+        if is_concept:
+            # This IRI is also a SKOS Concept
+            explicit_classes.append(SKOS_CONCEPT)
+
+        # Remenber this list
+        self.cache[key] = explicit_classes
+
+        return explicit_classes.copy()
 
     def get_iri(self, id: str | URIRef | IRI) -> IRI:
         """
@@ -1012,7 +1192,7 @@ class Dictionary:
             full_curie = f"{self.reverse_namespaces[namespace]}:"
 
         if cache_key in self.cache:
-            return self.cache[cache_key]
+            return self.cache[cache_key].copy()
 
         results = []
 
@@ -1045,7 +1225,7 @@ class Dictionary:
 
         logging.debug(f"Matching terms: {', '.join([iri.curie for iri in results])}")
 
-        return results
+        return results.copy()
 
     def list_iris_transitive(
         self,
@@ -1080,7 +1260,7 @@ class Dictionary:
         )
 
         if cache_key is not None and cache_key in self.cache:
-            return self.cache[cache_key]
+            return self.cache[cache_key].copy()
 
         full_curie = None
         if namespace is not None and namespace in self.namespaces:
@@ -1137,7 +1317,7 @@ class Dictionary:
         if cache_key is not None:
             self.cache[cache_key] = matches
 
-        return matches
+        return matches.copy()
 
     def describe(self, iri: IRI, friendly: Optional[bool] = False) -> str:
         """

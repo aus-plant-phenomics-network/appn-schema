@@ -85,17 +85,29 @@ completion_rules:
       "type": "reflexive"     
 
 # Abbreviated names for classes for use in composing IRIs
+# NOTE: These prefixes have been used to construct IRIs for existing 
+# APPN instances in vocabularies. Do not change abbreviations for any
+# exising classes. ONLY update this list for wholly new classes.
 class_abbreviations:
   "BiologicalMaterial": "bm"
   "BiologicalUnit": "bu"
   "BiologicalUnitType": "but"
+  "ConceptScheme": "cs"
+  "ControlledVariable": "cv"
+  "Deployment": "deploy"
+  "ExternalEvent": "event"
   "GrowthFacility": "gf"
   "GrowthFacilityType": "gft"
+  "MaterialSource": "ms"
+  "ObservationUnit": "ou"
   "ObservedVariable": "ov"
   "PlatformType": "pt"
+  "ResearchActivity": "ra"
   "SensorType": "st"
-  "Deployment": "deploy"
-  "ConceptScheme": "cs"
+  "SoftwareApplication": "software"
+  "SpatialLocation": "sl"
+  "SubstanceQuantity": "sq"
+  "XYZLocation": "xyz"
 
 # Additional properties to be added whenever a specified property is added.
 # Both properties get the same value.

@@ -13,6 +13,7 @@
 # -----------------------------------------------------------------------------
 import yaml
 import os
+import re
 import logging
 from enum import StrEnum
 from pathlib import Path
@@ -38,7 +39,7 @@ APPN_SCHEMA = "https://schema.plantphenomics.org.au/"
 # NOTE: Schema.org publishes versions using both HTTP and HTTPS - we
 # use HTTP which matches the RO-Crate context.
 SCHEMA_SCHEMA = "http://schema.org/"
-SCHEMA_ALTSCHEMA = "https://schema.org/"
+ALT_SCHEMA_SCHEMA = "https://schema.org/"
 BIO_SCHEMA = "https://bioschemas.org/terms/"
 CDI_SCHEMA = "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/"
 DC_SCHEMA = "http://purl.org/dc/terms/"
@@ -69,6 +70,7 @@ WSU_VOCABULARY = f"{APPN_VOCABULARY_ROOT}WSU/"
 DEFAULT_PREFIXES: dict[str, str] = {
     APPN_SCHEMA: "appn",
     SCHEMA_SCHEMA: "schema",
+    ALT_SCHEMA_SCHEMA: "sschema",
     CDI_SCHEMA: "cdi",
     DC_SCHEMA: "dcterms",
     DWC_SCHEMA: "dwc",
@@ -158,7 +160,6 @@ class ValidationType(StrEnum):
     DICT_OF_DICT = "dict[str, dict[str,str]]"
     DICT_OF_DICT_OF_DICT = "dict[str, dict[str, dict[str,str]]]"
     DICT_OF_STR_OR_LIST = "dict[str, str|list[str]]"
-
 
 ### Configuration #############################################################
 
@@ -780,6 +781,29 @@ class Configuration:
         :return: Dictionary mapping class names to abbreviations
         """
         return self.fetch_dict(ConfigurationKey.CLASS_ABBREVIATIONS)
+
+    def get_class_abbreviation(self, class_name: str) -> dict[str, str]:
+        """
+        Get alternate string (normally abbreviation) to substitute for 
+        class name in term IRIs. 
+        
+        If no abbreviation registered, return the lowercase class name.
+
+        :param class_name: Name of class
+        :return: Abbreviated or lowered class name
+        """
+        key = f"abbreviation|{class_name}"
+        if key in self.cache:
+            return self.cache[key]
+
+        abbreviations = self.get_class_abbreviations()
+        if class_name in abbreviations:
+            abbreviation = abbreviations[class_name]
+        else:
+            abbreviation = class_name.lower()
+
+        self.cache[key] = abbreviation
+        return abbreviation
 
     def get_property_expansions(self) -> dict[URIRef, list[URIRef]]:
         """

@@ -40,14 +40,16 @@ from appn_configuration import (
     CENTRAL_ORGANISATION,
     ConfigurationKey,
     DEFAULT_PREFIXES,
-    ExplicitClassesFilter,
     Configuration,
     Organisation,
     APPN_SCHEMA,
     SKOS_SCHEMA,
+    SCHEMA_SCHEMA,
+    ALT_SCHEMA_SCHEMA,
 )
 from appn_logger import IssueMessage
-from rdflib import Graph, Namespace, Literal
+from rdflib import Graph, Literal
+from rdflib.namespace import Namespace, NamespaceManager    
 
 ### RequiredProperty ###########################################################
 
@@ -266,10 +268,6 @@ class ExcelVocabularyParser:
         self.embedded_classes = configuration.get_embedded_classes()
         self.domain_range_properties = configuration.get_domain_range_properties()
 
-        # Cache for computed lists of superclasses to include for a specified
-        # class
-        self.explicit_classes: dict[IRI, list[IRI]] = {}
-
         # Dictionary for classes known from APPN schema (keyed by unqualified
         # name)
         self.appn_classes_by_name = {
@@ -309,6 +307,12 @@ class ExcelVocabularyParser:
         # properties has been carried out
         self._graph = Graph()
 
+        # Force selection of HTTP/HTTPS for schema.org to match imported 
+        # assets and RO-Crate expectations
+        namespace_manager = NamespaceManager(self._graph)
+        namespace_manager.bind(DEFAULT_PREFIXES[ALT_SCHEMA_SCHEMA], ALT_SCHEMA_SCHEMA)
+        namespace_manager.bind(DEFAULT_PREFIXES[SCHEMA_SCHEMA], SCHEMA_SCHEMA)
+
         # Ensure the vocabulary graph uses the preferred namespace prefixes
         appn = self.configuration.get_appn()
         self._graph.bind(appn.prefix, appn.namespace, override=True)
@@ -318,9 +322,6 @@ class ExcelVocabularyParser:
         self._graph.bind(DEFAULT_PREFIXES[BIO_SCHEMA], Namespace(BIO_SCHEMA))
         if self.node.id != CENTRAL_ORGANISATION:
             self._graph.bind(node.prefix, node.namespace)
-
-        # Regular expression for replacing unwanted characters in IRIs
-        self.name_pattern = re.compile(r"[\s'\"\\?;:,°*+(){}/\[\]-]+")
 
         # Regular expression for removing trailing integers added to column
         # names to enable multiple columns to represent the same RDF property
@@ -829,7 +830,7 @@ class ExcelVocabularyParser:
         :return: True if the row was processed without issues that need correction
         """
         # The IRI for this instance is based on the node, the class and the name
-        iri = self.get_iri(target_class.name, name)
+        iri = self.dictionary.build_iri(target_class.name, self.node, name)
         if iri in self.instances:
             # We already have a defined instance with this IRI.
             #
@@ -927,8 +928,8 @@ class ExcelVocabularyParser:
                             RequiredProperty(
                                 iri,
                                 property_term,
-                                self.get_iri(
-                                    column_mapping.range_class.name, str(value)
+                                self.dictionary.build_iri(
+                                    column_mapping.range_class.name, self.node, str(value)
                                 ),
                                 excel_path,
                                 sheet,
@@ -1013,7 +1014,7 @@ class ExcelVocabularyParser:
 
         # Add type statements for the main class and any superclasses specified by the
         # `Configuration` (and `skos:Concept` if `is_concept` is True).
-        for instance_class in self.list_explicit_classes(main_class, is_concept):
+        for instance_class in self.dictionary.list_explicit_classes(main_class, is_concept):
             self._graph.add((iri, RDF_TYPE, instance_class))
 
         # Add any `Concept` to a corresponding `ConceptScheme`
@@ -1044,7 +1045,7 @@ class ExcelVocabularyParser:
             class_name = self.appn_classes_by_iri[str(main_class)].name
         else:
             class_name = str(main_class)
-        concept_scheme_term = self.get_iri("ConceptScheme", class_name)
+        concept_scheme_term = self.dictionary.build_iri("ConceptScheme", self.node, class_name)
         self.insert_instance(SKOS_CONCEPT_SCHEME, concept_scheme_term)
         self.add_triple(concept_scheme_term, SCHEMA_NAME, Literal(class_name))
         appn = self.configuration.get_appn()
@@ -1061,73 +1062,6 @@ class ExcelVocabularyParser:
         self.concept_schemes[main_class] = concept_scheme_term
 
         return concept_scheme_term
-
-    def list_explicit_classes(
-        self, main_class_iri: IRI, is_concept: Optional[bool] = False
-    ) -> list[IRI]:
-        """
-        Build list of classes (`rdf:type` values) to define for an instance of
-        the given class.
-
-        The `Configuration` can specify superclasses that should automatically
-        be inserted, and skos:Concept is included for all vocabulary terms.
-
-        :param main_class: `IRI` for APPN schema class
-        :param is_concept: True if `skos:Concept` should be included
-        :return: List of IRIs for matching superclasses
-        """
-        main_class = str(main_class_iri)
-
-        # `explicit_classes` is a cache to minimise redundant calculations
-        if main_class_iri in self.explicit_classes:
-            return self.explicit_classes[main_class_iri]
-
-        # Get list of all known classes in inheritance hierarchy for
-        # this class (including the class itself)
-        superclasses = self.dictionary.list_superclasses(main_class)
-
-        # Rules determining which superclasses should be added
-        explicit_rules = self.configuration.get_explicit_classes()
-
-        # Filters to over rile explicit rules
-        excluded_classes = self.configuration.get_excluded_classes()
-
-        explicit_classes = []
-
-        for superclass in superclasses:
-            if superclass.iri == main_class:
-                # Always include the class itself
-                explicit_classes.append(main_class_iri)
-            elif (
-                superclass.ns in explicit_rules
-                and superclass.iri not in excluded_classes
-            ):
-                rule = explicit_rules[superclass.ns]
-                if isinstance(rule, list):
-                    # Include any class explicitly referenced by a rule
-                    if superclass.name in rule:
-                        explicit_classes.append(IRI(superclass.iri))
-                elif isinstance(rule, str):
-                    if rule == ExplicitClassesFilter.ALL.value:
-                        # Include all classes matching an "all" rule
-                        explicit_classes.append(IRI(superclass.iri))
-                    elif rule == ExplicitClassesFilter.FIRST.value:
-                        # Match only the first class matching a "first" rule
-                        explicit_classes.append(IRI(superclass.iri))
-
-                        # Remove the rule so we don't add more matches
-                        # NOTE - every call to configuration.get_explicit_classes returns
-                        # a new copy, so popping the value is safe.
-                        explicit_rules.pop(superclass.ns)
-
-        if is_concept:
-            # This IRI is also a SKOS Concept
-            explicit_classes.append(SKOS_CONCEPT)
-
-        # Remenber this list
-        self.explicit_classes[main_class_iri] = explicit_classes
-
-        return explicit_classes
 
     def add_triple(self, subject: IRI, property: IRI, object: IRI | Literal) -> None:
         """
@@ -1245,36 +1179,6 @@ class ExcelVocabularyParser:
         self.required_properties = remaining
 
         return success
-
-    def get_iri(self, class_name: str, name: str) -> IRI:
-        """
-        Generate an IRI for an instance of a class in the current namespace and with the given name
-
-        Converts an instance name to a safe IRI. The IRI has the pattern
-        "<APPN_VOCABULARY_ROOT><node>/<class_identifier>_<name>".
-
-        :param class_name: String name for the APPN schema class
-        :param name: Name to be used in constructing the IRI
-        :return: Constructed IRI
-        """
-        # Convert name to a safe TitleCase form while preserving any existing
-        # CamelCase words (which means str.title is not suitable).
-        clean_name = "".join(
-            [
-                (w[0].upper() + w[1:])
-                for w in self.name_pattern.sub(" ", name).strip().split()
-            ]
-        )
-
-        # Use any abbreviation for the class from the `Configuration`
-        class_name = (
-            self.class_abbreviations[class_name]
-            if class_name in self.class_abbreviations
-            else class_name
-        ).lower()
-
-        # Build and return the IRI
-        return IRI(f"{APPN_VOCABULARY_ROOT}{self.node.id}/{class_name}_{clean_name}")
 
     def lower_first(self, name: str) -> str:
         """
