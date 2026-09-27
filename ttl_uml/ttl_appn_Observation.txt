@@ -18,15 +18,15 @@ class Observer
 Observation --> Observer : madeByObserver
 class "schema:Dataset" #DDFFDD
 Observation --> "schema:Dataset" : hasResult
-class "schema:File" #DDFFDD
-Observation --> "schema:File" : hasResult
+class "schema:CreativeWork" #DDFFDD
+Observation --> "schema:CreativeWork" : hasResult
 class Observation #line.bold {
     hasSimpleResult
 }
 class "schema:Dataset" #DDFFDD
 Observation --> "schema:Dataset" : usesData
-class "schema:File" #DDFFDD
-Observation --> "schema:File" : usesData
+class "schema:CreativeWork" #DDFFDD
+Observation --> "schema:CreativeWork" : usesData
 class ObservedVariable 
 Observation --> ObservedVariable : observes
 class ObservationUnit 

@@ -18,12 +18,12 @@ An Assay that observes or measures properties of an ObservationUnit returning re
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
 * appn:Observation **appn:hasResult** [schema:Dataset](http://schema.org/Dataset)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
-* appn:Observation **appn:hasResult** [schema:File](http://schema.org/File)
+* appn:Observation **appn:hasResult** [schema:CreativeWork](http://schema.org/CreativeWork)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
 * Observation https://schema.plantphenomics.org.au/hasSimpleResult
 * appn:Observation **appn:usesData** [schema:Dataset](http://schema.org/Dataset)
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
-* appn:Observation **appn:usesData** [schema:File](http://schema.org/File)
+* appn:Observation **appn:usesData** [schema:CreativeWork](http://schema.org/CreativeWork)
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
 * appn:Observation **appn:observes** [appn:ObservedVariable](appn_ObservedVariable.md)
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
