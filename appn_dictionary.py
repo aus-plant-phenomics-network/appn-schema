@@ -12,6 +12,9 @@
 # A `Dictionary` can wrap any existing `Graph` to enable it to be explored
 # more easily
 #
+# The `Dictionary` class includes several utility methods to assist with
+# standardisation of `IRI` strings and clean names without whitespace.
+#
 # -----------------------------------------------------------------------------
 # Created By  : Donald Hobern, donald.hobern@adelaide.edu.au
 # Created Date: 2026-08-20
@@ -40,6 +43,7 @@ from appn_configuration import (
     DC_SCHEMA,
     DEFAULT_PREFIXES,
     APPN_VOCABULARY_ROOT,
+    APPN_VOCABULARY,
 )
 
 ### NAME_REPLACEMENT_PATTERN ##################################################
@@ -761,10 +765,11 @@ class Dictionary:
         if key in self.cache:
             return self.cache[key].copy()
 
-        instances = []
+        instances = set()
         for class_ in self.list_subclasses(class_iri):
-            instances += self.list_instances_without_subclasses(class_)
-        self.cache[key] = instances
+            for instance in self.list_instances_without_subclasses(class_):
+                instances.add(instance)
+        self.cache[key] = list(instances)
         return instances.copy()
 
     def list_instances_by_class_and_name(
@@ -803,95 +808,6 @@ class Dictionary:
                 f"?q rdf:type <{class_iri}> .  {{ ?q schema:alternateName '{name}'@en }} UNION {{ ?q schema:alternateName '{name}'}}."
             )
         return self.list_iris(query_strings, cache_key, namespace=namespace)
-
-    def get_current_appn_class_instance_by_name(self, class_iri: IRI, node: Organisation, name: str) -> Optional[IRI]:
-        """
-        Select existing object meeting policy-based criteria as the current
-        instance of a class with a given name
-
-        This is a special method to support parsing definitions for objects
-        complying with the APPN schema and having a specified name
-
-        The policy is to look for instances of the specified class (exact
-        match, excluding subclasses) in the vocabulary namespace for the 
-        current APPN node (as an `Organisation`) or (if no such match is
-        found) in the central APPN vocabulary namespace.
-
-        Candidates are evaluated based on the IRI string for each instance.
-        The goal is to find an instance for which the name part of the IRI
-        has the expected prefix for the class and for which the remainder
-        matches a cleaned version of the supplied name. Case is ignored 
-        when comparing the cleaned name parts, so a request for an instance
-        of the GrowthFacilityType class with any of "glasshouse", "Glasshouse"
-        "GlassHouse", "Glass House", "GLASSHOUSE", etc. provided as the
-        search name will match an instance with an IRI ending "gft_Glasshouse".
-
-        The method could fall back to check name and label properties, but 
-        the IRI comparison meets the needs of `ExcelVocabularyParser` and 
-        `Crate` which both use `Dictionary` to construct the name parts of 
-        `IRI`s from supplied name strings.
-
-        :param class_iri: The class to which the instance should belong
-        :param node:      The node for which an instance is sought
-        :param name:      String name for the search
-        :return:          Matching instance if found, else None
-        """
-        key = f"appn_instance|{class_iri}|{node.id}|{name}"
-        if key in self.cache:
-            return self.cache[key]
-
-        iri_name = self.build_iri_name(class_iri, name).lower()
-        for namespace in [node.namespace, APPN_VOCABULARY]:
-            for iri in self.list_instances(class_iri, namespace=node.namespace):
-                if iri.name.lower() == iri_name:
-                    self.cache[key] = iri
-                    return IRI
-
-        self.cache[key] = None
-        return None
-
-    def build_iri(self, class_iri: IRI|str, node: Organisation, name: str) -> IRI:
-        """
-        Generate an IRI for an instance of a class in the node namespace and with the given name
-
-        Converts an instance name to a safe IRI. The IRI has the pattern
-        "<APPN_VOCABULARY_ROOT><node>/<class_identifier>_<name>".
-
-        :param class_iri: The class to which the instance should belong
-        :param node:      The node for which an instance is sought
-        :param name:      String name for the search
-        :return: Constructed IRI
-        """
-        if not isinstance(class_iri, IRI):
-            class_iri = IRI(class_iri)
-
-        class_abbreviations = self.configuration.get_class_abbreviations()
-
-        # Use any abbreviation for the class from the `Configuration`
-        prefix = (
-            class_abbreviations[class_iri.name]
-            if class_iri.name in class_abbreviations
-            else class_iri.name
-        ).lower()
-
-        # Build and return the IRI
-        return IRI(f"{APPN_VOCABULARY_ROOT}{node.id}/{prefix}_{self.build_clean_name(name)}")
-
-
-    def build_clean_name(self, name: str) -> str:
-        """
-        Build clean version of instance name (avoiding whitespace and
-        problematic characters)
-        
-        :param name:      String name to clean
-        :return:          Cleaned name
-        """
-        return "".join(
-            [
-                (w[0].upper() + w[1:])
-                for w in NAME_REPLACEMENT_PATTERN.sub(" ", name).strip().split()
-            ]
-        )
 
     def list_instances_by_name(
         self,
@@ -1459,5 +1375,49 @@ class Dictionary:
             [
                 f"{s:{subject_length}s}   {p:{property_length}s}   {o if max_node_length is None else o[0:max_node_length]}"
                 for s, p, o in formatted
+            ]
+        )
+
+        
+    def build_iri(self, class_iri: IRI|str, namespace: str, name: str) -> IRI:
+        """
+        Generate an IRI for an instance of a class in the node namespace and with the given name
+
+        Converts an instance name to a safe IRI. The IRI has the pattern
+        "<namespace>/<class_identifier>_<name>".
+
+        :param class_iri: The class to which the instance should belong
+        :param namespace: The namespace in which the IRI is to be constructed
+        :param name:      String name for the search
+        :return: Constructed IRI
+        """
+        if not isinstance(class_iri, IRI):
+            class_iri = IRI(class_iri)
+
+        class_abbreviations = self.configuration.get_class_abbreviations()
+
+        # Use any abbreviation for the class from the `Configuration`
+        prefix = (
+            class_abbreviations[class_iri.name]
+            if class_iri.name in class_abbreviations
+            else class_iri.name
+        ).lower()
+
+        # Build and return the IRI
+        return IRI(f"{namespace}{prefix}_{self.build_clean_name(name)}")
+
+
+    def build_clean_name(self, name: str) -> str:
+        """
+        Build clean version of instance name (avoiding whitespace and
+        problematic characters)
+        
+        :param name:      String name to clean
+        :return:          Cleaned name
+        """
+        return "".join(
+            [
+                (w[0].upper() + w[1:])
+                for w in NAME_REPLACEMENT_PATTERN.sub(" ", name).strip().split()
             ]
         )

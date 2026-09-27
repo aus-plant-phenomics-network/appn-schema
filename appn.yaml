@@ -99,6 +99,7 @@ class_abbreviations:
   "GrowthFacility": "gf"
   "GrowthFacilityType": "gft"
   "MaterialSource": "ms"
+  "Observation": "obs"
   "ObservationUnit": "ou"
   "ObservedVariable": "ov"
   "PlatformType": "pt"

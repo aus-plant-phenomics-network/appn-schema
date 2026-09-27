@@ -830,7 +830,7 @@ class ExcelVocabularyParser:
         :return: True if the row was processed without issues that need correction
         """
         # The IRI for this instance is based on the node, the class and the name
-        iri = self.dictionary.build_iri(target_class.name, self.node, name)
+        iri = self.dictionary.build_iri(target_class.name, self.node.namespace, name)
         if iri in self.instances:
             # We already have a defined instance with this IRI.
             #
@@ -929,7 +929,7 @@ class ExcelVocabularyParser:
                                 iri,
                                 property_term,
                                 self.dictionary.build_iri(
-                                    column_mapping.range_class.name, self.node, str(value)
+                                    column_mapping.range_class.name, self.node.namespace, str(value)
                                 ),
                                 excel_path,
                                 sheet,
@@ -1045,7 +1045,7 @@ class ExcelVocabularyParser:
             class_name = self.appn_classes_by_iri[str(main_class)].name
         else:
             class_name = str(main_class)
-        concept_scheme_term = self.dictionary.build_iri("ConceptScheme", self.node, class_name)
+        concept_scheme_term = self.dictionary.build_iri("ConceptScheme", self.node.namespace, class_name)
         self.insert_instance(SKOS_CONCEPT_SCHEME, concept_scheme_term)
         self.add_triple(concept_scheme_term, SCHEMA_NAME, Literal(class_name))
         appn = self.configuration.get_appn()

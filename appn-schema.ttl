@@ -290,9 +290,14 @@ appn:madeBySampler a rdf:Property ;
 
 appn:hasResult a rdf:Property ;
   schema:name "hasResult" ; 
-  rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult." ;
+  rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult." ;
   schema:domainIncludes appn:Observation,appn:Control ;
   schema:rangeIncludes schema:Dataset,schema:File .
+
+appn:hasSimpleResult a rdf:Property ;
+  schema:name "hasSimpleResult" ; 
+  rdfs:comment "Identifies a discrete value received as a data output from an Observation or Control assay." ;
+  schema:domainIncludes appn:Observation,appn:Control .
 
 appn:producesSample a rdf:Property ;
   schema:name "producesSample" ; 

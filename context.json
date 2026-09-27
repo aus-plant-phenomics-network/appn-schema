@@ -74,6 +74,7 @@
     "hasResult": "https://schema.plantphenomics.org.au/hasResult",
     "hasScale": "https://schema.plantphenomics.org.au/hasScale",
     "hasSensorType": "https://schema.plantphenomics.org.au/hasSensorType",
+    "hasSimpleResult": "https://schema.plantphenomics.org.au/hasSimpleResult",
     "hasTrait": "https://schema.plantphenomics.org.au/hasTrait",
     "hosts": "https://schema.plantphenomics.org.au/hosts",
     "humidityControl": "https://schema.plantphenomics.org.au/humidityControl",

@@ -20,6 +20,9 @@ class "schema:Dataset" #DDFFDD
 Observation --> "schema:Dataset" : hasResult
 class "schema:File" #DDFFDD
 Observation --> "schema:File" : hasResult
+class Observation #line.bold {
+    hasSimpleResult
+}
 class "schema:Dataset" #DDFFDD
 Observation --> "schema:Dataset" : usesData
 class "schema:File" #DDFFDD

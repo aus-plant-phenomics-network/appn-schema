@@ -96,9 +96,12 @@
         <div class="property">Control <b>madeByController</b> <a href="#Controller">Controller</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
         <div class="property">Control <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
         <div class="property">Control <b>hasResult</b> <a href="http://schema.org/File">http://schema.org/File</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
+        <div class="property">Control <b>hasSimpleResult</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasSimpleResult">https://schema.plantphenomics.org.au/hasSimpleResult</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a discrete value received as a data output from an Observation or Control assay.</div>
         <div class="property">Control <b>controls</b> <a href="#ControlledVariable">ControlledVariable</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
         <h2 id="ControlledVariable">Class: ControlledVariable</h2>
@@ -258,9 +261,12 @@
         <div class="property">Observation <b>madeByObserver</b> <a href="#Observer">Observer</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.</div>
         <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
         <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/File">http://schema.org/File</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
+        <div class="property">Observation <b>hasSimpleResult</b></div>
+        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasSimpleResult">https://schema.plantphenomics.org.au/hasSimpleResult</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a discrete value received as a data output from an Observation or Control assay.</div>
         <div class="property">Observation <b>usesData</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
         <div class="property">Observation <b>usesData</b> <a href="http://schema.org/File">http://schema.org/File</a></div>
