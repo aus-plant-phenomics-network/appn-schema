@@ -292,7 +292,7 @@ appn:hasResult a rdf:Property ;
   schema:name "hasResult" ; 
   rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult." ;
   schema:domainIncludes appn:Observation,appn:Control ;
-  schema:rangeIncludes schema:Dataset,schema:File .
+  schema:rangeIncludes schema:Dataset,schema:CreativeWork .
 
 appn:hasSimpleResult a rdf:Property ;
   schema:name "hasSimpleResult" ; 
@@ -309,7 +309,7 @@ appn:usesData a rdf:Property ;
   schema:name "usesData" ; 
   rdfs:comment "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
   schema:domainIncludes appn:Observation ;
-  schema:rangeIncludes schema:Dataset,schema:File .
+  schema:rangeIncludes schema:Dataset,schema:CreativeWork .
 
 appn:controls a rdf:Property ;
   schema:name "controls" ; 

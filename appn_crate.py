@@ -132,7 +132,18 @@ class Crate:
         # ObservationUnit.
         self.known_instances_by_class: dict[IRI, set[IRI]] = {}
 
+        self.files: tuple[Path, str, dict] = []
+
         return
+
+    def add_file(self, source: Path, destination: str, parameters: Optional[dict[str, str|int|float|list[str|int|float]]] = None) -> str:
+        properties: dict[IRI, str|IRI] = {JSONLD_TYPE: SCHEMA_FILE}
+        
+        if parameters is not None:
+            self.process_parameters(SCHEMA_FILE, properties, parameters)
+
+        self.files.append((source, destination, properties))
+        return destination
 
     def add(self, class_: str, name: Optional[str] = None, parameters: Optional[dict[str, str|int|float|list[str|int|float]]] = None) -> IRI:
         """
@@ -168,58 +179,66 @@ class Crate:
                 if explicit_class not in self.known_instances_by_class:
                     self.known_instances_by_class[explicit_class] = set()
                 self.known_instances_by_class[explicit_class].add(iri)
-            properties: dict[IRI, str|IRI] = {JSONLD_TYPE: explicit_classes}
+            properties: dict[IRI, str|list[str]] = {JSONLD_TYPE: explicit_classes}
             self.known_instances[iri] = properties
 
-        appn = self.configuration.get_appn()
-
         if parameters is not None:
-            for parameter, value in parameters.items():
-                property_iri = self.find_property(class_iri, parameter)
-                if property_iri.prefix in ["schema", "appn"]:
-                    property_ = property_iri.name
-                else:
-                    property_ = property_iri.iri
-                if isinstance(value, str):
-                    if (value_iri := self.parse_iri(value)) is not None:
-                        value = at(value_iri.iri)
-                    else:
-                        range_classes = self.dictionary.list_range_classes_for_property(property_iri, namespace=APPN_SCHEMA)
-                        if len(range_classes) > 0:
-                            if len(range_classes) > 1:
-                                self.logger.log(
-                                    logging.ERROR,
-                                    __name__,
-                                    IssueMessage.RANGE_CLASS_NOT_SELECTED,
-                                    PROPERY_SUBJECT=iri.curie,
-                                    DOMAIN_APPN_CLASS=class_iri.curie,
-                                    SELECTED_PROPERTY=property_.curie,
-                                    RANGE_CLASSES=", ".join(
-                                        [class_.curie for class_ in range_classes]
-                                    ),
-                                )
-                                # TODO - Use placeholder property to document the property and value string
-                                # Check schema.org
-                            else:
-                                current_instance = self.find_known_instance(range_classes[0], value)
-                                if current_instance is not None:
-                                    value = at(current_instance.iri)
-                                else:
-                                    value = at(self.dictionary.build_iri(range_classes[0], self.namespace, value).curie)
-                if property_ in properties:
-                    if isinstance(properties[property_], list):
-                        if isinstance(value, list):
-                            properties[property_] = properties[property_] + value
-                        else:
-                            properties[property_].append(value)
-                    elif isinstance(value, list):
-                        properties[property_] = [properties[property_]] + value
-                    else:
-                        properties[property_] = [properties[property_], value]
-                else:
-                    properties[property_] = value
+            self.process_parameters(class_iri, properties, parameters)
 
         return iri
+
+
+    def process_parameters(self, class_iri: IRI, properties: dict, parameters: dict) -> None:
+        appn = self.configuration.get_appn()
+
+        for parameter, value in parameters.items():
+            property_iri = self.find_property(class_iri, parameter)
+            if property_iri.prefix in ["schema", "appn"]:
+                property_ = property_iri.name
+            else:
+                property_ = property_iri.iri
+            if isinstance(value, str):
+                if (value_iri := self.parse_iri(value)) is not None:
+                    value = at(value_iri.iri)
+                else:
+                    range_classes = self.dictionary.list_range_classes_for_property(property_iri, namespace=APPN_SCHEMA)
+                    if len(range_classes) > 0:
+                        if len(range_classes) > 1:
+                            self.logger.log(
+                                logging.ERROR,
+                                __name__,
+                                IssueMessage.RANGE_CLASS_NOT_SELECTED,
+                                PROPERY_SUBJECT=iri.curie,
+                                DOMAIN_APPN_CLASS=class_iri.curie,
+                                SELECTED_PROPERTY=property_.curie,
+                                RANGE_CLASSES=", ".join(
+                                    [class_.curie for class_ in range_classes]
+                                ),
+                            )
+                            # TODO - Use placeholder property to document the property and value string
+                            # Check schema.org
+                        else:
+                            current_instance = self.find_known_instance(range_classes[0], value)
+                            if current_instance is not None:
+                                value = at(current_instance.iri)
+                            else:
+                                value = at(self.dictionary.build_iri(range_classes[0], self.namespace, value).curie)
+                    elif SCHEMA_FILE in self.dictionary.list_range_classes_for_property(property_iri, namespace=SCHEMA_SCHEMA):
+                        value = at(value)
+            if property_ in properties:
+                if isinstance(properties[property_], list):
+                    if isinstance(value, list):
+                        properties[property_] = properties[property_] + value
+                    else:
+                        properties[property_].append(value)
+                elif isinstance(value, list):
+                    properties[property_] = [properties[property_]] + value
+                else:
+                    properties[property_] = [properties[property_], value]
+            else:
+                properties[property_] = value
+
+        return
 
     def serialise(self, ro_crate_folder: Path) -> None:
         """
@@ -232,6 +251,8 @@ class Crate:
         :param ro_crate_folder: Path to folder to contain the RO-Crate
         """
         crate = ROCrate()
+        for source, destination, properties in self.files:
+            crate.add(File(crate, source=source, dest_path=destination, properties=properties))
         for iri, properties in self.known_instances.items():
             crate.add(ContextEntity(crate, iri.iri, properties))
         crate.write(ro_crate_folder)
@@ -382,5 +403,6 @@ if __name__ == "__main__":
     crate = Crate(configuration, configuration.get_organisation_by_id("LTU"), "MicroTom")
     crate.add("GrowthFacility", "GH123", {"description": "A greenhouse", "hasGrowthFacilityType": "glasshouse"})
     crate.add("GrowthFacility", "GH123", {"lights": "Bright"})
-    crate.add("Observation", parameters={"isForObservationUnit": "GH123", "hasSimpleResult": 1.2})
+    crate.add_file(Path("appn.yaml"), "./MyFirstFile.txt", {"created": "2026-09-26"} )
+    crate.add("Observation", parameters={"isForObservationUnit": "GH123", "hasResult": "./MyFirstFile.txt"})
     crate.serialise(Path("RO-Crate"))
