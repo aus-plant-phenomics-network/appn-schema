@@ -414,6 +414,8 @@ else:
             write_children(uml_file, md_file, appn_class, appn_class)
             uml_file.write("@enduml\n")
 
+    anchored_properties = set()
+
     with open("appn-schema.html", "w") as html_file:
         for l in [
             "<html>",
@@ -462,14 +464,21 @@ else:
                         write_html(html_file, f"<h3>Properties</h3>")
                         heading_written = True
                     if len(property[1]) == 0:
-                        write_html(
-                            html_file,
-                            f'<div class="property">{cls} <b>{ppty_name}</b></div>',
-                        )
-                        write_html(
-                            html_file,
-                            f'<div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/{ppty_name}">{prefixes[ppty[0]]}{ppty[1]}</a></div>',
-                        )
+                        if ppty_name in anchored_properties:
+                            write_html(
+                                html_file,
+                                f'<div class="property">{cls} <b>{ppty_name}</b></div>',
+                            )
+                        else:
+                            write_html(
+                                html_file,
+                                f'<div class="property" id="{ppty_name}">{cls} <b>{ppty_name}</b></div>',
+                            )
+                            anchored_properties.add(ppty_name)
+                        # write_html(
+                        #     html_file,
+                        #     f'<div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/{ppty_name}">{prefixes[ppty[0]]}{ppty[1]}</a></div>',
+                        # )
                         if ppty in comments:
                             write_html(
                                 html_file,

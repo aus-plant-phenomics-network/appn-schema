@@ -53,11 +53,9 @@
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a more inclusive BiologicalMaterial as a higher taxon.</div>
         <div class="property">BiologicalMaterial <b>hasMaterialSource</b> <a href="#MaterialSource">MaterialSource</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the MaterialSource for BiologicalMaterial.</div>
-        <div class="property">BiologicalMaterial <b>genus</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/genus">https://schema.plantphenomics.org.au/genus</a></div>
+        <div class="property" id="genus">BiologicalMaterial <b>genus</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A taxonomic rank above species and below family</div>
-        <div class="property">BiologicalMaterial <b>scientificName</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/scientificName">https://schema.plantphenomics.org.au/scientificName</a></div>
+        <div class="property" id="scientificName">BiologicalMaterial <b>scientificName</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A name for an organism subject to one of the codes of nomenclature</div>
         <h2 id="BiologicalUnit">Class: BiologicalUnit</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalUnit" target="_blank">https://schema.plantphenomics.org.au/BiologicalUnit</a></div>
@@ -99,8 +97,7 @@
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
         <div class="property">Control <b>hasResult</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
-        <div class="property">Control <b>hasSimpleResult</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasSimpleResult">https://schema.plantphenomics.org.au/hasSimpleResult</a></div>
+        <div class="property" id="hasSimpleResult">Control <b>hasSimpleResult</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a discrete value received as a data output from an Observation or Control assay.</div>
         <div class="property">Control <b>controls</b> <a href="#ControlledVariable">ControlledVariable</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
@@ -162,37 +159,27 @@
         <h3>Properties</h3>
         <div class="property">GrowthFacility <b>hasGrowthFacilityType</b> <a href="#GrowthFacilityType">GrowthFacilityType</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
-        <div class="property">GrowthFacility <b>containmentLevel</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/containmentLevel">https://schema.plantphenomics.org.au/containmentLevel</a></div>
+        <div class="property" id="containmentLevel">GrowthFacility <b>containmentLevel</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Provides the containment level for a GrowthFacility.</div>
-        <div class="property">GrowthFacility <b>quarantine</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/quarantine">https://schema.plantphenomics.org.au/quarantine</a></div>
+        <div class="property" id="quarantine">GrowthFacility <b>quarantine</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates if a GrowthFacility is for quarantine.</div>
         <div class="property"><a href="#Study">Study</a> <b>hasGrowthFacility</b> GrowthFacility</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a GrowthFacility used in a Study.</div>
-        <div class="property">GrowthFacility <b>airConditioning</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/airConditioning">https://schema.plantphenomics.org.au/airConditioning</a></div>
+        <div class="property" id="airConditioning">GrowthFacility <b>airConditioning</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The airConditioning capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>temperatureRange</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/temperatureRange">https://schema.plantphenomics.org.au/temperatureRange</a></div>
+        <div class="property" id="temperatureRange">GrowthFacility <b>temperatureRange</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The temperature range capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>lights</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/lights">https://schema.plantphenomics.org.au/lights</a></div>
+        <div class="property" id="lights">GrowthFacility <b>lights</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The lighting capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>shade</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/shade">https://schema.plantphenomics.org.au/shade</a></div>
+        <div class="property" id="shade">GrowthFacility <b>shade</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The shade capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>physicalContainmentLevel</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/physicalContainmentLevel">https://schema.plantphenomics.org.au/physicalContainmentLevel</a></div>
+        <div class="property" id="physicalContainmentLevel">GrowthFacility <b>physicalContainmentLevel</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The physical containment (PC) level capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>biocontainmentLevel</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/biocontainmentLevel">https://schema.plantphenomics.org.au/biocontainmentLevel</a></div>
+        <div class="property" id="biocontainmentLevel">GrowthFacility <b>biocontainmentLevel</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The biocontainment level capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>gasSupply</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/gasSupply">https://schema.plantphenomics.org.au/gasSupply</a></div>
+        <div class="property" id="gasSupply">GrowthFacility <b>gasSupply</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The gas supply capabilities of a GrowthFacility</div>
-        <div class="property">GrowthFacility <b>humidityControl</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/humidityControl">https://schema.plantphenomics.org.au/humidityControl</a></div>
+        <div class="property" id="humidityControl">GrowthFacility <b>humidityControl</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The humidity control capabilities of a GrowthFacility</div>
         <h2 id="GrowthFacilityType">Class: GrowthFacilityType</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacilityType" target="_blank">https://schema.plantphenomics.org.au/GrowthFacilityType</a></div>
@@ -265,7 +252,6 @@
         <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
         <div class="property">Observation <b>hasSimpleResult</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasSimpleResult">https://schema.plantphenomics.org.au/hasSimpleResult</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a discrete value received as a data output from an Observation or Control assay.</div>
         <div class="property">Observation <b>usesData</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
@@ -499,8 +485,7 @@
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
         <div class="property">SubstanceQuantity <b>isOfSubstance</b> <a href="#Substance">Substance</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
-        <div class="property">SubstanceQuantity <b>amount</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/amount">https://schema.plantphenomics.org.au/amount</a></div>
+        <div class="property" id="amount">SubstanceQuantity <b>amount</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale.</div>
         <div class="property">SubstanceQuantity <b>hasScale</b> <a href="#Scale">Scale</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
@@ -543,8 +528,7 @@
         <div class="parent"><a href="http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable">http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable</a></div>
         <div class="parent"><a href="http://schema.org/InstanceValue">http://schema.org/InstanceValue</a></div>
         <h3>Properties</h3>
-        <div class="property">Variable <b>hasDefaultValue</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/hasDefaultValue">https://schema.plantphenomics.org.au/hasDefaultValue</a></div>
+        <div class="property" id="hasDefaultValue">Variable <b>hasDefaultValue</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the default value for a variable.</div>
         <div class="property">Variable <b>usedMethod</b> <a href="#Method">Method</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay.</div>
@@ -565,14 +549,11 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Location">Location</a></div>
         <h3>Properties</h3>
-        <div class="property">XYZLocation <b>row</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/row">https://schema.plantphenomics.org.au/row</a></div>
+        <div class="property" id="row">XYZLocation <b>row</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the row for an XYZLocation.</div>
-        <div class="property">XYZLocation <b>column</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/column">https://schema.plantphenomics.org.au/column</a></div>
+        <div class="property" id="column">XYZLocation <b>column</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the column for an XYZLocation.</div>
-        <div class="property">XYZLocation <b>level</b></div>
-        <div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/level">https://schema.plantphenomics.org.au/level</a></div>
+        <div class="property" id="level">XYZLocation <b>level</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
     </body>
 </html>

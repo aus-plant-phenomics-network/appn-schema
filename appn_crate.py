@@ -405,4 +405,6 @@ if __name__ == "__main__":
     crate.add("GrowthFacility", "GH123", {"lights": "Bright"})
     crate.add_file(Path("appn.yaml"), "./MyFirstFile.txt", {"created": "2026-09-26"} )
     crate.add("Observation", parameters={"isForObservationUnit": "GH123", "hasResult": "./MyFirstFile.txt"})
+    crate.add("Scale", "Milliliter")
+    crate.add("Scale", "Milliliters")
     crate.serialise(Path("RO-Crate"))
