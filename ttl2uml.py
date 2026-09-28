@@ -491,10 +491,17 @@ else:
                             other_class = f'<a href="#{r[1]}">{r[1]}</a>'
                         else:
                             other_class = f'<a href="{prefixes[r[0]]}{r[1]}">{prefixes[r[0]]}{r[1]}</a>'
-                        write_html(
-                            html_file,
-                            f'<div class="property">{cls} <b>{ppty_name}</b> {other_class}</div>',
-                        )
+                        if ppty_name in anchored_properties:
+                            write_html(
+                                html_file,
+                                f'<div class="property">{cls} <b>{ppty_name}</b> {other_class}</div>',
+                            )
+                        else:
+                            write_html(
+                                html_file,
+                                f'<div class="property" id="{ppty_name}">{cls} <b>{ppty_name}</b> {other_class}</div>',
+                            )
+                            anchored_properties.add(ppty_name)
                         if ppty in comments:
                             write_html(
                                 html_file,
