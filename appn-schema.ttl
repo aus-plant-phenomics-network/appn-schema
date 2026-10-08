@@ -476,9 +476,9 @@ appn:hasScale a rdf:Property ;
 
 appn:derivesFrom a rdf:Property ;
   schema:name "derivesFrom" ;
-  rdfs:comment "Identifies the BiologicalUnit from which a Sample was sampled." ;
+  rdfs:comment "Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs." ;
   rdfs:subPropertyOf ppeo:derivesFrom ;
-  schema:domainIncludes appn:Sample ;
+  schema:domainIncludes appn:BiologicalUnit ;
   schema:rangeIncludes appn:BiologicalUnit .
 
 appn:hasBiologicalMaterial a rdf:Property ;
