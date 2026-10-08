@@ -1,9 +1,9 @@
-# SubstanceQuantity
-[https://schema.plantphenomics.org.au/SubstanceQuantity](https://schema.plantphenomics.org.au/SubstanceQuantity)
+# SubstanceAmount
+[https://schema.plantphenomics.org.au/SubstanceAmount](https://schema.plantphenomics.org.au/SubstanceAmount)
 
 A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit.
 
-![UML diagram for SubstanceQuantity](images/ttl_appn_SubstanceQuantity.png)
+![UML diagram for SubstanceAmount](images/ttl_appn_SubstanceAmount.png)
 
 ## Superclasses
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)
@@ -15,16 +15,16 @@ A Variable (representation of a quantity using a defined Scale) for a Substance 
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * http://schema.org/InstanceValue
 ## Properties
-* [appn:Treatment](appn_Treatment.md) **appn:treatsWith** appn:SubstanceQuantity
-    * Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
-* [appn:Substance](appn_Substance.md) **appn:hasComponent** appn:SubstanceQuantity
-    * Identifies a Substance or SubstanceQuantity included in the current Substance.
-* appn:SubstanceQuantity **appn:isOfSubstance** [appn:Substance](appn_Substance.md)
-    * Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
-* SubstanceQuantity https://schema.plantphenomics.org.au/amount
-* appn:SubstanceQuantity **appn:hasScale** [appn:Scale](appn_Scale.md)
+* [appn:Treatment](appn_Treatment.md) **appn:treatsWith** appn:SubstanceAmount
+    * Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
+* [appn:Substance](appn_Substance.md) **appn:hasComponent** appn:SubstanceAmount
+    * Identifies a Substance or SubstanceAmount included in the current Substance.
+* appn:SubstanceAmount **appn:isOfSubstance** [appn:Substance](appn_Substance.md)
+    * Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
+* SubstanceAmount https://schema.plantphenomics.org.au/amount
+* appn:SubstanceAmount **appn:hasScale** [appn:Scale](appn_Scale.md)
     * Identifies the Scale associated with a Variable.
-* SubstanceQuantity https://schema.plantphenomics.org.au/hasDefaultValue
+* SubstanceAmount https://schema.plantphenomics.org.au/hasDefaultValue
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** [appn:Method](appn_Method.md)
     * Identifies a Method used to conduct an Assay.
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)

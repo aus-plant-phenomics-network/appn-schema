@@ -1,5 +1,5 @@
 @startuml
-class SubstanceQuantity  #line.bold
+class SubstanceAmount  #line.bold
 class Variable  
 class Trait  
 class "ppeo:trait" #EEFFCC 
@@ -15,18 +15,18 @@ class "cdi:RepresentedVariable" #CCEEFF
 Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"
-SubstanceQuantity --|> Variable
+SubstanceAmount --|> Variable
 class Treatment 
-Treatment --> SubstanceQuantity : treatsWith
+Treatment --> SubstanceAmount : treatsWith
 class Substance 
-Substance --> SubstanceQuantity : hasComponent
+Substance --> SubstanceAmount : hasComponent
 class Substance 
-SubstanceQuantity --> Substance : isOfSubstance
-class SubstanceQuantity #line.bold {
+SubstanceAmount --> Substance : isOfSubstance
+class SubstanceAmount #line.bold {
     amount
 }
 class Scale 
-SubstanceQuantity --> Scale : hasScale
+SubstanceAmount --> Scale : hasScale
 class Variable #line.bold {
     hasDefaultValue
 }

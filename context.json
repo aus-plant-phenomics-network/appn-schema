@@ -43,7 +43,7 @@
     "SpatialLocation": "https://schema.plantphenomics.org.au/SpatialLocation",
     "Study": "https://schema.plantphenomics.org.au/Study",
     "Substance": "https://schema.plantphenomics.org.au/Substance",
-    "SubstanceQuantity": "https://schema.plantphenomics.org.au/SubstanceQuantity",
+    "SubstanceAmount": "https://schema.plantphenomics.org.au/SubstanceAmount",
     "Trait": "https://schema.plantphenomics.org.au/Trait",
     "Treatment": "https://schema.plantphenomics.org.au/Treatment",
     "Variable": "https://schema.plantphenomics.org.au/Variable",

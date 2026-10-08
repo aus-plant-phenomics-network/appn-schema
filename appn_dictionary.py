@@ -515,8 +515,9 @@ class Dictionary:
         :param namespace: Optional namespace for filtering results
         :return: List of `IRI`s for classes
         """
+        class_subclasses = self.list_subclasses(RDFS_CLASS)
         return self.list_iris(
-            ["{{ ?q rdf:type rdfs:Class }} UNION {{ ?q rdf:type owl:Class }}."], f"classes|{namespace}", namespace
+            [" UNION ".join([f"{{ ?q rdf:type <{class_.iri}> }}" for class_ in class_subclasses]) + "."], f"classes|{namespace}", namespace
         )
 
     def list_properties(
@@ -532,8 +533,9 @@ class Dictionary:
         :param namespace: Optional namespace for filtering results
         :return: List of `IRI`s for properties
         """
+        property_subclasses = self.list_subclasses(RDF_PROPERTY)
         return self.list_iris(
-            ["{{ ?q rdf:type rdfs:Property }} UNION {{ ?q rdf:type owl:AnnotationProperty }} UNION {{ ?q rdf:type owl:ObjectProperty }} UNION {{ ?q rdf:type owl:DatatypeProperty }}"], f"properties|{namespace}", namespace
+            [" UNION ".join([f"{{ ?q rdf:type <{property_.iri}> }}" for property_ in property_subclasses]) + "."], f"properties|{namespace}", namespace
         )
 
     def list_superclasses(
@@ -1193,7 +1195,10 @@ class Dictionary:
         property_term = self.get_iri(transitive_property)
 
         if matches is None:
-            matches = [subject_term]
+            if namespace is None or subject_term.ns == namespace:
+                matches = [subject_term]
+            else:
+                matches = []
 
         if reverse:
             query = """

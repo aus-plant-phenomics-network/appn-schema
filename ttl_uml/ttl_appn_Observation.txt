@@ -9,9 +9,9 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
-class "sosa:Execution" #FFCCEE 
-Assay --|> "sosa:Execution"
 Observation --|> Assay
+class "sosa:Observation" #FFCCEE 
+Observation --|> "sosa:Observation"
 class "ppeo:observation" #EEFFCC 
 Observation --|> "ppeo:observation"
 class Observer 

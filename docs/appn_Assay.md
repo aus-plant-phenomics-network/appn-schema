@@ -9,7 +9,6 @@ A research action that observes or modifies a set of ObservationUnits.
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Assay **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.

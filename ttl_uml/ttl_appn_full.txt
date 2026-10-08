@@ -33,7 +33,7 @@ class SoftwareApplication
 class SpatialLocation
 class Study
 class Substance
-class SubstanceQuantity
+class SubstanceAmount
 class Trait
 class Treatment
 class Variable
@@ -74,14 +74,16 @@ package "ppeo" {
     class "ppeo:trait" #EEFFCC
 }
 package "sosa" {
+    class "sosa:Actuation" #FFCCEE
     class "sosa:Actuator" #FFCCEE
-    class "sosa:Execution" #FFCCEE
     class "sosa:FeatureOfInterest" #FFCCEE
+    class "sosa:Observation" #FFCCEE
     class "sosa:Platform" #FFCCEE
     class "sosa:Procedure" #FFCCEE
     class "sosa:Property" #FFCCEE
     class "sosa:Sample" #FFCCEE
     class "sosa:Sampler" #FFCCEE
+    class "sosa:Sampling" #FFCCEE
     class "sosa:Sensor" #FFCCEE
 }
 package "cdi" {
@@ -105,17 +107,20 @@ Investigation --|> "ppeo:investigation"
 Study --|> ResearchActivity
 Study --|> "ppeo:study"
 Assay --|> ResearchActivity
-Assay --|> "sosa:Execution"
 Method --|> "ppeo:method"
 Method --|> "sosa:Procedure"
 Method --|> "prov:Plan"
 Method --|> "schema:HowTo"
 Observation --|> "schema:Observation"
 Observation --|> Assay
+Observation --|> "sosa:Observation"
 Observation --|> "ppeo:observation"
+Control --|> "sosa:Actuation"
 Control --|> Assay
+Sampling --|> "sosa:Sampling"
 Sampling --|> Assay
 Treatment --|> "ppeo:event"
+Treatment --|> "sosa:Actuation"
 Treatment --|> Assay
 ObservationUnit --|> "schema:Thing"
 ObservationUnit --|> "prov:Entity"
@@ -133,7 +138,7 @@ Variable --|> "schema:InstanceValue"
 ObservedVariable --|> "ppeo:observed_variable"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
-SubstanceQuantity --|> Variable
+SubstanceAmount --|> Variable
 Observer --|> "sosa:Sensor"
 Controller --|> "sosa:Actuator"
 Sampler --|> "sosa:Sampler"

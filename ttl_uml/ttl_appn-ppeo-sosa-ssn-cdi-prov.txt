@@ -33,7 +33,7 @@ class SoftwareApplication
 class SpatialLocation
 class Study
 class Substance
-class SubstanceQuantity
+class SubstanceAmount
 class Trait
 class Treatment
 class Variable
@@ -75,7 +75,7 @@ Variable --|> Trait
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> Variable
 ControlledVariable --|> Variable
-SubstanceQuantity --|> Variable
+SubstanceAmount --|> Variable
 Sensor --|> Observer
 Sensor --|> ObservationUnit
 Sensor --|> "schema:IndividualProduct"

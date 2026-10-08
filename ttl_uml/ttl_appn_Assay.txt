@@ -6,8 +6,6 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
-class "sosa:Execution" #FFCCEE 
-Assay --|> "sosa:Execution"
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 

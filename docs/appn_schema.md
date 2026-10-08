@@ -34,7 +34,7 @@
 * [appn:SpatialLocation](appn_SpatialLocation.md)
 * [appn:Study](appn_Study.md)
 * [appn:Substance](appn_Substance.md)
-* [appn:SubstanceQuantity](appn_SubstanceQuantity.md)
+* [appn:SubstanceAmount](appn_SubstanceAmount.md)
 * [appn:Trait](appn_Trait.md)
 * [appn:Treatment](appn_Treatment.md)
 * [appn:Variable](appn_Variable.md)

@@ -6,11 +6,11 @@ An Assay that derives a new representative ObservationUnit from an existing Obse
 ![UML diagram for Sampling](images/ttl_appn_Sampling.png)
 
 ## Superclasses
+* http://www.w3.org/ns/sosa/Sampling
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Sampling **appn:madeBySampler** [appn:Sampler](appn_Sampler.md)
     * Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.

@@ -1,5 +1,7 @@
 @startuml
 class Sampling  #line.bold
+class "sosa:Sampling" #FFCCEE 
+Sampling --|> "sosa:Sampling"
 class Assay  
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
@@ -7,8 +9,6 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
-class "sosa:Execution" #FFCCEE 
-Assay --|> "sosa:Execution"
 Sampling --|> Assay
 class Sampler 
 Sampling --> Sampler : madeBySampler

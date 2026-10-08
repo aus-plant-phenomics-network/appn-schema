@@ -2,6 +2,8 @@
 class Treatment  #line.bold
 class "ppeo:event" #EEFFCC 
 Treatment --|> "ppeo:event"
+class "sosa:Actuation" #FFCCEE 
+Treatment --|> "sosa:Actuation"
 class Assay  
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
@@ -9,15 +11,13 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
-class "sosa:Execution" #FFCCEE 
-Assay --|> "sosa:Execution"
 Treatment --|> Assay
 class Controller 
 Treatment --> Controller : madeByController
 class Substance 
 Treatment --> Substance : treatsWith
-class SubstanceQuantity 
-Treatment --> SubstanceQuantity : treatsWith
+class SubstanceAmount 
+Treatment --> SubstanceAmount : treatsWith
 class ObservationUnit 
 Assay --> ObservationUnit : isForObservationUnit
 class Method 

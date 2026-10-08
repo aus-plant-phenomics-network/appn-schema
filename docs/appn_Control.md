@@ -6,11 +6,11 @@ An Assay that modifies a property of an ObservationUnit.
 ![UML diagram for Control](images/ttl_appn_Control.png)
 
 ## Superclasses
+* http://www.w3.org/ns/sosa/Actuation
 * [https://schema.plantphenomics.org.au/Assay](appn_Assay.md)
 * [https://schema.plantphenomics.org.au/ResearchActivity](appn_ResearchActivity.md)
 * http://schema.org/Action
 * http://www.w3.org/ns/prov#Activity
-* http://www.w3.org/ns/sosa/Execution
 ## Properties
 * appn:Control **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.

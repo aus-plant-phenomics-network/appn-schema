@@ -1,7 +1,7 @@
 # Substance
 [https://schema.plantphenomics.org.au/Substance](https://schema.plantphenomics.org.au/Substance)
 
-A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity.
+A biological or chemical entity used in a Treatment assay or referenced in a SubstanceAmount.
 
 ![UML diagram for Substance](images/ttl_appn_Substance.png)
 
@@ -14,13 +14,13 @@ A biological or chemical entity used in a Treatment assay or referenced in a Sub
 * https://bioschemas.org/terms/Substance
 ## Properties
 * [appn:Treatment](appn_Treatment.md) **appn:treatsWith** appn:Substance
-    * Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
+    * Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.
 * appn:Substance **appn:hasComponent** [appn:Substance](appn_Substance.md)
-    * Identifies a Substance or SubstanceQuantity included in the current Substance.
-* appn:Substance **appn:hasComponent** [appn:SubstanceQuantity](appn_SubstanceQuantity.md)
-    * Identifies a Substance or SubstanceQuantity included in the current Substance.
-* [appn:SubstanceQuantity](appn_SubstanceQuantity.md) **appn:isOfSubstance** appn:Substance
-    * Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
+    * Identifies a Substance or SubstanceAmount included in the current Substance.
+* appn:Substance **appn:hasComponent** [appn:SubstanceAmount](appn_SubstanceAmount.md)
+    * Identifies a Substance or SubstanceAmount included in the current Substance.
+* [appn:SubstanceAmount](appn_SubstanceAmount.md) **appn:isOfSubstance** appn:Substance
+    * Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.
 * [appn:ObservationUnit](appn_ObservationUnit.md) **appn:inheritsContext** [appn:ObservationUnit](appn_ObservationUnit.md)

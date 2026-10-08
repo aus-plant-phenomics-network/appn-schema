@@ -94,10 +94,6 @@ def setup_parser() -> argparse.ArgumentParser:
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
     for cmd in [
-        "superclasses",
-        "superproperties",
-        "subclasses",
-        "subproperties",
         "instances",
         "instances-specific",
         "domain-properties",
@@ -113,6 +109,17 @@ def setup_parser() -> argparse.ArgumentParser:
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
         )
         subparser.add_argument("iri")
+    for cmd in [
+        "superclasses",
+        "superproperties",
+        "subclasses",
+        "subproperties",
+    ]:
+        subparser = subparsers.add_parser(
+            cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
+        )
+        subparser.add_argument("iri")
+        subparser.add_argument("-n", "--namespace")
     for cmd in [
         "domain-range-properties",
     ]:
@@ -271,7 +278,10 @@ def execute_query(
     elif args["query"] == "superclasses":
         print(
             d.format_iri_list(
-                d.list_superclasses(args["iri"]),
+                d.list_superclasses(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None,
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )
@@ -280,7 +290,10 @@ def execute_query(
     elif args["query"] == "superproperties":
         print(
             d.format_iri_list(
-                d.list_superproperties(args["iri"]),
+                d.list_superproperties(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None,
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )
@@ -289,7 +302,10 @@ def execute_query(
     elif args["query"] == "subclasses":
         print(
             d.format_iri_list(
-                d.list_subclasses(args["iri"]),
+                d.list_subclasses(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None,
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )
@@ -298,7 +314,10 @@ def execute_query(
     elif args["query"] == "subproperties":
         print(
             d.format_iri_list(
-                d.list_subproperties(args["iri"]),
+                d.list_subproperties(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None,
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )

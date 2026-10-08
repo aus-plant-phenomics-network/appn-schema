@@ -1,5 +1,7 @@
 @startuml
 class Control  #line.bold
+class "sosa:Actuation" #FFCCEE 
+Control --|> "sosa:Actuation"
 class Assay  
 class ResearchActivity  
 class "schema:Action" #DDFFDD 
@@ -7,8 +9,6 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 Assay --|> ResearchActivity
-class "sosa:Execution" #FFCCEE 
-Assay --|> "sosa:Execution"
 Control --|> Assay
 class Controller 
 Control --> Controller : madeByController

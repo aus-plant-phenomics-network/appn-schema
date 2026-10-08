@@ -26,7 +26,6 @@
         <div class="description"><b>Assay:</b> A research action that observes or modifies a set of ObservationUnits.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#ResearchActivity">ResearchActivity</a></div>
-        <div class="parent"><a href="http://www.w3.org/ns/sosa/Execution">http://www.w3.org/ns/sosa/Execution</a></div>
         <h3>Properties</h3>
         <div class="property" id="isForObservationUnit">Assay <b>isForObservationUnit</b> <a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.</div>
@@ -89,6 +88,7 @@
         <img src="image/ttl_appn_Control.png"/>
         <div class="description"><b>Control:</b> An Assay that modifies a property of an ObservationUnit.</div>
         <h3>Superclasses</h3>
+        <div class="parent"><a href="http://www.w3.org/ns/sosa/Actuation">http://www.w3.org/ns/sosa/Actuation</a></div>
         <div class="parent"><a href="#Assay">Assay</a></div>
         <h3>Properties</h3>
         <div class="property" id="madeByController">Control <b>madeByController</b> <a href="#Controller">Controller</a></div>
@@ -243,6 +243,7 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://schema.org/Observation">http://schema.org/Observation</a></div>
         <div class="parent"><a href="#Assay">Assay</a></div>
+        <div class="parent"><a href="http://www.w3.org/ns/sosa/Observation">http://www.w3.org/ns/sosa/Observation</a></div>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observation">http://purl.org/ppeo/PPEO.owl#observation</a></div>
         <h3>Properties</h3>
         <div class="property" id="madeByObserver">Observation <b>madeByObserver</b> <a href="#Observer">Observer</a></div>
@@ -387,6 +388,7 @@
         <img src="image/ttl_appn_Sampling.png"/>
         <div class="description"><b>Sampling:</b> An Assay that derives a new representative ObservationUnit from an existing ObservationUnit.</div>
         <h3>Superclasses</h3>
+        <div class="parent"><a href="http://www.w3.org/ns/sosa/Sampling">http://www.w3.org/ns/sosa/Sampling</a></div>
         <div class="parent"><a href="#Assay">Assay</a></div>
         <h3>Properties</h3>
         <div class="property" id="madeBySampler">Sampling <b>madeBySampler</b> <a href="#Sampler">Sampler</a></div>
@@ -403,7 +405,7 @@
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>hasScale</b> Scale</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
-        <div class="property"><a href="#SubstanceQuantity">SubstanceQuantity</a> <b>hasScale</b> Scale</div>
+        <div class="property"><a href="#SubstanceAmount">SubstanceAmount</a> <b>hasScale</b> Scale</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
         <h2 id="Sensor">Class: Sensor</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sensor" target="_blank">https://schema.plantphenomics.org.au/Sensor</a></div>
@@ -457,35 +459,35 @@
         <h2 id="Substance">Class: Substance</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Substance" target="_blank">https://schema.plantphenomics.org.au/Substance</a></div>
         <img src="image/ttl_appn_Substance.png"/>
-        <div class="description"><b>Substance:</b> A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity.</div>
+        <div class="description"><b>Substance:</b> A biological or chemical entity used in a Treatment assay or referenced in a SubstanceAmount.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="parent"><a href="https://bioschemas.org/terms/Substance">https://bioschemas.org/terms/Substance</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> Substance</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
         <div class="property" id="hasComponent">Substance <b>hasComponent</b> <a href="#Substance">Substance</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
-        <div class="property">Substance <b>hasComponent</b> <a href="#SubstanceQuantity">SubstanceQuantity</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
-        <div class="property"><a href="#SubstanceQuantity">SubstanceQuantity</a> <b>isOfSubstance</b> Substance</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
-        <h2 id="SubstanceQuantity">Class: SubstanceQuantity</h2>
-        <div class="uri"><a href="https://schema.plantphenomics.org.au/SubstanceQuantity" target="_blank">https://schema.plantphenomics.org.au/SubstanceQuantity</a></div>
-        <img src="image/ttl_appn_SubstanceQuantity.png"/>
-        <div class="description"><b>SubstanceQuantity:</b> A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceAmount included in the current Substance.</div>
+        <div class="property">Substance <b>hasComponent</b> <a href="#SubstanceAmount">SubstanceAmount</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceAmount included in the current Substance.</div>
+        <div class="property"><a href="#SubstanceAmount">SubstanceAmount</a> <b>isOfSubstance</b> Substance</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
+        <h2 id="SubstanceAmount">Class: SubstanceAmount</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/SubstanceAmount" target="_blank">https://schema.plantphenomics.org.au/SubstanceAmount</a></div>
+        <img src="image/ttl_appn_SubstanceAmount.png"/>
+        <div class="description"><b>SubstanceAmount:</b> A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Variable">Variable</a></div>
         <h3>Properties</h3>
-        <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> SubstanceQuantity</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
-        <div class="property"><a href="#Substance">Substance</a> <b>hasComponent</b> SubstanceQuantity</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceQuantity included in the current Substance.</div>
-        <div class="property" id="isOfSubstance">SubstanceQuantity <b>isOfSubstance</b> <a href="#Substance">Substance</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
-        <div class="property" id="amount">SubstanceQuantity <b>amount</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale.</div>
-        <div class="property" id="hasScale">SubstanceQuantity <b>hasScale</b> <a href="#Scale">Scale</a></div>
+        <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> SubstanceAmount</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="property"><a href="#Substance">Substance</a> <b>hasComponent</b> SubstanceAmount</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceAmount included in the current Substance.</div>
+        <div class="property" id="isOfSubstance">SubstanceAmount <b>isOfSubstance</b> <a href="#Substance">Substance</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
+        <div class="property" id="amount">SubstanceAmount <b>amount</b></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale.</div>
+        <div class="property" id="hasScale">SubstanceAmount <b>hasScale</b> <a href="#Scale">Scale</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
         <h2 id="Trait">Class: Trait</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Trait" target="_blank">https://schema.plantphenomics.org.au/Trait</a></div>
@@ -505,17 +507,18 @@
         <h2 id="Treatment">Class: Treatment</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Treatment" target="_blank">https://schema.plantphenomics.org.au/Treatment</a></div>
         <img src="image/ttl_appn_Treatment.png"/>
-        <div class="description"><b>Treatment:</b> An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.).</div>
+        <div class="description"><b>Treatment:</b> An Assay that adds a Substance or a SubstanceAmount to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.).</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#event">http://purl.org/ppeo/PPEO.owl#event</a></div>
+        <div class="parent"><a href="http://www.w3.org/ns/sosa/Actuation">http://www.w3.org/ns/sosa/Actuation</a></div>
         <div class="parent"><a href="#Assay">Assay</a></div>
         <h3>Properties</h3>
         <div class="property">Treatment <b>madeByController</b> <a href="#Controller">Controller</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
         <div class="property" id="treatsWith">Treatment <b>treatsWith</b> <a href="#Substance">Substance</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
-        <div class="property">Treatment <b>treatsWith</b> <a href="#SubstanceQuantity">SubstanceQuantity</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="property">Treatment <b>treatsWith</b> <a href="#SubstanceAmount">SubstanceAmount</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
         <h2 id="Variable">Class: Variable</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Variable" target="_blank">https://schema.plantphenomics.org.au/Variable</a></div>
         <img src="image/ttl_appn_Variable.png"/>
@@ -539,7 +542,7 @@
         <h3>Subclasses</h3>
         <div class="child"><a href="#ObservedVariable">ObservedVariable</a></div>
         <div class="child"><a href="#ControlledVariable">ControlledVariable</a></div>
-        <div class="child"><a href="#SubstanceQuantity">SubstanceQuantity</a></div>
+        <div class="child"><a href="#SubstanceAmount">SubstanceAmount</a></div>
         <h2 id="XYZLocation">Class: XYZLocation</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/XYZLocation" target="_blank">https://schema.plantphenomics.org.au/XYZLocation</a></div>
         <img src="image/ttl_appn_XYZLocation.png"/>

@@ -18,4 +18,4 @@ A concept represented by a Variable associated with an ObservationUnit. In the D
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)
 * [https://schema.plantphenomics.org.au/ObservedVariable](appn_ObservedVariable.md)
 * [https://schema.plantphenomics.org.au/ControlledVariable](appn_ControlledVariable.md)
-* [https://schema.plantphenomics.org.au/SubstanceQuantity](appn_SubstanceQuantity.md)
+* [https://schema.plantphenomics.org.au/SubstanceAmount](appn_SubstanceAmount.md)

@@ -307,7 +307,7 @@ for _, row in df.iterrows():
         for c in components:
             if not math.isnan(row[c]):
                 quantities.append(
-                    crate.add("SubstanceQuantity",
+                    crate.add("SubstanceAmount",
                         f"{recipe}_{c}",
                         {
                             "amount": row[c],
@@ -471,7 +471,7 @@ for f in Path("../appn-ro-crate-datapackaging/ltu/Potting").glob("*/*.csv"):
                 "hasGrowthFacilityType": gftPot,
                 "hasLocation": [location],
             }
-            tq = crate.add("SubstanceQuantity",
+            tq = crate.add("SubstanceAmount",
                 f"cocoperlite_35_65_{row['Pot Size']}",
                 {
                     "isOfSubstance": cocoperlite,
@@ -530,7 +530,7 @@ for f in Path("../appn-ro-crate-datapackaging/ltu/Feeding").glob("*/*.csv"):
         plant = f"https://data.plantphenomics.org.au/LTU/MicroTom/bu_{row['Plant UID']}"
         nutrient = f"https://data.plantphenomics.org.au/LTU/MicroTom/substance_{row['Nutrient Recipe ID'][0].upper()+row['Nutrient Recipe ID'][1:]}"
         amount = row["Treatment Amount (mL)"]
-        sq = crate.add("SubstanceQuantity",
+        sq = crate.add("SubstanceAmount",
             f"{nutrient}_{amount}",
             {   
                 "name": f"{amount} mL {row['Nutrient Recipe ID']}",
