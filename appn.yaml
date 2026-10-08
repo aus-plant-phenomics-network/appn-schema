@@ -22,6 +22,7 @@ namespace_paths:
   "http://www.w3.org/ns/sosa/": "./schema_assets/sosa.ttl"
   "http://www.w3.org/ns/ssn/": "./schema_assets/ssn.ttl"
   "http://rs.tdwg.org/dwc/terms/": "./schema_assets/dwc-terms.ttl"
+  "http://www.w3.org/2002/07/owl#": "./schema_assets/owl.ttl"
   "https://w3id.org/cdif/": "./schema_assets/cdifCoreStructuredSchema.json"
   "https://id.plantphenomics.org.au/APPN/": "./vocabulary/APPN/APPN_vocabulary.ttl"
   "https://id.plantphenomics.org.au/ANU/": "./vocabulary/ANU/ANU_vocabulary.ttl"
@@ -39,7 +40,7 @@ namespace_paths:
 # earlier in this list will take precedence over one with the same name listed
 # later.
 vocabulary_column_namespaces:
-  - "https://schema.org/"
+  - "http://schema.org/"
   - "http://www.w3.org/2004/02/skos/core#"
   - "http://purl.org/dc/terms/"
 
@@ -49,13 +50,18 @@ vocabulary_column_namespaces:
 # lowest in the hierarchy, or a list of class names.
 explicit_classes:
   "https://schema.plantphenomics.org.au/": "all"
-  "https://schema.org/": "first"
+  "http://schema.org/": "first"
 
 # Filter for classes that should NOT be included in explicit classes. A list of IRIs
 # for classes.
 excluded_classes:
   - "https://schema.plantphenomics.org.au/Variable"
-  - "https://schema.org/Thing"
+  - "https://schema.plantphenomics.org.au/Observer"
+  - "https://schema.plantphenomics.org.au/Controller"
+  - "https://schema.plantphenomics.org.au/Sampler"
+  - "http://schema.org/Enumeration"
+  - "http://schema.org/Intangible"
+  - "http://schema.org/Thing"
 
 # Overrides for how sheet names are interpreted. 
 sheet_aliases:
@@ -81,6 +87,9 @@ column_aliases:
 # the class instance should reference itself using the named property.
 completion_rules:
   "ObservedVariable":
+    "https://schema.plantphenomics.org.au/hasTrait":
+      "type": "reflexive"     
+  "ControlledVariable":
     "https://schema.plantphenomics.org.au/hasTrait":
       "type": "reflexive"     
 
@@ -113,9 +122,10 @@ class_abbreviations:
 # Additional properties to be added whenever a specified property is added.
 # Both properties get the same value.
 property_expansions:
-  "https://schema.org/name":
+  "http://schema.org/name":
     - "http://purl.org/dc/terms/title"
-  "https://schema.org/description":
+    - "http://www.w3.org/2004/02/skos/core#prefLabel"
+  "http://schema.org/description":
     - "http://purl.org/dc/terms/description"
 
 # Classes for which properties may be embedded in the definition of another

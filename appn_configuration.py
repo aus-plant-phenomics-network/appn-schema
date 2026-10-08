@@ -45,6 +45,7 @@ CDI_SCHEMA = "http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/"
 DC_SCHEMA = "http://purl.org/dc/terms/"
 DWC_SCHEMA = "http://rs.tdwg.org/dwc/terms/"
 CDIF_SCHEMA = "https://w3id.org/cdif/"
+OWL_SCHEMA = "http://www.w3.org/2002/07/owl#"
 PPEO_SCHEMA = "http://purl.org/ppeo/PPEO.owl#"
 PROV_SCHEMA = "http://www.w3.org/ns/prov#"
 RDF_SCHEMA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -75,6 +76,7 @@ DEFAULT_PREFIXES: dict[str, str] = {
     DC_SCHEMA: "dcterms",
     DWC_SCHEMA: "dwc",
     CDIF_SCHEMA: "cdif",
+    OWL_SCHEMA: "owl",
     PPEO_SCHEMA: "ppeo",
     RDF_SCHEMA: "rdf",
     RDFS_SCHEMA: "rdfs",
