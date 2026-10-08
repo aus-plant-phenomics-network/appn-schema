@@ -56,6 +56,7 @@ NAME_REPLACEMENT_PATTERN = re.compile(r"[\s'\"\\?;:,°*+(){}/\[\]-]+")
 # Convenience versions of regularly used IRIs
 RDF_TYPE = IRI(f"{RDF_SCHEMA}type")
 RDF_PROPERTY = IRI(f"{RDF_SCHEMA}Property")
+RDFS_CLASS = IRI(f"{RDFS_SCHEMA}Class")
 RDFS_LABEL = IRI(f"{RDFS_SCHEMA}label")
 SCHEMA_DOMAIN_INCLUDES = IRI(f"{SCHEMA_SCHEMA}domainIncludes")
 SCHEMA_NAME = IRI(f"{SCHEMA_SCHEMA}name")
