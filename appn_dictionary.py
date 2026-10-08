@@ -35,6 +35,7 @@ from appn_types import NamespaceDefinition, Organisation
 from appn_configuration import (
     Configuration,
     ExplicitClassesFilter,
+    OWL_SCHEMA,
     RDF_SCHEMA,
     RDFS_SCHEMA,
     SCHEMA_SCHEMA,
@@ -251,6 +252,7 @@ class Dictionary:
         """
         success = True
         iris = set()
+        self.load(OWL_SCHEMA)
         for s, o, p in self._graph:
             for iri in [s, o, p]:
                 if isinstance(iri, URIRef) and iri not in iris:
@@ -510,7 +512,7 @@ class Dictionary:
         :return: List of `IRI`s for classes
         """
         return self.list_iris(
-            ["?q rdf:type rdfs:Class"], f"classes|{namespace}", namespace
+            ["{{ ?q rdf:type rdfs:Class }} UNION {{ ?q rdf:type owl:Class }}."], f"classes|{namespace}", namespace
         )
 
     def list_properties(
@@ -527,7 +529,7 @@ class Dictionary:
         :return: List of `IRI`s for properties
         """
         return self.list_iris(
-            ["?q rdf:type rdf:Property"], f"properties|{namespace}", namespace
+            ["{{ ?q rdf:type rdfs:Property }} UNION {{ ?q rdf:type owl:AnnotationProperty }} UNION {{ ?q rdf:type owl:ObjectProperty }} UNION {{ ?q rdf:type owl:DatatypeProperty }}"], f"properties|{namespace}", namespace
         )
 
     def list_superclasses(
@@ -645,7 +647,7 @@ class Dictionary:
         """
         class_iri = self.get_iri(class_iri)
         query_strings = [
-            f"?q schema:domainIncludes <{class_.iri}>"
+            f"{{ ?q schema:domainIncludes <{class_.iri}> }} UNION {{ ?q rdfs:domain <{class_.iri}> }} ."
             for class_ in self.list_superclasses(class_iri)
         ]
         return self.list_iris(
@@ -669,7 +671,7 @@ class Dictionary:
         """
         class_iri = self.get_iri(class_iri)
         query_strings = [
-            f"?q schema:rangeIncludes <{class_.iri}>"
+            f"{{ ?q schema:rangeIncludes <{class_.iri}> }} UNION {{ ?q rdfs:range <{class_.iri}> }} ."
             for class_ in self.list_superclasses(class_iri)
         ]
         return self.list_iris(
@@ -694,7 +696,7 @@ class Dictionary:
         """
         property_iri = self.get_iri(property_iri)
         query_strings = [
-            f"<{property_}> schema:domainIncludes ?q"
+            f"{{ <{property_}> schema:domainIncludes ?q }} UNION {{ <{property_}> rdfs:domain ?q }} ."
             for property_ in self.list_superproperties(property_iri)
         ]
         return self.list_iris(
@@ -719,7 +721,7 @@ class Dictionary:
         """
         property_iri = self.get_iri(property_iri)
         query_strings = [
-            f"<{property_}> schema:rangeIncludes ?q"
+            f"{{ <{property_}> schema:rangeIncludes ?q }} UNION {{ <{property_}> rdfs:range ?q }} ."
             for property_ in self.list_superproperties(property_iri)
         ]
         return self.list_iris(
@@ -916,7 +918,7 @@ class Dictionary:
 
         key = f"explicit_classes|{main_class}|is_concept"
 
-        # `explicit_classes` is a cache to minimise redundant calculations
+        # Cache to minimise redundant calculations
         if key in self.cache:
             return self.cache[key].copy()
 
@@ -1060,7 +1062,6 @@ class Dictionary:
         :return: IRI for type if one exists
         """
         triples = self.list_triples_for_subject(iri)
-
         iri_types = set()
 
         for t in triples:
@@ -1073,7 +1074,7 @@ class Dictionary:
         if len(iri_types) > 1:
             for type_iri in list(iri_types):
                 for superclass in self.list_superclasses(type_iri):
-                    if superclass in iri_types:
+                    if superclass != type_iri and superclass in iri_types:
                         iri_types.remove(superclass)
 
         if len(iri_types) > 1:

@@ -355,7 +355,7 @@ def execute_query(
             )
         )
 
-    elif args["query"] == "domain_properties":
+    elif args["query"] == "domain-properties":
         print(
             d.format_iri_list(
                 d.list_domain_properties_for_class(args["iri"]),
@@ -364,7 +364,7 @@ def execute_query(
             )
         )
 
-    elif args["query"] == "range_properties":
+    elif args["query"] == "range-properties":
         print(
             d.format_iri_list(
                 d.list_range_properties_for_class(args["iri"]),
@@ -373,7 +373,7 @@ def execute_query(
             )
         )
 
-    elif args["query"] == "domain_range_properties":
+    elif args["query"] == "domain-range-properties":
         print(
             d.format_iri_list(
                 d.list_properties_by_domain_and_range(args["domain"], args["range"]),
