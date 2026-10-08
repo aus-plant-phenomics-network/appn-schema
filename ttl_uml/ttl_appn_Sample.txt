@@ -20,11 +20,10 @@ BiologicalUnit --|> "bio:BioChemEntity"
 Sample --|> BiologicalUnit
 class Sampling 
 Sampling --> Sample : producesSample
-class BiologicalUnit 
-Sample --> BiologicalUnit : derivesFrom
 class BiologicalUnitType 
 BiologicalUnit --> BiologicalUnitType : hasBiologicalUnitType
-Sample --> BiologicalUnit : derivesFrom
+class BiologicalUnit 
+BiologicalUnit --> BiologicalUnit : derivesFrom
 class BiologicalMaterial 
 BiologicalUnit --> BiologicalMaterial : hasBiologicalMaterial
 class Assay 

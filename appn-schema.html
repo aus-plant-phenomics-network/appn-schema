@@ -67,8 +67,8 @@
         <h3>Properties</h3>
         <div class="property" id="hasBiologicalUnitType">BiologicalUnit <b>hasBiologicalUnitType</b> <a href="#BiologicalUnitType">BiologicalUnitType</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a BiologicalUnit to its type.</div>
-        <div class="property"><a href="#Sample">Sample</a> <b>derivesFrom</b> BiologicalUnit</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalUnit from which a Sample was sampled.</div>
+        <div class="property" id="derivesFrom">BiologicalUnit <b>derivesFrom</b> <a href="#BiologicalUnit">BiologicalUnit</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs.</div>
         <div class="property" id="hasBiologicalMaterial">BiologicalUnit <b>hasBiologicalMaterial</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalMaterial for a BiologicalUnit.</div>
         <h3>Subclasses</h3>
@@ -371,8 +371,6 @@
         <h3>Properties</h3>
         <div class="property"><a href="#Sampling">Sampling</a> <b>producesSample</b> Sample</div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Sample produced by a Sampling assay.</div>
-        <div class="property" id="derivesFrom">Sample <b>derivesFrom</b> <a href="#BiologicalUnit">BiologicalUnit</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalUnit from which a Sample was sampled.</div>
         <h2 id="Sampler">Class: Sampler</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sampler" target="_blank">https://schema.plantphenomics.org.au/Sampler</a></div>
         <img src="image/ttl_appn_Sampler.png"/>

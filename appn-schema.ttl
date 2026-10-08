@@ -35,8 +35,7 @@ appn:Study a rdfs:Class ;
 appn:Assay a rdfs:Class ;
   schema:name "Assay" ;
   rdfs:comment "A research action that observes or modifies a set of ObservationUnits." ;
-  rdfs:subClassOf appn:ResearchActivity ;
-  rdfs:subClassOf sosa:Execution .
+  rdfs:subClassOf appn:ResearchActivity .
 
 appn:Method a rdfs:Class ;
   schema:name "Method" ;
@@ -51,22 +50,26 @@ appn:Observation a rdfs:Class ;
   rdfs:comment "An Assay that observes or measures properties of an ObservationUnit returning results as property values or images." ;
   rdfs:subClassOf schema:Observation ;
   rdfs:subClassOf appn:Assay ;
+  rdfs:subClassOf sosa:Observation ;
   rdfs:subClassOf ppeo:observation .
 
 appn:Control a rdfs:Class ;
   schema:name "Control" ;
   rdfs:comment "An Assay that modifies a property of an ObservationUnit." ;
+  rdfs:subClassOf sosa:Actuation ;
   rdfs:subClassOf appn:Assay .
 
 appn:Sampling a rdfs:Class ;
   schema:name "Sampling" ;
   rdfs:comment "An Assay that derives a new representative ObservationUnit from an existing ObservationUnit." ;
+  rdfs:subClassOf sosa:Sampling ;
   rdfs:subClassOf appn:Assay .
 
 appn:Treatment a rdfs:Class ;
   schema:name "Treatment" ;
-  rdfs:comment "An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
+  rdfs:comment "An Assay that adds a Substance or a SubstanceAmount to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
   rdfs:subClassOf ppeo:event ;
+  rdfs:subClassOf sosa:Actuation ;
   rdfs:subClassOf appn:Assay .
 
 appn:ObservationUnit a rdfs:Class ;
@@ -110,8 +113,8 @@ appn:ControlledVariable a rdfs:Class ;
   rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit." ;
   rdfs:subClassOf appn:Variable .
 
-appn:SubstanceQuantity a rdfs:Class ;
-  schema:name "SubstanceQuantity" ;
+appn:SubstanceAmount a rdfs:Class ;
+  schema:name "SubstanceAmount" ;
   rdfs:comment "A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit." ;
   rdfs:subClassOf appn:Variable .
 
@@ -180,7 +183,7 @@ appn:Sample a rdfs:Class ;
 
 appn:Substance a rdfs:Class ;
   schema:name "Substance" ;
-  rdfs:comment "A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity." ;
+  rdfs:comment "A biological or chemical entity used in a Treatment assay or referenced in a SubstanceAmount." ;
   rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf bio:Substance .
 
@@ -319,27 +322,27 @@ appn:controls a rdf:Property ;
 
 appn:treatsWith a rdf:Property ;
   schema:name "treatsWith" ; 
-  rdfs:comment "Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
+  rdfs:comment "Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
   schema:domainIncludes appn:Treatment ;
-  schema:rangeIncludes appn:Substance,appn:SubstanceQuantity .
+  schema:rangeIncludes appn:Substance,appn:SubstanceAmount .
 
 appn:hasComponent a rdf:Property ;
   schema:name "hasComponent" ; 
-  rdfs:comment "Identifies a Substance or SubstanceQuantity included in the current Substance." ;
+  rdfs:comment "Identifies a Substance or SubstanceAmount included in the current Substance." ;
   schema:domainIncludes appn:Substance ;
   schema:rangeIncludes appn:Substance ;
-  schema:rangeIncludes appn:SubstanceQuantity .
+  schema:rangeIncludes appn:SubstanceAmount .
 
 appn:isOfSubstance a rdf:Property ;
   schema:name "isOfSubstance" ; 
-  rdfs:comment "Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
-  schema:domainIncludes appn:SubstanceQuantity ;
+  rdfs:comment "Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
+  schema:domainIncludes appn:SubstanceAmount ;
   schema:rangeIncludes appn:Substance .
 
 appn:amount a rdf:Property ;
   schema:name "amount" ; 
-  rdfs:comment "Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale." ;
-  schema:domainIncludes appn:SubstanceQuantity .
+  rdfs:comment "Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale." ;
+  schema:domainIncludes appn:SubstanceAmount .
 
 appn:observes a rdf:Property ;
   schema:name "observes" ; 
@@ -471,7 +474,7 @@ appn:hasTrait a rdf:Property ;
 appn:hasScale a rdf:Property ;
   schema:name "hasScale" ;
   rdfs:comment "Identifies the Scale associated with a Variable." ;
-  schema:domainIncludes appn:Variable, appn:SubstanceQuantity ;
+  schema:domainIncludes appn:Variable, appn:SubstanceAmount ;
   schema:rangeIncludes appn:Scale .
 
 appn:derivesFrom a rdf:Property ;

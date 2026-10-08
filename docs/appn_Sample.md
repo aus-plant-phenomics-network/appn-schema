@@ -18,12 +18,10 @@ A BiologicalUnit that has been created from an existing BiologicalUnit through a
 ## Properties
 * [appn:Sampling](appn_Sampling.md) **appn:producesSample** appn:Sample
     * Identifies the Sample produced by a Sampling assay.
-* appn:Sample **appn:derivesFrom** [appn:BiologicalUnit](appn_BiologicalUnit.md)
-    * Identifies the BiologicalUnit from which a Sample was sampled.
 * [appn:BiologicalUnit](appn_BiologicalUnit.md) **appn:hasBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)
     * Links a BiologicalUnit to its type.
-* [appn:Sample](appn_Sample.md) **appn:derivesFrom** [appn:BiologicalUnit](appn_BiologicalUnit.md)
-    * Identifies the BiologicalUnit from which a Sample was sampled.
+* [appn:BiologicalUnit](appn_BiologicalUnit.md) **appn:derivesFrom** [appn:BiologicalUnit](appn_BiologicalUnit.md)
+    * Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs.
 * [appn:BiologicalUnit](appn_BiologicalUnit.md) **appn:hasBiologicalMaterial** [appn:BiologicalMaterial](appn_BiologicalMaterial.md)
     * Identifies the BiologicalMaterial for a BiologicalUnit.
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)

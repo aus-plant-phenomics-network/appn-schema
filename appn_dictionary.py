@@ -26,7 +26,7 @@ import re
 import textwrap
 
 from functools import cache
-from rdflib import Graph, URIRef, Node
+from rdflib import Graph, URIRef, Node, BNode
 from rdflib.namespace import Namespace, NamespaceManager
 from typing import Optional
 
@@ -394,10 +394,14 @@ class Dictionary:
         :param subject: String IRI or `IRI`
         :return: List of `Triple`s with given subject
         """
-        subject = self.get_iri(subject)
-        key = f"subject|{subject}"
+        if isinstance(subject, str) and subject.startswith("::"):
+            subject = subject[2:]
+            matching_values = [subject]
+        else:
+            subject = self.get_iri(subject)
+            matching_values = [str(subject), subject.curie]
 
-        matching_values = [str(subject), subject.curie]
+        key = f"subject|{subject}"
 
         if key not in self.cache:
             self.cache[key] = [
@@ -1362,7 +1366,11 @@ class Dictionary:
             o = (
                 triple[TriplePosition.OBJECT].curie
                 if isinstance(triple[TriplePosition.OBJECT], IRI)
-                else str(triple[TriplePosition.OBJECT])
+                else (
+                    f"::{str(triple[TriplePosition.OBJECT])}" 
+                    if isinstance(triple[TriplePosition.OBJECT], BNode)
+                    else str(triple[TriplePosition.OBJECT])
+                )
             )
             formatted.append((s, p, o))
         subject_length = max([len(s) for s, _, _ in formatted])

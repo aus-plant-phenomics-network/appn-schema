@@ -1,0 +1,107 @@
+{
+    "@context": [
+         "https://w3id.org/ro/crate/1.2/context",
+         "https://schema.plantphenomics.org.au/context.json",
+         {
+             "this": "https://data.plantphenomics.org.au/LTU/MicroTom/",
+             "ltu": "https://id.plantphenomics.org.au/LTU/",
+             "appnid": "https://id.plantphenomics.org.au/APPN/"
+         }
+    ],
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "datePublished": "2026-09-28T09:04:31+00:00",
+            "hasPart": [
+                {
+                    "@id": "MyFirstFile.txt"
+                },
+                {
+                    "@id": "Assets/"
+                }
+            ]
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.2"
+            }
+        },
+        {
+            "@id": "MyFirstFile.txt",
+            "@type": "http://schema.org/CreativeWork",
+            "http://purl.org/dc/terms/created": "2026-09-26"
+        },
+        {
+            "@id": "Assets/",
+            "@type": "http://schema.org/Dataset",
+            "http://purl.org/dc/terms/created": "2026-09-26"
+        },
+        {
+            "@id": "this:gf_GH123",
+            "@type": [
+                "GrowthFacility",
+                "Platform",
+                "ObservationUnit"
+            ],
+            "description": "A greenhouse",
+            "hasGrowthFacilityType": {
+                "@id": "appnid:gft_Glasshouse"
+            },
+            "lights": "Bright",
+            "name": "GH123"
+        },
+        {
+            "@id": "this:obs_0000001",
+            "@type": [
+                "Observation",
+                "Assay",
+                "ResearchActivity"
+            ],
+            "hasResult": {
+                "@id": "./MyFirstFile.txt"
+            },
+            "isForObservationUnit": {
+                "@id": "this:gf_GH123"
+            }
+        },
+        {
+            "@id": "this:obs_0000002",
+            "@type": [
+                "Observation",
+                "Assay",
+                "ResearchActivity"
+            ],
+            "hasSimpleResult": 1.2,
+            "isForObservationUnit": {
+                "@id": "this:gf_GH123"
+            },
+            "observes": {
+                "@id": "this:ov_LiquidQuantity"
+            }
+        },
+        {
+            "@id": "this:ov_LiquidQuantity",
+            "@type": [
+                "ObservedVariable",
+                "Trait"
+            ],
+            "hasScale": {
+                "@id": "appnid:scale_Milliliter"
+            },
+            "name": "liquid quantity"
+        },
+        {
+            "@id": "appnid:scale_Milliliter",
+            "@type": [
+                "Scale"
+            ],
+            "name": "Milliliter"
+        }
+    ]
+}

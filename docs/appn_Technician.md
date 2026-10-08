@@ -1,0 +1,25 @@
+# Technician
+[https://schema.plantphenomics.org.au/Technician](https://schema.plantphenomics.org.au/Technician)
+
+A Technician, preferably identified using an ORCID, that may perform an Assay.
+
+![UML diagram for Technician](images/ttl_appn_Technician.png)
+
+## Superclasses
+* http://purl.org/ppeo/PPEO.owl#person
+* [https://schema.plantphenomics.org.au/Observer](appn_Observer.md)
+* http://www.w3.org/ns/sosa/Sensor
+* [https://schema.plantphenomics.org.au/Controller](appn_Controller.md)
+* http://www.w3.org/ns/sosa/Actuator
+* [https://schema.plantphenomics.org.au/Sampler](appn_Sampler.md)
+* http://www.w3.org/ns/sosa/Sampler
+* http://schema.org/Person
+## Properties
+* [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)
+    * Identifies the entity (Observer, i.e. one of a Technician, Sensor or SoftwareApplication) responsible for carrying out an Observation.
+* [appn:Control](appn_Control.md) **appn:madeByController** [appn:Controller](appn_Controller.md)
+    * Identifies the entity (Controller, i.e. one of a Technician, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
+* [appn:Treatment](appn_Treatment.md) **appn:madeByController** [appn:Controller](appn_Controller.md)
+    * Identifies the entity (Controller, i.e. one of a Technician, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
+* [appn:Sampling](appn_Sampling.md) **appn:madeBySampler** [appn:Sampler](appn_Sampler.md)
+    * Identifies the entity (Sampler, i.e. a Technician - no other subclasses defined yet) responsible for carrying out an Sampling.

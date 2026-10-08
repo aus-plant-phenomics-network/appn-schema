@@ -1,0 +1,27 @@
+@startuml
+class Technician  #line.bold
+class "ppeo:person" #EEFFCC 
+Technician --|> "ppeo:person"
+class Observer  
+class "sosa:Sensor" #FFCCEE 
+Observer --|> "sosa:Sensor"
+Technician --|> Observer
+class Controller  
+class "sosa:Actuator" #FFCCEE 
+Controller --|> "sosa:Actuator"
+Technician --|> Controller
+class Sampler  
+class "sosa:Sampler" #FFCCEE 
+Sampler --|> "sosa:Sampler"
+Technician --|> Sampler
+class "schema:Person" #DDFFDD 
+Technician --|> "schema:Person"
+class Observation 
+Observation --> Observer : madeByObserver
+class Control 
+Control --> Controller : madeByController
+class Treatment 
+Treatment --> Controller : madeByController
+class Sampling 
+Sampling --> Sampler : madeBySampler
+@enduml

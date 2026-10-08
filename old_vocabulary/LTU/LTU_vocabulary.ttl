@@ -1,0 +1,1321 @@
+@prefix appn: <https://schema.plantphenomics.org.au/> .
+@prefix appnid: <https://id.plantphenomics.org.au/APPN/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ltu: <https://id.plantphenomics.org.au/LTU/> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ltu:scale_CO2Uptake a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:altLabel "µmol CO2 consumed m-2 sec-1 (or g-1 FW h-1)" ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "The amount of CO₂ (in micromoles) consumed per unit leaf area (square metres) per unit time (seconds)" ;
+    schema:name "CO2 uptake" ;
+    dcterms:description "The amount of CO₂ (in micromoles) consumed per unit leaf area (square metres) per unit time (seconds)" ;
+    dcterms:title "CO2 uptake" .
+
+ltu:scale_LeafOpticalProperty a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Scale for measuring optical properties of leaf" ;
+    schema:name "leaf optical property" ;
+    dcterms:description "Scale for measuring optical properties of leaf" ;
+    dcterms:title "leaf optical property" .
+
+ltu:method_AphidLeafDamageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "aphid leaf damage method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "aphid leaf damage method" .
+
+ltu:method_BotrytisCinereaInfectionMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "botrytis cinerea infection method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "botrytis cinerea infection method" .
+
+ltu:method_BranchLengthMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Average branch length recorded with tape measure" ;
+    schema:name "branch length method" ;
+    dcterms:description "Average branch length recorded with tape measure" ;
+    dcterms:title "branch length method" .
+
+ltu:method_CanopyDiameterMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Canopy diameter recorded with tape measure" ;
+    schema:name "canopy diameter method" ;
+    dcterms:description "Canopy diameter recorded with tape measure" ;
+    dcterms:title "canopy diameter method" .
+
+ltu:method_ElementalCompositionResultMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Laboratory ICP-MS & CNS analyses" ;
+    schema:name "elemental composition result method" ;
+    dcterms:description "Laboratory ICP-MS & CNS analyses" ;
+    dcterms:title "elemental composition result method" .
+
+ltu:method_FlowerNumberTraitMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count of all flowers on a plant" ;
+    schema:name "flower number trait method" ;
+    dcterms:description "Physical count of all flowers on a plant" ;
+    dcterms:title "flower number trait method" .
+
+ltu:method_FungalGnatsLeafDamageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "fungal gnats leaf damage method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "fungal gnats leaf damage method" .
+
+ltu:method_FungalInfectionMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "fungal infection method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "fungal infection method" .
+
+ltu:method_FusariumInfectionMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "fusarium infection method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "fusarium infection method" .
+
+ltu:method_GrowthStageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of growth stage using scale categories (https://doi.org/10.1111/j.1744-7348.1991.tb04895.x)" ;
+    schema:name "growth stage method" ;
+    dcterms:description "Visual assessment of growth stage using scale categories (https://doi.org/10.1111/j.1744-7348.1991.tb04895.x)" ;
+    dcterms:title "growth stage method" .
+
+ltu:method_HarvestWeightMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Weighing plant material immediately during harvest (fresh weight) or after oven drying to a specified residual moisture content (dry weight)" ;
+    schema:name "harvest weight method" ;
+    dcterms:description "Weighing plant material immediately during harvest (fresh weight) or after oven drying to a specified residual moisture content (dry weight)" ;
+    dcterms:title "harvest weight method" .
+
+ltu:method_InsectLeafDamageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "insect leaf damage method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "insect leaf damage method" .
+
+ltu:method_InternodeCountMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip" ;
+    schema:name "internode count method" ;
+    dcterms:description "Physical count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip" ;
+    dcterms:title "internode count method" .
+
+ltu:method_LeafColourGradientMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of leaf colour gradient using scale categories" ;
+    schema:name "leaf colour gradient method" ;
+    dcterms:description "Visual assessment of leaf colour gradient using scale categories" ;
+    dcterms:title "leaf colour gradient method" .
+
+ltu:method_LeafColourMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of leaf colour using scale categories" ;
+    schema:name "leaf colour method" ;
+    dcterms:description "Visual assessment of leaf colour using scale categories" ;
+    dcterms:title "leaf colour method" .
+
+ltu:method_LeafFluorescenceMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Recordings from fluorescence camera/hand-held FluorPen" ;
+    schema:name "leaf fluorescence method" ;
+    dcterms:description "Recordings from fluorescence camera/hand-held FluorPen" ;
+    dcterms:title "leaf fluorescence method" .
+
+ltu:method_LeafNumberMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count of average number of leaf on a number of representative branches" ;
+    schema:name "leaf number method" ;
+    dcterms:description "Physical count of average number of leaf on a number of representative branches" ;
+    dcterms:title "leaf number method" .
+
+ltu:method_LeafOpticalPropertyMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Spectral, multi- and hyperspectral imaging data (www.indexdatabase.de)" ;
+    schema:name "leaf optical property method" ;
+    dcterms:description "Spectral, multi- and hyperspectral imaging data (www.indexdatabase.de)" ;
+    dcterms:title "leaf optical property method" .
+
+ltu:method_LeafRustInfectionMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "leaf rust infection method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "leaf rust infection method" .
+
+ltu:method_NitrogenDeficiencyMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of nitrogen deficiency using scale categories" ;
+    schema:name "nitrogen deficiency method" ;
+    dcterms:description "Visual assessment of nitrogen deficiency using scale categories" ;
+    dcterms:title "nitrogen deficiency method" .
+
+ltu:method_NutrientContentResultMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Laboratory colorimetric assays" ;
+    schema:name "nutrient content result method" ;
+    dcterms:description "Laboratory colorimetric assays" ;
+    dcterms:title "nutrient content result method" .
+
+ltu:method_OverallStatureMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of overall stature using scale categories" ;
+    schema:name "overall stature method" ;
+    dcterms:description "Visual assessment of overall stature using scale categories" ;
+    dcterms:title "overall stature method" .
+
+ltu:method_PhosphorusDeficiencyMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of phosphorus deficiency using scale categories" ;
+    schema:name "phosphorus deficiency method" ;
+    dcterms:description "Visual assessment of phosphorus deficiency using scale categories" ;
+    dcterms:title "phosphorus deficiency method" .
+
+ltu:method_PhosphorusToxicityMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of phosphorus toxicity using scale categories" ;
+    schema:name "phosphorus toxicity method" ;
+    dcterms:description "Visual assessment of phosphorus toxicity using scale categories" ;
+    dcterms:title "phosphorus toxicity method" .
+
+ltu:method_PlantHeightMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Height of the plant recorded with tape measure" ;
+    schema:name "plant height method" ;
+    dcterms:description "Height of the plant recorded with tape measure" ;
+    dcterms:title "plant height method" .
+
+ltu:method_PowderyMildewInfectionMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "powdery mildew infection method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "powdery mildew infection method" .
+
+ltu:method_PrimaryMetaboliteResultMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Laboratory colorimetric assays" ;
+    schema:name "primary metabolite result method" ;
+    dcterms:description "Laboratory colorimetric assays" ;
+    dcterms:title "primary metabolite result method" .
+
+ltu:method_RipeFruitCountMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count of all ripe fruit on a plant" ;
+    schema:name "ripe fruit count method" ;
+    dcterms:description "Physical count of all ripe fruit on a plant" ;
+    dcterms:title "ripe fruit count method" .
+
+ltu:method_RootDensityMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment " ;
+    schema:name "root density method" ;
+    dcterms:description "Visual assessment " ;
+    dcterms:title "root density method" .
+
+ltu:method_ShootAxisInternodeLengthMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Internode length with tape measure" ;
+    schema:name "shoot axis internode length method" ;
+    dcterms:description "Internode length with tape measure" ;
+    dcterms:title "shoot axis internode length method" .
+
+ltu:method_ShootPrimaryBranchCountMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count of branch number along the primary shoot axis, counting all nodes along the main stem from the base towards its tip" ;
+    schema:name "shoot primary branch count method" ;
+    dcterms:description "Physical count of branch number along the primary shoot axis, counting all nodes along the main stem from the base towards its tip" ;
+    dcterms:title "shoot primary branch count method" .
+
+ltu:method_ShootSecondaryBranchCountMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count of secondary branch number (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip" ;
+    schema:name "shoot secondary branch count method" ;
+    dcterms:description "Physical count of secondary branch number (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip" ;
+    dcterms:title "shoot secondary branch count method" .
+
+ltu:method_SpiderMitesLeafDamageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "spider mites leaf damage method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "spider mites leaf damage method" .
+
+ltu:method_SteamDiameterMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Steam diameter recorded with calipers" ;
+    schema:name "steam diameter method" ;
+    dcterms:description "Steam diameter recorded with calipers" ;
+    dcterms:title "steam diameter method" .
+
+ltu:method_ThripsLeafDamageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "thrips leaf damage method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "thrips leaf damage method" .
+
+ltu:method_TotalAmountOfCarbonFixedByPlantMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "LiCOR recordings" ;
+    schema:name "total amount of carbon fixed by plant method" ;
+    dcterms:description "LiCOR recordings" ;
+    dcterms:title "total amount of carbon fixed by plant method" .
+
+ltu:method_UnripeFruitCountMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Physical count of all unripe / green fruit on a plant" ;
+    schema:name "unripe fruit count method" ;
+    dcterms:description "Physical count of all unripe / green fruit on a plant" ;
+    dcterms:title "unripe fruit count method" .
+
+ltu:method_WhiteflyLeafDamageMethod a skos:Concept,
+        schema:HowTo,
+        appn:Method ;
+    skos:inScheme ltu:cs_Method ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    schema:name "whitefly leaf damage method" ;
+    dcterms:description "Visual assessment. Severity is represented as a proportion or percentage of plant surface affected" ;
+    dcterms:title "whitefly leaf damage method" .
+
+ltu:ov_AphidLeafDamage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "aphid" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0006067> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Aphid leaf damage determined by severity scale" ;
+    schema:name "aphid leaf damage" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_AphidLeafDamageSeverityScale16 ;
+    appn:hasTrait ltu:ov_AphidLeafDamage ;
+    appn:usedMethod ltu:method_AphidLeafDamageMethod ;
+    dcterms:description "Aphid leaf damage determined by severity scale" ;
+    dcterms:title "aphid leaf damage" .
+
+ltu:ov_BotrytisCinereaInfection a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "botrytis cinerea" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000439> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Botrytis cinerea infection determined by severity scale" ;
+    schema:name "botrytis cinerea infection" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_BotrytisCinereaInfectionSeverityScale15 ;
+    appn:hasTrait ltu:ov_BotrytisCinereaInfection ;
+    appn:usedMethod ltu:method_BotrytisCinereaInfectionMethod ;
+    dcterms:description "Botrytis cinerea infection determined by severity scale" ;
+    dcterms:title "botrytis cinerea infection" .
+
+ltu:ov_BranchLength a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/TO_0000576> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Average branch length of all branches of a plant" ;
+    schema:name "branch length" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Branch ;
+    appn:hasScale appnid:scale_Centimeter ;
+    appn:hasTrait ltu:ov_BranchLength ;
+    appn:usedMethod ltu:method_BranchLengthMethod ;
+    dcterms:description "Average branch length of all branches of a plant" ;
+    dcterms:title "branch length" .
+
+ltu:ov_CanopyDiameter a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/TO_0006062> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Maximal canopy width as extension of longest branches" ;
+    schema:name "canopy diameter" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Canopy ;
+    appn:hasScale appnid:scale_Centimeter ;
+    appn:hasTrait ltu:ov_CanopyDiameter ;
+    appn:usedMethod ltu:method_CanopyDiameterMethod ;
+    dcterms:description "Maximal canopy width as extension of longest branches" ;
+    dcterms:title "canopy diameter" .
+
+ltu:ov_ElementalCompositionResult a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "lab elemental composition results" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000466>,
+        <http://purl.obolibrary.org/obo/TO_0006045>,
+        <http://purl.obolibrary.org/obo/TO_0020089>,
+        <http://purl.obolibrary.org/obo/TO_0020093> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Laboratory elemental composition results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    schema:name "elemental composition result" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale ltu:scale_MicromolesPerGramOfFreshWeight ;
+    appn:hasTrait ltu:ov_ElementalCompositionResult ;
+    appn:usedMethod ltu:method_ElementalCompositionResultMethod ;
+    dcterms:description "Laboratory elemental composition results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    dcterms:title "elemental composition result" .
+
+ltu:ov_FlowerNumberTrait a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "flower count" ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0002736> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "An inflorescence morphology trait which is the number of flowers" ;
+    schema:name "flower number trait" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Flower ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_FlowerNumberTrait ;
+    appn:usedMethod ltu:method_FlowerNumberTraitMethod ;
+    dcterms:description "An inflorescence morphology trait which is the number of flowers" ;
+    dcterms:title "flower number trait" .
+
+ltu:ov_FungalGnatsLeafDamage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "fungal gnats" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Fungal gnats leaf damage determined by severity scale" ;
+    schema:name "fungal gnats leaf damage" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_FungalGnatsLeafDamageScale16 ;
+    appn:hasTrait ltu:ov_FungalGnatsLeafDamage ;
+    appn:usedMethod ltu:method_FungalGnatsLeafDamageMethod ;
+    dcterms:description "Fungal gnats leaf damage determined by severity scale" ;
+    dcterms:title "fungal gnats leaf damage" .
+
+ltu:ov_FungalInfection a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Fungal infection determined by severity scale" ;
+    schema:name "fungal infection" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_FungalInfectionSeverityScale16 ;
+    appn:hasTrait ltu:ov_FungalInfection ;
+    appn:usedMethod ltu:method_FungalInfectionMethod ;
+    dcterms:description "Fungal infection determined by severity scale" ;
+    dcterms:title "fungal infection" .
+
+ltu:ov_FusariumInfection a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "fungal infection scale" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000439> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Fusarium infection determined by severity scale" ;
+    schema:name "fusarium infection" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_FusariumInfectionSeverityScale15 ;
+    appn:hasTrait ltu:ov_FusariumInfection ;
+    appn:usedMethod ltu:method_FusariumInfectionMethod ;
+    dcterms:description "Fusarium infection determined by severity scale" ;
+    dcterms:title "fusarium infection" .
+
+ltu:ov_GrowthStage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "developmental stage" ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/PO_0007033> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/PPO_0000013> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Plant phenological development stages described by the BBCH-scale. BBCH-scales have been developed for a range of crop species where similar growth stages of each plant are given the same code Lancashire, et. al. (1991) (doi:10.1111/j.1744-7348.1991.tb04895.x)" ;
+    schema:name "growth stage" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale ltu:scale_GrowthStagesScale09 ;
+    appn:hasTrait ltu:ov_GrowthStage ;
+    appn:usedMethod ltu:method_GrowthStageMethod ;
+    dcterms:description "Plant phenological development stages described by the BBCH-scale. BBCH-scales have been developed for a range of crop species where similar growth stages of each plant are given the same code Lancashire, et. al. (1991) (doi:10.1111/j.1744-7348.1991.tb04895.x)" ;
+    dcterms:title "growth stage" .
+
+ltu:ov_HarvestWeight a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000078>,
+        <http://purl.obolibrary.org/obo/TO_0000181>,
+        <http://purl.obolibrary.org/obo/TO_0000352>,
+        <http://purl.obolibrary.org/obo/TO_0000442>,
+        <http://purl.obolibrary.org/obo/TO_0000552>,
+        <http://purl.obolibrary.org/obo/TO_0000571>,
+        <http://purl.obolibrary.org/obo/TO_0000578>,
+        <http://purl.obolibrary.org/obo/TO_0003000>,
+        <http://purl.obolibrary.org/obo/TO_0003001> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Harvest dry weight of branch, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_leaf, oldest_leaf, mature_leaf, young_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, unripe fruit, ripe/fully mature fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    schema:name "harvest weight" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale appnid:scale_Gram ;
+    appn:hasTrait ltu:ov_HarvestWeight ;
+    appn:usedMethod ltu:method_HarvestWeightMethod ;
+    dcterms:description "Harvest dry weight of branch, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_leaf, oldest_leaf, mature_leaf, young_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, unripe fruit, ripe/fully mature fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    dcterms:title "harvest weight" .
+
+ltu:ov_InsectLeafDamage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "insect damage scale" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000261> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Insect leaf damage determined by severity scale" ;
+    schema:name "insect leaf damage " ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_InsectLeafDamageSeverityScale16 ;
+    appn:hasTrait ltu:ov_InsectLeafDamage ;
+    appn:usedMethod ltu:method_InsectLeafDamageMethod ;
+    dcterms:description "Insect leaf damage determined by severity scale" ;
+    dcterms:title "insect leaf damage " .
+
+ltu:ov_InternodeCount a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "internode count" ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/TO_0000634> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Internode count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip" ;
+    schema:name "internode count" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Branch ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_InternodeCount ;
+    appn:usedMethod ltu:method_InternodeCountMethod ;
+    dcterms:description "Internode count using cotyledon node as 0, then counting subsequent nodes up the mainstem to the tip" ;
+    dcterms:title "internode count" .
+
+ltu:ov_LeafColour a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0000326> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A leaf morphology trait which is the color of a leaf" ;
+    schema:name "leaf colour" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_LeafColourScale113 ;
+    appn:hasTrait ltu:ov_LeafColour ;
+    appn:usedMethod ltu:method_LeafColourMethod ;
+    dcterms:description "A leaf morphology trait which is the color of a leaf" ;
+    dcterms:title "leaf colour" .
+
+ltu:ov_LeafColourGradient a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/TO_0000326> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0012011> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Leaf colour differences between young mature and old leaves as indicators of leaf senescence" ;
+    schema:name "leaf colour gradient" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_LeafColourGradientScale15 ;
+    appn:hasTrait ltu:ov_LeafColourGradient ;
+    appn:usedMethod ltu:method_LeafColourGradientMethod ;
+    dcterms:description "Leaf colour differences between young mature and old leaves as indicators of leaf senescence" ;
+    dcterms:title "leaf colour gradient" .
+
+ltu:ov_LeafFluorescence a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0012006> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Leaf fluorescence data / parameters" ;
+    schema:name "leaf fluorescence" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_LeafFluorescenceScale ;
+    appn:hasTrait ltu:ov_LeafFluorescence ;
+    appn:usedMethod ltu:method_LeafFluorescenceMethod ;
+    dcterms:description "Leaf fluorescence data / parameters" ;
+    dcterms:title "leaf fluorescence" .
+
+ltu:ov_LeafNumber a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "leaf count" ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0000241> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000659> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Average leaf count on a number of representative branches" ;
+    schema:name "leaf number" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_LeafNumber ;
+    appn:usedMethod ltu:method_LeafNumberMethod ;
+    dcterms:description "Average leaf count on a number of representative branches" ;
+    dcterms:title "leaf number" .
+
+ltu:ov_LeafOpticalProperty a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "leaf optical properties" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A ratio of incoming light, which is reflected, absorbed or transmitted by a leaf" ;
+    schema:name "leaf optical property" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasTrait ltu:ov_LeafOpticalProperty ;
+    appn:usedMethod ltu:method_LeafOpticalPropertyMethod ;
+    dcterms:description "A ratio of incoming light, which is reflected, absorbed or transmitted by a leaf" ;
+    dcterms:title "leaf optical property" .
+
+ltu:ov_LeafRustInfection a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "leaf rust" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000439> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Leaf rust infection determined by severity scale" ;
+    schema:name "leaf rust infection" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_LeafRustInfectionSeverityScale15 ;
+    appn:hasTrait ltu:ov_LeafRustInfection ;
+    appn:usedMethod ltu:method_LeafRustInfectionMethod ;
+    dcterms:description "Leaf rust infection determined by severity scale" ;
+    dcterms:title "leaf rust infection" .
+
+ltu:ov_NitrogenDeficiency a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "N_deficiency" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0020098> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Plant species specific leaf symptoms that indicate nitrogen deficiency" ;
+    schema:name "nitrogen deficiency" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_NitrogenDeficiencyColourScale15 ;
+    appn:hasTrait ltu:ov_NitrogenDeficiency ;
+    appn:usedMethod ltu:method_NitrogenDeficiencyMethod ;
+    dcterms:description "Plant species specific leaf symptoms that indicate nitrogen deficiency" ;
+    dcterms:title "nitrogen deficiency" .
+
+ltu:ov_NutrientContentResult a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "lab nutrient content results" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0020094>,
+        <http://purl.obolibrary.org/obo/TO_0020102> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Laboratory nutrient results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    schema:name "nutrient content result" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale ltu:scale_MicromolesPerGramOfFreshWeight ;
+    appn:hasTrait ltu:ov_NutrientContentResult ;
+    appn:usedMethod ltu:method_NutrientContentResultMethod ;
+    dcterms:description "Laboratory nutrient results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    dcterms:title "nutrient content result" .
+
+ltu:ov_OverallStature a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "plant growth habit" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0002756>,
+        <http://purl.obolibrary.org/obo/TO_1000009> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Overall plant phenotype meeting breeding objectives, e.g., compact, enhanced branching, determinate, indeterminate, etc" ;
+    schema:name "overall stature" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale ltu:scale_OverallStatureScale16 ;
+    appn:hasTrait ltu:ov_OverallStature ;
+    appn:usedMethod ltu:method_OverallStatureMethod ;
+    dcterms:description "Overall plant phenotype meeting breeding objectives, e.g., compact, enhanced branching, determinate, indeterminate, etc" ;
+    dcterms:title "overall stature" .
+
+ltu:ov_PhosphorusDeficiency a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "P_deficiency" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000102> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Plant species specific leaf symptoms that indicate phosphorus deficiency" ;
+    schema:name "phosphorus deficiency" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_PhosphorusDeficiencyColourScale15 ;
+    appn:hasTrait ltu:ov_PhosphorusDeficiency ;
+    appn:usedMethod ltu:method_PhosphorusDeficiencyMethod ;
+    dcterms:description "Plant species specific leaf symptoms that indicate phosphorus deficiency" ;
+    dcterms:title "phosphorus deficiency" .
+
+ltu:ov_PhosphorusToxicity a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "P_toxicity" ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0020112> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Plant species specific leaf symptoms that indicate excess supply of phosphate" ;
+    schema:name "phosphorus toxicity" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_PhosphorusToxicityColourScale15 ;
+    appn:hasTrait ltu:ov_PhosphorusToxicity ;
+    appn:usedMethod ltu:method_PhosphorusToxicityMethod ;
+    dcterms:description "Plant species specific leaf symptoms that indicate excess supply of phosphate" ;
+    dcterms:title "phosphorus toxicity" .
+
+ltu:ov_PlantHeight a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0000207> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A whole plant morphology trait which is the height of a whole plant" ;
+    schema:name "plant height" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale appnid:scale_Centimeter ;
+    appn:hasTrait ltu:ov_PlantHeight ;
+    appn:usedMethod ltu:method_PlantHeightMethod ;
+    dcterms:description "A whole plant morphology trait which is the height of a whole plant" ;
+    dcterms:title "plant height" .
+
+ltu:ov_PowderyMildewInfection a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "powdery mildew" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000439> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Powdery mildew infection determined by severity scale" ;
+    schema:name "powdery mildew infection" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_PowderyMildewInfectionSeverityScale15 ;
+    appn:hasTrait ltu:ov_PowderyMildewInfection ;
+    appn:usedMethod ltu:method_PowderyMildewInfectionMethod ;
+    dcterms:description "Powdery mildew infection determined by severity scale" ;
+    dcterms:title "powdery mildew infection" .
+
+ltu:ov_PrimaryMetaboliteResult a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "lab primary metabolite results" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000071>,
+        <http://purl.obolibrary.org/obo/TO_0000496>,
+        <http://purl.obolibrary.org/obo/TO_0000598>,
+        <http://purl.obolibrary.org/obo/TO_0000696> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Laboratory metabolite results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    schema:name "primary metabolite result" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasScale ltu:scale_MicromolesPerGramOfFreshWeight ;
+    appn:hasTrait ltu:ov_PrimaryMetaboliteResult ;
+    appn:usedMethod ltu:method_PrimaryMetaboliteResultMethod ;
+    dcterms:description "Laboratory metabolite results from these tissues: branches, leaf, stem, root, tertiary / fine root, secondary / lateral_root, tap root / primary root, oldest_internode / stem section, mature_internode / stem section, youngest_internode / stem section, senescing_fan_leaf, oldest_fan_leaf, mature_fan_leaf, young_fan_leaf, leaf_meristem, flower_meristem, young_inflorescence, developing_inflorescence, mature_inflorescence, terminal_inflorescence, fruit, trichome, male_inflorescence, young_leaf_disc, mature_leaf_disc, old_leaf_disc" ;
+    dcterms:title "primary metabolite result" .
+
+ltu:ov_RipeFruitCount a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/PPO_0001045>,
+        <http://purl.obolibrary.org/obo/TO_0002633> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A simple fruit or compound fruit number that is in the fruit ripe stage" ;
+    schema:name "ripe fruit count" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Fruit ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_RipeFruitCount ;
+    appn:usedMethod ltu:method_RipeFruitCountMethod ;
+    dcterms:description "A simple fruit or compound fruit number that is in the fruit ripe stage" ;
+    dcterms:title "ripe fruit count" .
+
+ltu:ov_RootDensity a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000065>,
+        <http://purl.obolibrary.org/obo/TO_0000084>,
+        <http://purl.obolibrary.org/obo/TO_0000306>,
+        <http://purl.obolibrary.org/obo/TO_0001042>,
+        <http://purl.obolibrary.org/obo/TO_0001051>,
+        <http://purl.obolibrary.org/obo/TO_0001112> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A qualitative root system classification" ;
+    schema:name "root density" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Root ;
+    appn:hasScale ltu:scale_RootDensityScale18 ;
+    appn:hasTrait ltu:ov_RootDensity ;
+    appn:usedMethod ltu:method_RootDensityMethod ;
+    dcterms:description "A qualitative root system classification" ;
+    dcterms:title "root density" .
+
+ltu:ov_ShootAxisInternodeLength a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "internode length" ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0000145> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A shoot axis internode morphology trait which is the length of a shoot axis internode" ;
+    schema:name "shoot axis internode length" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Branch ;
+    appn:hasScale appnid:scale_Centimeter ;
+    appn:hasTrait ltu:ov_ShootAxisInternodeLength ;
+    appn:usedMethod ltu:method_ShootAxisInternodeLengthMethod ;
+    dcterms:description "A shoot axis internode morphology trait which is the length of a shoot axis internode" ;
+    dcterms:title "shoot axis internode length" .
+
+ltu:ov_ShootPrimaryBranchCount a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "branch count" ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/TO_0002639> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Branch count along the primary shoot axis, counting all nodes along the main stem from the base towards its tip" ;
+    schema:name "shoot primary branch count" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Shoot ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_ShootPrimaryBranchCount ;
+    appn:usedMethod ltu:method_ShootPrimaryBranchCountMethod ;
+    dcterms:description "Branch count along the primary shoot axis, counting all nodes along the main stem from the base towards its tip" ;
+    dcterms:title "shoot primary branch count" .
+
+ltu:ov_ShootSecondaryBranchCount a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "branch count" ;
+    skos:closeMatch <http://purl.obolibrary.org/obo/TO_0020019> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Secondary branch count (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip" ;
+    schema:name "shoot secondary branch count" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Shoot ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_ShootSecondaryBranchCount ;
+    appn:usedMethod ltu:method_ShootSecondaryBranchCountMethod ;
+    dcterms:description "Secondary branch count (or count of secondary branches) using intersect of the oldest (or lowest) branch with main stem as 0, then counting subsequent nodes along that branch towards its tip" ;
+    dcterms:title "shoot secondary branch count" .
+
+ltu:ov_SpiderMitesLeafDamage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "spider mites" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0020122> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Spider mites leaf damage determined by severity scale" ;
+    schema:name "spider mites leaf damage" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_SpiderMitesLeafDamageSeverityScale16 ;
+    appn:hasTrait ltu:ov_SpiderMitesLeafDamage ;
+    appn:usedMethod ltu:method_SpiderMitesLeafDamageMethod ;
+    dcterms:description "Spider mites leaf damage determined by severity scale" ;
+    dcterms:title "spider mites leaf damage" .
+
+ltu:ov_SteamDiameter a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/TO_0020083> ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A stem morphology trait  which is the diameter of a stem. Refer to diameter: A length quality which is equal to the length of any straight line segment that passes through the center of a circle and whose endpoints are on the circular boundary." ;
+    schema:name "steam diameter " ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Stem ;
+    appn:hasScale appnid:scale_Millimeter ;
+    appn:hasTrait ltu:ov_SteamDiameter ;
+    appn:usedMethod ltu:method_SteamDiameterMethod ;
+    dcterms:description "A stem morphology trait  which is the diameter of a stem. Refer to diameter: A length quality which is equal to the length of any straight line segment that passes through the center of a circle and whose endpoints are on the circular boundary." ;
+    dcterms:title "steam diameter " .
+
+ltu:ov_ThripsLeafDamage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "thrips" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000154> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Thrip leaf damage determined by severity scale" ;
+    schema:name "thrips leaf damage" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_ThripsLeafDamageSeveriyScale16 ;
+    appn:hasTrait ltu:ov_ThripsLeafDamage ;
+    appn:usedMethod ltu:method_ThripsLeafDamageMethod ;
+    dcterms:description "Thrip leaf damage determined by severity scale" ;
+    dcterms:title "thrips leaf damage" .
+
+ltu:ov_TotalAmountOfCarbonFixedByPlant a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "total amount of carbon fixed by plant/leaf" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0001015> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Leaf carbon assimilation rate" ;
+    schema:name "total amount of carbon fixed by plant" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:hasTrait ltu:ov_TotalAmountOfCarbonFixedByPlant ;
+    appn:usedMethod ltu:method_TotalAmountOfCarbonFixedByPlantMethod ;
+    dcterms:description "Leaf carbon assimilation rate" ;
+    dcterms:title "total amount of carbon fixed by plant" .
+
+ltu:ov_UnripeFruitCount a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A simple fruit or compound fruit number that is in the fruit unripe stage" ;
+    schema:name "unripe fruit count" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Fruit ;
+    appn:hasScale appnid:scale_Integer ;
+    appn:hasTrait ltu:ov_UnripeFruitCount ;
+    appn:usedMethod ltu:method_UnripeFruitCountMethod ;
+    dcterms:description "A simple fruit or compound fruit number that is in the fruit unripe stage" ;
+    dcterms:title "unripe fruit count" .
+
+ltu:ov_WhiteflyLeafDamage a skos:Concept,
+        schema:DefinedTerm,
+        appn:ObservedVariable,
+        appn:Trait ;
+    skos:altLabel "whitefly" ;
+    skos:inScheme ltu:cs_ObservedVariable ;
+    skos:relatedMatch <http://purl.obolibrary.org/obo/TO_0000261> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Whitefly leaf damage determined by severity scale" ;
+    schema:name "whitefly leaf damage" ;
+    appn:forBiologicalMaterial appnid:bm_AnyPlant ;
+    appn:forBiologicalUnitType appnid:but_Leaf ;
+    appn:hasScale ltu:scale_WhiteflyLeafDamageSeverityScale16 ;
+    appn:hasTrait ltu:ov_WhiteflyLeafDamage ;
+    appn:usedMethod ltu:method_WhiteflyLeafDamageMethod ;
+    dcterms:description "Whitefly leaf damage determined by severity scale" ;
+    dcterms:title "whitefly leaf damage" .
+
+ltu:scale_AphidLeafDamageSeverityScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of aphid leaf damage. (1) aphid damage detected on less than 5 leaves, (2) aphid damage detected on more than 5 leaves, (3) aphid damage detected and < 5 live aphid found, (4) aphid damage detected and > 5 live aphid found, (5) aphid damage detected and > 20 live aphid found, (6) Live aphid detected on inflorescences and > 50% of leaves" ;
+    schema:name "aphid leaf damage severity scale 1-6 " ;
+    dcterms:description "Visual assessment of aphid leaf damage. (1) aphid damage detected on less than 5 leaves, (2) aphid damage detected on more than 5 leaves, (3) aphid damage detected and < 5 live aphid found, (4) aphid damage detected and > 5 live aphid found, (5) aphid damage detected and > 20 live aphid found, (6) Live aphid detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "aphid leaf damage severity scale 1-6 " .
+
+ltu:scale_BotrytisCinereaInfectionSeverityScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of botrytis cinerea infection. (1) Botrytis cinerea infection detected on 1 leaf, (2) Fusarium infection detected on < 5 leaves, (3) Botrytis cinerea infection detected on > 5 leaves, (4) Botrytis cinerea infection detected on leaves and inflorescences, (5) Botrytis cinereainfection detected on inflorescences and > 50% of leaves" ;
+    schema:name "botrytis cinerea infection severity scale 1-5" ;
+    dcterms:description "Visual assessment of botrytis cinerea infection. (1) Botrytis cinerea infection detected on 1 leaf, (2) Fusarium infection detected on < 5 leaves, (3) Botrytis cinerea infection detected on > 5 leaves, (4) Botrytis cinerea infection detected on leaves and inflorescences, (5) Botrytis cinereainfection detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "botrytis cinerea infection severity scale 1-5" .
+
+ltu:scale_FungalGnatsLeafDamageScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of fungal gnats leaf damage. (1) fungal gnats detected on less than 5 leaves, (2) fungal gnats detected on more than 5 leaves, (3) fungal gnats detected and < 5 live mites found, (4) fungal gnats detected and > 5 live mites found, (5) fungal gnats detected and > 20 live mites found, (6) Live fungal gnats detected on inflorescences and > 50% of leaves" ;
+    schema:name "fungal gnats leaf damage scale 1-6" ;
+    dcterms:description "Visual assessment of fungal gnats leaf damage. (1) fungal gnats detected on less than 5 leaves, (2) fungal gnats detected on more than 5 leaves, (3) fungal gnats detected and < 5 live mites found, (4) fungal gnats detected and > 5 live mites found, (5) fungal gnats detected and > 20 live mites found, (6) Live fungal gnats detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "fungal gnats leaf damage scale 1-6" .
+
+ltu:scale_FungalInfectionSeverityScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment fungal infection. (1) fungal infection detected on 1 leaf, (2) fungal infection detected on < 5 leaves, (3) fungal infection detected on > 5 leaves, (4) fungal infection detected on leaves and inflorescences, (5) fungal infection detected on inflorescences and > 50% of leaves" ;
+    schema:name "fungal infection severity scale 1-6" ;
+    dcterms:description "Visual assessment fungal infection. (1) fungal infection detected on 1 leaf, (2) fungal infection detected on < 5 leaves, (3) fungal infection detected on > 5 leaves, (4) fungal infection detected on leaves and inflorescences, (5) fungal infection detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "fungal infection severity scale 1-6" .
+
+ltu:scale_FusariumInfectionSeverityScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of fusarium infection. (1) Fusarium infection detected on 1 leaf, (2) Fusarium infection detected on < 5 leaves, (3) Fusarium infection detected on > 5 leaves, (4) Fusarium infection detected on leaves and inflorescences, (5) Fusarium infection detected on inflorescences and > 50% of leaves" ;
+    schema:name "fusarium infection severity scale 1-5" ;
+    dcterms:description "Visual assessment of fusarium infection. (1) Fusarium infection detected on 1 leaf, (2) Fusarium infection detected on < 5 leaves, (3) Fusarium infection detected on > 5 leaves, (4) Fusarium infection detected on leaves and inflorescences, (5) Fusarium infection detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "fusarium infection severity scale 1-5" .
+
+ltu:scale_GrowthStagesScale09 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    skos:relatedMatch <https://en.wikipedia.org/wiki/BBCH-scale> ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of growth stages. (0) germination, (1) leaf development, (2) formation of side shoots, tillering, (3) stem elongation, rosette growth, shoot development, (4) development of harvestable vegetative plant parts, bolting, (5) inflorescence emergence, heading, (6) flowering, (7) development of fruit, (8) ripening or maturity of fruit and seed, (9) senescence, beginning of dormancy" ;
+    schema:name "growth stages scale 0-9" ;
+    dcterms:description "Visual assessment of growth stages. (0) germination, (1) leaf development, (2) formation of side shoots, tillering, (3) stem elongation, rosette growth, shoot development, (4) development of harvestable vegetative plant parts, bolting, (5) inflorescence emergence, heading, (6) flowering, (7) development of fruit, (8) ripening or maturity of fruit and seed, (9) senescence, beginning of dormancy" ;
+    dcterms:title "growth stages scale 0-9" .
+
+ltu:scale_InsectLeafDamageSeverityScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of insect leaf damage. (1) scale damage detected on < 5 leaves, (2) scale damage detected on > 5 leaves, (3) scale damage detected and < 5 live scale insects found, (4) scale damage detected and > 5 live scale insects found, (5) scale damage detected and > 20 live scale insects found, (6) live scale insects detected on inflorescences and > 50% of leaves" ;
+    schema:name "insect leaf damage severity scale 1-6" ;
+    dcterms:description "Visual assessment of insect leaf damage. (1) scale damage detected on < 5 leaves, (2) scale damage detected on > 5 leaves, (3) scale damage detected and < 5 live scale insects found, (4) scale damage detected and > 5 live scale insects found, (5) scale damage detected and > 20 live scale insects found, (6) live scale insects detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "insect leaf damage severity scale 1-6" .
+
+ltu:scale_LeafColourGradientScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of leaf colour gradient. (1) no difference between young & old, (2) slightly lighter colour on older leaves, (3) light-green older fan leaf, (4) yellow older fan leaf,  (5) brown / desiccated older fan leaf" ;
+    schema:name "leaf colour gradient scale 1-5" ;
+    dcterms:description "Visual assessment of leaf colour gradient. (1) no difference between young & old, (2) slightly lighter colour on older leaves, (3) light-green older fan leaf, (4) yellow older fan leaf,  (5) brown / desiccated older fan leaf" ;
+    dcterms:title "leaf colour gradient scale 1-5" .
+
+ltu:scale_LeafColourScale113 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "leaf colour scale: dark_green, green, light_green, yellow, orange, red, purplish_green, purple_yellow, purple, dark_purple, yellow_brown, orange_brown, brown" ;
+    schema:name "leaf colour scale 1-13" ;
+    dcterms:description "leaf colour scale: dark_green, green, light_green, yellow, orange, red, purplish_green, purple_yellow, purple, dark_purple, yellow_brown, orange_brown, brown" ;
+    dcterms:title "leaf colour scale 1-13" .
+
+ltu:scale_LeafFluorescenceScale a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "(OJIP) fast chlorophyll a fluorescence induction, (NPQ) non photochemical quenching, (QY) quantum yield of photosynthesis, (Fv/Fm) maximum quantum efficiency of PSII,  (Fq'/Fm') efficiency of QA reduction by absorbed light" ;
+    schema:name "leaf fluorescence scale" ;
+    dcterms:description "(OJIP) fast chlorophyll a fluorescence induction, (NPQ) non photochemical quenching, (QY) quantum yield of photosynthesis, (Fv/Fm) maximum quantum efficiency of PSII,  (Fq'/Fm') efficiency of QA reduction by absorbed light" ;
+    dcterms:title "leaf fluorescence scale" .
+
+ltu:scale_LeafRustInfectionSeverityScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of leaf rust infection. (1) Leaf rust infection detected on 1 leaf, (2) Leaf rust infection detected on < 5 leaves, (3) Leaf rust infection detected on > 5 leaves, (4) Leaf rust infection detected on leaves and inflorescences, (5) Leaf rust infection detected on inflorescences and > 50% of leaves" ;
+    schema:name "leaf rust infection severity scale 1-5" ;
+    dcterms:description "Visual assessment of leaf rust infection. (1) Leaf rust infection detected on 1 leaf, (2) Leaf rust infection detected on < 5 leaves, (3) Leaf rust infection detected on > 5 leaves, (4) Leaf rust infection detected on leaves and inflorescences, (5) Leaf rust infection detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "leaf rust infection severity scale 1-5" .
+
+ltu:scale_NitrogenDeficiencyColourScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of Nitrogen deficiency. (1) dark green mature leaf, (2) green mature leaf, (3) light-green mature leaf, (4) yellow mature leaf, (5) brown mature leaf" ;
+    schema:name "nitrogen deficiency colour scale 1-5" ;
+    dcterms:description "Visual assessment of Nitrogen deficiency. (1) dark green mature leaf, (2) green mature leaf, (3) light-green mature leaf, (4) yellow mature leaf, (5) brown mature leaf" ;
+    dcterms:title "nitrogen deficiency colour scale 1-5" .
+
+ltu:scale_OverallStatureScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of overall stature. (1) very compact (short with short branches at steep angle), (2) compact (short with short branches at lower angle), (3) fairly compact (intermediate, short branches at steep angle), (4) lanky(ish) (tall, intermediate branch length at steep angle), (5) lanky (tall, long branches), (6) very lanky (tall, very long branches at low angle)" ;
+    schema:name "overall stature scale 1-6" ;
+    dcterms:description "Visual assessment of overall stature. (1) very compact (short with short branches at steep angle), (2) compact (short with short branches at lower angle), (3) fairly compact (intermediate, short branches at steep angle), (4) lanky(ish) (tall, intermediate branch length at steep angle), (5) lanky (tall, long branches), (6) very lanky (tall, very long branches at low angle)" ;
+    dcterms:title "overall stature scale 1-6" .
+
+ltu:scale_PhosphorusDeficiencyColourScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of Phosphorus deficiency. (1) green petioles, (2) reddening petioles, (3) red petioles, (4) purple petioles, (5) purple mature leaf" ;
+    schema:name "phosphorus deficiency colour scale 1-5" ;
+    dcterms:description "Visual assessment of Phosphorus deficiency. (1) green petioles, (2) reddening petioles, (3) red petioles, (4) purple petioles, (5) purple mature leaf" ;
+    dcterms:title "phosphorus deficiency colour scale 1-5" .
+
+ltu:scale_PhosphorusToxicityColourScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of Phosphorus toxicity. (1) green mature leaf, (2) young leaves curling & thin, (3) purple intercostals on mature leaf, (4) purple intercostals & green veins, (5) deep purple & brittle mature leaf" ;
+    schema:name "phosphorus toxicity colour scale 1-5" ;
+    dcterms:description "Visual assessment of Phosphorus toxicity. (1) green mature leaf, (2) young leaves curling & thin, (3) purple intercostals on mature leaf, (4) purple intercostals & green veins, (5) deep purple & brittle mature leaf" ;
+    dcterms:title "phosphorus toxicity colour scale 1-5" .
+
+ltu:scale_PowderyMildewInfectionSeverityScale15 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of powdery mildew infection. (1) Powdery mildew infection detected on 1 leaf, (2) Powdery mildew infection detected on < 5 leaves, (3) Powdery mildew infection detected on > 5 leaves, (4) Powdery mildew infection detected on leaves and inflorescences, (5) Powdery mildew infection detected on inflorescences and > 50% of leaves" ;
+    schema:name "powdery mildew infection severity scale 1-5" ;
+    dcterms:description "Visual assessment of powdery mildew infection. (1) Powdery mildew infection detected on 1 leaf, (2) Powdery mildew infection detected on < 5 leaves, (3) Powdery mildew infection detected on > 5 leaves, (4) Powdery mildew infection detected on leaves and inflorescences, (5) Powdery mildew infection detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "powdery mildew infection severity scale 1-5" .
+
+ltu:scale_RootDensityScale18 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of root density. (1) thin, yellow roots, low density, (2) thin, white roots, low density, (3) thin, white roots, medium density, (4) thin, white roots, high density, (5) thick, white hairy roots - low density, (6) thick, white hairy roots - medium density, (7) thick, white hairy roots - high density, (8) tertiary/fine root" ;
+    schema:name "root density scale 1-8" ;
+    dcterms:description "Visual assessment of root density. (1) thin, yellow roots, low density, (2) thin, white roots, low density, (3) thin, white roots, medium density, (4) thin, white roots, high density, (5) thick, white hairy roots - low density, (6) thick, white hairy roots - medium density, (7) thick, white hairy roots - high density, (8) tertiary/fine root" ;
+    dcterms:title "root density scale 1-8" .
+
+ltu:scale_SpiderMitesLeafDamageSeverityScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of spider mites leaf damage. (1) spider mites damage detected on less than 5 leaves, (2) spider mites damage detected on more than 5 leaves, (3) Spider mites damage detected and < 5 live mites found, (4) spider mites damage detected and > 5 live mites found, (5) Spider mites damage detected and > 20 live mites found, (6) Live spider mites detected on inflorescences and > 50% of leaves" ;
+    schema:name "spider mites leaf damage severity scale 1-6" ;
+    dcterms:description "Visual assessment of spider mites leaf damage. (1) spider mites damage detected on less than 5 leaves, (2) spider mites damage detected on more than 5 leaves, (3) Spider mites damage detected and < 5 live mites found, (4) spider mites damage detected and > 5 live mites found, (5) Spider mites damage detected and > 20 live mites found, (6) Live spider mites detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "spider mites leaf damage severity scale 1-6" .
+
+ltu:scale_ThripsLeafDamageSeveriyScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of thrips leaf damage. (1) thrips damage detected on less than 5 leaves, (2) thrips damage detected on more than 5 leaves, (3) thrips damage detected and < 5 live thrips found, (4) thrips damage detected and > 5 live thrips found, (5) whitefly damage detected and > 20 live thrips found, (6) Live thrips detected on inflorescences and > 50% of leaves" ;
+    schema:name "thrips leaf damage severiy scale 1-6" ;
+    dcterms:description "Visual assessment of thrips leaf damage. (1) thrips damage detected on less than 5 leaves, (2) thrips damage detected on more than 5 leaves, (3) thrips damage detected and < 5 live thrips found, (4) thrips damage detected and > 5 live thrips found, (5) whitefly damage detected and > 20 live thrips found, (6) Live thrips detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "thrips leaf damage severiy scale 1-6" .
+
+ltu:scale_WhiteflyLeafDamageSeverityScale16 a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "Visual assessment of whitefly leaf damage. (1) whitefly damage detected on less than 5 leaves, (2) whitefly damage detected on more than 5 leaves, (3) whitefly damage detected and < 5 live whitefly found, (4) whitefly damage detected and > 5 live whitefly found, (5) whitefly damage detected and > 20 live whitefly found, (6) Live whitefly detected on inflorescences and > 50% of leaves" ;
+    schema:name "whitefly leaf damage severity scale 1-6" ;
+    dcterms:description "Visual assessment of whitefly leaf damage. (1) whitefly damage detected on less than 5 leaves, (2) whitefly damage detected on more than 5 leaves, (3) whitefly damage detected and < 5 live whitefly found, (4) whitefly damage detected and > 5 live whitefly found, (5) whitefly damage detected and > 20 live whitefly found, (6) Live whitefly detected on inflorescences and > 50% of leaves" ;
+    dcterms:title "whitefly leaf damage severity scale 1-6" .
+
+ltu:scale_MicromolesPerGramOfFreshWeight a skos:Concept,
+        schema:DefinedTerm,
+        appn:Scale ;
+    skos:altLabel "µmol g-1 FW" ;
+    skos:inScheme ltu:cs_Scale ;
+    schema:author "Ricarda Jost" ;
+    schema:description "A concentration unit that expresses the amount of a substance (in micromoles) contained per unit mass (in grams) of fresh, non-dried biological material" ;
+    schema:name "micromoles per gram of fresh weight" ;
+    dcterms:description "A concentration unit that expresses the amount of a substance (in micromoles) contained per unit mass (in grams) of fresh, non-dried biological material" ;
+    dcterms:title "micromoles per gram of fresh weight" .
+
+ltu:cs_Scale a skos:ConceptScheme ;
+    schema:description "Concept scheme including instances of the Scale class from the La Trobe University node of the Australian Plant Phenomics Network" ;
+    schema:name "Scale" ;
+    dcterms:description "Concept scheme including instances of the Scale class from the La Trobe University node of the Australian Plant Phenomics Network" ;
+    dcterms:title "Scale" .
+
+ltu:cs_Method a skos:ConceptScheme ;
+    schema:description "Concept scheme including instances of the Method class from the La Trobe University node of the Australian Plant Phenomics Network" ;
+    schema:name "Method" ;
+    dcterms:description "Concept scheme including instances of the Method class from the La Trobe University node of the Australian Plant Phenomics Network" ;
+    dcterms:title "Method" .
+
+ltu:cs_ObservedVariable a skos:ConceptScheme ;
+    schema:description "Concept scheme including instances of the ObservedVariable class from the La Trobe University node of the Australian Plant Phenomics Network" ;
+    schema:name "ObservedVariable" ;
+    dcterms:description "Concept scheme including instances of the ObservedVariable class from the La Trobe University node of the Australian Plant Phenomics Network" ;
+    dcterms:title "ObservedVariable" .
+

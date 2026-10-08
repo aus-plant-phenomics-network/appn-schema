@@ -15,8 +15,8 @@ A plant or set of plants sharing the same BiologicalMaterial (e.g. a plot or cro
 ## Properties
 * appn:BiologicalUnit **appn:hasBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)
     * Links a BiologicalUnit to its type.
-* [appn:Sample](appn_Sample.md) **appn:derivesFrom** appn:BiologicalUnit
-    * Identifies the BiologicalUnit from which a Sample was sampled.
+* appn:BiologicalUnit **appn:derivesFrom** [appn:BiologicalUnit](appn_BiologicalUnit.md)
+    * Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs.
 * appn:BiologicalUnit **appn:hasBiologicalMaterial** [appn:BiologicalMaterial](appn_BiologicalMaterial.md)
     * Identifies the BiologicalMaterial for a BiologicalUnit.
 * [appn:Assay](appn_Assay.md) **appn:isForObservationUnit** [appn:ObservationUnit](appn_ObservationUnit.md)
