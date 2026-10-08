@@ -169,15 +169,17 @@ if __name__ == "__main__":
                 report.write(
                     "Terms defined in vocabulary (with counts of associated properties):\n\n"
                 )
-                length = max([len(k) for k in counts.keys()])
-                for p in sorted(counts.keys()):
-                    report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
+                if len(counts) > 0:
+                    length = max([len(k) for k in counts.keys()])
+                    for p in sorted(counts.keys()):
+                        report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
 
                 counts = inspector.count_triples_by_property()
                 report.write("\nCounts of triples by property\n\n")
-                length = max([len(k) for k in counts.keys()])
-                for p in sorted(counts.keys()):
-                    report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
+                if len(counts) > 0:
+                    length = max([len(k) for k in counts.keys()])
+                    for p in sorted(counts.keys()):
+                        report.write(f"  {p:{length + 1}s} : {counts[p]:>5d}\n")
 
                 report.write("\n")
                 issues = configuration.get_logger().format_issues()
