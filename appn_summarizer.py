@@ -287,7 +287,7 @@ if __name__ == "__main__":
     appn_classes = set(d.list_classes(namespace=APPN_SCHEMA))
     iri_names = {
         iri: name
-        for iri, name in d.query("SELECT ?i ?n WHERE { ?i schema1:name ?n . }")
+        for iri, name in d.query("SELECT ?i ?n WHERE { ?i schema:name ?n . }")
     }
     iri_types = {}
     for iri, rdf_type in d.query("SELECT ?i ?t WHERE { ?i rdf:type ?t . }"):
@@ -300,13 +300,15 @@ if __name__ == "__main__":
         iri_subtypes[iri] = iri_subtype
     locations = {}
     reverse_locations = {}
-    for iri, location_iri in d.query(
-        "SELECT ?i ?l WHERE { ?i appn:hasLocation ?x . ?x appn:isLocationWithin ?l . }"
-    ):
-        locations[iri] = location_iri
-        if location_iri not in reverse_locations:
-            reverse_locations[location_iri] = set()
-        reverse_locations[location_iri].add(iri)
+    for query in [
+        "SELECT ?i ?l WHERE { ?i appn:hasLocation ?x . ?x appn:isLocationWithin ?l . }" ,
+        "SELECT ?i ?l WHERE { ?i appn:inheritsContext ?l . }" ,
+        ]:
+        for iri, location_iri in d.query(query):
+            locations[iri] = location_iri
+            if location_iri not in reverse_locations:
+                reverse_locations[location_iri] = set()
+            reverse_locations[location_iri].add(iri)
     observed_variables = {}
     for iri, observed_variable_iri in d.query(
         "SELECT ?u ?v WHERE {?x appn:isForObservationUnit ?u . ?x appn:observes ?v . }"
@@ -329,6 +331,7 @@ if __name__ == "__main__":
             treatments[iri] = set()
         treatments[iri].add(treatment_iri)
 
+    hierarchies = {}
     for iri in sorted(reverse_locations):
         if iri not in locations:
             hierarchy = build_hierarchy(
@@ -340,12 +343,35 @@ if __name__ == "__main__":
                 controlled_variables,
                 treatments,
             )
+            if hierarchy.comparison_hash not in hierarchies:
+                hierarchies[hierarchy.comparison_hash] = [hierarchy]
+            else:
+                hierarchies[hierarchy.comparison_hash].append(hierarchy)
 
-            print("\nOBSERVATION UNIT HIERARCHY (DETAILED):\n")
-            display_hierarchy(hierarchy, iri_names, indent="  ")
+    comparison_hash: int
+    iri: IRI
+    iri_type: Optional[IRI]
+    iri_subtype: Optional[IRI]
+    observed_variables: Optional[FrozenSet[IRI]]
+    controlled_variables: Optional[FrozenSet[IRI]]
+    treatments: Optional[FrozenSet[IRI]]
+    nested_iris: Optional[dict[int, list["UnitDefinition"]]]
 
-            print("\nOBSERVATION UNIT HIERARCHY (COMPACT):\n")
-            display_hierarchy(hierarchy, iri_names, indent="  ", detail=False)
+    complete_hierarchy = UnitDefinition(
+        0,
+        study,
+        IRI("appn:Study"),
+        None,
+        None,
+        None,
+        None,
+        hierarchies,
+    )
+    print("\nOBSERVATION UNIT HIERARCHY (DETAILED):\n")
+    display_hierarchy(complete_hierarchy, iri_names, indent="  ")
+
+    print("\nOBSERVATION UNIT HIERARCHY (COMPACT):\n")
+    display_hierarchy(complete_hierarchy, iri_names, indent="  ", detail=False)
 
     print()
 
