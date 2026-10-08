@@ -769,7 +769,7 @@ class ExcelVocabularyParser:
         # Process all rows with values in the name_column column
         index = 1
         for _, row in df.iterrows():
-            if row[name_column] not in [np.nan, None, ""]:
+            if row[name_column] not in [np.nan, None] and row[name_column].strip() != "":
                 name = str(row[name_column])
 
                 # Only proceed if this vocabulary is for the central organisation
@@ -829,6 +829,13 @@ class ExcelVocabularyParser:
         :param column_mappings: List of `ColumnMapping` objects for mapped columns
         :return: True if the row was processed without issues that need correction
         """
+
+        # If the instance is already known (normally from the centrat APPN
+        # vocabulary), just return immediately.
+        current_instance = self.find_known_instance(target_class, name)
+        if current_instance is not None:
+            return True
+
         # The IRI for this instance is based on the node, the class and the name
         iri = self.dictionary.build_iri(target_class.name, self.node.namespace, name)
         if iri in self.instances:
@@ -880,6 +887,8 @@ class ExcelVocabularyParser:
             value = row[column_mapping.column]
             if value not in [np.nan, None, ""]:
                 value = str(value)
+                if name_column == column_mapping.column:
+                    value = f"{value} ({target_class.name})"
                 property_term = column_mapping.property
 
                 # Locally defined properties are only added as the first triple is
@@ -908,15 +917,8 @@ class ExcelVocabularyParser:
                     # should reference it.
                     matching_term = None
                     if self.node.id != CENTRAL_ORGANISATION:
-                        matching_terms = (
-                            self.dictionary.list_instances_by_class_and_name(
-                                column_mapping.range_class,
-                                str(value),
-                                namespace=APPN_VOCABULARY,
-                            )
-                        )
-                        if len(matching_terms) > 0:
-                            matching_term = IRI(matching_terms[0].iri)
+                        matching_term = self.find_known_instance(column_mapping.range_class, str(value))
+                        if matching_term is not None:
                             self.add_triple(iri, property_term, matching_term)
 
                     # If there is no centrally defined instance, document the fact that
@@ -1179,6 +1181,40 @@ class ExcelVocabularyParser:
         self.required_properties = remaining
 
         return success
+
+    def find_known_instance(self, class_iri: IRI, name: str) -> Optional[IRI]:
+        """
+        Select existing object meeting policy-based criteria as the current
+        instance of a class with a given name
+
+        This is a special method to support parsing definitions for objects
+        complying with the APPN schema and having a specified name
+
+        The policy is to look for instances of the specified class in the 
+        current crate and otherwise in the vocabulary namespace for the 
+        current APPN node or (if no such match is found) in the central 
+        APPN vocabulary namespace.
+
+        Candidates are evaluated based on the IRI string for each instance.
+        The goal is to find an instance for which IRI belongs to the expected
+        class (which may mean belonging to a subclass) and that the name part 
+        of the IRI ends wuth a cleaned version of the supplied name. Case is 
+        ignored when comparing the cleaned name parts, so a request for an 
+        instance of the GrowthFacilityType class with any of "glasshouse", 
+        "Glasshouse", "GlassHouse", "Glass House", "GLASSHOUSE", etc. provided 
+        as the search name will match an instance with an IRI ending "gft_Glasshouse".
+
+        :param class_iri: The class to which the instance should belong
+        :param name:      String name for the search
+        :return:          Matching instance if found, else None
+        """
+        iri_name = "_" + self.dictionary.build_clean_name(name).lower()
+
+        for iri in self.dictionary.list_instances(class_iri, namespace=APPN_SCHEMA):
+            if iri.name.lower().endswith(iri_name):
+                return iri
+
+        return None
 
     def lower_first(self, name: str) -> str:
         """
