@@ -129,7 +129,7 @@ hydra:Error a rdfs:Class .
 
 prov:InstantaneousEvent a rdfs:Class .
 
-prov:atTime a rdfs:Class .
+prov:atTime a rdf:Property .
 
 foaf:Person a rdfs:Class .
 
@@ -18996,7 +18996,7 @@ schema:timeToComplete a rdf:Property ;
 schema:timestamp a rdf:Property ;
     rdfs:label "timestamp" ;
     rdfs:comment "The instant the event occured." ;
-    owl:equivalentClass prov:atTime ;
+    owl:equivalentProperty prov:atTime ;
     schema:domainIncludes schema:InstantaneousEvent ;
     schema:isPartOf <https://pending.schema.org> ;
     schema:rangeIncludes schema:DateTime ;
