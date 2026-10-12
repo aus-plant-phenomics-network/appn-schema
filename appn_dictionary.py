@@ -68,6 +68,12 @@ SKOS_PREF_LABEL = IRI(f"{SKOS_SCHEMA}prefLabel")
 DC_TITLE = IRI(f"{DC_SCHEMA}title")
 DC_DESCRIPTION = IRI(f"{DC_SCHEMA}description")
 
+# BNode prefix - ensure BNodes are recognised and handled correctly.
+# BNodes are displayed as strings and not handled by the IRI class. When
+# displayed by Dictionary, they include this prefix. When a request is 
+# received to display triples for a string with this prefix, it is 
+# stripped and matched with the string representation for the BNode.
+BNODE_PREFIX = "::"
 
 class Dictionary:
     """
@@ -395,8 +401,8 @@ class Dictionary:
         :param subject: String IRI or `IRI`
         :return: List of `Triple`s with given subject
         """
-        if isinstance(subject, str) and subject.startswith("::"):
-            subject = subject[2:]
+        if isinstance(subject, str) and subject.startswith(BNODE_PREFIX):
+            subject = subject[len(BNODE_PREFIX):]
             matching_values = [subject]
         else:
             subject = self.get_iri(subject)
@@ -1360,10 +1366,15 @@ class Dictionary:
         property_length = 0
 
         for triple in triples:
-            if isinstance(triple[TriplePosition.SUBJECT], IRI):
-                s = triple[TriplePosition.SUBJECT].curie
-            else:
-                s = str(triple[TriplePosition.SUBJECT])
+            s = (
+                triple[TriplePosition.SUBJECT].curie
+                if isinstance(triple[TriplePosition.SUBJECT], IRI)
+                else (
+                    f"{BNODE_PREFIX}{str(triple[TriplePosition.SUBJECT])}" 
+                    if isinstance(triple[TriplePosition.SUBJECT], BNode)
+                    else str(triple[TriplePosition.SUBJECT])
+                )
+            )
             p = (
                 triple[TriplePosition.PROPERTY].curie
                 if isinstance(triple[TriplePosition.PROPERTY], IRI)
@@ -1373,7 +1384,7 @@ class Dictionary:
                 triple[TriplePosition.OBJECT].curie
                 if isinstance(triple[TriplePosition.OBJECT], IRI)
                 else (
-                    f"::{str(triple[TriplePosition.OBJECT])}" 
+                    f"{BNODE_PREFIX}{str(triple[TriplePosition.OBJECT])}" 
                     if isinstance(triple[TriplePosition.OBJECT], BNode)
                     else str(triple[TriplePosition.OBJECT])
                 )
