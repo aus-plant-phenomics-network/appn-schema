@@ -21,9 +21,6 @@ GrowthFacility --|> Platform
 class GrowthFacilityType 
 GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
 class GrowthFacility #line.bold {
-    containmentLevel
-}
-class GrowthFacility #line.bold {
     quarantine
 }
 class Study 
@@ -40,12 +37,10 @@ class GrowthFacility #line.bold {
 class GrowthFacility #line.bold {
     shade
 }
-class GrowthFacility #line.bold {
-    physicalContainmentLevel
-}
-class GrowthFacility #line.bold {
-    biocontainmentLevel
-}
+class PhysicalContainmentLevel 
+GrowthFacility --> PhysicalContainmentLevel : physicalContainmentLevel
+class BiocontainmentLevel 
+GrowthFacility --> BiocontainmentLevel : biocontainmentLevel
 class GrowthFacility #line.bold {
     gasSupply
 }

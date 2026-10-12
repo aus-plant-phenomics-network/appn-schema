@@ -12,6 +12,6 @@ A method or process for performing an Assay.
 * http://schema.org/HowTo
 ## Properties
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** appn:Method
-    * Identifies a Method used to conduct an Assay.
+    * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * [appn:Assay](appn_Assay.md) **appn:usedMethod** appn:Method
-    * Identifies a Method used to conduct an Assay.
+    * Identifies a Method used to conduct an Assay or to derive values for a Variable.

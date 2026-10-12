@@ -1,0 +1,7 @@
+@startuml
+class PhysicalContainmentLevel  #line.bold
+class "schema:Enumeration" #DDFFDD 
+PhysicalContainmentLevel --|> "schema:Enumeration"
+class GrowthFacility 
+GrowthFacility --> PhysicalContainmentLevel : physicalContainmentLevel
+@enduml

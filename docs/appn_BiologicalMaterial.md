@@ -17,5 +17,16 @@ A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possib
     * Identifies a more inclusive BiologicalMaterial as a higher taxon.
 * appn:BiologicalMaterial **appn:hasMaterialSource** [appn:MaterialSource](appn_MaterialSource.md)
     * Identifies the MaterialSource for BiologicalMaterial.
+* BiologicalMaterial https://schema.plantphenomics.org.au/order
+* BiologicalMaterial https://schema.plantphenomics.org.au/family
 * BiologicalMaterial https://schema.plantphenomics.org.au/genus
+* BiologicalMaterial https://schema.plantphenomics.org.au/specificEpithet
+* BiologicalMaterial https://schema.plantphenomics.org.au/infraspecificEpithet
+* BiologicalMaterial https://schema.plantphenomics.org.au/cultivarEpithet
+* BiologicalMaterial https://schema.plantphenomics.org.au/uninomial
 * BiologicalMaterial https://schema.plantphenomics.org.au/scientificName
+* BiologicalMaterial https://schema.plantphenomics.org.au/rank
+* BiologicalMaterial https://schema.plantphenomics.org.au/taxonID
+* BiologicalMaterial https://schema.plantphenomics.org.au/hasPreprocessing
+* BiologicalMaterial https://schema.plantphenomics.org.au/geneticallyModifiedStatus
+* BiologicalMaterial https://schema.plantphenomics.org.au/quarantineStatus

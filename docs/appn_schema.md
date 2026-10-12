@@ -2,6 +2,7 @@
 ## APPN Classes
 * [appn:Actuator](appn_Actuator.md)
 * [appn:Assay](appn_Assay.md)
+* [appn:BiocontainmentLevel](appn_BiocontainmentLevel.md)
 * [appn:BiologicalMaterial](appn_BiologicalMaterial.md)
 * [appn:BiologicalUnit](appn_BiologicalUnit.md)
 * [appn:BiologicalUnitType](appn_BiologicalUnitType.md)
@@ -21,6 +22,7 @@
 * [appn:ObservedVariable](appn_ObservedVariable.md)
 * [appn:Observer](appn_Observer.md)
 * [appn:Person](appn_Person.md)
+* [appn:PhysicalContainmentLevel](appn_PhysicalContainmentLevel.md)
 * [appn:Platform](appn_Platform.md)
 * [appn:PlatformType](appn_PlatformType.md)
 * [appn:ResearchActivity](appn_ResearchActivity.md)

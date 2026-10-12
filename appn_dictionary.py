@@ -265,9 +265,12 @@ class Dictionary:
                 if isinstance(iri, URIRef) and iri not in iris:
                     ns = self.get_namespace_from_iri(iri)
                     logging.debug(f"Mapped <{iri}> to namespace <{ns}>")
+                    # If we detect the unused version of the schema.org namespace,
+                    # something has gone wrong.
                     if ns == ALT_SCHEMA_SCHEMA:
-                        print((s, o, p))
-                    if ns is not None and ns not in self.loaded:
+                        logging.error(f"Unexpected use of alternative schema.org namespace ({ALT_SCHEMA_SCHEMA}) in triple ({s}, {o}, {p})")
+                        success = False
+                    elif ns is not None and ns not in self.loaded:
                         if not self.load(ns):
                             success = False
                     logging.debug(f"Found IRI <{iri}>")
@@ -1439,7 +1442,7 @@ class Dictionary:
         problematic characters)
         
         :param name:      String name to clean
-        :return:          Cleaned name
+        :return:          Cleaned TitleCase name
         """
         return "".join(
             [

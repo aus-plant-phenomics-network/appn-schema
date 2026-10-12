@@ -118,6 +118,8 @@ class_abbreviations:
   "SpatialLocation": "sl"
   "SubstanceQuantity": "sq"
   "XYZLocation": "xyz"
+  "PhysicalContainmentLevel": "pc"
+  "BiocontainmentLevel": "bc"
 
 # Additional properties to be added whenever a specified property is added.
 # Both properties get the same value.

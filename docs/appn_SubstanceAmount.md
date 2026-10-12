@@ -26,7 +26,7 @@ A Variable (representation of a quantity using a defined Scale) for a Substance 
     * Identifies the Scale associated with a Variable.
 * SubstanceAmount https://schema.plantphenomics.org.au/hasDefaultValue
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** [appn:Method](appn_Method.md)
-    * Identifies a Method used to conduct an Assay.
+    * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalUnitType to which it relates.
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalMaterial** [appn:BiologicalMaterial](appn_BiologicalMaterial.md)

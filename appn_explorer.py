@@ -77,13 +77,13 @@ def setup_parser() -> argparse.ArgumentParser:
       -n, --namespace         : (Optional) Only return IRIs from the specified namespace (which may be specified as a prefix).
 
     Subparsers are included for:
-      namespaces, classes, properties, triples, unique_subjects,
-      unique_properties, unique_objects, superclasses, superproperties,
+      namespaces, classes, properties, triples, unique-subjects,
+      unique-properties, unique-objects, superclasses, superproperties,
       subclasses, subproperties, instances, instances-specific,
-      domain_properties, range_properties, domain_classes, range_classes,
-      domain_range_properties, instances, subject, property, object,
+      domain-properties, range-properties, domain-classes, range-classes,
+      domain-range-properties, instances, subject, property, object,
       property-name, property-name-all, instance-name, instance-name-all,
-      subject_counts, property_counts, object_counts, type, dump
+      subject-counts, property-counts, object-counts, type, dump
     """
     parser = argparse.ArgumentParser(
         description=f"{__name__}: Query linked-data graphs for common filters, based on the APPN schema and schemas referenced by the APPN schema and on any assets loaded using the asset command-line argument.",
@@ -96,10 +96,6 @@ def setup_parser() -> argparse.ArgumentParser:
     for cmd in [
         "instances",
         "instances-specific",
-        "domain-properties",
-        "range-properties",
-        "domain-classes",
-        "range-classes",
         "subject",
         "property",
         "object",
@@ -114,6 +110,10 @@ def setup_parser() -> argparse.ArgumentParser:
         "superproperties",
         "subclasses",
         "subproperties",
+        "domain-properties",
+        "range-properties",
+        "domain-classes",
+        "range-classes",
     ]:
         subparser = subparsers.add_parser(
             cmd, help=(subcommand_helptext[cmd] if cmd in subcommand_helptext else None)
@@ -377,7 +377,10 @@ def execute_query(
     elif args["query"] == "domain-properties":
         print(
             d.format_iri_list(
-                d.list_domain_properties_for_class(args["iri"]),
+                d.list_domain_properties_for_class(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )
@@ -386,7 +389,10 @@ def execute_query(
     elif args["query"] == "range-properties":
         print(
             d.format_iri_list(
-                d.list_range_properties_for_class(args["iri"]),
+                d.list_range_properties_for_class(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )
@@ -395,7 +401,35 @@ def execute_query(
     elif args["query"] == "domain-range-properties":
         print(
             d.format_iri_list(
-                d.list_properties_by_domain_and_range(args["domain"], args["range"]),
+                d.list_properties_by_domain_and_range(
+                    args["domain"], 
+                    args["range"],
+                    namespace=args["namespace"] if "namespace" in args else None
+                ),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
+
+    elif args["query"] == "domain-classes":
+        print(
+            d.format_iri_list(
+                d.list_domain_classes_for_property(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None
+                ),
+                max_rows=max_rows,
+                descriptions=descriptions,
+            )
+        )
+
+    elif args["query"] == "range-classes":
+        print(
+            d.format_iri_list(
+                d.list_range_classes_for_property(
+                    args["iri"],
+                    namespace=args["namespace"] if "namespace" in args else None
+                ),
                 max_rows=max_rows,
                 descriptions=descriptions,
             )

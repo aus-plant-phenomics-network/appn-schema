@@ -77,7 +77,10 @@ class IRI(URIRef):
             obj._ns = namespace_definition.ns
             obj._prefix = namespace_definition.prefix
             obj._name = iri[len(obj._ns) :]
-            obj._curie = f"{obj._prefix}:{obj._name}"
+            if len(obj._name) == 0:
+                obj._curie = iri
+            else:
+                obj._curie = f"{obj._prefix}:{obj._name}"
         else:
             obj._ns = ""
             obj._prefix = ""

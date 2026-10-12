@@ -1,6 +1,7 @@
 @startuml
 class Actuator
 class Assay
+class BiocontainmentLevel
 class BiologicalMaterial
 class BiologicalUnit
 class BiologicalUnitType
@@ -20,6 +21,7 @@ class ObservationUnit
 class ObservedVariable
 class Observer
 class Person
+class PhysicalContainmentLevel
 class Platform
 class PlatformType
 class ResearchActivity
@@ -185,4 +187,6 @@ Location --|> "schema:Thing"
 SpatialLocation --|> Location
 SpatialLocation --|> "schema:Place"
 XYZLocation --|> Location
+PhysicalContainmentLevel --|> "schema:Enumeration"
+BiocontainmentLevel --|> "schema:Enumeration"
 @enduml

@@ -256,6 +256,16 @@ appn:XYZLocation a rdfs:Class ;
   rdfs:comment "A location defined using an appropriate local spatial geometry in three dimensions." ;
   rdfs:subClassOf appn:Location .
 
+appn:PhysicalContainmentLevel a rdfs:Class ;
+  schema:name "PhysicalContainmentLevel" ;
+  rdfs:comment "Specifies the physical containment level (PC1-4) for a growth facility." ;
+  rdfs:subClassOf schema:Enumeration .
+
+appn:BiocontainmentLevel a rdfs:Class ;
+  schema:name "BiocontainmentLevel" ;
+  rdfs:comment "Specifies the biosecurity containment level for a growth facility." ;
+  rdfs:subClassOf schema:Enumeration .
+
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdf:Property ;
   schema:name "isPartOf" ;
@@ -363,12 +373,6 @@ appn:hasGrowthFacilityType a rdf:Property ;
   schema:rangeIncludes appn:GrowthFacilityType .
 
 # COMMENT: Needs a range.
-appn:containmentLevel a rdf:Property ;
-  schema:name "containmentLevel" ; 
-  rdfs:comment "Provides the containment level for a GrowthFacility." ;
-  schema:domainIncludes appn:GrowthFacility .
-
-# COMMENT: Needs a range.
 appn:quarantine a rdf:Property ;
   schema:name "quarantine" ; 
   rdfs:comment "Indicates if a GrowthFacility is for quarantine." ;
@@ -446,10 +450,9 @@ appn:deployedOnPlatform a rdf:Property ;
   schema:domainIncludes appn:Deployment ;
   schema:rangeIncludes appn:Platform .
 
-# ISSUE: Include for variables as well as assays?
 appn:usedMethod a rdf:Property ;
   schema:name "usedMethod" ;
-  rdfs:comment "Identifies a Method used to conduct an Assay." ;
+  rdfs:comment "Identifies a Method used to conduct an Assay or to derive values for a Variable." ;
   schema:domainIncludes appn:Variable, appn:Assay ;
   schema:rangeIncludes appn:Method .
 
@@ -534,12 +537,14 @@ appn:shade a rdf:Property ;
 appn:physicalContainmentLevel a rdf:Property ;
   schema:name "physicalContainmentLevel" ;
   rdfs:comment "The physical containment (PC) level capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  schema:rangeIncludes appn:PhysicalContainmentLevel .
 
 appn:biocontainmentLevel a rdf:Property ;
   schema:name "biocontainmentLevel" ;
   rdfs:comment "The biocontainment level capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  schema:rangeIncludes appn:BiocontainmentLevel .
 
 appn:gasSupply a rdf:Property ;
   schema:name "gasSupply" ;
@@ -551,14 +556,81 @@ appn:humidityControl a rdf:Property ;
   rdfs:comment "The humidity control capabilities of a GrowthFacility" ;
   schema:domainIncludes appn:GrowthFacility .
 
+appn:order a rdf:Property ;
+  schema:name "order" ;
+  rdfs:comment "A taxonomic rank above family and below class" ;
+  rdfs:subPropertyOf dwc:genorderus ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:family a rdf:Property ;
+  schema:name "family" ;
+  rdfs:comment "A taxonomic rank above genus and below order" ;
+  rdfs:subPropertyOf dwc:family ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
 appn:genus a rdf:Property ;
   schema:name "genus" ;
   rdfs:comment "A taxonomic rank above species and below family" ;
   rdfs:subPropertyOf dwc:genus ;
+  rdfs:subPropertyOf ppeo:hasGenus ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:specificEpithet a rdf:Property ;
+  schema:name "specificEpithet" ;
+  rdfs:comment "The specific epithet of a binomial or trinomial scientific name" ;
+  rdfs:subPropertyOf dwc:specificEpithet ;
+  rdfs:subPropertyOf ppeo:hasSpecies ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:infraspecificEpithet a rdf:Property ;
+  schema:name "infraspecificEpithet" ;
+  rdfs:comment "The infraspecific epithet of a trinomial scientific name" ;
+  rdfs:subPropertyOf dwc:specificEpithet ;
+  rdfs:subPropertyOf ppeo:hasInfraspecificName ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:cultivarEpithet a rdf:Property ;
+  schema:name "cultivarEpithet" ;
+  rdfs:comment "A name for a cultivar or breed." ;
+  rdfs:subPropertyOf dwc:cultivarEpithet ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:uninomial a rdf:Property ;
+  schema:name "uninomial" ;
+  rdfs:comment "A scientific name comprising a single word (genus or higher)" ;
+  rdfs:subPropertyOf dwc:uninomial ;
   schema:domainIncludes appn:BiologicalMaterial .
 
 appn:scientificName a rdf:Property ;
   schema:name "scientificName" ;
   rdfs:comment "A name for an organism subject to one of the codes of nomenclature" ;
   rdfs:subPropertyOf dwc:scientificName ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:rank a rdf:Property ;
+  schema:name "rank" ;
+  rdfs:comment "The rank of a scientific name" ;
+  rdfs:subPropertyOf dwc:rank ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:taxonID a rdf:Property ;
+  schema:name "taxonID" ;
+  rdfs:comment "An identifier for a taxon" ;
+  rdfs:subPropertyOf dwc:taxonID ;
+  rdfs:subPropertyOf ppeo:hasTaxonIdentifier ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:hasPreprocessing a rdf:Property ;
+  schema:name "hasPreprocessing" ;
+  rdfs:comment "Description of any preprocessing carried out on the biological material" ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:geneticallyModifiedStatus a rdf:Property ;
+  schema:name "geneticallyModifiedStatus" ;
+  rdfs:comment "True if biological material is genetically modified" ;
+  schema:domainIncludes appn:BiologicalMaterial .
+
+appn:quarantineStatus a rdf:Property ;
+  schema:name "quarantineStatus" ;
+  rdfs:comment "True if biological material requires quarantine" ;
   schema:domainIncludes appn:BiologicalMaterial .

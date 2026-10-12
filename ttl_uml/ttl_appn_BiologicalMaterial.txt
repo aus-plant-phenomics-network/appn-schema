@@ -12,9 +12,42 @@ BiologicalMaterial --> BiologicalMaterial : hasHigherTaxon
 class MaterialSource 
 BiologicalMaterial --> MaterialSource : hasMaterialSource
 class BiologicalMaterial #line.bold {
+    order
+}
+class BiologicalMaterial #line.bold {
+    family
+}
+class BiologicalMaterial #line.bold {
     genus
 }
 class BiologicalMaterial #line.bold {
+    specificEpithet
+}
+class BiologicalMaterial #line.bold {
+    infraspecificEpithet
+}
+class BiologicalMaterial #line.bold {
+    cultivarEpithet
+}
+class BiologicalMaterial #line.bold {
+    uninomial
+}
+class BiologicalMaterial #line.bold {
     scientificName
+}
+class BiologicalMaterial #line.bold {
+    rank
+}
+class BiologicalMaterial #line.bold {
+    taxonID
+}
+class BiologicalMaterial #line.bold {
+    hasPreprocessing
+}
+class BiologicalMaterial #line.bold {
+    geneticallyModifiedStatus
+}
+class BiologicalMaterial #line.bold {
+    quarantineStatus
 }
 @enduml

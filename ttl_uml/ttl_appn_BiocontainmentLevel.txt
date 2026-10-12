@@ -1,0 +1,7 @@
+@startuml
+class BiocontainmentLevel  #line.bold
+class "schema:Enumeration" #DDFFDD 
+BiocontainmentLevel --|> "schema:Enumeration"
+class GrowthFacility 
+GrowthFacility --> BiocontainmentLevel : biocontainmentLevel
+@enduml

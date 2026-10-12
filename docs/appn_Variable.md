@@ -16,7 +16,7 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
 ## Properties
 * Variable https://schema.plantphenomics.org.au/hasDefaultValue
 * appn:Variable **appn:usedMethod** [appn:Method](appn_Method.md)
-    * Identifies a Method used to conduct an Assay.
+    * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * appn:Variable **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)
     * Links a Variable to the BiologicalUnitType to which it relates.
 * appn:Variable **appn:forBiologicalMaterial** [appn:BiologicalMaterial](appn_BiologicalMaterial.md)

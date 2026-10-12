@@ -18,7 +18,6 @@ A building, enclosed space, field unit, container or other entity in which plant
 ## Properties
 * appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
     * Links a GrowthFacility to its type.
-* GrowthFacility https://schema.plantphenomics.org.au/containmentLevel
 * GrowthFacility https://schema.plantphenomics.org.au/quarantine
 * [appn:Study](appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
     * Identifies a GrowthFacility used in a Study.
@@ -26,8 +25,10 @@ A building, enclosed space, field unit, container or other entity in which plant
 * GrowthFacility https://schema.plantphenomics.org.au/temperatureRange
 * GrowthFacility https://schema.plantphenomics.org.au/lights
 * GrowthFacility https://schema.plantphenomics.org.au/shade
-* GrowthFacility https://schema.plantphenomics.org.au/physicalContainmentLevel
-* GrowthFacility https://schema.plantphenomics.org.au/biocontainmentLevel
+* appn:GrowthFacility **appn:physicalContainmentLevel** [appn:PhysicalContainmentLevel](appn_PhysicalContainmentLevel.md)
+    * The physical containment (PC) level capabilities of a GrowthFacility
+* appn:GrowthFacility **appn:biocontainmentLevel** [appn:BiocontainmentLevel](appn_BiocontainmentLevel.md)
+    * The biocontainment level capabilities of a GrowthFacility
 * GrowthFacility https://schema.plantphenomics.org.au/gasSupply
 * GrowthFacility https://schema.plantphenomics.org.au/humidityControl
 * [appn:Platform](appn_Platform.md) **appn:hasPlatformType** [appn:PlatformType](appn_PlatformType.md)
