@@ -11,6 +11,14 @@ A time-delimited activity contributing to a research goal.
 ## Properties
 * appn:ResearchActivity **appn:isPartOf** [appn:ResearchActivity](appn_ResearchActivity.md)
     * Relates an Assay to the Study that includes it or a Study to an Investigation.
+* [appn:Role](appn_Role.md) **appn:isRoleOfPersonIn** appn:ResearchActivity
+    * Indicates a ResearchActivity in which a Person has a Role
+* appn:ResearchActivity **appn:startTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity started
+* appn:ResearchActivity **appn:endTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity ended
+* appn:ResearchActivity **appn:atTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity occurred - equivalent to both startTime and endTime
 ## Subclasses
 * [https://schema.plantphenomics.org.au/Investigation](appn_Investigation.md)
 * [https://schema.plantphenomics.org.au/Study](appn_Study.md)

@@ -6,6 +6,7 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
 ![UML diagram for ControlledVariable](images/ttl_appn_ControlledVariable.png)
 
 ## Superclasses
+* http://www.w3.org/ns/sosa/ActuatableProperty
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)
 * [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
 * http://purl.org/ppeo/PPEO.owl#trait

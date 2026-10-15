@@ -15,6 +15,8 @@ A Person, preferably identified using an ORCID, that may perform an Assay.
 * http://www.w3.org/ns/sosa/Sampler
 * http://schema.org/Person
 ## Properties
+* appn:Person **appn:hasRole** [appn:Role](appn_Role.md)
+    * Indicates a role for a Person in a ResearchActivity
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
 * [appn:Control](appn_Control.md) **appn:madeByController** [appn:Controller](appn_Controller.md)

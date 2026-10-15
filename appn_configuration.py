@@ -53,6 +53,7 @@ RDFS_SCHEMA = "http://www.w3.org/2000/01/rdf-schema#"
 SKOS_SCHEMA = "http://www.w3.org/2004/02/skos/core#"
 SOSA_SCHEMA = "http://www.w3.org/ns/sosa/"
 SSN_SCHEMA = "http://www.w3.org/ns/ssn/"
+XML_SCHEMA = "http://www.w3.org/2001/XMLSchema#"
 
 # Namespaces for APPN central and node vocabularies
 APPN_VOCABULARY_ROOT = "https://id.plantphenomics.org.au/"
@@ -85,6 +86,7 @@ DEFAULT_PREFIXES: dict[str, str] = {
     SOSA_SCHEMA: "sosa",
     SSN_SCHEMA: "ssn",
     BIO_SCHEMA: "bio",
+    XML_SCHEMA: "xsd",
     APPN_VOCABULARY: "appnid",
     ANU_VOCABULARY: "anu",
     AU_VOCABULARY: "au",

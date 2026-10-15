@@ -1,0 +1,13 @@
+@startuml
+class Country  #line.bold
+class "schema:Country" #DDFFDD 
+Country --|> "schema:Country"
+class "ppeo:country" #EEFFCC 
+Country --|> "ppeo:country"
+class SpatialLocation 
+SpatialLocation --> Country : hasCountry
+class BiologicalMaterial 
+BiologicalMaterial --> Country : hasCountryOfOrigin
+class "xsd:string" #CCFFEE
+Country --> "xsd:string" : hasCountryCode
+@enduml

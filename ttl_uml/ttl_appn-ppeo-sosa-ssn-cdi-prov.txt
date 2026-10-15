@@ -8,6 +8,7 @@ class BiologicalUnitType
 class Control
 class ControlledVariable
 class Controller
+class Country
 class Deployment
 class ExternalEvent
 class GrowthFacility
@@ -25,6 +26,7 @@ class PhysicalContainmentLevel
 class Platform
 class PlatformType
 class ResearchActivity
+class Role
 class Sample
 class Sampler
 class Sampling
@@ -42,6 +44,7 @@ class Variable
 class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
+    class "schema:Country" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
@@ -51,6 +54,7 @@ package "schema" {
     class "schema:Observation" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Place" #DDFFDD
+    class "schema:Role" #DDFFDD
     class "schema:Thing" #DDFFDD
 }
 package "bio" {
@@ -59,6 +63,8 @@ package "bio" {
     class "bio:ComputationalWorkflow" #EECCFF
     class "bio:Substance" #EECCFF
     class "bio:Taxon" #EECCFF
+}
+package "xsd" {
 }
 ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
@@ -114,4 +120,6 @@ SpatialLocation --|> "schema:Place"
 XYZLocation --|> Location
 PhysicalContainmentLevel --|> "schema:Enumeration"
 BiocontainmentLevel --|> "schema:Enumeration"
+Country --|> "schema:Country"
+Role --|> "schema:Role"
 @enduml

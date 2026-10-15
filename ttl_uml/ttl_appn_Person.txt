@@ -16,6 +16,8 @@ Sampler --|> "sosa:Sampler"
 Person --|> Sampler
 class "schema:Person" #DDFFDD 
 Person --|> "schema:Person"
+class Role 
+Person --> Role : hasRole
 class Observation 
 Observation --> Observer : madeByObserver
 class Control 

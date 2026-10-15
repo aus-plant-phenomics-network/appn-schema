@@ -1,5 +1,7 @@
 @startuml
 class ControlledVariable  #line.bold
+class "sosa:ActuatableProperty" #FFCCEE 
+ControlledVariable --|> "sosa:ActuatableProperty"
 class Variable  
 class Trait  
 class "ppeo:trait" #EEFFCC 

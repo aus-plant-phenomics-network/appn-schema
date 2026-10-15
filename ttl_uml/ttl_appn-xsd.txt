@@ -1,0 +1,208 @@
+@startuml
+class Actuator
+class Assay
+class BiocontainmentLevel
+class BiologicalMaterial
+class BiologicalUnit
+class BiologicalUnitType
+class Control
+class ControlledVariable
+class Controller
+class Country
+class Deployment
+class ExternalEvent
+class GrowthFacility
+class GrowthFacilityType
+class Investigation
+class Location
+class MaterialSource
+class Method
+class Observation
+class ObservationUnit
+class ObservedVariable
+class Observer
+class Person
+class PhysicalContainmentLevel
+class Platform
+class PlatformType
+class ResearchActivity
+class Role
+class Sample
+class Sampler
+class Sampling
+class Scale
+class Sensor
+class SensorType
+class SoftwareApplication
+class SpatialLocation
+class Study
+class Substance
+class SubstanceAmount
+class Trait
+class Treatment
+class Variable
+class XYZLocation
+package "schema" {
+    class "schema:Action" #DDFFDD
+    class "schema:Country" #DDFFDD
+    class "schema:DefinedTerm" #DDFFDD
+    class "schema:Enumeration" #DDFFDD
+    class "schema:Event" #DDFFDD
+    class "schema:HowTo" #DDFFDD
+    class "schema:IndividualProduct" #DDFFDD
+    class "schema:InstanceValue" #DDFFDD
+    class "schema:Observation" #DDFFDD
+    class "schema:Person" #DDFFDD
+    class "schema:Place" #DDFFDD
+    class "schema:Role" #DDFFDD
+    class "schema:Thing" #DDFFDD
+}
+package "prov" {
+    class "prov:Activity" #DDDDFF
+    class "prov:Entity" #DDDDFF
+    class "prov:Plan" #DDDDFF
+}
+package "ppeo" {
+    class "ppeo:GPS_location" #EEFFCC
+    class "ppeo:biological_material" #EEFFCC
+    class "ppeo:country" #EEFFCC
+    class "ppeo:event" #EEFFCC
+    class "ppeo:growth_facility" #EEFFCC
+    class "ppeo:investigation" #EEFFCC
+    class "ppeo:material_source" #EEFFCC
+    class "ppeo:method" #EEFFCC
+    class "ppeo:observation" #EEFFCC
+    class "ppeo:observation_unit" #EEFFCC
+    class "ppeo:observed_variable" #EEFFCC
+    class "ppeo:person" #EEFFCC
+    class "ppeo:role" #EEFFCC
+    class "ppeo:sample" #EEFFCC
+    class "ppeo:scale" #EEFFCC
+    class "ppeo:spatial_distribution" #EEFFCC
+    class "ppeo:study" #EEFFCC
+    class "ppeo:trait" #EEFFCC
+}
+package "sosa" {
+    class "sosa:ActuatableProperty" #FFCCEE
+    class "sosa:Actuation" #FFCCEE
+    class "sosa:Actuator" #FFCCEE
+    class "sosa:FeatureOfInterest" #FFCCEE
+    class "sosa:ObservableProperty" #FFCCEE
+    class "sosa:Observation" #FFCCEE
+    class "sosa:Platform" #FFCCEE
+    class "sosa:Procedure" #FFCCEE
+    class "sosa:Property" #FFCCEE
+    class "sosa:Sample" #FFCCEE
+    class "sosa:Sampler" #FFCCEE
+    class "sosa:Sampling" #FFCCEE
+    class "sosa:Sensor" #FFCCEE
+}
+package "cdi" {
+    class "cdi:Concept" #CCEEFF
+    class "cdi:RepresentedVariable" #CCEEFF
+}
+package "bio" {
+    class "bio:BioChemEntity" #EECCFF
+    class "bio:BioSample" #EECCFF
+    class "bio:ComputationalWorkflow" #EECCFF
+    class "bio:Substance" #EECCFF
+    class "bio:Taxon" #EECCFF
+}
+package "ssn" {
+    class "ssn:Deployment" #FFEECC
+}
+ResearchActivity --|> "schema:Action"
+ResearchActivity --|> "prov:Activity"
+Investigation --|> ResearchActivity
+Investigation --|> "ppeo:investigation"
+Study --|> ResearchActivity
+Study --|> "ppeo:study"
+Assay --|> ResearchActivity
+Method --|> "ppeo:method"
+Method --|> "sosa:Procedure"
+Method --|> "prov:Plan"
+Method --|> "schema:HowTo"
+Observation --|> "schema:Observation"
+Observation --|> Assay
+Observation --|> "sosa:Observation"
+Observation --|> "ppeo:observation"
+Control --|> "sosa:Actuation"
+Control --|> Assay
+Sampling --|> "sosa:Sampling"
+Sampling --|> Assay
+Treatment --|> "ppeo:event"
+Treatment --|> "sosa:Actuation"
+Treatment --|> Assay
+ObservationUnit --|> "schema:Thing"
+ObservationUnit --|> "prov:Entity"
+ObservationUnit --|> "ppeo:observation_unit"
+ObservationUnit --|> "sosa:FeatureOfInterest"
+Trait --|> "ppeo:trait"
+Trait --|> "cdi:Concept"
+Trait --|> "schema:DefinedTerm"
+Scale --|> "ppeo:scale"
+Scale --|> "schema:DefinedTerm"
+Variable --|> Trait
+Variable --|> "sosa:Property"
+Variable --|> "cdi:RepresentedVariable"
+Variable --|> "schema:InstanceValue"
+ObservedVariable --|> "ppeo:observed_variable"
+ObservedVariable --|> "sosa:ObservableProperty"
+ObservedVariable --|> Variable
+ControlledVariable --|> "sosa:ActuatableProperty"
+ControlledVariable --|> Variable
+SubstanceAmount --|> Variable
+Observer --|> "sosa:Sensor"
+Controller --|> "sosa:Actuator"
+Sampler --|> "sosa:Sampler"
+Sensor --|> Observer
+Sensor --|> ObservationUnit
+Sensor --|> "schema:IndividualProduct"
+SensorType --|> "schema:Enumeration"
+Actuator --|> Controller
+Actuator --|> ObservationUnit
+Actuator --|> "schema:IndividualProduct"
+ExternalEvent --|> Controller
+ExternalEvent --|> "schema:Event"
+Person --|> "ppeo:person"
+Person --|> Observer
+Person --|> Controller
+Person --|> Sampler
+Person --|> "schema:Person"
+SoftwareApplication --|> "bio:ComputationalWorkflow"
+SoftwareApplication --|> Observer
+SoftwareApplication --|> Controller
+Sample --|> "ppeo:sample"
+Sample --|> "sosa:Sample"
+Sample --|> BiologicalUnit
+Substance --|> ObservationUnit
+Substance --|> "bio:Substance"
+Platform --|> "sosa:Platform"
+Platform --|> ObservationUnit
+Platform --|> "schema:IndividualProduct"
+PlatformType --|> "schema:Enumeration"
+Deployment --|> "ssn:Deployment"
+Deployment --|> "schema:Thing"
+GrowthFacility --|> "ppeo:growth_facility"
+GrowthFacility --|> Platform
+GrowthFacilityType --|> "schema:Enumeration"
+BiologicalUnit --|> ObservationUnit
+BiologicalUnit --|> "bio:BioChemEntity"
+BiologicalUnitType --|> "schema:Enumeration"
+BiologicalMaterial --|> "ppeo:biological_material"
+BiologicalMaterial --|> "bio:Taxon"
+MaterialSource --|> "ppeo:material_source"
+MaterialSource --|> "bio:BioSample"
+Location --|> "ppeo:spatial_distribution"
+Location --|> "schema:Thing"
+SpatialLocation --|> Location
+SpatialLocation --|> "ppeo:GPS_location"
+SpatialLocation --|> "schema:Place"
+XYZLocation --|> Location
+PhysicalContainmentLevel --|> "schema:Enumeration"
+BiocontainmentLevel --|> "schema:Enumeration"
+Country --|> "schema:Country"
+Country --|> "ppeo:country"
+Role --|> "schema:Role"
+Role --|> "ppeo:role"
+@enduml

@@ -42,6 +42,7 @@ from appn_configuration import (
     ALT_SCHEMA_SCHEMA,
     SKOS_SCHEMA,
     DC_SCHEMA,
+    XML_SCHEMA,
     DEFAULT_PREFIXES,
     APPN_VOCABULARY_ROOT,
     APPN_VOCABULARY,
@@ -270,7 +271,8 @@ class Dictionary:
                     if ns == ALT_SCHEMA_SCHEMA:
                         logging.error(f"Unexpected use of alternative schema.org namespace ({ALT_SCHEMA_SCHEMA}) in triple ({s}, {o}, {p})")
                         success = False
-                    elif ns is not None and ns not in self.loaded:
+                    # Don't try importing XSD - no RDF representation available
+                    elif ns is not None and ns not in self.loaded and ns != XML_SCHEMA:
                         if not self.load(ns):
                             success = False
                     logging.debug(f"Found IRI <{iri}>")

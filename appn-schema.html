@@ -87,6 +87,8 @@
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;True if biological material is genetically modified</div>
         <div class="property" id="quarantineStatus">BiologicalMaterial <b>quarantineStatus</b></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;True if biological material requires quarantine</div>
+        <div class="property" id="hasCountryOfOrigin">BiologicalMaterial <b>hasCountryOfOrigin</b> <a href="#Country">Country</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country from which BiologicalMaterial originated</div>
         <h2 id="BiologicalUnit">Class: BiologicalUnit</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalUnit" target="_blank">https://schema.plantphenomics.org.au/BiologicalUnit</a></div>
         <img src="image/ttl_appn_BiologicalUnit.png"/>
@@ -137,6 +139,7 @@
         <img src="image/ttl_appn_ControlledVariable.png"/>
         <div class="description"><b>ControlledVariable:</b> A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit.</div>
         <h3>Superclasses</h3>
+        <div class="parent"><a href="http://www.w3.org/ns/sosa/ActuatableProperty">http://www.w3.org/ns/sosa/ActuatableProperty</a></div>
         <div class="parent"><a href="#Variable">Variable</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Control">Control</a> <b>controls</b> ControlledVariable</div>
@@ -159,6 +162,20 @@
         <div class="child"><a href="#ExternalEvent">ExternalEvent</a></div>
         <div class="child"><a href="#Person">Person</a></div>
         <div class="child"><a href="#SoftwareApplication">SoftwareApplication</a></div>
+        <h2 id="Country">Class: Country</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Country" target="_blank">https://schema.plantphenomics.org.au/Country</a></div>
+        <img src="image/ttl_appn_Country.png"/>
+        <div class="description"><b>Country:</b> A country</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://schema.org/Country">http://schema.org/Country</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#country">http://purl.org/ppeo/PPEO.owl#country</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#SpatialLocation">SpatialLocation</a> <b>hasCountry</b> Country</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country for a SpatialLocation</div>
+        <div class="property"><a href="#BiologicalMaterial">BiologicalMaterial</a> <b>hasCountryOfOrigin</b> Country</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country from which BiologicalMaterial originated</div>
+        <div class="property" id="hasCountryCode">Country <b>hasCountryCode</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;ISO 2-letter country code for country</div>
         <h2 id="Deployment">Class: Deployment</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Deployment" target="_blank">https://schema.plantphenomics.org.au/Deployment</a></div>
         <img src="image/ttl_appn_Deployment.png"/>
@@ -319,6 +336,7 @@
         <div class="description"><b>ObservedVariable:</b> A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observed_variable">http://purl.org/ppeo/PPEO.owl#observed_variable</a></div>
+        <div class="parent"><a href="http://www.w3.org/ns/sosa/ObservableProperty">http://www.w3.org/ns/sosa/ObservableProperty</a></div>
         <div class="parent"><a href="#Variable">Variable</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Observation">Observation</a> <b>observes</b> ObservedVariable</div>
@@ -348,6 +366,9 @@
         <div class="parent"><a href="#Controller">Controller</a></div>
         <div class="parent"><a href="#Sampler">Sampler</a></div>
         <div class="parent"><a href="http://schema.org/Person">http://schema.org/Person</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="hasRole">Person <b>hasRole</b> <a href="#Role">Role</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a role for a Person in a ResearchActivity</div>
         <h2 id="PhysicalContainmentLevel">Class: PhysicalContainmentLevel</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/PhysicalContainmentLevel" target="_blank">https://schema.plantphenomics.org.au/PhysicalContainmentLevel</a></div>
         <img src="image/ttl_appn_PhysicalContainmentLevel.png"/>
@@ -395,10 +416,30 @@
         <h3>Properties</h3>
         <div class="property" id="isPartOf">ResearchActivity <b>isPartOf</b> <a href="#ResearchActivity">ResearchActivity</a></div>
         <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to the Study that includes it or a Study to an Investigation.</div>
+        <div class="property"><a href="#Role">Role</a> <b>isRoleOfPersonIn</b> ResearchActivity</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a ResearchActivity in which a Person has a Role</div>
+        <div class="property" id="startTime">ResearchActivity <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The time at which a ResearchActivity started</div>
+        <div class="property" id="endTime">ResearchActivity <b>endTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The time at which a ResearchActivity ended</div>
+        <div class="property" id="atTime">ResearchActivity <b>atTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The time at which a ResearchActivity occurred - equivalent to both startTime and endTime</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Investigation">Investigation</a></div>
         <div class="child"><a href="#Study">Study</a></div>
         <div class="child"><a href="#Assay">Assay</a></div>
+        <h2 id="Role">Class: Role</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Role" target="_blank">https://schema.plantphenomics.org.au/Role</a></div>
+        <img src="image/ttl_appn_Role.png"/>
+        <div class="description"><b>Role:</b> A role performed by a person in the context of a research activity</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://schema.org/Role">http://schema.org/Role</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#role">http://purl.org/ppeo/PPEO.owl#role</a></div>
+        <h3>Properties</h3>
+        <div class="property"><a href="#Person">Person</a> <b>hasRole</b> Role</div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a role for a Person in a ResearchActivity</div>
+        <div class="property" id="isRoleOfPersonIn">Role <b>isRoleOfPersonIn</b> <a href="#ResearchActivity">ResearchActivity</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a ResearchActivity in which a Person has a Role</div>
         <h2 id="Sample">Class: Sample</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sample" target="_blank">https://schema.plantphenomics.org.au/Sample</a></div>
         <img src="image/ttl_appn_Sample.png"/>
@@ -480,10 +521,22 @@
         <h2 id="SpatialLocation">Class: SpatialLocation</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/SpatialLocation" target="_blank">https://schema.plantphenomics.org.au/SpatialLocation</a></div>
         <img src="image/ttl_appn_SpatialLocation.png"/>
-        <div class="description"><b>SpatialLocation:</b> A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape.</div>
+        <div class="description"><b>SpatialLocation:</b> A location defined with geospatial coordinates.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Location">Location</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#GPS_location">http://purl.org/ppeo/PPEO.owl#GPS_location</a></div>
         <div class="parent"><a href="http://schema.org/Place">http://schema.org/Place</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="hasLatitude">SpatialLocation <b>hasLatitude</b></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Decimal latitude for a SpatialLocation</div>
+        <div class="property" id="hasLongitude">SpatialLocation <b>hasLongitude</b></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Decimal longitude for a SpatialLocation</div>
+        <div class="property" id="hasUncertainty">SpatialLocation <b>hasUncertainty</b></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Uncertainty in meters for coordinates</div>
+        <div class="property" id="hasAltitude">SpatialLocation <b>hasAltitude</b></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Altitude for a SpatialLocation</div>
+        <div class="property" id="hasCountry">SpatialLocation <b>hasCountry</b> <a href="#Country">Country</a></div>
+        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country for a SpatialLocation</div>
         <h2 id="Study">Class: Study</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Study" target="_blank">https://schema.plantphenomics.org.au/Study</a></div>
         <img src="image/ttl_appn_Study.png"/>

@@ -50,4 +50,6 @@ class BiologicalMaterial #line.bold {
 class BiologicalMaterial #line.bold {
     quarantineStatus
 }
+class Country 
+BiologicalMaterial --> Country : hasCountryOfOrigin
 @enduml

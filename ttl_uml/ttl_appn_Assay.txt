@@ -12,6 +12,14 @@ class Method
 Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
+class Role 
+Role --> ResearchActivity : isRoleOfPersonIn
+class "xsd:dateTime" #CCFFEE
+ResearchActivity --> "xsd:dateTime" : startTime
+class "xsd:dateTime" #CCFFEE
+ResearchActivity --> "xsd:dateTime" : endTime
+class "xsd:dateTime" #CCFFEE
+ResearchActivity --> "xsd:dateTime" : atTime
 class Observation 
 Observation --|> Assay
 class Control 

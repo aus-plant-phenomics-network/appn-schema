@@ -7,6 +7,7 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
 
 ## Superclasses
 * http://purl.org/ppeo/PPEO.owl#observed_variable
+* http://www.w3.org/ns/sosa/ObservableProperty
 * [https://schema.plantphenomics.org.au/Variable](appn_Variable.md)
 * [https://schema.plantphenomics.org.au/Trait](appn_Trait.md)
 * http://purl.org/ppeo/PPEO.owl#trait

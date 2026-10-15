@@ -8,6 +8,7 @@ class BiologicalUnitType
 class Control
 class ControlledVariable
 class Controller
+class Country
 class Deployment
 class ExternalEvent
 class GrowthFacility
@@ -25,6 +26,7 @@ class PhysicalContainmentLevel
 class Platform
 class PlatformType
 class ResearchActivity
+class Role
 class Sample
 class Sampler
 class Sampling
@@ -42,6 +44,7 @@ class Variable
 class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
+    class "schema:Country" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
@@ -51,6 +54,7 @@ package "schema" {
     class "schema:Observation" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Place" #DDFFDD
+    class "schema:Role" #DDFFDD
     class "schema:Thing" #DDFFDD
 }
 package "prov" {
@@ -59,7 +63,9 @@ package "prov" {
     class "prov:Plan" #DDDDFF
 }
 package "ppeo" {
+    class "ppeo:GPS_location" #EEFFCC
     class "ppeo:biological_material" #EEFFCC
+    class "ppeo:country" #EEFFCC
     class "ppeo:event" #EEFFCC
     class "ppeo:growth_facility" #EEFFCC
     class "ppeo:investigation" #EEFFCC
@@ -69,6 +75,7 @@ package "ppeo" {
     class "ppeo:observation_unit" #EEFFCC
     class "ppeo:observed_variable" #EEFFCC
     class "ppeo:person" #EEFFCC
+    class "ppeo:role" #EEFFCC
     class "ppeo:sample" #EEFFCC
     class "ppeo:scale" #EEFFCC
     class "ppeo:spatial_distribution" #EEFFCC
@@ -76,9 +83,11 @@ package "ppeo" {
     class "ppeo:trait" #EEFFCC
 }
 package "sosa" {
+    class "sosa:ActuatableProperty" #FFCCEE
     class "sosa:Actuation" #FFCCEE
     class "sosa:Actuator" #FFCCEE
     class "sosa:FeatureOfInterest" #FFCCEE
+    class "sosa:ObservableProperty" #FFCCEE
     class "sosa:Observation" #FFCCEE
     class "sosa:Platform" #FFCCEE
     class "sosa:Procedure" #FFCCEE
@@ -101,6 +110,8 @@ package "bio" {
 }
 package "ssn" {
     class "ssn:Deployment" #FFEECC
+}
+package "xsd" {
 }
 ResearchActivity --|> "schema:Action"
 ResearchActivity --|> "prov:Activity"
@@ -138,7 +149,9 @@ Variable --|> "sosa:Property"
 Variable --|> "cdi:RepresentedVariable"
 Variable --|> "schema:InstanceValue"
 ObservedVariable --|> "ppeo:observed_variable"
+ObservedVariable --|> "sosa:ObservableProperty"
 ObservedVariable --|> Variable
+ControlledVariable --|> "sosa:ActuatableProperty"
 ControlledVariable --|> Variable
 SubstanceAmount --|> Variable
 Observer --|> "sosa:Sensor"
@@ -185,8 +198,13 @@ MaterialSource --|> "bio:BioSample"
 Location --|> "ppeo:spatial_distribution"
 Location --|> "schema:Thing"
 SpatialLocation --|> Location
+SpatialLocation --|> "ppeo:GPS_location"
 SpatialLocation --|> "schema:Place"
 XYZLocation --|> Location
 PhysicalContainmentLevel --|> "schema:Enumeration"
 BiocontainmentLevel --|> "schema:Enumeration"
+Country --|> "schema:Country"
+Country --|> "ppeo:country"
+Role --|> "schema:Role"
+Role --|> "ppeo:role"
 @enduml

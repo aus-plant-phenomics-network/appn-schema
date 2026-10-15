@@ -5,6 +5,14 @@ ResearchActivity --|> "schema:Action"
 class "prov:Activity" #DDDDFF 
 ResearchActivity --|> "prov:Activity"
 ResearchActivity --> ResearchActivity : isPartOf
+class Role 
+Role --> ResearchActivity : isRoleOfPersonIn
+class "xsd:dateTime" #CCFFEE
+ResearchActivity --> "xsd:dateTime" : startTime
+class "xsd:dateTime" #CCFFEE
+ResearchActivity --> "xsd:dateTime" : endTime
+class "xsd:dateTime" #CCFFEE
+ResearchActivity --> "xsd:dateTime" : atTime
 class Investigation 
 Investigation --|> ResearchActivity
 class Study 

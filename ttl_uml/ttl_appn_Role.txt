@@ -1,0 +1,11 @@
+@startuml
+class Role  #line.bold
+class "schema:Role" #DDFFDD 
+Role --|> "schema:Role"
+class "ppeo:role" #EEFFCC 
+Role --|> "ppeo:role"
+class Person 
+Person --> Role : hasRole
+class ResearchActivity 
+Role --> ResearchActivity : isRoleOfPersonIn
+@enduml

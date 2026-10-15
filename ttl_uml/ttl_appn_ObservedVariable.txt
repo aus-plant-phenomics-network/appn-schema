@@ -2,6 +2,8 @@
 class ObservedVariable  #line.bold
 class "ppeo:observed_variable" #EEFFCC 
 ObservedVariable --|> "ppeo:observed_variable"
+class "sosa:ObservableProperty" #FFCCEE 
+ObservedVariable --|> "sosa:ObservableProperty"
 class Variable  
 class Trait  
 class "ppeo:trait" #EEFFCC 

@@ -10,10 +10,10 @@
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # COMMENT: All class relationships are rdfs:subClassOf rather than rdfs:sameAs to minimise risk of breaking semantics elsewhere, but some should be replaceable with owl:equivalentClass as things become clearer.
 
-# COMMENT: schema:Action seems the obvious place to anchor ResearchActivity in schema.org. It inherits schema:startTime and schema:endTime.
 appn:ResearchActivity a rdfs:Class ;
   schema:name "ResearchActivity" ;
   rdfs:comment "A time-delimited activity contributing to a research goal." ;
@@ -106,11 +106,13 @@ appn:ObservedVariable a rdfs:Class ;
   schema:name "ObservedVariable" ;
   rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit." ;
   rdfs:subClassOf ppeo:observed_variable ;
+  rdfs:subClassOf sosa:ObservableProperty ;
   rdfs:subClassOf appn:Variable .
 
 appn:ControlledVariable a rdfs:Class ;
   schema:name "ControlledVariable" ;
   rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit." ;
+  rdfs:subClassOf sosa:ActuatableProperty ;
   rdfs:subClassOf appn:Variable .
 
 appn:SubstanceAmount a rdfs:Class ;
@@ -247,8 +249,9 @@ appn:Location a rdfs:Class ;
 
 appn:SpatialLocation a rdfs:Class ;
   schema:name "SpatialLocation" ;
-  rdfs:comment "A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape." ;
+  rdfs:comment "A location defined with geospatial coordinates." ;
   rdfs:subClassOf appn:Location ;
+  rdfs:subClassOf ppeo:GPS_location ;
   rdfs:subClassOf schema:Place .
 
 appn:XYZLocation a rdfs:Class ;
@@ -266,6 +269,18 @@ appn:BiocontainmentLevel a rdfs:Class ;
   rdfs:comment "Specifies the biosecurity containment level for a growth facility." ;
   rdfs:subClassOf schema:Enumeration .
 
+appn:Country a rdfs:Class ;
+  schema:name "Country" ;
+  rdfs:comment "A country" ;
+  rdfs:subClassOf schema:Country ;
+  rdfs:subClassOf ppeo:country .
+
+appn:Role a rdfs:Class ;
+  schema:name "Role" ;
+  rdfs:comment "A role performed by a person in the context of a research activity" ;
+  rdfs:subClassOf schema:Role ;
+  rdfs:subClassOf ppeo:role .
+
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdf:Property ;
   schema:name "isPartOf" ;
@@ -276,6 +291,8 @@ appn:isPartOf a rdf:Property ;
 appn:isForObservationUnit a rdf:Property ;
   schema:name "isForObservationUnit" ;
   rdfs:comment "Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit." ;
+  rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
+  rdfs:subPropertyOf ppeo:hasObservedSubject ;
   schema:domainIncludes appn:Assay ;
   schema:rangeIncludes appn:ObservationUnit .
 
@@ -304,17 +321,20 @@ appn:madeBySampler a rdf:Property ;
 appn:hasResult a rdf:Property ;
   schema:name "hasResult" ; 
   rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult." ;
+  rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Observation,appn:Control ;
   schema:rangeIncludes schema:Dataset,schema:CreativeWork .
 
 appn:hasSimpleResult a rdf:Property ;
   schema:name "hasSimpleResult" ; 
   rdfs:comment "Identifies a discrete value received as a data output from an Observation or Control assay." ;
+  rdfs:subPropertyOf sosa:hasSimpleResult ;
   schema:domainIncludes appn:Observation,appn:Control .
 
 appn:producesSample a rdf:Property ;
   schema:name "producesSample" ; 
   rdfs:comment "Identifies the Sample produced by a Sampling assay." ;
+  rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Sampling ;
   schema:rangeIncludes appn:Sample .
 
@@ -327,6 +347,7 @@ appn:usesData a rdf:Property ;
 appn:controls a rdf:Property ;
   schema:name "controls" ; 
   rdfs:comment "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
+  rdfs:subPropertyOf sosa:actsOnProperty ;
   schema:domainIncludes appn:Control ;
   schema:rangeIncludes appn:ControlledVariable .
 
@@ -357,6 +378,8 @@ appn:amount a rdf:Property ;
 appn:observes a rdf:Property ;
   schema:name "observes" ; 
   rdfs:comment "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
+  rdfs:subPropertyOf ppeo:hasVariable ;
+  rdfs:subPropertyOf sosa:observedProperty ;
   schema:domainIncludes appn:Observation ;
   schema:rangeIncludes appn:ObservedVariable .
 
@@ -435,6 +458,7 @@ appn:level a rdf:Property ;
 appn:hosts a rdf:Property ;
   schema:name "hosts" ; 
   rdfs:comment "Identifies a Sensor or Actuator hosted by a Platform." ;
+  rdfs:subPropertyOf sosa:hosts ;
   schema:domainIncludes appn:Platform ;
   schema:rangeIncludes appn:Sensor,appn:Actuator .
 
@@ -453,6 +477,8 @@ appn:deployedOnPlatform a rdf:Property ;
 appn:usedMethod a rdf:Property ;
   schema:name "usedMethod" ;
   rdfs:comment "Identifies a Method used to conduct an Assay or to derive values for a Variable." ;
+  rdfs:subPropertyOf sosa:usedProcedure ;
+  rdfs:subPropertyOf ppeo:hasMethod ;
   schema:domainIncludes appn:Variable, appn:Assay ;
   schema:rangeIncludes appn:Method .
 
@@ -471,12 +497,14 @@ appn:forBiologicalMaterial a rdf:Property ;
 appn:hasTrait a rdf:Property ;
   schema:name "hasTrait" ;
   rdfs:comment "Identifies the Trait associated with a Variable." ;
+  rdfs:subPropertyOf ppeo:hasTrait ;
   schema:domainIncludes appn:ObservedVariable, appn:ControlledVariable ;
   schema:rangeIncludes appn:Trait .
 
 appn:hasScale a rdf:Property ;
   schema:name "hasScale" ;
   rdfs:comment "Identifies the Scale associated with a Variable." ;
+  rdfs:subPropertyOf ppeo:hasScale ;
   schema:domainIncludes appn:Variable, appn:SubstanceAmount ;
   schema:rangeIncludes appn:Scale .
 
@@ -484,6 +512,7 @@ appn:derivesFrom a rdf:Property ;
   schema:name "derivesFrom" ;
   rdfs:comment "Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs." ;
   rdfs:subPropertyOf ppeo:derivesFrom ;
+  rdfs:subPropertyOf sosa:isSampleOf ;
   schema:domainIncludes appn:BiologicalUnit ;
   schema:rangeIncludes appn:BiologicalUnit .
 
@@ -623,6 +652,7 @@ appn:taxonID a rdf:Property ;
 appn:hasPreprocessing a rdf:Property ;
   schema:name "hasPreprocessing" ;
   rdfs:comment "Description of any preprocessing carried out on the biological material" ;
+  rdfs:subPropertyOf ppeo:hasPreprocessing ;
   schema:domainIncludes appn:BiologicalMaterial .
 
 appn:geneticallyModifiedStatus a rdf:Property ;
@@ -634,3 +664,91 @@ appn:quarantineStatus a rdf:Property ;
   schema:name "quarantineStatus" ;
   rdfs:comment "True if biological material requires quarantine" ;
   schema:domainIncludes appn:BiologicalMaterial .
+
+appn:hasLatitude a rdf:Property ;
+  schema:name "hasLatitude" ;
+  rdfs:comment "Decimal latitude for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasLatitude ;
+  rdfs:subPropertyOf schema:latitude ;
+  schema:domainIncludes appn:SpatialLocation .
+
+appn:hasLongitude a rdf:Property ;
+  schema:name "hasLongitude" ;
+  rdfs:comment "Decimal longitude for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasLongitude ;
+  rdfs:subPropertyOf schema:longitude ;
+  schema:domainIncludes appn:SpatialLocation .
+
+appn:hasUncertainty a rdf:Property ;
+  schema:name "hasUncertainty" ;
+  rdfs:comment "Uncertainty in meters for coordinates" ;
+  rdfs:subPropertyOf ppeo:hasUncertainty ;
+  schema:domainIncludes appn:SpatialLocation .
+
+appn:hasAltitude a rdf:Property ;
+  schema:name "hasAltitude" ;
+  rdfs:comment "Altitude for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasAltitude ;
+  schema:domainIncludes appn:SpatialLocation .
+
+appn:hasCountry a rdf:Property ;
+  schema:name "hasCountry" ;
+  rdfs:comment "Country for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasCountry ;
+  schema:domainIncludes appn:SpatialLocation ;
+  schema:rangeIncludes appn:Country .
+
+appn:hasCountryOfOrigin a rdf:Property ;
+  schema:name "hasCountryOfOrigin" ;
+  rdfs:comment "Country from which BiologicalMaterial originated" ;
+  rdfs:subPropertyOf ppeo:hasCountryOfOrigin ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  schema:rangeIncludes appn:Country .
+
+appn:hasCountryCode a rdf:Property ;
+  schema:name "hasCountryCode" ;
+  rdfs:comment "ISO 2-letter country code for country" ;
+  rdfs:subPropertyOf ppeo:hasCountryCode ;
+  rdfs:subPropertyOf schema:identifier ;
+  schema:domainIncludes appn:Country ;
+  rdfs:range xsd:string .
+
+appn:hasRole a rdf:Property ;
+  schema:name "hasRole" ;
+  rdfs:comment "Indicates a role for a Person in a ResearchActivity" ;
+  rdfs:subPropertyOf ppeo:hasRole ;
+  schema:domainIncludes appn:Person ;
+  schema:rangeIncludes appn:Role .
+
+appn:isRoleOfPersonIn a rdf:Property ;
+  schema:name "isRoleOfPersonIn" ;
+  rdfs:comment "Indicates a ResearchActivity in which a Person has a Role" ;
+  rdfs:subPropertyOf ppeo:isRoleOfPersonIn ;
+  schema:domainIncludes appn:Role ;
+  schema:rangeIncludes appn:ResearchActivity .
+
+appn:startTime a rdf:Property ;
+  schema:name "startTime" ;
+  rdfs:comment "The time at which a ResearchActivity started" ;
+  rdfs:subPropertyOf schema:startTime ;
+  rdfs:subPropertyOf ppeo:hasStartDateTime ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:rangeIncludes xsd:dateTime .
+
+appn:endTime a rdf:Property ;
+  schema:name "endTime" ;
+  rdfs:comment "The time at which a ResearchActivity ended" ;
+  rdfs:subPropertyOf schema:endTime ;
+  rdfs:subPropertyOf sosa:resultTime ;
+  rdfs:subPropertyOf ppeo:hasEndDateTime ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:rangeIncludes xsd:dateTime .
+
+appn:atTime a rdf:Property ;
+  schema:name "atTime" ;
+  rdfs:comment "The time at which a ResearchActivity occurred - equivalent to both startTime and endTime" ;
+  rdfs:subPropertyOf appn:startTime ;
+  rdfs:subPropertyOf appn:endTime ;
+  rdfs:subPropertyOf ppeo:hasDateTime ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:rangeIncludes xsd:dateTime .

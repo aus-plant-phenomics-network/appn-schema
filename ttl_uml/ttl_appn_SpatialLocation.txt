@@ -6,8 +6,24 @@ Location --|> "ppeo:spatial_distribution"
 class "schema:Thing" #DDFFDD 
 Location --|> "schema:Thing"
 SpatialLocation --|> Location
+class "ppeo:GPS_location" #EEFFCC 
+SpatialLocation --|> "ppeo:GPS_location"
 class "schema:Place" #DDFFDD 
 SpatialLocation --|> "schema:Place"
+class SpatialLocation #line.bold {
+    hasLatitude
+}
+class SpatialLocation #line.bold {
+    hasLongitude
+}
+class SpatialLocation #line.bold {
+    hasUncertainty
+}
+class SpatialLocation #line.bold {
+    hasAltitude
+}
+class Country 
+SpatialLocation --> Country : hasCountry
 class ObservationUnit 
 ObservationUnit --> Location : hasLocation
 class ObservationUnit 

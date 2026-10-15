@@ -1,0 +1,123 @@
+@startuml
+class Actuator
+class Assay
+class BiocontainmentLevel
+class BiologicalMaterial
+class BiologicalUnit
+class BiologicalUnitType
+class Control
+class ControlledVariable
+class Controller
+class Country
+class Deployment
+class ExternalEvent
+class GrowthFacility
+class GrowthFacilityType
+class Investigation
+class Location
+class MaterialSource
+class Method
+class Observation
+class ObservationUnit
+class ObservedVariable
+class Observer
+class Person
+class PhysicalContainmentLevel
+class Platform
+class PlatformType
+class ResearchActivity
+class Role
+class Sample
+class Sampler
+class Sampling
+class Scale
+class Sensor
+class SensorType
+class SoftwareApplication
+class SpatialLocation
+class Study
+class Substance
+class SubstanceAmount
+class Trait
+class Treatment
+class Variable
+class XYZLocation
+package "schema" {
+    class "schema:Action" #DDFFDD
+    class "schema:Country" #DDFFDD
+    class "schema:DefinedTerm" #DDFFDD
+    class "schema:Enumeration" #DDFFDD
+    class "schema:Event" #DDFFDD
+    class "schema:HowTo" #DDFFDD
+    class "schema:IndividualProduct" #DDFFDD
+    class "schema:InstanceValue" #DDFFDD
+    class "schema:Observation" #DDFFDD
+    class "schema:Person" #DDFFDD
+    class "schema:Place" #DDFFDD
+    class "schema:Role" #DDFFDD
+    class "schema:Thing" #DDFFDD
+}
+package "bio" {
+    class "bio:BioChemEntity" #EECCFF
+    class "bio:BioSample" #EECCFF
+    class "bio:ComputationalWorkflow" #EECCFF
+    class "bio:Substance" #EECCFF
+    class "bio:Taxon" #EECCFF
+}
+ResearchActivity --|> "schema:Action"
+Investigation --|> ResearchActivity
+Study --|> ResearchActivity
+Assay --|> ResearchActivity
+Method --|> "schema:HowTo"
+Observation --|> "schema:Observation"
+Observation --|> Assay
+Control --|> Assay
+Sampling --|> Assay
+Treatment --|> Assay
+ObservationUnit --|> "schema:Thing"
+Trait --|> "schema:DefinedTerm"
+Scale --|> "schema:DefinedTerm"
+Variable --|> Trait
+Variable --|> "schema:InstanceValue"
+ObservedVariable --|> Variable
+ControlledVariable --|> Variable
+SubstanceAmount --|> Variable
+Sensor --|> Observer
+Sensor --|> ObservationUnit
+Sensor --|> "schema:IndividualProduct"
+SensorType --|> "schema:Enumeration"
+Actuator --|> Controller
+Actuator --|> ObservationUnit
+Actuator --|> "schema:IndividualProduct"
+ExternalEvent --|> Controller
+ExternalEvent --|> "schema:Event"
+Person --|> Observer
+Person --|> Controller
+Person --|> Sampler
+Person --|> "schema:Person"
+SoftwareApplication --|> "bio:ComputationalWorkflow"
+SoftwareApplication --|> Observer
+SoftwareApplication --|> Controller
+Sample --|> BiologicalUnit
+Substance --|> ObservationUnit
+Substance --|> "bio:Substance"
+Platform --|> ObservationUnit
+Platform --|> "schema:IndividualProduct"
+PlatformType --|> "schema:Enumeration"
+Deployment --|> "schema:Thing"
+GrowthFacility --|> Platform
+GrowthFacilityType --|> "schema:Enumeration"
+BiologicalUnit --|> ObservationUnit
+BiologicalUnit --|> "bio:BioChemEntity"
+BiologicalUnitType --|> "schema:Enumeration"
+BiologicalMaterial --|> "bio:Taxon"
+MaterialSource --|> "bio:BioSample"
+Location --|> "schema:Thing"
+SpatialLocation --|> Location
+SpatialLocation --|> "schema:Place"
+XYZLocation --|> Location
+PhysicalContainmentLevel --|> "schema:Enumeration"
+BiocontainmentLevel --|> "schema:Enumeration"
+Country --|> "schema:Country"
+Role --|> "schema:Role"
+@enduml

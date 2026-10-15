@@ -30,3 +30,5 @@ A taxonomic and/or genetic profile for one or more BiologicalUnits. Where possib
 * BiologicalMaterial https://schema.plantphenomics.org.au/hasPreprocessing
 * BiologicalMaterial https://schema.plantphenomics.org.au/geneticallyModifiedStatus
 * BiologicalMaterial https://schema.plantphenomics.org.au/quarantineStatus
+* appn:BiologicalMaterial **appn:hasCountryOfOrigin** [appn:Country](appn_Country.md)
+    * Country from which BiologicalMaterial originated

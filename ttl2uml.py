@@ -43,6 +43,7 @@ colours = [
     "#EECCFF",
     "#FFEECC",
     "#CCFFEE",
+    "#FFFF99",
 ]
 
 # Packages can be excluded from the main diagram by providing prefix names with a leading minus symbol.
@@ -59,8 +60,10 @@ pattern_class = re.compile(r"^(\w+):(\w+) a rdfs:Class[ \.;]*$")
 pattern_subclass = re.compile(r"^\s* rdfs:subClassOf (\w+):(\w+)[ \.;]*$")
 pattern_property = re.compile(r"^(\w+):(\w+) a rdf:Property[ \.;]*$")
 pattern_subproperty = re.compile(r"^\s*rdfs:subPropertyOf (\w+):(\w+)[ \.;]*$")
-pattern_domain = re.compile(r"^\s*schema:domainIncludes ([\w, :]+)[ \.;]*$")
-pattern_range = re.compile(r"^\s*schema:rangeIncludes ([\w, :]+ *)[ \.;]*$")
+pattern_domain_includes = re.compile(r"^\s*schema:domainIncludes ([\w, :]+)[ \.;]*$")
+pattern_range_includes = re.compile(r"^\s*schema:rangeIncludes ([\w, :]+ *)[ \.;]*$")
+pattern_domain = re.compile(r"^\s*rdfs:domain ([\w, :]+)[ \.;]*$")
+pattern_range = re.compile(r"^\s*rdfs:range ([\w, :]+ *)[ \.;]*$")
 pattern_comment = re.compile(r'^\s*rdfs:comment "([^"]*)"[ \.;]*$')
 
 # State objects to store data needed for diagrams
@@ -123,6 +126,7 @@ def add_domain(pty: tuple[str, str], domain_classes: str) -> None:
     ppty = get_property(pty[0], pty[1])
     for cls in domain_classes.split(","):
         prefix, c = cls.strip().split(":")
+        get_package(prefix)
         domain = (prefix, c)
         property = properties[ppty]
         if domain not in property[0]:
@@ -134,6 +138,7 @@ def add_range(pty: tuple[str, str], range_classes: str) -> None:
     ppty = get_property(pty[0], pty[1])
     for cls in range_classes.split(","):
         prefix, c = cls.strip().split(":")
+        get_package(prefix)
         range = (prefix, c)
         property = properties[ppty]
         if range not in property[1]:
@@ -330,6 +335,10 @@ with open(ttl_file) as f:
         elif (match := pattern_subproperty.match(line)) is not None:
             parent_property = get_property(match.group(1), match.group(2))
             add_property_inheritance(context_item, parent_property)
+        elif (match := pattern_domain_includes.match(line)) is not None:
+            add_domain(context_item, match.group(1))
+        elif (match := pattern_range_includes.match(line)) is not None:
+            add_range(context_item, match.group(1))
         elif (match := pattern_domain.match(line)) is not None:
             add_domain(context_item, match.group(1))
         elif (match := pattern_range.match(line)) is not None:
