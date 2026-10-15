@@ -18,6 +18,8 @@ A location defined with geospatial coordinates.
 * SpatialLocation https://schema.plantphenomics.org.au/hasAltitude
 * appn:SpatialLocation **appn:hasCountry** [appn:Country](appn_Country.md)
     * Country for a SpatialLocation
+* appn:SpatialLocation **appn:hasAddress** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * Address for a SpatialLocation
 * [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](appn_Location.md)
     * Specifies the location for an ObservationUnit.
 * [appn:Location](appn_Location.md) **appn:isLocationWithin** [appn:ObservationUnit](appn_ObservationUnit.md)

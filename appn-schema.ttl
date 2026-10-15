@@ -588,7 +588,7 @@ appn:humidityControl a rdf:Property ;
 appn:order a rdf:Property ;
   schema:name "order" ;
   rdfs:comment "A taxonomic rank above family and below class" ;
-  rdfs:subPropertyOf dwc:genorderus ;
+  rdfs:subPropertyOf dwc:order ;
   schema:domainIncludes appn:BiologicalMaterial .
 
 appn:family a rdf:Property ;
@@ -697,6 +697,13 @@ appn:hasCountry a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasCountry ;
   schema:domainIncludes appn:SpatialLocation ;
   schema:rangeIncludes appn:Country .
+
+appn:hasAddress a rdf:Property ;
+  schema:name "hasAddress" ;
+  rdfs:comment "Address for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasAddress ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:string .
 
 appn:hasCountryOfOrigin a rdf:Property ;
   schema:name "hasCountryOfOrigin" ;

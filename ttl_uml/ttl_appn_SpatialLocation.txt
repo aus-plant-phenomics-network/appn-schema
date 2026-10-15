@@ -24,6 +24,8 @@ class SpatialLocation #line.bold {
 }
 class Country 
 SpatialLocation --> Country : hasCountry
+class "xsd:string" #CCFFEE
+SpatialLocation --> "xsd:string" : hasAddress
 class ObservationUnit 
 ObservationUnit --> Location : hasLocation
 class ObservationUnit 

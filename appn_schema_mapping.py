@@ -36,9 +36,7 @@ def setup_parser() -> argparse.ArgumentParser:
     The parser handles the following arguments:
       -l, --log-level         : "info" / "warning" / "error" / "debug".
       -e, --echo-to-stderr    : Display logging outputs to stderr.
-      -a, --asset             : Namespace for an asset to be loaded - may be repeated.
-      -p, --prefix            : (Optional) Prefix for asset to be loaded - the n-th prefix is used for the n-th asset.
-      -f, --filepath-to-asset : (Optional) Filepath for reading asset instead of via URL - the n-th filepath is used for the n-th asset.
+      schema                  : Prefix identifying schema for comparison
     """
     parser = argparse.ArgumentParser(
         description=f"{__name__}: Summarise RO-Crate contents"
@@ -103,6 +101,8 @@ def start_log(
 
     logging.info(f"Logging started to {logfile_name} at level {level} and echo {echo}")
 
+### MAIN BODY #################################################################
+
 if __name__ == "__main__":
 
     parser = setup_parser()
@@ -111,10 +111,12 @@ if __name__ == "__main__":
 
     other_schema = args["schema"]
 
+    # Loading the dictionary brings in the mapped schemas
     d = Dictionary()
     d.load(APPN_SCHEMA)
     d.import_references()
 
+    # Exit if the requested schema prefix is not recognised
     namespaces = d.get_namespaces()
     if other_schema not in namespaces:
         print(f"Schema {other_schema} not recognised")
@@ -122,27 +124,38 @@ if __name__ == "__main__":
 
     other_namespace = namespaces[other_schema]
 
+    # Get lists of the classes and properties from both schemas
     appn_classes = d.list_classes(namespace=APPN_SCHEMA)
     other_classes = d.list_classes(namespace=other_namespace)
     appn_properties = d.list_properties(namespace=APPN_SCHEMA)
     other_properties = d.list_properties(namespace=other_namespace)
     
+    # Build map of superproperties for each APPN schema property
     superproperties = {}
     for appn_iri in appn_properties:
         superproperties[appn_iri] = d.list_superproperties(appn_iri, namespace=other_namespace)
     
+    # Build map of domain properties for each class in the other schema
     other_domain_properties = {}
     for other_iri in other_classes:
         other_domain_properties[other_iri] = d.list_domain_properties_for_class(other_iri, namespace=other_namespace)
 
+    # Referenced keeps track of terms in the other schema that have already been displayed
     referenced = set()
+
+    # Display mappings for each APPN class and its properties
     for appn_iri in sorted(appn_classes):
+        # Show APPN class and any superclasses in the other schema
         superclasses = d.list_superclasses(appn_iri, namespace=other_namespace)
-        print(f"{appn_iri.curie:50s}\t{",".join(superclasses)}")
+        print(f"{appn_iri.curie:50s}\t{", ".join([iri.curie for iri in superclasses])}")
         referenced |= set(superclasses)
+
+        # Show APPN properties for the class and any superproperties in the other schema
         for domain_property in d.list_domain_properties_for_class(appn_iri, namespace=APPN_SCHEMA):
-            print(f"    {domain_property.curie:46s}\t    {",".join(superproperties[domain_property])}")
+            print(f"    {domain_property.curie:46s}\t    {", ".join([iri.curie for iri in superproperties[domain_property]])}")
             referenced |= set(superproperties[domain_property])
+
+        # Show properties from the other schema that are not mapped by APPN for one of the superclasses
         for other_iri in sorted(superclasses):
             domain_properties = d.list_domain_properties_for_class(other_iri, namespace=other_namespace)
             for domain_property in domain_properties:
@@ -150,7 +163,7 @@ if __name__ == "__main__":
                     print(f"{' ' * 50}\t    {domain_property.curie}")
             referenced |= set(domain_properties)
 
-
+    # Display remaining classes and properties from the other schema
     for other_iri in sorted(other_classes):
         if other_iri not in referenced:
             print(f"{' ' * 50}\t{other_iri.curie}")
@@ -159,6 +172,7 @@ if __name__ == "__main__":
                 print(f"{' ' * 50}\t    {domain_property.curie}")
             referenced |= set(domain_properties)
 
+    # Display any properties in the other schema that have no domain class
     unknown_shown = False
     for other_iri in sorted(other_properties):
         if other_iri not in referenced:

@@ -69,6 +69,7 @@
     "gasSupply": "https://schema.plantphenomics.org.au/gasSupply",
     "geneticallyModifiedStatus": "https://schema.plantphenomics.org.au/geneticallyModifiedStatus",
     "genus": "https://schema.plantphenomics.org.au/genus",
+    "hasAddress": "https://schema.plantphenomics.org.au/hasAddress",
     "hasAltitude": "https://schema.plantphenomics.org.au/hasAltitude",
     "hasBiologicalMaterial": "https://schema.plantphenomics.org.au/hasBiologicalMaterial",
     "hasBiologicalUnitType": "https://schema.plantphenomics.org.au/hasBiologicalUnitType",

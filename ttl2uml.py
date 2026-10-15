@@ -493,6 +493,22 @@ else:
                                 html_file,
                                 f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>',
                             )
+                        if ppty in property_inheritance:
+                            write_html(
+                                html_file,
+                                f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>',
+                            )
+                            for superppty in property_inheritance[ppty]:
+                                if superppty[0] == "appn":
+                                    write_html(
+                                        html_file,
+                                        f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#{superppty[1]}">{superppty[1]}</a></div>',
+                                    )
+                                else:
+                                    write_html(
+                                        html_file,
+                                        f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{prefixes[superppty[0]]}{superppty[1]}">{prefixes[superppty[0]]}{superppty[1]}</a></div>',
+                                    )
                     for r in property[1]:
                         if r == appn_class:
                             reflexive = True
