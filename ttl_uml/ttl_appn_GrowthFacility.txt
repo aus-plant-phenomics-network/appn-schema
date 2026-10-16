@@ -21,31 +21,31 @@ GrowthFacility --|> Platform
 class GrowthFacilityType 
 GrowthFacility --> GrowthFacilityType : hasGrowthFacilityType
 class GrowthFacility #line.bold {
-    quarantine
+    quarantine: boolean
 }
 class Study 
 Study --> GrowthFacility : hasGrowthFacility
 class GrowthFacility #line.bold {
-    airConditioning
+    airConditioning: string
 }
 class GrowthFacility #line.bold {
-    temperatureRange
+    temperatureRange: string
 }
 class GrowthFacility #line.bold {
-    lights
+    lights: string
 }
 class GrowthFacility #line.bold {
-    shade
+    shade: string
 }
 class PhysicalContainmentLevel 
 GrowthFacility --> PhysicalContainmentLevel : physicalContainmentLevel
 class BiocontainmentLevel 
 GrowthFacility --> BiocontainmentLevel : biocontainmentLevel
 class GrowthFacility #line.bold {
-    gasSupply
+    gasSupply: string
 }
 class GrowthFacility #line.bold {
-    humidityControl
+    humidityControl: string
 }
 class PlatformType 
 Platform --> PlatformType : hasPlatformType

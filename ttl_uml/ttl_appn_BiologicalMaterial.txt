@@ -12,43 +12,43 @@ BiologicalMaterial --> BiologicalMaterial : hasHigherTaxon
 class MaterialSource 
 BiologicalMaterial --> MaterialSource : hasMaterialSource
 class BiologicalMaterial #line.bold {
-    order
+    order: string
 }
 class BiologicalMaterial #line.bold {
-    family
+    family: string
 }
 class BiologicalMaterial #line.bold {
-    genus
+    genus: string
 }
 class BiologicalMaterial #line.bold {
-    specificEpithet
+    specificEpithet: string
 }
 class BiologicalMaterial #line.bold {
-    infraspecificEpithet
+    infraspecificEpithet: string
 }
 class BiologicalMaterial #line.bold {
-    cultivarEpithet
+    cultivarEpithet: string
 }
 class BiologicalMaterial #line.bold {
-    uninomial
+    uninomial: string
 }
 class BiologicalMaterial #line.bold {
-    scientificName
+    scientificName: string
 }
 class BiologicalMaterial #line.bold {
-    rank
+    rank: string|anyURI
 }
 class BiologicalMaterial #line.bold {
-    taxonID
+    taxonID: string|anyURI
 }
 class BiologicalMaterial #line.bold {
-    hasPreprocessing
+    hasPreprocessing: string
 }
 class BiologicalMaterial #line.bold {
-    geneticallyModifiedStatus
+    geneticallyModifiedStatus: boolean
 }
 class BiologicalMaterial #line.bold {
-    quarantineStatus
+    quarantineStatus: boolean
 }
 class Country 
 BiologicalMaterial --> Country : hasCountryOfOrigin

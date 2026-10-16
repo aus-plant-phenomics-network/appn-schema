@@ -8,6 +8,7 @@ class SpatialLocation
 SpatialLocation --> Country : hasCountry
 class BiologicalMaterial 
 BiologicalMaterial --> Country : hasCountryOfOrigin
-class "xsd:string" #CCFFEE
-Country --> "xsd:string" : hasCountryCode
+class Country #line.bold {
+    hasCountryCode: string
+}
 @enduml

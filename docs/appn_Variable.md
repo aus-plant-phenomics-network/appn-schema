@@ -14,7 +14,16 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
 * http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable
 * http://schema.org/InstanceValue
 ## Properties
-* Variable https://schema.plantphenomics.org.au/hasDefaultValue
+* appn:Variable **appn:hasDefaultValue** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * Specifies the default value for a variable.
+* appn:Variable **appn:hasDefaultValue** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+    * Specifies the default value for a variable.
+* appn:Variable **appn:hasDefaultValue** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Specifies the default value for a variable.
+* appn:Variable **appn:hasDefaultValue** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+    * Specifies the default value for a variable.
+* appn:Variable **appn:hasDefaultValue** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Specifies the default value for a variable.
 * appn:Variable **appn:usedMethod** [appn:Method](appn_Method.md)
     * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * appn:Variable **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)

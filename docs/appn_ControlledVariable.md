@@ -20,7 +20,16 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
     * Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.
 * appn:ControlledVariable **appn:hasTrait** [appn:Trait](appn_Trait.md)
     * Identifies the Trait associated with a Variable.
-* ControlledVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Specifies the default value for a variable.
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** [appn:Method](appn_Method.md)
     * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)

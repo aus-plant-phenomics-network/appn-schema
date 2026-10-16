@@ -11,21 +11,22 @@ SpatialLocation --|> "ppeo:GPS_location"
 class "schema:Place" #DDFFDD 
 SpatialLocation --|> "schema:Place"
 class SpatialLocation #line.bold {
-    hasLatitude
+    hasLatitude: float
 }
 class SpatialLocation #line.bold {
-    hasLongitude
+    hasLongitude: float
 }
 class SpatialLocation #line.bold {
-    hasUncertainty
+    hasUncertainty: float
 }
 class SpatialLocation #line.bold {
-    hasAltitude
+    hasAltitude: float
 }
 class Country 
 SpatialLocation --> Country : hasCountry
-class "xsd:string" #CCFFEE
-SpatialLocation --> "xsd:string" : hasAddress
+class SpatialLocation #line.bold {
+    hasAddress: string
+}
 class ObservationUnit 
 ObservationUnit --> Location : hasLocation
 class ObservationUnit 

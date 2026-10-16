@@ -26,10 +26,13 @@ class ResearchActivity
 ResearchActivity --> ResearchActivity : isPartOf
 class Role 
 Role --> ResearchActivity : isRoleOfPersonIn
-class "xsd:dateTime" #CCFFEE
-ResearchActivity --> "xsd:dateTime" : startTime
-class "xsd:dateTime" #CCFFEE
-ResearchActivity --> "xsd:dateTime" : endTime
-class "xsd:dateTime" #CCFFEE
-ResearchActivity --> "xsd:dateTime" : atTime
+class ResearchActivity #line.bold {
+    startTime: dateTime
+}
+class ResearchActivity #line.bold {
+    endTime: dateTime
+}
+class ResearchActivity #line.bold {
+    atTime: dateTime
+}
 @enduml

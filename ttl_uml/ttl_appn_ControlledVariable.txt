@@ -23,7 +23,7 @@ Control --> ControlledVariable : controls
 class Trait 
 ControlledVariable --> Trait : hasTrait
 class Variable #line.bold {
-    hasDefaultValue
+    hasDefaultValue: string|integer|float|double|boolean
 }
 class Method 
 Variable --> Method : usedMethod

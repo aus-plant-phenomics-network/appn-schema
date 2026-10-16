@@ -21,7 +21,16 @@ A Variable (representation of a Trait using a defined Scale) observed or measure
     * Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.
 * appn:ObservedVariable **appn:hasTrait** [appn:Trait](appn_Trait.md)
     * Identifies the Trait associated with a Variable.
-* ObservedVariable https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Specifies the default value for a variable.
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** [appn:Method](appn_Method.md)
     * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)

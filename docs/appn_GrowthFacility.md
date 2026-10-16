@@ -18,19 +18,26 @@ A building, enclosed space, field unit, container or other entity in which plant
 ## Properties
 * appn:GrowthFacility **appn:hasGrowthFacilityType** [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
     * Links a GrowthFacility to its type.
-* GrowthFacility https://schema.plantphenomics.org.au/quarantine
+* appn:GrowthFacility **appn:quarantine** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Indicates if a GrowthFacility is for quarantine.
 * [appn:Study](appn_Study.md) **appn:hasGrowthFacility** appn:GrowthFacility
     * Identifies a GrowthFacility used in a Study.
-* GrowthFacility https://schema.plantphenomics.org.au/airConditioning
-* GrowthFacility https://schema.plantphenomics.org.au/temperatureRange
-* GrowthFacility https://schema.plantphenomics.org.au/lights
-* GrowthFacility https://schema.plantphenomics.org.au/shade
+* appn:GrowthFacility **appn:airConditioning** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * The airConditioning capabilities of a GrowthFacility
+* appn:GrowthFacility **appn:temperatureRange** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * The temperature range capabilities of a GrowthFacility
+* appn:GrowthFacility **appn:lights** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * The lighting capabilities of a GrowthFacility
+* appn:GrowthFacility **appn:shade** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * The shade capabilities of a GrowthFacility
 * appn:GrowthFacility **appn:physicalContainmentLevel** [appn:PhysicalContainmentLevel](appn_PhysicalContainmentLevel.md)
     * The physical containment (PC) level capabilities of a GrowthFacility
 * appn:GrowthFacility **appn:biocontainmentLevel** [appn:BiocontainmentLevel](appn_BiocontainmentLevel.md)
     * The biocontainment level capabilities of a GrowthFacility
-* GrowthFacility https://schema.plantphenomics.org.au/gasSupply
-* GrowthFacility https://schema.plantphenomics.org.au/humidityControl
+* appn:GrowthFacility **appn:gasSupply** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * The gas supply capabilities of a GrowthFacility
+* appn:GrowthFacility **appn:humidityControl** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * The humidity control capabilities of a GrowthFacility
 * [appn:Platform](appn_Platform.md) **appn:hasPlatformType** [appn:PlatformType](appn_PlatformType.md)
     * Links a Platform to its type.
 * [appn:Platform](appn_Platform.md) **appn:hosts** [appn:Sensor](appn_Sensor.md)

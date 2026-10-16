@@ -20,7 +20,16 @@ An Assay that observes or measures properties of an ObservationUnit returning re
     * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
 * appn:Observation **appn:hasResult** [schema:CreativeWork](http://schema.org/CreativeWork)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
-* Observation https://schema.plantphenomics.org.au/hasSimpleResult
+* appn:Observation **appn:hasSimpleResult** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * Identifies a discrete value received as a data output from an Observation or Control assay.
+* appn:Observation **appn:hasSimpleResult** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+    * Identifies a discrete value received as a data output from an Observation or Control assay.
+* appn:Observation **appn:hasSimpleResult** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Identifies a discrete value received as a data output from an Observation or Control assay.
+* appn:Observation **appn:hasSimpleResult** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+    * Identifies a discrete value received as a data output from an Observation or Control assay.
+* appn:Observation **appn:hasSimpleResult** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Identifies a discrete value received as a data output from an Observation or Control assay.
 * appn:Observation **appn:usesData** [schema:Dataset](http://schema.org/Dataset)
     * Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.
 * appn:Observation **appn:usesData** [schema:CreativeWork](http://schema.org/CreativeWork)

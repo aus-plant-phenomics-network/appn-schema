@@ -17,9 +17,9 @@
         <div class="parent"><a href="http://schema.org/IndividualProduct">http://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Platform">Platform</a> <b>hosts</b> Actuator</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator hosted by a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator hosted by a Platform.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hosts">http://www.w3.org/ns/sosa/hosts</a></div>
         <div class="property"><a href="#Deployment">Deployment</a> <b>deployedSystem</b> Actuator</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator deployed on a Platform.</div>
         <h2 id="Assay">Class: Assay</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Assay" target="_blank">https://schema.plantphenomics.org.au/Assay</a></div>
         <img src="image/ttl_appn_Assay.png"/>
@@ -28,9 +28,9 @@
         <div class="parent"><a href="#ResearchActivity">ResearchActivity</a></div>
         <h3>Properties</h3>
         <div class="property" id="isForObservationUnit">Assay <b>isForObservationUnit</b> <a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.</div>
+        <div class="description">Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">http://www.w3.org/ns/sosa/hasFeatureOfInterest</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasObservedSubject">http://purl.org/ppeo/PPEO.owl#hasObservedSubject</a></div>
         <div class="property" id="usedMethod">Assay <b>usedMethod</b> <a href="#Method">Method</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay or to derive values for a Variable.</div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Observation">Observation</a></div>
         <div class="child"><a href="#Control">Control</a></div>
@@ -44,7 +44,7 @@
         <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#GrowthFacility">GrowthFacility</a> <b>biocontainmentLevel</b> BiocontainmentLevel</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The biocontainment level capabilities of a GrowthFacility</div>
+        <div class="description">The biocontainment level capabilities of a GrowthFacility</div>
         <h2 id="BiologicalMaterial">Class: BiologicalMaterial</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalMaterial" target="_blank">https://schema.plantphenomics.org.au/BiologicalMaterial</a></div>
         <img src="image/ttl_appn_BiologicalMaterial.png"/>
@@ -54,67 +54,45 @@
         <div class="parent"><a href="https://bioschemas.org/terms/Taxon">https://bioschemas.org/terms/Taxon</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>forBiologicalMaterial</b> BiologicalMaterial</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
+        <div class="description">Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
         <div class="property"><a href="#BiologicalUnit">BiologicalUnit</a> <b>hasBiologicalMaterial</b> BiologicalMaterial</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalMaterial for a BiologicalUnit.</div>
+        <div class="description">Identifies the BiologicalMaterial for a BiologicalUnit.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasBiologicalMaterial">http://purl.org/ppeo/PPEO.owl#hasBiologicalMaterial</a></div>
         <div class="property" id="hasHigherTaxon">BiologicalMaterial <b>hasHigherTaxon</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a more inclusive BiologicalMaterial as a higher taxon.</div>
+        <div class="description">Identifies a more inclusive BiologicalMaterial as a higher taxon.</div>
         <div class="property" id="hasMaterialSource">BiologicalMaterial <b>hasMaterialSource</b> <a href="#MaterialSource">MaterialSource</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the MaterialSource for BiologicalMaterial.</div>
-        <div class="property" id="order">BiologicalMaterial <b>order</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A taxonomic rank above family and below class</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/order">http://rs.tdwg.org/dwc/terms/order</a></div>
-        <div class="property" id="family">BiologicalMaterial <b>family</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A taxonomic rank above genus and below order</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/family">http://rs.tdwg.org/dwc/terms/family</a></div>
-        <div class="property" id="genus">BiologicalMaterial <b>genus</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A taxonomic rank above species and below family</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/genus">http://rs.tdwg.org/dwc/terms/genus</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasGenus">http://purl.org/ppeo/PPEO.owl#hasGenus</a></div>
-        <div class="property" id="specificEpithet">BiologicalMaterial <b>specificEpithet</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The specific epithet of a binomial or trinomial scientific name</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/specificEpithet">http://rs.tdwg.org/dwc/terms/specificEpithet</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasSpecies">http://purl.org/ppeo/PPEO.owl#hasSpecies</a></div>
-        <div class="property" id="infraspecificEpithet">BiologicalMaterial <b>infraspecificEpithet</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The infraspecific epithet of a trinomial scientific name</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/specificEpithet">http://rs.tdwg.org/dwc/terms/specificEpithet</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasInfraspecificName">http://purl.org/ppeo/PPEO.owl#hasInfraspecificName</a></div>
-        <div class="property" id="cultivarEpithet">BiologicalMaterial <b>cultivarEpithet</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A name for a cultivar or breed.</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/cultivarEpithet">http://rs.tdwg.org/dwc/terms/cultivarEpithet</a></div>
-        <div class="property" id="uninomial">BiologicalMaterial <b>uninomial</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A scientific name comprising a single word (genus or higher)</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/uninomial">http://rs.tdwg.org/dwc/terms/uninomial</a></div>
-        <div class="property" id="scientificName">BiologicalMaterial <b>scientificName</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;A name for an organism subject to one of the codes of nomenclature</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/scientificName">http://rs.tdwg.org/dwc/terms/scientificName</a></div>
-        <div class="property" id="rank">BiologicalMaterial <b>rank</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The rank of a scientific name</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/rank">http://rs.tdwg.org/dwc/terms/rank</a></div>
-        <div class="property" id="taxonID">BiologicalMaterial <b>taxonID</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;An identifier for a taxon</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/taxonID">http://rs.tdwg.org/dwc/terms/taxonID</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTaxonIdentifier">http://purl.org/ppeo/PPEO.owl#hasTaxonIdentifier</a></div>
-        <div class="property" id="hasPreprocessing">BiologicalMaterial <b>hasPreprocessing</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Description of any preprocessing carried out on the biological material</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasPreprocessing">http://purl.org/ppeo/PPEO.owl#hasPreprocessing</a></div>
-        <div class="property" id="geneticallyModifiedStatus">BiologicalMaterial <b>geneticallyModifiedStatus</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;True if biological material is genetically modified</div>
-        <div class="property" id="quarantineStatus">BiologicalMaterial <b>quarantineStatus</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;True if biological material requires quarantine</div>
+        <div class="description">Identifies the MaterialSource for BiologicalMaterial.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMaterialSource">http://purl.org/ppeo/PPEO.owl#hasMaterialSource</a></div>
+        <div class="property" id="order">BiologicalMaterial <b>order</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">A taxonomic rank above family and below class<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/order">http://rs.tdwg.org/dwc/terms/order</a></div>
+        <div class="property" id="family">BiologicalMaterial <b>family</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">A taxonomic rank above genus and below order<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/family">http://rs.tdwg.org/dwc/terms/family</a></div>
+        <div class="property" id="genus">BiologicalMaterial <b>genus</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">A taxonomic rank above species and below family<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/genus">http://rs.tdwg.org/dwc/terms/genus</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasGenus">http://purl.org/ppeo/PPEO.owl#hasGenus</a></div>
+        <div class="property" id="specificEpithet">BiologicalMaterial <b>specificEpithet</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The specific epithet of a binomial or trinomial scientific name<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/specificEpithet">http://rs.tdwg.org/dwc/terms/specificEpithet</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasSpecies">http://purl.org/ppeo/PPEO.owl#hasSpecies</a></div>
+        <div class="property" id="infraspecificEpithet">BiologicalMaterial <b>infraspecificEpithet</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The infraspecific epithet of a trinomial scientific name<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/specificEpithet">http://rs.tdwg.org/dwc/terms/specificEpithet</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasInfraspecificName">http://purl.org/ppeo/PPEO.owl#hasInfraspecificName</a></div>
+        <div class="property" id="cultivarEpithet">BiologicalMaterial <b>cultivarEpithet</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">A name for a cultivar or breed.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/cultivarEpithet">http://rs.tdwg.org/dwc/terms/cultivarEpithet</a></div>
+        <div class="property" id="uninomial">BiologicalMaterial <b>uninomial</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">A scientific name comprising a single word (genus or higher)<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/uninomial">http://rs.tdwg.org/dwc/terms/uninomial</a></div>
+        <div class="property" id="scientificName">BiologicalMaterial <b>scientificName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">A name for an organism subject to one of the codes of nomenclature<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/scientificName">http://rs.tdwg.org/dwc/terms/scientificName</a></div>
+        <div class="property" id="rank">BiologicalMaterial <b>rank</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The rank of a scientific name<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/rank">http://rs.tdwg.org/dwc/terms/rank</a></div>
+        <div class="property">BiologicalMaterial <b>rank</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">The rank of a scientific name<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/rank">http://rs.tdwg.org/dwc/terms/rank</a></div>
+        <div class="property" id="taxonID">BiologicalMaterial <b>taxonID</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">An identifier for a taxon<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/taxonID">http://rs.tdwg.org/dwc/terms/taxonID</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTaxonIdentifier">http://purl.org/ppeo/PPEO.owl#hasTaxonIdentifier</a></div>
+        <div class="property">BiologicalMaterial <b>taxonID</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">An identifier for a taxon<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://rs.tdwg.org/dwc/terms/taxonID">http://rs.tdwg.org/dwc/terms/taxonID</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTaxonIdentifier">http://purl.org/ppeo/PPEO.owl#hasTaxonIdentifier</a></div>
+        <div class="property" id="hasPreprocessing">BiologicalMaterial <b>hasPreprocessing</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Description of any preprocessing carried out on the biological material<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasPreprocessing">http://purl.org/ppeo/PPEO.owl#hasPreprocessing</a></div>
+        <div class="property" id="geneticallyModifiedStatus">BiologicalMaterial <b>geneticallyModifiedStatus</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">True if biological material is genetically modified</div>
+        <div class="property" id="quarantineStatus">BiologicalMaterial <b>quarantineStatus</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">True if biological material requires quarantine</div>
         <div class="property" id="hasCountryOfOrigin">BiologicalMaterial <b>hasCountryOfOrigin</b> <a href="#Country">Country</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country from which BiologicalMaterial originated</div>
+        <div class="description">Country from which BiologicalMaterial originated<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountryOfOrigin">http://purl.org/ppeo/PPEO.owl#hasCountryOfOrigin</a></div>
         <h2 id="BiologicalUnit">Class: BiologicalUnit</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/BiologicalUnit" target="_blank">https://schema.plantphenomics.org.au/BiologicalUnit</a></div>
         <img src="image/ttl_appn_BiologicalUnit.png"/>
@@ -124,11 +102,11 @@
         <div class="parent"><a href="https://bioschemas.org/terms/BioChemEntity">https://bioschemas.org/terms/BioChemEntity</a></div>
         <h3>Properties</h3>
         <div class="property" id="hasBiologicalUnitType">BiologicalUnit <b>hasBiologicalUnitType</b> <a href="#BiologicalUnitType">BiologicalUnitType</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a BiologicalUnit to its type.</div>
+        <div class="description">Links a BiologicalUnit to its type.</div>
         <div class="property" id="derivesFrom">BiologicalUnit <b>derivesFrom</b> <a href="#BiologicalUnit">BiologicalUnit</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs.</div>
+        <div class="description">Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#derivesFrom">http://purl.org/ppeo/PPEO.owl#derivesFrom</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/isSampleOf">http://www.w3.org/ns/sosa/isSampleOf</a></div>
         <div class="property" id="hasBiologicalMaterial">BiologicalUnit <b>hasBiologicalMaterial</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the BiologicalMaterial for a BiologicalUnit.</div>
+        <div class="description">Identifies the BiologicalMaterial for a BiologicalUnit.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasBiologicalMaterial">http://purl.org/ppeo/PPEO.owl#hasBiologicalMaterial</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Sample">Sample</a></div>
         <h2 id="BiologicalUnitType">Class: BiologicalUnitType</h2>
@@ -139,9 +117,9 @@
         <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#BiologicalUnit">BiologicalUnit</a> <b>hasBiologicalUnitType</b> BiologicalUnitType</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a BiologicalUnit to its type.</div>
+        <div class="description">Links a BiologicalUnit to its type.</div>
         <div class="property"><a href="#Variable">Variable</a> <b>forBiologicalUnitType</b> BiologicalUnitType</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalUnitType to which it relates.</div>
+        <div class="description">Links a Variable to the BiologicalUnitType to which it relates.</div>
         <h2 id="Control">Class: Control</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Control" target="_blank">https://schema.plantphenomics.org.au/Control</a></div>
         <img src="image/ttl_appn_Control.png"/>
@@ -151,17 +129,23 @@
         <div class="parent"><a href="#Assay">Assay</a></div>
         <h3>Properties</h3>
         <div class="property" id="madeByController">Control <b>madeByController</b> <a href="#Controller">Controller</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="description">Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByActuator">http://www.w3.org/ns/sosa/madeByActuator</a></div>
         <div class="property" id="hasResult">Control <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
+        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
         <div class="property">Control <b>hasResult</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
-        <div class="property" id="hasSimpleResult">Control <b>hasSimpleResult</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a discrete value received as a data output from an Observation or Control assay.</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
+        <div class="property" id="hasSimpleResult">Control <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Control <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Control <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Control <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#double">http://www.w3.org/2001/XMLSchema#double</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Control <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
         <div class="property" id="controls">Control <b>controls</b> <a href="#ControlledVariable">ControlledVariable</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
+        <div class="description">Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/actsOnProperty">http://www.w3.org/ns/sosa/actsOnProperty</a></div>
         <h2 id="ControlledVariable">Class: ControlledVariable</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ControlledVariable" target="_blank">https://schema.plantphenomics.org.au/ControlledVariable</a></div>
         <img src="image/ttl_appn_ControlledVariable.png"/>
@@ -171,9 +155,9 @@
         <div class="parent"><a href="#Variable">Variable</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Control">Control</a> <b>controls</b> ControlledVariable</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.</div>
+        <div class="description">Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/actsOnProperty">http://www.w3.org/ns/sosa/actsOnProperty</a></div>
         <div class="property" id="hasTrait">ControlledVariable <b>hasTrait</b> <a href="#Trait">Trait</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
         <h2 id="Controller">Class: Controller</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Controller" target="_blank">https://schema.plantphenomics.org.au/Controller</a></div>
         <img src="image/ttl_appn_Controller.png"/>
@@ -182,9 +166,9 @@
         <div class="parent"><a href="http://www.w3.org/ns/sosa/Actuator">http://www.w3.org/ns/sosa/Actuator</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Control">Control</a> <b>madeByController</b> Controller</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="description">Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByActuator">http://www.w3.org/ns/sosa/madeByActuator</a></div>
         <div class="property"><a href="#Treatment">Treatment</a> <b>madeByController</b> Controller</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="description">Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByActuator">http://www.w3.org/ns/sosa/madeByActuator</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Actuator">Actuator</a></div>
         <div class="child"><a href="#ExternalEvent">ExternalEvent</a></div>
@@ -199,11 +183,11 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#country">http://purl.org/ppeo/PPEO.owl#country</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#SpatialLocation">SpatialLocation</a> <b>hasCountry</b> Country</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country for a SpatialLocation</div>
+        <div class="description">Country for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountry">http://purl.org/ppeo/PPEO.owl#hasCountry</a></div>
         <div class="property"><a href="#BiologicalMaterial">BiologicalMaterial</a> <b>hasCountryOfOrigin</b> Country</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country from which BiologicalMaterial originated</div>
+        <div class="description">Country from which BiologicalMaterial originated<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountryOfOrigin">http://purl.org/ppeo/PPEO.owl#hasCountryOfOrigin</a></div>
         <div class="property" id="hasCountryCode">Country <b>hasCountryCode</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;ISO 2-letter country code for country</div>
+        <div class="description">ISO 2-letter country code for country<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountryCode">http://purl.org/ppeo/PPEO.owl#hasCountryCode</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/identifier">http://schema.org/identifier</a></div>
         <h2 id="Deployment">Class: Deployment</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Deployment" target="_blank">https://schema.plantphenomics.org.au/Deployment</a></div>
         <img src="image/ttl_appn_Deployment.png"/>
@@ -213,11 +197,11 @@
         <div class="parent"><a href="http://schema.org/Thing">http://schema.org/Thing</a></div>
         <h3>Properties</h3>
         <div class="property" id="deployedSystem">Deployment <b>deployedSystem</b> <a href="#Sensor">Sensor</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator deployed on a Platform.</div>
         <div class="property">Deployment <b>deployedSystem</b> <a href="#Actuator">Actuator</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator deployed on a Platform.</div>
         <div class="property" id="deployedOnPlatform">Deployment <b>deployedOnPlatform</b> <a href="#Platform">Platform</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Platform on which Sensors or Actuators are deployed.</div>
+        <div class="description">Identifies a Platform on which Sensors or Actuators are deployed.</div>
         <h2 id="ExternalEvent">Class: ExternalEvent</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ExternalEvent" target="_blank">https://schema.plantphenomics.org.au/ExternalEvent</a></div>
         <img src="image/ttl_appn_ExternalEvent.png"/>
@@ -234,27 +218,27 @@
         <div class="parent"><a href="#Platform">Platform</a></div>
         <h3>Properties</h3>
         <div class="property" id="hasGrowthFacilityType">GrowthFacility <b>hasGrowthFacilityType</b> <a href="#GrowthFacilityType">GrowthFacilityType</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
-        <div class="property" id="quarantine">GrowthFacility <b>quarantine</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates if a GrowthFacility is for quarantine.</div>
+        <div class="description">Links a GrowthFacility to its type.</div>
+        <div class="property" id="quarantine">GrowthFacility <b>quarantine</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">Indicates if a GrowthFacility is for quarantine.</div>
         <div class="property"><a href="#Study">Study</a> <b>hasGrowthFacility</b> GrowthFacility</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a GrowthFacility used in a Study.</div>
-        <div class="property" id="airConditioning">GrowthFacility <b>airConditioning</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The airConditioning capabilities of a GrowthFacility</div>
-        <div class="property" id="temperatureRange">GrowthFacility <b>temperatureRange</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The temperature range capabilities of a GrowthFacility</div>
-        <div class="property" id="lights">GrowthFacility <b>lights</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The lighting capabilities of a GrowthFacility</div>
-        <div class="property" id="shade">GrowthFacility <b>shade</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The shade capabilities of a GrowthFacility</div>
+        <div class="description">Identifies a GrowthFacility used in a Study.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasGrowthFacility">http://purl.org/ppeo/PPEO.owl#hasGrowthFacility</a></div>
+        <div class="property" id="airConditioning">GrowthFacility <b>airConditioning</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The airConditioning capabilities of a GrowthFacility</div>
+        <div class="property" id="temperatureRange">GrowthFacility <b>temperatureRange</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The temperature range capabilities of a GrowthFacility</div>
+        <div class="property" id="lights">GrowthFacility <b>lights</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The lighting capabilities of a GrowthFacility</div>
+        <div class="property" id="shade">GrowthFacility <b>shade</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The shade capabilities of a GrowthFacility</div>
         <div class="property" id="physicalContainmentLevel">GrowthFacility <b>physicalContainmentLevel</b> <a href="#PhysicalContainmentLevel">PhysicalContainmentLevel</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The physical containment (PC) level capabilities of a GrowthFacility</div>
+        <div class="description">The physical containment (PC) level capabilities of a GrowthFacility</div>
         <div class="property" id="biocontainmentLevel">GrowthFacility <b>biocontainmentLevel</b> <a href="#BiocontainmentLevel">BiocontainmentLevel</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The biocontainment level capabilities of a GrowthFacility</div>
-        <div class="property" id="gasSupply">GrowthFacility <b>gasSupply</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The gas supply capabilities of a GrowthFacility</div>
-        <div class="property" id="humidityControl">GrowthFacility <b>humidityControl</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The humidity control capabilities of a GrowthFacility</div>
+        <div class="description">The biocontainment level capabilities of a GrowthFacility</div>
+        <div class="property" id="gasSupply">GrowthFacility <b>gasSupply</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The gas supply capabilities of a GrowthFacility</div>
+        <div class="property" id="humidityControl">GrowthFacility <b>humidityControl</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">The humidity control capabilities of a GrowthFacility</div>
         <h2 id="GrowthFacilityType">Class: GrowthFacilityType</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacilityType" target="_blank">https://schema.plantphenomics.org.au/GrowthFacilityType</a></div>
         <img src="image/ttl_appn_GrowthFacilityType.png"/>
@@ -263,7 +247,7 @@
         <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#GrowthFacility">GrowthFacility</a> <b>hasGrowthFacilityType</b> GrowthFacilityType</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a GrowthFacility to its type.</div>
+        <div class="description">Links a GrowthFacility to its type.</div>
         <h2 id="Investigation">Class: Investigation</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Investigation" target="_blank">https://schema.plantphenomics.org.au/Investigation</a></div>
         <img src="image/ttl_appn_Investigation.png"/>
@@ -280,9 +264,9 @@
         <div class="parent"><a href="http://schema.org/Thing">http://schema.org/Thing</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#ObservationUnit">ObservationUnit</a> <b>hasLocation</b> Location</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the location for an ObservationUnit.</div>
+        <div class="description">Specifies the location for an ObservationUnit.</div>
         <div class="property" id="isLocationWithin">Location <b>isLocationWithin</b> <a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies that a location is a position within an ObservationUnit.</div>
+        <div class="description">Specifies that a location is a position within an ObservationUnit.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#SpatialLocation">SpatialLocation</a></div>
         <div class="child"><a href="#XYZLocation">XYZLocation</a></div>
@@ -295,7 +279,7 @@
         <div class="parent"><a href="https://bioschemas.org/terms/BioSample">https://bioschemas.org/terms/BioSample</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#BiologicalMaterial">BiologicalMaterial</a> <b>hasMaterialSource</b> MaterialSource</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the MaterialSource for BiologicalMaterial.</div>
+        <div class="description">Identifies the MaterialSource for BiologicalMaterial.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMaterialSource">http://purl.org/ppeo/PPEO.owl#hasMaterialSource</a></div>
         <h2 id="Method">Class: Method</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Method" target="_blank">https://schema.plantphenomics.org.au/Method</a></div>
         <img src="image/ttl_appn_Method.png"/>
@@ -307,9 +291,9 @@
         <div class="parent"><a href="http://schema.org/HowTo">http://schema.org/HowTo</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>usedMethod</b> Method</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay or to derive values for a Variable.</div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
         <div class="property"><a href="#Assay">Assay</a> <b>usedMethod</b> Method</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay or to derive values for a Variable.</div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
         <h2 id="Observation">Class: Observation</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Observation" target="_blank">https://schema.plantphenomics.org.au/Observation</a></div>
         <img src="image/ttl_appn_Observation.png"/>
@@ -321,21 +305,27 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#observation">http://purl.org/ppeo/PPEO.owl#observation</a></div>
         <h3>Properties</h3>
         <div class="property" id="madeByObserver">Observation <b>madeByObserver</b> <a href="#Observer">Observer</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.</div>
+        <div class="description">Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByObserver">http://www.w3.org/ns/sosa/madeByObserver</a></div>
         <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
+        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
         <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.</div>
-        <div class="property">Observation <b>hasSimpleResult</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a discrete value received as a data output from an Observation or Control assay.</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
+        <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#double">http://www.w3.org/2001/XMLSchema#double</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
+        <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
         <div class="property" id="usesData">Observation <b>usesData</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
+        <div class="description">Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
         <div class="property">Observation <b>usesData</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
+        <div class="description">Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
         <div class="property" id="observes">Observation <b>observes</b> <a href="#ObservedVariable">ObservedVariable</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.</div>
+        <div class="description">Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasVariable">http://purl.org/ppeo/PPEO.owl#hasVariable</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/observedProperty">http://www.w3.org/ns/sosa/observedProperty</a></div>
         <h2 id="ObservationUnit">Class: ObservationUnit</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ObservationUnit" target="_blank">https://schema.plantphenomics.org.au/ObservationUnit</a></div>
         <img src="image/ttl_appn_ObservationUnit.png"/>
@@ -347,13 +337,13 @@
         <div class="parent"><a href="http://www.w3.org/ns/sosa/FeatureOfInterest">http://www.w3.org/ns/sosa/FeatureOfInterest</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Assay">Assay</a> <b>isForObservationUnit</b> ObservationUnit</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.</div>
+        <div class="description">Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">http://www.w3.org/ns/sosa/hasFeatureOfInterest</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasObservedSubject">http://purl.org/ppeo/PPEO.owl#hasObservedSubject</a></div>
         <div class="property" id="inheritsContext">ObservationUnit <b>inheritsContext</b> <a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant.</div>
+        <div class="description">Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant.</div>
         <div class="property" id="hasLocation">ObservationUnit <b>hasLocation</b> <a href="#Location">Location</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the location for an ObservationUnit.</div>
+        <div class="description">Specifies the location for an ObservationUnit.</div>
         <div class="property"><a href="#Location">Location</a> <b>isLocationWithin</b> ObservationUnit</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies that a location is a position within an ObservationUnit.</div>
+        <div class="description">Specifies that a location is a position within an ObservationUnit.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Sensor">Sensor</a></div>
         <div class="child"><a href="#Actuator">Actuator</a></div>
@@ -370,9 +360,9 @@
         <div class="parent"><a href="#Variable">Variable</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Observation">Observation</a> <b>observes</b> ObservedVariable</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.</div>
+        <div class="description">Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasVariable">http://purl.org/ppeo/PPEO.owl#hasVariable</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/observedProperty">http://www.w3.org/ns/sosa/observedProperty</a></div>
         <div class="property">ObservedVariable <b>hasTrait</b> <a href="#Trait">Trait</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
         <h2 id="Observer">Class: Observer</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Observer" target="_blank">https://schema.plantphenomics.org.au/Observer</a></div>
         <img src="image/ttl_appn_Observer.png"/>
@@ -381,7 +371,7 @@
         <div class="parent"><a href="http://www.w3.org/ns/sosa/Sensor">http://www.w3.org/ns/sosa/Sensor</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Observation">Observation</a> <b>madeByObserver</b> Observer</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.</div>
+        <div class="description">Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByObserver">http://www.w3.org/ns/sosa/madeByObserver</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Sensor">Sensor</a></div>
         <div class="child"><a href="#Person">Person</a></div>
@@ -398,7 +388,7 @@
         <div class="parent"><a href="http://schema.org/Person">http://schema.org/Person</a></div>
         <h3>Properties</h3>
         <div class="property" id="hasRole">Person <b>hasRole</b> <a href="#Role">Role</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a role for a Person in a ResearchActivity</div>
+        <div class="description">Indicates a role for a Person in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
         <h2 id="PhysicalContainmentLevel">Class: PhysicalContainmentLevel</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/PhysicalContainmentLevel" target="_blank">https://schema.plantphenomics.org.au/PhysicalContainmentLevel</a></div>
         <img src="image/ttl_appn_PhysicalContainmentLevel.png"/>
@@ -407,7 +397,7 @@
         <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#GrowthFacility">GrowthFacility</a> <b>physicalContainmentLevel</b> PhysicalContainmentLevel</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The physical containment (PC) level capabilities of a GrowthFacility</div>
+        <div class="description">The physical containment (PC) level capabilities of a GrowthFacility</div>
         <h2 id="Platform">Class: Platform</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Platform" target="_blank">https://schema.plantphenomics.org.au/Platform</a></div>
         <img src="image/ttl_appn_Platform.png"/>
@@ -418,13 +408,13 @@
         <div class="parent"><a href="http://schema.org/IndividualProduct">http://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property" id="hasPlatformType">Platform <b>hasPlatformType</b> <a href="#PlatformType">PlatformType</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Platform to its type.</div>
+        <div class="description">Links a Platform to its type.</div>
         <div class="property" id="hosts">Platform <b>hosts</b> <a href="#Sensor">Sensor</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator hosted by a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator hosted by a Platform.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hosts">http://www.w3.org/ns/sosa/hosts</a></div>
         <div class="property">Platform <b>hosts</b> <a href="#Actuator">Actuator</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator hosted by a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator hosted by a Platform.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hosts">http://www.w3.org/ns/sosa/hosts</a></div>
         <div class="property"><a href="#Deployment">Deployment</a> <b>deployedOnPlatform</b> Platform</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Platform on which Sensors or Actuators are deployed.</div>
+        <div class="description">Identifies a Platform on which Sensors or Actuators are deployed.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#GrowthFacility">GrowthFacility</a></div>
         <h2 id="PlatformType">Class: PlatformType</h2>
@@ -435,7 +425,7 @@
         <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Platform">Platform</a> <b>hasPlatformType</b> PlatformType</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Platform to its type.</div>
+        <div class="description">Links a Platform to its type.</div>
         <h2 id="ResearchActivity">Class: ResearchActivity</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/ResearchActivity" target="_blank">https://schema.plantphenomics.org.au/ResearchActivity</a></div>
         <img src="image/ttl_appn_ResearchActivity.png"/>
@@ -445,15 +435,15 @@
         <div class="parent"><a href="http://www.w3.org/ns/prov#Activity">http://www.w3.org/ns/prov#Activity</a></div>
         <h3>Properties</h3>
         <div class="property" id="isPartOf">ResearchActivity <b>isPartOf</b> <a href="#ResearchActivity">ResearchActivity</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Relates an Assay to the Study that includes it or a Study to an Investigation.</div>
+        <div class="description">Relates an Assay to the Study that includes it or a Study to an Investigation.</div>
         <div class="property"><a href="#Role">Role</a> <b>isRoleOfPersonIn</b> ResearchActivity</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a ResearchActivity in which a Person has a Role</div>
+        <div class="description">Indicates a ResearchActivity in which a Person has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
         <div class="property" id="startTime">ResearchActivity <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The time at which a ResearchActivity started</div>
+        <div class="description">The time at which a ResearchActivity started<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/startTime">http://schema.org/startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasStartDateTime">http://purl.org/ppeo/PPEO.owl#hasStartDateTime</a></div>
         <div class="property" id="endTime">ResearchActivity <b>endTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The time at which a ResearchActivity ended</div>
+        <div class="description">The time at which a ResearchActivity ended<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/endTime">http://schema.org/endTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/resultTime">http://www.w3.org/ns/sosa/resultTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasEndDateTime">http://purl.org/ppeo/PPEO.owl#hasEndDateTime</a></div>
         <div class="property" id="atTime">ResearchActivity <b>atTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;The time at which a ResearchActivity occurred - equivalent to both startTime and endTime</div>
+        <div class="description">The time at which a ResearchActivity occurred - equivalent to both startTime and endTime<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#startTime">startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#endTime">endTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasDateTime">http://purl.org/ppeo/PPEO.owl#hasDateTime</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Investigation">Investigation</a></div>
         <div class="child"><a href="#Study">Study</a></div>
@@ -467,9 +457,9 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#role">http://purl.org/ppeo/PPEO.owl#role</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Person">Person</a> <b>hasRole</b> Role</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a role for a Person in a ResearchActivity</div>
+        <div class="description">Indicates a role for a Person in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
         <div class="property" id="isRoleOfPersonIn">Role <b>isRoleOfPersonIn</b> <a href="#ResearchActivity">ResearchActivity</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Indicates a ResearchActivity in which a Person has a Role</div>
+        <div class="description">Indicates a ResearchActivity in which a Person has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
         <h2 id="Sample">Class: Sample</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sample" target="_blank">https://schema.plantphenomics.org.au/Sample</a></div>
         <img src="image/ttl_appn_Sample.png"/>
@@ -480,7 +470,7 @@
         <div class="parent"><a href="#BiologicalUnit">BiologicalUnit</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Sampling">Sampling</a> <b>producesSample</b> Sample</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Sample produced by a Sampling assay.</div>
+        <div class="description">Identifies the Sample produced by a Sampling assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
         <h2 id="Sampler">Class: Sampler</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sampler" target="_blank">https://schema.plantphenomics.org.au/Sampler</a></div>
         <img src="image/ttl_appn_Sampler.png"/>
@@ -489,7 +479,7 @@
         <div class="parent"><a href="http://www.w3.org/ns/sosa/Sampler">http://www.w3.org/ns/sosa/Sampler</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Sampling">Sampling</a> <b>madeBySampler</b> Sampler</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.</div>
+        <div class="description">Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeBySampler">http://www.w3.org/ns/sosa/madeBySampler</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Person">Person</a></div>
         <h2 id="Sampling">Class: Sampling</h2>
@@ -501,9 +491,9 @@
         <div class="parent"><a href="#Assay">Assay</a></div>
         <h3>Properties</h3>
         <div class="property" id="madeBySampler">Sampling <b>madeBySampler</b> <a href="#Sampler">Sampler</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.</div>
+        <div class="description">Identifies the entity (Sampler, i.e. a Person - no other subclasses defined yet) responsible for carrying out an Sampling.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeBySampler">http://www.w3.org/ns/sosa/madeBySampler</a></div>
         <div class="property" id="producesSample">Sampling <b>producesSample</b> <a href="#Sample">Sample</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Sample produced by a Sampling assay.</div>
+        <div class="description">Identifies the Sample produced by a Sampling assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
         <h2 id="Scale">Class: Scale</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Scale" target="_blank">https://schema.plantphenomics.org.au/Scale</a></div>
         <img src="image/ttl_appn_Scale.png"/>
@@ -513,9 +503,9 @@
         <div class="parent"><a href="http://schema.org/DefinedTerm">http://schema.org/DefinedTerm</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>hasScale</b> Scale</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
         <div class="property"><a href="#SubstanceAmount">SubstanceAmount</a> <b>hasScale</b> Scale</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
         <h2 id="Sensor">Class: Sensor</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sensor" target="_blank">https://schema.plantphenomics.org.au/Sensor</a></div>
         <img src="image/ttl_appn_Sensor.png"/>
@@ -526,11 +516,11 @@
         <div class="parent"><a href="http://schema.org/IndividualProduct">http://schema.org/IndividualProduct</a></div>
         <h3>Properties</h3>
         <div class="property" id="hasSensorType">Sensor <b>hasSensorType</b> <a href="#SensorType">SensorType</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Sensor to its type.</div>
+        <div class="description">Links a Sensor to its type.</div>
         <div class="property"><a href="#Platform">Platform</a> <b>hosts</b> Sensor</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator hosted by a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator hosted by a Platform.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hosts">http://www.w3.org/ns/sosa/hosts</a></div>
         <div class="property"><a href="#Deployment">Deployment</a> <b>deployedSystem</b> Sensor</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Sensor or Actuator deployed on a Platform.</div>
+        <div class="description">Identifies a Sensor or Actuator deployed on a Platform.</div>
         <h2 id="SensorType">Class: SensorType</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/SensorType" target="_blank">https://schema.plantphenomics.org.au/SensorType</a></div>
         <img src="image/ttl_appn_SensorType.png"/>
@@ -539,7 +529,7 @@
         <div class="parent"><a href="http://schema.org/Enumeration">http://schema.org/Enumeration</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Sensor">Sensor</a> <b>hasSensorType</b> SensorType</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Sensor to its type.</div>
+        <div class="description">Links a Sensor to its type.</div>
         <h2 id="SoftwareApplication">Class: SoftwareApplication</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/SoftwareApplication" target="_blank">https://schema.plantphenomics.org.au/SoftwareApplication</a></div>
         <img src="image/ttl_appn_SoftwareApplication.png"/>
@@ -557,28 +547,18 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#GPS_location">http://purl.org/ppeo/PPEO.owl#GPS_location</a></div>
         <div class="parent"><a href="http://schema.org/Place">http://schema.org/Place</a></div>
         <h3>Properties</h3>
-        <div class="property" id="hasLatitude">SpatialLocation <b>hasLatitude</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Decimal latitude for a SpatialLocation</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasLatitude">http://purl.org/ppeo/PPEO.owl#hasLatitude</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/latitude">http://schema.org/latitude</a></div>
-        <div class="property" id="hasLongitude">SpatialLocation <b>hasLongitude</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Decimal longitude for a SpatialLocation</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasLongitude">http://purl.org/ppeo/PPEO.owl#hasLongitude</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/longitude">http://schema.org/longitude</a></div>
-        <div class="property" id="hasUncertainty">SpatialLocation <b>hasUncertainty</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Uncertainty in meters for coordinates</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasUncertainty">http://purl.org/ppeo/PPEO.owl#hasUncertainty</a></div>
-        <div class="property" id="hasAltitude">SpatialLocation <b>hasAltitude</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Altitude for a SpatialLocation</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasAltitude">http://purl.org/ppeo/PPEO.owl#hasAltitude</a></div>
+        <div class="property" id="hasLatitude">SpatialLocation <b>hasLatitude</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Decimal latitude for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasLatitude">http://purl.org/ppeo/PPEO.owl#hasLatitude</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/latitude">http://schema.org/latitude</a></div>
+        <div class="property" id="hasLongitude">SpatialLocation <b>hasLongitude</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Decimal longitude for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasLongitude">http://purl.org/ppeo/PPEO.owl#hasLongitude</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/longitude">http://schema.org/longitude</a></div>
+        <div class="property" id="hasUncertainty">SpatialLocation <b>hasUncertainty</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Uncertainty in meters for coordinates<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasUncertainty">http://purl.org/ppeo/PPEO.owl#hasUncertainty</a></div>
+        <div class="property" id="hasAltitude">SpatialLocation <b>hasAltitude</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Altitude for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasAltitude">http://purl.org/ppeo/PPEO.owl#hasAltitude</a></div>
         <div class="property" id="hasCountry">SpatialLocation <b>hasCountry</b> <a href="#Country">Country</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Country for a SpatialLocation</div>
+        <div class="description">Country for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountry">http://purl.org/ppeo/PPEO.owl#hasCountry</a></div>
         <div class="property" id="hasAddress">SpatialLocation <b>hasAddress</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Address for a SpatialLocation</div>
+        <div class="description">Address for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasAddress">http://purl.org/ppeo/PPEO.owl#hasAddress</a></div>
         <h2 id="Study">Class: Study</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Study" target="_blank">https://schema.plantphenomics.org.au/Study</a></div>
         <img src="image/ttl_appn_Study.png"/>
@@ -588,7 +568,7 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#study">http://purl.org/ppeo/PPEO.owl#study</a></div>
         <h3>Properties</h3>
         <div class="property" id="hasGrowthFacility">Study <b>hasGrowthFacility</b> <a href="#GrowthFacility">GrowthFacility</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a GrowthFacility used in a Study.</div>
+        <div class="description">Identifies a GrowthFacility used in a Study.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasGrowthFacility">http://purl.org/ppeo/PPEO.owl#hasGrowthFacility</a></div>
         <h2 id="Substance">Class: Substance</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Substance" target="_blank">https://schema.plantphenomics.org.au/Substance</a></div>
         <img src="image/ttl_appn_Substance.png"/>
@@ -598,13 +578,13 @@
         <div class="parent"><a href="https://bioschemas.org/terms/Substance">https://bioschemas.org/terms/Substance</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> Substance</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="description">Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
         <div class="property" id="hasComponent">Substance <b>hasComponent</b> <a href="#Substance">Substance</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceAmount included in the current Substance.</div>
+        <div class="description">Identifies a Substance or SubstanceAmount included in the current Substance.</div>
         <div class="property">Substance <b>hasComponent</b> <a href="#SubstanceAmount">SubstanceAmount</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceAmount included in the current Substance.</div>
+        <div class="description">Identifies a Substance or SubstanceAmount included in the current Substance.</div>
         <div class="property"><a href="#SubstanceAmount">SubstanceAmount</a> <b>isOfSubstance</b> Substance</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
+        <div class="description">Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
         <h2 id="SubstanceAmount">Class: SubstanceAmount</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/SubstanceAmount" target="_blank">https://schema.plantphenomics.org.au/SubstanceAmount</a></div>
         <img src="image/ttl_appn_SubstanceAmount.png"/>
@@ -613,15 +593,15 @@
         <div class="parent"><a href="#Variable">Variable</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Treatment">Treatment</a> <b>treatsWith</b> SubstanceAmount</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="description">Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
         <div class="property"><a href="#Substance">Substance</a> <b>hasComponent</b> SubstanceAmount</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or SubstanceAmount included in the current Substance.</div>
+        <div class="description">Identifies a Substance or SubstanceAmount included in the current Substance.</div>
         <div class="property" id="isOfSubstance">SubstanceAmount <b>isOfSubstance</b> <a href="#Substance">Substance</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
-        <div class="property" id="amount">SubstanceAmount <b>amount</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale.</div>
+        <div class="description">Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.</div>
+        <div class="property" id="amount">SubstanceAmount <b>amount</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale.</div>
         <div class="property" id="hasScale">SubstanceAmount <b>hasScale</b> <a href="#Scale">Scale</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
         <h2 id="Trait">Class: Trait</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Trait" target="_blank">https://schema.plantphenomics.org.au/Trait</a></div>
         <img src="image/ttl_appn_Trait.png"/>
@@ -632,9 +612,9 @@
         <div class="parent"><a href="http://schema.org/DefinedTerm">http://schema.org/DefinedTerm</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#ObservedVariable">ObservedVariable</a> <b>hasTrait</b> Trait</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
         <div class="property"><a href="#ControlledVariable">ControlledVariable</a> <b>hasTrait</b> Trait</div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Trait associated with a Variable.</div>
+        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Variable">Variable</a></div>
         <h2 id="Treatment">Class: Treatment</h2>
@@ -647,11 +627,11 @@
         <div class="parent"><a href="#Assay">Assay</a></div>
         <h3>Properties</h3>
         <div class="property">Treatment <b>madeByController</b> <a href="#Controller">Controller</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.</div>
+        <div class="description">Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByActuator">http://www.w3.org/ns/sosa/madeByActuator</a></div>
         <div class="property" id="treatsWith">Treatment <b>treatsWith</b> <a href="#Substance">Substance</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="description">Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
         <div class="property">Treatment <b>treatsWith</b> <a href="#SubstanceAmount">SubstanceAmount</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
+        <div class="description">Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded.</div>
         <h2 id="Variable">Class: Variable</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Variable" target="_blank">https://schema.plantphenomics.org.au/Variable</a></div>
         <img src="image/ttl_appn_Variable.png"/>
@@ -662,16 +642,24 @@
         <div class="parent"><a href="http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable">http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/RepresentedVariable</a></div>
         <div class="parent"><a href="http://schema.org/InstanceValue">http://schema.org/InstanceValue</a></div>
         <h3>Properties</h3>
-        <div class="property" id="hasDefaultValue">Variable <b>hasDefaultValue</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the default value for a variable.</div>
+        <div class="property" id="hasDefaultValue">Variable <b>hasDefaultValue</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Specifies the default value for a variable.</div>
+        <div class="property">Variable <b>hasDefaultValue</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="description">Specifies the default value for a variable.</div>
+        <div class="property">Variable <b>hasDefaultValue</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Specifies the default value for a variable.</div>
+        <div class="property">Variable <b>hasDefaultValue</b> <a href="http://www.w3.org/2001/XMLSchema#double">http://www.w3.org/2001/XMLSchema#double</a></div>
+        <div class="description">Specifies the default value for a variable.</div>
+        <div class="property">Variable <b>hasDefaultValue</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">Specifies the default value for a variable.</div>
         <div class="property">Variable <b>usedMethod</b> <a href="#Method">Method</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies a Method used to conduct an Assay or to derive values for a Variable.</div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
         <div class="property" id="forBiologicalUnitType">Variable <b>forBiologicalUnitType</b> <a href="#BiologicalUnitType">BiologicalUnitType</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalUnitType to which it relates.</div>
+        <div class="description">Links a Variable to the BiologicalUnitType to which it relates.</div>
         <div class="property" id="forBiologicalMaterial">Variable <b>forBiologicalMaterial</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
+        <div class="description">Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
         <div class="property">Variable <b>hasScale</b> <a href="#Scale">Scale</a></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Identifies the Scale associated with a Variable.</div>
+        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#ObservedVariable">ObservedVariable</a></div>
         <div class="child"><a href="#ControlledVariable">ControlledVariable</a></div>
@@ -683,11 +671,29 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Location">Location</a></div>
         <h3>Properties</h3>
-        <div class="property" id="row">XYZLocation <b>row</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the row for an XYZLocation.</div>
-        <div class="property" id="column">XYZLocation <b>column</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the column for an XYZLocation.</div>
-        <div class="property" id="level">XYZLocation <b>level</b></div>
-        <div class="description">&nbsp;&nbsp;&nbsp;&nbsp;Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
+        <div class="property" id="row">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Specifies the row for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="description">Specifies the row for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Specifies the row for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#double">http://www.w3.org/2001/XMLSchema#double</a></div>
+        <div class="description">Specifies the row for an XYZLocation.</div>
+        <div class="property" id="column">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Specifies the column for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="description">Specifies the column for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Specifies the column for an XYZLocation.</div>
+        <div class="property">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#double">http://www.w3.org/2001/XMLSchema#double</a></div>
+        <div class="description">Specifies the column for an XYZLocation.</div>
+        <div class="property" id="level">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
+        <div class="property">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
+        <div class="property">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#float">http://www.w3.org/2001/XMLSchema#float</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
+        <div class="property">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#double">http://www.w3.org/2001/XMLSchema#double</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.</div>
     </body>
 </html>

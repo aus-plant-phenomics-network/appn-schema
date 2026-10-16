@@ -7,13 +7,13 @@ class "schema:Thing" #DDFFDD
 Location --|> "schema:Thing"
 XYZLocation --|> Location
 class XYZLocation #line.bold {
-    row
+    row: string|integer|float|double
 }
 class XYZLocation #line.bold {
-    column
+    column: string|integer|float|double
 }
 class XYZLocation #line.bold {
-    level
+    level: string|integer|float|double
 }
 class ObservationUnit 
 ObservationUnit --> Location : hasLocation

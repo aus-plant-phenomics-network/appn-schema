@@ -186,14 +186,24 @@ def write_properties(
                         f"class {class_name} #line.bold {{\n    {ppty_name}\n}}\n"
                     )
                 md.write(f"* {focus_class[1]} {prefixes[ppty[0]]}{ppty[1]}\n")
+            else:
+                types = []
+                for range_cls in property[1]:
+                    if range_cls[0] == "xsd":
+                        types.append(range_cls[1])
+                if len(types) > 0:
+                    uml.write(
+                        f"class {class_name} #line.bold {{\n    {ppty_name}: {'|'.join(types)}\n}}\n"
+                    )
             for r in property[1]:
                 if r == cls:
                     reflexive = True
                 r_name = get_name(r)
-                if r != focus_class:
-                    package_colour = "" if r[0] == "appn" else package_colours[r[0]]
-                    uml.write(f"class {r_name} {package_colour}\n")
-                uml.write(f"{class_name} --> {r_name} : {ppty_name}\n")
+                if r[0] != "xsd":
+                    if r != focus_class:
+                        package_colour = "" if r[0] == "appn" else package_colours[r[0]]
+                        uml.write(f"class {r_name} {package_colour}\n")
+                    uml.write(f"{class_name} --> {r_name} : {ppty_name}\n")
                 if cls == focus_class:
                     this_class = f"{focus_class[0]}:{focus_class[1]}"
                 elif cls[0] == "appn":
@@ -488,27 +498,21 @@ else:
                         #     html_file,
                         #     f'<div class="uri">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://schema.plantphenomics.org.au/{ppty_name}">{prefixes[ppty[0]]}{ppty[1]}</a></div>',
                         # )
-                        if ppty in comments:
-                            write_html(
-                                html_file,
-                                f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>',
-                            )
-                        if ppty in property_inheritance:
-                            write_html(
-                                html_file,
-                                f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;<b>Superproperties</b>:</div>',
-                            )
-                            for superppty in property_inheritance[ppty]:
-                                if superppty[0] == "appn":
-                                    write_html(
-                                        html_file,
-                                        f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#{superppty[1]}">{superppty[1]}</a></div>',
-                                    )
-                                else:
-                                    write_html(
-                                        html_file,
-                                        f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{prefixes[superppty[0]]}{superppty[1]}">{prefixes[superppty[0]]}{superppty[1]}</a></div>',
-                                    )
+                        if ppty in comments or ppty in property_inheritance:
+                            ppty_string = '<div class="description">'
+                            if ppty in comments:
+                                ppty_string += f'{comments[ppty]}'
+                            if ppty in property_inheritance:
+                                if ppty in comments:
+                                    ppty_string += f'<br/>'
+                                ppty_string += f'<b>Superproperties</b>:'
+                                for superppty in property_inheritance[ppty]:
+                                    if superppty[0] == "appn":
+                                        ppty_string += f'<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#{superppty[1]}">{superppty[1]}</a>'
+                                    else:
+                                        ppty_string += f'<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{prefixes[superppty[0]]}{superppty[1]}">{prefixes[superppty[0]]}{superppty[1]}</a>'
+                            ppty_string += f'</div>'
+                            write_html(html_file, ppty_string)
                     for r in property[1]:
                         if r == appn_class:
                             reflexive = True
@@ -527,11 +531,21 @@ else:
                                 f'<div class="property" id="{ppty_name}">{cls} <b>{ppty_name}</b> {other_class}</div>',
                             )
                             anchored_properties.add(ppty_name)
-                        if ppty in comments:
-                            write_html(
-                                html_file,
-                                f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>',
-                            )
+                        if ppty in comments or ppty in property_inheritance:
+                            ppty_string = '<div class="description">'
+                            if ppty in comments:
+                                ppty_string += f'{comments[ppty]}'
+                            if ppty in property_inheritance:
+                                if ppty in comments:
+                                    ppty_string += f'<br/>'
+                                ppty_string += f'<b>Superproperties</b>:'
+                                for superppty in property_inheritance[ppty]:
+                                    if superppty[0] == "appn":
+                                        ppty_string += f'<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#{superppty[1]}">{superppty[1]}</a>'
+                                    else:
+                                        ppty_string += f'<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{prefixes[superppty[0]]}{superppty[1]}">{prefixes[superppty[0]]}{superppty[1]}</a>'
+                            ppty_string += f'</div>'
+                            write_html(html_file, ppty_string)
                 if appn_class in property[1]:
                     for r in property[0]:
                         if not heading_written:
@@ -547,11 +561,21 @@ else:
                                 html_file,
                                 f'<div class="property">{other_class} <b>{ppty_name}</b> {cls}</div>',
                             )
-                            if ppty in comments:
-                                write_html(
-                                    html_file,
-                                    f'<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;{comments[ppty]}</div>',
-                                )
+                            if ppty in comments or ppty in property_inheritance:
+                                ppty_string = '<div class="description">'
+                                if ppty in comments:
+                                    ppty_string += f'{comments[ppty]}'
+                                if ppty in property_inheritance:
+                                    if ppty in comments:
+                                        ppty_string += f'<br/>'
+                                    ppty_string += f'<b>Superproperties</b>:'
+                                    for superppty in property_inheritance[ppty]:
+                                        if superppty[0] == "appn":
+                                            ppty_string += f'<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#{superppty[1]}">{superppty[1]}</a>'
+                                        else:
+                                            ppty_string += f'<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{prefixes[superppty[0]]}{superppty[1]}">{prefixes[superppty[0]]}{superppty[1]}</a>'
+                                ppty_string += f'</div>'
+                                write_html(html_file, ppty_string)
             heading_written = False
             for child in inheritance:
                 if appn_class in inheritance[child]:

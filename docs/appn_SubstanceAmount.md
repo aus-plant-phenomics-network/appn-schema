@@ -21,10 +21,20 @@ A Variable (representation of a quantity using a defined Scale) for a Substance 
     * Identifies a Substance or SubstanceAmount included in the current Substance.
 * appn:SubstanceAmount **appn:isOfSubstance** [appn:Substance](appn_Substance.md)
     * Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment.
-* SubstanceAmount https://schema.plantphenomics.org.au/amount
+* appn:SubstanceAmount **appn:amount** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale.
 * appn:SubstanceAmount **appn:hasScale** [appn:Scale](appn_Scale.md)
     * Identifies the Scale associated with a Variable.
-* SubstanceAmount https://schema.plantphenomics.org.au/hasDefaultValue
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+    * Specifies the default value for a variable.
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Specifies the default value for a variable.
 * [appn:Variable](appn_Variable.md) **appn:usedMethod** [appn:Method](appn_Method.md)
     * Identifies a Method used to conduct an Assay or to derive values for a Variable.
 * [appn:Variable](appn_Variable.md) **appn:forBiologicalUnitType** [appn:BiologicalUnitType](appn_BiologicalUnitType.md)

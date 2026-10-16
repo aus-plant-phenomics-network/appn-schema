@@ -12,10 +12,14 @@ A location defined with geospatial coordinates.
 * http://purl.org/ppeo/PPEO.owl#GPS_location
 * http://schema.org/Place
 ## Properties
-* SpatialLocation https://schema.plantphenomics.org.au/hasLatitude
-* SpatialLocation https://schema.plantphenomics.org.au/hasLongitude
-* SpatialLocation https://schema.plantphenomics.org.au/hasUncertainty
-* SpatialLocation https://schema.plantphenomics.org.au/hasAltitude
+* appn:SpatialLocation **appn:hasLatitude** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Decimal latitude for a SpatialLocation
+* appn:SpatialLocation **appn:hasLongitude** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Decimal longitude for a SpatialLocation
+* appn:SpatialLocation **appn:hasUncertainty** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Uncertainty in meters for coordinates
+* appn:SpatialLocation **appn:hasAltitude** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+    * Altitude for a SpatialLocation
 * appn:SpatialLocation **appn:hasCountry** [appn:Country](appn_Country.md)
     * Country for a SpatialLocation
 * appn:SpatialLocation **appn:hasAddress** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
