@@ -47,9 +47,17 @@ vocabulary_column_namespaces:
 # Filter for classes that should be explicitly included as rdf:type values. Each
 # key is a namespace. The value can be "all" for every superclass from the namespace,
 # "first" for the most proximal superclass from the namespace (i.e. the one that is
-# lowest in the hierarchy, or a list of class names.
+# lowest in the hierarchy), or a list of class names.
 explicit_classes:
   "https://schema.plantphenomics.org.au/": "all"
+  "http://schema.org/": "first"
+
+# Filter for properties that should be explicitly included when they are in the 
+# superproperties for an APPN property. Each key is a namespace. The value can be 
+# "all" for every superproperty from the namespace (probably not necessary), "first" 
+# for the most proximal superproperty from the namespace (i.e. the one that is
+# lowest in the hierarchy), or a list of property names.
+explicit_properties:
   "http://schema.org/": "first"
 
 # Filter for classes that should NOT be included in explicit classes. A list of IRIs
@@ -62,6 +70,10 @@ excluded_classes:
   - "http://schema.org/Enumeration"
   - "http://schema.org/Intangible"
   - "http://schema.org/Thing"
+
+# Filter for properties that should NOT be included in explicit properties. A list of IRIs
+# for properties.
+excluded_properties: []
 
 # Overrides for how sheet names are interpreted. 
 sheet_aliases:

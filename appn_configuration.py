@@ -112,7 +112,9 @@ class ConfigurationKey(StrEnum):
     NAMESPACE_PREFIXES = "namespace_prefixes"
     VOCABULARY_COLUMN_NAMESPACES = "vocabulary_column_namespaces"
     EXPLICIT_CLASSES = "explicit_classes"
+    EXPLICIT_PROPERTIES = "explicit_properties"
     EXCLUDED_CLASSES = "excluded_classes"
+    EXCLUDED_PROPERTIES = "excluded_properties"
     SHEET_ALIASES = "sheet_aliases"
     COLUMN_ALIASES = "column_aliases"
     COMPLETION_RULES = "completion_rules"
@@ -124,12 +126,13 @@ class ConfigurationKey(StrEnum):
     ORGANISATIONS = "organisations"
 
 
-### ExplicitClassesFilter #####################################################
+### ExplicitTermsFilter #####################################################
 
 
-class ExplicitClassesFilter(StrEnum):
+class ExplicitTermsFilter(StrEnum):
     """
-    Simple class to define special options for `explicit_classes` filters
+    Simple class to define special options for `explicit_classes` and `explicit_properties` 
+    filters
     """
 
     ALL = "all"
@@ -688,6 +691,35 @@ class Configuration:
         """
         return self.fetch_dict_of_str_or_list(ConfigurationKey.EXPLICIT_CLASSES)
 
+    def get_explicit_properties(self) -> dict[str, str | list[str]]:
+        """
+        Get dictionary of additional propertues that should explicitly be
+        specified when applicable
+
+        The APPN schema inherits from properties in several other schemas.
+        Users of the data may benefit if the properties they expect are
+        explicitly identified alongside all instances of any relevant APPN 
+        property.
+
+        The `explicit_properties` list identifies namespaces that should be
+        included as additional `rdf:type` statements. For each such
+        namespace, a list of specific properties for inclusion may be
+        supplied, or the keyword "all" (indicating any relevant property
+        from the schema) or the keyword "first" (indicating the property
+        from the schema that is closest in the superproperty hierarchy to
+        the APPN property being assigned.
+
+        The expected behaviour is that, when an instance of an APPN
+        property is created, the known superproperties of the APPN property 
+        should be scanned for classes that match any of these rules, and 
+        extra properties should be added for each match.
+
+        Returns a copy of the dictionary included in the YAML configuration.
+
+        :return: Dictionary mapping namespaces to selection rules
+        """
+        return self.fetch_dict_of_str_or_list(ConfigurationKey.EXPLICIT_PROPERTIES)
+
     def get_excluded_classes(self) -> list[str]:
         """
         Get list of classes that should NOT be matched when using the
@@ -701,6 +733,20 @@ class Configuration:
         :return: List of class IRIs
         """
         return self.fetch_list(ConfigurationKey.EXCLUDED_CLASSES)
+
+    def get_excluded_properties(self) -> list[str]:
+        """
+        Get list of properties that should NOT be matched when using the
+        rules specified by `get_explicit_properties`
+
+        This allows finer control over the exact set of properties asserted
+        for an instance.
+
+        Returns a copy of the list included in the YAML configuration.
+
+        :return: List of property IRIs
+        """
+        return self.fetch_list(ConfigurationKey.EXCLUDED_PROPERTIES)
 
     def get_sheet_aliases(self) -> dict[str, str]:
         """

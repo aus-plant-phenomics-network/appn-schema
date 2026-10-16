@@ -34,7 +34,7 @@ from appn_iri import IRI, Triple, TriplePosition
 from appn_types import NamespaceDefinition, Organisation
 from appn_configuration import (
     Configuration,
-    ExplicitClassesFilter,
+    ExplicitTermsFilter,
     OWL_SCHEMA,
     RDF_SCHEMA,
     RDFS_SCHEMA,
@@ -117,9 +117,12 @@ class Dictionary:
         self.configuration = Configuration()
 
         # Force selection of HTTP/HTTPS for schema.org to match imported 
-        # assets and RO-Crate expectations
+        # assets and RO-Crate expectations and preferred prefixes for all other
+        # namespaces.
         self.namespace_manager.bind(DEFAULT_PREFIXES[ALT_SCHEMA_SCHEMA], ALT_SCHEMA_SCHEMA)
-        self.namespace_manager.bind(DEFAULT_PREFIXES[SCHEMA_SCHEMA], SCHEMA_SCHEMA)
+        for namespace, prefix in DEFAULT_PREFIXES.items():
+            if namespace != ALT_SCHEMA_SCHEMA:
+                self.namespace_manager.bind(prefix, namespace)
 
         # The `namespaces` and `reverse_namespaces` dictionaries enable access
         # by namespace or by namespace prefix.
@@ -928,13 +931,13 @@ class Dictionary:
         The `Configuration` can specify superclasses that should automatically
         be inserted, and skos:Concept is included for all vocabulary terms.
 
-        :param main_class: `IRI` for APPN schema class
+        :param main_class_iri: `IRI` for APPN schema class
         :param is_concept: True if `skos:Concept` should be included
         :return: List of IRIs for matching superclasses
         """
         main_class = str(main_class_iri)
 
-        key = f"explicit_classes|{main_class}|is_concept"
+        key = f"explicit_classes|{main_class}|{is_concept}"
 
         # Cache to minimise redundant calculations
         if key in self.cache:
@@ -947,7 +950,7 @@ class Dictionary:
         # Rules determining which superclasses should be added
         explicit_rules = self.configuration.get_explicit_classes()
 
-        # Filters to over rile explicit rules
+        # Filters to override explicit rules
         excluded_classes = self.configuration.get_excluded_classes()
 
         explicit_classes = []
@@ -966,10 +969,10 @@ class Dictionary:
                     if superclass.name in rule:
                         explicit_classes.append(IRI(superclass.iri))
                 elif isinstance(rule, str):
-                    if rule == ExplicitClassesFilter.ALL.value:
+                    if rule == ExplicitTermsFilter.ALL.value:
                         # Include all classes matching an "all" rule
                         explicit_classes.append(IRI(superclass.iri))
-                    elif rule == ExplicitClassesFilter.FIRST.value:
+                    elif rule == ExplicitTermsFilter.FIRST.value:
                         # Match only the first class matching a "first" rule
                         explicit_classes.append(IRI(superclass.iri))
 
@@ -986,6 +989,76 @@ class Dictionary:
         self.cache[key] = explicit_classes
 
         return explicit_classes.copy()
+
+    def list_explicit_properties(
+        self, main_property_iri: IRI
+    ) -> list[IRI]:
+        """
+        Build list of properties to define alongside an instance of the given 
+        property.
+
+        The `Configuration` can specify superproperties that should automatically
+        be inserted.
+
+        :param main_property_iri: `IRI` for APPN schema property
+        :return: List of IRIs for matching superproperties
+        """
+        main_property = str(main_property_iri)
+
+        key = f"explicit_properties|{main_property}"
+
+        # Cache to minimise redundant calculations
+        if key in self.cache:
+            return self.cache[key].copy()
+
+        # Get list of all known properties in inheritance hierarchy for
+        # this property (including the property itself)
+        superproperties = self.list_superproperties(main_property)
+
+        # Rules determining which superproperties should be added
+        explicit_rules = self.configuration.get_explicit_properties()
+
+        # Filters to override explicit rules
+        excluded_properties = self.configuration.get_excluded_properties()
+
+        # Additional property expansions
+        property_expansions = self.configuration.get_property_expansions()
+
+        if main_property_iri in property_expansions:
+            explicit_properties = [self.get_iri(term) for term in property_expansions[main_property_iri]]
+        else:
+            explicit_properties = []
+
+        for superproperty in superproperties:
+            if superproperty.iri == main_property:
+                # Always include the property itself
+                explicit_properties.append(main_property_iri)
+            elif (
+                superproperty.ns in explicit_rules
+                and superproperty.iri not in excluded_properties
+            ):
+                rule = explicit_rules[superproperty.ns]
+                if isinstance(rule, list):
+                    # Include any property explicitly referenced by a rule
+                    if superproperty.name in rule:
+                        explicit_properties.append(IRI(superproperty.iri))
+                elif isinstance(rule, str):
+                    if rule == ExplicitTermsFilter.ALL.value:
+                        # Include all properties matching an "all" rule
+                        explicit_properties.append(IRI(superproperty.iri))
+                    elif rule == ExplicitTermsFilter.FIRST.value:
+                        # Match only the first property matching a "first" rule
+                        explicit_properties.append(IRI(superproperty.iri))
+
+                        # Remove the rule so we don't add more matches
+                        # NOTE - every call to configuration.get_explicit_properties returns
+                        # a new copy, so popping the value is safe.
+                        explicit_rules.pop(superproperty.ns)
+
+        # Remenber this list
+        self.cache[key] = explicit_properties
+
+        return explicit_properties.copy()
 
     def get_iri(self, id: str | URIRef | IRI) -> IRI:
         """

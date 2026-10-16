@@ -211,10 +211,6 @@ class ExcelVocabularyParser:
             Specifies short prefixes to use in IRIs of instances of specific
             APPN schema classes
 
-        `Configuration`.`get_property_expansions`:
-            Specifies additional properties that should be added whenever
-            a specified property is added
-
         `Configuration`.`get_embedded_classes`:
             Lists classes that may appear as specified in step 4 above
 
@@ -264,7 +260,6 @@ class ExcelVocabularyParser:
         self.sheet_aliases = configuration.get_sheet_aliases()
         self.column_aliases = configuration.get_column_aliases()
         self.class_abbreviations = configuration.get_class_abbreviations()
-        self.property_expansions = configuration.get_property_expansions()
         self.embedded_classes = configuration.get_embedded_classes()
         self.domain_range_properties = configuration.get_domain_range_properties()
 
@@ -1070,18 +1065,14 @@ class ExcelVocabularyParser:
         Add a triple to the graph with any specified additions
 
         Insert the requested triple, plus additional triples for any properties
-        indicated by the `property_expansion` from the `Configuration`
+        indicated by the `explicit_properties` from the `Dictionary`
 
         :param subject: The subject for the triple
         :param property: The main property for the triple
         :param object: The object for the triple
         """
-        self._graph.add((subject, property, object))
-
-        # If specified, add extra properties with the same object
-        if property in self.property_expansions:
-            for expansion_property in self.property_expansions[property]:
-                self._graph.add((subject, expansion_property, object))
+        for p in self.dictionary.list_explicit_properties(property):
+            self._graph.add((subject, p, object))
 
     def add_local_property(
         self,

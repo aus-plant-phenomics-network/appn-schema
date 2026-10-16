@@ -42,7 +42,6 @@ from appn_configuration import (
     CENTRAL_ORGANISATION,
     ConfigurationKey,
     DEFAULT_PREFIXES,
-    ExplicitClassesFilter,
     Configuration,
     Organisation,
     APPN_SCHEMA,
