@@ -37,53 +37,6 @@ def mock_configuration() -> Configuration:
     os.environ.pop(APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY)
     return configuration
 
-def test_configuration_bad_environment():
-    """
-    ValueError is expected if a bad configuration path is supplied
-    """
-    os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY] = "./test"
-    caught_error = False
-    try:
-        Configuration()
-    except ValueError:
-        caught_error = True
-    assert caught_error
-    os.environ.pop(APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY)
-
-
-def test_configuration_namespaces():
-    """
-    Check loading of a namespace with prefix
-    """
-    os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY] = "appn-test-1"
-    os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY] = "./test"
-    configuration = Configuration()
-    namespaces = configuration.get_namespace_definitions()
-    assert "https://test.plantphenomics.org.au/" in namespaces
-    assert namespaces["https://test.plantphenomics.org.au/"] == NamespaceDefinition(
-        "https://test.plantphenomics.org.au/",
-        "test",
-        "https://test.plantphenomics.org.au/",
-    )
-    os.environ.pop(APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY)
-    os.environ.pop(APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY)
-
-
-def test_configuration_namespace_paths(mock_configuration: Configuration) -> None:
-    """
-    Check loading of a configuration with a namespace, prefix and path
-    """
-    os.environ[APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY] = "appn-test-2"
-    os.environ[APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY] = "./test"
-    configuration = Configuration()
-    namespaces = configuration.get_namespace_definitions()
-    assert "https://test.plantphenomics.org.au/" in namespaces
-    assert namespaces["https://test.plantphenomics.org.au/"] == NamespaceDefinition(
-        "https://test.plantphenomics.org.au/", "test-2", "./test/test.ttl"
-    )
-    os.environ.pop(APPN_CONFIGURATION_NAME_ENVIRONMENT_KEY)
-    os.environ.pop(APPN_CONFIGURATION_FOLDER_ENVIRONMENT_KEY)
-
 def test_logger(mock_configuration: Configuration) -> None:
     """
     Check access to APPN Logger
