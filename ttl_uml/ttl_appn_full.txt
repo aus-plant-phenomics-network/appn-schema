@@ -119,6 +119,8 @@ package "ssn" {
 }
 package "xsd" {
 }
+package "rdf" {
+}
 ResearchActivity --|> "schema:Action"
 ResearchActivity --|> "prov:Activity"
 Investigation --|> ResearchActivity

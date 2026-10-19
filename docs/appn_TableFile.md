@@ -10,7 +10,7 @@ A data file containing tabular data in CSV or similar format
 * http://schema.org/CreativeWork
 * http://purl.org/ppeo/PPEO.owl#data_file
 ## Properties
-* appn:TableFile **appn:containsInstancesOf** [xsd:anyURI](http://www.w3.org/2001/XMLSchema#anyURI)
+* appn:TableFile **appn:containsInstancesOf** [rdf:Class](http://www.w3.org/1999/02/22-rdf-syntax-ns#Class)
     * Identifies schema class for which a TableFile serialises instances - the class is identified by its IRI
 * appn:TableFile **appn:hasSchema** [appn:File](appn_File.md)
     * Identifies schema file for a TableFile

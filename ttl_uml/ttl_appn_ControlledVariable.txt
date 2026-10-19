@@ -35,5 +35,4 @@ class Scale
 Variable --> Scale : hasScale
 class ObservedVariable 
 ObservedVariable --> Trait : hasTrait
-ControlledVariable --> Trait : hasTrait
 @enduml

@@ -228,10 +228,11 @@ def write_properties(
                     heading_written = True
                 if r != cls or not reflexive:
                     r_name = get_name(r)
-                    if r != focus_class:
-                        package_colour = "" if r[0] == "appn" else package_colours[r[0]]
-                        uml.write(f"class {r_name} {package_colour}\n")
-                    uml.write(f"{r_name} --> {class_name} : {ppty_name}\n")
+                    if r[0] != "xsd":
+                        if r != focus_class:
+                            package_colour = "" if r[0] == "appn" else package_colours[r[0]]
+                            uml.write(f"class {r_name} {package_colour}\n")
+                            uml.write(f"{r_name} --> {class_name} : {ppty_name}\n")
                     if cls == focus_class:
                         this_class = f"{focus_class[0]}:{focus_class[1]}"
                     elif cls[0] == "appn":

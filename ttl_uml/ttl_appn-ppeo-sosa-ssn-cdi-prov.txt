@@ -71,6 +71,8 @@ package "bio" {
 }
 package "xsd" {
 }
+package "rdf" {
+}
 ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
 Study --|> ResearchActivity

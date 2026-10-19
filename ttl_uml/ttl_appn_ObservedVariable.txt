@@ -35,7 +35,6 @@ class BiologicalMaterial
 Variable --> BiologicalMaterial : forBiologicalMaterial
 class Scale 
 Variable --> Scale : hasScale
-ObservedVariable --> Trait : hasTrait
 class ControlledVariable 
 ControlledVariable --> Trait : hasTrait
 @enduml

@@ -837,14 +837,14 @@ appn:containsInstancesOf a rdf:Property ;
   schema:name "containsInstancesOf" ;
   rdfs:comment "Identifies schema class for which a TableFile serialises instances - the class is identified by its IRI" ;
   schema:domainIncludes appn:TableFile ;
-  rdfs:range xsd:anyURI .
+  rdfs:range rdf:Class .
 
 appn:hasSchema a rdf:Property ;
   schema:name "hasSchema" ;
   rdfs:comment "Identifies schema file for a TableFile" ;
   schema:domainIncludes appn:TableFile ;
   schema:rangeIncludes appn:File ;
-  schema:rangeIncludes xsd:anyURI.
+  schema:rangeIncludes xsd:anyURI .
 
 appn:hasPart a rdf:Property ;
   schema:name "hasPart" ;

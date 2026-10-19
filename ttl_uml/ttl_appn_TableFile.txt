@@ -6,9 +6,8 @@ File --|> "schema:CreativeWork"
 class "ppeo:data_file" #EEFFCC 
 File --|> "ppeo:data_file"
 TableFile --|> File
-class TableFile #line.bold {
-    containsInstancesOf: anyURI
-}
+class "rdf:Class" #FFFF99
+TableFile --> "rdf:Class" : containsInstancesOf
 class TableFile #line.bold {
     hasSchema: anyURI
 }
@@ -23,5 +22,4 @@ Observation --> File : usesData
 class File #line.bold {
     encodingType: string
 }
-TableFile --> File : hasSchema
 @enduml
