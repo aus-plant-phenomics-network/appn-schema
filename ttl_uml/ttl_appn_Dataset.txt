@@ -8,21 +8,15 @@ File --|> "ppeo:data_file"
 Dataset --|> File
 class "schema:Dataset" #DDFFDD 
 Dataset --|> "schema:Dataset"
+class Observation 
+Observation --> File : hasResult
+class Control 
+Control --> File : hasResult
+class Observation 
+Observation --> File : usesData
 class File #line.bold {
     encodingType: string
 }
 class TableFile 
 TableFile --> File : hasSchema
-class Observation 
-Observation --> "schema:CreativeWork" : hasResult
-class Control 
-Control --> "schema:CreativeWork" : hasResult
-class Observation 
-Observation --> "schema:CreativeWork" : usesData
-class Observation 
-Observation --> "schema:Dataset" : hasResult
-class Control 
-Control --> "schema:Dataset" : hasResult
-class Observation 
-Observation --> "schema:Dataset" : usesData
 @enduml

@@ -130,9 +130,7 @@
         <h3>Properties</h3>
         <div class="property" id="madeByController">Control <b>madeByController</b> <a href="#Controller">Controller</a></div>
         <div class="description">Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByActuator">http://www.w3.org/ns/sosa/madeByActuator</a></div>
-        <div class="property" id="hasResult">Control <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
-        <div class="property">Control <b>hasResult</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
+        <div class="property" id="hasResult">Control <b>hasResult</b> <a href="#File">File</a></div>
         <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
         <div class="property" id="hasSimpleResult">Control <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
@@ -224,6 +222,12 @@
         <div class="parent"><a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#data_file">http://purl.org/ppeo/PPEO.owl#data_file</a></div>
         <h3>Properties</h3>
+        <div class="property"><a href="#Observation">Observation</a> <b>hasResult</b> File</div>
+        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
+        <div class="property"><a href="#Control">Control</a> <b>hasResult</b> File</div>
+        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
+        <div class="property"><a href="#Observation">Observation</a> <b>usesData</b> File</div>
+        <div class="description">Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
         <div class="property" id="encodingType">File <b>encodingType</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">File encoding type from IANA https://www.iana.org/assignments/media-types<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/encodingType">http://schema.org/encodingType</a></div>
         <div class="property"><a href="#TableFile">TableFile</a> <b>hasSchema</b> File</div>
@@ -328,9 +332,7 @@
         <h3>Properties</h3>
         <div class="property" id="madeByObserver">Observation <b>madeByObserver</b> <a href="#Observer">Observer</a></div>
         <div class="description">Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/madeByObserver">http://www.w3.org/ns/sosa/madeByObserver</a></div>
-        <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
-        <div class="property">Observation <b>hasResult</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
+        <div class="property">Observation <b>hasResult</b> <a href="#File">File</a></div>
         <div class="description">Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasResult">http://www.w3.org/ns/sosa/hasResult</a></div>
         <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
@@ -342,9 +344,7 @@
         <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
         <div class="property">Observation <b>hasSimpleResult</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
         <div class="description">Identifies a discrete value received as a data output from an Observation or Control assay.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasSimpleResult">http://www.w3.org/ns/sosa/hasSimpleResult</a></div>
-        <div class="property" id="usesData">Observation <b>usesData</b> <a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
-        <div class="description">Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
-        <div class="property">Observation <b>usesData</b> <a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
+        <div class="property" id="usesData">Observation <b>usesData</b> <a href="#File">File</a></div>
         <div class="description">Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication.</div>
         <div class="property" id="observes">Observation <b>observes</b> <a href="#ObservedVariable">ObservedVariable</a></div>
         <div class="description">Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasVariable">http://purl.org/ppeo/PPEO.owl#hasVariable</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/observedProperty">http://www.w3.org/ns/sosa/observedProperty</a></div>

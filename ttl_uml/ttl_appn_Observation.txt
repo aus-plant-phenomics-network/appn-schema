@@ -16,17 +16,13 @@ class "ppeo:observation" #EEFFCC
 Observation --|> "ppeo:observation"
 class Observer 
 Observation --> Observer : madeByObserver
-class "schema:Dataset" #DDFFDD
-Observation --> "schema:Dataset" : hasResult
-class "schema:CreativeWork" #DDFFDD
-Observation --> "schema:CreativeWork" : hasResult
+class File 
+Observation --> File : hasResult
 class Observation #line.bold {
     hasSimpleResult: string|integer|float|double|boolean
 }
-class "schema:Dataset" #DDFFDD
-Observation --> "schema:Dataset" : usesData
-class "schema:CreativeWork" #DDFFDD
-Observation --> "schema:CreativeWork" : usesData
+class File 
+Observation --> File : usesData
 class ObservedVariable 
 Observation --> ObservedVariable : observes
 class ObservationUnit 

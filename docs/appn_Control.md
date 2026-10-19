@@ -14,9 +14,7 @@ An Assay that modifies a property of an ObservationUnit.
 ## Properties
 * appn:Control **appn:madeByController** [appn:Controller](appn_Controller.md)
     * Identifies the entity (Controller, i.e. one of a Person, Actuator, SoftwareApplication or ExternalEvent) responsible for carrying out a Control or Treatment.
-* appn:Control **appn:hasResult** [schema:Dataset](http://schema.org/Dataset)
-    * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
-* appn:Control **appn:hasResult** [schema:CreativeWork](http://schema.org/CreativeWork)
+* appn:Control **appn:hasResult** [appn:File](appn_File.md)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
 * appn:Control **appn:hasSimpleResult** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Identifies a discrete value received as a data output from an Observation or Control assay.
