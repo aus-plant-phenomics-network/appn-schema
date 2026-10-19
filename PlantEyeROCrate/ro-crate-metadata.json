@@ -1,24 +1,19 @@
 {
     "@context": [
-        "https://w3id.org/ro/crate/1.2/context",
-        "https://schema.plantphenomics.org.au/context.json",
-        {
-            "this": "https://data.plantphenomics.org.au/ANU/UreaseInhibitor/",
-            "anu": "https://id.plantphenomics.org.au/ANU/",
-            "appnid": "https://id.plantphenomics.org.au/APPN/"
-        }
+         "https://w3id.org/ro/crate/1.2/context",
+         "https://schema.plantphenomics.org.au/context.json",
+         {
+             "this": "https://data.plantphenomics.org.au/ANU/UreaseInhibitor/",
+             "anu": "https://id.plantphenomics.org.au/ANU/",
+             "appnid": "https://id.plantphenomics.org.au/APPN/"
+         }
     ],
     "@graph": [
         {
             "@id": "./",
-            "@type": [
-                "Observation",
-                "Observation",
-                "Assay",
-                "ResearchActivity"
-            ],
-            "datePublished": "2026-09-30T10:24:42+00:00",
-            "endTime": "2026-09-30T20:24:42.422721+10:00",
+            "@type": "Dataset",
+            "datePublished": "2026-10-19T03:27:39+00:00",
+            "description": "The objective of the dataset is to determine whether novel urease inhibitors influence plant development and productivity, and to assess the potential of high-throughput phenomics techniques in validating phenotypic traits for predicting nitrogen dynamics.",
             "hasPart": [
                 {
                     "@id": "crate_it.py"
@@ -348,23 +343,16 @@
                     "@id": "level_2/COHORT_TRAITS.csv"
                 }
             ],
-            "hasResult": {
-                "@id": "level_2/COHORT_TRAITS.csv"
+            "license": {
+                "@id": "https://creativecommons.org/licenses/by/4.0/"
             },
-            "this:property_UsedData": {
-                "@id": "level_1/2024.09.27_Heber_Wheat_20250214_PlantEye_cleaned.xlsx"
-            },
-            "isPartOf": {
+            "mainEntity": {
                 "@id": "this:study_Study"
             },
-            "madeByObserver": {
-                "@id": "crate_it.py"
+            "maintainer": {
+                "@id": "https://orcid.org/0000-0001-6492-4016"
             },
-            "name": "Generate COHORT_TRAITS.csv",
-            "startTime": "2026-09-30T20:24:42.422721+10:00",
-            "usedMethod": {
-                "@id": "this:method_CohortSummary"
-            }
+            "name": "Phenospex Plant Data for Investigating Nitrogen use Under Urease Inhibitor Treatment"
         },
         {
             "@id": "ro-crate-metadata.json",
@@ -1778,7 +1766,7 @@
         {
             "@id": "level_2/COHORT_TRAITS.csv",
             "@type": "http://schema.org/CreativeWork",
-            "dateCreated": "2026-09-30T20:24:42.422721+10:00",
+            "dateCreated": "2026-10-19T14:27:39.812189+11:00",
             "encodingFormat": "text/csv",
             "license": {
                 "@id": "https://creativecommons.org/licenses/by/4.0/"
@@ -1987,7 +1975,7 @@
                 "Trait",
                 "DefinedTerm"
             ],
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "https://en.wikipedia.org/wiki/PLY_(file_format)"
             },
             "hasTrait": {
@@ -5077,7 +5065,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. Digital Biomass is calculated as the product of height and 3D leaf area assuming that the plant has a regular body of which the volume can be computed by taking into account height and length. Value Range: 0 – ∞.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5093,7 +5081,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Digital biomass mm³",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5109,7 +5097,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. The greenness index, also referred to as Green Leaf Index, represents the relation between the reflectance in the green channel compared to the other two visible light channels (red and blue). It is computed as (2*G-R-B)/(2*G+R+B). The higher the green reflection compared to the other channels the lower the greenness index. A value of 1 would represent a full reflection in the green channel and no reflection in the other two channels. The illustration below shows three different examples for the calculation of greenness. The X axis represents a simplified spectrum in the range from 400 to 1,000nm. The Y axis shows the relative reflectance for each wavelength. The colored blocks represent the measurement channels of PlantEye with standard configuration. Value Range: -1 – 1.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5125,7 +5113,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 greenness average",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5141,7 +5129,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. To calculate plant height PlantEye uses the distribution of elementary triangles  along the z-axis.  To do that first, the histogram along the z-axis is calculated. This histogram expresses how many elementary triangles are present in what height above ground. After that, the histogram is cropped at both ends which means that a certain safety margin on the upper and lower end of the plants is removed to make the calculation more robust against single outliers. To finally calculate height, the top 10% of the plant are averaged and the height is calculated as the range from pot height up to this averaged value. Value Range: 0 – ∞.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5157,7 +5145,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Height mm",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5173,7 +5161,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. Height Max is developed to find the absolute highest point of the plant in millimeters, and is therefore very accurate. This parameter does not replace the current height parameter, but is an addition to the parameter set. The current height is focused on stability over accuracy, by minimizing the effect of small movements, as a result of wind, external artifacts or diurnal plant movements. To compute the maximal height, the PlantEye finds the highest domain (Group of points in the 3D file) that contains enough points and is close enough to the other domains. Of this domain, the highest point is then given as the height_max. This way we compute the highest point of the plant, while at the same time ignoring single noise points or foreign objects far above the plant. Value Range: 0 – ∞.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5189,7 +5177,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Height Max mm",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5205,7 +5193,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. The standard approach in technical devices is to store colors as a combination of red, green and blue values. Nevertheless, this color model does not well represent the color of object. Each individual color is a combination of red, green and blue values. As an alternative approach to RGB color spaces the HSV color space was developed. In this color space the idea is to express the color (hue) on one dedicated channel that is arranged in the rainbow colors. The saturation of each color represents if it is a pale or very intense color. Last, the Value shows if the color is dark or bright. The advantage of this color space is that a color can be expressed independently from its saturation or value. The example below shows an image of what plots decomposed into the red, green and blue channel as well as decomposed into hue, saturation and value. One can see that it is hard to see the difference of the plot color in the red, green and blue channels whereas the hue channel nicely identifies the color differences of the plots on the left hand side of the image. PlantEye can compute the hue channel for the point cloud and analyze it further. Therefore, the hue channel can be seen as a color analysis taking into account all three measured colors. Value Range 0 - 360.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Degrees"
             },
             "hasTrait": {
@@ -5221,7 +5209,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 hue average °",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Degrees"
             },
             "hasTrait": {
@@ -5237,7 +5225,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. The weighted average of all angles of every face in the plant mesh based on their normal. Value Range: 0 - 90.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Degrees"
             },
             "hasTrait": {
@@ -5253,7 +5241,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Leaf angle °",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Degrees"
             },
             "hasTrait": {
@@ -5269,7 +5257,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. To measure the 3D leaf area of plants there are several steps involved. Starting from the 3D point cloud, all points that belong to the same sector are triangulated based on certain criteria. To create a triangle in the point cloud the points should be close to each other with no more point in between. The points in the point cloud do not have to be distributed equally in space, therefore the size of the triangles can vary. However, PlantEye can account for that by calculating the area of each individual triangle. Therefore, PlantEye can measure the real leaf area of inclined leaves other than 2D measurements that just take into account a projection of the leaf area. After the triangulation domains are searched within the plant, a domain is a group of triangles that forms a uniform surface. Each plant can have several domains. The number of domains is corresponding to the number of leaves; however, it is not an accurate leaf counting instrument. The 3D area of each domain is calculated by taking the sum of all included triangles. The total 3D leaf area of the plant is then calculated by taking the sum of the elementary triangles area. Value Range: 0 – ∞.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_SquareMillimeters"
             },
             "hasTrait": {
@@ -5285,7 +5273,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Leaf area mm²",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_SquareMillimeters"
             },
             "hasTrait": {
@@ -5301,7 +5289,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. Projected leaf area is defined as an area of the projection of all elementary triangles on X-Y plane. The projected leaf area is equivalent to a value that you could measure with a regular 2D camera. It measures the area of the projection of the plant onto the X-Y-plane and turns the 3D object into a flat 2D object. Note that objects with the same position on X-Y plane but different height over ground are not counted twice. Value Range: 0 – sector size",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_SquareMillimeters"
             },
             "hasTrait": {
@@ -5317,7 +5305,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Leaf area (projected) mm²",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_SquareMillimeters"
             },
             "hasTrait": {
@@ -5333,7 +5321,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. Calculated as: (3d Leaf Area)/( Sector Size). The Leaf Area Index calculates the 3d Leaf Area over the Sector Size to express the number of layers of leaves in a defined area. The Sector Size is the size of the unit as defined by the user during experiment creation.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5349,7 +5337,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Leaf area index mm²/mm²",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5365,7 +5353,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. Calculated as: (Total Leaf Area)/(Projected Leaf Area). Leaf inclination expresses how erect the leaves of a plant are on average. Calculated as a total leaf area divided by the sum of projections of each elementary triangle on X-Y plane. For a horizontal plane the leaf inclination would be 1. The more erect or bent a leaf is the bigger will be the total leaf area (without changing the projected leaf area) and therefore the leaf inclination will increase. Value Range: 1 – ∞ (or 0 if total leaf area is 0)",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5381,7 +5369,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Leaf inclination mm²/mm²",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5397,7 +5385,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. The depth of the laser light penetration through the canopy of the plant. Very dense plants will therefore exhibit a low value. It is often used with groups of plants. It measures the deepest point in which the laser can penetrate the canopy based on the histogram along the z-axis (similar to the calculation of height). To calculate the LPD the histogram is cropped on both ends again to remove outliers. After that the bottom 20% as well as the top 10% are averaged. The LPD is the distance between the top and bottom average values. Value Range: 0 – ∞",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5413,7 +5401,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 Light penetration depth mm",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "appnid:scale_Millimeter"
             },
             "hasTrait": {
@@ -5429,7 +5417,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. NDVI is computed as the ratio of the NIR and the Red channel in PlantEye. It is computed as the difference of both channels divided by the sum of both channels. Therefore it is a ratio in the range of -1 to 1. The illustration below shows three different examples for the calculation of NDVI. The X axis represents a simplified spectrum in the range from 400 to 1,000nm. The Y axis shows the relative reflectance for each wavelength. The colored blocks represent the measurement channels of PlantEye with standard configuration. One can see that there are three different examples that show the value for the NDVI index. The first example shows a high NDVI where the reflectance in the NIR channel is much higher than in the Red channel. This is the typical effect for healthy vegetation. The index is around 0.8. The second example shows a low NDVI. In this case the reflectance in the NIR channel is only slightly bigger than in the Red channel. This is a typical pattern for unhealthy vegetation. The last example shows that in theory the NDVI value could also be negative if the Red reflectance is higher than the NIR reflectance. This is typically not observed in any plant related measurements. Value Range: -1 – 1.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5445,7 +5433,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 NDVI average",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5461,7 +5449,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. NPCI (normalized pigment chlorophyll ratio index) is computed as (RED − BLUE)/(RED + BLUE). It is correlated to chlorophyll content. Value Range: -1 – 1.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5477,7 +5465,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 NPCI average",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5493,7 +5481,7 @@
                 "DefinedTerm"
             ],
             "description": "Phenospex Phena 1.0 parameter. PSRI (plant senescence reflectance index) is computed as (RED − GREEN)/(NIR). It is correlated to the carotenoid/chlorophyll ratio. Value Range: -1 – 1.",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5509,7 +5497,7 @@
                 "DefinedTerm"
             ],
             "description": "Mean value for all plants in cohort for Phenospex Phena 1.0 PSRI average",
-            "hasScale": {
+            "http://purl.org/ppeo/PPEO.owl#hasScale": {
                 "@id": "this:scale_Unitless"
             },
             "hasTrait": {
@@ -5609,7 +5597,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortCtU"
             },
@@ -11335,7 +11323,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortCtNull"
             },
@@ -17061,7 +17049,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortNBPT"
             },
@@ -22787,7 +22775,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortHyd"
             },
@@ -28513,7 +28501,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortCat"
             },
@@ -34239,7 +34227,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortBromCat"
             },
@@ -39965,7 +39953,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortBQ1"
             },
@@ -45691,7 +45679,7 @@
                 "Action"
             ],
             "endTime": "2024-09:20T13:00:00+11:00",
-            "this:property_HasSimpleResult": true,
+            "http://www.w3.org/ns/sosa/hasSimpleResult": true,
             "isForObservationUnit": {
                 "@id": "this:bu_CohortCtA"
             },
@@ -414391,7 +414379,7 @@
                 "Assay",
                 "ResearchActivity"
             ],
-            "endTime": "2026-09-30T20:24:42.422721+10:00",
+            "endTime": "2026-10-19T14:27:39.812189+11:00",
             "hasResult": {
                 "@id": "level_2/COHORT_TRAITS.csv"
             },
@@ -414405,7 +414393,7 @@
                 "@id": "crate_it.py"
             },
             "name": "Generate COHORT_TRAITS.csv",
-            "startTime": "2026-09-30T20:24:42.422721+10:00",
+            "startTime": "2026-10-19T14:27:39.812189+11:00",
             "usedMethod": {
                 "@id": "this:method_CohortSummary"
             }

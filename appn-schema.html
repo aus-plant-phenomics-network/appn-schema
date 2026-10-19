@@ -188,6 +188,13 @@
         <div class="description">Country from which BiologicalMaterial originated<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountryOfOrigin">http://purl.org/ppeo/PPEO.owl#hasCountryOfOrigin</a></div>
         <div class="property" id="hasCountryCode">Country <b>hasCountryCode</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">ISO 2-letter country code for country<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasCountryCode">http://purl.org/ppeo/PPEO.owl#hasCountryCode</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/identifier">http://schema.org/identifier</a></div>
+        <h2 id="Dataset">Class: Dataset</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Dataset" target="_blank">https://schema.plantphenomics.org.au/Dataset</a></div>
+        <img src="image/ttl_appn_Dataset.png"/>
+        <div class="description"><b>Dataset:</b> A set of Files and metadata forming a dataset, normally managed as a file system folder</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#File">File</a></div>
+        <div class="parent"><a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
         <h2 id="Deployment">Class: Deployment</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Deployment" target="_blank">https://schema.plantphenomics.org.au/Deployment</a></div>
         <img src="image/ttl_appn_Deployment.png"/>
@@ -209,6 +216,21 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="#Controller">Controller</a></div>
         <div class="parent"><a href="http://schema.org/Event">http://schema.org/Event</a></div>
+        <h2 id="File">Class: File</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/File" target="_blank">https://schema.plantphenomics.org.au/File</a></div>
+        <img src="image/ttl_appn_File.png"/>
+        <div class="description"><b>File:</b> A data file, image or other file system object</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://schema.org/CreativeWork">http://schema.org/CreativeWork</a></div>
+        <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#data_file">http://purl.org/ppeo/PPEO.owl#data_file</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="encodingType">File <b>encodingType</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">File encoding type from IANA https://www.iana.org/assignments/media-types<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/encodingType">http://schema.org/encodingType</a></div>
+        <div class="property"><a href="#TableFile">TableFile</a> <b>hasSchema</b> File</div>
+        <div class="description">Identifies schema file for a TableFile</div>
+        <h3>Subclasses</h3>
+        <div class="child"><a href="#TableFile">TableFile</a></div>
+        <div class="child"><a href="#Dataset">Dataset</a></div>
         <h2 id="GrowthFacility">Class: GrowthFacility</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacility" target="_blank">https://schema.plantphenomics.org.au/GrowthFacility</a></div>
         <img src="image/ttl_appn_GrowthFacility.png"/>
@@ -602,6 +624,19 @@
         <div class="description">Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale.</div>
         <div class="property" id="hasScale">SubstanceAmount <b>hasScale</b> <a href="#Scale">Scale</a></div>
         <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
+        <h2 id="TableFile">Class: TableFile</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/TableFile" target="_blank">https://schema.plantphenomics.org.au/TableFile</a></div>
+        <img src="image/ttl_appn_TableFile.png"/>
+        <div class="description"><b>TableFile:</b> A data file containing tabular data in CSV or similar format</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="#File">File</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="containsInstancesOf">TableFile <b>containsInstancesOf</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">Identifies schema class for which a TableFile serialises instances - the class is identified by its IRI</div>
+        <div class="property" id="hasSchema">TableFile <b>hasSchema</b> <a href="#File">File</a></div>
+        <div class="description">Identifies schema file for a TableFile</div>
+        <div class="property">TableFile <b>hasSchema</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">Identifies schema file for a TableFile</div>
         <h2 id="Trait">Class: Trait</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Trait" target="_blank">https://schema.plantphenomics.org.au/Trait</a></div>
         <img src="image/ttl_appn_Trait.png"/>

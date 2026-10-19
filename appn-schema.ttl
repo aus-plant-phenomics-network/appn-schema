@@ -281,6 +281,23 @@ appn:Role a rdfs:Class ;
   rdfs:subClassOf schema:Role ;
   rdfs:subClassOf ppeo:role .
 
+appn:File a rdfs:Class ;
+  schema:name "File" ;
+  rdfs:comment "A data file, image or other file system object" ;
+  rdfs:subClassOf schema:CreativeWork ;
+  rdfs:subClassOf ppeo:data_file .
+
+appn:TableFile a rdfs:Class ;
+  schema:name "TableFile" ;
+  rdfs:comment "A data file containing tabular data in CSV or similar format" ;
+  rdfs:subClassOf appn:File .
+
+appn:Dataset a rdfs:Class ;
+  schema:name "Dataset" ;
+  rdfs:comment "A set of Files and metadata forming a dataset, normally managed as a file system folder" ;
+  rdfs:subClassOf appn:File ;
+  rdfs:subClassOf schema:Dataset .
+
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdf:Property ;
   schema:name "isPartOf" ;
@@ -808,3 +825,30 @@ appn:atTime a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
   schema:rangeIncludes xsd:dateTime .
+
+appn:encodingType a rdf:Property ;
+  schema:name "encodingType" ;
+  rdfs:comment "File encoding type from IANA https://www.iana.org/assignments/media-types" ;
+  rdfs:subPropertyOf schema:encodingType ;
+  schema:domainIncludes appn:File ;
+  rdfs:range xsd:string .
+
+appn:containsInstancesOf a rdf:Property ;
+  schema:name "containsInstancesOf" ;
+  rdfs:comment "Identifies schema class for which a TableFile serialises instances - the class is identified by its IRI" ;
+  schema:domainIncludes appn:TableFile ;
+  rdfs:range xsd:anyURI .
+
+appn:hasSchema a rdf:Property ;
+  schema:name "hasSchema" ;
+  rdfs:comment "Identifies schema file for a TableFile" ;
+  schema:domainIncludes appn:TableFile ;
+  schema:rangeIncludes appn:File ;
+  schema:rangeIncludes xsd:anyURI.
+
+appn:hasPart a rdf:Property ;
+  schema:name "hasPart" ;
+  rdfs:comment "Identifies a File that belongs to a Dataset" ;
+  rdfs:subPropertyOf schema:hasPart ;
+  rdfs:domainIncludes: appn:Dataset ;
+  rdfs:rangeIncludes: appn:File .

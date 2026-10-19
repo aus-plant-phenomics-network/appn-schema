@@ -1,0 +1,27 @@
+@startuml
+class TableFile  #line.bold
+class File  
+class "schema:CreativeWork" #DDFFDD 
+File --|> "schema:CreativeWork"
+class "ppeo:data_file" #EEFFCC 
+File --|> "ppeo:data_file"
+TableFile --|> File
+class TableFile #line.bold {
+    containsInstancesOf: anyURI
+}
+class TableFile #line.bold {
+    hasSchema: anyURI
+}
+class File 
+TableFile --> File : hasSchema
+class File #line.bold {
+    encodingType: string
+}
+TableFile --> File : hasSchema
+class Observation 
+Observation --> "schema:CreativeWork" : hasResult
+class Control 
+Control --> "schema:CreativeWork" : hasResult
+class Observation 
+Observation --> "schema:CreativeWork" : usesData
+@enduml
