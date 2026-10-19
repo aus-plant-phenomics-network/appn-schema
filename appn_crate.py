@@ -328,11 +328,11 @@ class Crate:
         :param ro_crate_folder: Path to folder to contain the RO-Crate
         """
         crate = ROCrate()
-        for source, destination, properties, is_folder, extra_classes in self.files:
+        for source, destination, file_properties, is_folder, extra_classes in self.files:
             if is_folder:
-                f = crate.add(Dataset(crate, source=source, dest_path=destination, properties=properties))
+                f = crate.add(Dataset(crate, source=source, dest_path=destination, properties=file_properties))
             else:
-                f = crate.add(File(crate, source=source, dest_path=destination, properties=properties))
+                f = crate.add(File(crate, source=source, dest_path=destination, properties=file_properties))
             if extra_classes is not None:
                 classes = ["Dataset" if is_folder else "CreativeWork"]
                 for class_name in extra_classes:
@@ -340,8 +340,8 @@ class Crate:
                     if class_iri is not None:
                         classes.append(class_iri.name if class_iri.ns in [APPN_SCHEMA, SCHEMA_SCHEMA] else class_iri.iri)
                 f._jsonld["@type"] = classes
-        for iri, properties in self.known_instances.items():
-            crate.add(ContextEntity(crate, iri.iri, properties))
+        for iri, iri_properties in self.known_instances.items():
+            crate.add(ContextEntity(crate, iri.iri, iri_properties))
 
         if properties is not None:
             crate_properties = crate.default_entities[0].properties()
