@@ -28,7 +28,16 @@ class SpatialLocation #line.bold {
     hasAddress: string
 }
 class ObservationUnit 
-ObservationUnit --> Location : hasLocation
+Location --> ObservationUnit : isLocationFor
 class ObservationUnit 
 Location --> ObservationUnit : isLocationWithin
+class Location #line.bold {
+    startTime: dateTime
+}
+class Location #line.bold {
+    endTime: dateTime
+}
+class Location #line.bold {
+    atTime: dateTime
+}
 @enduml

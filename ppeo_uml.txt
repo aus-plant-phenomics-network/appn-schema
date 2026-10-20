@@ -1,0 +1,73 @@
+@startuml
+class GPS_location
+class environment
+class environment_parameter
+class investigation
+class location {
+    hasAddress
+    hasAltitude
+    hasCountry
+    hasLatitude
+    hasLongitude
+    hasUncertainty
+}
+class named_location
+class observation_level
+class observation_level_hierarchy
+class observation_unit
+class observed_variable
+class spatial_coordinate
+class spatial_distribution
+class spatial_distribution_type
+class experimental_design {
+    hasDescription
+    hasType
+}
+class study
+
+observation_level --|> spatial_distribution_type
+spatial_coordinate --|> spatial_distribution_type
+spatial_distribution --> spatial_distribution_type : hasSpatialDistributionType
+observation_unit --> spatial_distribution : hasSpatialDistribution
+study --> observation_level_hierarchy : hasObservationLevelHierarchy
+observation_level --> observation_level : hasSublevel
+observation_level --> observation_level : hasSuperlevel
+observation_level_hierarchy --> observation_level : hasPart
+observation_unit --> observation_level : hasObservationLevel
+study --> observation_unit : hasPart
+study --> observed_variable : hasPart
+study --> experimental_design : hasExperimentalDesign
+study --> named_location : hasLocation
+investigation --> named_location : hasLocation
+named_location --|> location
+GPS_location --|> location
+investigation --> study : hasPart
+study --> environment : hasEnvironment
+environment --> environment_parameter : hasEnvironmentParameter
+
+
+object column
+column --|> spatial_coordinate
+object z_m
+z_m --|> spatial_coordinate
+object y
+y --|> spatial_coordinate
+object z
+z --|> spatial_coordinate
+object altitude
+altitude --|> spatial_coordinate
+object y_m
+y_m --|> spatial_coordinate
+object latitude
+latitude --|> spatial_coordinate
+object longitude
+longitude --|> spatial_coordinate
+object x
+x --|> spatial_coordinate
+object row
+row --|> spatial_coordinate
+object x_m
+x_m --|> spatial_coordinate
+
+
+@enduml

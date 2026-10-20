@@ -1,0 +1,17 @@
+@startuml
+
+class Configuration
+note left : reads YAML configuration
+
+class Dictionary 
+
+Dictionary --> Configuration : gets global settings
+
+note right : reads schemas, vocabularies and other linked data assets into a graph
+
+class ExcelVocabularyParser 
+
+ExcelVocabularyParser --> Dictionary : gets class and property definitions
+
+
+@enduml

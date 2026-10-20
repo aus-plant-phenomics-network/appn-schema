@@ -454,15 +454,15 @@ appn:hasDefaultValue a rdf:Property ;
   schema:rangeIncludes xsd:double ;
   schema:rangeIncludes xsd:boolean .
 
-appn:hasLocation a rdf:Property ;
-  schema:name "hasLocation" ; 
-  rdfs:comment "Specifies the location for an ObservationUnit." ;
-  schema:domainIncludes appn:ObservationUnit ;
-  schema:rangeIncludes appn:Location .
+appn:isLocationFor a rdf:Property ;
+  schema:name "isLocationFor" ; 
+  rdfs:comment "Specifies the ObservationUnit to which a Location relates." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes appn:ObservationUnit .
 
 appn:isLocationWithin a rdf:Property ;
   schema:name "isLocationWithin" ; 
-  rdfs:comment "Specifies that a location is a position within an ObservationUnit." ;
+  rdfs:comment "Specifies that a Location is a position within an ObservationUnit." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:ObservationUnit .
 
@@ -806,6 +806,7 @@ appn:startTime a rdf:Property ;
   rdfs:subPropertyOf schema:startTime ;
   rdfs:subPropertyOf ppeo:hasStartDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:dateTime .
 
 appn:endTime a rdf:Property ;
@@ -815,6 +816,7 @@ appn:endTime a rdf:Property ;
   rdfs:subPropertyOf sosa:resultTime ;
   rdfs:subPropertyOf ppeo:hasEndDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:dateTime .
 
 appn:atTime a rdf:Property ;
@@ -822,8 +824,8 @@ appn:atTime a rdf:Property ;
   rdfs:comment "The time at which a ResearchActivity occurred - equivalent to both startTime and endTime" ;
   rdfs:subPropertyOf appn:startTime ;
   rdfs:subPropertyOf appn:endTime ;
-  rdfs:subPropertyOf ppeo:hasDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:dateTime .
 
 appn:encodingType a rdf:Property ;

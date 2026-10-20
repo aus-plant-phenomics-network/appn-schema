@@ -24,7 +24,13 @@ A location defined with geospatial coordinates.
     * Country for a SpatialLocation
 * appn:SpatialLocation **appn:hasAddress** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Address for a SpatialLocation
-* [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](appn_Location.md)
-    * Specifies the location for an ObservationUnit.
+* [appn:Location](appn_Location.md) **appn:isLocationFor** [appn:ObservationUnit](appn_ObservationUnit.md)
+    * Specifies the ObservationUnit to which a Location relates.
 * [appn:Location](appn_Location.md) **appn:isLocationWithin** [appn:ObservationUnit](appn_ObservationUnit.md)
-    * Specifies that a location is a position within an ObservationUnit.
+    * Specifies that a Location is a position within an ObservationUnit.
+* [appn:Location](appn_Location.md) **appn:startTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity started
+* [appn:Location](appn_Location.md) **appn:endTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity ended
+* [appn:Location](appn_Location.md) **appn:atTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity occurred - equivalent to both startTime and endTime

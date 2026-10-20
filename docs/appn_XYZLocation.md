@@ -34,7 +34,13 @@ A location defined using an appropriate local spatial geometry in three dimensio
     * Specifies the level for an XYZLocation in a three-dimensional configuration.
 * appn:XYZLocation **appn:level** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
     * Specifies the level for an XYZLocation in a three-dimensional configuration.
-* [appn:ObservationUnit](appn_ObservationUnit.md) **appn:hasLocation** [appn:Location](appn_Location.md)
-    * Specifies the location for an ObservationUnit.
+* [appn:Location](appn_Location.md) **appn:isLocationFor** [appn:ObservationUnit](appn_ObservationUnit.md)
+    * Specifies the ObservationUnit to which a Location relates.
 * [appn:Location](appn_Location.md) **appn:isLocationWithin** [appn:ObservationUnit](appn_ObservationUnit.md)
-    * Specifies that a location is a position within an ObservationUnit.
+    * Specifies that a Location is a position within an ObservationUnit.
+* [appn:Location](appn_Location.md) **appn:startTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity started
+* [appn:Location](appn_Location.md) **appn:endTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity ended
+* [appn:Location](appn_Location.md) **appn:atTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
+    * The time at which a ResearchActivity occurred - equivalent to both startTime and endTime

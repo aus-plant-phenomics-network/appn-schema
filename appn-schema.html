@@ -289,10 +289,16 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#spatial_distribution">http://purl.org/ppeo/PPEO.owl#spatial_distribution</a></div>
         <div class="parent"><a href="http://schema.org/Thing">http://schema.org/Thing</a></div>
         <h3>Properties</h3>
-        <div class="property"><a href="#ObservationUnit">ObservationUnit</a> <b>hasLocation</b> Location</div>
-        <div class="description">Specifies the location for an ObservationUnit.</div>
+        <div class="property" id="isLocationFor">Location <b>isLocationFor</b> <a href="#ObservationUnit">ObservationUnit</a></div>
+        <div class="description">Specifies the ObservationUnit to which a Location relates.</div>
         <div class="property" id="isLocationWithin">Location <b>isLocationWithin</b> <a href="#ObservationUnit">ObservationUnit</a></div>
-        <div class="description">Specifies that a location is a position within an ObservationUnit.</div>
+        <div class="description">Specifies that a Location is a position within an ObservationUnit.</div>
+        <div class="property" id="startTime">Location <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">The time at which a ResearchActivity started<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/startTime">http://schema.org/startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasStartDateTime">http://purl.org/ppeo/PPEO.owl#hasStartDateTime</a></div>
+        <div class="property" id="endTime">Location <b>endTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">The time at which a ResearchActivity ended<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/endTime">http://schema.org/endTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/resultTime">http://www.w3.org/ns/sosa/resultTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasEndDateTime">http://purl.org/ppeo/PPEO.owl#hasEndDateTime</a></div>
+        <div class="property" id="atTime">Location <b>atTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">The time at which a ResearchActivity occurred - equivalent to both startTime and endTime<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#startTime">startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#endTime">endTime</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#SpatialLocation">SpatialLocation</a></div>
         <div class="child"><a href="#XYZLocation">XYZLocation</a></div>
@@ -362,10 +368,10 @@
         <div class="description">Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">http://www.w3.org/ns/sosa/hasFeatureOfInterest</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasObservedSubject">http://purl.org/ppeo/PPEO.owl#hasObservedSubject</a></div>
         <div class="property" id="inheritsContext">ObservationUnit <b>inheritsContext</b> <a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="description">Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant.</div>
-        <div class="property" id="hasLocation">ObservationUnit <b>hasLocation</b> <a href="#Location">Location</a></div>
-        <div class="description">Specifies the location for an ObservationUnit.</div>
+        <div class="property"><a href="#Location">Location</a> <b>isLocationFor</b> ObservationUnit</div>
+        <div class="description">Specifies the ObservationUnit to which a Location relates.</div>
         <div class="property"><a href="#Location">Location</a> <b>isLocationWithin</b> ObservationUnit</div>
-        <div class="description">Specifies that a location is a position within an ObservationUnit.</div>
+        <div class="description">Specifies that a Location is a position within an ObservationUnit.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Sensor">Sensor</a></div>
         <div class="child"><a href="#Actuator">Actuator</a></div>
@@ -460,12 +466,12 @@
         <div class="description">Relates an Assay to the Study that includes it or a Study to an Investigation.</div>
         <div class="property"><a href="#Role">Role</a> <b>isRoleOfPersonIn</b> ResearchActivity</div>
         <div class="description">Indicates a ResearchActivity in which a Person has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
-        <div class="property" id="startTime">ResearchActivity <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="property">ResearchActivity <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
         <div class="description">The time at which a ResearchActivity started<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/startTime">http://schema.org/startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasStartDateTime">http://purl.org/ppeo/PPEO.owl#hasStartDateTime</a></div>
-        <div class="property" id="endTime">ResearchActivity <b>endTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="property">ResearchActivity <b>endTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
         <div class="description">The time at which a ResearchActivity ended<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/endTime">http://schema.org/endTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/resultTime">http://www.w3.org/ns/sosa/resultTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasEndDateTime">http://purl.org/ppeo/PPEO.owl#hasEndDateTime</a></div>
-        <div class="property" id="atTime">ResearchActivity <b>atTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
-        <div class="description">The time at which a ResearchActivity occurred - equivalent to both startTime and endTime<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#startTime">startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#endTime">endTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasDateTime">http://purl.org/ppeo/PPEO.owl#hasDateTime</a></div>
+        <div class="property">ResearchActivity <b>atTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
+        <div class="description">The time at which a ResearchActivity occurred - equivalent to both startTime and endTime<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#startTime">startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#endTime">endTime</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Investigation">Investigation</a></div>
         <div class="child"><a href="#Study">Study</a></div>

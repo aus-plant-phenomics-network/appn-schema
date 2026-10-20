@@ -1,0 +1,65 @@
+@startuml
+!pragma teoz true
+
+skinparam actorStyle awesome
+
+actor Technician as t
+control Cabinet as c
+control TraitPipeline as tp
+control PyCrate as p
+database Crate as r
+boundary PIDService as s
+control InvenioRDM as i
+actor Researcher as u
+
+== Run study ==
+
+t -> p : New RO-Crate (empty folder)
+p -> r : Create folder and JSON-LD metadata file
+t -> p : Import metadata (from booking)
+loop Add metadata objects
+	p -> r : Validate and insert JSON-LD object
+	loop Import metadata for PIDs
+		p -> s : Retrieve PID metadata
+		note right : First time only
+		p -> r : Add PID metadata object
+	end
+end
+
+t -> c : Use cabinet to collect data
+
+loop Add Cabinet data
+	c -> p : Add sensor reading or image
+	note right : e.g. ./imgA
+	p -> r : Validate and insert JSON-LD object
+	p -> s : Get sensor metadata
+	note right : First time only
+	p -> r : Add sensor context object
+end
+
+t -> tp : Run pipeline on RO-Crate
+loop Process images
+	tp -> p : Read images and metadata
+	tp -> p : Write trait value
+	p -> r : Validate and insert JSON-LD object
+end
+
+== Publish study ==
+
+t -> p: Publish RO-Crate
+p -> i: Register dataset and get DOI
+note right : e.g. 10.12345/CrateX
+p -> r: Bind local RO-Crate namespace to handler for DOI
+note right : Objects now e.g. https://data.plantphenomics.org.au/10.12345/CrateX/imgA
+p -> i: Publish RO-Crate with InvenioRDM metadata
+
+== Access study data ==
+
+u -> i: Access object from RO-Crate
+note right : https://data.plantphenomics.org.au/10.12345/imgA
+i -> i: Locate dataset for request
+note right : E.g. dataset with DOI 10.12345/CrateX
+i -> p: Get requested object
+p -> r: Extract object
+
+@enduml
