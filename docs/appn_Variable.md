@@ -18,9 +18,7 @@ Representation of a Trait using a defined Scale. In the DDI-CDI Variable Cascade
     * Specifies the default value for a variable.
 * appn:Variable **appn:hasDefaultValue** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the default value for a variable.
-* appn:Variable **appn:hasDefaultValue** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
-    * Specifies the default value for a variable.
-* appn:Variable **appn:hasDefaultValue** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+* appn:Variable **appn:hasDefaultValue** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the default value for a variable.
 * appn:Variable **appn:hasDefaultValue** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
     * Specifies the default value for a variable.

@@ -19,7 +19,7 @@ Observation --> Observer : madeByObserver
 class File 
 Observation --> File : hasResult
 class Observation #line.bold {
-    hasSimpleResult: string|integer|float|double|boolean
+    hasSimpleResult: string|integer|decimal|boolean
 }
 class File 
 Observation --> File : usesData

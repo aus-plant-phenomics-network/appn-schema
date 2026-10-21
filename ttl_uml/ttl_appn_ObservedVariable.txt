@@ -25,7 +25,7 @@ Observation --> ObservedVariable : observes
 class Trait 
 ObservedVariable --> Trait : hasTrait
 class Variable #line.bold {
-    hasDefaultValue: string|integer|float|double|boolean
+    hasDefaultValue: string|integer|decimal|boolean
 }
 class Method 
 Variable --> Method : usedMethod

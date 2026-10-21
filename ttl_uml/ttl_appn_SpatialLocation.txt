@@ -11,16 +11,16 @@ SpatialLocation --|> "ppeo:GPS_location"
 class "schema:Place" #DDFFDD 
 SpatialLocation --|> "schema:Place"
 class SpatialLocation #line.bold {
-    hasLatitude: float
+    hasLatitude: decimal
 }
 class SpatialLocation #line.bold {
-    hasLongitude: float
+    hasLongitude: decimal
 }
 class SpatialLocation #line.bold {
-    hasUncertainty: float
+    hasUncertainty: decimal
 }
 class SpatialLocation #line.bold {
-    hasAltitude: float
+    hasAltitude: decimal
 }
 class Country 
 SpatialLocation --> Country : hasCountry

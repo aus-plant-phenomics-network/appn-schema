@@ -23,12 +23,12 @@ Substance --> SubstanceAmount : hasComponent
 class Substance 
 SubstanceAmount --> Substance : isOfSubstance
 class SubstanceAmount #line.bold {
-    amount: float
+    amount: decimal
 }
 class Scale 
 SubstanceAmount --> Scale : hasScale
 class Variable #line.bold {
-    hasDefaultValue: string|integer|float|double|boolean
+    hasDefaultValue: string|integer|decimal|boolean
 }
 class Method 
 Variable --> Method : usedMethod

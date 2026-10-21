@@ -12,13 +12,13 @@ A location defined with geospatial coordinates.
 * http://purl.org/ppeo/PPEO.owl#GPS_location
 * http://schema.org/Place
 ## Properties
-* appn:SpatialLocation **appn:hasLatitude** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+* appn:SpatialLocation **appn:hasLatitude** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Decimal latitude for a SpatialLocation
-* appn:SpatialLocation **appn:hasLongitude** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+* appn:SpatialLocation **appn:hasLongitude** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Decimal longitude for a SpatialLocation
-* appn:SpatialLocation **appn:hasUncertainty** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+* appn:SpatialLocation **appn:hasUncertainty** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Uncertainty in meters for coordinates
-* appn:SpatialLocation **appn:hasAltitude** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
+* appn:SpatialLocation **appn:hasAltitude** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Altitude for a SpatialLocation
 * appn:SpatialLocation **appn:hasCountry** [appn:Country](appn_Country.md)
     * Country for a SpatialLocation

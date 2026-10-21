@@ -14,25 +14,19 @@ A location defined using an appropriate local spatial geometry in three dimensio
     * Specifies the row for an XYZLocation.
 * appn:XYZLocation **appn:row** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the row for an XYZLocation.
-* appn:XYZLocation **appn:row** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
-    * Specifies the row for an XYZLocation.
-* appn:XYZLocation **appn:row** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+* appn:XYZLocation **appn:row** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the row for an XYZLocation.
 * appn:XYZLocation **appn:column** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the column for an XYZLocation.
 * appn:XYZLocation **appn:column** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the column for an XYZLocation.
-* appn:XYZLocation **appn:column** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
-    * Specifies the column for an XYZLocation.
-* appn:XYZLocation **appn:column** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+* appn:XYZLocation **appn:column** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the column for an XYZLocation.
 * appn:XYZLocation **appn:level** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the level for an XYZLocation in a three-dimensional configuration.
 * appn:XYZLocation **appn:level** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the level for an XYZLocation in a three-dimensional configuration.
-* appn:XYZLocation **appn:level** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
-    * Specifies the level for an XYZLocation in a three-dimensional configuration.
-* appn:XYZLocation **appn:level** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+* appn:XYZLocation **appn:level** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the level for an XYZLocation in a three-dimensional configuration.
 * [appn:Location](appn_Location.md) **appn:isLocationFor** [appn:ObservationUnit](appn_ObservationUnit.md)
     * Specifies the ObservationUnit to which a Location relates.

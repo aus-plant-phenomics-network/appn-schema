@@ -15,7 +15,7 @@ Control --> Controller : madeByController
 class File 
 Control --> File : hasResult
 class Control #line.bold {
-    hasSimpleResult: string|integer|float|double|boolean
+    hasSimpleResult: string|integer|decimal|boolean
 }
 class ControlledVariable 
 Control --> ControlledVariable : controls

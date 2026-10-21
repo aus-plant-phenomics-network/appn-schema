@@ -24,9 +24,7 @@ A Variable (representation of a Trait using a defined Scale) controlled or modif
     * Specifies the default value for a variable.
 * [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the default value for a variable.
-* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
-    * Specifies the default value for a variable.
-* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+* [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the default value for a variable.
 * [appn:Variable](appn_Variable.md) **appn:hasDefaultValue** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
     * Specifies the default value for a variable.

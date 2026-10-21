@@ -349,8 +349,7 @@ appn:hasSimpleResult a rdf:Property ;
   schema:domainIncludes appn:Observation,appn:Control ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double ;
+  schema:rangeIncludes xsd:decimal ;
   schema:rangeIncludes xsd:boolean .
 
 appn:producesSample a rdf:Property ;
@@ -396,7 +395,7 @@ appn:amount a rdf:Property ;
   schema:name "amount" ; 
   rdfs:comment "Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale." ;
   schema:domainIncludes appn:SubstanceAmount ;
-  schema:rangeIncludes xsd:float .
+  schema:rangeIncludes xsd:decimal .
 
 appn:observes a rdf:Property ;
   schema:name "observes" ; 
@@ -450,8 +449,7 @@ appn:hasDefaultValue a rdf:Property ;
   schema:domainIncludes appn:Variable ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double ;
+  schema:rangeIncludes xsd:decimal ;
   schema:rangeIncludes xsd:boolean .
 
 appn:isLocationFor a rdf:Property ;
@@ -473,8 +471,7 @@ appn:row a rdf:Property ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double .
+  schema:rangeIncludes xsd:decimal .
 
 # COMMENT: Needs a range.
 appn:column a rdf:Property ;
@@ -483,8 +480,7 @@ appn:column a rdf:Property ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double .
+  schema:rangeIncludes xsd:decimal .
 
 # COMMENT: Needs a range.
 appn:level a rdf:Property ;
@@ -493,8 +489,7 @@ appn:level a rdf:Property ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double .
+  schema:rangeIncludes xsd:decimal .
 
 appn:hosts a rdf:Property ;
   schema:name "hosts" ; 
@@ -733,7 +728,7 @@ appn:hasLatitude a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasLatitude ;
   rdfs:subPropertyOf schema:latitude ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasLongitude a rdf:Property ;
   schema:name "hasLongitude" ;
@@ -741,21 +736,21 @@ appn:hasLongitude a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasLongitude ;
   rdfs:subPropertyOf schema:longitude ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasUncertainty a rdf:Property ;
   schema:name "hasUncertainty" ;
   rdfs:comment "Uncertainty in meters for coordinates" ;
   rdfs:subPropertyOf ppeo:hasUncertainty ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasAltitude a rdf:Property ;
   schema:name "hasAltitude" ;
   rdfs:comment "Altitude for a SpatialLocation" ;
   rdfs:subPropertyOf ppeo:hasAltitude ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasCountry a rdf:Property ;
   schema:name "hasCountry" ;

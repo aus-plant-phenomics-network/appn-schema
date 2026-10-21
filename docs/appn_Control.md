@@ -20,9 +20,7 @@ An Assay that modifies a property of an ObservationUnit.
     * Identifies a discrete value received as a data output from an Observation or Control assay.
 * appn:Control **appn:hasSimpleResult** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Identifies a discrete value received as a data output from an Observation or Control assay.
-* appn:Control **appn:hasSimpleResult** [xsd:float](http://www.w3.org/2001/XMLSchema#float)
-    * Identifies a discrete value received as a data output from an Observation or Control assay.
-* appn:Control **appn:hasSimpleResult** [xsd:double](http://www.w3.org/2001/XMLSchema#double)
+* appn:Control **appn:hasSimpleResult** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Identifies a discrete value received as a data output from an Observation or Control assay.
 * appn:Control **appn:hasSimpleResult** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
     * Identifies a discrete value received as a data output from an Observation or Control assay.
