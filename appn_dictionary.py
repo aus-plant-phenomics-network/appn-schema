@@ -153,6 +153,12 @@ class Dictionary:
         """
         return self._graph
 
+    def bind(self, prefix: str, namespace: str) -> None:
+        self.namespace_manager.bind(prefix, namespace)
+        self.namespaces[prefix] = namespace
+        self.reverse_namespaces[namespace] = prefix
+        self.namespace_definitions[namespace] = NamespaceDefinition(namespace, prefix, namespace)
+
     def load(
         self,
         asset_namespace: str,
@@ -1508,7 +1514,7 @@ class Dictionary:
         ).lower()
 
         # Build and return the IRI
-        return IRI(f"{namespace}{prefix}_{self.build_clean_name(name)}")
+        return self.get_iri(f"{namespace}{prefix}_{self.build_clean_name(name)}")
 
 
     def build_clean_name(self, name: str) -> str:

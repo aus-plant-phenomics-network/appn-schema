@@ -22,3 +22,6 @@ corella/
 test_harness.py
 
 vocabulary/**
+
+LTUCrate/**
+PlantEyeROCrate/**

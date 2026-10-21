@@ -319,18 +319,19 @@ for index, row in df.iterrows():
             "hasBiologicalUnitType": {"@id": butBlock},
             "hasBiologicalMaterial": {"@id": bm},
         })
-        xyz = crate.add("XYZLocation", f"Location: {unit}", {
-            "isLocationWithin": {"@id": block},
-            "row": position[2],
-            "column": position[1],
-        })
 
         # Actual plants (64 of these)"PlantEye Excel"
         bu = crate.add("BiologicalUnit", f"Plant: {treatment}", {
             "hasBiologicalUnitType": {"@id": butPlant},
             "hasBiologicalMaterial": {"@id": bm},
             "inheritsContext": {"@id": cohort},
-            "hasLocation": {"@id": xyz},
+        })
+
+        xyz = crate.add("XYZLocation", f"Location: {unit}", {
+            "isLocationWithin": {"@id": block},
+            "isLocationFor": {"@id": bu},
+            "row": position[2],
+            "column": position[1],
         })
 
         # Treatment applied to cohort for specified TreatmentVariable
@@ -551,7 +552,7 @@ crate.serialise(Path("PlantEyeROCrate"), {
     "license": {"@id": cc_by},
     "maintainer": {"@id": dgh},
     "mainEntity": {"@id": study},
-})
+}, use_tables=True)
 
 # Validation: report any expected but purely external or missing objects
 for id in expected_objects:

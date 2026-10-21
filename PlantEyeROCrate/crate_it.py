@@ -349,16 +349,16 @@ for _, row in df.iterrows():
 gftGlasshouse = crate.add("GrowthFacilityType", "glasshouse")
 gftCompartment = crate.add("GrowthFacilityType", "compartment")
 gftPot = crate.add("GrowthFacilityType", "pot")
+rda4 = crate.add("GrowthFacility", "RDA4",
+    {
+        "hasGrowthFacilityType": gftGlasshouse,
+    },
+)
 rda4Location = crate.add("SpatialLocation", 
     properties = {
         "latitude": -37.72389,
         "longitude": 145.0570,
-    },
-)
-rda4 = crate.add("GrowthFacility", "RDA4",
-    {
-        "hasGrowthFacilityType": gftGlasshouse,
-        "hasLocation": rda4Location,
+        "isLocationFor": rda4,
     },
 )
 facilities = {}
@@ -367,17 +367,16 @@ csv = pd.read_csv(
 )
 for _, row in csv.iterrows():
     if row["Compartment"] not in facilities:
-        location = crate.add("Location",
-            f"{row['Compartment']}_location",
-            {
-                "isLocationWithin": rda4,
-            },
-        )
         facilities[row["Compartment"]] = crate.add("GrowthFacility",
             row["Compartment"],
             {
                 "hasGrowthFacilityType": gftCompartment,
-                "hasLocation": location,
+            },
+        )
+        location = crate.add("Location",
+            f"{row['Compartment']}_location",
+            {
+                "isLocationWithin": facilities[row["Compartment"]],
             },
         )
     compartment = facilities[row["Compartment"]]
@@ -444,32 +443,18 @@ crate.add(
 )
 
 pots = {}
+pot_locations = {}
 for f in Path("../appn-ro-crate-datapackaging/ltu/Potting").glob("*/*.csv"):
     csv = pd.read_csv(Path(f))
     for _, row in csv.iterrows():
-        location_id = f"{row['Compartment']}_{row["Plant Position"]}"
+        location_id = f"{row['Compartment']}_{row["Plant Position"]}_{row['Plant UID']}"
         pottingDate = f"{row["Pot Transfer Date"]}T00:00:00"
-        location = crate.add("XYZLocation",
-            location_id,
-            {
-                "isLocationWithin": facilities[row["Compartment"]],
-                "row": row["Plant Position"][0],
-                "column": row["Plant Position"][1:],
-                "startTime": pottingDate,
-            },
-        )
         pot_id = f"{row['Plant UID']}_pot"
-        if pot_id in pots:
-            pot = pots[pot_id]
-            if "hasLocation" in pot:
-                crate.known_instances[pot["hasLocation"][-1]]["endTime"] = pottingDate
-                pot["hasLocation"].append(location)
-            else:
-                pot["hasLocation"] = [location]
+        if pot_id in pot_locations:
+            crate.add("XYZLocation", pot_locations[pot_id][-1], {"endTime": pottingDate})
         else:
             pots[pot_id] = {
                 "hasGrowthFacilityType": gftPot,
-                "hasLocation": [location],
             }
             tq = crate.add("SubstanceAmount",
                 f"cocoperlite_35_65_{row['Pot Size']}",
@@ -488,9 +473,26 @@ for f in Path("../appn-ro-crate-datapackaging/ltu/Potting").glob("*/*.csv"):
                     "isPartOf": study,
                 },
             )
+        location_properties = {
+            "isLocationWithin": facilities[row["Compartment"]],
+            "row": row["Plant Position"][0],
+            "column": row["Plant Position"][1:],
+            "startTime": pottingDate,
+        }
+        location = crate.add("XYZLocation",
+            location_id,
+            location_properties,
+        )
+        if pot_id in pot_locations:
+            pot_locations[pot_id].append(location)
+        else:
+            pot_locations[pot_id] = [location]
 
 for k, v in pots.items():
     pot = crate.add("GrowthFacility", k, v)
+    if k in pot_locations:
+        for l in pot_locations[k]:
+            crate.add("XYZLocation", l, {"isLocationFor": pot})
     facilities[k] = pot
 
 cohorts = {}
@@ -506,20 +508,20 @@ for f in Path("../appn-ro-crate-datapackaging/ltu/Plant_Information").glob("*.cs
                     "hasBiologicalUnitType": butCohort,
                 },
             )
-        location = crate.add("Location",
-            f"{row['Plant UID']}_location",
-            {
-                "isLocationWithin": facilities[f"{row['Plant UID']}_pot"],
-            },
-        )
         plant = crate.add("BiologicalUnit",
             row["Plant UID"],
             {
                 "hasBiologicalUnitType": butPlant,
                 "hasBiologicalMaterial": bm,
-                "hasLocation": location,
                 "altLabel": row["Line ID"],
                 "derivesFrom": cohorts[batchId],
+            },
+        )
+        location = crate.add("Location",
+            f"{row['Plant UID']}_location",
+            {
+                "isLocationWithin": facilities[f"{row['Plant UID']}_pot"],
+                "isLocationFor": plant,
             },
         )
 
@@ -871,4 +873,4 @@ for id in expected_objects:
         print(f"Missing object: {id}")
 """
 
-crate.serialise(Path("LTUCrate"))
+crate.serialise(Path("LTUCrate"), use_tables=True)

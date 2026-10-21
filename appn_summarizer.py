@@ -301,7 +301,7 @@ if __name__ == "__main__":
     locations = {}
     reverse_locations = {}
     for query in [
-        "SELECT ?i ?l WHERE { ?i appn:hasLocation ?x . ?x appn:isLocationWithin ?l . }" ,
+        "SELECT ?i ?l WHERE { ?x appn:isLocationFor ?i . ?x appn:isLocationWithin ?l . }" ,
         "SELECT ?i ?l WHERE { ?i appn:inheritsContext ?l . }" ,
         ]:
         for iri, location_iri in d.query(query):
