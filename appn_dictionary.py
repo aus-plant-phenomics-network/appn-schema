@@ -1050,11 +1050,25 @@ class Dictionary:
         return explicit_properties.copy()
 
     def get_property_for_subject(self, subject_: IRI, property_: IRI) -> Optional[Node]:
+        """
+        Return object value matching subject and property
+
+        Filter the `Graph` and return value from first triple for the supplied subject
+        and property.
+
+        :param subject_: Subject for matching triple
+        :param property_: Property for matching triple
+        :return: Value of property if found - URIRefs are converted to IRIs.
+        """
 
         triples = self.filter_triples(subject_=subject_, property_=property_)
 
         if len(triples) > 0:
-            return triples[0][TriplePosition.OBJECT]
+            value = triples[0][TriplePosition.OBJECT]
+            if isinstance(value, URIRef):
+                return self.get_iri(value)
+            else:
+                return value
 
         return None
 
