@@ -27,6 +27,7 @@ from appn_types import CompletionRuleType
 from appn_dictionary import (
     RDF_PROPERTY,
     RDF_TYPE,
+    RDFS_COMMENT,
     SCHEMA_DESCRIPTION,
     SCHEMA_DOMAIN_INCLUDES,
     SCHEMA_NAME,
@@ -197,13 +198,18 @@ class Crate:
             name = self.seed_name(class_iri)
             seeded = True
                     
-        if (iri := self.parse_iri(name)) is None:
+        if properties is None:
+            properties = {}        
+
+        if "name" not in properties:
+            properties["name"] = name
+
+        current_instance = None
+        if JSONLD_ID in properties:
+            iri = self.dictionary.get_iri(properties.pop(JSONLD_ID))            
+        elif (iri := self.parse_iri(name)) is None:
             if not seeded:
-                if properties is None:
-                    properties = {}
-                if "name" not in properties:
-                    properties["name"] = name
-            current_instance = self.find_known_instance(class_iri, name)
+                current_instance = self.find_known_instance(class_iri, name)
             if current_instance is not None:
                 iri = current_instance
             else:
@@ -335,6 +341,8 @@ class Crate:
         :param ro_crate_folder: Path to folder to contain the RO-Crate
         """
 
+        ro_crate_folder.mkdir(parents=True, exist_ok=True)
+
         # Copy known instances so table classes can be removed without harm
         known_instances = self.known_instances.copy()
         table_classes = [self.dictionary.get_iri(f"{APPN_SCHEMA}{class_name}") for class_name in self.configuration.get_ro_crate_table_classes()]
@@ -347,13 +355,31 @@ class Crate:
                     for iri in self.known_instances_by_class[table_class]:
                         iri_properties = known_instances[iri]
                         for property_ in iri_properties:
-                            if property_ != "@type":
+                            if property_ != JSONLD_TYPE:
                                 if isinstance(iri_properties[property_], list) and len(iri_properties[property_]) > 1:
                                     high_cardinality_properties.add(property_)
                                 else:
                                     property_map.add(property_)
                     columns = ["iri", "type"] + [property_ for property_ in property_map if property_ not in high_cardinality_properties]
                     file_name = self.write_table(ro_crate_folder, table_class, known_instances, self.known_instances_by_class[table_class], columns)
+                    description = f"Table containing definitions of instances of the APPN schema class {table_class.name}"
+                    class_description = self.dictionary.get_property_for_subject(table_class, RDFS_COMMENT)
+                    if class_description is not None:
+                        description += f" ({class_description})"
+                    self.add(
+                        "TableFile", 
+                        file_name.parts[-1], 
+                        {
+                            JSONLD_ID: file_name.relative_to(ro_crate_folder).as_posix(), 
+                            "containsInstancesOf": table_class.iri,
+                            "dateCreated": "2024-10-11T11:12:26+11:00",
+                            "encodingFormat": "text/csv",
+                            "description": class_description,
+                            "producer": {
+                                "@id": self.node.ror
+                            }
+                        }
+                    )
         crate = ROCrate()
         for source, destination, file_properties, is_folder, extra_classes in self.files:
             if is_folder:
@@ -366,7 +392,7 @@ class Crate:
                     class_iri = self.find_class(class_name)
                     if class_iri is not None:
                         classes.append(class_iri.name if class_iri.ns in [APPN_SCHEMA, SCHEMA_SCHEMA] else class_iri.iri)
-                f._jsonld["@type"] = classes
+                f._jsonld[JSONLD_TYPE] = classes
         for iri, iri_properties in self.known_instances.items():
             crate.add(ContextEntity(crate, iri.iri, iri_properties))
 
@@ -447,8 +473,8 @@ class Crate:
         # The following is not elif because it handles dictionaries extracted
         # from lists
         if isinstance(value, dict):
-            if "@id" in value:
-                value = value["@id"]
+            if JSONLD_ID in value:
+                value = value[JSONLD_ID]
             else:
                 return ""
         if isinstance(value, str) and value.startswith("http"):

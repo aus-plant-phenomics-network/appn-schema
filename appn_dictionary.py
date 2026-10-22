@@ -58,6 +58,7 @@ NAME_REPLACEMENT_PATTERN = re.compile(r"[\s'\"\\?;:,°*+(){}/\[\]-]+")
 RDF_TYPE = IRI(f"{RDF_SCHEMA}type")
 RDF_PROPERTY = IRI(f"{RDF_SCHEMA}Property")
 RDFS_CLASS = IRI(f"{RDFS_SCHEMA}Class")
+RDFS_COMMENT = IRI(f"{RDFS_SCHEMA}comment")
 RDFS_LABEL = IRI(f"{RDFS_SCHEMA}label")
 SCHEMA_DOMAIN_INCLUDES = IRI(f"{SCHEMA_SCHEMA}domainIncludes")
 SCHEMA_NAME = IRI(f"{SCHEMA_SCHEMA}name")
@@ -408,28 +409,22 @@ class Dictionary:
             )
         ]
 
-    def list_triples_for_subject(self, subject: str | IRI) -> list[Triple]:
+    def list_triples_for_subject(self, subject_: str | IRI) -> list[Triple]:
         """
         Return list of all `Triple`s with a given term as subject
 
-        :param subject: String IRI or `IRI`
+        :param subject_: String IRI or `IRI`
         :return: List of `Triple`s with given subject
         """
-        if isinstance(subject, str) and subject.startswith(BNODE_PREFIX):
-            subject = subject[len(BNODE_PREFIX):]
-            matching_values = [subject]
+        if isinstance(subject_, str) and subject_.startswith(BNODE_PREFIX):
+            subject_ = subject_[len(BNODE_PREFIX):]
         else:
-            subject = self.get_iri(subject)
-            matching_values = [str(subject), subject.curie]
+            subject_ = self.get_iri(subject_)
 
-        key = f"subject|{subject}"
+        key = f"subject|{subject_}"
 
         if key not in self.cache:
-            self.cache[key] = [
-                self.get_triple(s, p, o)
-                for s, p, o in self._graph
-                if str(s) in matching_values
-            ]
+            self.cache[key] = self.filter_triples(subject_=subject_)
 
         return self.cache[key].copy()
 
@@ -443,14 +438,8 @@ class Dictionary:
         object_ = self.get_iri(object_)
         key = f"object|{object_}"
 
-        matching_values = [str(object_), object_.curie]
-
         if key not in self.cache:
-            self.cache[key] = [
-                self.get_triple(s, p, o)
-                for s, p, o in self._graph
-                if str(o) in matching_values
-            ]
+            self.cache[key] = self.filter_triples(object_=object_)
 
         return self.cache[key].copy()
 
@@ -464,14 +453,8 @@ class Dictionary:
         property_ = self.get_iri(property_)
         key = f"property|{property_}"
 
-        matching_values = [str(property_), property_.curie]
-
         if key not in self.cache:
-            self.cache[key] = [
-                self.get_triple(s, p, o)
-                for s, p, o in self._graph
-                if str(p) in matching_values
-            ]
+            self.cache[key] = self.filter_triples(subject_=property_)
 
         return self.cache[key].copy()
 
@@ -1066,6 +1049,15 @@ class Dictionary:
 
         return explicit_properties.copy()
 
+    def get_property_for_subject(self, subject_: IRI, property_: IRI) -> Optional[Node]:
+
+        triples = self.filter_triples(subject_=subject_, property_=property_)
+
+        if len(triples) > 0:
+            return triples[0][TriplePosition.OBJECT]
+
+        return None
+
     def get_iri(self, id: str | URIRef | IRI) -> IRI:
         """
         Get `IRI` for specified CURIE or IRI string, `URIRef`` or `IRI`
@@ -1118,6 +1110,46 @@ class Dictionary:
                         for item in row
                     )
                 )
+        return results
+
+    def filter_triples(self, subject_: Optional[IRI] = None, property_: Optional[IRI] = None, object_: Optional[IRI | str | int | float | bool] = None) -> list[Triple]:
+        """
+        Return triples matching filter values
+
+        Filter triples in the `Graph` by zero to three options (subject and/or property and/or object).
+
+        :param subject_: Optional IRI for subject of matching triples
+        :param property_: Optional IRI for property of matching triples
+        :param object_: Optional IRI for object of matching triples
+        :return: List of matching triples
+        """
+        filters = []
+        if subject_ is not None:
+            filters.append(f"FILTER (?s = <{subject_.iri}> ).")
+        if property_ is not None:
+            filters.append(f"FILTER (?p = <{property_.iri}> ).")
+        if object_ is not None:
+            if isinstance(object_, IRI):
+                object_string = f"<{object_.iri}>"
+            elif isinstance(object_, str):
+                object_string = f"'{object_}'"
+            else:
+                object_string = f"{object_}"
+            filters.append(f"FILTER (?o = {object_string} ).")
+        
+        if len(filters) == 0:
+            return self.list_triples()
+
+        sparql_query = f"SELECT ?s ?p ?o\nWHERE {{\n?s ?p ?o .\n{'\n'.join(filters)}\n}}"
+
+        logging.debug(f"Issuing query:\n{sparql_query}")
+
+        results = []
+
+        for row in self._graph.query(sparql_query):
+            if not isinstance(row, bool):
+                results.append(self.get_triple(row[TriplePosition.SUBJECT], row[TriplePosition.PROPERTY], row[TriplePosition.OBJECT]))
+
         return results
 
     @cache
