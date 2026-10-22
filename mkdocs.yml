@@ -36,6 +36,8 @@ theme:
         icon: material/weather-night
         name: Switch to dark mode
 
+exclude_docs: |
+  er_diagram/er_diagram_from_tab_to_schema/README.md
 
 # ── Navigation ────────────────────────────────────────────────────────────────
 nav:
@@ -49,11 +51,14 @@ nav:
       - Biological Material: appn_BiologicalMaterial.md
       - Biological Unit: appn_BiologicalUnit.md
       - Biological Unit Type: appn_BiologicalUnitType.md
+      - Dataset: appn_Dataset.md
       - Control: appn_Control.md
       - Controlled Variable: appn_ControlledVariable.md
       - Controller: appn_Controller.md
+      - Country: appn_Country.md
       - Deployment: appn_Deployment.md
       - External Event: appn_ExternalEvent.md
+      - File: appn_File.md
       - Growth Facility: appn_GrowthFacility.md
       - Growth Facility Type: appn_GrowthFacilityType.md
       - Input: appn_Input.md
@@ -67,9 +72,11 @@ nav:
       - Observed Variable: appn_ObservedVariable.md
       - Observer: appn_Observer.md
       - Person: appn_Person.md
+      - PhysicalContainmentLevel: appn_PhysicalContainmentLevel.md
       - Platform: appn_Platform.md
       - Platform Type: appn_PlatformType.md
       - Research Activity: appn_ResearchActivity.md
+      - Role: appn_Role.md
       - Sample: appn_Sample.md
       - Sampler: appn_Sampler.md
       - Sampling: appn_Sampling.md
@@ -80,11 +87,15 @@ nav:
       - Spatial Location: appn_SpatialLocation.md
       - Study: appn_Study.md
       - Substance: appn_Substance.md
-      - Substance Quantity: appn_SubstanceQuantity.md
+      - SubstanceAmount: appn_SubstanceAmount.md
+      - TableFile: appn_TableFile.md
+      - Technician: appn_Technician.md
       - Trait: appn_Trait.md
       - Treatment: appn_Treatment.md
       - Variable: appn_Variable.md
       - XYZ Location: appn_XYZLocation.md
+      - BiocontainmentLevel: appn_BiocontainmentLevel.md
+
 
 # ── Plugins (optional but handy) ──────────────────────────────────────────────
 plugins:
