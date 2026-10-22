@@ -6,14 +6,14 @@
 @prefix ppeo: <http://purl.org/ppeo/PPEO.owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # COMMENT: All class relationships are rdfs:subClassOf rather than rdfs:sameAs to minimise risk of breaking semantics elsewhere, but some should be replaceable with owl:equivalentClass as things become clearer.
 
-# COMMENT: schema:Action seems the obvious place to anchor ResearchActivity in schema.org. It inherits schema:startTime and schema:endTime.
 appn:ResearchActivity a rdfs:Class ;
   schema:name "ResearchActivity" ;
   rdfs:comment "A time-delimited activity contributing to a research goal." ;
@@ -35,8 +35,7 @@ appn:Study a rdfs:Class ;
 appn:Assay a rdfs:Class ;
   schema:name "Assay" ;
   rdfs:comment "A research action that observes or modifies a set of ObservationUnits." ;
-  rdfs:subClassOf appn:ResearchActivity ;
-  rdfs:subClassOf sosa:Execution .
+  rdfs:subClassOf appn:ResearchActivity .
 
 appn:Method a rdfs:Class ;
   schema:name "Method" ;
@@ -51,22 +50,26 @@ appn:Observation a rdfs:Class ;
   rdfs:comment "An Assay that observes or measures properties of an ObservationUnit returning results as property values or images." ;
   rdfs:subClassOf schema:Observation ;
   rdfs:subClassOf appn:Assay ;
+  rdfs:subClassOf sosa:Observation ;
   rdfs:subClassOf ppeo:observation .
 
 appn:Control a rdfs:Class ;
   schema:name "Control" ;
   rdfs:comment "An Assay that modifies a property of an ObservationUnit." ;
+  rdfs:subClassOf sosa:Actuation ;
   rdfs:subClassOf appn:Assay .
 
 appn:Sampling a rdfs:Class ;
   schema:name "Sampling" ;
   rdfs:comment "An Assay that derives a new representative ObservationUnit from an existing ObservationUnit." ;
+  rdfs:subClassOf sosa:Sampling ;
   rdfs:subClassOf appn:Assay .
 
 appn:Treatment a rdfs:Class ;
   schema:name "Treatment" ;
-  rdfs:comment "An Assay that adds a Substance or a SubstanceQuantity to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
+  rdfs:comment "An Assay that adds a Substance or a SubstanceAmount to an ObservationUnit (includes potting, fertigation, pesticide application, addition of beneficials, etc.)." ;
   rdfs:subClassOf ppeo:event ;
+  rdfs:subClassOf sosa:Actuation ;
   rdfs:subClassOf appn:Assay .
 
 appn:ObservationUnit a rdfs:Class ;
@@ -103,15 +106,17 @@ appn:ObservedVariable a rdfs:Class ;
   schema:name "ObservedVariable" ;
   rdfs:comment "A Variable (representation of a Trait using a defined Scale) observed or measured for an ObservationUnit." ;
   rdfs:subClassOf ppeo:observed_variable ;
+  rdfs:subClassOf sosa:ObservableProperty ;
   rdfs:subClassOf appn:Variable .
 
 appn:ControlledVariable a rdfs:Class ;
   schema:name "ControlledVariable" ;
   rdfs:comment "A Variable (representation of a Trait using a defined Scale) controlled or modified for an ObservationUnit." ;
+  rdfs:subClassOf sosa:ActuatableProperty ;
   rdfs:subClassOf appn:Variable .
 
-appn:SubstanceQuantity a rdfs:Class ;
-  schema:name "SubstanceQuantity" ;
+appn:SubstanceAmount a rdfs:Class ;
+  schema:name "SubstanceAmount" ;
   rdfs:comment "A Variable (representation of a quantity using a defined Scale) for a Substance applied to an ObservationUnit." ;
   rdfs:subClassOf appn:Variable .
 
@@ -180,7 +185,7 @@ appn:Sample a rdfs:Class ;
 
 appn:Substance a rdfs:Class ;
   schema:name "Substance" ;
-  rdfs:comment "A biological or chemical entity used in a Treatment assay or referenced in a SubstanceQuantity." ;
+  rdfs:comment "A biological or chemical entity used in a Treatment assay or referenced in a SubstanceAmount." ;
   rdfs:subClassOf appn:ObservationUnit ;
   rdfs:subClassOf bio:Substance .
 
@@ -244,14 +249,54 @@ appn:Location a rdfs:Class ;
 
 appn:SpatialLocation a rdfs:Class ;
   schema:name "SpatialLocation" ;
-  rdfs:comment "A location defined with geospatial coordinates. The definition of the location should include a schema:geo property with coordinates or a shape." ;
+  rdfs:comment "A location defined with geospatial coordinates." ;
   rdfs:subClassOf appn:Location ;
+  rdfs:subClassOf ppeo:GPS_location ;
   rdfs:subClassOf schema:Place .
 
 appn:XYZLocation a rdfs:Class ;
   schema:name "XYZLocation" ;
   rdfs:comment "A location defined using an appropriate local spatial geometry in three dimensions." ;
   rdfs:subClassOf appn:Location .
+
+appn:PhysicalContainmentLevel a rdfs:Class ;
+  schema:name "PhysicalContainmentLevel" ;
+  rdfs:comment "Specifies the physical containment level (PC1-4) for a growth facility." ;
+  rdfs:subClassOf schema:Enumeration .
+
+appn:BiocontainmentLevel a rdfs:Class ;
+  schema:name "BiocontainmentLevel" ;
+  rdfs:comment "Specifies the biosecurity containment level for a growth facility." ;
+  rdfs:subClassOf schema:Enumeration .
+
+appn:Country a rdfs:Class ;
+  schema:name "Country" ;
+  rdfs:comment "A country" ;
+  rdfs:subClassOf schema:Country ;
+  rdfs:subClassOf ppeo:country .
+
+appn:Role a rdfs:Class ;
+  schema:name "Role" ;
+  rdfs:comment "A role performed by a person in the context of a research activity" ;
+  rdfs:subClassOf schema:Role ;
+  rdfs:subClassOf ppeo:role .
+
+appn:File a rdfs:Class ;
+  schema:name "File" ;
+  rdfs:comment "A data file, image or other file system object" ;
+  rdfs:subClassOf schema:CreativeWork ;
+  rdfs:subClassOf ppeo:data_file .
+
+appn:TableFile a rdfs:Class ;
+  schema:name "TableFile" ;
+  rdfs:comment "A data file containing tabular data in CSV or similar format" ;
+  rdfs:subClassOf appn:File .
+
+appn:Dataset a rdfs:Class ;
+  schema:name "Dataset" ;
+  rdfs:comment "A set of Files and metadata forming a dataset, normally managed as a file system folder" ;
+  rdfs:subClassOf appn:File ;
+  rdfs:subClassOf schema:Dataset .
 
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdf:Property ;
@@ -263,6 +308,8 @@ appn:isPartOf a rdf:Property ;
 appn:isForObservationUnit a rdf:Property ;
   schema:name "isForObservationUnit" ;
   rdfs:comment "Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit." ;
+  rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
+  rdfs:subPropertyOf ppeo:hasObservedSubject ;
   schema:domainIncludes appn:Assay ;
   schema:rangeIncludes appn:ObservationUnit .
 
@@ -290,13 +337,25 @@ appn:madeBySampler a rdf:Property ;
 
 appn:hasResult a rdf:Property ;
   schema:name "hasResult" ; 
-  rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by sosa:hasSimpleResult." ;
+  rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult." ;
+  rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Observation,appn:Control ;
-  schema:rangeIncludes schema:Dataset,schema:File .
+  schema:rangeIncludes appn:File .
+
+appn:hasSimpleResult a rdf:Property ;
+  schema:name "hasSimpleResult" ; 
+  rdfs:comment "Identifies a discrete value received as a data output from an Observation or Control assay." ;
+  rdfs:subPropertyOf sosa:hasSimpleResult ;
+  schema:domainIncludes appn:Observation,appn:Control ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal ;
+  schema:rangeIncludes xsd:boolean .
 
 appn:producesSample a rdf:Property ;
   schema:name "producesSample" ; 
   rdfs:comment "Identifies the Sample produced by a Sampling assay." ;
+  rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Sampling ;
   schema:rangeIncludes appn:Sample .
 
@@ -304,41 +363,45 @@ appn:usesData a rdf:Property ;
   schema:name "usesData" ; 
   rdfs:comment "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
   schema:domainIncludes appn:Observation ;
-  schema:rangeIncludes schema:Dataset,schema:File .
+  schema:rangeIncludes appn:File .
 
 appn:controls a rdf:Property ;
   schema:name "controls" ; 
   rdfs:comment "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
+  rdfs:subPropertyOf sosa:actsOnProperty ;
   schema:domainIncludes appn:Control ;
   schema:rangeIncludes appn:ControlledVariable .
 
 appn:treatsWith a rdf:Property ;
   schema:name "treatsWith" ; 
-  rdfs:comment "Identifies a Substance or a SubstanceQuantity associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceQuantity. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
+  rdfs:comment "Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
   schema:domainIncludes appn:Treatment ;
-  schema:rangeIncludes appn:Substance,appn:SubstanceQuantity .
+  schema:rangeIncludes appn:Substance,appn:SubstanceAmount .
 
 appn:hasComponent a rdf:Property ;
   schema:name "hasComponent" ; 
-  rdfs:comment "Identifies a Substance or SubstanceQuantity included in the current Substance." ;
+  rdfs:comment "Identifies a Substance or SubstanceAmount included in the current Substance." ;
   schema:domainIncludes appn:Substance ;
   schema:rangeIncludes appn:Substance ;
-  schema:rangeIncludes appn:SubstanceQuantity .
+  schema:rangeIncludes appn:SubstanceAmount .
 
 appn:isOfSubstance a rdf:Property ;
   schema:name "isOfSubstance" ; 
-  rdfs:comment "Identifies the Substance associated with a SubstanceQuantity. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
-  schema:domainIncludes appn:SubstanceQuantity ;
+  rdfs:comment "Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
+  schema:domainIncludes appn:SubstanceAmount ;
   schema:rangeIncludes appn:Substance .
 
 appn:amount a rdf:Property ;
   schema:name "amount" ; 
-  rdfs:comment "Identifies the amount of a Substance associated with a SubstanceQuantity according to the associated Scale." ;
-  schema:domainIncludes appn:SubstanceQuantity .
+  rdfs:comment "Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale." ;
+  schema:domainIncludes appn:SubstanceAmount ;
+  schema:rangeIncludes xsd:decimal .
 
 appn:observes a rdf:Property ;
   schema:name "observes" ; 
   rdfs:comment "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
+  rdfs:subPropertyOf ppeo:hasVariable ;
+  rdfs:subPropertyOf sosa:observedProperty ;
   schema:domainIncludes appn:Observation ;
   schema:rangeIncludes appn:ObservedVariable .
 
@@ -355,16 +418,11 @@ appn:hasGrowthFacilityType a rdf:Property ;
   schema:rangeIncludes appn:GrowthFacilityType .
 
 # COMMENT: Needs a range.
-appn:containmentLevel a rdf:Property ;
-  schema:name "containmentLevel" ; 
-  rdfs:comment "Provides the containment level for a GrowthFacility." ;
-  schema:domainIncludes appn:GrowthFacility .
-
-# COMMENT: Needs a range.
 appn:quarantine a rdf:Property ;
   schema:name "quarantine" ; 
   rdfs:comment "Indicates if a GrowthFacility is for quarantine." ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:boolean .
 
 appn:hasBiologicalUnitType a rdf:Property ;
   schema:name "hasBiologicalUnitType" ; 
@@ -388,17 +446,21 @@ appn:hasSensorType a rdf:Property ;
 appn:hasDefaultValue a rdf:Property ;
   schema:name "hasDefaultValue" ; 
   rdfs:comment "Specifies the default value for a variable." ;
-  schema:domainIncludes appn:Variable .
+  schema:domainIncludes appn:Variable ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal ;
+  schema:rangeIncludes xsd:boolean .
 
-appn:hasLocation a rdf:Property ;
-  schema:name "hasLocation" ; 
-  rdfs:comment "Specifies the location for an ObservationUnit." ;
-  schema:domainIncludes appn:ObservationUnit ;
-  schema:rangeIncludes appn:Location .
+appn:isLocationFor a rdf:Property ;
+  schema:name "isLocationFor" ; 
+  rdfs:comment "Specifies the ObservationUnit to which a Location relates." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes appn:ObservationUnit .
 
 appn:isLocationWithin a rdf:Property ;
   schema:name "isLocationWithin" ; 
-  rdfs:comment "Specifies that a location is a position within an ObservationUnit." ;
+  rdfs:comment "Specifies that a Location is a position within an ObservationUnit." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:ObservationUnit .
 
@@ -406,23 +468,33 @@ appn:isLocationWithin a rdf:Property ;
 appn:row a rdf:Property ;
   schema:name "row" ; 
   rdfs:comment "Specifies the row for an XYZLocation." ;
-  schema:domainIncludes appn:XYZLocation .
+  schema:domainIncludes appn:XYZLocation ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
 
 # COMMENT: Needs a range.
 appn:column a rdf:Property ;
   schema:name "column" ; 
   rdfs:comment "Specifies the column for an XYZLocation." ;
-  schema:domainIncludes appn:XYZLocation .
+  schema:domainIncludes appn:XYZLocation ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
 
 # COMMENT: Needs a range.
 appn:level a rdf:Property ;
   schema:name "level" ; 
   rdfs:comment "Specifies the level for an XYZLocation in a three-dimensional configuration." ;
-  schema:domainIncludes appn:XYZLocation .
+  schema:domainIncludes appn:XYZLocation ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
 
 appn:hosts a rdf:Property ;
   schema:name "hosts" ; 
   rdfs:comment "Identifies a Sensor or Actuator hosted by a Platform." ;
+  rdfs:subPropertyOf sosa:hosts ;
   schema:domainIncludes appn:Platform ;
   schema:rangeIncludes appn:Sensor,appn:Actuator .
 
@@ -438,10 +510,11 @@ appn:deployedOnPlatform a rdf:Property ;
   schema:domainIncludes appn:Deployment ;
   schema:rangeIncludes appn:Platform .
 
-# ISSUE: Include for variables as well as assays?
 appn:usedMethod a rdf:Property ;
   schema:name "usedMethod" ;
-  rdfs:comment "Identifies a Method used to conduct an Assay." ;
+  rdfs:comment "Identifies a Method used to conduct an Assay or to derive values for a Variable." ;
+  rdfs:subPropertyOf sosa:usedProcedure ;
+  rdfs:subPropertyOf ppeo:hasMethod ;
   schema:domainIncludes appn:Variable, appn:Assay ;
   schema:rangeIncludes appn:Method .
 
@@ -460,20 +533,23 @@ appn:forBiologicalMaterial a rdf:Property ;
 appn:hasTrait a rdf:Property ;
   schema:name "hasTrait" ;
   rdfs:comment "Identifies the Trait associated with a Variable." ;
+  rdfs:subPropertyOf ppeo:hasTrait ;
   schema:domainIncludes appn:ObservedVariable, appn:ControlledVariable ;
   schema:rangeIncludes appn:Trait .
 
 appn:hasScale a rdf:Property ;
   schema:name "hasScale" ;
   rdfs:comment "Identifies the Scale associated with a Variable." ;
-  schema:domainIncludes appn:Variable, appn:SubstanceQuantity ;
+  rdfs:subPropertyOf ppeo:hasScale ;
+  schema:domainIncludes appn:Variable, appn:SubstanceAmount ;
   schema:rangeIncludes appn:Scale .
 
 appn:derivesFrom a rdf:Property ;
   schema:name "derivesFrom" ;
-  rdfs:comment "Identifies the BiologicalUnit from which a Sample was sampled." ;
+  rdfs:comment "Identifies the BiologicalUnit from which a Sample was sampled or to which another BiologicalUnit belongs." ;
   rdfs:subPropertyOf ppeo:derivesFrom ;
-  schema:domainIncludes appn:Sample ;
+  rdfs:subPropertyOf sosa:isSampleOf ;
+  schema:domainIncludes appn:BiologicalUnit ;
   schema:rangeIncludes appn:BiologicalUnit .
 
 appn:hasBiologicalMaterial a rdf:Property ;
@@ -506,51 +582,270 @@ appn:hasGrowthFacility a rdf:Property ;
 appn:airConditioning a rdf:Property ;
   schema:name "airConditioning" ;
   rdfs:comment "The airConditioning capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:string .
 
 appn:temperatureRange a rdf:Property ;
   schema:name "temperatureRange" ;
   rdfs:comment "The temperature range capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:string .
 
 appn:lights a rdf:Property ;
   schema:name "lights" ;
   rdfs:comment "The lighting capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:string .
 
 appn:shade a rdf:Property ;
   schema:name "shade" ;
   rdfs:comment "The shade capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:string .
 
 appn:physicalContainmentLevel a rdf:Property ;
   schema:name "physicalContainmentLevel" ;
   rdfs:comment "The physical containment (PC) level capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  schema:rangeIncludes appn:PhysicalContainmentLevel .
 
 appn:biocontainmentLevel a rdf:Property ;
   schema:name "biocontainmentLevel" ;
   rdfs:comment "The biocontainment level capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  schema:rangeIncludes appn:BiocontainmentLevel .
 
 appn:gasSupply a rdf:Property ;
   schema:name "gasSupply" ;
   rdfs:comment "The gas supply capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:string .
 
 appn:humidityControl a rdf:Property ;
   schema:name "humidityControl" ;
   rdfs:comment "The humidity control capabilities of a GrowthFacility" ;
-  schema:domainIncludes appn:GrowthFacility .
+  schema:domainIncludes appn:GrowthFacility ;
+  rdfs:range xsd:string .
+
+appn:order a rdf:Property ;
+  schema:name "order" ;
+  rdfs:comment "A taxonomic rank above family and below class" ;
+  rdfs:subPropertyOf dwc:order ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:family a rdf:Property ;
+  schema:name "family" ;
+  rdfs:comment "A taxonomic rank above genus and below order" ;
+  rdfs:subPropertyOf dwc:family ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
 
 appn:genus a rdf:Property ;
   schema:name "genus" ;
   rdfs:comment "A taxonomic rank above species and below family" ;
   rdfs:subPropertyOf dwc:genus ;
-  schema:domainIncludes appn:BiologicalMaterial .
+  rdfs:subPropertyOf ppeo:hasGenus ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:specificEpithet a rdf:Property ;
+  schema:name "specificEpithet" ;
+  rdfs:comment "The specific epithet of a binomial or trinomial scientific name" ;
+  rdfs:subPropertyOf dwc:specificEpithet ;
+  rdfs:subPropertyOf ppeo:hasSpecies ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:infraspecificEpithet a rdf:Property ;
+  schema:name "infraspecificEpithet" ;
+  rdfs:comment "The infraspecific epithet of a trinomial scientific name" ;
+  rdfs:subPropertyOf dwc:specificEpithet ;
+  rdfs:subPropertyOf ppeo:hasInfraspecificName ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:cultivarEpithet a rdf:Property ;
+  schema:name "cultivarEpithet" ;
+  rdfs:comment "A name for a cultivar or breed." ;
+  rdfs:subPropertyOf dwc:cultivarEpithet ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:uninomial a rdf:Property ;
+  schema:name "uninomial" ;
+  rdfs:comment "A scientific name comprising a single word (genus or higher)" ;
+  rdfs:subPropertyOf dwc:uninomial ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
 
 appn:scientificName a rdf:Property ;
   schema:name "scientificName" ;
   rdfs:comment "A name for an organism subject to one of the codes of nomenclature" ;
   rdfs:subPropertyOf dwc:scientificName ;
-  schema:domainIncludes appn:BiologicalMaterial .
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:rank a rdf:Property ;
+  schema:name "rank" ;
+  rdfs:comment "The rank of a scientific name" ;
+  rdfs:subPropertyOf dwc:rank ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:taxonID a rdf:Property ;
+  schema:name "taxonID" ;
+  rdfs:comment "An identifier for a taxon" ;
+  rdfs:subPropertyOf dwc:taxonID ;
+  rdfs:subPropertyOf ppeo:hasTaxonIdentifier ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:hasPreprocessing a rdf:Property ;
+  schema:name "hasPreprocessing" ;
+  rdfs:comment "Description of any preprocessing carried out on the biological material" ;
+  rdfs:subPropertyOf ppeo:hasPreprocessing ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:string .
+
+appn:geneticallyModifiedStatus a rdf:Property ;
+  schema:name "geneticallyModifiedStatus" ;
+  rdfs:comment "True if biological material is genetically modified" ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:boolean .
+
+appn:quarantineStatus a rdf:Property ;
+  schema:name "quarantineStatus" ;
+  rdfs:comment "True if biological material requires quarantine" ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  rdfs:range xsd:boolean .
+
+appn:hasLatitude a rdf:Property ;
+  schema:name "hasLatitude" ;
+  rdfs:comment "Decimal latitude for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasLatitude ;
+  rdfs:subPropertyOf schema:latitude ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:decimal .
+
+appn:hasLongitude a rdf:Property ;
+  schema:name "hasLongitude" ;
+  rdfs:comment "Decimal longitude for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasLongitude ;
+  rdfs:subPropertyOf schema:longitude ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:decimal .
+
+appn:hasUncertainty a rdf:Property ;
+  schema:name "hasUncertainty" ;
+  rdfs:comment "Uncertainty in meters for coordinates" ;
+  rdfs:subPropertyOf ppeo:hasUncertainty ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:decimal .
+
+appn:hasAltitude a rdf:Property ;
+  schema:name "hasAltitude" ;
+  rdfs:comment "Altitude for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasAltitude ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:decimal .
+
+appn:hasCountry a rdf:Property ;
+  schema:name "hasCountry" ;
+  rdfs:comment "Country for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasCountry ;
+  schema:domainIncludes appn:SpatialLocation ;
+  schema:rangeIncludes appn:Country .
+
+appn:hasAddress a rdf:Property ;
+  schema:name "hasAddress" ;
+  rdfs:comment "Address for a SpatialLocation" ;
+  rdfs:subPropertyOf ppeo:hasAddress ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:string .
+
+appn:hasCountryOfOrigin a rdf:Property ;
+  schema:name "hasCountryOfOrigin" ;
+  rdfs:comment "Country from which BiologicalMaterial originated" ;
+  rdfs:subPropertyOf ppeo:hasCountryOfOrigin ;
+  schema:domainIncludes appn:BiologicalMaterial ;
+  schema:rangeIncludes appn:Country .
+
+appn:hasCountryCode a rdf:Property ;
+  schema:name "hasCountryCode" ;
+  rdfs:comment "ISO 2-letter country code for country" ;
+  rdfs:subPropertyOf ppeo:hasCountryCode ;
+  rdfs:subPropertyOf schema:identifier ;
+  schema:domainIncludes appn:Country ;
+  rdfs:range xsd:string .
+
+appn:hasRole a rdf:Property ;
+  schema:name "hasRole" ;
+  rdfs:comment "Indicates a role for a Person in a ResearchActivity" ;
+  rdfs:subPropertyOf ppeo:hasRole ;
+  schema:domainIncludes appn:Person ;
+  schema:rangeIncludes appn:Role .
+
+appn:isRoleOfPersonIn a rdf:Property ;
+  schema:name "isRoleOfPersonIn" ;
+  rdfs:comment "Indicates a ResearchActivity in which a Person has a Role" ;
+  rdfs:subPropertyOf ppeo:isRoleOfPersonIn ;
+  schema:domainIncludes appn:Role ;
+  schema:rangeIncludes appn:ResearchActivity .
+
+appn:startTime a rdf:Property ;
+  schema:name "startTime" ;
+  rdfs:comment "The time at which a ResearchActivity started" ;
+  rdfs:subPropertyOf schema:startTime ;
+  rdfs:subPropertyOf ppeo:hasStartDateTime ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:dateTime .
+
+appn:endTime a rdf:Property ;
+  schema:name "endTime" ;
+  rdfs:comment "The time at which a ResearchActivity ended" ;
+  rdfs:subPropertyOf schema:endTime ;
+  rdfs:subPropertyOf sosa:resultTime ;
+  rdfs:subPropertyOf ppeo:hasEndDateTime ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:dateTime .
+
+appn:atTime a rdf:Property ;
+  schema:name "atTime" ;
+  rdfs:comment "The time at which a ResearchActivity occurred - equivalent to both startTime and endTime" ;
+  rdfs:subPropertyOf appn:startTime ;
+  rdfs:subPropertyOf appn:endTime ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:dateTime .
+
+appn:encodingType a rdf:Property ;
+  schema:name "encodingType" ;
+  rdfs:comment "File encoding type from IANA https://www.iana.org/assignments/media-types" ;
+  rdfs:subPropertyOf schema:encodingType ;
+  schema:domainIncludes appn:File ;
+  rdfs:range xsd:string .
+
+appn:containsInstancesOf a rdf:Property ;
+  schema:name "containsInstancesOf" ;
+  rdfs:comment "Identifies schema class for which a TableFile serialises instances - the class is identified by its IRI" ;
+  schema:domainIncludes appn:TableFile ;
+  rdfs:range rdf:Class .
+
+appn:hasSchema a rdf:Property ;
+  schema:name "hasSchema" ;
+  rdfs:comment "Identifies schema file for a TableFile" ;
+  schema:domainIncludes appn:TableFile ;
+  schema:rangeIncludes appn:File ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:hasPart a rdf:Property ;
+  schema:name "hasPart" ;
+  rdfs:comment "Identifies a File that belongs to a Dataset" ;
+  rdfs:subPropertyOf schema:hasPart ;
+  rdfs:domainIncludes: appn:Dataset ;
+  rdfs:rangeIncludes: appn:File .
