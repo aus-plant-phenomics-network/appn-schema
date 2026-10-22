@@ -12,36 +12,23 @@
 # version ='2026.0.1'
 # -----------------------------------------------------------------------------
 import logging
-import re
 import warnings
 
 import csv
-import numpy as np
-import pandas as pd
 
 from functools import cache
 from pathlib import Path
-from typing import Optional, NamedTuple
+from typing import Optional
 from appn_iri import IRI
 from appn_types import CompletionRuleType
 from appn_dictionary import (
     RDF_PROPERTY,
-    RDF_TYPE,
     RDFS_COMMENT,
-    SCHEMA_DESCRIPTION,
-    SCHEMA_DOMAIN_INCLUDES,
-    SCHEMA_NAME,
-    SKOS_CONCEPT,
-    SKOS_CONCEPT_SCHEME,
-    SKOS_IN_SCHEME,
     Dictionary,
     NAME_REPLACEMENT_PATTERN,
 )
 from appn_configuration import (
     APPN_VOCABULARY,
-    APPN_VOCABULARY_ROOT,
-    BIO_SCHEMA,
-    CENTRAL_ORGANISATION,
     ConfigurationKey,
     DEFAULT_PREFIXES,
     Configuration,
@@ -49,20 +36,13 @@ from appn_configuration import (
     APPN_SCHEMA,
     SKOS_SCHEMA,
     SCHEMA_SCHEMA,
-    ALT_SCHEMA_SCHEMA,
 )
 from appn_logger import IssueMessage
-from rdflib import Graph, Literal
-from rdflib.namespace import Namespace, NamespaceManager
 from rocrate.rocrate import ROCrate
 from rocrate.model import (
-    ComputationalWorkflow,
-    SoftwareApplication,
     File,
     Dataset,
     ContextEntity,
-    Person,
-    Entity,
 )
 
 SCHEMA_THING = IRI("schema:Thing")
@@ -75,9 +55,12 @@ JSONLD_TYPE = "@type"
 DATASET_ROOT = "https://data.plantphenomics.org.au/"
 DATASET_PREFIX = "this"
 
-type PropertyValue = str|int|float|list[str|int|float]|dict[str,str]
+type PropertyValue = IRI | str | int | float | dict[str, IRI | str] | list[
+    IRI | str | int | float | dict[str, IRI | str]
+]
 
-def at(iri: str) -> dict[str,str]:
+
+def at(iri: str | IRI) -> dict[str, str | IRI]:
     """
     Return dictionary to represent referenced IRI
 
@@ -86,9 +69,12 @@ def at(iri: str) -> dict[str,str]:
     """
     return {JSONLD_ID: iri}
 
+
 class Crate:
 
-    def __init__(self, configuration: Configuration, node: Organisation, name: str) -> None:
+    def __init__(
+        self, configuration: Configuration, node: Organisation, name: str
+    ) -> None:
         """
         Wrapper to build RO-Crate for APPN dataset
 
@@ -100,7 +86,9 @@ class Crate:
         self.node = node
         self.name = name
 
-        self.namespace = f"{DATASET_ROOT}{node.id}/{NAME_REPLACEMENT_PATTERN.sub("", name)}/"
+        self.namespace = (
+            f"{DATASET_ROOT}{node.id}/{NAME_REPLACEMENT_PATTERN.sub("", name)}/"
+        )
         # TODO: Verify uniqueness for namespace
 
         # The `IssueLogger` for messages to data administrators
@@ -130,7 +118,7 @@ class Crate:
         self.seeds: dict[IRI, int] = {}
 
         # Keep track of objects already created - map of IRIs to properties
-        self.known_instances: dict[IRI, dict[IRI,PropertyValue]] = {}
+        self.known_instances: dict[IRI, dict[str | IRI, PropertyValue]] = {}
 
         # Keep track of objects already created - map of class IRIs to instances.
         # This includes mappings for all classes included in the @type parameter.
@@ -138,13 +126,21 @@ class Crate:
         # ObservationUnit.
         self.known_instances_by_class: dict[IRI, set[IRI]] = {}
 
-        self.files: tuple[Path, str, dict] = []
+        self.files: list[
+            tuple[Path, str, dict[IRI | str, PropertyValue], bool, Optional[list[str]]]
+        ] = []
 
         self.primary_classes: dict[IRI, IRI] = {}
 
         return
 
-    def add_folder(self, source: Path, destination: str, properties: Optional[dict[str, PropertyValue]] = None, extra_classes: list[str] = None) -> str:
+    def add_folder(
+        self,
+        source: Path,
+        destination: str,
+        properties: Optional[dict[str, PropertyValue]] = None,
+        extra_classes: Optional[list[str]] = None,
+    ) -> str:
         """
         Add file system folder to RO-Crate (as Dataset)
 
@@ -153,9 +149,18 @@ class Crate:
         :param properties:  Dictionary of properties for metadata object
         :return:            Destination string (the id for the object)
         """
-        return self.add_file(source, destination, properties, True, extra_classes=extra_classes)
+        return self.add_file(
+            source, destination, properties, True, extra_classes=extra_classes
+        )
 
-    def add_file(self, source: Path, destination: str, properties: Optional[dict[str, PropertyValue]] = None, is_folder: bool = False, extra_classes: list[str] = None) -> str:
+    def add_file(
+        self,
+        source: Path,
+        destination: str,
+        properties: Optional[dict[str, PropertyValue]] = None,
+        is_folder: bool = False,
+        extra_classes: Optional[list[str]] = None,
+    ) -> str:
         """
         Add file system object (including folder to RO-Crate)
 
@@ -166,20 +171,29 @@ class Crate:
         :return:            Destination string (the id for the object)
         """
         destination = str(destination)
-        current_properties: dict[IRI, str|IRI] = {JSONLD_TYPE: SCHEMA_DATASET if is_folder else SCHEMA_FILE}
-        
+        current_properties: dict[str | IRI, PropertyValue] = {
+            JSONLD_TYPE: SCHEMA_DATASET if is_folder else SCHEMA_FILE
+        }
+
         if properties is not None:
             self.process_properties(SCHEMA_FILE, current_properties, properties)
 
-        self.files.append((source, destination, current_properties, is_folder, extra_classes))
+        self.files.append(
+            (source, destination, current_properties, is_folder, extra_classes)
+        )
         return destination
 
-    def add(self, class_: str, name: Optional[str] = None, properties: Optional[dict[str, PropertyValue]] = None) -> IRI:
+    def add(
+        self,
+        class_: str,
+        name: Optional[str] = None,
+        properties: Optional[dict[str, PropertyValue]] = None,
+    ) -> IRI:
         """
         Add an object or update an object in the crate
 
-        This method stores the IRI and current properties in the 
-        `known_instances` dictionary. This simplifies potentially 
+        This method stores the IRI and current properties in the
+        `known_instances` dictionary. This simplifies potentially
         adding extra properties later in processing. All instances
         are serialised to the RO-Crate by the `serialise` method.
 
@@ -197,16 +211,16 @@ class Crate:
         if name is None:
             name = self.seed_name(class_iri)
             seeded = True
-                    
+
         if properties is None:
-            properties = {}        
+            properties = {}
 
         if "name" not in properties:
             properties["name"] = name
 
         current_instance = None
-        if JSONLD_ID in properties:
-            iri = self.dictionary.get_iri(properties.pop(JSONLD_ID))            
+        if JSONLD_ID in properties and isinstance(properties[JSONLD_ID], str):
+            iri = self.dictionary.get_iri(properties.pop(JSONLD_ID))
         elif (iri := self.parse_iri(name)) is None:
             if not seeded:
                 current_instance = self.find_known_instance(class_iri, name)
@@ -224,7 +238,9 @@ class Crate:
                 if explicit_class not in self.known_instances_by_class:
                     self.known_instances_by_class[explicit_class] = set()
                 self.known_instances_by_class[explicit_class].add(iri)
-            current_properties: dict[IRI, str|list[str]] = {JSONLD_TYPE: explicit_classes}
+            current_properties: dict[str | IRI, PropertyValue] = {
+                JSONLD_TYPE: explicit_classes
+            }
             self.known_instances[iri] = current_properties
             self.primary_classes[iri] = class_iri
 
@@ -247,7 +263,7 @@ class Crate:
                             IssueMessage.COMPLETION_RULE_MISSING_TYPE,
                             CONFIGURATION_FILE=self.configuration.configuration_filepath,
                             CONFIGURATION_KEY=ConfigurationKey.COMPLETION_RULES,
-                            APPN_SCHEMA_CLASS=target_class.curie,
+                            APPN_SCHEMA_CLASS=class_iri.curie,
                             TARGET_PROPERTY=desired_property,
                         )
                         success = False
@@ -265,7 +281,7 @@ class Crate:
                             IssueMessage.COMPLETION_RULE_UNKNOWN_TYPE,
                             CONFIGURATION_FILE=self.configuration.configuration_filepath,
                             CONFIGURATION_KEY=ConfigurationKey.COMPLETION_RULES,
-                            APPN_SCHEMA_CLASS=target_class.curie,
+                            APPN_SCHEMA_CLASS=class_iri.curie,
                             TARGET_PROPERTY=desired_property,
                             COMPLETION_RULE_TYPE=rule["type"],
                         )
@@ -273,8 +289,9 @@ class Crate:
 
         return iri
 
-
-    def process_properties(self, class_iri: IRI, current_properties: dict, properties: dict) -> None:
+    def process_properties(
+        self, class_iri: IRI, current_properties: dict, properties: dict
+    ) -> None:
         appn = self.configuration.get_appn()
 
         for new_property, value in properties.items():
@@ -287,16 +304,17 @@ class Crate:
                 if (value_iri := self.parse_iri(value)) is not None:
                     value = at(value_iri.iri)
                 else:
-                    range_classes = self.dictionary.list_range_classes_for_property(property_iri, namespace=APPN_SCHEMA)
+                    range_classes = self.dictionary.list_range_classes_for_property(
+                        property_iri, namespace=APPN_SCHEMA
+                    )
                     if len(range_classes) > 0:
                         if len(range_classes) > 1:
                             self.logger.log(
                                 logging.ERROR,
                                 __name__,
                                 IssueMessage.RANGE_CLASS_NOT_SELECTED,
-                                PROPERY_SUBJECT=iri.curie,
                                 DOMAIN_APPN_CLASS=class_iri.curie,
-                                SELECTED_PROPERTY=property_.curie,
+                                SELECTED_PROPERTY=property_,
                                 RANGE_CLASSES=", ".join(
                                     [class_.curie for class_ in range_classes]
                                 ),
@@ -304,16 +322,27 @@ class Crate:
                             # TODO - Use placeholder property to document the property and value string
                             # Check schema.org
                         else:
-                            current_instance = self.find_known_instance(range_classes[0], value)
+                            current_instance = self.find_known_instance(
+                                range_classes[0], value
+                            )
                             if current_instance is not None:
                                 value = at(current_instance.iri)
                             else:
-                                value = at(self.dictionary.build_iri(range_classes[0], self.namespace, value).curie)
-                    elif SCHEMA_FILE in self.dictionary.list_range_classes_for_property(property_iri, namespace=SCHEMA_SCHEMA):
+                                value = at(
+                                    self.dictionary.build_iri(
+                                        range_classes[0], self.namespace, value
+                                    ).curie
+                                )
+                    elif SCHEMA_FILE in self.dictionary.list_range_classes_for_property(
+                        property_iri, namespace=SCHEMA_SCHEMA
+                    ):
                         value = at(value)
             elif isinstance(value, list):
                 for i in range(len(value)):
-                    if isinstance(value[i], str) and self.parse_iri(value[i]) is not None:
+                    if (
+                        isinstance(value[i], str)
+                        and self.parse_iri(value[i]) is not None
+                    ):
                         value[i] = at(value[i])
             if property_ in current_properties:
                 values = current_properties[property_]
@@ -330,7 +359,12 @@ class Crate:
 
         return
 
-    def serialise(self, ro_crate_folder: Path, properties: dict = None, use_tables: bool = False) -> None:
+    def serialise(
+        self,
+        ro_crate_folder: Path,
+        properties: Optional[dict] = None,
+        use_tables: bool = False,
+    ) -> None:
         """
         Write the RO-Crate to disk
 
@@ -345,60 +379,102 @@ class Crate:
 
         # Copy known instances so table classes can be removed without harm
         known_instances = self.known_instances.copy()
-        table_classes = [self.dictionary.get_iri(f"{APPN_SCHEMA}{class_name}") for class_name in self.configuration.get_ro_crate_table_classes()]
+        table_classes = [
+            self.dictionary.get_iri(f"{APPN_SCHEMA}{class_name}")
+            for class_name in self.configuration.get_ro_crate_table_classes()
+        ]
         if use_tables:
             for table_class in table_classes:
                 if table_class in self.known_instances_by_class:
-                    table_instances: dict[IRI, dict[str,str|int|float]] = {}
+                    table_instances: dict[IRI, dict[str, str | int | float]] = {}
                     high_cardinality_properties: set[str] = set()
                     property_map: set[str] = set()
                     for iri in self.known_instances_by_class[table_class]:
                         iri_properties = known_instances[iri]
                         for property_ in iri_properties:
                             if property_ != JSONLD_TYPE:
-                                if isinstance(iri_properties[property_], list) and len(iri_properties[property_]) > 1:
+                                if (
+                                    isinstance(iri_properties[property_], list)
+                                    and len(iri_properties[property_]) > 1
+                                ):
                                     high_cardinality_properties.add(property_)
                                 else:
                                     property_map.add(property_)
-                    columns = ["iri", "type"] + [property_ for property_ in property_map if property_ not in high_cardinality_properties]
-                    file_name = self.write_table(ro_crate_folder, table_class, known_instances, self.known_instances_by_class[table_class], columns)
+                    columns = ["iri", "type"] + [
+                        property_
+                        for property_ in property_map
+                        if property_ not in high_cardinality_properties
+                    ]
+                    file_name = self.write_table(
+                        ro_crate_folder,
+                        table_class,
+                        known_instances,
+                        self.known_instances_by_class[table_class],
+                        columns,
+                    )
                     description = f"Table containing definitions of instances of the APPN schema class {table_class.name}"
-                    class_description = self.dictionary.get_property_for_subject(table_class, RDFS_COMMENT)
+                    class_description = self.dictionary.get_property_for_subject(
+                        table_class, RDFS_COMMENT
+                    )
                     if class_description is not None:
                         description += f" ({class_description})"
                     self.add(
-                        "TableFile", 
-                        file_name.parts[-1], 
+                        "TableFile",
+                        file_name.parts[-1],
                         {
-                            JSONLD_ID: file_name.relative_to(ro_crate_folder).as_posix(), 
+                            JSONLD_ID: file_name.relative_to(
+                                ro_crate_folder
+                            ).as_posix(),
                             "containsInstancesOf": table_class.iri,
                             "dateCreated": "2024-10-11T11:12:26+11:00",
                             "encodingFormat": "text/csv",
                             "description": class_description,
-                            "producer": {
-                                "@id": self.node.ror
-                            }
-                        }
+                            "producer": {"@id": self.node.ror},
+                        },
                     )
         crate = ROCrate()
-        for source, destination, file_properties, is_folder, extra_classes in self.files:
+        for (
+            source,
+            destination,
+            file_properties,
+            is_folder,
+            extra_classes,
+        ) in self.files:
             if is_folder:
-                f = crate.add(Dataset(crate, source=source, dest_path=destination, properties=file_properties))
+                f = crate.add(
+                    Dataset(
+                        crate,
+                        source=source,
+                        dest_path=destination,
+                        properties=file_properties,
+                    )
+                )
             else:
-                f = crate.add(File(crate, source=source, dest_path=destination, properties=file_properties))
+                f = crate.add(
+                    File(
+                        crate,
+                        source=source,
+                        dest_path=destination,
+                        properties=file_properties,
+                    )
+                )
             if extra_classes is not None:
                 classes = ["Dataset" if is_folder else "CreativeWork"]
                 for class_name in extra_classes:
                     class_iri = self.find_class(class_name)
                     if class_iri is not None:
-                        classes.append(class_iri.name if class_iri.ns in [APPN_SCHEMA, SCHEMA_SCHEMA] else class_iri.iri)
+                        classes.append(
+                            class_iri.name
+                            if class_iri.ns in [APPN_SCHEMA, SCHEMA_SCHEMA]
+                            else class_iri.iri
+                        )
                 f._jsonld[JSONLD_TYPE] = classes
         for iri, iri_properties in self.known_instances.items():
             crate.add(ContextEntity(crate, iri.iri, iri_properties))
 
         if properties is not None:
             crate_properties = crate.default_entities[0].properties()
-            crate_properties |= properties 
+            crate_properties |= properties
 
         crate.write(ro_crate_folder)
 
@@ -410,26 +486,46 @@ class Crate:
             for line in f.readlines():
                 if "@context" in line:
                     metadata.append('    "@context": [\n')
-                    metadata.append('         "https://w3id.org/ro/crate/1.2/context",\n')
-                    metadata.append('         "https://schema.plantphenomics.org.au/context.json",\n')
-                    metadata.append('         {\n')
+                    metadata.append(
+                        '         "https://w3id.org/ro/crate/1.2/context",\n'
+                    )
+                    metadata.append(
+                        '         "https://schema.plantphenomics.org.au/context.json",\n'
+                    )
+                    metadata.append("         {\n")
                     metadata.append(f'             "this": "{self.namespace}",\n')
-                    metadata.append(f'             "{self.node.prefix}": "{self.node.namespace}",\n')
-                    metadata.append(f'             "{appn.prefix}": "{appn.namespace}"\n')
-                    metadata.append('         }\n')
-                    metadata.append('    ],\n')
+                    metadata.append(
+                        f'             "{self.node.prefix}": "{self.node.namespace}",\n'
+                    )
+                    metadata.append(
+                        f'             "{appn.prefix}": "{appn.namespace}"\n'
+                    )
+                    metadata.append("         }\n")
+                    metadata.append("    ],\n")
                 else:
-                    metadata.append(line.replace(self.namespace, "this:").replace(self.node.namespace, f"{self.node.prefix}:").replace(appn.namespace, f"{appn.prefix}:").replace(APPN_SCHEMA, ""))
+                    metadata.append(
+                        line.replace(self.namespace, "this:")
+                        .replace(self.node.namespace, f"{self.node.prefix}:")
+                        .replace(appn.namespace, f"{appn.prefix}:")
+                        .replace(APPN_SCHEMA, "")
+                    )
         with open(ro_crate_folder / "ro-crate-metadata.json", "w") as f:
             f.writelines(metadata)
 
-    def write_table(self, table_folder: Path, table_class: IRI, known_instances: dict[IRI, dict[IRI, PropertyValue]], instance_iris: set[IRI], columns: list[str]) -> Path:
+    def write_table(
+        self,
+        table_folder: Path,
+        table_class: IRI,
+        known_instances: dict[IRI, dict[IRI | str, PropertyValue]],
+        instance_iris: set[IRI],
+        columns: list[str],
+    ) -> Path:
         """
         Process instances for schema class by writing a CSV file containing all instances as rows
 
         Creates a new CSV file named after the class and located in the specified folder.
         Processes all instance IRIs using data from known_instances. For every instance,
-        a row is created with the IRI and all properties matching the supplied list of 
+        a row is created with the IRI and all properties matching the supplied list of
         columns. If all properties are handled, the instance is removed from `known_instances`.
         Otherwise only the unhandled properties are left.
 
@@ -447,13 +543,16 @@ class Crate:
             compact_columns = columns.copy()
             for c in range(2, len(compact_columns)):
                 if compact_columns[c].startswith("http"):
-                    compact_columns[c] = self.compact(compact_columns[c])
+                    compact_columns[c] = str(self.compact(compact_columns[c]))
                 elif ":" not in compact_columns[c]:
                     compact_columns[c] = f"{appn_prefix}:{compact_columns[c]}"
             csv_writer.writerow(compact_columns)
             for iri in instance_iris:
                 instance = known_instances[iri]
-                row = [iri.curie, self.primary_classes[iri].curie]
+                row: list[str | int | float] = [
+                    iri.curie,
+                    self.primary_classes[iri].curie,
+                ]
                 for column in columns[2:]:
                     if column in instance:
                         row.append(self.compact(instance.pop(column)))
@@ -464,7 +563,7 @@ class Crate:
                     known_instances.pop(iri)
         return file_path
 
-    def compact(self, value: PropertyValue) -> str|float|int:
+    def compact(self, value: PropertyValue) -> str | float | int:
         if isinstance(value, list):
             if len(value) == 1:
                 value = value[0]
@@ -498,7 +597,7 @@ class Crate:
                     return namespace_class
 
         # TODO - Log unrecognised class
-        return SCHEMA_THING 
+        return SCHEMA_THING
 
     def find_known_instance(self, class_iri: IRI, name: str) -> Optional[IRI]:
         """
@@ -508,18 +607,18 @@ class Crate:
         This is a special method to support parsing definitions for objects
         complying with the APPN schema and having a specified name
 
-        The policy is to look for instances of the specified class in the 
-        current crate and otherwise in the vocabulary namespace for the 
-        current APPN node or (if no such match is found) in the central 
+        The policy is to look for instances of the specified class in the
+        current crate and otherwise in the vocabulary namespace for the
+        current APPN node or (if no such match is found) in the central
         APPN vocabulary namespace.
 
         Candidates are evaluated based on the IRI string for each instance.
         The goal is to find an instance for which IRI belongs to the expected
-        class (which may mean belonging to a subclass) and that the name part 
-        of the IRI ends wuth a cleaned version of the supplied name. Case is 
-        ignored when comparing the cleaned name parts, so a request for an 
-        instance of the GrowthFacilityType class with any of "glasshouse", 
-        "Glasshouse", "GlassHouse", "Glass House", "GLASSHOUSE", etc. provided 
+        class (which may mean belonging to a subclass) and that the name part
+        of the IRI ends wuth a cleaned version of the supplied name. Case is
+        ignored when comparing the cleaned name parts, so a request for an
+        instance of the GrowthFacilityType class with any of "glasshouse",
+        "Glasshouse", "GlassHouse", "Glass House", "GLASSHOUSE", etc. provided
         as the search name will match an instance with an IRI ending "gft_Glasshouse".
 
         :param class_iri: The class to which the instance should belong
@@ -571,7 +670,7 @@ class Crate:
 
         # TODO - Log unrecognised property
         iri = self.dictionary.build_iri(RDF_PROPERTY, self.namespace, property_)
-        return iri 
+        return iri
 
     def parse_iri(self, string: str) -> Optional[IRI]:
         """
@@ -588,7 +687,6 @@ class Crate:
             return IRI(string)
 
         return None
-
 
     def seed_name(self, class_iri: IRI) -> str:
         """
@@ -608,13 +706,29 @@ class Crate:
 
 if __name__ == "__main__":
     configuration = Configuration()
-    crate = Crate(configuration, configuration.get_organisation_by_id("LTU"), "MicroTom")
-    crate.add("GrowthFacility", "GH123", {"description": "A greenhouse", "hasGrowthFacilityType": "glasshouse"})
+    crate = Crate(
+        configuration, configuration.get_organisation_by_id("LTU"), "MicroTom"
+    )
+    crate.add(
+        "GrowthFacility",
+        "GH123",
+        {"description": "A greenhouse", "hasGrowthFacilityType": "glasshouse"},
+    )
     crate.add("GrowthFacility", "GH123", {"lights": "Bright"})
-    crate.add_file(Path("appn.yaml"), "./MyFirstFile.txt", {"created": "2026-09-26"} )
-    crate.add_folder(Path("schema_assets"), "./Assets", {"created": "2026-09-26"} )
-    crate.add("Observation", parameters={"isForObservationUnit": "GH123", "hasResult": "./MyFirstFile.txt"})
-    crate.add("Observation", parameters={"isForObservationUnit": "GH123", "hasSimpleResult": 1.2, "observes": "liquid quantity"})
+    crate.add_file(Path("appn.yaml"), "./MyFirstFile.txt", {"created": "2026-09-26"})
+    crate.add_folder(Path("schema_assets"), "./Assets", {"created": "2026-09-26"})
+    crate.add(
+        "Observation",
+        properties={"isForObservationUnit": "GH123", "hasResult": "./MyFirstFile.txt"},
+    )
+    crate.add(
+        "Observation",
+        properties={
+            "isForObservationUnit": "GH123",
+            "hasSimpleResult": 1.2,
+            "observes": "liquid quantity",
+        },
+    )
     crate.add("ObservedVariable", "liquid quantity", {"hasScale": "milliliter"})
     crate.add("Scale", "Milliliter")
-    crate.serialise(Path("RO-Crate", use_tables=True))
+    crate.serialise(Path("RO-Crate"), use_tables=True)
