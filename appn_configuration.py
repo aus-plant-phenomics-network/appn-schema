@@ -123,6 +123,7 @@ class ConfigurationKey(StrEnum):
     EMBEDDED_CLASSES = "embedded_classes"
     DOMAIN_RANGE_PROPERTIES = "domain_range_properties"
     PROPERTY_RANGE_CLASSES = "property_range_classes"
+    RO_CRATE_TABLE_CLASSES = "ro_crate_table_classes"
     ORGANISATIONS = "organisations"
 
 
@@ -939,6 +940,18 @@ class Configuration:
             property names to range class IRIs
         """
         return self.fetch_dict_of_dict(ConfigurationKey.PROPERTY_RANGE_CLASSES)
+
+    def get_ro_crate_table_classes(self) -> list[str]:
+        """ 
+        Get names of classes that should be serialised to CSV tables in 
+        RO-Crates.
+
+        The named classes are likely to add significantly to the size of the 
+        linked-data graph.
+        
+        :return: List of class names
+        """
+        return self.fetch_list(ConfigurationKey.RO_CRATE_TABLE_CLASSES)
 
     def get_organisations(self) -> dict[str, Organisation]:
         """

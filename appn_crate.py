@@ -15,6 +15,7 @@ import logging
 import re
 import warnings
 
+import csv
 import numpy as np
 import pandas as pd
 
@@ -73,6 +74,8 @@ JSONLD_TYPE = "@type"
 DATASET_ROOT = "https://data.plantphenomics.org.au/"
 DATASET_PREFIX = "this"
 
+type PropertyValue = str|int|float|list[str|int|float]|dict[str,str]
+
 def at(iri: str) -> dict[str,str]:
     """
     Return dictionary to represent referenced IRI
@@ -119,13 +122,14 @@ class Crate:
         appn = self.configuration.get_appn()
         self.dictionary.load(appn.namespace, asset_prefix=appn.prefix)
         self.dictionary.load(node.namespace, asset_prefix=node.prefix)
+        self.dictionary.bind(DATASET_PREFIX, self.namespace)
         self.dictionary.import_references()
 
         # Indexes for uniquely identifying unnamed objects per class (as IRI)
         self.seeds: dict[IRI, int] = {}
 
         # Keep track of objects already created - map of IRIs to properties
-        self.known_instances: dict[IRI, dict[str,str|int|float|dict[str,str]|list[str|int|float|dict[str,str]]]] = {}
+        self.known_instances: dict[IRI, dict[IRI,PropertyValue]] = {}
 
         # Keep track of objects already created - map of class IRIs to instances.
         # This includes mappings for all classes included in the @type parameter.
@@ -135,9 +139,11 @@ class Crate:
 
         self.files: tuple[Path, str, dict] = []
 
+        self.primary_classes: dict[IRI, IRI] = {}
+
         return
 
-    def add_folder(self, source: Path, destination: str, properties: Optional[dict[str, str|int|float|list[str|int|float]]] = None, extra_classes: list[str] = None) -> str:
+    def add_folder(self, source: Path, destination: str, properties: Optional[dict[str, PropertyValue]] = None, extra_classes: list[str] = None) -> str:
         """
         Add file system folder to RO-Crate (as Dataset)
 
@@ -148,7 +154,7 @@ class Crate:
         """
         return self.add_file(source, destination, properties, True, extra_classes=extra_classes)
 
-    def add_file(self, source: Path, destination: str, properties: Optional[dict[str, str|int|float|list[str|int|float]]] = None, is_folder: bool = False, extra_classes: list[str] = None) -> str:
+    def add_file(self, source: Path, destination: str, properties: Optional[dict[str, PropertyValue]] = None, is_folder: bool = False, extra_classes: list[str] = None) -> str:
         """
         Add file system object (including folder to RO-Crate)
 
@@ -167,7 +173,7 @@ class Crate:
         self.files.append((source, destination, current_properties, is_folder, extra_classes))
         return destination
 
-    def add(self, class_: str, name: Optional[str] = None, properties: Optional[dict[str, str|int|float|list[str|int|float]]] = None) -> IRI:
+    def add(self, class_: str, name: Optional[str] = None, properties: Optional[dict[str, PropertyValue]] = None) -> IRI:
         """
         Add an object or update an object in the crate
 
@@ -214,6 +220,7 @@ class Crate:
                 self.known_instances_by_class[explicit_class].add(iri)
             current_properties: dict[IRI, str|list[str]] = {JSONLD_TYPE: explicit_classes}
             self.known_instances[iri] = current_properties
+            self.primary_classes[iri] = class_iri
 
         if properties is not None:
             self.process_properties(class_iri, current_properties, properties)
@@ -317,7 +324,7 @@ class Crate:
 
         return
 
-    def serialise(self, ro_crate_folder: Path, properties: dict = None) -> None:
+    def serialise(self, ro_crate_folder: Path, properties: dict = None, use_tables: bool = False) -> None:
         """
         Write the RO-Crate to disk
 
@@ -327,12 +334,32 @@ class Crate:
 
         :param ro_crate_folder: Path to folder to contain the RO-Crate
         """
+
+        # Copy known instances so table classes can be removed without harm
+        known_instances = self.known_instances.copy()
+        table_classes = [self.dictionary.get_iri(f"{APPN_SCHEMA}{class_name}") for class_name in self.configuration.get_ro_crate_table_classes()]
+        if use_tables:
+            for table_class in table_classes:
+                if table_class in self.known_instances_by_class:
+                    table_instances: dict[IRI, dict[str,str|int|float]] = {}
+                    high_cardinality_properties: set[str] = set()
+                    property_map: set[str] = set()
+                    for iri in self.known_instances_by_class[table_class]:
+                        iri_properties = known_instances[iri]
+                        for property_ in iri_properties:
+                            if property_ != "@type":
+                                if isinstance(iri_properties[property_], list) and len(iri_properties[property_]) > 1:
+                                    high_cardinality_properties.add(property_)
+                                else:
+                                    property_map.add(property_)
+                    columns = ["iri", "type"] + [property_ for property_ in property_map if property_ not in high_cardinality_properties]
+                    file_name = self.write_table(ro_crate_folder, table_class, known_instances, self.known_instances_by_class[table_class], columns)
         crate = ROCrate()
-        for source, destination, properties, is_folder, extra_classes in self.files:
+        for source, destination, file_properties, is_folder, extra_classes in self.files:
             if is_folder:
-                f = crate.add(Dataset(crate, source=source, dest_path=destination, properties=properties))
+                f = crate.add(Dataset(crate, source=source, dest_path=destination, properties=file_properties))
             else:
-                f = crate.add(File(crate, source=source, dest_path=destination, properties=properties))
+                f = crate.add(File(crate, source=source, dest_path=destination, properties=file_properties))
             if extra_classes is not None:
                 classes = ["Dataset" if is_folder else "CreativeWork"]
                 for class_name in extra_classes:
@@ -340,8 +367,8 @@ class Crate:
                     if class_iri is not None:
                         classes.append(class_iri.name if class_iri.ns in [APPN_SCHEMA, SCHEMA_SCHEMA] else class_iri.iri)
                 f._jsonld["@type"] = classes
-        for iri, properties in self.known_instances.items():
-            crate.add(ContextEntity(crate, iri.iri, properties))
+        for iri, iri_properties in self.known_instances.items():
+            crate.add(ContextEntity(crate, iri.iri, iri_properties))
 
         if properties is not None:
             crate_properties = crate.default_entities[0].properties()
@@ -369,6 +396,64 @@ class Crate:
                     metadata.append(line.replace(self.namespace, "this:").replace(self.node.namespace, f"{self.node.prefix}:").replace(appn.namespace, f"{appn.prefix}:").replace(APPN_SCHEMA, ""))
         with open(ro_crate_folder / "ro-crate-metadata.json", "w") as f:
             f.writelines(metadata)
+
+    def write_table(self, table_folder: Path, table_class: IRI, known_instances: dict[IRI, dict[IRI, PropertyValue]], instance_iris: set[IRI], columns: list[str]) -> Path:
+        """
+        Process instances for schema class by writing a CSV file containing all instances as rows
+
+        Creates a new CSV file named after the class and located in the specified folder.
+        Processes all instance IRIs using data from known_instances. For every instance,
+        a row is created with the IRI and all properties matching the supplied list of 
+        columns. If all properties are handled, the instance is removed from `known_instances`.
+        Otherwise only the unhandled properties are left.
+
+        :param table_folder: Path to (existing) folder into which the CSV file should be written
+        :param table_class: IRI for class to be serialised
+        :param known_instances: Dictionary mapping IRIs to property dictionaries for all graph objects
+        :param instance_iris: The set of IRIs belonging to the class
+        :param columns: List of column headings (matching property names in known instances)
+        :return: Path to CSV file
+        """
+        file_path = table_folder / f"{table_class.name}.csv"
+        appn_prefix = DEFAULT_PREFIXES[APPN_SCHEMA]
+        with open(file_path, "w") as csv_file:
+            csv_writer = csv.writer(csv_file, delimiter=",")
+            compact_columns = columns.copy()
+            for c in range(2, len(compact_columns)):
+                if compact_columns[c].startswith("http"):
+                    compact_columns[c] = self.compact(compact_columns[c])
+                elif ":" not in compact_columns[c]:
+                    compact_columns[c] = f"{appn_prefix}:{compact_columns[c]}"
+            csv_writer.writerow(compact_columns)
+            for iri in instance_iris:
+                instance = known_instances[iri]
+                row = [iri.curie, self.primary_classes[iri].curie]
+                for column in columns[2:]:
+                    if column in instance:
+                        row.append(self.compact(instance.pop(column)))
+                    else:
+                        row.append("")
+                csv_writer.writerow(row)
+                if len(instance) == 0:
+                    known_instances.pop(iri)
+        return file_path
+
+    def compact(self, value: PropertyValue) -> str|float|int:
+        if isinstance(value, list):
+            if len(value) == 1:
+                value = value[0]
+            else:
+                return ""
+        # The following is not elif because it handles dictionaries extracted
+        # from lists
+        if isinstance(value, dict):
+            if "@id" in value:
+                value = value["@id"]
+            else:
+                return ""
+        if isinstance(value, str) and value.startswith("http"):
+            return self.dictionary.get_iri(value).curie
+        return value
 
     @cache
     def find_class(self, class_: str) -> IRI:
@@ -506,4 +591,4 @@ if __name__ == "__main__":
     crate.add("Observation", parameters={"isForObservationUnit": "GH123", "hasSimpleResult": 1.2, "observes": "liquid quantity"})
     crate.add("ObservedVariable", "liquid quantity", {"hasScale": "milliliter"})
     crate.add("Scale", "Milliliter")
-    crate.serialise(Path("RO-Crate"))
+    crate.serialise(Path("RO-Crate", use_tables=True))

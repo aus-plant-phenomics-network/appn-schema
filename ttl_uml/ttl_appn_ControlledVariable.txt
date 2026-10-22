@@ -23,7 +23,7 @@ Control --> ControlledVariable : controls
 class Trait 
 ControlledVariable --> Trait : hasTrait
 class Variable #line.bold {
-    hasDefaultValue: string|integer|float|double|boolean
+    hasDefaultValue: string|integer|decimal|boolean
 }
 class Method 
 Variable --> Method : usedMethod
@@ -35,5 +35,4 @@ class Scale
 Variable --> Scale : hasScale
 class ObservedVariable 
 ObservedVariable --> Trait : hasTrait
-ControlledVariable --> Trait : hasTrait
 @enduml

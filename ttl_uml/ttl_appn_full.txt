@@ -9,8 +9,10 @@ class Control
 class ControlledVariable
 class Controller
 class Country
+class Dataset
 class Deployment
 class ExternalEvent
+class File
 class GrowthFacility
 class GrowthFacilityType
 class Investigation
@@ -38,6 +40,7 @@ class SpatialLocation
 class Study
 class Substance
 class SubstanceAmount
+class TableFile
 class Trait
 class Treatment
 class Variable
@@ -45,6 +48,8 @@ class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:Country" #DDFFDD
+    class "schema:CreativeWork" #DDFFDD
+    class "schema:Dataset" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
@@ -66,6 +71,7 @@ package "ppeo" {
     class "ppeo:GPS_location" #EEFFCC
     class "ppeo:biological_material" #EEFFCC
     class "ppeo:country" #EEFFCC
+    class "ppeo:data_file" #EEFFCC
     class "ppeo:event" #EEFFCC
     class "ppeo:growth_facility" #EEFFCC
     class "ppeo:investigation" #EEFFCC
@@ -112,6 +118,8 @@ package "ssn" {
     class "ssn:Deployment" #FFEECC
 }
 package "xsd" {
+}
+package "rdf" {
 }
 ResearchActivity --|> "schema:Action"
 ResearchActivity --|> "prov:Activity"
@@ -207,4 +215,9 @@ Country --|> "schema:Country"
 Country --|> "ppeo:country"
 Role --|> "schema:Role"
 Role --|> "ppeo:role"
+File --|> "schema:CreativeWork"
+File --|> "ppeo:data_file"
+TableFile --|> File
+Dataset --|> File
+Dataset --|> "schema:Dataset"
 @enduml

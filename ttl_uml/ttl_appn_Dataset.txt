@@ -1,0 +1,22 @@
+@startuml
+class Dataset  #line.bold
+class File  
+class "schema:CreativeWork" #DDFFDD 
+File --|> "schema:CreativeWork"
+class "ppeo:data_file" #EEFFCC 
+File --|> "ppeo:data_file"
+Dataset --|> File
+class "schema:Dataset" #DDFFDD 
+Dataset --|> "schema:Dataset"
+class Observation 
+Observation --> File : hasResult
+class Control 
+Control --> File : hasResult
+class Observation 
+Observation --> File : usesData
+class File #line.bold {
+    encodingType: string
+}
+class TableFile 
+TableFile --> File : hasSchema
+@enduml

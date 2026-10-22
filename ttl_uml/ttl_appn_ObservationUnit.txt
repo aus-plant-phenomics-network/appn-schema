@@ -12,7 +12,7 @@ class Assay
 Assay --> ObservationUnit : isForObservationUnit
 ObservationUnit --> ObservationUnit : inheritsContext
 class Location 
-ObservationUnit --> Location : hasLocation
+Location --> ObservationUnit : isLocationFor
 class Location 
 Location --> ObservationUnit : isLocationWithin
 class Sensor 

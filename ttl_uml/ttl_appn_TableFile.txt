@@ -1,0 +1,25 @@
+@startuml
+class TableFile  #line.bold
+class File  
+class "schema:CreativeWork" #DDFFDD 
+File --|> "schema:CreativeWork"
+class "ppeo:data_file" #EEFFCC 
+File --|> "ppeo:data_file"
+TableFile --|> File
+class "rdf:Class" #FFFF99
+TableFile --> "rdf:Class" : containsInstancesOf
+class TableFile #line.bold {
+    hasSchema: anyURI
+}
+class File 
+TableFile --> File : hasSchema
+class Observation 
+Observation --> File : hasResult
+class Control 
+Control --> File : hasResult
+class Observation 
+Observation --> File : usesData
+class File #line.bold {
+    encodingType: string
+}
+@enduml

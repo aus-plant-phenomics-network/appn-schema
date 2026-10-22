@@ -11,16 +11,16 @@ SpatialLocation --|> "ppeo:GPS_location"
 class "schema:Place" #DDFFDD 
 SpatialLocation --|> "schema:Place"
 class SpatialLocation #line.bold {
-    hasLatitude: float
+    hasLatitude: decimal
 }
 class SpatialLocation #line.bold {
-    hasLongitude: float
+    hasLongitude: decimal
 }
 class SpatialLocation #line.bold {
-    hasUncertainty: float
+    hasUncertainty: decimal
 }
 class SpatialLocation #line.bold {
-    hasAltitude: float
+    hasAltitude: decimal
 }
 class Country 
 SpatialLocation --> Country : hasCountry
@@ -28,7 +28,16 @@ class SpatialLocation #line.bold {
     hasAddress: string
 }
 class ObservationUnit 
-ObservationUnit --> Location : hasLocation
+Location --> ObservationUnit : isLocationFor
 class ObservationUnit 
 Location --> ObservationUnit : isLocationWithin
+class Location #line.bold {
+    startTime: dateTime
+}
+class Location #line.bold {
+    endTime: dateTime
+}
+class Location #line.bold {
+    atTime: dateTime
+}
 @enduml

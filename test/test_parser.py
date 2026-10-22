@@ -43,7 +43,7 @@ def test_single_class_in_sheet(mock_parser: ExcelVocabularyParser) -> None:
     """
     assert mock_parser.load(Path("./test/appn-simple.xlsx"))
     dictionary = Dictionary(mock_parser.get_graph())
-    assert [subject.name for subject in dictionary.list_unique_subjects()] == ["biologicalmaterial_AnyPlant", "biologicalmaterial_Grain", "conceptscheme_BiologicalMaterial", "conceptscheme_ObservedVariable", "observedvariable_GrowthStage", "observedvariable_OverallStature"]
+    assert [subject.name for subject in dictionary.list_unique_subjects()] == ["bm_AnyPlant", "bm_Grain", "cs_BiologicalMaterial", "cs_ObservedVariable", "ov_GrowthStage", "ov_OverallStature"]
     assert len(dictionary.list_triples_for_property("appn:forBiologicalMaterial")) == 2
 
 def test_referenced_class_in_sheet(mock_parser: ExcelVocabularyParser) -> None:
@@ -52,14 +52,16 @@ def test_referenced_class_in_sheet(mock_parser: ExcelVocabularyParser) -> None:
     """
     assert mock_parser.load(Path("./test/appn-reference.xlsx"))
     dictionary = Dictionary(mock_parser.get_graph())
-    assert [subject.name for subject in dictionary.list_unique_subjects()] == ["biologicalmaterial_AnyPlant", "biologicalmaterial_Grain", "conceptscheme_BiologicalMaterial", "conceptscheme_ObservedVariable", "observedvariable_GrowthStage", "observedvariable_OverallStature"]
+    assert [subject.name for subject in dictionary.list_unique_subjects()] == ["bm_AnyPlant", "bm_Grain", "cs_BiologicalMaterial", "cs_ObservedVariable", "ov_GrowthStage", "ov_OverallStature"]
     assert len(dictionary.list_triples_for_property("appn:forBiologicalMaterial")) == 2
 
 def test_embedded_class_in_sheet(mock_parser: ExcelVocabularyParser) -> None:
     """
     Test parsing of Excel spreadsheet with Biological Material class completely embedded in the Trait sheet
     """
+    # Configuration won't be reloaded, so hack the dictionary in the parser
+    mock_parser.embedded_classes = {"ObservedVariable": ["BiologicalMaterial"]}
     assert mock_parser.load(Path("./test/appn-embedded.xlsx"))
     dictionary = Dictionary(mock_parser.get_graph())
-    assert [subject.name for subject in dictionary.list_unique_subjects()] == ["biologicalmaterial_AnyPlant", "conceptscheme_BiologicalMaterial", "conceptscheme_ObservedVariable", "observedvariable_GrowthStage", "observedvariable_OverallStature"]
+    assert [subject.name for subject in dictionary.list_unique_subjects()] == ["bm_AnyPlant", "bm_Grain", "cs_BiologicalMaterial", "cs_ObservedVariable", "ov_GrowthStage", "ov_OverallStature"]
     assert len(dictionary.list_triples_for_property("appn:forBiologicalMaterial")) == 2

@@ -7,16 +7,25 @@ class "schema:Thing" #DDFFDD
 Location --|> "schema:Thing"
 XYZLocation --|> Location
 class XYZLocation #line.bold {
-    row: string|integer|float|double
+    row: string|integer|decimal
 }
 class XYZLocation #line.bold {
-    column: string|integer|float|double
+    column: string|integer|decimal
 }
 class XYZLocation #line.bold {
-    level: string|integer|float|double
+    level: string|integer|decimal
 }
 class ObservationUnit 
-ObservationUnit --> Location : hasLocation
+Location --> ObservationUnit : isLocationFor
 class ObservationUnit 
 Location --> ObservationUnit : isLocationWithin
+class Location #line.bold {
+    startTime: dateTime
+}
+class Location #line.bold {
+    endTime: dateTime
+}
+class Location #line.bold {
+    atTime: dateTime
+}
 @enduml

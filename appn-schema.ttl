@@ -281,6 +281,23 @@ appn:Role a rdfs:Class ;
   rdfs:subClassOf schema:Role ;
   rdfs:subClassOf ppeo:role .
 
+appn:File a rdfs:Class ;
+  schema:name "File" ;
+  rdfs:comment "A data file, image or other file system object" ;
+  rdfs:subClassOf schema:CreativeWork ;
+  rdfs:subClassOf ppeo:data_file .
+
+appn:TableFile a rdfs:Class ;
+  schema:name "TableFile" ;
+  rdfs:comment "A data file containing tabular data in CSV or similar format" ;
+  rdfs:subClassOf appn:File .
+
+appn:Dataset a rdfs:Class ;
+  schema:name "Dataset" ;
+  rdfs:comment "A set of Files and metadata forming a dataset, normally managed as a file system folder" ;
+  rdfs:subClassOf appn:File ;
+  rdfs:subClassOf schema:Dataset .
+
 # TODO: Needs tighter constraints.
 appn:isPartOf a rdf:Property ;
   schema:name "isPartOf" ;
@@ -323,7 +340,7 @@ appn:hasResult a rdf:Property ;
   rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult." ;
   rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Observation,appn:Control ;
-  schema:rangeIncludes schema:Dataset,schema:CreativeWork .
+  schema:rangeIncludes appn:File .
 
 appn:hasSimpleResult a rdf:Property ;
   schema:name "hasSimpleResult" ; 
@@ -332,8 +349,7 @@ appn:hasSimpleResult a rdf:Property ;
   schema:domainIncludes appn:Observation,appn:Control ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double ;
+  schema:rangeIncludes xsd:decimal ;
   schema:rangeIncludes xsd:boolean .
 
 appn:producesSample a rdf:Property ;
@@ -347,7 +363,7 @@ appn:usesData a rdf:Property ;
   schema:name "usesData" ; 
   rdfs:comment "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
   schema:domainIncludes appn:Observation ;
-  schema:rangeIncludes schema:Dataset,schema:CreativeWork .
+  schema:rangeIncludes appn:File .
 
 appn:controls a rdf:Property ;
   schema:name "controls" ; 
@@ -379,7 +395,7 @@ appn:amount a rdf:Property ;
   schema:name "amount" ; 
   rdfs:comment "Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale." ;
   schema:domainIncludes appn:SubstanceAmount ;
-  schema:rangeIncludes xsd:float .
+  schema:rangeIncludes xsd:decimal .
 
 appn:observes a rdf:Property ;
   schema:name "observes" ; 
@@ -433,19 +449,18 @@ appn:hasDefaultValue a rdf:Property ;
   schema:domainIncludes appn:Variable ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double ;
+  schema:rangeIncludes xsd:decimal ;
   schema:rangeIncludes xsd:boolean .
 
-appn:hasLocation a rdf:Property ;
-  schema:name "hasLocation" ; 
-  rdfs:comment "Specifies the location for an ObservationUnit." ;
-  schema:domainIncludes appn:ObservationUnit ;
-  schema:rangeIncludes appn:Location .
+appn:isLocationFor a rdf:Property ;
+  schema:name "isLocationFor" ; 
+  rdfs:comment "Specifies the ObservationUnit to which a Location relates." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes appn:ObservationUnit .
 
 appn:isLocationWithin a rdf:Property ;
   schema:name "isLocationWithin" ; 
-  rdfs:comment "Specifies that a location is a position within an ObservationUnit." ;
+  rdfs:comment "Specifies that a Location is a position within an ObservationUnit." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:ObservationUnit .
 
@@ -456,8 +471,7 @@ appn:row a rdf:Property ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double .
+  schema:rangeIncludes xsd:decimal .
 
 # COMMENT: Needs a range.
 appn:column a rdf:Property ;
@@ -466,8 +480,7 @@ appn:column a rdf:Property ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double .
+  schema:rangeIncludes xsd:decimal .
 
 # COMMENT: Needs a range.
 appn:level a rdf:Property ;
@@ -476,8 +489,7 @@ appn:level a rdf:Property ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
-  schema:rangeIncludes xsd:float ;
-  schema:rangeIncludes xsd:double .
+  schema:rangeIncludes xsd:decimal .
 
 appn:hosts a rdf:Property ;
   schema:name "hosts" ; 
@@ -716,7 +728,7 @@ appn:hasLatitude a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasLatitude ;
   rdfs:subPropertyOf schema:latitude ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasLongitude a rdf:Property ;
   schema:name "hasLongitude" ;
@@ -724,21 +736,21 @@ appn:hasLongitude a rdf:Property ;
   rdfs:subPropertyOf ppeo:hasLongitude ;
   rdfs:subPropertyOf schema:longitude ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasUncertainty a rdf:Property ;
   schema:name "hasUncertainty" ;
   rdfs:comment "Uncertainty in meters for coordinates" ;
   rdfs:subPropertyOf ppeo:hasUncertainty ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasAltitude a rdf:Property ;
   schema:name "hasAltitude" ;
   rdfs:comment "Altitude for a SpatialLocation" ;
   rdfs:subPropertyOf ppeo:hasAltitude ;
   schema:domainIncludes appn:SpatialLocation ;
-  rdfs:range xsd:float .
+  rdfs:range xsd:decimal .
 
 appn:hasCountry a rdf:Property ;
   schema:name "hasCountry" ;
@@ -789,6 +801,7 @@ appn:startTime a rdf:Property ;
   rdfs:subPropertyOf schema:startTime ;
   rdfs:subPropertyOf ppeo:hasStartDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:dateTime .
 
 appn:endTime a rdf:Property ;
@@ -798,6 +811,7 @@ appn:endTime a rdf:Property ;
   rdfs:subPropertyOf sosa:resultTime ;
   rdfs:subPropertyOf ppeo:hasEndDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:dateTime .
 
 appn:atTime a rdf:Property ;
@@ -805,6 +819,33 @@ appn:atTime a rdf:Property ;
   rdfs:comment "The time at which a ResearchActivity occurred - equivalent to both startTime and endTime" ;
   rdfs:subPropertyOf appn:startTime ;
   rdfs:subPropertyOf appn:endTime ;
-  rdfs:subPropertyOf ppeo:hasDateTime ;
   schema:domainIncludes appn:ResearchActivity ;
+  schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:dateTime .
+
+appn:encodingType a rdf:Property ;
+  schema:name "encodingType" ;
+  rdfs:comment "File encoding type from IANA https://www.iana.org/assignments/media-types" ;
+  rdfs:subPropertyOf schema:encodingType ;
+  schema:domainIncludes appn:File ;
+  rdfs:range xsd:string .
+
+appn:containsInstancesOf a rdf:Property ;
+  schema:name "containsInstancesOf" ;
+  rdfs:comment "Identifies schema class for which a TableFile serialises instances - the class is identified by its IRI" ;
+  schema:domainIncludes appn:TableFile ;
+  rdfs:range rdf:Class .
+
+appn:hasSchema a rdf:Property ;
+  schema:name "hasSchema" ;
+  rdfs:comment "Identifies schema file for a TableFile" ;
+  schema:domainIncludes appn:TableFile ;
+  schema:rangeIncludes appn:File ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:hasPart a rdf:Property ;
+  schema:name "hasPart" ;
+  rdfs:comment "Identifies a File that belongs to a Dataset" ;
+  rdfs:subPropertyOf schema:hasPart ;
+  rdfs:domainIncludes: appn:Dataset ;
+  rdfs:rangeIncludes: appn:File .

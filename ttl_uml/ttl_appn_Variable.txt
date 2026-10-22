@@ -15,7 +15,7 @@ Variable --|> "cdi:RepresentedVariable"
 class "schema:InstanceValue" #DDFFDD 
 Variable --|> "schema:InstanceValue"
 class Variable #line.bold {
-    hasDefaultValue: string|integer|float|double|boolean
+    hasDefaultValue: string|integer|decimal|boolean
 }
 class Method 
 Variable --> Method : usedMethod

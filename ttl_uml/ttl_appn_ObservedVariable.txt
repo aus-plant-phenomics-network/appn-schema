@@ -25,7 +25,7 @@ Observation --> ObservedVariable : observes
 class Trait 
 ObservedVariable --> Trait : hasTrait
 class Variable #line.bold {
-    hasDefaultValue: string|integer|float|double|boolean
+    hasDefaultValue: string|integer|decimal|boolean
 }
 class Method 
 Variable --> Method : usedMethod
@@ -35,7 +35,6 @@ class BiologicalMaterial
 Variable --> BiologicalMaterial : forBiologicalMaterial
 class Scale 
 Variable --> Scale : hasScale
-ObservedVariable --> Trait : hasTrait
 class ControlledVariable 
 ControlledVariable --> Trait : hasTrait
 @enduml

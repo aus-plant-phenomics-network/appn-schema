@@ -5,9 +5,18 @@ Location --|> "ppeo:spatial_distribution"
 class "schema:Thing" #DDFFDD 
 Location --|> "schema:Thing"
 class ObservationUnit 
-ObservationUnit --> Location : hasLocation
+Location --> ObservationUnit : isLocationFor
 class ObservationUnit 
 Location --> ObservationUnit : isLocationWithin
+class Location #line.bold {
+    startTime: dateTime
+}
+class Location #line.bold {
+    endTime: dateTime
+}
+class Location #line.bold {
+    atTime: dateTime
+}
 class SpatialLocation 
 SpatialLocation --|> Location
 class XYZLocation 

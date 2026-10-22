@@ -9,8 +9,10 @@ class Control
 class ControlledVariable
 class Controller
 class Country
+class Dataset
 class Deployment
 class ExternalEvent
+class File
 class GrowthFacility
 class GrowthFacilityType
 class Investigation
@@ -38,6 +40,7 @@ class SpatialLocation
 class Study
 class Substance
 class SubstanceAmount
+class TableFile
 class Trait
 class Treatment
 class Variable
@@ -45,6 +48,8 @@ class XYZLocation
 package "schema" {
     class "schema:Action" #DDFFDD
     class "schema:Country" #DDFFDD
+    class "schema:CreativeWork" #DDFFDD
+    class "schema:Dataset" #DDFFDD
     class "schema:DefinedTerm" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
@@ -65,6 +70,8 @@ package "bio" {
     class "bio:Taxon" #EECCFF
 }
 package "xsd" {
+}
+package "rdf" {
 }
 ResearchActivity --|> "schema:Action"
 Investigation --|> ResearchActivity
@@ -122,4 +129,8 @@ PhysicalContainmentLevel --|> "schema:Enumeration"
 BiocontainmentLevel --|> "schema:Enumeration"
 Country --|> "schema:Country"
 Role --|> "schema:Role"
+File --|> "schema:CreativeWork"
+TableFile --|> File
+Dataset --|> File
+Dataset --|> "schema:Dataset"
 @enduml
