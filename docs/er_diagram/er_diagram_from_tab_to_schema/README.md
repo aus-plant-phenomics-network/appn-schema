@@ -2,7 +2,7 @@
 
 These scripts help with the semi-automated production of the ER diagram from the booking sheet fields that are defined in:
   
-  [APPN Booking sheet metadata mapping 2026 RDv1](https://uao365.sharepoint.com/:x:/r/sites/APPF2023-28/Shared%20Documents/Coordinating%20Data%20Collection/Central%20Team%20Notes/APPN%20Booking%20sheet%20metadata%20mapping%202026%20RDv1.xlsx?d=wbbb765a5bc6e44cdb1150648d866ad58&csf=1&web=1&e=3hz8bC)
+  [APPN Booking sheet metadata mapping 2026 RDv1](https://uao365.sharepoint.com/:x:/r/sites/PROVOST-CS-SAFW-APPN/All%20APPN/Coordinating%20Data%20Collection/Central%20Team%20Notes/APPN%20Booking%20sheet%20metadata%20mapping%202026%20RDv1.xlsx?d=wb63090fc0dbf4c939cd41121d24fa394&csf=1&web=1&e=xwUna3)
   
 
 The above spreadsheet was copied and then extended as filename named ```appn_schema_tabdelim_appn_hand_edited.txt```. This file has extra columns and the relationships between classes are added to each class definition. 

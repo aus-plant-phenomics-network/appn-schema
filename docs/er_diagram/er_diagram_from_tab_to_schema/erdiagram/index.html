@@ -32,94 +32,94 @@ erDiagram
 erDiagram
 
     appn_Investigation {
-    string investigationIdentifier PK
-    string investigationTitle
-    string investigationDescription
-    array studyIdentifier FK
+    string Investigation.identifier PK
+    string Investigation.name
+    string Investigation.description
+    array Study.identifier FK
     }
     appn_Study {
-    string studyIdentifier PK
-    string studyalternateIdentifier
-    string studyTitle
-    string studyDescription
-    string additionalType
-    array personIdentifier FK
-    object investigationIdentifier FK
-    array placeName FK
-    array growthFacilityName FK
-    array biologicalMaterialIdentifier FK
-    array deploymentName FK
+    string Study.identifier PK
+    string Study.alternateName
+    string Study.name
+    string Study.description
+    string Study.additionalType
+    array Person.identifier FK
+    object Investigation.identifier FK
+    array SpatialLocation.name FK
+    array GrowthFacility.name FK
+    array BiologicalMaterial.name FK
+    array Sensor.name FK
     }
-    schema_Person {
-    string givenName
-    string familyName
-    string personIdentifier PK
-    array email
-    string jobTitle
-    string roleName
-    array affiliation FK
-    array grantIdentifier FK
+    appn_Person {
+    string Person.givenName
+    string Person.familyName
+    string Person.identifier PK
+    array Person.email
+    string Person.jobTitle
+    string Person.roleName
+    array Person.affiliation FK
+    array Grant.identifier FK
     }
     schema_Organization {
-    string legalName
-    string organizationIdentifier PK
-    string address
-    string roleName
-    array personIdentifier FK
+    string Organization.legalName
+    string Organization.identifier PK
+    string Organization.legalAddress
+    string Organization.roleName
+    array Person.identifier FK
     }
     schema_Grant {
-    string name
-    string grantIdentifier PK
-    array funder
-    number amount
-    object fundedItem
-    array personIdentifier FK
-    array organizationIdentifier FK
+    string Grant.name
+    string Grant.identifier PK
+    array Grant.funder
+    object Grant.fundedItem
+    number Grant.amount
+    array Person.identifier FK
+    array Organization.identifier FK
     }
     appn_SpatialLocation {
-    string placeName PK
-    string GeoLatLong
-    string GeoShape
+    string SpatialLocation.name PK
+    string SpatialLocation.latitude
+    string SpatialLocation.longitude
+    string SpatialLocation.polygon
     }
     appn_GrowthFacility {
-    string growthFacilityName PK
-    string growthFacilityType
-    string growthFacilityContainmentLevel
-    boolean growthFacilityQuarantine
+    string GrowthFacility.name PK
+    string GrowthFacility.hasGrowthFacilityType
     }
-    appn_Deployment {
-    string deploymentName PK
+    appn_Sensor {
+    string Sensor.name PK
+    string Sensor.hasSensorType
     }
     appn_BiologicalMaterial {
-    string biologicalMaterialIdentifier
-    string biologicalMaterialGenus PK
-    string biologicalMaterialSpecies PK
-    array biologicalMaterialInfraspecificName PK
-    string biologicalMaterialPreprocessing
-    string geneticallyModifiedStatus
-    string quaratineStatus
-    object materialSourceIdentifier
+    string BiologicalMaterial.name
+    string BiologicalMaterial.identifier
+    string BiologicalMaterial.scientificName PK
+    string BiologicalMaterial.cultivarEpithet
+    string BiologicalMaterial.hasPreprocessing
+    string BiologicalMaterial.geneticallyModifiedStatus
+    string BiologicalMaterial.quaratineStatus
+    object BiologicalMaterial.MaterialSource
     }
     appn_MaterialSource {
-    array materialSourceDescription
-    array materialSourceIdentifier PK
+    array MaterialSource.hasMaterialSource
+    array MaterialSource.identifier PK
     }
 
-    appn_Study |{--|| appn_Investigation : studyIdentifier
-    schema_Person |{--|| appn_Study : personIdentifier
-    appn_Investigation o|--|| appn_Study : investigationIdentifier
-    appn_SpatialLocation |{--|| appn_Study : placeName
-    appn_GrowthFacility |{--|| appn_Study : growthFacilityName
-    appn_BiologicalMaterial |{--|| appn_Study : biologicalMaterialIdentifier
-    appn_Deployment o{--|| appn_Study : deploymentName
-    schema_Organization |{--|| schema_Person : affiliation
-    schema_Grant o{--|| schema_Person : grantIdentifier
-    schema_Person |{--|| schema_Organization : personIdentifier
-    schema_Organization |{--|| schema_Grant : funder
-    schema_Person o|--|| schema_Grant : fundedItem
-    schema_Person o{--|| schema_Grant : personIdentifier
-    schema_Organization o{--|| schema_Grant : organizationIdentifier
-    appn_MaterialSource o|--|| appn_BiologicalMaterial : materialSourceIdentifier
+    appn_Study |{--|| appn_Investigation : Study.identifier
+    appn_Person |{--|| appn_Study : Person.identifier
+    appn_Investigation o|--|| appn_Study : Investigation.identifier
+    appn_SpatialLocation |{--|| appn_Study : SpatialLocation.name
+    appn_GrowthFacility |{--|| appn_Study : GrowthFacility.name
+    appn_BiologicalMaterial |{--|| appn_Study : BiologicalMaterial.name
+    appn_Sensor o{--|| appn_Study : Sensor.name
+    schema_Organization |{--|| appn_Person : Person.affiliation
+    schema_Grant o{--|| appn_Person : Grant.identifier
+    appn_Person |{--|| schema_Organization : Person.identifier
+    schema_Organization |{--|| schema_Grant : Grant.funder
+    appn_Person o|--|| schema_Grant : Grant.fundedItem
+    appn_Person |{--|| schema_Grant : Person.identifier
+    schema_Organization |{--|| schema_Grant : Organization.identifier
+    appn_MaterialSource o|--|| appn_BiologicalMaterial : BiologicalMaterial.MaterialSource
 </pre>
 
 

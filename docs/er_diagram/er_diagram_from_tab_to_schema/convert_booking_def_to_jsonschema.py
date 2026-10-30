@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import json
+import sys
 from pathlib import Path
+from datetime import datetime, timezone
 
 """
 Convert an APPN tab-delimited schema specification into JSON Schema.
@@ -65,7 +67,11 @@ def parse_cardinality(cardinality):
         1..n -> required, repeatable
         0..n -> optional, repeatable
     """
-    lower, upper = cardinality.strip().split("..")
+    try:
+        lower, upper = cardinality.strip().split("..")
+    except (AttributeError, ValueError):
+        print(f"ERROR: Invalid cardinality: {cardinality!r}")
+        sys.exit(1)
     required = lower == "1"
     repeatable = upper.lower() == "n"
     return required, repeatable
@@ -245,6 +251,7 @@ def build_property_schema(
     datatype=None,
     format_name=None,
 ):
+    print(f"label: {label}")
     required, repeatable = parse_cardinality(cardinality)
 
     if target_class:
@@ -399,9 +406,12 @@ def parse_schema_file(filename):
         ref_name = reference_def_name(target_class)
         if ref_name not in definitions:
             definitions[ref_name] = make_reference_schema(target_class)
-
+            
+    created = datetime.now(timezone.utc).isoformat()
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "title": "APPN Booking Information Schema",
+        "created": f"{created}",
         "$defs": definitions,
     }
 
@@ -409,7 +419,7 @@ def parse_schema_file(filename):
 
 def main():
     # input_file = "person_organization_tabdelim_appn.txt"
-    input_file = "appn_schema_tabdelim_appn_hand_edited.txt"
+    input_file = "appn_schema_tabdelim_appn_hand_editedv2.txt"
     schema = parse_schema_file(input_file)
     output_file = Path(input_file).stem + ".json"
 

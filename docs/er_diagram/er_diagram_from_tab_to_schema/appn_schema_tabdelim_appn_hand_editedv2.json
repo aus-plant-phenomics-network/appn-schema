@@ -1,0 +1,708 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APPN Booking Information Schema",
+  "created": "2026-10-30T03:59:11.805494+00:00",
+  "$defs": {
+    "appn:Investigation": {
+      "title": "appn:Investigation",
+      "type": "object",
+      "properties": {
+        "Investigation.identifier": {
+          "type": "string",
+          "rocrateProperty": "schema:identifier",
+          "format": "uri"
+        },
+        "Investigation.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name"
+        },
+        "Investigation.description": {
+          "type": "string",
+          "rocrateProperty": "schema:description"
+        },
+        "Study.identifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:Study"
+              },
+              {
+                "$ref": "#/$defs/appn:StudyReference"
+              }
+            ],
+            "rocrateProperty": "appn:Study.identifier"
+          }
+        }
+      },
+      "required": [
+        "Study.identifier"
+      ],
+      "appnCardinality": "0..1",
+      "x-primary-key": [
+        "Investigation.identifier"
+      ],
+      "x-foreign-key": [
+        "Study.identifier"
+      ]
+    },
+    "appn:Study": {
+      "title": "appn:Study",
+      "type": "object",
+      "properties": {
+        "Study.identifier": {
+          "type": "string",
+          "rocrateProperty": "schema:identifier",
+          "format": "uri"
+        },
+        "Study.alternateName": {
+          "type": "string",
+          "rocrateProperty": "schema:alternateName"
+        },
+        "Study.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name"
+        },
+        "Study.description": {
+          "type": "string",
+          "rocrateProperty": "schema:description"
+        },
+        "Study.additionalType": {
+          "type": "string",
+          "rocrateProperty": "schema:additionalType"
+        },
+        "Person.identifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:Person"
+              },
+              {
+                "$ref": "#/$defs/appn:PersonReference"
+              }
+            ],
+            "rocrateProperty": "schema:identifier"
+          }
+        },
+        "Investigation.identifier": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/appn:Investigation"
+            },
+            {
+              "$ref": "#/$defs/appn:InvestigationReference"
+            }
+          ],
+          "rocrateProperty": "schema:identifier"
+        },
+        "SpatialLocation.name": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:SpatialLocation"
+              },
+              {
+                "$ref": "#/$defs/appn:SpatialLocationReference"
+              }
+            ],
+            "rocrateProperty": "schema:Place.name"
+          }
+        },
+        "GrowthFacility.name": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:GrowthFacility"
+              },
+              {
+                "$ref": "#/$defs/appn:GrowthFacilityReference"
+              }
+            ],
+            "rocrateProperty": "appn:GrowthFacility.name"
+          }
+        },
+        "BiologicalMaterial.name": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:BiologicalMaterial"
+              },
+              {
+                "$ref": "#/$defs/appn:BiologicalMaterialReference"
+              }
+            ],
+            "rocrateProperty": "appn:BiologicalMaterial.name"
+          }
+        },
+        "Sensor.name": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:Sensor"
+              },
+              {
+                "$ref": "#/$defs/appn:SensorReference"
+              }
+            ],
+            "rocrateProperty": "appn:Sensor.name"
+          }
+        }
+      },
+      "required": [
+        "Study.alternateName",
+        "Study.name",
+        "Person.identifier",
+        "SpatialLocation.name",
+        "GrowthFacility.name",
+        "BiologicalMaterial.name"
+      ],
+      "appnCardinality": "1..1",
+      "x-primary-key": [
+        "Study.identifier"
+      ],
+      "x-foreign-key": [
+        "Person.identifier",
+        "Investigation.identifier",
+        "SpatialLocation.name",
+        "GrowthFacility.name",
+        "BiologicalMaterial.name",
+        "Sensor.name"
+      ]
+    },
+    "appn:Person": {
+      "title": "appn:Person",
+      "type": "object",
+      "properties": {
+        "Person.givenName": {
+          "type": "string",
+          "rocrateProperty": "schema:givenName"
+        },
+        "Person.familyName": {
+          "type": "string",
+          "rocrateProperty": "schema:familyName"
+        },
+        "Person.identifier": {
+          "type": "string",
+          "rocrateProperty": "schema:identifier",
+          "format": "uri"
+        },
+        "Person.email": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "rocrateProperty": "schema:email",
+            "format": "email"
+          }
+        },
+        "Person.jobTitle": {
+          "type": "string",
+          "rocrateProperty": "schema:jobTitle"
+        },
+        "Person.roleName": {
+          "type": "string",
+          "rocrateProperty": "schema:roleName"
+        },
+        "Person.affiliation": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Organization"
+              },
+              {
+                "$ref": "#/$defs/schema:OrganizationReference"
+              }
+            ],
+            "rocrateProperty": "schema:affiliation"
+          }
+        },
+        "Grant.identifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Grant"
+              },
+              {
+                "$ref": "#/$defs/schema:GrantReference"
+              }
+            ],
+            "rocrateProperty": "schema:identifier"
+          }
+        }
+      },
+      "required": [
+        "Person.givenName",
+        "Person.familyName",
+        "Person.roleName",
+        "Person.affiliation"
+      ],
+      "appnCardinality": "1..n",
+      "x-primary-key": [
+        "Person.identifier"
+      ],
+      "x-foreign-key": [
+        "Person.affiliation",
+        "Grant.identifier"
+      ]
+    },
+    "schema:Organization": {
+      "title": "schema:Organization",
+      "type": "object",
+      "properties": {
+        "Organization.legalName": {
+          "type": "string",
+          "rocrateProperty": "schema:legalName"
+        },
+        "Organization.identifier": {
+          "type": "string",
+          "rocrateProperty": "schema:identifier",
+          "format": "uri"
+        },
+        "Organization.legalAddress": {
+          "type": "string",
+          "rocrateProperty": "schema:legalAddress"
+        },
+        "Organization.roleName": {
+          "type": "string",
+          "rocrateProperty": "schema:roleName"
+        },
+        "Person.identifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:Person"
+              },
+              {
+                "$ref": "#/$defs/appn:PersonReference"
+              }
+            ],
+            "rocrateProperty": "schema:identifier"
+          }
+        }
+      },
+      "required": [
+        "Organization.legalName",
+        "Organization.roleName",
+        "Person.identifier"
+      ],
+      "appnCardinality": "1..n",
+      "x-primary-key": [
+        "Organization.identifier"
+      ],
+      "x-foreign-key": [
+        "Person.identifier"
+      ]
+    },
+    "schema:Grant": {
+      "title": "schema:Grant",
+      "type": "object",
+      "properties": {
+        "Grant.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name"
+        },
+        "Grant.identifier": {
+          "type": "string",
+          "rocrateProperty": "schema:identifier"
+        },
+        "Grant.funder": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Organization"
+              },
+              {
+                "$ref": "#/$defs/schema:OrganizationReference"
+              }
+            ],
+            "rocrateProperty": "schema:funder"
+          }
+        },
+        "Grant.fundedItem": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/appn:Person"
+            },
+            {
+              "$ref": "#/$defs/appn:PersonReference"
+            }
+          ],
+          "rocrateProperty": "schema:fundedItem"
+        },
+        "Grant.amount": {
+          "type": "number",
+          "rocrateProperty": "schema:amount"
+        },
+        "Person.identifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/appn:Person"
+              },
+              {
+                "$ref": "#/$defs/appn:PersonReference"
+              }
+            ],
+            "rocrateProperty": "schema:identifier"
+          }
+        },
+        "Organization.identifier": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/schema:Organization"
+              },
+              {
+                "$ref": "#/$defs/schema:OrganizationReference"
+              }
+            ],
+            "rocrateProperty": "schema:identifier"
+          }
+        }
+      },
+      "required": [
+        "Grant.funder",
+        "Person.identifier",
+        "Organization.identifier"
+      ],
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "Grant.identifier"
+      ],
+      "x-foreign-key": [
+        "Person.identifier",
+        "Organization.identifier"
+      ]
+    },
+    "appn:SpatialLocation": {
+      "title": "appn:SpatialLocation",
+      "type": "object",
+      "properties": {
+        "SpatialLocation.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name"
+        },
+        "SpatialLocation.latitude": {
+          "type": "string",
+          "rocrateProperty": "schema:latitude"
+        },
+        "SpatialLocation.longitude": {
+          "type": "string",
+          "rocrateProperty": "schema:longitude"
+        },
+        "SpatialLocation.polygon": {
+          "type": "string",
+          "rocrateProperty": "schema:polygon"
+        }
+      },
+      "required": [
+        "SpatialLocation.name"
+      ],
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "SpatialLocation.name"
+      ],
+      "x-foreign-key": []
+    },
+    "appn:GrowthFacility": {
+      "title": "appn:GrowthFacility",
+      "type": "object",
+      "properties": {
+        "GrowthFacility.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name",
+          "format": "uri"
+        },
+        "GrowthFacility.hasGrowthFacilityType": {
+          "type": "string",
+          "rocrateProperty": "appn:hasGrowthFacilityType"
+        }
+      },
+      "required": [
+        "GrowthFacility.name",
+        "GrowthFacility.hasGrowthFacilityType"
+      ],
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "GrowthFacility.name"
+      ],
+      "x-foreign-key": []
+    },
+    "appn:Sensor": {
+      "title": "appn:Sensor",
+      "type": "object",
+      "properties": {
+        "Sensor.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name"
+        },
+        "Sensor.hasSensorType": {
+          "type": "string",
+          "rocrateProperty": "appn:hasSensorType"
+        }
+      },
+      "required": [
+        "Sensor.name"
+      ],
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "Sensor.name"
+      ],
+      "x-foreign-key": []
+    },
+    "appn:BiologicalMaterial": {
+      "title": "appn:BiologicalMaterial",
+      "type": "object",
+      "properties": {
+        "BiologicalMaterial.name": {
+          "type": "string",
+          "rocrateProperty": "schema:name"
+        },
+        "BiologicalMaterial.identifier": {
+          "type": "string",
+          "rocrateProperty": "schema:identifier",
+          "format": "uri"
+        },
+        "BiologicalMaterial.scientificName": {
+          "type": "string",
+          "rocrateProperty": "appn:scientificName"
+        },
+        "BiologicalMaterial.cultivarEpithet": {
+          "type": "string",
+          "rocrateProperty": "appn:cultivarEpithet"
+        },
+        "BiologicalMaterial.hasPreprocessing": {
+          "type": "string",
+          "rocrateProperty": "appn:hasPreprocessing"
+        },
+        "BiologicalMaterial.geneticallyModifiedStatus": {
+          "type": "string",
+          "rocrateProperty": "appn:geneticallyModifiedStatus"
+        },
+        "BiologicalMaterial.quaratineStatus": {
+          "type": "string",
+          "rocrateProperty": "appn:quarantineStatus"
+        },
+        "BiologicalMaterial.MaterialSource": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/appn:MaterialSource"
+            },
+            {
+              "$ref": "#/$defs/appn:MaterialSourceReference"
+            }
+          ],
+          "rocrateProperty": "appn:MaterialSource"
+        }
+      },
+      "required": [
+        "BiologicalMaterial.name",
+        "BiologicalMaterial.scientificName",
+        "BiologicalMaterial.geneticallyModifiedStatus",
+        "BiologicalMaterial.quaratineStatus"
+      ],
+      "appnCardinality": "1..n",
+      "x-primary-key": [
+        "BiologicalMaterial.scientificName"
+      ],
+      "x-foreign-key": []
+    },
+    "appn:MaterialSource": {
+      "title": "appn:MaterialSource",
+      "type": "object",
+      "properties": {
+        "MaterialSource.hasMaterialSource": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "rocrateProperty": "appn:hasMaterialSource"
+          }
+        },
+        "MaterialSource.identifier": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "rocrateProperty": "schema:identifier"
+          }
+        }
+      },
+      "required": [
+        "MaterialSource.hasMaterialSource",
+        "MaterialSource.identifier"
+      ],
+      "appnCardinality": "0..n",
+      "x-primary-key": [
+        "MaterialSource.identifier"
+      ],
+      "x-foreign-key": []
+    },
+    "appn:BiologicalMaterialReference": {
+      "title": "appn:BiologicalMaterialReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:GrowthFacilityReference": {
+      "title": "appn:GrowthFacilityReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:InvestigationReference": {
+      "title": "appn:InvestigationReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:MaterialSourceReference": {
+      "title": "appn:MaterialSourceReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:PersonReference": {
+      "title": "appn:PersonReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:SensorReference": {
+      "title": "appn:SensorReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:SpatialLocationReference": {
+      "title": "appn:SpatialLocationReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "appn:StudyReference": {
+      "title": "appn:StudyReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "schema:GrantReference": {
+      "title": "schema:GrantReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    },
+    "schema:OrganizationReference": {
+      "title": "schema:OrganizationReference",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri",
+          "rocrateProperty": "schema:Thing.identifier"
+        },
+        "legalName": {
+          "type": "string",
+          "rocrateProperty": "schema:Organization.legalName"
+        },
+        "roleName": {
+          "type": "string",
+          "rocrateProperty": "schema:Role.roleName"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

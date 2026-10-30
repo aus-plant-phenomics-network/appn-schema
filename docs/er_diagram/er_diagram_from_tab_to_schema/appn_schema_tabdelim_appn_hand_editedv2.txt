@@ -1,0 +1,63 @@
+appn:Investigation			0..1	[Investigation.identifier][Study.identifier]
+	schema:identifier	Investigation.identifier	0..1	string	uri
+	schema:name	Investigation.name	0..1	string	
+	schema:description	Investigation.description	0..1	string	
+	appn:Study.identifier	Study.identifier	1..n	appn:Study	
+appn:Study			1..1	[Study.identifier][Person.identifier, Investigation.identifier, SpatialLocation.name, GrowthFacility.name, BiologicalMaterial.name, Sensor.name]
+	schema:identifier	Study.identifier	0..1	string	uri
+	schema:alternateName	Study.alternateName	1..1	string	
+	schema:name	Study.name	1..1	string	
+	schema:description	Study.description	0..1	string	
+	schema:additionalType	Study.additionalType	0..1	string	
+	schema:identifier	Person.identifier	1..n	appn:Person	
+	schema:identifier	Investigation.identifier	0..1	appn:Investigation	
+	schema:Place.name	SpatialLocation.name	1..n	appn:SpatialLocation	
+	appn:GrowthFacility.name	GrowthFacility.name	1..n	appn:GrowthFacility	
+	appn:BiologicalMaterial.name	BiologicalMaterial.name	1..n	appn:BiologicalMaterial	
+	appn:Sensor.name	Sensor.name	0..n	appn:Sensor	
+appn:Person			1..n	[Person.identifier][Person.affiliation, Grant.identifier]
+	schema:givenName	Person.givenName	1..1	string	
+	schema:familyName	Person.familyName	1..1	string	
+	schema:identifier	Person.identifier	0..1	string	uri
+	schema:email	Person.email	0..n	string	email
+	schema:jobTitle	Person.jobTitle	0..1	string	
+	schema:roleName	Person.roleName	1..1	string	
+	schema:affiliation	Person.affiliation	1..n	schema:Organization	
+	schema:identifier	Grant.identifier	0..n	schema:Grant	
+schema:Organization			1..n	[Organization.identifier][Person.identifier]
+	schema:legalName	Organization.legalName	1..1	string	
+	schema:identifier	Organization.identifier	0..1	string	uri
+	schema:legalAddress	Organization.legalAddress	0..1	string	
+	schema:roleName	Organization.roleName	1..1	string	
+	schema:identifier	Person.identifier	1..n	appn:Person	
+schema:Grant			0..n	[Grant.identifier][Person.identifier, Organization.identifier]
+	schema:name	Grant.name	0..1	string	
+	schema:identifier	Grant.identifier	0..1	string	
+	schema:funder	Grant.funder	1..n	schema:Organization	
+	schema:fundedItem	Grant.fundedItem	0..1	appn:Person	
+	schema:amount	Grant.amount	0..1	number	
+	schema:identifier	Person.identifier	1..n	appn:Person	
+	schema:identifier	Organization.identifier	1..n	schema:Organization	
+appn:SpatialLocation			0..n	[SpatialLocation.name][]
+	schema:name	SpatialLocation.name	1..1	string	
+	schema:latitude	SpatialLocation.latitude	0..1	string	
+	schema:longitude	SpatialLocation.longitude	0..1	string	
+	schema:polygon	SpatialLocation.polygon	0..1	string	
+appn:GrowthFacility			0..n	[GrowthFacility.name][]
+	schema:name	GrowthFacility.name	1..1	string	uri
+	appn:hasGrowthFacilityType	GrowthFacility.hasGrowthFacilityType	1..1	string	
+appn:Sensor			0..n	[Sensor.name][]
+	schema:name	Sensor.name	1..1	string	
+	appn:hasSensorType	Sensor.hasSensorType	0..1	string	
+appn:BiologicalMaterial			1..n	[BiologicalMaterial.scientificName][]
+	schema:name	BiologicalMaterial.name	1..1	string	
+	schema:identifier	BiologicalMaterial.identifier	0..1	string	uri
+	appn:scientificName	BiologicalMaterial.scientificName	1..1	string	
+	appn:cultivarEpithet	BiologicalMaterial.cultivarEpithet	0..1	string	
+	appn:hasPreprocessing	BiologicalMaterial.hasPreprocessing	0..1	string	
+	appn:geneticallyModifiedStatus	BiologicalMaterial.geneticallyModifiedStatus	1..1	string	
+	appn:quarantineStatus	BiologicalMaterial.quaratineStatus	1..1	string	
+	appn:MaterialSource	BiologicalMaterial.MaterialSource	0..1	appn:MaterialSource
+appn:MaterialSource			0..n	[MaterialSource.identifier][]
+	appn:hasMaterialSource	MaterialSource.hasMaterialSource	1..n	string	
+	schema:identifier	MaterialSource.identifier	1..n	string	
