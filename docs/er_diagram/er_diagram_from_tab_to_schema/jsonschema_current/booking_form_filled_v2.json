@@ -1,0 +1,109 @@
+{
+
+  "appn:Study": {
+    "Study.name": "TPA_GK_0812",
+    "Study.alternateName": "temp-value",
+    "Study.name": "Reducing barley post-grain filling yield losses",
+    "Study.description": "",
+    "Study.additionalType": "Industry/Research"
+  },
+  "appn:Person": [
+    {
+      "Person.givenName": "M",
+      "Person.familyName": "T",
+      "Person.identifier": "https://orcid.org/0000-0003-4-2605",
+      "Person.email": [
+        "m.t@adelaide.edu.au"
+      ],
+      "Person.jobTitle": "Researcher",
+      "Person.roleName": "Primary Investigator",
+      "Person.affiliation": [{"Organization.identifier": "https://ror.org/028g18b61" }]
+    },
+    {
+      "Person.givenName": "G",
+      "Person.familyName": "K",
+      "Person.identifier": "https://orcid.org/0000-0002-3-2605",
+      "Person.email": [
+        "g.k@adelaide.edu.au"
+      ],
+      "Person.jobTitle": "PhD Student",
+      "Person.roleName": "Investigator",
+      "Person.affiliation":  [ {"Organization.identifier": "https://ror.org/028g18b61"} ]
+    }
+  ],
+  "schema:Organization": [
+    {
+      "Organization.legalName": "Adelaide University",
+      "Organization.identifier": "https://ror.org/028g18b61",
+      "Organization.legalAddress": "",
+      "Organization.roleName": ""
+    },
+     {
+      "Organization.legalName": "Australian Plant Phenomics Network",
+      "Organization.identifier": "https://ror.org/02zj7b759",
+      "Organization.legalAddress": "",
+      "Organization.roleName": ""
+    },
+     {
+      "Organization.legalName": "Grains Research and Development Corporation",
+      "Organization.organizationIdentifier": "https://ror.org/02xwr1996",
+      "Organization.legalAddress": "",
+      "Organization.roleName": "Funder"
+    }
+  ],
+  "schema:Grant": [
+    {
+      "Grant.name": "Reducing barley post-grain filling yield losses",
+      "Grant.identifier": "UOA2411-002",
+      "Grant.funder": [ { "Organization.identifier": "https://ror.org/02xwr1996" } ],
+      "Grant.amount": 1000000.00,
+      "Grant.fundedItem": [{"Person.identifier": "https://orcid.org/M_T" } ]
+    }
+  ],
+  "appn:SpatialLocation": [
+    {
+      "SpatialLocation.name": "Tarlee",
+      "SpatialLocation.latitude": "-34.2667",
+      "SpatialLocation.longitude": "138.7667",
+      "SpatialLocation.polygon": ""
+    },
+    {
+      "SpatialLocation.name": "Cooke Plains",
+      "SpatialLocation.latitude": "-35.379711",
+      "SpatialLocation.longitude": "139.561676",
+      "SpatialLocation.polygon": ""
+    }
+  ],
+  "appn:GrowthFacility": [
+    {
+      "GrowthFacility.name": "https://facility.name",
+      "GrowthFacility.hasGrowthFacilityType": ""
+    }
+  ],
+  "appn:Sensor": [
+    {
+      "Sensor.name": "We need a Sensor name?",
+      "Sensor.hasSensorType": ""
+    }
+  ],
+  "appn:BiologicalMaterial": [
+    {
+      "BiologicalMaterial.name": "Barley",
+      "BiologicalMaterial.identifier": "taxon:4513",
+      "BiologicalMaterial.scientificName": "Hordeum vulgare",
+      "BiologicalMaterial.cultivarEpithet": [ ],
+      "BiologicalMaterial.hasPreprocessing": "",
+      "BiologicalMaterial.geneticallyModifiedStatus": "Not GMO",
+      "BiologicalMaterial.quaratineStatus": "not quarantined",
+      "BiologicalMaterial.MaterialSource": [
+          { "MaterialSource.identifier": "https://example.com/null" }
+      ]
+    }
+  ],
+  "appn:MaterialSource": [
+    {
+      "MaterialSource.hasMaterialSource":  "null",
+      "MaterialSource.identifier": "https://example.com/null"
+    }
+  ]
+}

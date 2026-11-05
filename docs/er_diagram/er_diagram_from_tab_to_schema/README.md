@@ -26,7 +26,7 @@ The above code produces a file named ```index.html```, that can be loaded into a
   
 #### Schema to JSON form fields
 
-The script `schema_to_default_json_with_cardinality.py` uses the `jsonschma` document created by `convert_booking_def_to_jsonschema.py`. The script is used to create JSON documents with fields named by the APPN schema class fields and values used to hold booking information data.
+The script `schema_to_default_json_with_cardinality.py` uses the `jsonschema` document created by `convert_booking_def_to_jsonschema.py`. The script is used to create JSON documents with fields named by the APPN schema class fields and values used to hold booking information data.
 
 ##### Usage example
 
@@ -52,75 +52,99 @@ options:
 
 Example output:
 ```json
-
-python schema_to_default_json_with_cardinality.py -h --no-foreign-key --no-cardinality --array-items 1 --required-only appn_schema_tabdelim_appn_hand_edited.json booking_form_data_cardinality_nfk_req.json
-
+# python schema_to_default_json_with_cardinality.py --no-foreign-key --no-cardinality --array-items 1 appn_schema_tabdelim_appn_hand_edited.json booking_form_data_nfk_req.json
 
 {
-  "appn:Investigation": {},
-  "appn:Study": {
-    "studyIdentifier": "https://example.org/resource",
-    "studyTitle": "<string>",
-    "studyDescription": "<string>",
-    "additionalType": "<string>"
+  "appn:Investigation": {
+    "Investigation.identifier": "https://example.org/resource",
+    "Investigation.name": "<string>",
+    "Investigation.description": "<string>"
   },
-  "schema:Person": [
+  "appn:Study": {
+    "Study.identifier": "https://example.org/resource",
+    "Study.alternateName": "<string> *",
+    "Study.name": "<string> *",
+    "Study.description": "<string>",
+    "Study.additionalType": "<string>"
+  },
+  "appn:Person": [
     {
-      "givenName": "<string>",
-      "familyName": "<string>",
-      "roleName": "<string>"
-    },
-    {
-      "givenName": "<string>",
-      "familyName": "<string>",
-      "roleName": "<string>"
+      "Person.givenName": "<string> *",
+      "Person.familyName": "<string> *",
+      "Person.identifier": "https://example.org/resource",
+      "Person.email": [
+        "name@example.org"
+      ],
+      "Person.jobTitle": "<string>",
+      "Person.roleName": "<string> *"
     }
   ],
   "schema:Organization": [
     {
-      "legalName": "<string>"
-    },
-    {
-      "legalName": "<string>"
+      "Organization.legalName": "<string> *",
+      "Organization.identifier": "https://example.org/resource",
+      "Organization.legalAddress": "<string>",
+      "Organization.roleName": "<string> *"
     }
   ],
   "schema:Grant": [
     {
-      "funder": [
+      "Grant.name": "<string>",
+      "Grant.identifier": "<string>",
+      "Grant.funder": [
         {
-          "identifier": "https://example.org/resource"
+          "identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
         }
-      ]
+      ],
+      "Grant.fundedItem": {
+        "Person.identifier": "https://example.org/resource *"
+      },
+      "Grant.amount": 0.0
     }
   ],
   "appn:SpatialLocation": [
     {
-      "placeName": "<string>"
+      "SpatialLocation.name": "<string> *",
+      "SpatialLocation.latitude": "<string>",
+      "SpatialLocation.longitude": "<string>",
+      "SpatialLocation.polygon": "<string>"
     }
   ],
   "appn:GrowthFacility": [
     {
-      "growthFacilityName": "https://example.org/resource",
-      "growthFacilityType": "<string>",
-      "growthFacilityContainmentLevel": "<string>",
-      "growthFacilityQuarantine": false
+      "GrowthFacility.name": "https://example.org/resource *",
+      "GrowthFacility.hasGrowthFacilityType": "<string> *"
     }
   ],
-  "appn:Deployment": [
+  "appn:Sensor": [
     {
-      "deploymentName": "<string>"
+      "Sensor.name": "<string> *",
+      "Sensor.hasSensorType": "<string>"
     }
   ],
   "appn:BiologicalMaterial": [
     {
-      "biologicalMaterialGenus": "<string>",
-      "biologicalMaterialSpecies": "<string>"
+      "BiologicalMaterial.name": "<string> *",
+      "BiologicalMaterial.identifier": "https://example.org/resource",
+      "BiologicalMaterial.scientificName": "<string> *",
+      "BiologicalMaterial.cultivarEpithet": "<string>",
+      "BiologicalMaterial.hasPreprocessing": "<string>",
+      "BiologicalMaterial.geneticallyModifiedStatus": "<string> *",
+      "BiologicalMaterial.quaratineStatus": "<string> *",
+      "BiologicalMaterial.MaterialSource": {
+        "identifier": "https://example.org/resource *"
+      }
     }
   ],
   "appn:MaterialSource": [
     {
-      "materialSourceIdentifier": [
-        "<string>"
+      "MaterialSource.hasMaterialSource": [
+        "<string> *"
+      ],
+      "MaterialSource.identifier": [
+        "<string> *"
       ]
     }
   ]

@@ -1,5 +1,31 @@
 #!/usr/bin/env python3
-"""Validate APPN example data against an APPN JSON Schema."""
+"""
+Validate APPN example data against an APPN JSON Schema.
+
+Usage:
+
+> python schema_validate_appn_json.py  -h
+
+Validate an APPN JSON object against a definition in an APPN JSON Schema.
+
+positional arguments:
+  schema      Path to the APPN JSON Schema
+  data        Path to the JSON data document
+  definition  An (optional) class defintion to validate against, for example appn:Study
+              If not present then a list of classes is tested.
+
+options:
+  -h, --help  show this help message and exit
+  --template  Remove cardinality wrappers and trailing required-field asterisks before validation
+
+e.g.
+python schema_validate_appn_json.py  appn_booking_schema.json booking_form_filled_v2.json "appn:Study"
+
+
+
+
+
+"""
 
 import argparse
 import copy
@@ -7,9 +33,22 @@ import json
 import sys
 from pathlib import Path
 from typing import Any
+import logging
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+CLASS_LIST = [
+"appn:Investigation",
+"appn:Study",
+"appn:Person",
+"appn:SpatialLocation",
+"appn:GrowthFacility",
+"appn:Sensor",
+"appn:BiologicalMaterial",
+"appn:MaterialSource",
+"schema:Organization",
+"schema:Grant"
+]
 
 def load_json(path: Path) -> Any:
     """Load a JSON document."""
@@ -79,7 +118,7 @@ def unwrap_template_value(value: Any) -> Any:
 def build_definition_schema(
     complete_schema: dict[str, Any],
     definition_name: str,
-) -> dict[str, Any\]:
+) -> dict[str, Any]:
     """
     Build a validation schema for one definition while preserving the
     complete $defs catalogue for local reference resolution.
@@ -121,6 +160,8 @@ def build_definition_schema(
         validation_schema["$ref"] = (
             f"#/definitions/{definition_name}"
         )
+        
+    # print(json.dumps(validation_schema, indent=2))
 
     return validation_schema
 
@@ -147,7 +188,7 @@ def format_error_path(
 def validate_instance(
     instance: Any,
     validation_schema: dict[str, Any],
-) -> list[Any\]:
+) -> list[Any]:
     """Return all validation errors in stable path order."""
     Draft202012Validator.check_schema(
         validation_schema
@@ -165,6 +206,60 @@ def validate_instance(
             error.message,
         ),
     )
+
+
+
+def test_and_print_instance(data_path, validation_schema, instance, classdef: str):
+    # Load the subset of the data file that corresponds to the class definition being tested
+    try:
+        instance = instance[classdef]
+    except KeyError  as e:
+        logging.error("The class definition requested is not present in the data file %s: \nerror: %s",data_path, e)
+        # sys.exit(-1)
+
+    errors = validate_instance(
+        instance,
+        validation_schema,
+    )
+
+    if not errors:
+        print(
+            f"VALID: {data_path} satisfies "
+            f"{classdef}"
+        )
+        # return 0
+        
+    else:
+        print(
+            f"INVALID: {data_path} has "
+            f"{len(errors)} validation error(s) "
+            f"against {classdef}:"
+        )
+
+        for error_number, error in enumerate(
+            errors,
+            start=1,
+        ):
+            instance_path = format_error_path(
+                error.absolute_path
+            )
+
+            schema_path_text = format_error_path(
+                error.absolute_schema_path
+            )
+
+            print()
+            print(
+                f"{error_number}. "
+                f"Instance path: {instance_path}"
+            )
+            print(
+                f"   Error: {error.message}"
+            )
+            print(
+                f"   Schema path: "
+                f"{schema_path_text}"
+            )
 
 
 def main() -> int:
@@ -188,6 +283,7 @@ def main() -> int:
 
     parser.add_argument(
         "definition",
+        nargs="?",
         help=(
             "Definition to validate against, "
             "for example appn:Study"
@@ -209,70 +305,76 @@ def main() -> int:
     schema_path = Path(args.schema)
     data_path = Path(args.data)
 
-    complete_schema = load_json(
-        schema_path
-    )
 
-    instance = load_json(
-        data_path
-    )
+    try:
+        complete_schema = load_json(schema_path)
+    except FileNotFoundError:
+        logging.error("JSON file not found: %s", schema_path)
+    except json.JSONDecodeError as e:
+        logging.error(
+            "Invalid JSON in file: %s (line %s, column %s): %s",
+            schema_path,
+            e.lineno,
+            e.colno,
+            e.msg,
+        )
+        sys.exit(-1)
+    except UnicodeDecodeError as e:
+        logging.error("Encoding error reading %s: %s", schema_path, e)
+    except PermissionError:
+        logging.error("Permission denied reading %s", schema_path)
+    except Exception as e:
+        logging.exception("Unexpected error loading JSON from %s: %s", schema_path, e)
+
+
+    try:
+        instance = load_json(data_path)
+    except FileNotFoundError:
+        logging.error("JSON file not found: %s", data_path)
+    except json.JSONDecodeError as e:
+        logging.error(
+            "Invalid JSON in file: %s (line %s, column %s): %s",
+            data_path,
+            e.lineno,
+            e.colno,
+            e.msg,
+        )
+        sys.exit(-1)
+    except UnicodeDecodeError as e:
+        logging.error("Encoding error reading %s: %s", data_path, e)
+    except PermissionError:
+        logging.error("Permission denied reading %s", data_path)
+    except Exception as e:
+        logging.exception("Unexpected error loading JSON from %s: %s", data_path, e)
+
 
     if args.template:
         instance = unwrap_template_value(
             instance
         )
 
-    validation_schema = (
-        build_definition_schema(
-            complete_schema,
-            args.definition,
+    # Do a single validation if a specific class was 
+    # put on the command line
+    if args.definition:
+        validation_schema = (
+            build_definition_schema(
+                complete_schema,
+                args.definition,
+            )
         )
-    )
-
-    errors = validate_instance(
-        instance,
-        validation_schema,
-    )
-
-    if not errors:
-        print(
-            f"VALID: {data_path} satisfies "
-            f"{args.definition}"
-        )
-
-        return 0
-
-    print(
-        f"INVALID: {data_path} has "
-        f"{len(errors)} validation error(s) "
-        f"against {args.definition}:"
-    )
-
-    for error_number, error in enumerate(
-        errors,
-        start=1,
-    ):
-        instance_path = format_error_path(
-            error.absolute_path
-        )
-
-        schema_path_text = format_error_path(
-            error.absolute_schema_path
-        )
-
-        print()
-        print(
-            f"{error_number}. "
-            f"Instance path: {instance_path}"
-        )
-        print(
-            f"   Error: {error.message}"
-        )
-        print(
-            f"   Schema path: "
-            f"{schema_path_text}"
-        )
-
+        test_and_print_instance(data_path, validation_schema, instance, classdef)
+    else:
+        # Go through and test each of a standard 
+        # list of classes
+        for classdef in CLASS_LIST:
+            validation_schema = (
+            build_definition_schema(
+                complete_schema,
+                classdef,
+                )
+            )
+            test_and_print_instance(data_path, validation_schema, instance, classdef)
+            
     return 1
 
 

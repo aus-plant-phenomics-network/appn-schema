@@ -1,0 +1,157 @@
+{
+  "appn:Investigation": {
+    "Investigation.identifier": "https://example.org/resource",
+    "Investigation.name": "<string>",
+    "Investigation.description": "<string>",
+    "Study.identifier": [
+      {
+        "identifier": "https://example.org/resource *"
+      }
+    ]
+  },
+  "appn:Study": {
+    "Study.identifier": "https://example.org/resource",
+    "Study.alternateName": "<string> *",
+    "Study.name": "<string> *",
+    "Study.description": "<string>",
+    "Study.additionalType": "<string>",
+    "Person.identifier": [
+      {
+        "identifier": "https://example.org/resource *"
+      }
+    ],
+    "Investigation.identifier": {
+      "identifier": "https://example.org/resource *"
+    },
+    "SpatialLocation.name": [
+      {
+        "identifier": "https://example.org/resource *"
+      }
+    ],
+    "GrowthFacility.name": [
+      {
+        "identifier": "https://example.org/resource *"
+      }
+    ],
+    "BiologicalMaterial.name": [
+      {
+        "identifier": "https://example.org/resource *"
+      }
+    ],
+    "Sensor.name": [
+      {
+        "identifier": "https://example.org/resource *"
+      }
+    ]
+  },
+  "appn:Person": [
+    {
+      "Person.givenName": "<string> *",
+      "Person.familyName": "<string> *",
+      "Person.identifier": "https://example.org/resource",
+      "Person.email": [
+        "name@example.org"
+      ],
+      "Person.jobTitle": "<string>",
+      "Person.roleName": "<string> *",
+      "Person.affiliation": [
+        {
+          "identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        }
+      ],
+      "Grant.identifier": [
+        {
+          "identifier": "https://example.org/resource *"
+        }
+      ]
+    }
+  ],
+  "schema:Organization": [
+    {
+      "Organization.legalName": "<string> *",
+      "Organization.identifier": "https://example.org/resource",
+      "Organization.legalAddress": "<string>",
+      "Organization.roleName": "<string> *",
+      "Person.identifier": [
+        {
+          "identifier": "https://example.org/resource *"
+        }
+      ]
+    }
+  ],
+  "schema:Grant": [
+    {
+      "Grant.name": "<string>",
+      "Grant.identifier": "<string>",
+      "Grant.funder": [
+        {
+          "identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        }
+      ],
+      "Grant.fundedItem": {
+        "identifier": "https://example.org/resource *"
+      },
+      "Grant.amount": 0.0,
+      "Person.identifier": [
+        {
+          "identifier": "https://example.org/resource *"
+        }
+      ],
+      "Organization.identifier": [
+        {
+          "identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        }
+      ]
+    }
+  ],
+  "appn:SpatialLocation": [
+    {
+      "SpatialLocation.name": "<string> *",
+      "SpatialLocation.latitude": "<string>",
+      "SpatialLocation.longitude": "<string>",
+      "SpatialLocation.polygon": "<string>"
+    }
+  ],
+  "appn:GrowthFacility": [
+    {
+      "GrowthFacility.name": "https://example.org/resource *",
+      "GrowthFacility.hasGrowthFacilityType": "<string> *"
+    }
+  ],
+  "appn:Sensor": [
+    {
+      "Sensor.name": "<string> *",
+      "Sensor.hasSensorType": "<string>"
+    }
+  ],
+  "appn:BiologicalMaterial": [
+    {
+      "BiologicalMaterial.name": "<string> *",
+      "BiologicalMaterial.identifier": "https://example.org/resource",
+      "BiologicalMaterial.scientificName": "<string> *",
+      "BiologicalMaterial.cultivarEpithet": "<string>",
+      "BiologicalMaterial.hasPreprocessing": "<string>",
+      "BiologicalMaterial.geneticallyModifiedStatus": "<string> *",
+      "BiologicalMaterial.quaratineStatus": "<string> *",
+      "BiologicalMaterial.MaterialSource": {
+        "identifier": "https://example.org/resource *"
+      }
+    }
+  ],
+  "appn:MaterialSource": [
+    {
+      "MaterialSource.hasMaterialSource": [
+        "<string> *"
+      ],
+      "MaterialSource.identifier": [
+        "<string> *"
+      ]
+    }
+  ]
+}
