@@ -1,5 +1,9 @@
 {
-
+ "appn:Investigation": {
+     "identifier": "",
+     "name": "",
+     "description": ""
+  },
   "appn:Study": {
     "Study.name": "TPA_GK_0812",
     "Study.alternateName": "temp-value",

@@ -12,6 +12,7 @@ to produce an interactive web-based plot of the current `appn-schma.ttl` file.
 The links from the nodes in the interactive graph currently point to the https://aus-plant-phenomics-network.github.io/appn-schema/ 
 version of the documentation. This needs to be made up-to-date with running:
 1. Ensure `.png` and `.md` files are up to date (run the `build_uml.sh` script, and push to the repo)
+2. Add any extra markdown class definition files to the `mkdocs.yml` file (and push to the repo)
 2. "Deploy MkDocs to Pages" GitHub Action
 3. "Build TTL Schema Graph" GitHub action
 

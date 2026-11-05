@@ -1,0 +1,180 @@
+{
+  "appn:Investigation": {
+    "Investigation.identifier": "https://example.org/resource",
+    "Investigation.name": "<string>",
+    "Investigation.description": "<string>"
+  },
+  "appn:Study": {
+    "Study.identifier": "https://example.org/resource",
+    "Study.name": "<string> *",
+    "Study.alternateName": "<string> *",
+    "Study.description": "<string>",
+    "Study.additionalType": "<string>"
+  },
+  "appn:Person": [
+    {
+      "Person.givenName": "<string> *",
+      "Person.familyName": "<string> *",
+      "Person.identifier": "https://example.org/resource",
+      "Person.email": [
+        "name@example.org",
+        "name@example.org"
+      ],
+      "Person.jobTitle": "<string>",
+      "Person.roleName": "<string> *"
+    },
+    {
+      "Person.givenName": "<string> *",
+      "Person.familyName": "<string> *",
+      "Person.identifier": "https://example.org/resource",
+      "Person.email": [
+        "name@example.org",
+        "name@example.org"
+      ],
+      "Person.jobTitle": "<string>",
+      "Person.roleName": "<string> *"
+    }
+  ],
+  "schema:Organization": [
+    {
+      "Organization.legalName": "<string> *",
+      "Organization.identifier": "https://example.org/resource",
+      "Organization.legalAddress": "<string>",
+      "Organization.roleName": "<string> *"
+    },
+    {
+      "Organization.legalName": "<string> *",
+      "Organization.identifier": "https://example.org/resource",
+      "Organization.legalAddress": "<string>",
+      "Organization.roleName": "<string> *"
+    }
+  ],
+  "schema:Grant": [
+    {
+      "Grant.name": "<string>",
+      "Grant.identifier": "<string>",
+      "Grant.funder": [
+        {
+          "Organization.identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        },
+        {
+          "Organization.identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        }
+      ],
+      "Grant.fundedItem": [
+        {
+          "Person.identifier": "https://example.org/resource *"
+        },
+        {
+          "Person.identifier": "https://example.org/resource *"
+        }
+      ],
+      "Grant.amount": 0.0
+    },
+    {
+      "Grant.name": "<string>",
+      "Grant.identifier": "<string>",
+      "Grant.funder": [
+        {
+          "Organization.identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        },
+        {
+          "Organization.identifier": "https://example.org/resource *",
+          "legalName": "<string>",
+          "roleName": "<string>"
+        }
+      ],
+      "Grant.fundedItem": [
+        {
+          "Person.identifier": "https://example.org/resource *"
+        },
+        {
+          "Person.identifier": "https://example.org/resource *"
+        }
+      ],
+      "Grant.amount": 0.0
+    }
+  ],
+  "appn:SpatialLocation": [
+    {
+      "SpatialLocation.name": "<string> *",
+      "SpatialLocation.latitude": "<string>",
+      "SpatialLocation.longitude": "<string>",
+      "SpatialLocation.polygon": "<string>"
+    },
+    {
+      "SpatialLocation.name": "<string> *",
+      "SpatialLocation.latitude": "<string>",
+      "SpatialLocation.longitude": "<string>",
+      "SpatialLocation.polygon": "<string>"
+    }
+  ],
+  "appn:GrowthFacility": [
+    {
+      "GrowthFacility.name": "https://example.org/resource *",
+      "GrowthFacility.hasGrowthFacilityType": "<string> *"
+    },
+    {
+      "GrowthFacility.name": "https://example.org/resource *",
+      "GrowthFacility.hasGrowthFacilityType": "<string> *"
+    }
+  ],
+  "appn:Sensor": [
+    {
+      "Sensor.name": "<string> *",
+      "Sensor.hasSensorType": "<string>"
+    },
+    {
+      "Sensor.name": "<string> *",
+      "Sensor.hasSensorType": "<string>"
+    }
+  ],
+  "appn:BiologicalMaterial": [
+    {
+      "BiologicalMaterial.name": "<string> *",
+      "BiologicalMaterial.identifier": "https://example.org/resource",
+      "BiologicalMaterial.scientificName": "<string> *",
+      "BiologicalMaterial.cultivarEpithet": [
+        "<string>",
+        "<string>"
+      ],
+      "BiologicalMaterial.hasPreprocessing": "<string>",
+      "BiologicalMaterial.geneticallyModifiedStatus": "<string> *",
+      "BiologicalMaterial.quaratineStatus": "<string> *",
+      "BiologicalMaterial.MaterialSource": {
+        "identifier": "https://example.org/resource *"
+      }
+    },
+    {
+      "BiologicalMaterial.name": "<string> *",
+      "BiologicalMaterial.identifier": "https://example.org/resource",
+      "BiologicalMaterial.scientificName": "<string> *",
+      "BiologicalMaterial.cultivarEpithet": [
+        "<string>",
+        "<string>"
+      ],
+      "BiologicalMaterial.hasPreprocessing": "<string>",
+      "BiologicalMaterial.geneticallyModifiedStatus": "<string> *",
+      "BiologicalMaterial.quaratineStatus": "<string> *",
+      "BiologicalMaterial.MaterialSource": {
+        "identifier": "https://example.org/resource *"
+      }
+    }
+  ],
+  "appn:MaterialSource": [
+    {
+      "MaterialSource.hasMaterialSource": "<string>",
+      "MaterialSource.identifier": "<string>"
+    },
+    {
+      "MaterialSource.hasMaterialSource": "<string>",
+      "MaterialSource.identifier": "<string>"
+    }
+  ]
+}

@@ -583,14 +583,14 @@
       "title": "appn:BiologicalMaterialReference",
       "type": "object",
       "properties": {
-        "identifier": {
+        "BiologicalMaterial.identifier": {
           "type": "string",
           "format": "uri",
           "rocrateProperty": "schema:Thing.identifier"
         }
       },
       "required": [
-        "identifier"
+        "BiologicalMaterial.identifier"
       ],
       "additionalProperties": false
     },
@@ -598,14 +598,14 @@
       "title": "appn:GrowthFacilityReference",
       "type": "object",
       "properties": {
-        "identifier": {
+        "GrowthFacility.name": {
           "type": "string",
           "format": "uri",
           "rocrateProperty": "schema:Thing.identifier"
         }
       },
       "required": [
-        "identifier"
+        "GrowthFacility.name"
       ],
       "additionalProperties": false
     },
@@ -613,14 +613,14 @@
       "title": "appn:InvestigationReference",
       "type": "object",
       "properties": {
-        "identifier": {
+        "Investigation.identifier": {
           "type": "string",
           "format": "uri",
           "rocrateProperty": "schema:Thing.identifier"
         }
       },
       "required": [
-        "identifier"
+        "Investigation.identifier"
       ],
       "additionalProperties": false
     },
@@ -628,14 +628,14 @@
       "title": "appn:MaterialSourceReference",
       "type": "object",
       "properties": {
-        "identifier": {
+        "MaterialSource.identifier": {
           "type": "string",
           "format": "uri",
           "rocrateProperty": "schema:Thing.identifier"
         }
       },
       "required": [
-        "identifier"
+        "MaterialSource.identifier"
       ],
       "additionalProperties": false
     },
@@ -665,7 +665,7 @@
         }
       },
       "required": [
-        "identifier"
+        "Sensor.name"
       ],
       "additionalProperties": false
     },
@@ -688,14 +688,14 @@
       "title": "appn:StudyReference",
       "type": "object",
       "properties": {
-        "identifier": {
+        "Study.identifier": {
           "type": "string",
           "format": "uri",
           "rocrateProperty": "schema:Thing.identifier"
         }
       },
       "required": [
-        "identifier"
+        "Study.identifier"
       ],
       "additionalProperties": false
     },

@@ -18,6 +18,7 @@
 * [appn:GrowthFacilityType](appn_GrowthFacilityType.md)
 * [appn:Investigation](appn_Investigation.md)
 * [appn:Location](appn_Location.md)
+* [appn:LocationSchema](appn_LocationSchema.md)
 * [appn:MaterialSource](appn_MaterialSource.md)
 * [appn:Method](appn_Method.md)
 * [appn:Observation](appn_Observation.md)

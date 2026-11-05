@@ -65,6 +65,7 @@ nav:
       - Input Variable: appn_InputVariable.md
       - Investigation: appn_Investigation.md
       - Location: appn_Location.md
+      - Location Schema: appn_LocationSchema.md
       - Material Source: appn_MaterialSource.md
       - Method: appn_Method.md
       - Observation: appn_Observation.md
