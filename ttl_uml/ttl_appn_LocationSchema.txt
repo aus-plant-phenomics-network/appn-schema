@@ -1,0 +1,31 @@
+@startuml
+class LocationSchema  #line.bold
+class "schema:Thing" #DDFFDD 
+LocationSchema --|> "schema:Thing"
+class Location 
+Location --> LocationSchema : hasLocationSchema
+class LocationSchema #line.bold {
+    schemaLevelName1: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName2: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName3: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName4: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName5: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName6: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName7: string
+}
+class LocationSchema #line.bold {
+    schemaLevelName8: string
+}
+@enduml

@@ -17,6 +17,7 @@ class GrowthFacility
 class GrowthFacilityType
 class Investigation
 class Location
+class LocationSchema
 class MaterialSource
 class Method
 class Observation
@@ -209,6 +210,7 @@ SpatialLocation --|> Location
 SpatialLocation --|> "ppeo:GPS_location"
 SpatialLocation --|> "schema:Place"
 XYZLocation --|> Location
+LocationSchema --|> "schema:Thing"
 PhysicalContainmentLevel --|> "schema:Enumeration"
 BiocontainmentLevel --|> "schema:Enumeration"
 Country --|> "schema:Country"

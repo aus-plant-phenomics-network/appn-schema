@@ -259,6 +259,11 @@ appn:XYZLocation a rdfs:Class ;
   rdfs:comment "A location defined using an appropriate local spatial geometry in three dimensions." ;
   rdfs:subClassOf appn:Location .
 
+appn:LocationSchema a rdfs:Class ;
+  schema:name "LocationSchema" ;
+  rdfs:comment "A definition for the groupings used to specify locations in a given context." ;
+  rdfs:subClassOf schema:Thing .
+
 appn:PhysicalContainmentLevel a rdfs:Class ;
   schema:name "PhysicalContainmentLevel" ;
   rdfs:comment "Specifies the physical containment level (PC1-4) for a growth facility." ;
@@ -336,14 +341,14 @@ appn:madeBySampler a rdf:Property ;
   schema:rangeIncludes appn:Sampler .
 
 appn:hasResult a rdf:Property ;
-  schema:name "hasResult" ; 
+  schema:name "hasResult" ;
   rdfs:comment "Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult." ;
   rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Observation,appn:Control ;
   schema:rangeIncludes appn:File .
 
 appn:hasSimpleResult a rdf:Property ;
-  schema:name "hasSimpleResult" ; 
+  schema:name "hasSimpleResult" ;
   rdfs:comment "Identifies a discrete value received as a data output from an Observation or Control assay." ;
   rdfs:subPropertyOf sosa:hasSimpleResult ;
   schema:domainIncludes appn:Observation,appn:Control ;
@@ -353,52 +358,52 @@ appn:hasSimpleResult a rdf:Property ;
   schema:rangeIncludes xsd:boolean .
 
 appn:producesSample a rdf:Property ;
-  schema:name "producesSample" ; 
+  schema:name "producesSample" ;
   rdfs:comment "Identifies the Sample produced by a Sampling assay." ;
   rdfs:subPropertyOf sosa:hasResult ;
   schema:domainIncludes appn:Sampling ;
   schema:rangeIncludes appn:Sample .
 
 appn:usesData a rdf:Property ;
-  schema:name "usesData" ; 
+  schema:name "usesData" ;
   rdfs:comment "Identifies a data input to an Observation assay. This is intended for use in relation to Observations delivered using a SoftwareApplication." ;
   schema:domainIncludes appn:Observation ;
   schema:rangeIncludes appn:File .
 
 appn:controls a rdf:Property ;
-  schema:name "controls" ; 
+  schema:name "controls" ;
   rdfs:comment "Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property." ;
   rdfs:subPropertyOf sosa:actsOnProperty ;
   schema:domainIncludes appn:Control ;
   schema:rangeIncludes appn:ControlledVariable .
 
 appn:treatsWith a rdf:Property ;
-  schema:name "treatsWith" ; 
+  schema:name "treatsWith" ;
   rdfs:comment "Identifies a Substance or a SubstanceAmount associated with a Treatment assay. The Treatment makes an input of a quantity of some Substance associated with the SubstanceAmount. If the result is a known final state for a variable associated with an ObservationUnit, the assay should be modeled as a Control with a ControlledVariable. Treatments are for cases where no definite resulting value is recorded." ;
   schema:domainIncludes appn:Treatment ;
   schema:rangeIncludes appn:Substance,appn:SubstanceAmount .
 
 appn:hasComponent a rdf:Property ;
-  schema:name "hasComponent" ; 
+  schema:name "hasComponent" ;
   rdfs:comment "Identifies a Substance or SubstanceAmount included in the current Substance." ;
   schema:domainIncludes appn:Substance ;
   schema:rangeIncludes appn:Substance ;
   schema:rangeIncludes appn:SubstanceAmount .
 
 appn:isOfSubstance a rdf:Property ;
-  schema:name "isOfSubstance" ; 
+  schema:name "isOfSubstance" ;
   rdfs:comment "Identifies the Substance associated with a SubstanceAmount. This represents the biological or chemical substance applied to the ObservationUnit by a Treatment." ;
   schema:domainIncludes appn:SubstanceAmount ;
   schema:rangeIncludes appn:Substance .
 
 appn:amount a rdf:Property ;
-  schema:name "amount" ; 
+  schema:name "amount" ;
   rdfs:comment "Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale." ;
   schema:domainIncludes appn:SubstanceAmount ;
   schema:rangeIncludes xsd:decimal .
 
 appn:observes a rdf:Property ;
-  schema:name "observes" ; 
+  schema:name "observes" ;
   rdfs:comment "Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property." ;
   rdfs:subPropertyOf ppeo:hasVariable ;
   rdfs:subPropertyOf sosa:observedProperty ;
@@ -406,45 +411,45 @@ appn:observes a rdf:Property ;
   schema:rangeIncludes appn:ObservedVariable .
 
 appn:inheritsContext a rdf:Property ;
-  schema:name "inheritsContext" ; 
+  schema:name "inheritsContext" ;
   rdfs:comment "Indicates an ObservationUnit should be considered to inherit values for Variables from another ObservationUnit. Examples include a plant inheriting environmental variables from a pot, growth cabinet or field or a leaf inheriting environmental and developmental properties from a plant." ;
   schema:domainIncludes appn:ObservationUnit ;
   schema:rangeIncludes appn:ObservationUnit .
 
 appn:hasGrowthFacilityType a rdf:Property ;
-  schema:name "hasGrowthFacilityType" ; 
+  schema:name "hasGrowthFacilityType" ;
   rdfs:comment "Links a GrowthFacility to its type." ;
   schema:domainIncludes appn:GrowthFacility ;
   schema:rangeIncludes appn:GrowthFacilityType .
 
 # COMMENT: Needs a range.
 appn:quarantine a rdf:Property ;
-  schema:name "quarantine" ; 
+  schema:name "quarantine" ;
   rdfs:comment "Indicates if a GrowthFacility is for quarantine." ;
   schema:domainIncludes appn:GrowthFacility ;
   rdfs:range xsd:boolean .
 
 appn:hasBiologicalUnitType a rdf:Property ;
-  schema:name "hasBiologicalUnitType" ; 
+  schema:name "hasBiologicalUnitType" ;
   rdfs:comment "Links a BiologicalUnit to its type." ;
   schema:domainIncludes appn:BiologicalUnit ;
   schema:rangeIncludes appn:BiologicalUnitType .
 
 appn:hasPlatformType a rdf:Property ;
-  schema:name "hasPlatformType" ; 
+  schema:name "hasPlatformType" ;
   rdfs:comment "Links a Platform to its type." ;
   schema:domainIncludes appn:Platform ;
   schema:rangeIncludes appn:PlatformType .
 
 appn:hasSensorType a rdf:Property ;
-  schema:name "hasSensorType" ; 
+  schema:name "hasSensorType" ;
   rdfs:comment "Links a Sensor to its type." ;
   schema:domainIncludes appn:Sensor ;
   schema:rangeIncludes appn:SensorType .
 
 # COMMENT: Needs a range.
 appn:hasDefaultValue a rdf:Property ;
-  schema:name "hasDefaultValue" ; 
+  schema:name "hasDefaultValue" ;
   rdfs:comment "Specifies the default value for a variable." ;
   schema:domainIncludes appn:Variable ;
   schema:rangeIncludes xsd:string ;
@@ -453,59 +458,177 @@ appn:hasDefaultValue a rdf:Property ;
   schema:rangeIncludes xsd:boolean .
 
 appn:isLocationFor a rdf:Property ;
-  schema:name "isLocationFor" ; 
+  schema:name "isLocationFor" ;
   rdfs:comment "Specifies the ObservationUnit to which a Location relates." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:ObservationUnit .
 
 appn:isLocationWithin a rdf:Property ;
-  schema:name "isLocationWithin" ; 
+  schema:name "isLocationWithin" ;
   rdfs:comment "Specifies that a Location is a position within an ObservationUnit." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:ObservationUnit .
 
-# COMMENT: Needs a range.
+appn:hasLocationSchema a rdf:Property ;
+  schema:name "hasLocationSchema" ;
+  rdfs:comment "Specifies the schema defining the levels in describing a Location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes appn:LocationSchema .
+
+appn:schemaLevel1 a rdf:Property ;
+  schema:name "schemaLevel1" ;
+  rdfs:comment "Specifies the most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel2 a rdf:Property ;
+  schema:name "schemaLevel2" ;
+  rdfs:comment "Specifies the second most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel3 a rdf:Property ;
+  schema:name "schemaLevel3" ;
+  rdfs:comment "Specifies the third most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel4 a rdf:Property ;
+  schema:name "schemaLevel4" ;
+  rdfs:comment "Specifies the fourth most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel5 a rdf:Property ;
+  schema:name "schemaLevel5" ;
+  rdfs:comment "Specifies the fifth most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel6 a rdf:Property ;
+  schema:name "schemaLevel6" ;
+  rdfs:comment "Specifies the sixth most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel7 a rdf:Property ;
+  schema:name "schemaLevel7" ;
+  rdfs:comment "Specifies the seventh most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevel8 a rdf:Property ;
+  schema:name "schemaLevel8" ;
+  rdfs:comment "Specifies the eighth most signicant level of organisation when specifying a location." ;
+  schema:domainIncludes appn:Location ;
+  schema:rangeIncludes xsd:string ;
+  schema:rangeIncludes xsd:integer ;
+  schema:rangeIncludes xsd:decimal .
+
+appn:schemaLevelName1 a rdf:Property ;
+  schema:name "schemaLevelName1" ;
+  rdfs:comment "Names the most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName2 a rdf:Property ;
+  schema:name "schemaLevelName2" ;
+  rdfs:comment "Names the second most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName3 a rdf:Property ;
+  schema:name "schemaLevelName3" ;
+  rdfs:comment "Names the third most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName4 a rdf:Property ;
+  schema:name "schemaLevelName4" ;
+  rdfs:comment "Names the fourth most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName5 a rdf:Property ;
+  schema:name "schemaLevelName5" ;
+  rdfs:comment "Names the fifth most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName6 a rdf:Property ;
+  schema:name "schemaLevelName6" ;
+  rdfs:comment "Names the sixth most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName7 a rdf:Property ;
+  schema:name "schemaLevelName7" ;
+  rdfs:comment "Names the seventh most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
+appn:schemaLevelName8 a rdf:Property ;
+  schema:name "schemaLevelName8" ;
+  rdfs:comment "Names the eighth most signicant level of organisation for locations sharing a LocationSchema." ;
+  schema:domainIncludes appn:LocationSchema ;
+  schema:rangeIncludes xsd:string .
+
 appn:row a rdf:Property ;
-  schema:name "row" ; 
+  schema:name "row" ;
   rdfs:comment "Specifies the row for an XYZLocation." ;
+  rdfs:subPropertyOf appn:schemaLevel1 ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-# COMMENT: Needs a range.
 appn:column a rdf:Property ;
-  schema:name "column" ; 
+  schema:name "column" ;
   rdfs:comment "Specifies the column for an XYZLocation." ;
+  rdfs:subPropertyOf appn:schemaLevel2 ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-# COMMENT: Needs a range.
 appn:level a rdf:Property ;
-  schema:name "level" ; 
+  schema:name "level" ;
   rdfs:comment "Specifies the level for an XYZLocation in a three-dimensional configuration." ;
+  rdfs:subPropertyOf appn:schemaLevel3 ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
 appn:hosts a rdf:Property ;
-  schema:name "hosts" ; 
+  schema:name "hosts" ;
   rdfs:comment "Identifies a Sensor or Actuator hosted by a Platform." ;
   rdfs:subPropertyOf sosa:hosts ;
   schema:domainIncludes appn:Platform ;
   schema:rangeIncludes appn:Sensor,appn:Actuator .
 
 appn:deployedSystem a rdf:Property ;
-  schema:name "deployedSystem" ; 
+  schema:name "deployedSystem" ;
   rdfs:comment "Identifies a Sensor or Actuator deployed on a Platform." ;
   schema:domainIncludes appn:Deployment ;
   schema:rangeIncludes appn:Sensor,appn:Actuator .
 
 appn:deployedOnPlatform a rdf:Property ;
-  schema:name "deployedOnPlatform" ; 
+  schema:name "deployedOnPlatform" ;
   rdfs:comment "Identifies a Platform on which Sensors or Actuators are deployed." ;
   schema:domainIncludes appn:Deployment ;
   schema:rangeIncludes appn:Platform .
@@ -519,13 +642,13 @@ appn:usedMethod a rdf:Property ;
   schema:rangeIncludes appn:Method .
 
 appn:forBiologicalUnitType a rdf:Property ;
-  schema:name "forBiologicalUnitType" ; 
+  schema:name "forBiologicalUnitType" ;
   rdfs:comment "Links a Variable to the BiologicalUnitType to which it relates." ;
   schema:domainIncludes appn:Variable ;
   schema:rangeIncludes appn:BiologicalUnitType .
 
 appn:forBiologicalMaterial a rdf:Property ;
-  schema:name "forBiologicalMaterial" ; 
+  schema:name "forBiologicalMaterial" ;
   rdfs:comment "Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates." ;
   schema:domainIncludes appn:Variable ;
   schema:rangeIncludes appn:BiologicalMaterial .

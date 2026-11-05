@@ -31,6 +31,32 @@ class ObservationUnit
 Location --> ObservationUnit : isLocationFor
 class ObservationUnit 
 Location --> ObservationUnit : isLocationWithin
+class LocationSchema 
+Location --> LocationSchema : hasLocationSchema
+class Location #line.bold {
+    schemaLevel1: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel2: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel3: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel4: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel5: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel6: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel7: string|integer|decimal
+}
+class Location #line.bold {
+    schemaLevel8: string|integer|decimal
+}
 class Location #line.bold {
     startTime: dateTime
 }
