@@ -4,7 +4,7 @@ This is a [`jsonschema`](https://json-schema.org/docs) based schema that defines
 
 This directory contains:
 1. The schema (*appn_booking_schema.json*) that can be used to verify a json document.
-2. An example of booking form data (*booking_form_filled_v2.json*) saved as a JSON document with data provided.
+2. An example of booking form data (e.g. *booking_form_filled_v2.json*) saved as a JSON document with data provided.
 3. A verification script (*schema_validate_appn_json.py*) to test if the json data file conforms to the jsonschema document.
 
 ### Use of the validator
