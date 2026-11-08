@@ -1,6 +1,6 @@
 ##  Booking Form Schema
 
-This is a `jsonschema` based schema that defines the structure of booking form information that should be collected about a study and is typically available from the booking process that is carried out when a study is being scoped with a researcher when engaging an APPN node.
+This is a [`jsonschema`](https://json-schema.org/docs) based schema that defines the structure of booking form information that should be collected about a study. The booking form data is typically available from the booking process that is carried out when a study is being scoped with a researcher when engaging an APPN node.
 
 This directory contains:
 1. The schema (*appn_booking_schema.json*) that can be used to verify a json document.
