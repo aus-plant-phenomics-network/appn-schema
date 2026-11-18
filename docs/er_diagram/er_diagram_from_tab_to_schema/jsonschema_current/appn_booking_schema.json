@@ -526,7 +526,7 @@
               "type": "string",
               "rocrateProperty": "appn:geneticallyModifiedStatus"
             },
-            "BiologicalMaterial.quaratineStatus": {
+            "BiologicalMaterial.quarantineStatus": {
               "type": "string",
               "rocrateProperty": "appn:quarantineStatus"
             },
@@ -546,7 +546,7 @@
             "BiologicalMaterial.name",
             "BiologicalMaterial.scientificName",
             "BiologicalMaterial.geneticallyModifiedStatus",
-            "BiologicalMaterial.quaratineStatus"
+            "BiologicalMaterial.quarantineStatus"
           ],
           "appnCardinality": "1..n",
           "x-primary-key": [

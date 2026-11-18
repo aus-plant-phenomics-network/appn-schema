@@ -1,8 +1,8 @@
 {
  "appn:Investigation": {
-     "identifier": "",
-     "name": "",
-     "description": ""
+     "Investigation.identifier": "",
+     "Investigation.name": "",
+     "Investigation.description": ""
   },
   "appn:Study": {
     "Study.name": "TPA_GK_0812",
@@ -98,8 +98,8 @@
       "BiologicalMaterial.cultivarEpithet": [ ],
       "BiologicalMaterial.hasPreprocessing": "",
       "BiologicalMaterial.geneticallyModifiedStatus": "Not GMO",
-      "BiologicalMaterial.quaratineStatus": "not quarantined",
-      "BiologicalMaterial.MaterialSource": [
+      "BiologicalMaterial.quarantineStatus": "not quarantined",
+      "BiologicalMaterial.hasMaterialSource": [
           { "MaterialSource.identifier": "https://example.com/null" }
       ]
     }

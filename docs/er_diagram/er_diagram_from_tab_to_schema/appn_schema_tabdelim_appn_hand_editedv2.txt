@@ -56,8 +56,8 @@ appn:BiologicalMaterial			1..n	[BiologicalMaterial.scientificName][]
 	appn:cultivarEpithet	BiologicalMaterial.cultivarEpithet	0..1	string	
 	appn:hasPreprocessing	BiologicalMaterial.hasPreprocessing	0..1	string	
 	appn:geneticallyModifiedStatus	BiologicalMaterial.geneticallyModifiedStatus	1..1	string	
-	appn:quarantineStatus	BiologicalMaterial.quaratineStatus	1..1	string	
-	appn:MaterialSource	BiologicalMaterial.MaterialSource	0..1	appn:MaterialSource
+	appn:quarantineStatus	BiologicalMaterial.quarantineStatus	1..1	string	
+	appn:hasMaterialSource	BiologicalMaterial.hasMaterialSource	0..1	appn:MaterialSource
 appn:MaterialSource			0..n	[MaterialSource.identifier][]
 	appn:hasMaterialSource	MaterialSource.hasMaterialSource	1..n	string	
 	schema:identifier	MaterialSource.identifier	1..n	string	
