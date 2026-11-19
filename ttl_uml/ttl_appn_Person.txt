@@ -18,6 +18,16 @@ class "schema:Person" #DDFFDD
 Person --|> "schema:Person"
 class Role 
 Person --> Role : hasRole
+class Organisation 
+Person --> Organisation : affiliation
+class Grant 
+Grant --> Person : fundedPerson
+class Person #line.bold {
+    orcid: anyURI
+}
+class Person #line.bold {
+    restrictedPII: boolean
+}
 class Observation 
 Observation --> Observer : madeByObserver
 class Control 

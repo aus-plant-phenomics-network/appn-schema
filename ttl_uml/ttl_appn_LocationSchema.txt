@@ -5,27 +5,27 @@ LocationSchema --|> "schema:Thing"
 class Location 
 Location --> LocationSchema : hasLocationSchema
 class LocationSchema #line.bold {
-    schemaLevelName1: string
+    schemaFirstLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName2: string
+    schemaSecondLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName3: string
+    schemaThirdLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName4: string
+    schemaFourthLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName5: string
+    schemaFifthLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName6: string
+    schemaSixthLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName7: string
+    schemaSeventhLevelName: string
 }
 class LocationSchema #line.bold {
-    schemaLevelName8: string
+    schemaEighthLevelName: string
 }
 @enduml

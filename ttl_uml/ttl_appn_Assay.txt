@@ -13,7 +13,7 @@ Assay --> Method : usedMethod
 class ResearchActivity 
 ResearchActivity --> ResearchActivity : isPartOf
 class Role 
-Role --> ResearchActivity : isRoleOfPersonIn
+Role --> ResearchActivity : isRoleIn
 class ResearchActivity #line.bold {
     startTime: dateTime
 }
@@ -22,6 +22,9 @@ class ResearchActivity #line.bold {
 }
 class ResearchActivity #line.bold {
     atTime: dateTime
+}
+class ResearchActivity #line.bold {
+    raid: anyURI
 }
 class Observation 
 Observation --|> Assay

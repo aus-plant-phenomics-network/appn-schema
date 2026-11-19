@@ -6,6 +6,8 @@ class "ppeo:role" #EEFFCC
 Role --|> "ppeo:role"
 class Person 
 Person --> Role : hasRole
+class Organisation 
+Organisation --> Role : hasRole
 class ResearchActivity 
-Role --> ResearchActivity : isRoleOfPersonIn
+Role --> ResearchActivity : isRoleIn
 @enduml

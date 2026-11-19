@@ -160,9 +160,19 @@ appn:ExternalEvent a rdfs:Class ;
   rdfs:subClassOf appn:Controller ;
   rdfs:subClassOf schema:Event .
 
+appn:Grant a rdfs:Class ;
+  schema:name "Grant" ;
+  rdfs:comment "A grant as funding for a ResearchActivity." ;
+  rdfs:subClassOf schema:Grant .
+
+appn:Organisation a rdfs:Class ;
+  schema:name "Organization" ;
+  rdfs:comment "An organization, preferably identified using an ROR." ;
+  rdfs:subClassOf schema:Organization .
+
 appn:Person a rdfs:Class ;
   schema:name "Person" ;
-  rdfs:comment "A Person, preferably identified using an ORCID, that may perform an Assay." ;
+  rdfs:comment "A person, preferably identified using an ORCID, that may perform an Assay." ;
   rdfs:subClassOf ppeo:person ;
   rdfs:subClassOf appn:Observer ;
   rdfs:subClassOf appn:Controller ;
@@ -447,7 +457,6 @@ appn:hasSensorType a rdf:Property ;
   schema:domainIncludes appn:Sensor ;
   schema:rangeIncludes appn:SensorType .
 
-# COMMENT: Needs a range.
 appn:hasDefaultValue a rdf:Property ;
   schema:name "hasDefaultValue" ;
   rdfs:comment "Specifies the default value for a variable." ;
@@ -475,114 +484,114 @@ appn:hasLocationSchema a rdf:Property ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes appn:LocationSchema .
 
-appn:schemaLevel1 a rdf:Property ;
-  schema:name "schemaLevel1" ;
+appn:schemaFirstLevel a rdf:Property ;
+  schema:name "schemaFirstLevel" ;
   rdfs:comment "Specifies the most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel2 a rdf:Property ;
-  schema:name "schemaLevel2" ;
+appn:schemaSecondLevel a rdf:Property ;
+  schema:name "schemaSecondLevel" ;
   rdfs:comment "Specifies the second most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel3 a rdf:Property ;
-  schema:name "schemaLevel3" ;
+appn:schemaThirdLevel a rdf:Property ;
+  schema:name "schemaThirdLevel" ;
   rdfs:comment "Specifies the third most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel4 a rdf:Property ;
-  schema:name "schemaLevel4" ;
+appn:schemaFourthLevel a rdf:Property ;
+  schema:name "schemaFourthLevel" ;
   rdfs:comment "Specifies the fourth most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel5 a rdf:Property ;
-  schema:name "schemaLevel5" ;
+appn:schemaFifthLevel a rdf:Property ;
+  schema:name "schemaFifthLevel" ;
   rdfs:comment "Specifies the fifth most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel6 a rdf:Property ;
-  schema:name "schemaLevel6" ;
+appn:schemaSixthLevel a rdf:Property ;
+  schema:name "schemaSixthLevel" ;
   rdfs:comment "Specifies the sixth most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel7 a rdf:Property ;
-  schema:name "schemaLevel7" ;
+appn:schemaSeventhLevel a rdf:Property ;
+  schema:name "schemaSeventhLevel" ;
   rdfs:comment "Specifies the seventh most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevel8 a rdf:Property ;
-  schema:name "schemaLevel8" ;
+appn:schemaEighthLevel a rdf:Property ;
+  schema:name "schemaEighthLevel" ;
   rdfs:comment "Specifies the eighth most signicant level of organisation when specifying a location." ;
   schema:domainIncludes appn:Location ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
   schema:rangeIncludes xsd:decimal .
 
-appn:schemaLevelName1 a rdf:Property ;
-  schema:name "schemaLevelName1" ;
+appn:schemaFirstLevelName a rdf:Property ;
+  schema:name "schemaFirstLevelName" ;
   rdfs:comment "Names the most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName2 a rdf:Property ;
-  schema:name "schemaLevelName2" ;
+appn:schemaSecondLevelName a rdf:Property ;
+  schema:name "schemaSecondLevelName" ;
   rdfs:comment "Names the second most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName3 a rdf:Property ;
-  schema:name "schemaLevelName3" ;
+appn:schemaThirdLevelName a rdf:Property ;
+  schema:name "schemaThirdLevelName" ;
   rdfs:comment "Names the third most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName4 a rdf:Property ;
-  schema:name "schemaLevelName4" ;
+appn:schemaFourthLevelName a rdf:Property ;
+  schema:name "schemaFourthLevelName" ;
   rdfs:comment "Names the fourth most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName5 a rdf:Property ;
-  schema:name "schemaLevelName5" ;
+appn:schemaFifthLevelName a rdf:Property ;
+  schema:name "schemaFifthLevelName" ;
   rdfs:comment "Names the fifth most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName6 a rdf:Property ;
-  schema:name "schemaLevelName6" ;
+appn:schemaSixthLevelName a rdf:Property ;
+  schema:name "schemaSixthLevelName" ;
   rdfs:comment "Names the sixth most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName7 a rdf:Property ;
-  schema:name "schemaLevelName7" ;
+appn:schemaSeventhLevelName a rdf:Property ;
+  schema:name "schemaSeventhLevelName" ;
   rdfs:comment "Names the seventh most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
 
-appn:schemaLevelName8 a rdf:Property ;
-  schema:name "schemaLevelName8" ;
+appn:schemaEighthLevelName a rdf:Property ;
+  schema:name "schemaEighthLevelName" ;
   rdfs:comment "Names the eighth most signicant level of organisation for locations sharing a LocationSchema." ;
   schema:domainIncludes appn:LocationSchema ;
   schema:rangeIncludes xsd:string .
@@ -590,7 +599,7 @@ appn:schemaLevelName8 a rdf:Property ;
 appn:row a rdf:Property ;
   schema:name "row" ;
   rdfs:comment "Specifies the row for an XYZLocation." ;
-  rdfs:subPropertyOf appn:schemaLevel1 ;
+  rdfs:subPropertyOf appn:schemaFirstLevel ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
@@ -599,7 +608,7 @@ appn:row a rdf:Property ;
 appn:column a rdf:Property ;
   schema:name "column" ;
   rdfs:comment "Specifies the column for an XYZLocation." ;
-  rdfs:subPropertyOf appn:schemaLevel2 ;
+  rdfs:subPropertyOf appn:schemaSecondLevel ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
@@ -608,7 +617,7 @@ appn:column a rdf:Property ;
 appn:level a rdf:Property ;
   schema:name "level" ;
   rdfs:comment "Specifies the level for an XYZLocation in a three-dimensional configuration." ;
-  rdfs:subPropertyOf appn:schemaLevel3 ;
+  rdfs:subPropertyOf appn:schemaThirdLevel ;
   schema:domainIncludes appn:XYZLocation ;
   schema:rangeIncludes xsd:string ;
   schema:rangeIncludes xsd:integer ;
@@ -637,7 +646,7 @@ appn:usedMethod a rdf:Property ;
   schema:name "usedMethod" ;
   rdfs:comment "Identifies a Method used to conduct an Assay or to derive values for a Variable." ;
   rdfs:subPropertyOf sosa:usedProcedure ;
-  rdfs:subPropertyOf ppeo:hasMethod ;
+  # rdfs:subPropertyOf ppeo:hasMethod ; - ppeo:hasMethod's domain is limited to ppeo:observed_variable
   schema:domainIncludes appn:Variable, appn:Assay ;
   schema:rangeIncludes appn:Method .
 
@@ -656,14 +665,14 @@ appn:forBiologicalMaterial a rdf:Property ;
 appn:hasTrait a rdf:Property ;
   schema:name "hasTrait" ;
   rdfs:comment "Identifies the Trait associated with a Variable." ;
-  rdfs:subPropertyOf ppeo:hasTrait ;
+  # rdfs:subPropertyOf ppeo:hasTrait ; - ppeo:hasTrait's domain is limited to ppeo:observed_variable
   schema:domainIncludes appn:ObservedVariable, appn:ControlledVariable ;
   schema:rangeIncludes appn:Trait .
 
 appn:hasScale a rdf:Property ;
   schema:name "hasScale" ;
   rdfs:comment "Identifies the Scale associated with a Variable." ;
-  rdfs:subPropertyOf ppeo:hasScale ;
+  # rdfs:subPropertyOf ppeo:hasScale ; - ppeo:hasScale's domain is limited to ppeo:observed_variable
   schema:domainIncludes appn:Variable, appn:SubstanceAmount ;
   schema:rangeIncludes appn:Scale .
 
@@ -861,6 +870,12 @@ appn:hasLongitude a rdf:Property ;
   schema:domainIncludes appn:SpatialLocation ;
   rdfs:range xsd:decimal .
 
+appn:hasPolygon a rdf:Property ;
+  schema:name "hasPolygon" ;
+  rdfs:comment "WKT for a polygon" ;
+  schema:domainIncludes appn:SpatialLocation ;
+  rdfs:range xsd:string .
+
 appn:hasUncertainty a rdf:Property ;
   schema:name "hasUncertainty" ;
   rdfs:comment "Uncertainty in meters for coordinates" ;
@@ -904,16 +919,18 @@ appn:hasCountryCode a rdf:Property ;
   schema:domainIncludes appn:Country ;
   rdfs:range xsd:string .
 
+# PPEO property is not a true superproperty - restricted to People
 appn:hasRole a rdf:Property ;
   schema:name "hasRole" ;
-  rdfs:comment "Indicates a role for a Person in a ResearchActivity" ;
+  rdfs:comment "Indicates a role for a Person or Organization in a ResearchActivity" ;
   rdfs:subPropertyOf ppeo:hasRole ;
-  schema:domainIncludes appn:Person ;
+  schema:domainIncludes appn:Person, appn:Organisation ;
   schema:rangeIncludes appn:Role .
 
-appn:isRoleOfPersonIn a rdf:Property ;
+# PPEO property is not a true superproperty - restricted to People
+appn:isRoleIn a rdf:Property ;
   schema:name "isRoleOfPersonIn" ;
-  rdfs:comment "Indicates a ResearchActivity in which a Person has a Role" ;
+  rdfs:comment "Indicates a ResearchActivity in which a Person or Organization has a Role" ;
   rdfs:subPropertyOf ppeo:isRoleOfPersonIn ;
   schema:domainIncludes appn:Role ;
   schema:rangeIncludes appn:ResearchActivity .
@@ -970,5 +987,67 @@ appn:hasPart a rdf:Property ;
   schema:name "hasPart" ;
   rdfs:comment "Identifies a File that belongs to a Dataset" ;
   rdfs:subPropertyOf schema:hasPart ;
-  rdfs:domainIncludes: appn:Dataset ;
-  rdfs:rangeIncludes: appn:File .
+  schema:domainIncludes appn:Dataset ;
+  schema:rangeIncludes appn:File .
+
+appn:affiliation a rdf:Property ;
+  schema:name "affiliation" ;
+  rdfs:comment "Associates a Person with an Organization with which they are affiliated." ;
+  rdfs:subPropertyOf schema:affiliation ;
+  schema:domainIncludes appn:Person ;
+  schema:rangeIncludes appn:Organisation .
+
+appn:funder a rdf:Property ;
+  schema:name "funder" ;
+  rdfs:comment "Associates an Organization with a Grant." ;
+  rdfs:subPropertyOf schema:funder ;
+  schema:domainIncludes appn:Grant ;
+  schema:rangeIncludes appn:Organisation .
+
+appn:fundedPerson a rdf:Property ;
+  schema:name "fundedPerson" ;
+  rdfs:comment "Associates a recipient Person with a Grant." ;
+  rdfs:subPropertyOf schema:fundedItem ;
+  schema:domainIncludes appn:Grant ;
+  schema:rangeIncludes appn:Person .
+
+appn:fundedOrganisation a rdf:Property ;
+  schema:name "fundedOrganisation" ;
+  rdfs:comment "Associates a recipient Organisation with a Grant." ;
+  rdfs:subPropertyOf schema:fundedItem ;
+  schema:domainIncludes appn:Grant ;
+  schema:rangeIncludes appn:Organisation .
+
+appn:orcid a rdf:Property ;
+  schema:name "orcid" ;
+  rdfs:comment "The ORCID for a Person." ;
+  rdfs:subPropertyOf schema:identifier ;
+  schema:domainIncludes appn:Person ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:orcid a rdf:Property ;
+  schema:name "orcid" ;
+  rdfs:comment "The ORCID for a Person." ;
+  rdfs:subPropertyOf schema:identifier ;
+  schema:domainIncludes appn:Person ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:ror a rdf:Property ;
+  schema:name "ror" ;
+  rdfs:comment "The ROR for an Organization." ;
+  rdfs:subPropertyOf schema:identifier ;
+  schema:domainIncludes appn:Organisation ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:raid a rdf:Property ;
+  schema:name "RAiD" ;
+  rdfs:comment "The RAiD for a ResearchActivity." ;
+  rdfs:subPropertyOf schema:identifier ;
+  schema:domainIncludes appn:ResearchActivity ;
+  schema:rangeIncludes xsd:anyURI .
+
+appn:restrictedPII a rdf:Property ;
+  schema:name "restrictedPII" ;
+  rdfs:comment "Indicates whether personally identifiable information is restricted for a Person." ;
+  schema:domainIncludes appn:Person ;
+  rdfs:range xsd:boolean .

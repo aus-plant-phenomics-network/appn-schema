@@ -22,4 +22,6 @@ Observation --> File : usesData
 class File #line.bold {
     encodingType: string
 }
+class Dataset 
+Dataset --> File : hasPart
 @enduml

@@ -8,6 +8,8 @@ File --|> "ppeo:data_file"
 Dataset --|> File
 class "schema:Dataset" #DDFFDD 
 Dataset --|> "schema:Dataset"
+class File 
+Dataset --> File : hasPart
 class Observation 
 Observation --> File : hasResult
 class Control 

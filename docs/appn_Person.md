@@ -1,7 +1,7 @@
 # Person
 [https://schema.plantphenomics.org.au/Person](https://schema.plantphenomics.org.au/Person)
 
-A Person, preferably identified using an ORCID, that may perform an Assay.
+A person, preferably identified using an ORCID, that may perform an Assay.
 
 ![UML diagram for Person](images/ttl_appn_Person.png)
 
@@ -16,7 +16,17 @@ A Person, preferably identified using an ORCID, that may perform an Assay.
 * http://schema.org/Person
 ## Properties
 * appn:Person **appn:hasRole** [appn:Role](appn_Role.md)
-    * Indicates a role for a Person in a ResearchActivity
+    * Indicates a role for a Person or Organization in a ResearchActivity
+* appn:Person **appn:affiliation** [appn:Organisation](appn_Organisation.md)
+    * Associates a Person with an Organization with which they are affiliated.
+* [appn:Grant](appn_Grant.md) **appn:fundedPerson** appn:Person
+    * Associates a recipient Person with a Grant.
+* appn:Person **appn:orcid** [xsd:anyURI](http://www.w3.org/2001/XMLSchema#anyURI)
+    * The ORCID for a Person.
+
+The ORCID for a Person.
+* appn:Person **appn:restrictedPII** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
+    * Indicates whether personally identifiable information is restricted for a Person.
 * [appn:Observation](appn_Observation.md) **appn:madeByObserver** [appn:Observer](appn_Observer.md)
     * Identifies the entity (Observer, i.e. one of a Person, Sensor or SoftwareApplication) responsible for carrying out an Observation.
 * [appn:Control](appn_Control.md) **appn:madeByController** [appn:Controller](appn_Controller.md)

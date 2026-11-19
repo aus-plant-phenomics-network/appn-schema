@@ -15,53 +15,53 @@ A position associated with the placement of a GrowthFacility within another Grow
     * Specifies that a Location is a position within an ObservationUnit.
 * appn:Location **appn:hasLocationSchema** [appn:LocationSchema](appn_LocationSchema.md)
     * Specifies the schema defining the levels in describing a Location.
-* appn:Location **appn:schemaLevel1** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaFirstLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel1** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaFirstLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel1** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaFirstLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel2** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaSecondLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the second most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel2** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaSecondLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the second most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel2** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaSecondLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the second most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel3** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaThirdLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the third most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel3** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaThirdLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the third most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel3** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaThirdLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the third most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel4** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaFourthLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the fourth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel4** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaFourthLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the fourth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel4** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaFourthLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the fourth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel5** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaFifthLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the fifth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel5** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaFifthLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the fifth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel5** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaFifthLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the fifth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel6** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaSixthLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the sixth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel6** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaSixthLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the sixth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel6** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaSixthLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the sixth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel7** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaSeventhLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the seventh most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel7** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaSeventhLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the seventh most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel7** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaSeventhLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the seventh most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel8** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
+* appn:Location **appn:schemaEighthLevel** [xsd:string](http://www.w3.org/2001/XMLSchema#string)
     * Specifies the eighth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel8** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
+* appn:Location **appn:schemaEighthLevel** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)
     * Specifies the eighth most signicant level of organisation when specifying a location.
-* appn:Location **appn:schemaLevel8** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
+* appn:Location **appn:schemaEighthLevel** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
     * Specifies the eighth most signicant level of organisation when specifying a location.
 * appn:Location **appn:startTime** [xsd:dateTime](http://www.w3.org/2001/XMLSchema#dateTime)
     * The time at which a ResearchActivity started

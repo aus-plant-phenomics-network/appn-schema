@@ -13,6 +13,7 @@ class Dataset
 class Deployment
 class ExternalEvent
 class File
+class Grant
 class GrowthFacility
 class GrowthFacilityType
 class Investigation
@@ -24,6 +25,7 @@ class Observation
 class ObservationUnit
 class ObservedVariable
 class Observer
+class Organisation
 class Person
 class PhysicalContainmentLevel
 class Platform
@@ -54,10 +56,12 @@ package "schema" {
     class "schema:DefinedTerm" #DDFFDD
     class "schema:Enumeration" #DDFFDD
     class "schema:Event" #DDFFDD
+    class "schema:Grant" #DDFFDD
     class "schema:HowTo" #DDFFDD
     class "schema:IndividualProduct" #DDFFDD
     class "schema:InstanceValue" #DDFFDD
     class "schema:Observation" #DDFFDD
+    class "schema:Organization" #DDFFDD
     class "schema:Person" #DDFFDD
     class "schema:Place" #DDFFDD
     class "schema:Role" #DDFFDD
@@ -101,6 +105,8 @@ Actuator --|> ObservationUnit
 Actuator --|> "schema:IndividualProduct"
 ExternalEvent --|> Controller
 ExternalEvent --|> "schema:Event"
+Grant --|> "schema:Grant"
+Organisation --|> "schema:Organization"
 Person --|> Observer
 Person --|> Controller
 Person --|> Sampler

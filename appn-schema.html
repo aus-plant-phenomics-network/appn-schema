@@ -30,7 +30,7 @@
         <div class="property" id="isForObservationUnit">Assay <b>isForObservationUnit</b> <a href="#ObservationUnit">ObservationUnit</a></div>
         <div class="description">Relates an Assay to an ObservationUnit for which it is carried out. Note that when the Assay is an Observation, the model should infer a schema:observationAbout property from isForObservationUnit.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">http://www.w3.org/ns/sosa/hasFeatureOfInterest</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasObservedSubject">http://purl.org/ppeo/PPEO.owl#hasObservedSubject</a></div>
         <div class="property" id="usedMethod">Assay <b>usedMethod</b> <a href="#Method">Method</a></div>
-        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Observation">Observation</a></div>
         <div class="child"><a href="#Control">Control</a></div>
@@ -153,7 +153,7 @@
         <div class="property"><a href="#Control">Control</a> <b>controls</b> ControlledVariable</div>
         <div class="description">Identifies a ControlledVariable controlled by a Control assay. The Control adjusts the state of the ControlledVariable to the value specified in any hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/actsOnProperty">http://www.w3.org/ns/sosa/actsOnProperty</a></div>
         <div class="property" id="hasTrait">ControlledVariable <b>hasTrait</b> <a href="#Trait">Trait</a></div>
-        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
+        <div class="description">Identifies the Trait associated with a Variable.</div>
         <h2 id="Controller">Class: Controller</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Controller" target="_blank">https://schema.plantphenomics.org.au/Controller</a></div>
         <img src="image/ttl_appn_Controller.png"/>
@@ -191,6 +191,9 @@
         <h3>Superclasses</h3>
         <div class="parent"><a href="#File">File</a></div>
         <div class="parent"><a href="http://schema.org/Dataset">http://schema.org/Dataset</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="hasPart">Dataset <b>hasPart</b> <a href="#File">File</a></div>
+        <div class="description">Identifies a File that belongs to a Dataset<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/hasPart">http://schema.org/hasPart</a></div>
         <h2 id="Deployment">Class: Deployment</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Deployment" target="_blank">https://schema.plantphenomics.org.au/Deployment</a></div>
         <img src="image/ttl_appn_Deployment.png"/>
@@ -230,9 +233,24 @@
         <div class="description">File encoding type from IANA https://www.iana.org/assignments/media-types<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/encodingType">http://schema.org/encodingType</a></div>
         <div class="property"><a href="#TableFile">TableFile</a> <b>hasSchema</b> File</div>
         <div class="description">Identifies schema file for a TableFile</div>
+        <div class="property"><a href="#Dataset">Dataset</a> <b>hasPart</b> File</div>
+        <div class="description">Identifies a File that belongs to a Dataset<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/hasPart">http://schema.org/hasPart</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#TableFile">TableFile</a></div>
         <div class="child"><a href="#Dataset">Dataset</a></div>
+        <h2 id="Grant">Class: Grant</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Grant" target="_blank">https://schema.plantphenomics.org.au/Grant</a></div>
+        <img src="image/ttl_appn_Grant.png"/>
+        <div class="description"><b>Grant:</b> A grant as funding for a ResearchActivity.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://schema.org/Grant">http://schema.org/Grant</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="funder">Grant <b>funder</b> <a href="#Organisation">Organisation</a></div>
+        <div class="description">Associates an Organization with a Grant.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/funder">http://schema.org/funder</a></div>
+        <div class="property" id="fundedPerson">Grant <b>fundedPerson</b> <a href="#Person">Person</a></div>
+        <div class="description">Associates a recipient Person with a Grant.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/fundedItem">http://schema.org/fundedItem</a></div>
+        <div class="property" id="fundedOrganisation">Grant <b>fundedOrganisation</b> <a href="#Organisation">Organisation</a></div>
+        <div class="description">Associates a recipient Organisation with a Grant.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/fundedItem">http://schema.org/fundedItem</a></div>
         <h2 id="GrowthFacility">Class: GrowthFacility</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/GrowthFacility" target="_blank">https://schema.plantphenomics.org.au/GrowthFacility</a></div>
         <img src="image/ttl_appn_GrowthFacility.png"/>
@@ -293,53 +311,53 @@
         <div class="description">Specifies that a Location is a position within an ObservationUnit.</div>
         <div class="property" id="hasLocationSchema">Location <b>hasLocationSchema</b> <a href="#LocationSchema">LocationSchema</a></div>
         <div class="description">Specifies the schema defining the levels in describing a Location.</div>
-        <div class="property" id="schemaLevel1">Location <b>schemaLevel1</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaFirstLevel">Location <b>schemaFirstLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel1</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaFirstLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel1</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaFirstLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel2">Location <b>schemaLevel2</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaSecondLevel">Location <b>schemaSecondLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the second most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel2</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaSecondLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the second most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel2</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaSecondLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the second most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel3">Location <b>schemaLevel3</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaThirdLevel">Location <b>schemaThirdLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the third most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel3</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaThirdLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the third most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel3</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaThirdLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the third most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel4">Location <b>schemaLevel4</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaFourthLevel">Location <b>schemaFourthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the fourth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel4</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaFourthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the fourth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel4</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaFourthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the fourth most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel5">Location <b>schemaLevel5</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaFifthLevel">Location <b>schemaFifthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the fifth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel5</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaFifthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the fifth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel5</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaFifthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the fifth most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel6">Location <b>schemaLevel6</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaSixthLevel">Location <b>schemaSixthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the sixth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel6</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaSixthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the sixth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel6</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaSixthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the sixth most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel7">Location <b>schemaLevel7</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaSeventhLevel">Location <b>schemaSeventhLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the seventh most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel7</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaSeventhLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the seventh most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel7</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaSeventhLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the seventh most signicant level of organisation when specifying a location.</div>
-        <div class="property" id="schemaLevel8">Location <b>schemaLevel8</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaEighthLevel">Location <b>schemaEighthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Specifies the eighth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel8</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
+        <div class="property">Location <b>schemaEighthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
         <div class="description">Specifies the eighth most signicant level of organisation when specifying a location.</div>
-        <div class="property">Location <b>schemaLevel8</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
+        <div class="property">Location <b>schemaEighthLevel</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Specifies the eighth most signicant level of organisation when specifying a location.</div>
         <div class="property" id="startTime">Location <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
         <div class="description">The time at which a ResearchActivity started<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/startTime">http://schema.org/startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasStartDateTime">http://purl.org/ppeo/PPEO.owl#hasStartDateTime</a></div>
@@ -359,21 +377,21 @@
         <h3>Properties</h3>
         <div class="property"><a href="#Location">Location</a> <b>hasLocationSchema</b> LocationSchema</div>
         <div class="description">Specifies the schema defining the levels in describing a Location.</div>
-        <div class="property" id="schemaLevelName1">LocationSchema <b>schemaLevelName1</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaFirstLevelName">LocationSchema <b>schemaFirstLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName2">LocationSchema <b>schemaLevelName2</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaSecondLevelName">LocationSchema <b>schemaSecondLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the second most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName3">LocationSchema <b>schemaLevelName3</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaThirdLevelName">LocationSchema <b>schemaThirdLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the third most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName4">LocationSchema <b>schemaLevelName4</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaFourthLevelName">LocationSchema <b>schemaFourthLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the fourth most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName5">LocationSchema <b>schemaLevelName5</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaFifthLevelName">LocationSchema <b>schemaFifthLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the fifth most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName6">LocationSchema <b>schemaLevelName6</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaSixthLevelName">LocationSchema <b>schemaSixthLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the sixth most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName7">LocationSchema <b>schemaLevelName7</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaSeventhLevelName">LocationSchema <b>schemaSeventhLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the seventh most signicant level of organisation for locations sharing a LocationSchema.</div>
-        <div class="property" id="schemaLevelName8">LocationSchema <b>schemaLevelName8</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="property" id="schemaEighthLevelName">LocationSchema <b>schemaEighthLevelName</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
         <div class="description">Names the eighth most signicant level of organisation for locations sharing a LocationSchema.</div>
         <h2 id="MaterialSource">Class: MaterialSource</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/MaterialSource" target="_blank">https://schema.plantphenomics.org.au/MaterialSource</a></div>
@@ -396,9 +414,9 @@
         <div class="parent"><a href="http://schema.org/HowTo">http://schema.org/HowTo</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>usedMethod</b> Method</div>
-        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a></div>
         <div class="property"><a href="#Assay">Assay</a> <b>usedMethod</b> Method</div>
-        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a></div>
         <h2 id="Observation">Class: Observation</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Observation" target="_blank">https://schema.plantphenomics.org.au/Observation</a></div>
         <img src="image/ttl_appn_Observation.png"/>
@@ -461,7 +479,7 @@
         <div class="property"><a href="#Observation">Observation</a> <b>observes</b> ObservedVariable</div>
         <div class="description">Identifies an ObservedVariable controlled by an Observation assay. The Observation records or estimates the state of the ObservationVariable recorded as a value specified in a hasResult or hasSimpleResult property.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasVariable">http://purl.org/ppeo/PPEO.owl#hasVariable</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/observedProperty">http://www.w3.org/ns/sosa/observedProperty</a></div>
         <div class="property">ObservedVariable <b>hasTrait</b> <a href="#Trait">Trait</a></div>
-        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
+        <div class="description">Identifies the Trait associated with a Variable.</div>
         <h2 id="Observer">Class: Observer</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Observer" target="_blank">https://schema.plantphenomics.org.au/Observer</a></div>
         <img src="image/ttl_appn_Observer.png"/>
@@ -475,10 +493,27 @@
         <div class="child"><a href="#Sensor">Sensor</a></div>
         <div class="child"><a href="#Person">Person</a></div>
         <div class="child"><a href="#SoftwareApplication">SoftwareApplication</a></div>
+        <h2 id="Organisation">Class: Organisation</h2>
+        <div class="uri"><a href="https://schema.plantphenomics.org.au/Organisation" target="_blank">https://schema.plantphenomics.org.au/Organisation</a></div>
+        <img src="image/ttl_appn_Organisation.png"/>
+        <div class="description"><b>Organisation:</b> An organization, preferably identified using an ROR.</div>
+        <h3>Superclasses</h3>
+        <div class="parent"><a href="http://schema.org/Organization">http://schema.org/Organization</a></div>
+        <h3>Properties</h3>
+        <div class="property" id="hasRole">Organisation <b>hasRole</b> <a href="#Role">Role</a></div>
+        <div class="description">Indicates a role for a Person or Organization in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
+        <div class="property"><a href="#Person">Person</a> <b>affiliation</b> Organisation</div>
+        <div class="description">Associates a Person with an Organization with which they are affiliated.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/affiliation">http://schema.org/affiliation</a></div>
+        <div class="property"><a href="#Grant">Grant</a> <b>funder</b> Organisation</div>
+        <div class="description">Associates an Organization with a Grant.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/funder">http://schema.org/funder</a></div>
+        <div class="property"><a href="#Grant">Grant</a> <b>fundedOrganisation</b> Organisation</div>
+        <div class="description">Associates a recipient Organisation with a Grant.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/fundedItem">http://schema.org/fundedItem</a></div>
+        <div class="property" id="ror">Organisation <b>ror</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">The ROR for an Organization.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/identifier">http://schema.org/identifier</a></div>
         <h2 id="Person">Class: Person</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Person" target="_blank">https://schema.plantphenomics.org.au/Person</a></div>
         <img src="image/ttl_appn_Person.png"/>
-        <div class="description"><b>Person:</b> A Person, preferably identified using an ORCID, that may perform an Assay.</div>
+        <div class="description"><b>Person:</b> A person, preferably identified using an ORCID, that may perform an Assay.</div>
         <h3>Superclasses</h3>
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#person">http://purl.org/ppeo/PPEO.owl#person</a></div>
         <div class="parent"><a href="#Observer">Observer</a></div>
@@ -486,8 +521,18 @@
         <div class="parent"><a href="#Sampler">Sampler</a></div>
         <div class="parent"><a href="http://schema.org/Person">http://schema.org/Person</a></div>
         <h3>Properties</h3>
-        <div class="property" id="hasRole">Person <b>hasRole</b> <a href="#Role">Role</a></div>
-        <div class="description">Indicates a role for a Person in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
+        <div class="property">Person <b>hasRole</b> <a href="#Role">Role</a></div>
+        <div class="description">Indicates a role for a Person or Organization in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
+        <div class="property" id="affiliation">Person <b>affiliation</b> <a href="#Organisation">Organisation</a></div>
+        <div class="description">Associates a Person with an Organization with which they are affiliated.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/affiliation">http://schema.org/affiliation</a></div>
+        <div class="property"><a href="#Grant">Grant</a> <b>fundedPerson</b> Person</div>
+        <div class="description">Associates a recipient Person with a Grant.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/fundedItem">http://schema.org/fundedItem</a></div>
+        <div class="property" id="orcid">Person <b>orcid</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">The ORCID for a Person.
+
+The ORCID for a Person.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/identifier">http://schema.org/identifier</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/identifier">http://schema.org/identifier</a></div>
+        <div class="property" id="restrictedPII">Person <b>restrictedPII</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
+        <div class="description">Indicates whether personally identifiable information is restricted for a Person.</div>
         <h2 id="PhysicalContainmentLevel">Class: PhysicalContainmentLevel</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/PhysicalContainmentLevel" target="_blank">https://schema.plantphenomics.org.au/PhysicalContainmentLevel</a></div>
         <img src="image/ttl_appn_PhysicalContainmentLevel.png"/>
@@ -535,14 +580,16 @@
         <h3>Properties</h3>
         <div class="property" id="isPartOf">ResearchActivity <b>isPartOf</b> <a href="#ResearchActivity">ResearchActivity</a></div>
         <div class="description">Relates an Assay to the Study that includes it or a Study to an Investigation.</div>
-        <div class="property"><a href="#Role">Role</a> <b>isRoleOfPersonIn</b> ResearchActivity</div>
-        <div class="description">Indicates a ResearchActivity in which a Person has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
+        <div class="property"><a href="#Role">Role</a> <b>isRoleIn</b> ResearchActivity</div>
+        <div class="description">Indicates a ResearchActivity in which a Person or Organization has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
         <div class="property">ResearchActivity <b>startTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
         <div class="description">The time at which a ResearchActivity started<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/startTime">http://schema.org/startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasStartDateTime">http://purl.org/ppeo/PPEO.owl#hasStartDateTime</a></div>
         <div class="property">ResearchActivity <b>endTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
         <div class="description">The time at which a ResearchActivity ended<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/endTime">http://schema.org/endTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/resultTime">http://www.w3.org/ns/sosa/resultTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasEndDateTime">http://purl.org/ppeo/PPEO.owl#hasEndDateTime</a></div>
         <div class="property">ResearchActivity <b>atTime</b> <a href="http://www.w3.org/2001/XMLSchema#dateTime">http://www.w3.org/2001/XMLSchema#dateTime</a></div>
         <div class="description">The time at which a ResearchActivity occurred - equivalent to both startTime and endTime<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#startTime">startTime</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#endTime">endTime</a></div>
+        <div class="property" id="raid">ResearchActivity <b>raid</b> <a href="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2001/XMLSchema#anyURI</a></div>
+        <div class="description">The RAiD for a ResearchActivity.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/identifier">http://schema.org/identifier</a></div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Investigation">Investigation</a></div>
         <div class="child"><a href="#Study">Study</a></div>
@@ -556,9 +603,11 @@
         <div class="parent"><a href="http://purl.org/ppeo/PPEO.owl#role">http://purl.org/ppeo/PPEO.owl#role</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Person">Person</a> <b>hasRole</b> Role</div>
-        <div class="description">Indicates a role for a Person in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
-        <div class="property" id="isRoleOfPersonIn">Role <b>isRoleOfPersonIn</b> <a href="#ResearchActivity">ResearchActivity</a></div>
-        <div class="description">Indicates a ResearchActivity in which a Person has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
+        <div class="description">Indicates a role for a Person or Organization in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
+        <div class="property"><a href="#Organisation">Organisation</a> <b>hasRole</b> Role</div>
+        <div class="description">Indicates a role for a Person or Organization in a ResearchActivity<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasRole">http://purl.org/ppeo/PPEO.owl#hasRole</a></div>
+        <div class="property" id="isRoleIn">Role <b>isRoleIn</b> <a href="#ResearchActivity">ResearchActivity</a></div>
+        <div class="description">Indicates a ResearchActivity in which a Person or Organization has a Role<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn">http://purl.org/ppeo/PPEO.owl#isRoleOfPersonIn</a></div>
         <h2 id="Sample">Class: Sample</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sample" target="_blank">https://schema.plantphenomics.org.au/Sample</a></div>
         <img src="image/ttl_appn_Sample.png"/>
@@ -602,9 +651,9 @@
         <div class="parent"><a href="http://schema.org/DefinedTerm">http://schema.org/DefinedTerm</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#Variable">Variable</a> <b>hasScale</b> Scale</div>
-        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
+        <div class="description">Identifies the Scale associated with a Variable.</div>
         <div class="property"><a href="#SubstanceAmount">SubstanceAmount</a> <b>hasScale</b> Scale</div>
-        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
+        <div class="description">Identifies the Scale associated with a Variable.</div>
         <h2 id="Sensor">Class: Sensor</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/Sensor" target="_blank">https://schema.plantphenomics.org.au/Sensor</a></div>
         <img src="image/ttl_appn_Sensor.png"/>
@@ -650,6 +699,8 @@
         <div class="description">Decimal latitude for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasLatitude">http://purl.org/ppeo/PPEO.owl#hasLatitude</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/latitude">http://schema.org/latitude</a></div>
         <div class="property" id="hasLongitude">SpatialLocation <b>hasLongitude</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Decimal longitude for a SpatialLocation<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasLongitude">http://purl.org/ppeo/PPEO.owl#hasLongitude</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://schema.org/longitude">http://schema.org/longitude</a></div>
+        <div class="property" id="hasPolygon">SpatialLocation <b>hasPolygon</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
+        <div class="description">WKT for a polygon</div>
         <div class="property" id="hasUncertainty">SpatialLocation <b>hasUncertainty</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Uncertainty in meters for coordinates<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasUncertainty">http://purl.org/ppeo/PPEO.owl#hasUncertainty</a></div>
         <div class="property" id="hasAltitude">SpatialLocation <b>hasAltitude</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
@@ -700,7 +751,7 @@
         <div class="property" id="amount">SubstanceAmount <b>amount</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
         <div class="description">Identifies the amount of a Substance associated with a SubstanceAmount according to the associated Scale.</div>
         <div class="property" id="hasScale">SubstanceAmount <b>hasScale</b> <a href="#Scale">Scale</a></div>
-        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
+        <div class="description">Identifies the Scale associated with a Variable.</div>
         <h2 id="TableFile">Class: TableFile</h2>
         <div class="uri"><a href="https://schema.plantphenomics.org.au/TableFile" target="_blank">https://schema.plantphenomics.org.au/TableFile</a></div>
         <img src="image/ttl_appn_TableFile.png"/>
@@ -724,9 +775,9 @@
         <div class="parent"><a href="http://schema.org/DefinedTerm">http://schema.org/DefinedTerm</a></div>
         <h3>Properties</h3>
         <div class="property"><a href="#ObservedVariable">ObservedVariable</a> <b>hasTrait</b> Trait</div>
-        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
+        <div class="description">Identifies the Trait associated with a Variable.</div>
         <div class="property"><a href="#ControlledVariable">ControlledVariable</a> <b>hasTrait</b> Trait</div>
-        <div class="description">Identifies the Trait associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasTrait">http://purl.org/ppeo/PPEO.owl#hasTrait</a></div>
+        <div class="description">Identifies the Trait associated with a Variable.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#Variable">Variable</a></div>
         <h2 id="Treatment">Class: Treatment</h2>
@@ -763,13 +814,13 @@
         <div class="property">Variable <b>hasDefaultValue</b> <a href="http://www.w3.org/2001/XMLSchema#boolean">http://www.w3.org/2001/XMLSchema#boolean</a></div>
         <div class="description">Specifies the default value for a variable.</div>
         <div class="property">Variable <b>usedMethod</b> <a href="#Method">Method</a></div>
-        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasMethod">http://purl.org/ppeo/PPEO.owl#hasMethod</a></div>
+        <div class="description">Identifies a Method used to conduct an Assay or to derive values for a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.w3.org/ns/sosa/usedProcedure">http://www.w3.org/ns/sosa/usedProcedure</a></div>
         <div class="property" id="forBiologicalUnitType">Variable <b>forBiologicalUnitType</b> <a href="#BiologicalUnitType">BiologicalUnitType</a></div>
         <div class="description">Links a Variable to the BiologicalUnitType to which it relates.</div>
         <div class="property" id="forBiologicalMaterial">Variable <b>forBiologicalMaterial</b> <a href="#BiologicalMaterial">BiologicalMaterial</a></div>
         <div class="description">Links a Variable to the BiologicalMaterial (i.e. crop) to which it relates.</div>
         <div class="property">Variable <b>hasScale</b> <a href="#Scale">Scale</a></div>
-        <div class="description">Identifies the Scale associated with a Variable.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://purl.org/ppeo/PPEO.owl#hasScale">http://purl.org/ppeo/PPEO.owl#hasScale</a></div>
+        <div class="description">Identifies the Scale associated with a Variable.</div>
         <h3>Subclasses</h3>
         <div class="child"><a href="#ObservedVariable">ObservedVariable</a></div>
         <div class="child"><a href="#ControlledVariable">ControlledVariable</a></div>
@@ -782,22 +833,22 @@
         <div class="parent"><a href="#Location">Location</a></div>
         <h3>Properties</h3>
         <div class="property" id="row">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
-        <div class="description">Specifies the row for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel1">schemaLevel1</a></div>
+        <div class="description">Specifies the row for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaFirstLevel">schemaFirstLevel</a></div>
         <div class="property">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
-        <div class="description">Specifies the row for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel1">schemaLevel1</a></div>
+        <div class="description">Specifies the row for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaFirstLevel">schemaFirstLevel</a></div>
         <div class="property">XYZLocation <b>row</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
-        <div class="description">Specifies the row for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel1">schemaLevel1</a></div>
+        <div class="description">Specifies the row for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaFirstLevel">schemaFirstLevel</a></div>
         <div class="property" id="column">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
-        <div class="description">Specifies the column for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel2">schemaLevel2</a></div>
+        <div class="description">Specifies the column for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaSecondLevel">schemaSecondLevel</a></div>
         <div class="property">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
-        <div class="description">Specifies the column for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel2">schemaLevel2</a></div>
+        <div class="description">Specifies the column for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaSecondLevel">schemaSecondLevel</a></div>
         <div class="property">XYZLocation <b>column</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
-        <div class="description">Specifies the column for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel2">schemaLevel2</a></div>
+        <div class="description">Specifies the column for an XYZLocation.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaSecondLevel">schemaSecondLevel</a></div>
         <div class="property" id="level">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/2001/XMLSchema#string</a></div>
-        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel3">schemaLevel3</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaThirdLevel">schemaThirdLevel</a></div>
         <div class="property">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#integer">http://www.w3.org/2001/XMLSchema#integer</a></div>
-        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel3">schemaLevel3</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaThirdLevel">schemaThirdLevel</a></div>
         <div class="property">XYZLocation <b>level</b> <a href="http://www.w3.org/2001/XMLSchema#decimal">http://www.w3.org/2001/XMLSchema#decimal</a></div>
-        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaLevel3">schemaLevel3</a></div>
+        <div class="description">Specifies the level for an XYZLocation in a three-dimensional configuration.<br/><b>Superproperties</b>:<br/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#schemaThirdLevel">schemaThirdLevel</a></div>
     </body>
 </html>

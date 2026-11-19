@@ -1,0 +1,16 @@
+@startuml
+class Organisation  #line.bold
+class "schema:Organization" #DDFFDD 
+Organisation --|> "schema:Organization"
+class Role 
+Organisation --> Role : hasRole
+class Person 
+Person --> Organisation : affiliation
+class Grant 
+Grant --> Organisation : funder
+class Grant 
+Grant --> Organisation : fundedOrganisation
+class Organisation #line.bold {
+    ror: anyURI
+}
+@enduml

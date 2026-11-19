@@ -11,6 +11,8 @@ A set of Files and metadata forming a dataset, normally managed as a file system
 * http://purl.org/ppeo/PPEO.owl#data_file
 * http://schema.org/Dataset
 ## Properties
+* appn:Dataset **appn:hasPart** [appn:File](appn_File.md)
+    * Identifies a File that belongs to a Dataset
 * [appn:Observation](appn_Observation.md) **appn:hasResult** [appn:File](appn_File.md)
     * Identifies a data output from an Observation or Control assay. Individual values are represented by appn:hasSimpleResult.
 * [appn:Control](appn_Control.md) **appn:hasResult** [appn:File](appn_File.md)
@@ -21,3 +23,5 @@ A set of Files and metadata forming a dataset, normally managed as a file system
     * File encoding type from IANA https://www.iana.org/assignments/media-types
 * [appn:TableFile](appn_TableFile.md) **appn:hasSchema** [appn:File](appn_File.md)
     * Identifies schema file for a TableFile
+* [appn:Dataset](appn_Dataset.md) **appn:hasPart** [appn:File](appn_File.md)
+    * Identifies a File that belongs to a Dataset

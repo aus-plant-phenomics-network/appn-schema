@@ -26,3 +26,5 @@ A data file containing tabular data in CSV or similar format
     * File encoding type from IANA https://www.iana.org/assignments/media-types
 * [appn:TableFile](appn_TableFile.md) **appn:hasSchema** [appn:File](appn_File.md)
     * Identifies schema file for a TableFile
+* [appn:Dataset](appn_Dataset.md) **appn:hasPart** [appn:File](appn_File.md)
+    * Identifies a File that belongs to a Dataset

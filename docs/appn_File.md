@@ -19,6 +19,8 @@ A data file, image or other file system object
     * File encoding type from IANA https://www.iana.org/assignments/media-types
 * [appn:TableFile](appn_TableFile.md) **appn:hasSchema** appn:File
     * Identifies schema file for a TableFile
+* [appn:Dataset](appn_Dataset.md) **appn:hasPart** appn:File
+    * Identifies a File that belongs to a Dataset
 ## Subclasses
 * [https://schema.plantphenomics.org.au/TableFile](appn_TableFile.md)
 * [https://schema.plantphenomics.org.au/Dataset](appn_Dataset.md)

@@ -1,0 +1,11 @@
+@startuml
+class Grant  #line.bold
+class "schema:Grant" #DDFFDD 
+Grant --|> "schema:Grant"
+class Organisation 
+Grant --> Organisation : funder
+class Person 
+Grant --> Person : fundedPerson
+class Organisation 
+Grant --> Organisation : fundedOrganisation
+@enduml
